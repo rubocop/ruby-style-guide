@@ -18,10 +18,10 @@ guide for the benefit of the entire Ruby community.
     * if you're using Git you might want to do this `$ git config --global core.autocrlf true` to protect your project from Windows line endings creeping into your project
 * Use spaces around operators, after commas, colons and semicolons, around { and before }.
 
-      sum = 1 + 2
-      a, b = 1, 2
-      1 > 2 ? true : false; puts "Hi"
-      [1, 2, 3].each { |e| puts e }
+        sum = 1 + 2
+        a, b = 1, 2
+        1 > 2 ? true : false; puts "Hi"
+        [1, 2, 3].each { |e| puts e }
 
 * No spaces after (, [ and before ], ).
 
