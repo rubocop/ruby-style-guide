@@ -234,7 +234,7 @@ the use of the alias enhances readability - it's ok to use it.
 * Avoid **alias** when **alias_method** will do.
 * Use **OptionParser** for parsing complex command line options and
   **ruby -s* for trivial command line options.
-* Write for Ruby 1.9. Don't legacy Ruby 1.8 constructs.
+* Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
     * use the new JavaScript literal hash syntax
     * use the new lambda syntax
     * methods like **inject** now accept methods names as arguments - `[1, 2, 3].inject(:+)`
