@@ -28,7 +28,7 @@ guide for the benefit of the entire Ruby community.
         some(arg).other
         [1, 2, 3].length
 
-* Indent **when** as deep as **case**.
+* Indent **when** as deep as **case**. (as suggested in the Pickaxe)
 
         case
         when song.name == "Misty"
@@ -40,12 +40,12 @@ guide for the benefit of the entire Ruby community.
         end
 
         kind = case year
-             when 1850..1889 then "Blues"
-             when 1890..1909 then "Ragtime"
-             when 1910..1929 then "New Orleans Jazz" when 1930..1939 then "Swing"
-             when 1940..1950 then "Bebop"
-             else "Jazz"
-             end
+               when 1850..1889 then "Blues"
+               when 1890..1909 then "Ragtime"
+               when 1910..1929 then "New Orleans Jazz" when 1930..1939 then "Swing"
+               when 1940..1950 then "Bebop"
+               else "Jazz"
+               end
 
 * Use an empty line before the return value of a method (unless it
   only has one line), and an empty line between defs.
