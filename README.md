@@ -71,6 +71,7 @@ guide for the benefit of the entire Ruby community.
 ## Syntax
 
 * Use **def** with parentheses when there are arguments. Omit the parentheses when the method doesn't accept any arguments.
+
         def some_method
           # body omitted
         end
