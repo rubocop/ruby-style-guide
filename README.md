@@ -1,11 +1,11 @@
 # Abstract
 
-This document was created when I as the Technical Lead of the company
-in which I work for was asked by the CTO to create some internal
+This document was created when I, as the Technical Lead of the company
+in which I work for, was asked by the CTO to create some internal
 documents describing good style and best practices for Ruby
 programming. I started off by copying
 [this existing style guide](https://github.com/chneukirchen/styleguide),
-since I concurred with most of the points in it and started to built
+since I concurred with most of the points in it and then proceeded to built
 upon it. I hope it will be useful to other people as well and I hope
 that I'll get a lot of feedback and suggestions on how to improve the
 guide for the benefit of the entire Ruby community.
