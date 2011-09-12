@@ -71,6 +71,7 @@ guide for the benefit of the entire Ruby community.
 ## Syntax
 
 * Use **def** with parentheses when there are arguments. Omit the parentheses when the method doesn't accept any arguments.
+
         def some_method
           # body omitted
         end
@@ -80,6 +81,7 @@ guide for the benefit of the entire Ruby community.
         end
 
 * Never use **for**, unless you exactly know why. Most of the time iterators should be used instead.
+
         arr = [1, 2, 3]
 
         # bad
@@ -107,6 +109,7 @@ guide for the benefit of the entire Ruby community.
   wrong operators.)
 * Avoid multiline ?: (the ternary operator), use **if/unless** instead.
 * Favor modifier **if/unless** usage when you have a single-line body.
+
         # bad
         if some_condition
           do_something
@@ -119,6 +122,7 @@ guide for the benefit of the entire Ruby community.
         some_condition && do_something
 
 * Favor **unless** over **if** for negative conditions:
+
         # bad
         do_something if !some_condition
 
