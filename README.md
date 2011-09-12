@@ -108,6 +108,7 @@ guide for the benefit of the entire Ruby community.
   wrong operators.)
 * Avoid multiline ?: (the ternary operator), use **if/unless** instead.
 * Favor modifier **if/unless** usage when you have a single-line body.
+        
         # bad
         if some_condition
           do_something
@@ -120,6 +121,7 @@ guide for the benefit of the entire Ruby community.
         some_condition && do_something
 
 * Favor **unless** over **if** for negative conditions:
+        
         # bad
         do_something if !some_condition
 
