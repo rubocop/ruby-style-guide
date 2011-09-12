@@ -81,6 +81,7 @@ guide for the benefit of the entire Ruby community.
         end
 
 * Never use **for**, unless you exactly know why. Most of the time iterators should be used instead.
+
         arr = [1, 2, 3]
 
         # bad
@@ -108,6 +109,7 @@ guide for the benefit of the entire Ruby community.
   wrong operators.)
 * Avoid multiline ?: (the ternary operator), use **if/unless** instead.
 * Favor modifier **if/unless** usage when you have a single-line body.
+
         # bad
         if some_condition
           do_something
@@ -120,6 +122,7 @@ guide for the benefit of the entire Ruby community.
         some_condition && do_something
 
 * Favor **unless** over **if** for negative conditions:
+
         # bad
         do_something if !some_condition
 
@@ -128,9 +131,11 @@ guide for the benefit of the entire Ruby community.
 
         # another good option
         some_condition || do_something
+
 * Suppress superfluous parentheses when calling methods, but keep them
   when calling "functions", i.e. when you use the return value in the
   same line.
+
         x = Math.sin(y)
         array.delete e
 
