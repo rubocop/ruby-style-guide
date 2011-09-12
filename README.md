@@ -172,7 +172,7 @@ guide for the benefit of the entire Ruby community.
 
 ## Naming
 
-* Use snake_case for methods.
+* Use snake_case for methods and variables.
 * Use CamelCase for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
 * Use SCREAMING_SNAKE_CASE for other constants.
