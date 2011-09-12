@@ -201,6 +201,7 @@ guide for the benefit of the entire Ruby community.
 
 * When using **inject** with short blocks, name the arguments **|a, e|** (mnemonic: accumulator, element)
 * When defining binary operators, name the argument "other".
+
         def +(other)
           # body omitted
         end
