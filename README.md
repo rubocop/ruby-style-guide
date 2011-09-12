@@ -80,8 +80,9 @@ guide for the benefit of the entire Ruby community.
         end
 
 * Never use **for**, unless you exactly know why. Most of the time iterators should be used instead.
+        
         arr = [1, 2, 3]
-
+        
         # bad
         for elem in arr do
           puts elem
