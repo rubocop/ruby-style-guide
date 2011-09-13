@@ -288,7 +288,7 @@ the use of the alias enhances readability - it's ok to use it.
 * Code in a functional way, avoid mutation when it makes sense.
 * Do not mutate arguments unless that is the purpose of the method.
 * Do not mess around in core classes when writing libraries. (do not monkey patch them)
-* Do not program defensively. See this [article](http://www.erlang.se/doc/programming_rules.shtml#HDR11.) for more details.
+* Do not program defensively. See this [article](http://www.erlang.se/doc/programming_rules.shtml#HDR11) for more details.
 * Keep the code simple (subjective, but still...). Each method should have a single well-defined responsibility.
 * Avoid more than 3 Level of  block nesting.
 * Don't overdesign. Overly complex solutions tend to be brittle and hard to maintain.
