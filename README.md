@@ -82,8 +82,9 @@ guide for the benefit of the entire Ruby community.
         end
 
 * Never use **for**, unless you exactly know why. Most of the time iterators should be used instead.
+        
         arr = [1, 2, 3]
-
+        
         # bad
         for elem in arr do
           puts elem
@@ -109,6 +110,7 @@ guide for the benefit of the entire Ruby community.
   wrong operators.)
 * Avoid multiline ?: (the ternary operator), use **if/unless** instead.
 * Favor modifier **if/unless** usage when you have a single-line body.
+        
         # bad
         if some_condition
           do_something
@@ -121,6 +123,7 @@ guide for the benefit of the entire Ruby community.
         some_condition && do_something
 
 * Favor **unless** over **if** for negative conditions:
+        
         # bad
         do_something if !some_condition
 
@@ -251,7 +254,7 @@ the use of the alias enhances readability - it's ok to use it.
 * Keep the code simple (subjective, but still...). Each method should have a single well-defined responsibility.
 * Avoid more than 3 Level of  block nesting.
 * Don't overdesign. Overly complex solutions tend to be brittle and hard to maintain.
-* Don't underdesign. A solution to a problem should be as simple as possible... but it should be simpler than that. Poor initial design 
+* Don't underdesign. A solution to a problem should be as simple as possible... but it should not be simpler than that. Poor initial design 
 can lead to a lot of problems in the future.
 * Be consistent. In an ideal world - be consistent with the points listed here in this guidelines.
 * Use common sense.
