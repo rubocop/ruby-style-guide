@@ -190,6 +190,7 @@ guide for the benefit of the entire Ruby community.
     # good
     result = 1 \
     + 2
+    
     ```
 
 * Using the return value of = is okay:
