@@ -187,7 +187,7 @@ guide for the benefit of the entire Ruby community.
     result = 1 + \
     2
 
-    # good
+    # good (but still ugly as hell)
     result = 1 \
     + 2
     
