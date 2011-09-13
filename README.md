@@ -189,8 +189,7 @@ guide for the benefit of the entire Ruby community.
 
     # good (but still ugly as hell)
     result = 1 \
-    + 2
-    
+    \+ 2
     ```
 
 * Using the return value of = is okay:
