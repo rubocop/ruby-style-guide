@@ -1,5 +1,10 @@
 # Abstract
 
+    ... nearly everybody is convinced that every style but their own is
+    ugly and unreadable. Leave out the "but their own" and they're
+    probably right...
+    --Jerry Coffin (on indentation)
+
 This document was created when I, as the Technical Lead of the company
 in which I work for, was asked by the CTO to create some internal documents
 describing good style and best practices for Ruby programming. I started off
