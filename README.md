@@ -271,7 +271,7 @@ community.
 
 * When using **inject** with short blocks, name the arguments **|a, e|**
   (accumulator, element).
-* When defining binary operators, name the argument "other".
+* When defining binary operators, name the argument **other**.
 
     ```Ruby
     def +(other)
