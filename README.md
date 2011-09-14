@@ -59,7 +59,8 @@ community.
              when 1890..1909 then "Ragtime"
              when 1910..1929
                # Other version
-               "New Orleans Jazz" when 1930..1939 then "Swing"
+               "New Orleans Jazz" 
+             when 1930..1939 then "Swing"
              when 1940..1950 then "Bebop"
              else "Jazz"
            end
