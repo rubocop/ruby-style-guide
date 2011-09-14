@@ -1,4 +1,4 @@
-﻿# Abstract
+# Abstract
 
 This document was created when I, as the Technical Lead of the company
 in which I work for, was asked by the CTO to create some internal documents
