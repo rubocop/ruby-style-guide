@@ -25,7 +25,7 @@ guide for the benefit of the entire Ruby community.
     [1, 2, 3].each { |e| puts e }
     ```
 
-* No spaces after (, [ and before ], ).
+* No spaces after (, [ or before ], ).
 
     ```Ruby
     some(arg).other
