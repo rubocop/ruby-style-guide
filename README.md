@@ -285,11 +285,11 @@ community.
 
 ## Comments
 
-* Write self documenting code and ignore the rest of this section.
-    * _"Good code is its own best documentation. As you’re about to add
-      a comment, ask yourself, ‘How can I improve the code so that
-      this comment isn’t needed?’ Improve the code and then document
-      it to make it even clearer."_ (Steve McConnell)
+* Write self documenting code and ignore the rest of this section. _"Good
+  code is its own best documentation. As you're about to add a comment, ask
+  yourself, ‘How can I improve the code so that this comment isn't needed?’
+  Improve the code and then document it to make it even clearer."_ (Steve
+  McConnell)
 * Comments longer than a word are capitalized and use punctuation. Use two
   spaces after periods.
 * Avoid superfluous comments.
