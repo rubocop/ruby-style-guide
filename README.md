@@ -1,22 +1,27 @@
-# Abstract
+﻿# Abstract
 
 This document was created when I, as the Technical Lead of the company
-in which I work for, was asked by the CTO to create some internal
-documents describing good style and best practices for Ruby
-programming. I started off by copying
+in which I work for, was asked by the CTO to create some internal documents
+describing good style and best practices for Ruby programming. I started off
+by building upon
 [this existing style guide](https://github.com/chneukirchen/styleguide),
-since I concurred with most of the points in it and then proceeded to built
-upon it. I hope it will be useful to other people as well and I hope
-that I'll get a lot of feedback and suggestions on how to improve the
-guide for the benefit of the entire Ruby community.
+since I concurred with most of the points in it. I hope it will be useful to
+other people as well and I hope that I'll get a lot of feedback and
+suggestions on how to improve the guide for the benefit of the entire Ruby
+community.
 
 ## Formatting
 
 * Use UTF-8 as the source file encoding.
-* Use 2 space indent, no tabs. (Your editor/IDE should have a setting to help you with that)
-* Use Unix-style line endings. (Linux/OSX users are covered by default, Windows users have to be extra careful)
-    * if you're using Git you might want to do this `$ git config --global core.autocrlf true` to protect your project from Windows line endings creeping into your project
-* Use spaces around operators, after commas, colons and semicolons, around { and before }.
+* Use two space indent, no tabs. (Your editor/IDE should have a setting to
+  help you with that.)
+* Use Unix-style line endings. (Linux/OSX users are covered by default,
+  Windows users have to be extra careful.)
+    * If you're using Git you might want to do `$ git config --global
+      core.autocrlf true` to protect your project from Windows line endings
+      creeping into your project.
+* Use spaces around operators, after commas, colons and semicolons, around {
+  and before }.
 
     ```Ruby
     sum = 1 + 2
@@ -32,7 +37,7 @@ guide for the benefit of the entire Ruby community.
     [1, 2, 3].length
     ```
 
-* Indent **when** as deep as **case**. (as suggested in the Pickaxe)
+* Indent **when** as deep as **case**. (As suggested in the Pickaxe.)
 
     ```Ruby
     case
@@ -54,7 +59,7 @@ guide for the benefit of the entire Ruby community.
     ```
 
 * Use an empty line before the return value of a method (unless it
-  only has one line), and an empty line between defs.
+  only has one line), and an empty line between **def**s.
 
     ```Ruby
     def some_method
@@ -72,10 +77,10 @@ guide for the benefit of the entire Ruby community.
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the **def**.
 * Use empty lines to break up a method into logical paragraphs.
-* Keep lines fewer than 80 characters.
-    * Emacs users should really have a look at whitespace-mode
-* Avoid trailing whitespace.
-    * Emacs users - whitespace-mode again comes to the rescue
+* Keep lines fewer than 80 characters. (Emacs users should really have a look
+  at whitespace-mode.)
+* Avoid trailing whitespace. (Emacs users: Whitespace-mode again comes to the
+  rescue.)
 
 ## Syntax
 
@@ -92,7 +97,8 @@ guide for the benefit of the entire Ruby community.
      end
      ```
 
-* Never use **for**, unless you exactly know why. Most of the time iterators should be used instead.
+* Never use **for**, unless you know exactly why. Most of the time iterators
+  should be used instead.
 
     ```Ruby        
     arr = [1, 2, 3]
@@ -122,8 +128,9 @@ guide for the benefit of the entire Ruby community.
 
 * Favor **if/then/else** over the ternary operator. *if* is an
   expression in Ruby and the resulting code is arguably easier to
-  read (albeit not as concise). Remember that after all _"Programs must be written for people to read, and
-only incidentally for machines to execute."_ (Abelson and Sussman).
+  read (albeit not as concise). Remember that _"Programs must be written for
+  people to read, and only incidentally for machines to execute."_ (Abelson
+  and Sussman)
 
     ```Ruby
     # good
@@ -136,7 +143,7 @@ only incidentally for machines to execute."_ (Abelson and Sussman).
 * Use **when x; ...** for one-line cases.
 * Use **&&/||** for boolean expressions, **and/or** for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
-wrong operators.)
+  wrong operators.)
 
     ```Ruby
     # boolean expression
@@ -166,7 +173,7 @@ wrong operators.)
     ```
 
 * Favor **unless** over **if** for negative conditions (or control
-  flow **or**):
+  flow **or**).
        
     ```Ruby
     # bad
@@ -188,9 +195,10 @@ wrong operators.)
     array.delete e
     ```
         
-* Prefer {...} over do...end for single-line blocks.  Avoid using {...} for multi-line blocks.  Always use do...end for
-  "control flow" and "method definitions" (e.g. in Rakefiles and
-  certain DSLs.)  Avoid do...end when chaining.
+* Prefer {...} over do...end for single-line blocks.  Avoid using {...} for
+  multi-line blocks.  Always use do...end for "control flow" and "method
+  definitions" (e.g. in Rakefiles and certain DSLs.)  Avoid do...end when
+  chaining.
 
 * Avoid **return** where not required.
 
@@ -206,7 +214,8 @@ wrong operators.)
     end
     ```
 
-* Avoid line continuation (\\) where not required. In practice avoid using line continuations at all.
+* Avoid line continuation (\\) where not required. In practice, avoid using
+  line continuations at all.
 
     ```Ruby
     # bad
@@ -218,7 +227,7 @@ wrong operators.)
     \+ 2
     ```
 
-* Using the return value of = is okay:
+* Using the return value of = is ok.
 
     ```Ruby
     if v = array.grep(/foo/) ...
@@ -231,7 +240,7 @@ wrong operators.)
     name ||= "Bozhidar"
     ```
 
-* Avoid using Perl-style global variables(like $0-9, $`, ...)
+* Avoid using Perl-style global variables (like $0-9, $`, ...).
 
 ## Naming
 
@@ -239,7 +248,8 @@ wrong operators.)
 * Use CamelCase for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
 * Use SCREAMING_SNAKE_CASE for other constants.
-* The length of an identifier determines its scope.  Use one-letter variables for short block/method parameters, according to this scheme:
+* The length of an identifier determines its scope.  Use one-letter variables
+  for short block/method parameters, according to this scheme:
 
         a,b,c: any object
         d: directory names
@@ -256,10 +266,12 @@ wrong operators.)
         v: the value part of a hash entry
         x,y,z: numbers
 
-   And in general, the first letter of the class name if all objects are of that type.
+  And in general, the first letter of the class name if all objects are of
+  that type.
 
-* When using **inject** with short blocks, name the arguments **|a, e|** (mnemonic: accumulator, element)
-* When defining binary operators, name the argument "other".
+* When using **inject** with short blocks, name the arguments **|a, e|**
+  (accumulator, element).
+* When defining binary operators, name the argument **other**.
 
     ```Ruby
     def +(other)
@@ -267,17 +279,19 @@ wrong operators.)
     end
     ```
     
-* Prefer **map** over *collect*, **find** over *detect*, **find_all** over *select*, **size** over *length*. This is not a hard requirement, though - if
-the use of the alias enhances readability - it's ok to use it.
+* Prefer **map** over *collect*, **find** over *detect*, **find_all** over
+  *select*, **size** over *length*. This is not a hard requirement; if the
+  use of the alias enhances readability, it's ok to use it.
 
 ## Comments
 
-* Write self documenting code and ignore the rest of this section.
-    * _"Good code is its own best documentation. As you’re about to add
-      a comment, ask yourself, ‘How can I improve the code so that
-      this comment isn’t needed?’ Improve the code and then document
-      it to make it even clearer."_ -- Steve McConnell
-* Comments longer than a word are capitalized and use punctuation. Use two spaces after periods.
+* Write self documenting code and ignore the rest of this section. _"Good
+  code is its own best documentation. As you're about to add a comment, ask
+  yourself, ‘How can I improve the code so that this comment isn't needed?’
+  Improve the code and then document it to make it even clearer."_ (Steve
+  McConnell)
+* Comments longer than a word are capitalized and use punctuation. Use two
+  spaces after periods.
 * Avoid superfluous comments.
 
     ```Ruby
@@ -285,17 +299,20 @@ the use of the alias enhances readability - it's ok to use it.
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date - no comment is better than an
-  outdated comment.
-* Avoid writing comments to explain bad code. Try to refactor the code to make it self-explanatory.
+* Keep existing comments up-to-date. No comment is better than an outdated
+  comment.
+* Avoid writing comments to explain bad code. Try to refactor the code to
+  make it self-explanatory.
 
 ## Misc
 
 * Write **ruby -w** safe code.
-* Avoid hashes-as-optional-parameters.  Does the method do too much?
-* Avoid long methods (longer than 10 LOC). Ideally most methods will be shorter than 5 LOC. Empty line do not contribute to the relevant LOC.
-* Avoid long parameter lists (more than 3-4 params).
-* Use **def self.method** to define singleton methods. This makes the methods more resistent to refactoring changes.
+* Avoid hashes as optional parameters. Does the method do too much?
+* Avoid methods longer than 10 LOC. Ideally most methods will be shorter than
+  5 LOC. Empty lines do not contribute to the relevant LOC.
+* Avoid parameter lists longer than three or four parameters.
+* Use **def self.method** to define singleton methods. This makes the methods
+  more resistant to refactoring changes.
 
     ```Ruby
     class TestClass
@@ -316,31 +333,40 @@ the use of the alias enhances readability - it's ok to use it.
 * Use **OptionParser** for parsing complex command line options and
   **ruby -s* for trivial command line options.
 * Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
-    * use the new JavaScript literal hash syntax
-    * use the new lambda syntax
-    * methods like **inject** now accept methods names as arguments - `[1, 2, 3].inject(:+)`
+    * Use the new JavaScript literal hash syntax.
+    * Use the new lambda syntax.
+    * Methods like **inject** now accept methods names as arguments.
+    
+      ```Ruby
+      [1, 2, 3].inject(:+)
+      ```
 * Avoid needless metaprogramming.
 
 ## Design
 
-* Code in a functional way, avoid mutation when it makes sense.
+* Code in a functional way, avoiding mutation when it makes sense.
 * Do not mutate arguments unless that is the purpose of the method.
-* Do not mess around in core classes when writing libraries. (do not monkey patch them)
-* Do not program defensively. See this [article](http://www.erlang.se/doc/programming_rules.shtml#HDR11) for more details.
-* Keep the code simple (subjective, but still...). Each method should have a single well-defined responsibility.
-* Avoid more than 3 Level of  block nesting.
-* Don't overdesign. Overly complex solutions tend to be brittle and hard to maintain.
-* Don't underdesign. A solution to a problem should be as simple as possible... but it should not be simpler than that. Poor initial design 
-can lead to a lot of problems in the future.
-* Be consistent. In an ideal world - be consistent with the points listed here in this guidelines.
+* Do not mess around in core classes when writing libraries. (Do not monkey
+  patch them.)
+* [Do not program
+  defensively.](http://www.erlang.se/doc/programming_rules.shtml#HDR11)
+* Keep the code simple and subjective. Each method should have a single,
+  well-defined responsibility.
+* Avoid more than three levels of block nesting.
+* Don't overdesign. Overly complex solutions tend to be brittle and hard to
+  maintain.
+* Don't underdesign. A solution to a problem should be as simple as
+  possible, but no simpler than that. Poor initial design can lead to a lot
+  of problems in the future.
+* Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
 # Contributing
 
 Nothing written in this guide is set in stone. It's my desire to work
 together with everyone interested in Ruby coding style, so that we could
-ultimately create a resource that will be beneficial to the entire
-Ruby community.
+ultimately create a resource that will be beneficial to the entire Ruby
+community.
 
-Feel free to open tickets or send pull requests with
-improvements. Thanks in advance for your help!
+Feel free to open tickets or send pull requests with improvements. Thanks in
+advance for your help!
