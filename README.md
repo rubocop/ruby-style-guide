@@ -122,8 +122,8 @@ guide for the benefit of the entire Ruby community.
 
 * Favor **if/then/else** over the ternary operator. *if* is an
   expression in Ruby and the resulting code is arguably easier to
-  read (albeit not as concise). After all "Programs must be written for people to read, and
-only incidentally for machines to execute." (Abelson and Sussman).
+  read (albeit not as concise). Remember that after all _"Programs must be written for people to read, and
+only incidentally for machines to execute."_ (Abelson and Sussman).
 
     ```Ruby
     # good
@@ -260,10 +260,10 @@ the use of the alias enhances readability - it's ok to use it.
 ## Comments
 
 * Write self documenting code and ignore the rest of this section.
-    * "Good code is its own best documentation. As you’re about to add
+    * _"Good code is its own best documentation. As you’re about to add
       a comment, ask yourself, ‘How can I improve the code so that
       this comment isn’t needed?’ Improve the code and then document
-      it to make it even clearer." -- Steve McConnell
+      it to make it even clearer."_ -- Steve McConnell
 * Comments longer than a word are capitalized and use punctuation. Use two spaces after periods.
 * Avoid superfluous comments.
 
