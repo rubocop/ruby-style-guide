@@ -1,4 +1,4 @@
-# Abstract
+﻿# Abstract
 
 This document was created when I, as the Technical Lead of the company
 in which I work for, was asked by the CTO to create some internal documents
@@ -227,7 +227,7 @@ community.
     \+ 2
     ```
 
-* Using the return value of = is okay.
+* Using the return value of = is ok.
 
     ```Ruby
     if v = array.grep(/foo/) ...
@@ -271,7 +271,7 @@ community.
 
 * When using **inject** with short blocks, name the arguments **|a, e|**
   (accumulator, element).
-* When defining binary operators, name the argument "other".
+* When defining binary operators, name the argument **other**.
 
     ```Ruby
     def +(other)
