@@ -134,9 +134,20 @@ only incidentally for machines to execute."_ (Abelson and Sussman).
     ```
 
 * Use **when x; ...** for one-line cases.
-* Use &&/|| for boolean expressions, and/or for control flow.  (Rule
+* Use **&&/||** for boolean expressions, **and/or** for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
-  wrong operators.)
+wrong operators.)
+
+    ```Ruby
+    # boolean expression
+    if some_condition && some_other_condition
+      do_something
+    end
+
+    # control flow
+    document.saved? or document.save!
+    ```
+
 * Avoid multiline ?: (the ternary operator), use **if/unless** instead.
 * Favor modifier **if/unless** usage when you have a single-line body.
 
@@ -153,7 +164,8 @@ only incidentally for machines to execute."_ (Abelson and Sussman).
     some_condition && do_something
     ```
 
-* Favor **unless** over **if** for negative conditions:
+* Favor **unless** over **if** for negative conditions (or control
+  flow **or**):
        
     ```Ruby
     # bad
@@ -163,7 +175,7 @@ only incidentally for machines to execute."_ (Abelson and Sussman).
     do_something unless some_condition
 
     # another good option
-    some_condition || do_something
+    some_condition or do_something
     ```
     
 * Suppress superfluous parentheses when calling methods, but keep them
