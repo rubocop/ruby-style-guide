@@ -120,6 +120,19 @@ guide for the benefit of the entire Ruby community.
     end
     ```
 
+* Favor **if/then/else** over the ternary operator. *if* is an
+  expression in Ruby and the resulting code is arguably easier to
+  read (albeit not as concise). After all "Programs must be written for people to read, and
+only incidentally for machines to execute." (Abelson and Sussman).
+
+    ```Ruby
+    # good
+    result = if some_condition then something else something_else end
+
+    # not so good
+    result = some_condition ? something : something_else
+    ```
+
 * Use **when x; ...** for one-line cases.
 * Use &&/|| for boolean expressions, and/or for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
@@ -247,8 +260,18 @@ the use of the alias enhances readability - it's ok to use it.
 ## Comments
 
 * Write self documenting code and ignore the rest of this section.
+    * "Good code is its own best documentation. As you’re about to add
+      a comment, ask yourself, ‘How can I improve the code so that
+      this comment isn’t needed?’ Improve the code and then document
+      it to make it even clearer." -- Steve McConnell
 * Comments longer than a word are capitalized and use punctuation. Use two spaces after periods.
 * Avoid superfluous comments.
+
+    ```Ruby
+    # bad
+    counter += 1 # increments counter by one
+    ```
+
 * Keep existing comments up-to-date - no comment is better than an outdated comment.
 
 ## Misc
@@ -296,3 +319,13 @@ the use of the alias enhances readability - it's ok to use it.
 can lead to a lot of problems in the future.
 * Be consistent. In an ideal world - be consistent with the points listed here in this guidelines.
 * Use common sense.
+
+# Contributing
+
+Nothing written in this guide is set in stone. It's my desire to work
+together with everyone interested in Ruby coding style, so that we could
+ultimately create a resource that will be beneficial to the entire
+Ruby community.
+
+Feel free to open tickets or send pull requests with
+improvements. Thanks in advance for your help!
