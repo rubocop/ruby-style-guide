@@ -134,17 +134,15 @@ community.
     end
     ```
 
-* Favor **if/then/else** over the ternary operator. *if* is an
-  expression in Ruby and the resulting code is arguably easier to
-  read (albeit not as concise). Remember that _"Programs must be written for
-  people to read, and only incidentally for machines to execute."_ (Abelson
-  and Sussman)
+* Favor ternary operators over **if/then/else**.
+  Ternary operator is well knowed in others languages as:
+  C, C++, Lips, Perl, PHP and Python.
 
     ```Ruby
-    # good
+    # not so good
     result = if some_condition then something else something_else end
 
-    # not so good
+    # good
     result = some_condition ? something : something_else
     ```
 
