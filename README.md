@@ -149,7 +149,8 @@ wrong operators.)
     ```
 
 * Avoid multiline ?: (the ternary operator), use **if/unless** instead.
-* Favor modifier **if/unless** usage when you have a single-line body.
+* Favor modifier **if/unless** usage when you have a single-line
+  body. Another good alternative is the usage of control flow **and/or**.
 
     ```Ruby
     # bad
@@ -161,7 +162,7 @@ wrong operators.)
     do_something if some_condition
 
     # another good option
-    some_condition && do_something
+    some_condition and do_something
     ```
 
 * Favor **unless** over **if** for negative conditions (or control
