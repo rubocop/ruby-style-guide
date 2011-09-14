@@ -331,7 +331,7 @@ community.
 * Add "global" methods to Kernel (if you have to) and make them private.
 * Avoid **alias** when **alias_method** will do.
 * Use **OptionParser** for parsing complex command line options and
-  **ruby -s* for trivial command line options.
+  **ruby -s** for trivial command line options.
 * Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
     * Use the new JavaScript literal hash syntax.
     * Use the new lambda syntax.
@@ -340,6 +340,7 @@ community.
       ```Ruby
       [1, 2, 3].inject(:+)
       ```
+
 * Avoid needless metaprogramming.
 
 ## Design
