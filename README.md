@@ -77,10 +77,10 @@ community.
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the **def**.
 * Use empty lines to break up a method into logical paragraphs.
-* Keep lines fewer than 80 characters.
-    * Emacs users should really have a look at whitespace-mode.
-* Avoid trailing whitespace.
-    * Emacs users: Whitespace-mode again comes to the rescue.
+* Keep lines fewer than 80 characters. (Emacs users should really have a look
+  at whitespace-mode.)
+* Avoid trailing whitespace. (Emacs users: Whitespace-mode again comes to the
+  rescue.)
 
 ## Syntax
 
