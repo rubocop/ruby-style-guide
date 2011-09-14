@@ -249,10 +249,10 @@ community.
 
 ## Naming
 
-* Use snake_case for methods and variables.
-* Use CamelCase for classes and modules.  (Keep acronyms like HTTP,
+* Use **snake_case** for methods and variables.
+* Use **CamelCase** for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
-* Use SCREAMING_SNAKE_CASE for other constants.
+* Use **SCREAMING_SNAKE_CASE** for other constants.
 * The length of an identifier determines its scope.  Use one-letter variables
   for short block/method parameters, according to this scheme:
 
@@ -309,11 +309,31 @@ community.
 * Avoid writing comments to explain bad code. Try to refactor the code to
   make it self-explanatory.
 
+## Classes
+
+* Always supply a proper **to_s** method.
+* Use the **attr** family of functions to define trivial accessors or
+  mutators.
+* Consider adding factory methods to provide additional sensible ways
+  to create instances of a particular class.
+* Prefer duck-typing over inheritance.
+* Avoid the usage of class (@@) variables due to their "nasty" behavior
+  in inheritance.
+* Assign methods proper visibility levels (**private**, **protected**)
+in accordance with their intended usage. Don't go off leaving
+everything **public** (which is the default). After all we're coding
+in *Ruby* now, not in *Python*.
+
+## Exceptions
+
+* Don't suppress exceptions.
+* Don't use exceptions for flow of control.
+
 ## Misc
 
 * Write **ruby -w** safe code.
 * Avoid hashes as optional parameters. Does the method do too much?
-* Avoid methods longer than 10 LOC. Ideally most methods will be shorter than
+* Avoid methods longer than 10 LOC (lines of code). Ideally most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
 * Use **def self.method** to define singleton methods. This makes the methods
