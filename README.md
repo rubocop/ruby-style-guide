@@ -46,20 +46,23 @@ community.
 
     ```Ruby
     case
-    when song.name == "Misty"
-      puts "Not again!" when song.duration > 120
-      puts "Too long!" when Time.now.hour > 21
-      puts "It's too late"
-    else
-      song.play
+      when song.name == "Misty"
+        puts "Not again!" when song.duration > 120
+        puts "Too long!" when Time.now.hour > 21
+        puts "It's too late"
+      else
+        song.play
     end
 
     kind = case year
-           when 1850..1889 then "Blues"
-           when 1890..1909 then "Ragtime"
-           when 1910..1929 then "New Orleans Jazz" when 1930..1939 then "Swing"
-           when 1940..1950 then "Bebop"
-           else "Jazz"
+             when 1850..1889 then "Blues"
+             when 1890..1909 then "Ragtime"
+             when 1910..1929
+               # Other version
+               "New Orleans Jazz" 
+             when 1930..1939 then "Swing"
+             when 1940..1950 then "Bebop"
+             else "Jazz"
            end
     ```
 
@@ -131,17 +134,15 @@ community.
     end
     ```
 
-* Favor **if/then/else** over the ternary operator. *if* is an
-  expression in Ruby and the resulting code is arguably easier to
-  read (albeit not as concise). Remember that _"Programs must be written for
-  people to read, and only incidentally for machines to execute."_ (Abelson
-  and Sussman)
+* Favor ternary operators over **if/then/else**.
+  Ternary operator is well knowed in others languages as:
+  C, C++, Lips, Perl, PHP and Python.
 
     ```Ruby
-    # good
+    # not so good
     result = if some_condition then something else something_else end
 
-    # not so good
+    # good
     result = some_condition ? something : something_else
     ```
 
