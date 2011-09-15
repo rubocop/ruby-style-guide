@@ -284,8 +284,8 @@ community.
     end
     ```
     
-* Prefer **map** over *collect*, **find** over *detect*, **find_all** over
-  *select*, **size** over *length*. This is not a hard requirement; if the
+* Prefer **map** over *collect*, **find** over *detect*, **select** over
+  *find_all*, **size** over *length*. This is not a hard requirement; if the
   use of the alias enhances readability, it's ok to use it.
 
 ## Comments
