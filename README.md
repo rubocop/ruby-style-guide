@@ -376,6 +376,22 @@ in *Ruby* now, not in *Python*.
     ```
 
 * Add "global" methods to Kernel (if you have to) and make them private.
+* Use class methods and/or modules in preference to global variables.
+ 
+    ```Ruby
+    #bad 
+    $foo_bar = 1
+
+    #good
+    class Foo
+      class << self
+        attr_accessor :bar
+      end
+    end
+    
+    Foo.bar = 1
+    ```
+
 * Avoid `alias` when `alias_method` will do.
 * Use `OptionParser` for parsing complex command line options and
   `ruby -s` for trivial command line options.
