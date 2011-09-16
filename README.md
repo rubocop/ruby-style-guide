@@ -87,8 +87,14 @@ community.
 * Use empty lines to break up a method into logical paragraphs.
 * Keep lines fewer than 80 characters. (Emacs users should really have a look
   at whitespace-mode.)
-* Avoid trailing whitespace. (Emacs users: Whitespace-mode again comes to the
-  rescue.)
+* Avoid trailing whitespace:
+
+  * Emacs users: whitespace-mode again comes to the rescue
+  * Vim users: put this into your `~/.vimrc`:
+
+    ```
+    autocmd BufWritePre * :%s/\s\+$//e
+    ```
 
 ## Syntax
 
