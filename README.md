@@ -124,13 +124,13 @@ community.
 
     ```Ruby
     # bad
-    if x.odd? then
-      puts "odd"
+    if some_condition then
+      # body omitted
     end
 
     # good
-    if x.odd?
-      puts "odd"
+    if some_condition
+      # body omitted
     end
     ```
 
