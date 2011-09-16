@@ -148,7 +148,20 @@ community.
     result = some_condition ? something : something_else
     ```
 
-* Use `when x; ...` for one-line cases.
+* Never use `if x; ...` - it is deprecated in Ruby 1.9. Use
+  `if/then/else` instead.
+
+    ```Ruby
+    # bad
+    result = if some_condition; something else something_else end
+
+    # good
+    result = if some_condition then something else something_else end
+    ```
+
+* Use `when x then ...` for one-line cases. The alternative syntax
+  `when x; ...` is deprecated in Ruby 1.9.
+
 * Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
   wrong operators.)
@@ -227,12 +240,12 @@ community.
 
     ```Ruby
     # bad
-    result = 1 + \
+    result = 1 - \
     2
 
     # good (but still ugly as hell)
     result = 1 \
-    \+ 2
+    - 2
     ```
 
 * Using the return value of = is ok.
@@ -256,6 +269,11 @@ community.
 * Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
 * Use `SCREAMING_SNAKE_CASE` for other constants.
+* The names of predicate methods (methods that return a boolean value)
+  should end in question mark.
+  (i.e. `Array#empty`).
+* The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
+  arguments, `exit!`, etc.) should end with exclamation marks.
 * The length of an identifier determines its scope.  Use one-letter variables
   for short block/method parameters, according to this scheme:
 
