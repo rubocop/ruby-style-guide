@@ -376,7 +376,7 @@ in *Ruby* now, not in *Python*.
     ```
 
 * Add "global" methods to Kernel (if you have to) and make them private.
-* Use class methods and/or modules in preference to global variables.
+* Use class instance variables instead of global variables.
  
     ```Ruby
     #bad 
