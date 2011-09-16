@@ -329,6 +329,7 @@ in *Ruby* now, not in *Python*.
 
 * Don't suppress exceptions.
 * Don't use exceptions for flow of control.
+* Avoid rescuing the Exception class
 
 ## Misc
 
