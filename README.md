@@ -42,7 +42,7 @@ community.
     [1, 2, 3].length
     ```
 
-* Indent **when** as deep as **case**. (As suggested in the Pickaxe.)
+* Indent `when` as deep as `case`. (As suggested in the Pickaxe.)
 
     ```Ruby
     case
@@ -67,7 +67,7 @@ community.
     ```
 
 * Use an empty line before the return value of a method (unless it
-  only has one line), and an empty line between **def**s.
+  only has one line), and an empty line between `def`s.
 
     ```Ruby
     def some_method
@@ -83,7 +83,7 @@ community.
     ```
     
 * Use RDoc and its conventions for API documentation.  Don't put an
-  empty line between the comment block and the **def**.
+  empty line between the comment block and the `def`.
 * Use empty lines to break up a method into logical paragraphs.
 * Keep lines fewer than 80 characters. (Emacs users should really have a look
   at whitespace-mode.)
@@ -92,7 +92,7 @@ community.
 
 ## Syntax
 
-* Use **def** with parentheses when there are arguments. Omit the
+* Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
 
      ```Ruby
@@ -105,7 +105,7 @@ community.
      end
      ```
 
-* Never use **for**, unless you know exactly why. Most of the time iterators
+* Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead.
 
     ```Ruby        
@@ -120,7 +120,7 @@ community.
     arr.each { |elem| puts elem }
     ```
     
-* Never use **then** for multiline **if/unless**.
+* Never use `then` for multiline `if/unless`.
 
     ```Ruby
     # bad
@@ -134,7 +134,7 @@ community.
     end
     ```
 
-* Favor **if/then/else** over the ternary operator. *if* is an
+* Favor `if/then/else` over the ternary operator. *if* is an
   expression in Ruby and the resulting code is arguably easier to
   read (albeit not as concise). Remember that _"Programs must be written for
   people to read, and only incidentally for machines to execute."_ (Abelson
@@ -148,8 +148,8 @@ community.
     result = some_condition ? something : something_else
     ```
 
-* Use **when x; ...** for one-line cases.
-* Use **&&/||** for boolean expressions, **and/or** for control flow.  (Rule
+* Use `when x; ...` for one-line cases.
+* Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
   wrong operators.)
 
@@ -163,9 +163,9 @@ community.
     document.saved? or document.save!
     ```
 
-* Avoid multiline ?: (the ternary operator), use **if/unless** instead.
-* Favor modifier **if/unless** usage when you have a single-line
-  body. Another good alternative is the usage of control flow **and/or**.
+* Avoid multiline ?: (the ternary operator), use `if/unless` instead.
+* Favor modifier `if/unless` usage when you have a single-line
+  body. Another good alternative is the usage of control flow `and/or`.
 
     ```Ruby
     # bad
@@ -180,8 +180,8 @@ community.
     some_condition and do_something
     ```
 
-* Favor **unless** over **if** for negative conditions (or control
-  flow **or**).
+* Favor `unless` over `if` for negative conditions (or control
+  flow `or`).
        
     ```Ruby
     # bad
@@ -208,7 +208,7 @@ community.
   definitions" (e.g. in Rakefiles and certain DSLs.)  Avoid do...end when
   chaining.
 
-* Avoid **return** where not required.
+* Avoid `return` where not required.
 
     ```Ruby
     # bad
@@ -252,10 +252,10 @@ community.
 
 ## Naming
 
-* Use **snake_case** for methods and variables.
-* Use **CamelCase** for classes and modules.  (Keep acronyms like HTTP,
+* Use `snake_case` for methods and variables.
+* Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
-* Use **SCREAMING_SNAKE_CASE** for other constants.
+* Use `SCREAMING_SNAKE_CASE` for other constants.
 * The length of an identifier determines its scope.  Use one-letter variables
   for short block/method parameters, according to this scheme:
 
@@ -277,9 +277,9 @@ community.
   And in general, the first letter of the class name if all objects are of
   that type.
 
-* When using **inject** with short blocks, name the arguments **|a, e|**
+* When using `inject` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
-* When defining binary operators, name the argument **other**.
+* When defining binary operators, name the argument `other`.
 
     ```Ruby
     def +(other)
@@ -287,8 +287,8 @@ community.
     end
     ```
     
-* Prefer **map** over *collect*, **find** over *detect*, **select** over
-  *find_all*, **size** over *length*. This is not a hard requirement; if the
+* Prefer `map` over *collect*, `find` over *detect*, `select` over
+  *find_all*, `size` over *length*. This is not a hard requirement; if the
   use of the alias enhances readability, it's ok to use it.
 
 ## Comments
@@ -314,33 +314,33 @@ community.
 
 ## Classes
 
-* Always supply a proper **to_s** method.
-* Use the **attr** family of functions to define trivial accessors or
+* Always supply a proper `to_s` method.
+* Use the `attr` family of functions to define trivial accessors or
   mutators.
 * Consider adding factory methods to provide additional sensible ways
   to create instances of a particular class.
 * Prefer duck-typing over inheritance.
 * Avoid the usage of class (@@) variables due to their "nasty" behavior
   in inheritance.
-* Assign methods proper visibility levels (**private**, **protected**)
+* Assign methods proper visibility levels (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
-everything **public** (which is the default). After all we're coding
+everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
 
 ## Exceptions
 
 * Don't suppress exceptions.
 * Don't use exceptions for flow of control.
-* Avoid rescuing the Exception class
+* Avoid rescuing the `Exception` class.
 
 ## Misc
 
-* Write **ruby -w** safe code.
+* Write `ruby -w` safe code.
 * Avoid hashes as optional parameters. Does the method do too much?
 * Avoid methods longer than 10 LOC (lines of code). Ideally most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
-* Use **def self.method** to define singleton methods. This makes the methods
+* Use `def self.method` to define singleton methods. This makes the methods
   more resistant to refactoring changes.
 
     ```Ruby
@@ -358,13 +358,13 @@ in *Ruby* now, not in *Python*.
     ```
 
 * Add "global" methods to Kernel (if you have to) and make them private.
-* Avoid **alias** when **alias_method** will do.
-* Use **OptionParser** for parsing complex command line options and
-  **ruby -s** for trivial command line options.
+* Avoid `alias` when `alias_method` will do.
+* Use `OptionParser` for parsing complex command line options and
+  `ruby -s` for trivial command line options.
 * Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
     * Use the new JavaScript literal hash syntax.
     * Use the new lambda syntax.
-    * Methods like **inject** now accept methods names as arguments.
+    * Methods like `inject` now accept methods names as arguments.
     
       ```Ruby
       [1, 2, 3].inject(:+)
