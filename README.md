@@ -263,6 +263,23 @@ community.
 
 * Avoid using Perl-style global variables (like $0-9, $`, ...).
 
+* Never put a space between a method name and the opening parenthesis.
+
+    ```Ruby
+    # bad
+    f (3 + 2) + 1
+
+    # good
+    f(3 + 2) +1
+    ```
+
+* If the first argument to a method begins with an open parenthesis,
+  always use parentheses in the method invocation. For example, write
+`f((3+2)+1)`
+
+* Always run the Ruby interpreter with the `-w` option so it will warn
+  you if you forget either of the rules above!
+
 ## Naming
 
 * Use `snake_case` for methods and variables.
