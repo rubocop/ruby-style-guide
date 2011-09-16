@@ -271,7 +271,7 @@ community.
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 * The names of predicate methods (methods that return a boolean value)
   should end in question mark.
-  (i.e. `Array#empty`).
+  (i.e. `Array#empty?`).
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
   arguments, `exit!`, etc.) should end with exclamation marks.
 * The length of an identifier determines its scope.  Use one-letter variables
