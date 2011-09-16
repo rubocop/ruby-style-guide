@@ -241,11 +241,11 @@ community.
     ```Ruby
     # bad
     result = 1 - \
-    2
+             2
 
     # good (but still ugly as hell)
     result = 1 \
-    - 2
+             - 2
     ```
 
 * Using the return value of = is ok.
@@ -270,12 +270,12 @@ community.
     f (3 + 2) + 1
 
     # good
-    f(3 + 2) +1
+    f(3 + 2) + 1
     ```
 
 * If the first argument to a method begins with an open parenthesis,
   always use parentheses in the method invocation. For example, write
-`f((3+2)+1)`
+`f((3 + 2) + 1)`.
 
 * Always run the Ruby interpreter with the `-w` option so it will warn
   you if you forget either of the rules above!
