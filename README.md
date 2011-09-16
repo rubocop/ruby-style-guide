@@ -6,7 +6,7 @@
     --Jerry Coffin (on indentation)
 
 This document was created when I, as the Technical Lead of the company
-in which I work for, was asked by the CTO to create some internal documents
+which I work for, was asked by the CTO to create some internal documents
 describing good style and best practices for Ruby programming. I started off
 by building upon
 [this existing style guide](https://github.com/chneukirchen/styleguide),
