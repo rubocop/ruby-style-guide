@@ -316,8 +316,8 @@ community.
   yourself, ‘How can I improve the code so that this comment isn't needed?’
   Improve the code and then document it to make it even clearer."_ (Steve
   McConnell)
-* Comments longer than a word are capitalized and use punctuation. Use two
-  spaces after periods.
+* Comments longer than a word are capitalized and use punctuation. Use [one
+  space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
 * Avoid superfluous comments.
 
     ```Ruby
