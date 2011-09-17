@@ -18,7 +18,7 @@ community.
 ## Formatting
 
 * Use UTF-8 as the source file encoding.
-* Use two space indent, no tabs. (Your editor/IDE should have a setting to
+* Use two-space indent, no tabs. (Your editor/IDE should have a setting to
   help you with that.)
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
@@ -81,7 +81,7 @@ community.
       result
     end
     ```
-    
+
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
 * Use empty lines to break up a method into logical paragraphs.
@@ -108,9 +108,9 @@ community.
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead.
 
-    ```Ruby        
+    ```Ruby
     arr = [1, 2, 3]
-        
+
     # bad
     for elem in arr do
       puts elem
@@ -119,7 +119,7 @@ community.
     # good
     arr.each { |elem| puts elem }
     ```
-    
+
 * Never use `then` for multiline `if/unless`.
 
     ```Ruby
@@ -195,7 +195,7 @@ community.
 
 * Favor `unless` over `if` for negative conditions (or control
   flow `or`).
-       
+
     ```Ruby
     # bad
     do_something if !some_condition
@@ -206,16 +206,16 @@ community.
     # another good option
     some_condition or do_something
     ```
-    
+
 * Suppress superfluous parentheses when calling methods, but keep them
   when calling "functions", i.e. when you use the return value in the
   same line.
-  
+
     ```Ruby
     x = Math.sin(y)
     array.delete e
     ```
-        
+
 * Prefer {...} over do...end for single-line blocks.  Avoid using {...} for
   multi-line blocks.  Always use do...end for "control flow" and "method
   definitions" (e.g. in Rakefiles and certain DSLs.)  Avoid do...end when
@@ -287,10 +287,10 @@ community.
   RFC, XML uppercase.)
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 * The names of predicate methods (methods that return a boolean value)
-  should end in question mark.
+  should end in a question mark.
   (i.e. `Array#empty?`).
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
-  arguments, `exit!`, etc.) should end with exclamation marks.
+  arguments, `exit!`, etc.) should end with an exclamation mark.
 * The length of an identifier determines its scope.  Use one-letter variables
   for short block/method parameters, according to this scheme:
 
@@ -321,14 +321,14 @@ community.
       # body omitted
     end
     ```
-    
+
 * Prefer `map` over *collect*, `find` over *detect*, `select` over
   *find_all*, `size` over *length*. This is not a hard requirement; if the
   use of the alias enhances readability, it's ok to use it.
 
 ## Comments
 
-* Write self documenting code and ignore the rest of this section. _"Good
+* Write self-documenting code and ignore the rest of this section. _"Good
   code is its own best documentation. As you're about to add a comment, ask
   yourself, ‘How can I improve the code so that this comment isn't needed?’
   Improve the code and then document it to make it even clearer."_ (Steve
@@ -342,7 +342,7 @@ community.
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date. No comment is better than an outdated
+* Keep existing comments up-to-date. No comment is worse than an outdated
   comment.
 * Avoid writing comments to explain bad code. Try to refactor the code to
   make it self-explanatory.
@@ -357,7 +357,7 @@ community.
 * Prefer duck-typing over inheritance.
 * Avoid the usage of class (@@) variables due to their "nasty" behavior
   in inheritance.
-* Assign methods proper visibility levels (`private`, `protected`)
+* Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
@@ -372,7 +372,7 @@ in *Ruby* now, not in *Python*.
 
 * Write `ruby -w` safe code.
 * Avoid hashes as optional parameters. Does the method do too much?
-* Avoid methods longer than 10 LOC (lines of code). Ideally most methods will be shorter than
+* Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
 * Use `def self.method` to define singleton methods. This makes the methods
@@ -392,11 +392,11 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-* Add "global" methods to Kernel (if you have to) and make them private.
+* If you really have to, add "global" methods to Kernel and make them private.
 * Use class instance variables instead of global variables.
- 
+
     ```Ruby
-    #bad 
+    #bad
     $foo_bar = 1
 
     #good
@@ -405,7 +405,7 @@ in *Ruby* now, not in *Python*.
         attr_accessor :bar
       end
     end
-    
+
     Foo.bar = 1
     ```
 
@@ -415,8 +415,8 @@ in *Ruby* now, not in *Python*.
 * Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
     * Use the new JavaScript literal hash syntax.
     * Use the new lambda syntax.
-    * Methods like `inject` now accept methods names as arguments.
-    
+    * Methods like `inject` now accept method names as arguments.
+
       ```Ruby
       [1, 2, 3].inject(:+)
       ```
@@ -425,7 +425,7 @@ in *Ruby* now, not in *Python*.
 
 ## Design
 
-* Code in a functional way, avoiding mutation when it makes sense.
+* Code in a functional way, avoiding mutation when that makes sense.
 * Do not mutate arguments unless that is the purpose of the method.
 * Do not mess around in core classes when writing libraries. (Do not monkey
   patch them.)
