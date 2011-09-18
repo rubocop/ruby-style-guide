@@ -382,6 +382,19 @@ in *Ruby* now, not in *Python*.
 
 * Prefer single-quoted strings when you don't need string interpolation or
   special symbols such as `"\t"`, `"\n"`, etc.
+* Avoid using `String#+` when you need to construct large data chunks.
+  Instead, use `String#<<`. Concatenation mutates the string instance in-place
+  and is always faster than `String#+`, which creates a bunch of new string objects.
+
+	```Ruby
+	# good and also fast
+	html = ''
+	html << '<h1>Page title</h1>'
+
+	paragraphs.each do |paragraph|
+	  html << "<p>#{paragraph}</p>"
+	end
+	```
 
 ## Misc
 
