@@ -36,10 +36,13 @@ community.
     ```
 
 * No spaces after (, [ or before ], ).
+  No spaces after { or } when used for creating Ruby hashes.
 
     ```Ruby
     some(arg).other
     [1, 2, 3].length
+	{:key => 'value', :foo => 'bar'} # Ruby 1.8
+	{key: 'value', foo: 'bar'} # Ruby 1.9
     ```
 
 * Indent `when` as deep as `case`. (As suggested in the Pickaxe.)
