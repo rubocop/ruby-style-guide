@@ -134,7 +134,7 @@ community.
     end
     ```
 
-* Favor the ternary operator over if/then/else construct.
+* Favor the ternary operator over if/then/else/end constructs.
   It's more common and obviously more concise.
 
     ```Ruby
