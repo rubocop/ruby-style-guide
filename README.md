@@ -368,6 +368,34 @@ in *Ruby* now, not in *Python*.
 * Don't use exceptions for flow of control.
 * Avoid rescuing the `Exception` class.
 
+## Strings
+
+* Prefer string interpolation instead of string concatenation:
+
+	```Ruby
+	# bad
+	email_with_name = user.name + ' <' + user.email + '>'
+
+	# good
+	email_with_name = "#{user.name} <#{user.email}>"
+	```
+
+* Prefer single-quoted strings when you don't need string interpolation or
+  special symbols such as `"\t"`, `"\n"`, etc.
+* Avoid using `String#+` when you need to construct large data chunks.
+  Instead, use `String#<<`. Concatenation mutates the string instance in-place
+  and is always faster than `String#+`, which creates a bunch of new string objects.
+
+	```Ruby
+	# good and also fast
+	html = ''
+	html << '<h1>Page title</h1>'
+
+	paragraphs.each do |paragraph|
+	  html << "<p>#{paragraph}</p>"
+	end
+	```
+
 ## Misc
 
 * Write `ruby -w` safe code.
