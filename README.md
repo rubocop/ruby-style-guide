@@ -134,29 +134,41 @@ community.
     end
     ```
 
-* Favor `if/then/else` over the ternary operator. *if* is an
-  expression in Ruby and the resulting code is arguably easier to
-  read (albeit not as concise). Remember that _"Programs must be written for
-  people to read, and only incidentally for machines to execute."_ (Abelson
-  and Sussman)
+* Favor the ternary operator over if/then/else/end constructs.
+  It's more common and obviously more concise.
 
     ```Ruby
-    # good
+    # bad
     result = if some_condition then something else something_else end
 
-    # not so good
+    # good
     result = some_condition ? something : something_else
+    ```
+* Use one expression per branch in a ternary operator. This
+  also means that ternary operators must not be nested. Prefer
+  if/else constructs in these cases.
+
+    ```Ruby
+    # bad
+    some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
+
+    # good
+    if some_condition
+      nested_condition ? nested_something : nested_something_else
+    else
+      something_else
+    end
     ```
 
 * Never use `if x; ...` - it is deprecated in Ruby 1.9. Use
-  `if/then/else` instead.
+  the ternary operator instead.
 
     ```Ruby
     # bad
     result = if some_condition; something else something_else end
 
     # good
-    result = if some_condition then something else something_else end
+    result = some_condition ? something : something_else
     ```
 
 * Use `when x then ...` for one-line cases. The alternative syntax
