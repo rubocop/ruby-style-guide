@@ -354,7 +354,7 @@ community.
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date. No comment is worse than an outdated
+* Keep existing comments up-to-date. No comment is better than an outdated
   comment.
 * Avoid writing comments to explain bad code. Try to refactor the code to
   make it self-explanatory.
