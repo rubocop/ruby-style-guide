@@ -368,6 +368,21 @@ in *Ruby* now, not in *Python*.
 * Don't use exceptions for flow of control.
 * Avoid rescuing the `Exception` class.
 
+## Strings
+
+* Prefer string interpolation instead of string concatenation:
+
+	```Ruby
+	# bad
+	email_with_name = user.name + ' <' + user.email + '>'
+
+	# good
+	email_with_name = "#{user.name} <#{user.email}>"
+	```
+
+* Prefer single-quoted strings when you don't need string interpolation or
+  special symbols such as `"\t"`, `"\n"`, etc.
+
 ## Misc
 
 * Write `ruby -w` safe code.
