@@ -273,7 +273,7 @@ community.
     name ||= "Bozhidar"
     ```
 
-* Avoid using Perl-style global variables (like $0-9, $`, ...).
+* Avoid using Perl-style special variables (like $0-9, $`, ...).
 
 * Never put a space between a method name and the opening parenthesis.
 
