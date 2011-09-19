@@ -88,7 +88,7 @@ community.
 * Keep lines fewer than 80 characters. (Emacs users should really have a look
   at whitespace-mode.)
 * Avoid trailing whitespace. (Emacs users: Whitespace-mode again comes to the
-  rescue.)
+  rescue.) (Textmate users: try [Uber-Glory-tmbundle](https://github.com/glennr/uber-glory-tmbundle))
 
 ## Syntax
 
@@ -444,7 +444,7 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-* If you really have to, add "global" methods to Kernel and make them private.
+* If you really have to add "global" methods to Kernel, make them private.
 * Use class instance variables instead of global variables.
 
     ```Ruby
