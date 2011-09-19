@@ -273,7 +273,7 @@ community.
     name ||= "Bozhidar"
     ```
 
-* Avoid using Perl-style special variables (like $0-9, $`, ...).
+* Avoid using Perl-style special variables (like $1-9, $`, ...).
 
 * Out-dent `public`, `protected`, and `private` keywords by two spaces,
   and leave one blank line above and below.
@@ -470,6 +470,51 @@ in *Ruby* now, not in *Python*.
 	  html << "<p>#{paragraph}</p>"
 	end
 	```
+
+## Percent Functions
+
+* Use `%w` freely.
+
+    ```Ruby
+    STATES = %w(draft open closed)
+    ```
+
+* Use `%()` for single-line strings requiring both interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
+
+    ```Ruby
+    # bad (no interpolation)
+    %(<div class="text">Some text</div>)
+    # should be '<div class="text">Some text</div>'
+
+    # bad (no quotes)
+    %(This is #{quality} style)
+    # should be "This is #{quality} style"
+
+    # bad (multiple lines)
+    %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
+    # should be a heredoc.
+
+    # good (requires interpolation, has quotes, single line)
+    %(<tr><td class="name">#{name}</td>)
+    ```
+
+* Use `%r` only for regular expressions matching *more than* one '/' character.
+
+    ```Ruby
+    # bad
+    %r(\s+)
+
+    # still bad
+    %r(^/(.*)$)
+    # should be /^\/(.*)$/
+
+    # good
+    %r(^/blog/2011/(.*)$)
+    ```
+
+* Avoid `%q`, `%Q`, `%x`, `%s`, and `%W`.
+
+* Prefer `()` as delimiters for all `%` functions.
 
 ## Misc
 
