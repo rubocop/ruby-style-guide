@@ -120,7 +120,7 @@ community.
     arr.each { |elem| puts elem }
     ```
 
-* Never use `then` for multiline `if/unless`.
+* Never use `then` for multi-line `if/unless`.
 
     ```Ruby
     # bad
@@ -188,7 +188,7 @@ community.
     document.saved? or document.save!
     ```
 
-* Avoid multiline ?: (the ternary operator), use `if/unless` instead.
+* Avoid multi-line ?: (the ternary operator), use `if/unless` instead.
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `and/or`.
 
