@@ -471,7 +471,7 @@ in *Ruby* now, not in *Python*.
 	end
 	```
 
-## Percent Functions
+## Percent Literals
 
 * Use `%w` freely.
 
@@ -479,14 +479,14 @@ in *Ruby* now, not in *Python*.
     STATES = %w(draft open closed)
     ```
 
-* Use `%()` for single-line strings requiring both interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
+* Use `%()` for single-line strings which require both interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
 
     ```Ruby
-    # bad (no interpolation)
+    # bad (no interpolation needed)
     %(<div class="text">Some text</div>)
     # should be '<div class="text">Some text</div>'
 
-    # bad (no quotes)
+    # bad (no double-quotes)
     %(This is #{quality} style)
     # should be "This is #{quality} style"
 
@@ -514,7 +514,7 @@ in *Ruby* now, not in *Python*.
 
 * Avoid `%q`, `%Q`, `%x`, `%s`, and `%W`.
 
-* Prefer `()` as delimiters for all `%` functions.
+* Prefer `()` as delimiters for all `%` literals.
 
 ## Misc
 
