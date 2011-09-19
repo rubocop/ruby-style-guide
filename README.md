@@ -275,6 +275,22 @@ community.
 
 * Avoid using Perl-style special variables (like $0-9, $`, ...).
 
+* Out-dent `public`, `protected`, and `private` keywords by two spaces,
+  and leave one blank line above and below.
+
+    ```Ruby
+    class SomeClass
+      def public_method
+        # ...
+      end
+
+    private
+
+      def private_method
+        # ...
+      end
+    end
+
 * Never put a space between a method name and the opening parenthesis.
 
     ```Ruby
