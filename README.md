@@ -273,7 +273,7 @@ community.
     name ||= "Bozhidar"
     ```
 
-* Avoid using Perl-style special variables (like $1-9, $`, ...).
+* Avoid using Perl-style special variables (like $0-9, $`, ...).
 
 * Out-dent `public`, `protected`, and `private` keywords by two spaces,
   and leave one blank line above and below.
