@@ -189,6 +189,7 @@ community.
     ```
 
 * Avoid multi-line ?: (the ternary operator), use `if/unless` instead.
+
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `and/or`.
 
@@ -217,6 +218,23 @@ community.
 
     # another good option
     some_condition or do_something
+    ```
+* Never use `unless` with `else`. Rewrite these with the positive case first.
+
+    ```Ruby
+    #bad
+    unless success?
+      puts "failure"
+    else
+      puts "success"
+    end
+
+    #good
+    if success?
+      puts "success"
+    else
+      puts "failure"
+    end
     ```
 
 * Suppress superfluous parentheses when calling methods, but keep them
