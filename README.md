@@ -5,15 +5,27 @@
     probably right...
     --Jerry Coffin (on indentation)
 
-This document was created when I, as the Technical Lead of the company
-which I work for, was asked by the CTO to create some internal documents
-describing good style and best practices for Ruby programming. I started off
-by building upon
+One thing has always bothered me as Ruby developer - Python devs have
+a great programming style reference (PEP-8) and we never got an
+official guide documenting Ruby coding style and best practices. And I
+do believe that style matters.
+
+This document was originally created when I, as the Technical Lead of
+the company which I work for, was asked by our CTO to create some
+internal documents describing good style and best practices for Ruby
+programming. I started off by building upon
 [this existing style guide](https://github.com/chneukirchen/styleguide),
-since I concurred with most of the points in it. I hope it will be useful to
-other people as well and I hope that I'll get a lot of feedback and
-suggestions on how to improve the guide for the benefit of the entire Ruby
-community.
+since I concurred with many of the points in it. At some point I
+decided that the work I was doing might be interesting to members of
+the Ruby community in general and that the world had little need of
+another internal company guideline. But the world could certainly
+benefit from a community-driven and community-sanctioned set of
+practices, idioms and style prescriptions for Ruby programming.
+
+Since the inception of the guide I've received a lot of feedback from
+members of the exceptional Ruby community around the world. Thanks for
+all the suggestions and the support! Together we can make a resource
+beneficial to each and every Ruby developer out there.
 
 ## Formatting
 
@@ -21,10 +33,13 @@ community.
 * Use two-space indent, no tabs. (Your editor/IDE should have a setting to
   help you with that.)
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
-  Windows users have to be extra careful.)
-    * If you're using Git you might want to do `$ git config --global
-      core.autocrlf true` to protect your project from Windows line endings
-      creeping into your project.
+  Windows users have to be extra careful.)b
+    * If you're using Git you might want to add the following
+    configuration setting to protect your project from Windows line
+    endings creeping into your project:
+
+`$ git config --global core.autocrlf true`
+
 * Use spaces around operators, after commas, colons and semicolons, around {
   and before }.
 
@@ -144,6 +159,7 @@ community.
     # good
     result = some_condition ? something : something_else
     ```
+
 * Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
   if/else constructs in these cases.
@@ -160,19 +176,19 @@ community.
     end
     ```
 
-* Never use `if x; ...` - it is deprecated in Ruby 1.9. Use
+* Never use `if x: ...` - it is removed in Ruby 1.9. Use
   the ternary operator instead.
 
     ```Ruby
     # bad
-    result = if some_condition; something else something_else end
+    result = if some_condition: something else something_else end
 
     # good
     result = some_condition ? something : something_else
     ```
 
 * Use `when x then ...` for one-line cases. The alternative syntax
-  `when x; ...` is deprecated in Ruby 1.9.
+  `when x: ...` is removed in Ruby 1.9.
 
 * Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
@@ -219,6 +235,7 @@ community.
     # another good option
     some_condition or do_something
     ```
+
 * Never use `unless` with `else`. Rewrite these with the positive case first.
 
     ```Ruby
@@ -237,13 +254,26 @@ community.
     end
     ```
 
-* Suppress superfluous parentheses when calling methods, but keep them
-  when calling "functions", i.e. when you use the return value in the
-  same line.
+* Omit parentheses around parameters for methods that are part of an
+  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
+  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
+  access methods. Use parentheses around the arguments of all other
+  method invocations.
 
     ```Ruby
+    class Person
+      attr_reader name, age
+
+      # omitted
+    end
+
+    temperance = Person.new("Temperance", 30)
+    temperance.name
+
+    puts temperance.age
+
     x = Math.sin(y)
-    array.delete e
+    array.delete(e)
     ```
 
 * Prefer {...} over do...end for single-line blocks.  Avoid using {...} for
@@ -374,11 +404,13 @@ community.
 
 ## Comments
 
-* Write self-documenting code and ignore the rest of this section. _"Good
-  code is its own best documentation. As you're about to add a comment, ask
-  yourself, ‘How can I improve the code so that this comment isn't needed?’
-  Improve the code and then document it to make it even clearer."_ (Steve
-  McConnell)
+    Good code is its own best documentation. As you're about to add a
+    comment, ask yourself, ‘How can I improve the code so that this
+    comment isn't needed?’ Improve the code and then document it to make
+    it even clearer.
+    --Steve McConnell
+
+* Write self-documenting code and ignore the rest of this section. Seriously!
 * Comments longer than a word are capitalized and use punctuation. Use [one
   space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
 * Avoid superfluous comments.
@@ -390,8 +422,8 @@ community.
 
 * Keep existing comments up-to-date. No comment is better than an outdated
   comment.
-* Avoid writing comments to explain bad code. Try to refactor the code to
-  make it self-explanatory.
+* Avoid writing comments to explain bad code. Refactor the code to
+  make it self-explanatory. (Do or do not - there is no try.)
 
 ## Annotations
 
@@ -443,6 +475,22 @@ community.
 ## Classes
 
 * Always supply a proper `to_s` method.
+
+    ```Ruby
+    class Person
+      attr_reader :first_name, :last_name
+
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+
+      def to_s
+        "#@first_name #@last_name"
+      end
+    end
+    ```
+
 * Use the `attr` family of functions to define trivial accessors or
   mutators.
 * Consider adding factory methods to provide additional sensible ways
@@ -629,3 +677,11 @@ community.
 
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
+
+# Spread the Word
+
+A community-driven style guide is of little use to a community that
+doesn't know about its existence. Tweet about the guide, share it with
+your friends and colleagues. Every comment, suggestion or opinion we
+get makes the guide just a little more better. And we want to have the
+best possible guide, don't we?
