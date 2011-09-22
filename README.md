@@ -33,7 +33,7 @@ beneficial to each and every Ruby developer out there.
 * Use two-space indent, no tabs. (Your editor/IDE should have a setting to
   help you with that.)
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
-  Windows users have to be extra careful.)b
+  Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
     endings creeping in:
@@ -100,10 +100,28 @@ beneficial to each and every Ruby developer out there.
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
 * Use empty lines to break up a method into logical paragraphs.
-* Keep lines fewer than 80 characters. (Emacs users should really have a look
-  at whitespace-mode.)
-* Avoid trailing whitespace. (Emacs users: Whitespace-mode again comes to the
-  rescue.)
+* Keep lines fewer than 80 characters.
+   * Emacs users might want to put this in their config:
+
+       ```Emacs Lisp
+       (setq whitespace-line-count 80
+             whitespace-style '(lines))
+       ```
+
+   * Vim
+   * Textmate
+
+* Avoid trailing whitespace.
+   * Emacs users might want to put this in their config (ideally
+     combine this with the previous example):
+
+       ```Emacs Lisp
+       (setq whitespace-style '(trailing space-before-tab
+                                indentation space-after-tab))
+       ```
+
+   * Vim
+   * Textmate
 
 ## Syntax
 
