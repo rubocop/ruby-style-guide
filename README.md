@@ -101,27 +101,27 @@ beneficial to each and every Ruby developer out there.
   empty line between the comment block and the `def`.
 * Use empty lines to break up a method into logical paragraphs.
 * Keep lines fewer than 80 characters.
-   * Emacs users might want to put this in their config:
+    * Emacs users might want to put this in their config:
 
-       ```
-       (setq whitespace-line-count 80
-             whitespace-style '(lines))
-       ```
+        ```
+        (setq whitespace-line-count 80
+              whitespace-style '(lines))
+        ```
 
-   * Vim
-   * Textmate
+    * Vim
+    * Textmate
 
 * Avoid trailing whitespace.
-   * Emacs users might want to put this in their config (ideally
-     combine this with the previous example):
+    * Emacs users might want to put this in their config (ideally
+      combine this with the previous example):
 
-       ```
-       (setq whitespace-style '(trailing space-before-tab
-                                indentation space-after-tab))
-       ```
+        ```
+        (setq whitespace-style '(trailing space-before-tab
+                                 indentation space-after-tab))
+        ```
 
-   * Vim
-   * Textmate
+    * Vim
+    * Textmate
 
 ## Syntax
 
