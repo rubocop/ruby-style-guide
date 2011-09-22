@@ -701,5 +701,5 @@ advance for your help!
 A community-driven style guide is of little use to a community that
 doesn't know about its existence. Tweet about the guide, share it with
 your friends and colleagues. Every comment, suggestion or opinion we
-get makes the guide just a little more better. And we want to have the
+get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
