@@ -36,7 +36,7 @@ beneficial to each and every Ruby developer out there.
   Windows users have to be extra careful.)b
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
-    endings creeping into your project:
+    endings creeping in:
 
         ```$ git config --global core.autocrlf true```
 
