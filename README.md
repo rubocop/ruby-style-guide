@@ -103,7 +103,7 @@ beneficial to each and every Ruby developer out there.
 * Keep lines fewer than 80 characters.
    * Emacs users might want to put this in their config:
 
-       ```Emacs Lisp
+       ```
        (setq whitespace-line-count 80
              whitespace-style '(lines))
        ```
@@ -115,7 +115,7 @@ beneficial to each and every Ruby developer out there.
    * Emacs users might want to put this in their config (ideally
      combine this with the previous example):
 
-       ```Emacs Lisp
+       ```
        (setq whitespace-style '(trailing space-before-tab
                                 indentation space-after-tab))
        ```
