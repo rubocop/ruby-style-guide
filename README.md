@@ -38,7 +38,7 @@ beneficial to each and every Ruby developer out there.
     configuration setting to protect your project from Windows line
     endings creeping into your project:
 
-`$ git config --global core.autocrlf true`
+        ```$ git config --global core.autocrlf true```
 
 * Use spaces around operators, after commas, colons and semicolons, around {
   and before }.
