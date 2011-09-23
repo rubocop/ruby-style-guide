@@ -101,7 +101,8 @@ beneficial to each and every Ruby developer out there.
   empty line between the comment block and the `def`.
 * Use empty lines to break up a method into logical paragraphs.
 * Keep lines fewer than 80 characters.
-    * Emacs users might want to put this in their config:
+    * Emacs users might want to put this in their config
+      (e.g. `~/.emacs.d/init.el`):
 
         ```
         (setq whitespace-line-count 80
@@ -120,8 +121,13 @@ beneficial to each and every Ruby developer out there.
                                  indentation space-after-tab))
         ```
 
-    * Vim
-    * Textmate
+    * Vim users might want to put this in their `~/.vimrc`:
+
+       ```
+       autocmd BufWritePre * :%s/\s\+$//e
+       ```
+
+    * Textmate users might want to take a look at the [Uber Glory bundle](https://github.com/glennr/uber-glory-tmbundle).
 
 ## Syntax
 
