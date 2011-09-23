@@ -211,8 +211,12 @@ beneficial to each and every Ruby developer out there.
     result = some_condition ? something : something_else
     ```
 
+* Never use `if x; ...`. Use the ternary operator instead.
+
 * Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` is removed in Ruby 1.9.
+
+* Never use `when x; ...`. See the previous rule.
 
 * Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
@@ -346,22 +350,6 @@ beneficial to each and every Ruby developer out there.
     ```
 
 * Avoid using Perl-style special variables (like $0-9, $`, ...).
-
-* Out-dent `public`, `protected`, and `private` keywords by two spaces,
-  and leave one blank line above and below.
-
-    ```Ruby
-    class SomeClass
-      def public_method
-        # ...
-      end
-
-    private
-
-      def private_method
-        # ...
-      end
-    end
 
 * Never put a space between a method name and the opening parenthesis.
 
@@ -526,6 +514,50 @@ beneficial to each and every Ruby developer out there.
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
+* Indent the `public`, `protected`, and `private` methods as much the
+  method definitions they apply to. Leave one blank line above them.
+
+    ```Ruby
+    class SomeClass
+      def public_method
+        # ...
+      end
+
+      private
+      def private_method
+        # ...
+      end
+    end
+
+* Use `def self.method` to define singleton methods. This makes the methods
+  more resistant to refactoring changes.
+
+    ```Ruby
+    class TestClass
+      # bad
+      def TestClass.some_method
+        # body omitted
+      end
+
+      # good
+      def self.some_other_method
+        # body omitted
+      end
+
+      # Also possible and convenient when you
+      # have to define many singleton methods.
+      class << self
+        def first_method
+          # body omitted
+        end
+
+        def second_method_etc
+          # body omitted
+        end
+      end
+    end
+    ```
+
 
 ## Exceptions
 
@@ -613,35 +645,6 @@ in *Ruby* now, not in *Python*.
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
-* Use `def self.method` to define singleton methods. This makes the methods
-  more resistant to refactoring changes.
-
-    ```Ruby
-    class TestClass
-      # bad
-      def TestClass.some_method
-        # body omitted
-      end
-
-      # good
-      def self.some_other_method
-        # body omitted
-      end
-
-      # Also possible and convenient when you
-      # have to define many singleton methods.
-      class << self
-        def first_method
-          # body omitted
-        end
-
-        def second_method_etc
-          # body omitted
-        end
-      end
-    end
-    ```
-
 * If you really have to, add "global" methods to Kernel and make them private.
 * Use class instance variables instead of global variables.
 
