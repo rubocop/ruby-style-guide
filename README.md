@@ -3,7 +3,7 @@
     ... nearly everybody is convinced that every style but their own is
     ugly and unreadable. Leave out the "but their own" and they're
     probably right...
-    --Jerry Coffin (on indentation)
+    -- Jerry Coffin (on indentation)
 
 One thing has always bothered me as Ruby developer - Python devs have
 a great programming style reference (PEP-8) and we never got an
