@@ -1,4 +1,4 @@
-## Abstract
+﻿## Abstract
 
     ... nearly everybody is convinced that every style but their own is
     ugly and unreadable. Leave out the "but their own" and they're
