@@ -41,7 +41,7 @@ and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Lan
 The guide is still a work in progress - some rules are lacking
 examples, some rules don't have examples that illustrate them clearly
 enough. In due time these issues will be addressed - just keep them in
-mind for now. 
+mind for now.
 
 ## Formatting
 
@@ -65,7 +65,7 @@ mind for now.
 
 * Use spaces around operators, after commas, colons and semicolons, around {
   and before }. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but it's proper use is the key to writing easily
+  interpreter, but its proper use is the key to writing easily
   readable code.
 
     ```Ruby
