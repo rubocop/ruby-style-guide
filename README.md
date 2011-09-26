@@ -31,10 +31,12 @@ The guide is separated into several sections of related rules. I've
 tried to add the rationale behind the rules (if it's omitted I've
 assumed that is pretty obvious).
 
-I didn't come up with all the rules out of nowhere - there are mostly
-based on my extensive career as a professional software engineer and
+I didn't come up with all the rules out of nowhere - they are mostly
+based on my extensive career as a professional software engineer,
+feedback and suggestions from members of the Ruby community and
 various highly regarded Ruby programming resources, such as
-"Programming Ruby" and "The Ruby Programming Language".
+["Programming Ruby 1.9"](http://pragprog.com/book/ruby3/programming-ruby-1-9)
+and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 
 The guide is still a work in progress - some rules are lacking
 examples, some rules don't have examples that illustrate them clearly
