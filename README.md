@@ -26,6 +26,21 @@ all the suggestions and the support! Together we can make a resource
 beneficial to each and every Ruby developer out there.
 
 # The Ruby Style Guide
+
+The guide is separated into several sections of related rules. I've
+tried to add the rationale behind the rules (if it's omitted I've
+assumed that is pretty obvious).
+
+I didn't come up with all the rules out of nowhere - there are mostly
+based on my extensive career as a professional software engineer and
+various highly regarded Ruby programming resources, such as
+"Programming Ruby" and "The Ruby Programming Language".
+
+The guide is still a work in progress - some rules are lacking
+examples, some rules don't have examples that illustrate them clearly
+enough. In due time these issues will be addressed - just keep them in
+mind for now. 
+
 ## Formatting
 
     ... nearly everybody is convinced that every style but their own is
@@ -34,8 +49,10 @@ beneficial to each and every Ruby developer out there.
     --Jerry Coffin (on indentation)
 
 * Use UTF-8 as the source file encoding.
-* Use two-space indent, no tabs. (Your editor/IDE should have a setting to
-  help you with that.)
+* Use two-space indent, no tabs. Tabs are represented by a different
+  amount of spaces on various operating systems (and their
+  presentation can be manually configured as well) which usually
+  results in code that looks different than indented in some people's editors.
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
@@ -45,7 +62,9 @@ beneficial to each and every Ruby developer out there.
         ```$ git config --global core.autocrlf true```
 
 * Use spaces around operators, after commas, colons and semicolons, around {
-  and before }.
+  and before }. Whitespace might be (mostly) irrelevant to the Ruby
+  interpreter, but it's proper use is the key to writing easily
+  readable code.
 
     ```Ruby
     sum = 1 + 2
@@ -61,7 +80,9 @@ beneficial to each and every Ruby developer out there.
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as `case`. (As suggested in the Pickaxe.)
+* Indent `when` as deep as `case`. I know that many would disagree
+  with this one, but it's the style established in both the "The Ruby
+  Programming Language" and "Programming Ruby".
 
     ```Ruby
     case
@@ -236,7 +257,7 @@ beneficial to each and every Ruby developer out there.
     document.saved? or document.save!
     ```
 
-* Avoid multi-line ?: (the ternary operator), use `if/unless` instead.
+* Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `and/or`.
@@ -340,20 +361,22 @@ beneficial to each and every Ruby developer out there.
              - 2
     ```
 
-* Using the return value of = is ok.
+* Using the return value of `=` (an assignment) is ok.
 
     ```Ruby
     if v = array.grep(/foo/) ...
     ```
 
-* Use ||= freely.
+* Use `||=` freely.
 
     ```Ruby
     # set name to Bozhidar, only if it's nil or false
     name ||= "Bozhidar"
     ```
 
-* Avoid using Perl-style special variables (like $0-9, $`, ...).
+* Avoid using Perl-style special variables (like $0-9, $`,
+  etc. ). They are quite cryptic and their use in anything but
+  one-liner scripts is discouraged.
 
 * Never put a space between a method name and the opening parenthesis.
 
