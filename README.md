@@ -1,9 +1,7 @@
 # Abstract
 
-    ... nearly everybody is convinced that every style but their own is
-    ugly and unreadable. Leave out the "but their own" and they're
-    probably right...
-    --Jerry Coffin (on indentation)
+    Style is what separates the good from the great.
+    --Bozhidar Batsov
 
 One thing has always bothered me as Ruby developer - Python devs have
 a great programming style reference (PEP-8) and we never got an
@@ -27,7 +25,13 @@ members of the exceptional Ruby community around the world. Thanks for
 all the suggestions and the support! Together we can make a resource
 beneficial to each and every Ruby developer out there.
 
+# The Ruby Style Guide
 ## Formatting
+
+    ... nearly everybody is convinced that every style but their own is
+    ugly and unreadable. Leave out the "but their own" and they're
+    probably right...
+    --Jerry Coffin (on indentation)
 
 * Use UTF-8 as the source file encoding.
 * Use two-space indent, no tabs. (Your editor/IDE should have a setting to
