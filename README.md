@@ -52,7 +52,7 @@ mind for now.
 
 * Use UTF-8 as the source file encoding.
 * Use two-space indent, no tabs. Tabs are represented by a different
-  amount of spaces on various operating systems (and their
+  number of spaces on various operating systems (and their
   presentation can be manually configured as well) which usually
   results in code that looks different than indented in some people's editors.
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
