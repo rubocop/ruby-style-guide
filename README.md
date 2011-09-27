@@ -136,7 +136,13 @@ mind for now.
               whitespace-style '(lines))
         ```
 
-    * Vim
+    * Vim users might want to put this in their config
+      (e.g. `~/.vimrc`):
+      
+        ```
+        set textwidth=80
+        ```
+        
     * Textmate
 
 * Avoid trailing whitespace.
