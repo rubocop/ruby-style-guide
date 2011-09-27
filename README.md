@@ -54,7 +54,8 @@ mind for now.
 * Use two-space indent, no tabs. Tabs are represented by a different
   number of spaces on various operating systems (and their
   presentation can be manually configured as well) which usually
-  results in code that looks different than indented in some people's editors.
+  results in code that looks different than intended in some (many) people's 
+  editors.
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
