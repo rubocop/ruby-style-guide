@@ -76,6 +76,16 @@ mind for now.
     [1, 2, 3].each { |e| puts e }
     ```
 
+    The only exception is when using the exponent operator:
+
+      ```Ruby
+      # bad
+      e = M * c ** 2
+
+      # good
+      e = M * c**2
+      ```
+
 * No spaces after (, [ or before ], ).
 
     ```Ruby
