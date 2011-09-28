@@ -78,13 +78,13 @@ mind for now.
 
     The only exception is when using the exponent operator:
 
-      ```Ruby
-      # bad
-      e = M * c ** 2
+    ```Ruby
+    # bad
+    e = M * c ** 2
 
-      # good
-      e = M * c**2
-      ```
+    # good
+    e = M * c**2
+    ```
 
 * No spaces after (, [ or before ], ).
 
