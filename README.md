@@ -206,7 +206,7 @@ wkhtmltopdf can be installed in one of two methods
         autocmd BufWritePre * :%s/\s\+$//e
         ```
        
-       Or if you don't want vim to touch possibly vital space based files, use:
+        Or if you don't want vim to touch possibly vital space based files, use:
        
         ```
         set listchars+=trail:░ " or use some other character
