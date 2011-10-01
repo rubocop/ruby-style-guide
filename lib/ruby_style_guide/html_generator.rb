@@ -5,7 +5,7 @@ require 'nokogiri'
 module RubyStyleGuide
   class HtmlGenerator
     class << self
-      REDCARPET_OPTIONS = [:hard_wrap, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+      REDCARPET_OPTIONS = [:autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
 
       def process(markdown, options = {})
         parse_options(options)
