@@ -43,6 +43,22 @@ examples, some rules don't have examples that illustrate them clearly
 enough. In due time these issues will be addressed - just keep them in
 mind for now.
 
+You can generate a PDF or an HTML copy of this guide using *rake*
+
+To generate an HTML version
+
+```bash
+$ rake generate:html
+```
+You should have a README.html file generated
+
+To generate an PDF version
+
+```bash
+$ rake generate:pdf
+```
+You should have a README.pdf file generated
+
 ## Formatting
 
     ... nearly everybody is convinced that every style but their own is
