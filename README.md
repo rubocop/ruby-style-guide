@@ -202,15 +202,15 @@ wkhtmltopdf can be installed in one of two methods
 
     * Vim users might want to put this in their `~/.vimrc`:
 
-       ```
-       autocmd BufWritePre * :%s/\s\+$//e
-       ```
+        ```
+        autocmd BufWritePre * :%s/\s\+$//e
+        ```
        
        Or if you don't want vim to touch possibly vital space based files, use:
        
-       ```
-       set listchars+=trail:░ " or use some other character
-       ```
+        ```
+        set listchars+=trail:░ " or use some other character
+        ```
 
     * Textmate users might want to take a look at the [Uber Glory bundle](https://github.com/glennr/uber-glory-tmbundle).
 
