@@ -62,6 +62,7 @@ You should have a README.pdf file generated
 To use these tasks you must have installed pygments and wkhtmltopdf
 
 pygments can be installed using Python's easy_install command
+
 ```bash
 sudo easy_install pygments
 ```
