@@ -59,6 +59,24 @@ $ rake generate:pdf
 ```
 You should have a README.pdf file generated
 
+To use these tasks you must have installed pygments and wkhtmltopdf
+
+pygments can be installed using Python's easy_install command
+```bash
+sudo easy_install pygments
+```
+
+wkhtmltopdf can be installed in one of two methods
+
+1. Install by hand (recommended):
+
+    <https://github.com/jdpace/PDFKit/wiki/Installing-WKHTMLTOPDF>
+
+2.  Try using the wkhtmltopdf-binary gem (mac + linux i386)
+
+        gem install wkhtmltopdf-binary
+
+
 ## Formatting
 
     ... nearly everybody is convinced that every style but their own is
