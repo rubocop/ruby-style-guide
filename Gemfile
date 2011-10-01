@@ -1,4 +1,3 @@
-# A sample Gemfile
 source "http://rubygems.org"
 
 gem 'pdfkit', '~>0.5.2'

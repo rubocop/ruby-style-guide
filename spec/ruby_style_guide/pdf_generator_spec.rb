@@ -6,7 +6,9 @@ describe PdfGenerator do
   it { should respond_to(:process) }
 
   it "should require html" do
-    -> { subject.process }.should raise_error ArgumentError
+    lambda do
+      subject.process
+    end.should raise_error ArgumentError
   end
 
   it "should allow setting of the stylesheets via the options" do
