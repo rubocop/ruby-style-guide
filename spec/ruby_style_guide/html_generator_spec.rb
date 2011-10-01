@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe MarkdownGenerator do
-  subject { MarkdownGenerator }
+describe HtmlGenerator do
+  subject { HtmlGenerator }
 
   it { should respond_to(:process) }
 

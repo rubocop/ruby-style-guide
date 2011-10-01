@@ -3,7 +3,7 @@ require 'albino'
 require 'nokogiri'
 
 module RubyStyleGuide
-  class MarkdownGenerator
+  class HtmlGenerator
     class << self
       REDCARPET_OPTIONS = [:hard_wrap, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
 

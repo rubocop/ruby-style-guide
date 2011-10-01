@@ -29,7 +29,7 @@ namespace :generate do
 
   desc "Generate README.pdf"
   task :pdf => :sanity_check do
-    html = RubyStyleGuide::MarkdownGenerator.process(File.read("README.md"))
+    html = RubyStyleGuide::HtmlGenerator.process(File.read("README.md"))
     pdf = RubyStyleGuide::PdfGenerator.process(html, :stylesheets => %w(stylesheets/default.css))
 
     File.open('README.pdf', 'w') { |f| f.write(pdf) }
@@ -37,7 +37,7 @@ namespace :generate do
 
   desc "Generate README.html"
   task :html => :sanity_check do
-    html = RubyStyleGuide::MarkdownGenerator.process(File.read("README.md"), :stylesheets => %w(stylesheets/default.css))
+    html = RubyStyleGuide::HtmlGenerator.process(File.read("README.md"), :stylesheets => %w(stylesheets/default.css))
 
     File.open('README.html', 'w') { |f| f.write(html) }
   end
