@@ -6,9 +6,9 @@ gem 'albino', '~>1.3.3'
 gem 'nokogiri', '~>1.5.0'
 
 group :development, :test do
-  gem 'guard', '~>0.6.2'
+  gem 'guard', '~>0.8.2'
   gem 'guard-bundler', '~>0.1.3'
-  gem 'guard-rspec', '~>0.4.3'
+  gem 'guard-rspec', '~>0.4.5'
   gem 'rspec', '~>2.6.0'
   gem 'mocha', "~>0.10.0"
 
