@@ -678,6 +678,30 @@ in *Ruby* now, not in *Python*.
         name = 'Bozhidar'
         ```
 
+* Don't use `{}` around instance variables being interpolated into a
+  string.
+
+        ```Ruby
+        class Person
+          attr_reader :first_name, :last_name
+
+          def initialize(first_name, last_name)
+            @first_name = first_name
+            @last_name = last_name
+          end
+
+          # bad
+          def to_s
+            "#{@first_name} #{@last_name}"
+          end
+
+          # good
+          def to_s
+            "#@first_name #@last_name"
+          end
+        end
+        ```
+
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
