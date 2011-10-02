@@ -107,7 +107,7 @@ wkhtmltopdf can be installed in one of two methods
     ```Ruby
     sum = 1 + 2
     a, b = 1, 2
-    1 > 2 ? true : false; puts "Hi"
+    1 > 2 ? true : false; puts 'Hi'
     [1, 2, 3].each { |e| puts e }
     ```
 
@@ -134,23 +134,23 @@ wkhtmltopdf can be installed in one of two methods
 
     ```Ruby
     case
-    when song.name == "Misty"
-      puts "Not again!"
+    when song.name == 'Misty'
+      puts 'Not again!'
     when song.duration > 120
-      puts "Too long!"
+      puts 'Too long!'
     when Time.now.hour > 21
-      puts "It's too late"
+      puts 'It's too late'
     else
       song.play
     end
 
     kind = case year
-           when 1850..1889 then "Blues"
-           when 1890..1909 then "Ragtime"
-           when 1910..1929 then "New Orleans Jazz"
-           when 1930..1939 then "Swing"
-           when 1940..1950 then "Bebop"
-           else "Jazz"
+           when 1850..1889 then 'Blues'
+           when 1890..1909 then 'Ragtime'
+           when 1910..1929 then 'New Orleans Jazz'
+           when 1930..1939 then 'Swing'
+           when 1940..1950 then 'Bebop'
+           else 'Jazz'
            end
     ```
 
@@ -209,8 +209,11 @@ wkhtmltopdf can be installed in one of two methods
         Or if you don't want vim to touch possibly vital space based files, use:
        
         ```
-        set listchars+=trail:░ " or use some other character
+        set listchars+=trail:░
         ```
+
+        Feel free to use some other character if you don't like the
+        suggested one.
 
     * Textmate users might want to take a look at the [Uber Glory bundle](https://github.com/glennr/uber-glory-tmbundle).
 
@@ -354,16 +357,16 @@ wkhtmltopdf can be installed in one of two methods
     ```Ruby
     #bad
     unless success?
-      puts "failure"
+      puts 'failure'
     else
-      puts "success"
+      puts 'success'
     end
 
     #good
     if success?
-      puts "success"
+      puts 'success'
     else
-      puts "failure"
+      puts 'failure'
     end
     ```
 
@@ -380,7 +383,7 @@ wkhtmltopdf can be installed in one of two methods
       # omitted
     end
 
-    temperance = Person.new("Temperance", 30)
+    temperance = Person.new('Temperance', 30)
     temperance.name
 
     puts temperance.age
@@ -431,7 +434,7 @@ wkhtmltopdf can be installed in one of two methods
 
     ```Ruby
     # set name to Bozhidar, only if it's nil or false
-    name ||= "Bozhidar"
+    name ||= 'Bozhidar'
     ```
 
 * Avoid using Perl-style special variables (like $0-9, $`,
@@ -666,6 +669,15 @@ in *Ruby* now, not in *Python*.
 
 * Prefer single-quoted strings when you don't need string interpolation or
   special symbols such as `"\t"`, `"\n"`, etc.
+
+        ```Ruby
+        # bad
+        name = "Bozhidar"
+
+        # good
+        name = 'Bozhidar'
+        ```
+
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
