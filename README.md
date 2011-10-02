@@ -659,48 +659,48 @@ in *Ruby* now, not in *Python*.
 
 * Prefer string interpolation instead of string concatenation:
 
-	```Ruby
-	# bad
-	email_with_name = user.name + ' <' + user.email + '>'
+    ```Ruby
+    # bad
+    email_with_name = user.name + ' <' + user.email + '>'
 
-	# good
-	email_with_name = "#{user.name} <#{user.email}>"
-	```
+    # good
+    email_with_name = "#{user.name} <#{user.email}>"
+    ```
 
 * Prefer single-quoted strings when you don't need string interpolation or
   special symbols such as `"\t"`, `"\n"`, etc.
 
-        ```Ruby
-        # bad
-        name = "Bozhidar"
+    ```Ruby
+    # bad
+    name = "Bozhidar"
 
-        # good
-        name = 'Bozhidar'
-        ```
+    # good
+    name = 'Bozhidar'
+    ```
 
 * Don't use `{}` around instance variables being interpolated into a
   string.
 
-        ```Ruby
-        class Person
-          attr_reader :first_name, :last_name
+    ```Ruby
+    class Person
+      attr_reader :first_name, :last_name
 
-          def initialize(first_name, last_name)
-            @first_name = first_name
-            @last_name = last_name
-          end
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
 
-          # bad
-          def to_s
-            "#{@first_name} #{@last_name}"
-          end
+      # bad
+      def to_s
+        "#{@first_name} #{@last_name}"
+      end
 
-          # good
-          def to_s
-            "#@first_name #@last_name"
-          end
-        end
-        ```
+      # good
+      def to_s
+        "#@first_name #@last_name"
+      end
+    end
+    ```
 
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
