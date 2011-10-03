@@ -139,7 +139,7 @@ wkhtmltopdf can be installed in one of two methods
     when song.duration > 120
       puts 'Too long!'
     when Time.now.hour > 21
-      puts 'It's too late'
+      puts "It's too late"
     else
       song.play
     end
@@ -668,7 +668,7 @@ in *Ruby* now, not in *Python*.
     ```
 
 * Prefer single-quoted strings when you don't need string interpolation or
-  special symbols such as `"\t"`, `"\n"`, etc.
+  special symbols such as `\t`, `\n`, `'`, etc.
 
     ```Ruby
     # bad
