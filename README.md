@@ -712,15 +712,15 @@ in *Ruby* now, not in *Python*.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
 
-        ```Ruby
-        # good and also fast
-        html = ''
-        html << '<h1>Page title</h1>'
+    ```Ruby
+    # good and also fast
+    html = ''
+    html << '<h1>Page title</h1>'
 
-        paragraphs.each do |paragraph|
-          html << "<p>#{paragraph}</p>"
-        end
-        ```
+    paragraphs.each do |paragraph|
+      html << "<p>#{paragraph}</p>"
+    end
+    ```
 
 ## Percent Literals
 
