@@ -27,6 +27,12 @@ beneficial to each and every Ruby developer out there.
 
 # The Ruby Style Guide
 
+This Ruby style guide recommends best practices so that real-world Ruby
+programmers can write code that can be maintained by other real-world Ruby
+programmers. A style guide that reflects real-world usage gets used, and a
+style guide that holds to an ideal that has been rejected by the people it is
+supposed to help risks not getting used at all &ndash; no matter how good it is.
+
 The guide is separated into several sections of related rules. I've
 tried to add the rationale behind the rules (if it's omitted I've
 assumed that is pretty obvious).
@@ -89,7 +95,7 @@ wkhtmltopdf can be installed in one of two methods
 * Use two-space indent, no tabs. Tabs are represented by a different
   number of spaces on various operating systems (and their
   presentation can be manually configured as well) which usually
-  results in code that looks different than intended in some (many) people's 
+  results in code that looks different than intended in some (many) people's
   editors.
 * Use Unix-style line endings. (Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
@@ -184,11 +190,11 @@ wkhtmltopdf can be installed in one of two methods
 
     * Vim users might want to put this in their config
       (e.g. `~/.vimrc`):
-      
+
         ```
         set textwidth=80
         ```
-        
+
     * Textmate
 
 * Avoid trailing whitespace.
@@ -205,9 +211,9 @@ wkhtmltopdf can be installed in one of two methods
         ```
         autocmd BufWritePre * :%s/\s\+$//e
         ```
-       
+
         Or if you don't want vim to touch possibly vital space based files, use:
-       
+
         ```
         set listchars+=trail:░
         ```
