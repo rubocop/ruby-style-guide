@@ -184,11 +184,11 @@ wkhtmltopdf can be installed in one of two methods
 
     * Vim users might want to put this in their config
       (e.g. `~/.vimrc`):
-      
+
         ```
         set textwidth=80
         ```
-        
+
     * Textmate
 
 * Avoid trailing whitespace.
@@ -205,9 +205,9 @@ wkhtmltopdf can be installed in one of two methods
         ```
         autocmd BufWritePre * :%s/\s\+$//e
         ```
-       
+
         Or if you don't want vim to touch possibly vital space based files, use:
-       
+
         ```
         set listchars+=trail:░
         ```
@@ -706,15 +706,15 @@ in *Ruby* now, not in *Python*.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
 
-	```Ruby
-	# good and also fast
-	html = ''
-	html << '<h1>Page title</h1>'
+        ```Ruby
+        # good and also fast
+        html = ''
+        html << '<h1>Page title</h1>'
 
-	paragraphs.each do |paragraph|
-	  html << "<p>#{paragraph}</p>"
-	end
-	```
+        paragraphs.each do |paragraph|
+          html << "<p>#{paragraph}</p>"
+        end
+        ```
 
 ## Percent Literals
 
