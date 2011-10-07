@@ -1,7 +1,7 @@
 # Abstract
 
-    Style is what separates the good from the great.
-    --Bozhidar Batsov
+> Style is what separates the good from the great. <br/>
+> -- Bozhidar Batsov
 
 One thing has always bothered me as Ruby developer - Python devs have
 a great programming style reference (PEP-8) and we never got an
@@ -86,10 +86,10 @@ wkhtmltopdf can be installed in one of two methods
 
 ## Formatting
 
-    ... nearly everybody is convinced that every style but their own is
-    ugly and unreadable. Leave out the "but their own" and they're
-    probably right...
-    --Jerry Coffin (on indentation)
+> Nearly everybody is convinced that every style but their own is
+> ugly and unreadable. Leave out the "but their own" and they're
+> probably right... <br/>
+> -- Jerry Coffin (on indentation)
 
 * Use UTF-8 as the source file encoding.
 * Use two-space indent, no tabs. Tabs are represented by a different
@@ -512,11 +512,11 @@ wkhtmltopdf can be installed in one of two methods
 
 ## Comments
 
-    Good code is its own best documentation. As you're about to add a
-    comment, ask yourself, ‘How can I improve the code so that this
-    comment isn't needed?’ Improve the code and then document it to make
-    it even clearer.
-    --Steve McConnell
+> Good code is its own best documentation. As you're about to add a
+> comment, ask yourself, "How can I improve the code so that this
+> comment isn't needed?" Improve the code and then document it to make
+> it even clearer. <br/>
+> -- Steve McConnell
 
 * Write self-documenting code and ignore the rest of this section. Seriously!
 * Comments longer than a word are capitalized and use punctuation. Use [one
