@@ -398,10 +398,35 @@ wkhtmltopdf can be installed in one of two methods
     array.delete(e)
     ```
 
-* Prefer {...} over do...end for single-line blocks.  Avoid using {...} for
-  multi-line blocks.  Always use do...end for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs.)  Avoid do...end when
-  chaining.
+* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
+  `{...}` for multi-line blocks (multiline chaining is always
+  ugly). Always use `do...end` for "control flow" and "method
+  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
+  when chaining.
+
+    ```Ruby
+    names = ["Bozhidar", "Steve", "Sarah"]
+
+    # good
+    names.each { |name| puts name }
+
+    # bad
+    names.each do |name|
+      puts name
+    end
+
+    # good
+    names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+
+    # bad
+    names.select do |name|
+      name.start_with?("S")
+    end.map { |name| name.upcase }
+    ```
+
+    Some will argue that multiline chaining would look OK with the use of {...}, but they should
+    ask themselves - it this code really readable and can't the blocks contents be extracted into
+    nifty methods.
 
 * Avoid `return` where not required.
 
