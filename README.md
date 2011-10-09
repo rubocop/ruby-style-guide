@@ -442,6 +442,23 @@ wkhtmltopdf can be installed in one of two methods
     end
     ```
 
+* Use spaces around the `=` operator when assigning default values to method parameters:
+
+    ```Ruby
+    # bad
+    def some_method(arg1=:default, arg2=nil, arg3=[])
+      # do something...
+    end
+
+    # good
+    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+      # do something...
+    end
+    ```  
+
+    While several Ruby books suggest the first style, the second is much more prominent
+    in practice (and arguably a bit more readable).
+
 * Avoid line continuation (\\) where not required. In practice, avoid using
   line continuations at all.
 
