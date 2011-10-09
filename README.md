@@ -183,7 +183,7 @@ wkhtmltopdf can be installed in one of two methods
     * Emacs users might want to put this in their config
       (e.g. `~/.emacs.d/init.el`):
 
-        ```
+        ```el
         (setq whitespace-line-count 80
               whitespace-style '(lines))
         ```
@@ -191,8 +191,14 @@ wkhtmltopdf can be installed in one of two methods
     * Vim users might want to put this in their config
       (e.g. `~/.vimrc`):
 
-        ```
-        set textwidth=80
+        ```vim
+        " VIM 7.3+ has support for highlighting a specified column.
+        if exists('+colorcolumn')
+            set colorcolumn=80
+        else
+            " Emulate
+            au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
+        endif
         ```
 
     * Textmate
@@ -201,20 +207,20 @@ wkhtmltopdf can be installed in one of two methods
     * Emacs users might want to put this in their config (ideally
       combine this with the previous example):
 
-        ```
+        ```el
         (setq whitespace-style '(trailing space-before-tab
                                  indentation space-after-tab))
         ```
 
     * Vim users might want to put this in their `~/.vimrc`:
 
-        ```
+        ```vim
         autocmd BufWritePre * :%s/\s\+$//e
         ```
 
         Or if you don't want vim to touch possibly vital space based files, use:
 
-        ```
+        ```vim
         set listchars+=trail:░
         ```
 
