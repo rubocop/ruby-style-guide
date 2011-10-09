@@ -3,6 +3,7 @@ pre {
   border: solid 1px #CCC;
   padding: 5px 10px;
   font-family: 'Menlo', 'Courier New', 'Terminal', monospace;
+  page-break-inside: avoid;  
 }
 .hll { background-color: #ffffcc }
 .c { color: #408080; font-style: italic } /* Comment */
