@@ -729,6 +729,19 @@ in *Ruby* now, not in *Python*.
 * Don't use exceptions for flow of control.
 * Avoid rescuing the `Exception` class.
 
+## Collections
+
+* It's ok to use arrays as sets for a small number of elements.
+* Prefer `%w` to the literal array syntax when you need an array of
+strings.
+* Avoid the creation of huge gaps in arrays.
+* Use `Set` instead of `Array` when dealing with lots of elements.
+* Use symbols instead of strings as hash keys.
+* Avoid the use of mutable object as hash keys.
+* Use the new 1.9 literal hash syntax in preference to the hashrocket syntax.
+* Rely on the fact that hashes in 1.9 are ordered.
+* Never modify a collection while traversing it.
+
 ## Strings
 
 * Prefer string interpolation instead of string concatenation:
@@ -798,7 +811,8 @@ in *Ruby* now, not in *Python*.
     STATES = %w(draft open closed)
     ```
 
-* Use `%()` for single-line strings which require both interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
+* Use `%()` for single-line strings which require both interpolation
+  and embedded double-quotes. For multi-line strings, prefer heredocs.
 
     ```Ruby
     # bad (no interpolation needed)
