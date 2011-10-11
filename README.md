@@ -245,7 +245,10 @@ wkhtmltopdf can be installed in one of two methods
      ```
 
 * Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead.
+  should be used instead. `for` is implemented in terms of `each` (so
+  you're adding a level of indirection), but with a twist - `for`
+  doesn't introduce a new scope (unlike `each`) and variables defined
+  in its block will be visible outside it.
 
     ```Ruby
     arr = [1, 2, 3]
@@ -504,6 +507,9 @@ wkhtmltopdf can be installed in one of two methods
     # set name to Bozhidar, only if it's nil or false
     name ||= 'Bozhidar'
     ```
+
+* Don't use `||=` to initialize boolean variables. (Consider what
+  would happen if the current value happened to be `false`.)
 
 * Avoid using Perl-style special variables (like $0-9, $`,
   etc. ). They are quite cryptic and their use in anything but
