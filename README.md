@@ -367,18 +367,32 @@ wkhtmltopdf can be installed in one of two methods
 * Never use `unless` with `else`. Rewrite these with the positive case first.
 
     ```Ruby
-    #bad
+    # bad
     unless success?
       puts 'failure'
     else
       puts 'success'
     end
 
-    #good
+    # good
     if success?
       puts 'success'
     else
       puts 'failure'
+    end
+    ```
+
+* Don't use parentheses around the condition of an `if/unless/while`.
+
+    ```Ruby
+    # bad 
+    if (x > 10)
+      # body omitted
+    end
+
+    # good
+    if x > 10
+      # body omitted
     end
     ```
 
