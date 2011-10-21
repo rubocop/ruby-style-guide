@@ -25,7 +25,7 @@ members of the exceptional Ruby community around the world. Thanks for
 all the suggestions and the support! Together we can make a resource
 beneficial to each and every Ruby developer out there.
 
-By the wait, if you're into Rails you might want to check out the
+By the way, if you're into Rails you might want to check out the
 complementary
 [Ruby on Rails 3 Style Guide](https://github.com/bbatsov/rails-style-guide).
 
