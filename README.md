@@ -25,6 +25,30 @@ members of the exceptional Ruby community around the world. Thanks for
 all the suggestions and the support! Together we can make a resource
 beneficial to each and every Ruby developer out there.
 
+By the wait, if you're into Rails you might want to check out the
+complementary
+[Ruby on Rails 3 Style Guide](https://github.com/bbatsov/rails-style-guide).
+
+## Table of Contents
+
+1. [The Ruby Style Guide](#guide)
+
+* [Formatting](#formatting)
+* [Syntaxo](#syntax)
+* [Naming](#naming)
+* [Comments](#comments)
+* [Annotations](#annotations)
+* [Classes](#classes)
+* [Exceptions](#exceptions)
+* [Collections](#collections)
+* [Strings](#strings)
+* [Percent Literals](#literals)
+* [Miscellaneous](#misc)
+* [Design](#design)
+
+2. [Contributing](#contributing)
+3. [Spread the word](#spreadtheword)
+
 # The Ruby Style Guide
 
 This Ruby style guide recommends best practices so that real-world Ruby
@@ -84,6 +108,7 @@ wkhtmltopdf can be installed in one of two methods
         gem install wkhtmltopdf-binary
 
 
+<a name="formatting">
 ## Formatting
 
 > Nearly everybody is convinced that every style but their own is
@@ -229,6 +254,7 @@ wkhtmltopdf can be installed in one of two methods
 
     * Textmate users might want to take a look at the [Uber Glory bundle](https://github.com/glennr/uber-glory-tmbundle).
 
+<a name="syntax"/>
 ## Syntax
 
 * Use `def` with parentheses when there are arguments. Omit the
@@ -388,7 +414,7 @@ wkhtmltopdf can be installed in one of two methods
 * Don't use parentheses around the condition of an `if/unless/while`.
 
     ```Ruby
-    # bad 
+    # bad
     if (x > 10)
       # body omitted
     end
@@ -477,7 +503,7 @@ wkhtmltopdf can be installed in one of two methods
     def some_method(arg1 = :default, arg2 = nil, arg3 = [])
       # do something...
     end
-    ```  
+    ```
 
     While several Ruby books suggest the first style, the second is much more prominent
     in practice (and arguably a bit more readable).
@@ -532,7 +558,12 @@ wkhtmltopdf can be installed in one of two methods
 * Always run the Ruby interpreter with the `-w` option so it will warn
   you if you forget either of the rules above!
 
+<a name="naming"/>
 ## Naming
+
+> The only real difficulties in programming are cache invalidation and
+> naming things. <br/>
+> -- Phil Karlton
 
 * Use `snake_case` for methods and variables.
 * Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
@@ -578,6 +609,7 @@ wkhtmltopdf can be installed in one of two methods
   *find_all*, `size` over *length*. This is not a hard requirement; if the
   use of the alias enhances readability, it's ok to use it.
 
+<a name="comments"/>
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
@@ -601,6 +633,7 @@ wkhtmltopdf can be installed in one of two methods
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try.)
 
+<a name="annotations"/>
 ## Annotations
 
 * Annotations should usually be written on the line immediately above
@@ -648,6 +681,7 @@ wkhtmltopdf can be installed in one of two methods
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
+<a name="classes"/>
 ## Classes
 
 * Always supply a proper `to_s` method.
@@ -722,13 +756,14 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-
+<a name="exceptions"/>
 ## Exceptions
 
 * Don't suppress exceptions.
 * Don't use exceptions for flow of control.
 * Avoid rescuing the `Exception` class.
 
+<a name="collections"/>
 ## Collections
 
 * It's ok to use arrays as sets for a small number of elements.
@@ -742,6 +777,7 @@ strings.
 * Rely on the fact that hashes in 1.9 are ordered.
 * Never modify a collection while traversing it.
 
+<a name="strings"/>
 ## Strings
 
 * Prefer string interpolation instead of string concatenation:
@@ -803,6 +839,7 @@ strings.
     end
     ```
 
+<a name="literals"/>
 ## Percent Literals
 
 * Use `%w` freely.
@@ -849,6 +886,7 @@ strings.
 
 * Prefer `()` as delimiters for all `%` literals.
 
+<a name="misc"/>
 ## Misc
 
 * Write `ruby -w` safe code.
@@ -887,6 +925,7 @@ strings.
 
 * Avoid needless metaprogramming.
 
+<a name="design"/>
 ## Design
 
 * Code in a functional way, avoiding mutation when that makes sense.
@@ -906,6 +945,7 @@ strings.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
+<a name="contributing"/>
 # Contributing
 
 Nothing written in this guide is set in stone. It's my desire to work
@@ -916,6 +956,7 @@ community.
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
 
+<a name="spreadtheword"/>
 # Spread the Word
 
 A community-driven style guide is of little use to a community that
