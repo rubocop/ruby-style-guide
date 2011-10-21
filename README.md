@@ -31,23 +31,21 @@ complementary
 
 ## Table of Contents
 
-1. [The Ruby Style Guide](#guide)
-
-* [Formatting](#formatting)
-* [Syntaxo](#syntax)
-* [Naming](#naming)
-* [Comments](#comments)
-* [Annotations](#annotations)
-* [Classes](#classes)
-* [Exceptions](#exceptions)
-* [Collections](#collections)
-* [Strings](#strings)
-* [Percent Literals](#literals)
-* [Miscellaneous](#misc)
-* [Design](#design)
-
-2. [Contributing](#contributing)
-3. [Spread the word](#spreadtheword)
+* [The Ruby Style Guide](#guide)
+    * [Formatting](#formatting)
+    * [Syntaxo](#syntax)
+    * [Naming](#naming)
+    * [Comments](#comments)
+    * [Annotations](#annotations)
+    * [Classes](#classes)
+    * [Exceptions](#exceptions)
+    * [Collections](#collections)
+    * [Strings](#strings)
+    * [Percent Literals](#literals)
+    * [Miscellaneous](#misc)
+    * [Design](#design)
+* [Contributing](#contributing)
+* [Spread the word](#spreadtheword)
 
 # The Ruby Style Guide
 
