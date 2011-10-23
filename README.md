@@ -183,15 +183,16 @@ wkhtmltopdf can be installed in one of two methods
            end
     ```
 
-* Use an empty line before the return value of a method (unless it
-  only has one line), and an empty line between `def`s.
+* Use empty lines between `def`s and to break up a method into logical
+  paragraphs.
 
     ```Ruby
     def some_method
-      do_something
-      do_something_else
+      data = initialize(options)
 
-      result
+      data.manipulate!
+
+      data.result
     end
 
     def some_method
@@ -201,7 +202,6 @@ wkhtmltopdf can be installed in one of two methods
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Use empty lines to break up a method into logical paragraphs.
 * Keep lines fewer than 80 characters.
     * Emacs users might want to put this in their config
       (e.g. `~/.emacs.d/init.el`):
