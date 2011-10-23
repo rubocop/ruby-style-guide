@@ -33,7 +33,7 @@ complementary
 
 * [The Ruby Style Guide](#guide)
     * [Formatting](#formatting)
-    * [Syntaxo](#syntax)
+    * [Syntax](#syntax)
     * [Naming](#naming)
     * [Comments](#comments)
     * [Annotations](#annotations)
