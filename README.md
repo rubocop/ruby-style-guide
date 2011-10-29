@@ -71,40 +71,8 @@ examples, some rules don't have examples that illustrate them clearly
 enough. In due time these issues will be addressed - just keep them in
 mind for now.
 
-You can generate a PDF or an HTML copy of this guide using *rake*
-
-To generate an HTML version
-
-```bash
-$ rake generate:html
-```
-You should have a README.html file generated
-
-To generate an PDF version
-
-```bash
-$ rake generate:pdf
-```
-You should have a README.pdf file generated
-
-To use these tasks you must have installed pygments and wkhtmltopdf
-
-pygments can be installed using Python's easy_install command
-
-```bash
-sudo easy_install pygments
-```
-
-wkhtmltopdf can be installed in one of two methods
-
-1. Install by hand (recommended):
-
-    <https://github.com/jdpace/PDFKit/wiki/Installing-WKHTMLTOPDF>
-
-2.  Try using the wkhtmltopdf-binary gem (mac + linux i386)
-
-        gem install wkhtmltopdf-binary
-
+You can generate a PDF or an HTML copy of this guide using
+[Transmuter](https://github.com/TechnoGate/transmuter).
 
 <a name="formatting">
 ## Formatting
