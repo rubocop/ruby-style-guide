@@ -1,4 +1,4 @@
-# Abstract
+# Prelude
 
 > Style is what separates the good from the great. <br/>
 > -- Bozhidar Batsov
@@ -8,13 +8,13 @@ have a great programming style reference
 ([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
 an official guide, documenting Ruby coding style and best
 practices. And I do believe that style matters. I also believe that
-such fine fellow like us Ruby developers, should be quite capable to
+such fine fellows, like us Ruby developers, should be quite capable to
 produce this coveted document.
 
-This guide started its life as our internal company coding guidelines
+This guide started its life as our internal company Ruby coding guidelines
 (written by yours truly). At some point I decided that the work I was
 doing might be interesting to members of the Ruby community in general
-and that the world had little need of another internal company
+and that the world had little need for another internal company
 guideline. But the world could certainly benefit from a
 community-driven and community-sanctioned set of practices, idioms and
 style prescriptions for Ruby programming.
