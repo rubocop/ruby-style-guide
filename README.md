@@ -3,22 +3,21 @@
 > Style is what separates the good from the great. <br/>
 > -- Bozhidar Batsov
 
-One thing has always bothered me as Ruby developer - Python devs have
-a great programming style reference (PEP-8) and we never got an
-official guide documenting Ruby coding style and best practices. And I
-do believe that style matters.
+One thing has always bothered me as Ruby developer - Python developers
+have a great programming style reference
+([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
+an official guide, documenting Ruby coding style and best
+practices. And I do believe that style matters. I also believe that
+such fine fellow like us Ruby developers, should be quite capable to
+produce this coveted document.
 
-This document was originally created when I, as the Technical Lead of
-the company which I work for, was asked by our CTO to create some
-internal documents describing good style and best practices for Ruby
-programming. I started off by building upon
-[this existing style guide](https://github.com/chneukirchen/styleguide),
-since I concurred with many of the points in it. At some point I
-decided that the work I was doing might be interesting to members of
-the Ruby community in general and that the world had little need of
-another internal company guideline. But the world could certainly
-benefit from a community-driven and community-sanctioned set of
-practices, idioms and style prescriptions for Ruby programming.
+This guide started its life as our internal company coding guidelines
+(written by yours truly). At some point I decided that the work I was
+doing might be interesting to members of the Ruby community in general
+and that the world had little need of another internal company
+guideline. But the world could certainly benefit from a
+community-driven and community-sanctioned set of practices, idioms and
+style prescriptions for Ruby programming.
 
 Since the inception of the guide I've received a lot of feedback from
 members of the exceptional Ruby community around the world. Thanks for
@@ -32,7 +31,7 @@ complementary
 ## Table of Contents
 
 * [The Ruby Style Guide](#guide)
-    * [Formatting](#formatting)
+    * [Source Code Layout](#layout)
     * [Syntax](#syntax)
     * [Naming](#naming)
     * [Comments](#comments)
@@ -74,21 +73,30 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-<a name="formatting">
-## Formatting
+<a name="layout">
+## Source Code Layout
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* Use UTF-8 as the source file encoding.
-* Use two-space indent, no tabs. Tabs are represented by a different
-  number of spaces on various operating systems (and their
-  presentation can be manually configured as well) which usually
-  results in code that looks different than intended in some (many) people's
-  editors.
-* Use Unix-style line endings. (Linux/OSX users are covered by default,
+* Use `UTF-8` as the source file encoding.
+* Use two **spaces** per indentation level.
+
+    ```Ruby
+    # good
+    def some_method
+      do_something
+    end
+
+    # bad - four spaces
+    def some_method
+        do_something
+    end
+    ```
+
+* Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
@@ -96,8 +104,8 @@ You can generate a PDF or an HTML copy of this guide using
 
         ```$ git config --global core.autocrlf true```
 
-* Use spaces around operators, after commas, colons and semicolons, around {
-  and before }. Whitespace might be (mostly) irrelevant to the Ruby
+* Use spaces around operators, after commas, colons and semicolons, around `{`
+  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
   interpreter, but its proper use is the key to writing easily
   readable code.
 
@@ -118,7 +126,7 @@ You can generate a PDF or an HTML copy of this guide using
     e = M * c**2
     ```
 
-* No spaces after (, [ or before ], ).
+* No spaces after `(`, `[` or before `]`, `)`.
 
     ```Ruby
     some(arg).other
@@ -171,54 +179,7 @@ You can generate a PDF or an HTML copy of this guide using
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
 * Keep lines fewer than 80 characters.
-    * Emacs users might want to put this in their config
-      (e.g. `~/.emacs.d/init.el`):
-
-        ```el
-        (setq whitespace-line-count 80
-              whitespace-style '(lines))
-        ```
-
-    * Vim users might want to put this in their config
-      (e.g. `~/.vimrc`):
-
-        ```vim
-        " VIM 7.3+ has support for highlighting a specified column.
-        if exists('+colorcolumn')
-            set colorcolumn=80
-        else
-            " Emulate
-            au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
-        endif
-        ```
-
-    * Textmate
-
 * Avoid trailing whitespace.
-    * Emacs users might want to put this in their config (ideally
-      combine this with the previous example):
-
-        ```el
-        (setq whitespace-style '(trailing space-before-tab
-                                 indentation space-after-tab))
-        ```
-
-    * Vim users might want to put this in their `~/.vimrc`:
-
-        ```vim
-        autocmd BufWritePre * :%s/\s\+$//e
-        ```
-
-        Or if you don't want vim to touch possibly vital space based files, use:
-
-        ```vim
-        set listchars+=trail:░
-        ```
-
-        Feel free to use some other character if you don't like the
-        suggested one.
-
-    * Textmate users might want to take a look at the [Uber Glory bundle](https://github.com/glennr/uber-glory-tmbundle).
 
 <a name="syntax"/>
 ## Syntax
@@ -268,7 +229,7 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
-* Favor the ternary operator over if/then/else/end constructs.
+* Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
   It's more common and obviously more concise.
 
     ```Ruby
@@ -281,7 +242,7 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
-  if/else constructs in these cases.
+  `if/else` constructs in these cases.
 
     ```Ruby
     # bad
@@ -493,7 +454,7 @@ You can generate a PDF or an HTML copy of this guide using
     if v = array.grep(/foo/) ...
     ```
 
-* Use `||=` freely.
+* Use `||=` freely to initialize variables.
 
     ```Ruby
     # set name to Bozhidar, only if it's nil or false
@@ -501,9 +462,17 @@ You can generate a PDF or an HTML copy of this guide using
     ```
 
 * Don't use `||=` to initialize boolean variables. (Consider what
-  would happen if the current value happened to be `false`.)
+would happen if the current value happened to be `false`.)
 
-* Avoid using Perl-style special variables (like $0-9, $`,
+    ```Ruby
+    # bad - would set enabled to true even if it was false
+    enabled ||= true
+
+    # good
+    enabled = true if enabled.nil?
+    ```
+
+* Avoid using Perl-style special variables (like `$0-9`, `$``,
   etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged.
 
@@ -540,27 +509,6 @@ You can generate a PDF or an HTML copy of this guide using
   (i.e. `Array#empty?`).
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
   arguments, `exit!`, etc.) should end with an exclamation mark.
-* The length of an identifier determines its scope.  Use one-letter variables
-  for short block/method parameters, according to this scheme:
-
-        a,b,c: any object
-        d: directory names
-        e: elements of an Enumerable
-        ex: rescued exceptions
-        f: files and file names
-        i,j: indexes
-        k: the key part of a hash entry
-        m: methods
-        o: any object
-        r: return values of short methods
-        s: strings
-        v: any value
-        v: the value part of a hash entry
-        x,y,z: numbers
-
-  And in general, the first letter of the class name if all objects are of
-  that type.
-
 * When using `inject` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
 * When defining binary operators, name the argument `other`.
@@ -604,10 +552,8 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Annotations should usually be written on the line immediately above
   the relevant code.
-
 * The annotation keyword is followed by a colon and a space, then a note
   describing the problem.
-
 * If multiple lines are required to describe the problem, subsequent
   lines should be indented two spaces after the `#`.
 
@@ -631,19 +577,14 @@ You can generate a PDF or an HTML copy of this guide using
 
 * Use `TODO` to note missing features or functionality that should be
   added at a later date.
-
 * Use `FIXME` to note broken code that needs to be fixed.
-
 * Use `OPTIMIZE` to note slow or inefficient code that may cause
   performance problems.
-
 * Use `HACK` to note code smells where questionable coding practices
   were used and should be refactored away.
-
 * Use `REVIEW` to note anything that should be looked at to confirm it
   is working as intended. For example: `REVIEW: Are we sure this is how the
   client does X currently?`
-
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
@@ -672,7 +613,7 @@ You can generate a PDF or an HTML copy of this guide using
 * Consider adding factory methods to provide additional sensible ways
   to create instances of a particular class.
 * Prefer duck-typing over inheritance.
-* Avoid the usage of class (@@) variables due to their "nasty" behavior
+* Avoid the usage of class (`@@`) variables due to their "nasty" behavior
   in inheritance.
 * Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
