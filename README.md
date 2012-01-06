@@ -338,7 +338,9 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while`.
+* Don't use parentheses around the condition of an `if/unless/while`,
+  unless the condition contains an assignment (see "Using the return
+  value of `=`" below).
 
     ```Ruby
     # bad
@@ -348,6 +350,11 @@ You can generate a PDF or an HTML copy of this guide using
 
     # good
     if x > 10
+      # body omitted
+    end
+
+    # ok
+    if (x = self.next_value)
       # body omitted
     end
     ```
@@ -448,10 +455,18 @@ You can generate a PDF or an HTML copy of this guide using
              - 2
     ```
 
-* Using the return value of `=` (an assignment) is ok.
+* Using the return value of `=` (an assignment) is ok, but surround the
+  assignment with parenthesis.
 
     ```Ruby
+    # good - shows intented use of assignment
+    if (v = array.grep(/foo/)) ...
+
+    # bad
     if v = array.grep(/foo/) ...
+    
+    # also good - shows intended use of assignment and has correct precedence.
+    if (v = self.next_value) == "hello" ...
     ```
 
 * Use `||=` freely to initialize variables.
