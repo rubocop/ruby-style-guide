@@ -360,7 +360,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     ```Ruby
     class Person
-      attr_reader name, age
+      attr_reader :name, :age
 
       # omitted
     end
