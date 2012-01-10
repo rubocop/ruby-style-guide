@@ -634,8 +634,8 @@ would happen if the current value happened to be `false`.)
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
-* Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them.
+* Outdent the `public`, `protected`, and `private` keywords to be in line
+  with the class that they belong to. Leave one blank line above them.
 
     ```Ruby
     class SomeClass
@@ -643,7 +643,7 @@ in *Ruby* now, not in *Python*.
         # ...
       end
 
-      private
+    private
       def private_method
         # ...
       end
