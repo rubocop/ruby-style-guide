@@ -464,7 +464,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     # bad
     if v = array.grep(/foo/) ...
-    
+
     # also good - shows intended use of assignment and has correct precedence.
     if (v = self.next_value) == "hello" ...
     ```
@@ -524,7 +524,7 @@ would happen if the current value happened to be `false`.)
   (i.e. `Array#empty?`).
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
   arguments, `exit!`, etc.) should end with an exclamation mark.
-* When using `inject` with short blocks, name the arguments `|a, e|`
+* When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
 * When defining binary operators, name the argument `other`.
 
@@ -534,9 +534,9 @@ would happen if the current value happened to be `false`.)
     end
     ```
 
-* Prefer `map` over *collect*, `find` over *detect*, `select` over
-  *find_all*, `size` over *length*. This is not a hard requirement; if the
-  use of the alias enhances readability, it's ok to use it.
+* Prefer `map` over *collect*, `reduce` over *inject*, `find` over *detect*,
+  `select` over *find_all*, `size` over *length*. This is not a hard
+  requirement; if the use of the alias enhances readability, it's ok to use it.
 
 <a name="comments"/>
 ## Comments
@@ -839,10 +839,10 @@ strings.
 * Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
     * Use the new JavaScript literal hash syntax.
     * Use the new lambda syntax.
-    * Methods like `inject` now accept method names as arguments.
+    * Methods like `reduce` now accept method names as arguments.
 
       ```Ruby
-      [1, 2, 3].inject(:+)
+      [1, 2, 3].reduce(:+)
       ```
 
 * Avoid needless metaprogramming.
