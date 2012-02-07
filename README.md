@@ -28,24 +28,6 @@ By the way, if you're into Rails you might want to check out the
 complementary
 [Ruby on Rails 3 Style Guide](https://github.com/bbatsov/rails-style-guide).
 
-## Table of Contents
-
-* [The Ruby Style Guide](#guide)
-    * [Source Code Layout](#layout)
-    * [Syntax](#syntax)
-    * [Naming](#naming)
-    * [Comments](#comments)
-    * [Annotations](#annotations)
-    * [Classes](#classes)
-    * [Exceptions](#exceptions)
-    * [Collections](#collections)
-    * [Strings](#strings)
-    * [Percent Literals](#literals)
-    * [Miscellaneous](#misc)
-    * [Design](#design)
-* [Contributing](#contributing)
-* [Spread the word](#spreadtheword)
-
 # The Ruby Style Guide
 
 This Ruby style guide recommends best practices so that real-world Ruby
@@ -73,7 +55,6 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-<a name="layout">
 ## Source Code Layout
 
 > Nearly everybody is convinced that every style but their own is
@@ -181,7 +162,6 @@ You can generate a PDF or an HTML copy of this guide using
 * Keep lines fewer than 80 characters.
 * Avoid trailing whitespace.
 
-<a name="syntax"/>
 ## Syntax
 
 * Use `def` with parentheses when there are arguments. Omit the
@@ -506,9 +486,31 @@ would happen if the current value happened to be `false`.)
 `f((3 + 2) + 1)`.
 
 * Always run the Ruby interpreter with the `-w` option so it will warn
-  you if you forget either of the rules above!
+you if you forget either of the rules above!
 
-<a name="naming"/>
+* When the keys of your hash are symbols use the Ruby 1.9 hash literal
+syntax.
+
+    ```Ruby
+    # bad
+    hash = { :one => 1, :two => 2 }
+
+    # good
+    hash = { one: 1, two: 2 }
+    ```
+
+* Use the new lambda literal syntax.
+
+    ```Ruby
+    # bad
+    lambda = lambda { |a, b| a + b }
+    lambda.call(1, 2)
+
+    # good
+    lambda = ->(a, b) { a + b }
+    lambda.(1, 2)
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
@@ -538,7 +540,6 @@ would happen if the current value happened to be `false`.)
   *find_all*, `size` over *length*. This is not a hard requirement; if the
   use of the alias enhances readability, it's ok to use it.
 
-<a name="comments"/>
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
@@ -562,7 +563,6 @@ would happen if the current value happened to be `false`.)
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try.)
 
-<a name="annotations"/>
 ## Annotations
 
 * Annotations should usually be written on the line immediately above
@@ -603,9 +603,13 @@ would happen if the current value happened to be `false`.)
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-<a name="classes"/>
 ## Classes
 
+* When designing class hierarchies make sure that they conform to the
+[Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
+* Try to make your classes as
+  [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
+  as possible.
 * Always supply a proper `to_s` method.
 
     ```Ruby
@@ -678,14 +682,12 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-<a name="exceptions"/>
 ## Exceptions
 
 * Don't suppress exceptions.
 * Don't use exceptions for flow of control.
 * Avoid rescuing the `Exception` class.
 
-<a name="collections"/>
 ## Collections
 
 * It's ok to use arrays as sets for a small number of elements.
@@ -699,7 +701,6 @@ strings.
 * Rely on the fact that hashes in 1.9 are ordered.
 * Never modify a collection while traversing it.
 
-<a name="strings"/>
 ## Strings
 
 * Prefer string interpolation instead of string concatenation:
@@ -761,7 +762,6 @@ strings.
     end
     ```
 
-<a name="literals"/>
 ## Percent Literals
 
 * Use `%w` freely.
@@ -808,7 +808,11 @@ strings.
 
 * Prefer `()` as delimiters for all `%` literals.
 
-<a name="misc"/>
+## Metaprogramming
+
+* Do not mess around in core classes when writing libraries. (Do not monkey
+  patch them.)
+
 ## Misc
 
 * Write `ruby -w` safe code.
@@ -835,39 +839,14 @@ strings.
 
 * Avoid `alias` when `alias_method` will do.
 * Use `OptionParser` for parsing complex command line options and
-  `ruby -s` for trivial command line options.
-* Write for Ruby 1.9. Don't use legacy Ruby 1.8 constructs.
-    * Use the new JavaScript literal hash syntax.
-    * Use the new lambda syntax.
-    * Methods like `inject` now accept method names as arguments.
-
-      ```Ruby
-      [1, 2, 3].inject(:+)
-      ```
-
-* Avoid needless metaprogramming.
-
-<a name="design"/>
-## Design
-
+`ruby -s` for trivial command line options.
 * Code in a functional way, avoiding mutation when that makes sense.
+* Avoid needless metaprogramming.
 * Do not mutate arguments unless that is the purpose of the method.
-* Do not mess around in core classes when writing libraries. (Do not monkey
-  patch them.)
-* [Do not program
-  defensively.](http://www.erlang.se/doc/programming_rules.shtml#HDR11)
-* Keep the code simple and subjective. Each method should have a single,
-  well-defined responsibility.
 * Avoid more than three levels of block nesting.
-* Don't overdesign. Overly complex solutions tend to be brittle and hard to
-  maintain.
-* Don't underdesign. A solution to a problem should be as simple as
-  possible, but no simpler than that. Poor initial design can lead to a lot
-  of problems in the future.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
-<a name="contributing"/>
 # Contributing
 
 Nothing written in this guide is set in stone. It's my desire to work
@@ -878,7 +857,6 @@ community.
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
 
-<a name="spreadtheword"/>
 # Spread the Word
 
 A community-driven style guide is of little use to a community that
