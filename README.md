@@ -664,10 +664,77 @@ mutators.
     ```  
   
 * Consider adding factory methods to provide additional sensible ways
-  to create instances of a particular class.
-* Prefer duck-typing over inheritance.
+to create instances of a particular class.
+
+    ```Ruby
+    class Person
+      def self.create(options_hash)
+        # body omitted
+      end
+    end
+    ```
+
+* Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.
+
+    ```Ruby
+    # bad
+    class Animal
+      # abstract method
+      def speak
+      end
+    end
+
+    # extend superclass
+    class Duck < Animal
+      def speak
+        puts 'Quack! Quack'
+      end
+    end
+
+    # extend superclass
+    class Dog < Animal
+      def speak
+        puts 'Bau! Bau!'
+      end
+    end
+
+    # good
+    class Duck
+      def speak
+        puts 'Quack! Quack'
+      end
+    end
+
+    class Dog
+      def speak
+        puts 'Bau! Bau!'
+      end
+    end
+    ```
+
 * Avoid the usage of class (`@@`) variables due to their "nasty" behavior
-  in inheritance.
+in inheritance.
+
+    ```Ruby
+    class Parent
+      @@class_var = 'parent'
+
+      def self.print_class_var
+        puts @@class_var
+      end
+    end
+
+    class Child < Parent
+      @@class_var = 'child'
+    end
+
+    Parent.print_class_var # => will print "child"
+    ```
+
+    As you can see all the classes in a class hierarchy actually share one
+    class variable. Class instance variables should usually be preferred
+    over class variables.
+
 * Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
