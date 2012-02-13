@@ -612,7 +612,7 @@ syntax.
 * When designing class hierarchies make sure that they conform to the
   [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
 * Try to make your classes as
-  [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
+  [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
   as possible.
 * Always supply a proper `to_s` method for classes that represent
   domain objects.
