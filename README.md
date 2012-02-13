@@ -610,11 +610,12 @@ syntax.
 ## Classes
 
 * When designing class hierarchies make sure that they conform to the
-[Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
+  [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
 * Try to make your classes as
   [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design))
   as possible.
-* Always supply a proper `to_s` method.
+* Always supply a proper `to_s` method for classes that represent
+  domain objects.
 
     ```Ruby
     class Person
@@ -632,7 +633,36 @@ syntax.
     ```
 
 * Use the `attr` family of functions to define trivial accessors or
-  mutators.
+mutators.
+
+    ```Ruby
+    # bad
+    class Person
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+
+      def first_name
+        @first_name
+      end
+
+      def last_name
+        @last_name
+      end
+    end
+
+    # good
+    class Person
+      attr_reader :first_name, :last_name
+
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+    end
+    ```  
+  
 * Consider adding factory methods to provide additional sensible ways
   to create instances of a particular class.
 * Prefer duck-typing over inheritance.
