@@ -794,11 +794,45 @@ in *Ruby* now, not in *Python*.
 * It's ok to use arrays as sets for a small number of elements.
 * Prefer `%w` to the literal array syntax when you need an array of
 strings.
+
+    ```Ruby
+    # bad
+    STATES = ['draft', 'open', 'closed']
+
+    # good
+    STATES = %w(draft open closed)
+    ```
+
 * Avoid the creation of huge gaps in arrays.
+
+    ```Ruby
+    arr = []
+    arr[100] = 1 # now you have an array with lots of nils
+    ```
+
 * Use `Set` instead of `Array` when dealing with lots of elements.
 * Use symbols instead of strings as hash keys.
+
+    ```Ruby
+    # bad
+    hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
+
+    # good
+    hash = { one: 1, two: 2, three: 3 }
+    ```
+
 * Avoid the use of mutable object as hash keys.
-* Use the new 1.9 literal hash syntax in preference to the hashrocket syntax.
+* Use the new 1.9 literal hash syntax in preference to the hashrocket
+syntax.
+
+    ```Ruby
+    # bad
+    hash = { :one => 1, :two => 2, :three => 3 }
+
+    # good
+    hash = { one: 1, two: 2, three: 3 }
+    ```
+
 * Rely on the fact that hashes in 1.9 are ordered.
 * Never modify a collection while traversing it.
 
