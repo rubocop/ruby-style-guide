@@ -526,7 +526,7 @@ syntax.
   (i.e. `Array#empty?`).
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
   arguments, `exit!`, etc.) should end with an exclamation mark.
-* When using `inject` with short blocks, name the arguments `|a, e|`
+* When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
 * When defining binary operators, name the argument `other`.
 
@@ -536,9 +536,13 @@ syntax.
     end
     ```
 
-* Prefer `map` over *collect*, `find` over *detect*, `select` over
-  *find_all*, `size` over *length*. This is not a hard requirement; if the
-  use of the alias enhances readability, it's ok to use it.
+* Prefer `map` over `collect`, `find` over `detect`, `select` over
+  `find_all`, `reduce` over `inject` and `size` over `length`. This is
+  not a hard requirement; if the use of the alias enhances
+  readability, it's ok to use it. The rhyming methods are inherited from
+  Smalltalk and are not common in other programming languages. The
+  reason the use of `select` is encouraged over `find_all` is that it
+  goes together nicely with `reject` and its name is pretty self-explanatory.
 
 ## Comments
 
