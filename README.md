@@ -810,7 +810,7 @@ strings.
     arr[100] = 1 # now you have an array with lots of nils
     ```
 
-* Use `Set` instead of `Array` when dealing with lots of elements.
+* Use `Set` instead of `Array` when dealing with unique elements, since lookup is faster.
 * Use symbols instead of strings as hash keys.
 
     ```Ruby
