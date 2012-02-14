@@ -791,7 +791,6 @@ in *Ruby* now, not in *Python*.
 
 ## Collections
 
-* It's ok to use arrays as sets for a small number of elements.
 * Prefer `%w` to the literal array syntax when you need an array of
 strings.
 
@@ -810,7 +809,10 @@ strings.
     arr[100] = 1 # now you have an array with lots of nils
     ```
 
-* Use `Set` instead of `Array` when dealing with lots of elements.
+* Use `Set` instead of `Array` when dealing with unique elements. `Set`
+  implements a collection of unordered values with no duplicates. This
+  is a hybrid of `Array`'s intuitive inter-operation facilities and
+  `Hash`'s fast lookup. 
 * Use symbols instead of strings as hash keys.
 
     ```Ruby
