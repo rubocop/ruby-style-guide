@@ -511,6 +511,16 @@ syntax.
     lambda.(1, 2)
     ```
 
+* Use `_` for unused block parameters.
+
+    ```Ruby
+    # bad
+    result = hash.map { |k, v| v + 1 }
+
+    # good
+    result = hash.map { |_, v| v + 1 }
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
