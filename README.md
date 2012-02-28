@@ -796,8 +796,89 @@ in *Ruby* now, not in *Python*.
 ## Exceptions
 
 * Don't suppress exceptions.
+
+    ```Ruby
+    begin
+      # an exception occurs here
+    rescue SomeError
+      # the rescue clause does absolutely nothing
+    end
+    ```
+  
 * Don't use exceptions for flow of control.
+
+    ```Ruby
+    # bad
+    begin
+      n / d
+    rescue ZeroDivisionError
+      puts "Cannot divide by 0!"
+    end
+
+    # good
+    if n.zero?
+      puts "Cannot divide by 0!"
+    else
+      n / d
+    ```
+  
 * Avoid rescuing the `Exception` class.
+
+    ```Ruby
+    # bad 
+    begin
+      # an exception occurs here
+    rescue
+      # exception handling
+    end
+
+    # still bad
+    begin
+      # an exception occurs here
+    rescue Exception
+      # exception handling
+    end
+    ```
+
+* Put more specific exceptions higher up the rescue chain, otherwise
+  they'll never be rescued from.
+
+    ```Ruby
+    # bad
+    begin
+      # some code
+    rescue Exception => e
+      # some handling
+    rescue StandardError => e
+      # some handling
+    end
+
+    # good
+    begin
+      # some code
+    rescue StandardError => e
+      # some handling
+    rescue Exception => e
+      # some handling
+    end
+    ```  
+
+* Release external resources obtained by your program in an ensure
+block.
+
+    ```Ruby
+    f = File.open("testfile")
+    begin
+      # .. process
+    rescue
+      # .. handle error
+    ensure
+      f.close unless f.nil?
+    end
+    ```
+  
+* Favor the use of exceptions for the standard library over
+introducing new exception classes.
 
 ## Collections
 
