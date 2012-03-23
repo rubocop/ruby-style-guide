@@ -3,19 +3,19 @@
 > 風格是從偉大事物中分離出的美好事物。 <br/>
 > -- Bozhidar Batsov
 
-作為Ruby開發者，有一件總是令我煩心的事 &mdash; Python 開發者有一份好的程式風格參考指南([PEP-8](http://www.python.org/dev/peps/pep-0008/)) 而我們永遠沒有一份官方指南，一份記錄Ruby程式風格及最佳實踐的指南。而我們確信風格很重要。我也相信這些好傢伙們，像我們是Ruby開發者，應該可以自己產生一份這個夢寐以求的文件。
+作為 Ruby 開發者，有一件總是令我煩心的事 &mdash; Python 開發者有一份好的程式風格參考指南([PEP-8](http://www.python.org/dev/peps/pep-0008/)) 而我們永遠沒有一份官方指南，一份記錄 Ruby 程式風格及最佳實踐的指南。而我們確信風格很重要。我也相信這些好傢伙們，像我們是 Ruby 開發者，應該可以自己產生一份這個夢寐以求的文件。
 
-這份指南開始是作為我們公司內部Ruby程式指南(由我所寫的)。進行到某個部分時，我決定要把我的成果貢獻給廣大的Ruby社群，而且這個世界需要從另一個公司內部的一點幫助。然而這個世界也可以從由社群制定及策動的一系列Ruby程式慣例、實踐及風格中受益。
+這份指南開始是作為我們公司內部 Ruby 程式指南(由我所寫的)。進行到某個部分時，我決定要把我的成果貢獻給廣大的 Ruby 社群，而且這個世界需要從另一個公司內部的一點幫助。然而這個世界也可以從由社群制定及策動的一系列 Ruby 程式慣例、實踐及風格中受益。
 
-在開始寫這份指南時，我收到世界上很多優秀Ruby社群用戶們的反饋。感謝所有的建議及幫助！我們同心協力創造一個能夠讓每一個Ruby開發者受益的資源。
+在開始寫這份指南時，我收到世界上很多優秀 Ruby 社群用戶們的反饋。感謝所有的建議及幫助！我們同心協力創造一個能夠讓每一個 Ruby 開發者受益的資源。
 
 # Ruby 風格指南
 
-這份Ruby風格指南向你推薦現實世界中，Ruby程式設計師如何寫出可被別的Ruby程式設計師維護的程式碼。一份風格指南，反映出現實世界中的用法，並有一個理想，幫助人們避免使用危險的程式碼 &mdash; 不管它看起來有對好。
+這份 Ruby 風格指南向你推薦現實世界中，Ruby 程式設計師如何寫出可被別的Ruby程式設計師維護的程式碼。一份風格指南，反映出現實世界中的用法，並有一個理想，幫助人們避免使用危險的程式碼 &mdash; 不管它看起來有對好。
 
 本指南分成數個相關規則的小節。我試著在每個規則後說明理由（如果省略的話，我相信理由相當明顯）。
 
-我沒有想到所有的規則 &mdash; 他們大致上是基於，我作為一個專業軟體工程師廣泛生涯，從Ruby社群成員所得到的反饋及建議，和數個高度評價的Ruby程式設計資源，像是 ["Programming Ruby 1.9"](http://pragprog.com/book/ruby3/programming-ruby-1-9) 以及 ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177)。
+我沒有想到所有的規則 &mdash; 他們大致上是基於，我作為一個專業軟體工程師廣泛生涯，從Ruby社群成員所得到的反饋及建議，和數個高度評價的 Ruby 程式設計資源，像是 ["Programming Ruby 1.9"](http://pragprog.com/book/ruby3/programming-ruby-1-9) 以及 ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177)。
 
 本指南仍在進行改善中 &mdash; 某些規則缺乏實例，某些規則沒有例子來清楚地展示它們。在最後交付時，這些議題會被解決 &mdash; 就先把它們記在心理吧。
 
@@ -40,8 +40,8 @@
         do_something
     end
     ```
-* 使用 Unix 風格的行編碼 (預設包含BSD/Solaris/Linux/OSX的使用者，Windows使用者要特別小心。)
-    * 如果你使用 Git ，你也許會想加入下面這個配置設定，來保護你的專案被Windows的行編碼侵入：
+* 使用 Unix 風格的行編碼 (預設包含 BSD/Solaris/Linux/OSX 的使用者，Windows 使用者要特別小心。)
+    * 如果你使用 Git ，你也許會想加入下面這個配置設定，來保護你的專案被 Windows 的行編碼侵入：
     	```$ git config --global core.autocrlf true```
 
 * 使用空格來圍繞運算元，逗點 `,` 、冒號 `:` 及分號 `;` 之後，圍繞 `{` 和 `}` 之前。
@@ -53,7 +53,7 @@
     1 > 2 ? true : false; puts 'Hi'
     [1, 2, 3].each { |e| puts e }
     ```
-    唯一的例外是當使用指數運算元（exponent operator）時：
+    唯一的例外是當使用指數運算元時：
 
     ```Ruby
     # 不好
@@ -151,11 +151,11 @@
 
      ```Ruby
      def some_method
-       # body omitted
+       # 省略主體
      end
 
      def some_method_with_arguments(arg1, arg2)
-       # body omitted
+       # 省略主體
      end
      ```
 
@@ -178,12 +178,12 @@
     ```Ruby
     # 不好
     if some_condition then
-      # body omitted
+      # 省略主體
     end
 
     # 好
     if some_condition
-      # body omitted
+      # 省略主體
     end
     ```
 
@@ -221,7 +221,7 @@
     ```
 * 永遠不要使用 `if x: ...` 使用三元運算元來取代。
 
-* 一行的情況使用 `when x then ...` 。替代方案的語法`when x: ...` 在 Ruby 1.9 被移除了。
+* 一行的情況使用 `when x then ...` 。替代方案的語法 `when x: ...` 在 Ruby 1.9 被移除了。
 
 * 永遠不要使用 `when x: ...` 。參考前一個規則。
 
@@ -265,7 +265,7 @@
     # 另一個好方法
     some_condition or do_something
     ```
-* 永遠不要使用 `unless` 搭配 `else` 。 將它們改寫成肯定條件。
+* 永遠不要使用 `unless` 搭配 `else`。 將它們改寫成肯定條件。
 
     ```Ruby
     # 不好
@@ -287,27 +287,27 @@
     ```Ruby
     # 不好
     if (x > 10)
-      # body omitted
+      # 省略主體
     end
 
     # 好
     if x > 10
-      # body omitted
+      # 省略主體
     end
 
     # 好
     if (x = self.next_value)
-      # body omitted
+      # 省略主體
     end
     ```
 
-* 忽略圍繞方法參數的括號，如內部DSL (如：Rake, Rails, RSpec)，Ruby 中帶有 "關鍵字" 狀態的方法（如：`attr_reader`, `puts`）以及屬性存取方法。所有其他的方法呼叫使用括號圍繞參數。
+* 忽略圍繞方法參數的括號，如內部 DSL (如：Rake, Rails, RSpec)，Ruby 中帶有 "關鍵字" 狀態的方法（如：`attr_reader`, `puts`）以及屬性存取方法。所有其他的方法呼叫使用括號圍繞參數。
 
     ```Ruby
     class Person
       attr_reader :name, :age
 
-      # omitted
+      # 忽略
     end
 
     temperance = Person.new('Temperance', 30)
@@ -319,7 +319,7 @@
     array.delete(e)
     ```
 
-* 單行區塊喜好 `{...}` 勝於 `do..end`。多行區塊避免使用 `{...}`（多行串連總是醜陋）。在 `do...end` 、 "控制流程" 及"方法定義"，永遠使用 `do...end` （如 Rakefile 及某些DSL）。串連時避免使用 `do...end`。
+* 單行區塊喜好 `{...}` 勝於 `do..end`。多行區塊避免使用 `{...}`（多行串連總是醜陋）。在 `do...end` 、 "控制流程" 及"方法定義"，永遠使用 `do...end` （如 Rakefile 及某些 DSL）。串連時避免使用 `do...end`。
 
     ```Ruby
     names = ["Bozhidar", "Steve", "Sarah"]
@@ -361,12 +361,12 @@
     ```Ruby
     # 不好
     def some_method(arg1=:default, arg2=nil, arg3=[])
-      # do something...
+      # 做些事情...
     end
 
     # 好
     def some_method(arg1 = :default, arg2 = nil, arg3 = [])
-      # do something...
+      # 做些事情...
     end
     ```
 
@@ -413,7 +413,7 @@
     # 好
     enabled = true if enabled.nil?
     ```
-* 避免使用 Perl 風格的特別變數（像是 `$0-9`, `$``, 等等）。它們看起來非常神祕以及不鼓勵使用一行的腳本。
+* 避免使用 Perl 風格的特別變數（像是 `$0-9`, `` $` ``, 等等）。它們看起來非常神祕以及不鼓勵使用一行的腳本。
 
 * 避免在方法名與左括號之間放一個空格。
 
@@ -473,7 +473,7 @@
 
     ```Ruby
     def +(other)
-      # body omitted
+      # 省略主體
     end
     ```
 * 偏好 `map` 勝於 `collect` ， `find` 勝於 `detect` ， `select` 勝於 `find_all` ， `reduce` 勝於 `inject` 以及 `size` 勝於 `length` 。這不是一個硬性要求；如果使用別名增加了可讀性，使用它沒關係。這些有押韻的方法名是從 Smalltalk 繼承而來，在別的語言不常見。鼓勵使用 `select` 而不是 `find_all` 的理由是它跟 `reject` 搭配起來是一目了然的。
@@ -524,7 +524,7 @@
 
 ## 類別
 
-* 當設計類別階層時，確認它們符合 [Liskov 代換原則](http://en.wikipedia.org/wiki/Liskov_substitution_principle)。
+* 當設計類別階層時，確認它們符合[Liskov 代換原則](http://en.wikipedia.org/wiki/Liskov_substitution_principle)。
 * 盡可能讓你的類別越[堅固](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))越好。
 * 永遠替類別提供一個適當的 `to_s` 方法給來表示領域模型。
 
@@ -543,7 +543,7 @@
     end
     ```
 
-* 使用 `attr` 這類函數來定義瑣碎的accessor或mutators。
+* 使用 `attr` 這類函數來定義瑣碎的 accessor 或 mutators。
 
     ```Ruby
     # 不好
@@ -578,7 +578,7 @@
     ```Ruby
     class Person
       def self.create(options_hash)
-        # body omitted
+        # 省略主體
       end
     end
     ```
@@ -659,23 +659,23 @@
     class TestClass
       # 不好
       def TestClass.some_method
-        # body omitted
+        # 省略主體
       end
 
       # 好
       def self.some_other_method
-        # body omitted
+        # 省略主體
       end
 
       # 也有可能且當你要定義多個
       # singleton時的便利方法
       class << self
         def first_method
-          # body omitted
+          # 省略主體
         end
 
         def second_method_etc
-          # body omitted
+          # 省略主體
         end
       end
     end
@@ -780,7 +780,7 @@
     arr = []
     arr[100] = 1 # 現在你有一個很多 nil 的陣列
     ```
-* 當處理獨一無二的元素時，使用 `Set` 來替代 `Array` 。`Set` 實現了不重複的無序數值集合。`Set`是陣列直觀的內部操作功能與雜湊的快速存取的混合體。
+* 當處理獨一無二的元素時，使用 `Set` 來替代 `Array` 。`Set` 實現了不重複的無序數值集合。`Set` 是陣列直觀的內部操作功能與雜湊的快速存取的混合體。
 * 使用符號取代字串作為雜湊鍵。 
 
     ```Ruby
@@ -805,7 +805,7 @@
 
 ## 字串
 
-* 偏好字串插值(interpolation)，而不是字串串接(concatenation)。
+* 偏好字串插值 (interpolation)，而不是字串串接 (concatenation)。
 
     ```Ruby
     # 不好
@@ -845,7 +845,7 @@
       end
     end
     ```
-* 當你需要建構龐大的資料區塊（chunk）時，避免使用 `String#+` 。
+* 當你需要建構龐大的資料區段（chunk）時，避免使用 `String#+` 。
   使用 `String#<<` 來替代。字串串接在對的地方改變字串實體，並且永遠比 `String#+` 來得快，`String#+` 創造了一堆新的字串物件。
 
     ```Ruby
@@ -892,8 +892,8 @@
 
     ```Ruby
     string = "some injection\nusername"
-    string[/^username$/]   # matches
-    string[/\Ausername\Z/] # don't match
+    string[/^username$/]   # 匹配
+    string[/\Ausername\Z/] # 無匹配
     ```
 * 針對複雜的正規表示法，使用 `x` 修飾符。這讓它們的可讀性更高並且你可以加入有用的註解。只是要小心忽略的空白。
 
@@ -934,7 +934,7 @@
     # 好（需要插值、有雙引號以及單行）
     %(<tr><td class="name">#{name}</td>)
     ```
-* 正規表示法要匹配多於一個的 `/` 字元時，使用 %r。
+* 正規表示法要匹配多於一個的 `/` 字元時，使用 `%r`。
 
     ```Ruby
     # 不好
@@ -957,8 +957,8 @@
 ## 其它
 
 * `ruby -w` 寫安全的程式碼。
-* 避免使用雜湊作為選擇性參數。這個方法是不是做太多？
-* 避免方法長於10行程式碼（LOC）。理想上，大部分的方法會小於5行。空行不算進LOC裡。
+* 避免使用雜湊作為選擇性參數。這個方法是不是做太多事情了？
+* 避免方法長於10行程式碼（LOC）。理想上，大部分的方法會小於5行。空行不算進 LOC 裡。
 * 避免參數列表長於三或四個參數。
 * 如果你真的需要，加入 "全域" 變數到核心以及把它們設為私有的。
 * 使用類別變數而不是全域變數。
