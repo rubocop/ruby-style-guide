@@ -287,7 +287,7 @@ You can generate a PDF or an HTML copy of this guide using
 * Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` is removed in Ruby 1.9.
 
-* Never use `when x; ...`. See the previous rule.
+* Never use `when x: ...`. See the previous rule.
 
 * Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
@@ -423,7 +423,7 @@ You can generate a PDF or an HTML copy of this guide using
     ```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - it this code really readable and can't the blocks contents be extracted into
+    ask themselves - is this code really readable and can't the blocks contents be extracted into
     nifty methods.
 
 * Avoid `return` where not required.
@@ -1148,10 +1148,10 @@ syntax.
 * Use class instance variables instead of global variables.
 
     ```Ruby
-    #bad
+    # bad
     $foo_bar = 1
 
-    #good
+    # good
     class Foo
       class << self
         attr_accessor :bar
