@@ -851,7 +851,7 @@ in *Ruby* now, not in *Python*.
     end
 
     # good
-    if n.zero?
+    if d.zero?
       puts "Cannot divide by 0!"
     else
       n / d
