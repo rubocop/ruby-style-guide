@@ -705,7 +705,7 @@
     end
 
     # 好
-    if n.zero?
+    if d.zero?
       puts "Cannot divide by 0!"
     else
       n / d
