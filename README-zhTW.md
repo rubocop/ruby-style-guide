@@ -956,6 +956,62 @@
 
 * 寫一個函式庫時不要在核心類別搗亂（不要替它們加 monkey patch）
 
+* 偏好區塊形式的 `class_eval` 勝於字串插值 (string-interpolated)的形式。 
+  - 當你使用字串插值形式時，總是提供 `__FILE__` 及 `__LINE__`，使你的 backtrace 看起來有意義：
+
+    ```ruby
+    class_eval "def use_relative_model_naming?; true; end", __FILE__, __LINE__
+    ```
+    
+  - 偏好 `define_method` 勝於 `class_eval{ def ... }`
+    
+* 當使用 `class_eval` （或其它的 `eval`）搭配字串插值時，添加一個註解區塊，來顯示如果做了插值的樣子（我從 Rails 程式碼學來的一個實踐）： 
+
+    ```ruby
+    # 從 activesupport/lib/active_support/core_ext/string/output_safety.rb
+    UNSAFE_STRING_METHODS.each do |unsafe_method|
+      if 'String'.respond_to?(unsafe_method)
+        class_eval <<-EOT, __FILE__, __LINE__ + 1
+          def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
+            to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
+          end                                       # end
+
+          def #{unsafe_method}!(*args)              # def capitalize!(*args)
+            @dirty = true                           #   @dirty = true
+            super                                   #   super
+          end                                       # end
+        EOT
+      end
+    end
+    ```
+* 元程式設計避免使用 `method_missing`。會讓 Backtraces 變得很凌亂；行為沒有列在 `#methods` 裡；拼錯的方法呼叫可能默默的工作（`nukes.luanch_state = false`)。考慮使用 delegation, proxy, 或是 `define_method` 來取代。如果你必須使用 `method_missing`，
+  - 確保[也定義了 `respond_to?`](http://devblog.avdi.org/2011/12/07/defining-method_missing-and-respond_to-at-the-same-time/)
+  - 僅捕捉字首定義良好的方法，像是 `find_by_*` ― 讓你的程式碼愈肯定(assertive)愈好。
+  - 在最後的敘述句(statement)呼叫 `super`
+  - 從 delegate 到 assertive, 不神奇的(non-magical) methods:
+
+    ```ruby
+    # 不好
+    def method_missing?(meth, *args, &block)
+      if /^find_by_(?<prop>.*)/ =~ meth
+        # ... lots of code to do a find_by
+      else
+        super
+      end
+    end
+
+    # 好
+    def method_missing?(meth, *args, &block)
+      if /^find_by_(?<prop>.*)/ =~ meth
+        find_by(prop, *args, &block)
+      else
+        super
+      end
+    end
+
+    # 而最好的是，在每個可找到的屬性被宣告時，使用 `define_method`。
+    ```
+
 ## 其它
 
 * `ruby -w` 寫安全的程式碼。
