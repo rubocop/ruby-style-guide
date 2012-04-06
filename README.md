@@ -857,22 +857,35 @@ in *Ruby* now, not in *Python*.
       n / d
     ```
   
-* Avoid rescuing the `Exception` class.
+* Avoid rescuing the `Exception` class.  This will trap signals and calls to
+  `exit`, requiring you to `kill -9` the process.
 
     ```Ruby
-    # bad 
+    # bad
     begin
-      # an exception occurs here
-    rescue
+      # calls to exit and kill signals will be caught (except kill -9)
+      exit
+    rescue Exception
+      puts "you didn't really want to exit, right?"
       # exception handling
     end
 
-    # still bad
+    # good
     begin
-      # an exception occurs here
-    rescue Exception
+      # a blind rescue rescues from StandardError, not Exception as many
+      # programmers assume.
+    rescue => e
       # exception handling
     end
+
+    # also good
+    begin
+      # an exception occurs here
+
+    rescue StandardError => e
+      # exception handling
+    end
+
     ```
 
 * Put more specific exceptions higher up the rescue chain, otherwise
