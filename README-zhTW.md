@@ -710,22 +710,34 @@
       n / d
     ```
   
-* 避免救援 `Exception` 類別。
+* 避免救援 `Exception` 類別。這會把信號困住，並呼叫 `exit`，導致你需要 `kill -9` 進程。
 
     ```Ruby
-    # 不好 
+    # 不好
     begin
-      # 這裡發生了一個異常
-    rescue
+      # 呼叫 exit 及殺掉信號會被捕捉（除了 kill -9）
+      exit
+    rescue Exception
+      puts "you didn't really want to exit, right?"
       # 異常處理
     end
 
-    # 仍不好
+    # 好
     begin
-      # 這裡發生了一個異常
-    rescue Exception
+      # 從 StandardError 中救援一個救援子句，
+      # 不是許多程式設計師所假定的異常。
+    rescue => e
       # 異常處理
     end
+
+    # 也很好
+    begin
+      # 這裡發生一個異常
+
+    rescue StandardError => e
+      # 異常處理
+    end
+
     ```
 
 * 把較具體的異常放在救援串連的較上層，不然它們永遠不會被救援。
