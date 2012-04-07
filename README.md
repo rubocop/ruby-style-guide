@@ -607,8 +607,8 @@ syntax.
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date. No comment is better than an outdated
-  comment.
+* Keep existing comments up-to-date. An outdated is worse than no comment
+  at all.
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try.)
 
