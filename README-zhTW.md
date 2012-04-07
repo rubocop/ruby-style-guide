@@ -527,7 +527,7 @@
 
 * 當設計類別階層時，確認它們符合 [Liskov 代換原則](http://en.wikipedia.org/wiki/Liskov_substitution_principle)。
 * 盡可能讓你的類別越[堅固](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))越好。
-* 永遠替類別提供一個適當的 `to_s` 方法給來表示領域模型（domain model）。
+* 永遠替類別提供一個適當的 `to_s` 方法來表示領域模型（domain model）。
 
     ```Ruby
     class Person
@@ -654,7 +654,7 @@
         # ...
       end
     end
-* 使用 `def slef.method` 來定義 singleton 方法。這讓方法更能抵抗重構帶來的變化。
+* 使用 `def self.method` 來定義 singleton 方法。這讓方法更能抵抗重構帶來的變化。
 
     ```Ruby
     class TestClass
