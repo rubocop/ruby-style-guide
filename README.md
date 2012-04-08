@@ -607,8 +607,8 @@ syntax.
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date. No comment is better than an outdated
-  comment.
+* Keep existing comments up-to-date. An outdated is worse than no comment
+  at all.
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try.)
 
@@ -707,6 +707,24 @@ mutators.
       end
     end
     ```  
+* Consider using `Struct.new`, which defines the trivial accessors,
+onstructor and comparison operators for you.
+
+    ```Ruby
+    # good
+    class Person
+      attr_reader :first_name, :last_name
+
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+    end
+
+    # better
+    class Person < Struct.new (:first_name, :last_name)
+    end
+    ````
   
 * Consider adding factory methods to provide additional sensible ways
 to create instances of a particular class.
