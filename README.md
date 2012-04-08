@@ -708,7 +708,7 @@ mutators.
     end
     ```  
 * Consider using `Struct.new`, which defines the trivial accessors,
-onstructor and comparison operators for you.
+  constructor and comparison operators for you.
 
     ```Ruby
     # good
