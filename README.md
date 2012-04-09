@@ -873,6 +873,7 @@ in *Ruby* now, not in *Python*.
       puts "Cannot divide by 0!"
     else
       n / d
+    end
     ```
   
 * Avoid rescuing the `Exception` class.  This will trap signals and calls to
