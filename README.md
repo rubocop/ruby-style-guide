@@ -1095,12 +1095,13 @@ syntax.
   `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
 
 * Be careful with `^` and `$` as they match start/end of line, not string endings.
-  If you want to match the whole string use: `\A` and `\Z`.
+  If you want to match the whole string use: `\A` and `\z` (not to be
+  confused with `\Z` which is the equivalent of `/\n?\z/`).
 
     ```Ruby
     string = "some injection\nusername"
     string[/^username$/]   # matches
-    string[/\Ausername\Z/] # don't match
+    string[/\Ausername\z/] # don't match
     ```
 
 * Use `x` modifier for complex regexps. This makes them more readable and you
