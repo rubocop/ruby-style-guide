@@ -1094,6 +1094,13 @@ syntax.
     email_with_name = "#{ user.name } <#{ user.email }>"
     ```
 
+* Prefer padding string interpolation code with space. It more clearly sets the
+  code apart from the string.
+
+    ```Ruby
+    "#{ user.last_name }, #{ user.first_name }"
+    ```
+
 * Prefer single-quoted strings when you don't need string interpolation or
   special symbols such as `\t`, `\n`, `'`, etc.
 
