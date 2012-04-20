@@ -375,7 +375,7 @@ You can generate a PDF or an HTML copy of this guide using
     ```
 
 * Favor modifier `while/until` usage when you have a single-line
-  body. 
+  body.
 
     ```Ruby
     # bad
@@ -502,7 +502,7 @@ You can generate a PDF or an HTML copy of this guide using
 
     # bad
     if v = array.grep(/foo/) ...
-    
+
     # also good - shows intended use of assignment and has correct precedence.
     if (v = self.next_value) == "hello" ...
     ```
@@ -620,13 +620,13 @@ syntax.
     ```
 
 * Define the non-bang (safe) method in terms of the bang (dangerous)
-  one if possible. 
+  one if possible.
 
     ```Ruby
     class Array
       def flatten_once!
         res = []
-      
+
         each do |e|
           [*e].each { |f| res << f }
         end
@@ -638,7 +638,7 @@ syntax.
         dup.flatten_once!
       end
     end
-    ```    
+    ```
 
 * When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
@@ -779,7 +779,7 @@ mutators.
         @last_name = last_name
       end
     end
-    ```  
+    ```
 * Consider using `Struct.new`, which defines the trivial accessors,
 constructor and comparison operators for you.
 
@@ -798,7 +798,7 @@ constructor and comparison operators for you.
     class Person < Struct.new (:first_name, :last_name)
     end
     ````
-  
+
 * Consider adding factory methods to provide additional sensible ways
 to create instances of a particular class.
 
@@ -930,7 +930,7 @@ in *Ruby* now, not in *Python*.
       # the rescue clause does absolutely nothing
     end
     ```
-  
+
 * Don't use exceptions for flow of control.
 
     ```Ruby
@@ -948,7 +948,7 @@ in *Ruby* now, not in *Python*.
       n / d
     end
     ```
-  
+
 * Avoid rescuing the `Exception` class.  This will trap signals and calls to
   `exit`, requiring you to `kill -9` the process.
 
@@ -1001,7 +1001,7 @@ in *Ruby* now, not in *Python*.
     rescue Exception => e
       # some handling
     end
-    ```  
+    ```
 
 * Release external resources obtained by your program in an ensure
 block.
@@ -1016,7 +1016,7 @@ block.
       f.close unless f.nil?
     end
     ```
-  
+
 * Favor the use of exceptions for the standard library over
 introducing new exception classes.
 
@@ -1056,7 +1056,7 @@ strings.
 * Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
-  `Hash`'s fast lookup. 
+  `Hash`'s fast lookup.
 * Use symbols instead of strings as hash keys.
 
     ```Ruby
@@ -1091,7 +1091,7 @@ syntax.
     email_with_name = user.name + ' <' + user.email + '>'
 
     # good
-    email_with_name = "#{user.name} <#{user.email}>"
+    email_with_name = "#{ user.name } <#{ user.email }>"
     ```
 
 * Prefer single-quoted strings when you don't need string interpolation or
@@ -1139,7 +1139,7 @@ syntax.
     html << '<h1>Page title</h1>'
 
     paragraphs.each do |paragraph|
-      html << "<p>#{paragraph}</p>"
+      html << "<p>#{ paragraph }</p>"
     end
     ```
 
@@ -1222,15 +1222,15 @@ syntax.
     # should be '<div class="text">Some text</div>'
 
     # bad (no double-quotes)
-    %(This is #{quality} style)
-    # should be "This is #{quality} style"
+    %(This is #{ quality } style)
+    # should be "This is #{ quality } style"
 
     # bad (multiple lines)
-    %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
+    %(<div>\n<span class="big">#{ exclamation }</span>\n</div>)
     # should be a heredoc.
 
     # good (requires interpolation, has quotes, single line)
-    %(<tr><td class="name">#{name}</td>)
+    %(<tr><td class="name">#{ name }</td>)
     ```
 
 * Use `%r` only for regular expressions matching *more than* one '/' character.
@@ -1256,15 +1256,15 @@ syntax.
 * Do not mess around in core classes when writing libraries. (Do not monkey
 patch them.)
 
-* The block form of `class_eval` is preferable to the string-interpolated form. 
+* The block form of `class_eval` is preferable to the string-interpolated form.
   - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`, so that your backtraces make sense:
 
     ```ruby
     class_eval "def use_relative_model_naming?; true; end", __FILE__, __LINE__
     ```
-    
+
   - `define_method` is preferable to `class_eval{ def ... }`
-    
+
 * When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the rails code):
 
     ```ruby
@@ -1272,14 +1272,14 @@ patch them.)
     UNSAFE_STRING_METHODS.each do |unsafe_method|
       if 'String'.respond_to?(unsafe_method)
         class_eval <<-EOT, __FILE__, __LINE__ + 1
-          def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
-            to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
-          end                                       # end
+          def #{ unsafe_method }(*args, &block)      # def capitalize(*args, &block)
+            to_str.#{ unsafe_method }(*args, &block) #   to_str.capitalize(*args, &block)
+          end                                        # end
 
-          def #{unsafe_method}!(*args)              # def capitalize!(*args)
-            @dirty = true                           #   @dirty = true
-            super                                   #   super
-          end                                       # end
+          def #{ unsafe_method }!(*args)             # def capitalize!(*args)
+            @dirty = true                            #   @dirty = true
+            super                                    #   super
+          end                                        # end
         EOT
       end
     end
@@ -1310,7 +1310,7 @@ patch them.)
       end
     end
 
-    # best of all, though, would to define_method as each findable attribute is declared  
+    # best of all, though, would to define_method as each findable attribute is declared
     ```
 
 ## Misc
