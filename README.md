@@ -1022,6 +1022,19 @@ introducing new exception classes.
 
 ## Collections
 
+* Prefer literal array and hash creation notation (unless you need to
+pass parameters to their constructors, that is).
+
+    ```Ruby
+    # bad
+    arr = Array.new
+    hash = Hash.new
+
+    # good
+    arr = []
+    hash = {}
+    ```
+
 * Prefer `%w` to the literal array syntax when you need an array of
 strings.
 
