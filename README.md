@@ -374,6 +374,29 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
+* Favor modifier `while/until` usage when you have a single-line
+  body. 
+
+    ```Ruby
+    # bad
+    while some_condition
+      do_something
+    end
+
+    # good
+    do_something while some_condition
+    ```
+
+* Favor `until` over `while` for negative conditions.
+
+    ```Ruby
+    # bad
+    do_something while !some_condition
+
+    # good
+    do_something until some_condition
+    ```
+
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
@@ -654,7 +677,11 @@ syntax.
     ```
 
 * Keep existing comments up-to-date. An outdated is worse than no comment
-  at all.
+at all.
+
+> Good code is a like a good joke - it needs no explanation. <br/>
+> -- Russ Olsen
+
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try.)
 
