@@ -921,14 +921,45 @@ in *Ruby* now, not in *Python*.
 
 ## Exceptions
 
+* Signal exceptions using the `fail` keyword. Use `raise` only when
+  catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
+
+    ```Ruby
+    begin
+     fail "Oops";
+    rescue => error
+      raise if error.message != "Oops"
+    end
+    ```  
+
+* Never return form an `ensure` block. If you explicitly return from a
+  method inside an `ensure` block, the return will take precedence over
+  any exception being raised, and the method will return as if no
+  exception had been raised at all. In effect, the exception will be
+  silently thrown away.
+
+    ```Ruby
+    def foo
+      begin
+        fail
+      ensure
+        return "very bad idea"
+      end
+    end
+    ```
+    
 * Don't suppress exceptions.
 
     ```Ruby
+    # bad
     begin
       # an exception occurs here
     rescue SomeError
       # the rescue clause does absolutely nothing
     end
+
+    # bad
+    do_something rescue nil
     ```
   
 * Don't use exceptions for flow of control.
