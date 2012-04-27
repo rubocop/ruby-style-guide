@@ -679,11 +679,11 @@ syntax.
 * Keep existing comments up-to-date. An outdated is worse than no comment
 at all.
 
-> Good code is a like a good joke - it needs no explanation. <br/>
+> Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
 * Avoid writing comments to explain bad code. Refactor the code to
-  make it self-explanatory. (Do or do not - there is no try.)
+  make it self-explanatory. (Do or do not - there is no try. --Yoda)
 
 ## Annotations
 
@@ -1323,7 +1323,7 @@ patch them.)
     end
     ```
 
-* avoid using `method_missing` for metaprogramming. Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.luanch_state = false`). Consider using delegation, proxy, or `define_method` instead.  If you must use `method_missing`,
+* avoid using `method_missing` for metaprogramming. Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.launch_state = false`). Consider using delegation, proxy, or `define_method` instead.  If you must, use `method_missing`,
   - be sure to [also define `respond_to?`](http://devblog.avdi.org/2011/12/07/defining-method_missing-and-respond_to-at-the-same-time/)
   - only catch methods with a well-defined prefix, such as `find_by_*` -- make your code as assertive as possible.
   - call `super` at the end of your statement
