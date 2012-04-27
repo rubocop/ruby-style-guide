@@ -947,7 +947,56 @@ in *Ruby* now, not in *Python*.
       end
     end
     ```
-    
+
+* Use *implicit begin blocks* when possible.
+
+    ```Ruby
+    # bad
+    def foo
+      begin
+        # main logic goes here
+      rescue
+        # failure handling goes here
+      end
+    end
+
+    # good
+    def foo
+      # main logic goes here
+    rescue 
+      # failure handling goes here
+    end
+    ```
+
+* Mitigate the proliferation of `begin` blocks via the use of
+  *contingency methods* (a term coined by Avdi Grimm).
+
+    ```Ruby
+    # bad
+    begin
+      something_that_might_fail
+    rescue IOError
+      # handle IOError
+    end
+
+    begin
+      something_else_that_might_fail
+    rescue IOError
+      # handle IOError
+    end
+
+    # good
+    def with_io_error_handling
+       yield
+    rescue
+      # handle IOError
+    end
+
+    with_io_error_handling { something_that_might_fail }
+
+    with_io_error_handling { something_else_that_might_fail }
+    ```
+
 * Don't suppress exceptions.
 
     ```Ruby
