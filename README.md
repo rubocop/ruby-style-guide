@@ -375,7 +375,7 @@ You can generate a PDF or an HTML copy of this guide using
     ```
 
 * Favor modifier `while/until` usage when you have a single-line
-  body. 
+  body.
 
     ```Ruby
     # bad
@@ -426,7 +426,7 @@ You can generate a PDF or an HTML copy of this guide using
   when chaining.
 
     ```Ruby
-    names = ["Bozhidar", "Steve", "Sarah"]
+    names = ['Bozhidar', 'Steve', 'Sarah']
 
     # good
     names.each { |name| puts name }
@@ -437,11 +437,11 @@ You can generate a PDF or an HTML copy of this guide using
     end
 
     # good
-    names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
 
     # bad
     names.select do |name|
-      name.start_with?("S")
+      name.start_with?('S')
     end.map { |name| name.upcase }
     ```
 
@@ -502,9 +502,9 @@ You can generate a PDF or an HTML copy of this guide using
 
     # bad
     if v = array.grep(/foo/) ...
-    
+
     # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == "hello" ...
+    if (v = self.next_value) == 'hello' ...
     ```
 
 * Use `||=` freely to initialize variables.
@@ -620,13 +620,13 @@ syntax.
     ```
 
 * Define the non-bang (safe) method in terms of the bang (dangerous)
-  one if possible. 
+  one if possible.
 
     ```Ruby
     class Array
       def flatten_once!
         res = []
-      
+
         each do |e|
           [*e].each { |f| res << f }
         end
@@ -638,7 +638,7 @@ syntax.
         dup.flatten_once!
       end
     end
-    ```    
+    ```
 
 * When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
@@ -779,7 +779,7 @@ mutators.
         @last_name = last_name
       end
     end
-    ```  
+    ```
 * Consider using `Struct.new`, which defines the trivial accessors,
 constructor and comparison operators for you.
 
@@ -798,7 +798,7 @@ constructor and comparison operators for you.
     class Person < Struct.new (:first_name, :last_name)
     end
     ````
-  
+
 * Consider adding factory methods to provide additional sensible ways
 to create instances of a particular class.
 
@@ -926,11 +926,11 @@ in *Ruby* now, not in *Python*.
 
     ```Ruby
     begin
-     fail "Oops";
+      fail 'Oops';
     rescue => error
-      raise if error.message != "Oops"
+      raise if error.message != 'Oops'
     end
-    ```  
+    ```
 
 * Never return form an `ensure` block. If you explicitly return from a
   method inside an `ensure` block, the return will take precedence over
@@ -943,7 +943,7 @@ in *Ruby* now, not in *Python*.
       begin
         fail
       ensure
-        return "very bad idea"
+        return 'very bad idea'
       end
     end
     ```
@@ -963,7 +963,7 @@ in *Ruby* now, not in *Python*.
     # good
     def foo
       # main logic goes here
-    rescue 
+    rescue
       # failure handling goes here
     end
     ```
@@ -1010,7 +1010,7 @@ in *Ruby* now, not in *Python*.
     # bad
     do_something rescue nil
     ```
-  
+
 * Don't use exceptions for flow of control.
 
     ```Ruby
@@ -1018,17 +1018,17 @@ in *Ruby* now, not in *Python*.
     begin
       n / d
     rescue ZeroDivisionError
-      puts "Cannot divide by 0!"
+      puts 'Cannot divide by 0!'
     end
 
     # good
     if d.zero?
-      puts "Cannot divide by 0!"
+      puts 'Cannot divide by 0!'
     else
       n / d
     end
     ```
-  
+
 * Avoid rescuing the `Exception` class.  This will trap signals and calls to
   `exit`, requiring you to `kill -9` the process.
 
@@ -1081,13 +1081,13 @@ in *Ruby* now, not in *Python*.
     rescue Exception => e
       # some handling
     end
-    ```  
+    ```
 
 * Release external resources obtained by your program in an ensure
 block.
 
     ```Ruby
-    f = File.open("testfile")
+    f = File.open('testfile')
     begin
       # .. process
     rescue
@@ -1096,7 +1096,7 @@ block.
       f.close unless f.nil?
     end
     ```
-  
+
 * Favor the use of exceptions for the standard library over
 introducing new exception classes.
 
@@ -1136,7 +1136,7 @@ strings.
 * Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
-  `Hash`'s fast lookup. 
+  `Hash`'s fast lookup.
 * Use symbols instead of strings as hash keys.
 
     ```Ruby
@@ -1343,15 +1343,15 @@ syntax.
 * Do not mess around in core classes when writing libraries. (Do not monkey
 patch them.)
 
-* The block form of `class_eval` is preferable to the string-interpolated form. 
+* The block form of `class_eval` is preferable to the string-interpolated form.
   - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`, so that your backtraces make sense:
 
     ```ruby
-    class_eval "def use_relative_model_naming?; true; end", __FILE__, __LINE__
+    class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
     ```
-    
+
   - `define_method` is preferable to `class_eval{ def ... }`
-    
+
 * When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the rails code):
 
     ```ruby
@@ -1397,7 +1397,7 @@ patch them.)
       end
     end
 
-    # best of all, though, would to define_method as each findable attribute is declared  
+    # best of all, though, would to define_method as each findable attribute is declared
     ```
 
 ## Misc
