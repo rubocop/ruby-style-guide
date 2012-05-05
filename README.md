@@ -479,6 +479,55 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
+* Avoid `self` where not required.
+
+    ```Ruby
+    # bad
+    def ready?
+      if self.last_reviewed_at > self.last_updated_at
+        self.worker.update(self.content, self.options)
+        self.status = :in_progress
+      end
+      self.status == :verified
+    end
+
+    # good
+    def ready?
+      if last_reviewed_at > last_updated_at
+        worker.update(content, options)
+        self.status = :in_progress
+      end
+      status == :verified
+    end
+    ```
+
+* As a corollary, avoid shadowing methods with local variables unless they are both equivalent
+
+    ```Ruby
+    class Foo
+      attr_accessor :options
+
+      # ok
+      def initialize(options)
+        self.options = options
+        # both options and self.options are equivalent here
+      end
+
+      # bad
+      def do_something(options = {})
+        unless options[:when] == :later
+          output(self.options[:message])
+        end
+      end
+
+      # good
+      def do_something(params = {})
+        unless params[:when] == :later
+          output(options[:message])
+        end
+      end
+    end
+
 * Use spaces around the `=` operator when assigning default values to method parameters:
 
     ```Ruby
