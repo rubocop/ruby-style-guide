@@ -562,7 +562,7 @@ You can generate a PDF or an HTML copy of this guide using
   assignment with parenthesis.
 
     ```Ruby
-    # good - shows intented use of assignment
+    # good - shows intended use of assignment
     if (v = array.grep(/foo/)) ...
 
     # bad
