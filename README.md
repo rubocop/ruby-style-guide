@@ -1181,7 +1181,7 @@ pass parameters to their constructors, that is).
     ```
 
 * Prefer `%w` to the literal array syntax when you need an array of
-strings.
+words.
 
     ```Ruby
     # bad
