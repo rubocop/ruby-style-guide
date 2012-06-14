@@ -1246,15 +1246,15 @@ syntax.
     "#{ user.last_name }, #{ user.first_name }"
     ```
 
-* Prefer single-quoted strings when you don't need string interpolation or
-  special symbols such as `\t`, `\n`, `'`, etc.
+* Prefer double-quoted strings at all times, so you do not need to change quoting when
+  you want to add interpolation.
 
     ```Ruby
     # bad
-    name = "Bozhidar"
+    name = 'Bozhidar'
 
     # good
-    name = 'Bozhidar'
+    name = "Bozhidar"
     ```
 
 * Don't use `{}` around instance variables being interpolated into a
