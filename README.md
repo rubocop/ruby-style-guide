@@ -1053,7 +1053,7 @@ in *Ruby* now, not in *Python*.
     # good
     def with_io_error_handling
        yield
-    rescue
+    rescue IOError
       # handle IOError
     end
 
