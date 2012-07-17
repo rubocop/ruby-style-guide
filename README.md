@@ -14,17 +14,7 @@
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
 
-```ruby
-def hello
-end
-```
-
 ##1. Layout
-
-```ruby
-def bye
-end
-```
 
 1.1. Use `UTF-8` as the source file encoding.
 
@@ -40,12 +30,7 @@ end
     configuration setting to protect your project from Windows line
     endings creeping in:
 
-```ruby
-def bye
-end
-```
-
-        ```$ git config --global core.autocrlf true```
+```$ git config --global core.autocrlf true```
 
 ##2. Comments
 
@@ -59,10 +44,10 @@ end
 
 2.3. Avoid superfluous comments.
 
-    ```Ruby
-    # bad
-    counter += 1 # increments counter by one
-    ```
+```ruby
+# bad
+counter += 1 # increments counter by one
+```
 
 2.4. Keep existing comments up-to-date. An outdated is worse than no comment
 at all.
@@ -72,10 +57,11 @@ at all.
 
 2.6. Avoid code banners. Your class is probably too big if you need them. Refactor!
 
-    ```ruby
-    ################################################
-    # Code banners are a code smell
-    ################################################
+```ruby
+################################################
+# Code banners are a code smell
+################################################
+```
 
 2.6. Comment methods, classes, modules, etc., like this:
 
