@@ -65,38 +65,38 @@ at all.
 
 2.6. Comment methods, classes, modules, etc., like this:
 
-    ```ruby
-    # Print a log line to STDOUT. You can customize the output by specifying
-    # a block.
-    #
-    # msgs  - Zero or more String messages that will be printed to the log
-    #         separated by spaces.
-    # block - An optional block that can be used to customize the date format.
-    #         If it is present, it will be sent a Time object representing
-    #         the current time. Your block should return a String version of
-    #         the time, formatted however you please.
-    #
-    # Examples
-    #
-    #   log("An error occurred.")
-    #
-    #   log("No such file", "/var/log/server.log") do |time|
-    #     time.strftime("%Y-%m-%d %H:%M:%S")
-    #   end
-    #
-    # Returns nothing.
-    #
-    def log(*msgs, &block)
-      ...
-    end
-    ```
+```ruby
+# Print a log line to STDOUT. You can customize the output by specifying
+# a block.
+#
+# msgs  - Zero or more String messages that will be printed to the log
+#         separated by spaces.
+# block - An optional block that can be used to customize the date format.
+#         If it is present, it will be sent a Time object representing
+#         the current time. Your block should return a String version of
+#         the time, formatted however you please.
+#
+# Examples
+#
+#   log("An error occurred.")
+#
+#   log("No such file", "/var/log/server.log") do |time|
+#     time.strftime("%Y-%m-%d %H:%M:%S")
+#   end
+#
+# Returns nothing.
+#
+def log(*msgs, &block)
+  ...
+end
+```
 
 2.7. Inline comments like this:
 
-   ```ruby
-   # This is a description of the line.
-   @pages.each { |p| puts p.name }
-   ```
+```ruby
+# This is a description of the line.
+@pages.each { |p| puts p.name }
+```
 
 2.8. Parameter explanations, examples, return descriptions, etc., are optional. You should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
 
@@ -117,57 +117,57 @@ at all.
   arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if and only if
   there exists a safe version of that *dangerous* method.
 
-    ```Ruby
-    # bad - there is not matching 'safe' method
-    class Person
-      def update!
-      end
-    end
+```ruby
+# bad - there is not matching 'safe' method
+class Person
+  def update!
+  end
+end
 
-    # good
-    class Person
-      def update
-      end
-    end
+# good
+class Person
+  def update
+  end
+end
 
-    # good
-    class Person
-      def update!
-      end
+# good
+class Person
+  def update!
+  end
 
-      def update
-      end
-    end
-    ```
+  def update
+  end
+end
+```
 
 3.6 Define the non-bang (safe) method in terms of the bang (dangerous)
   one if possible.
 
-    ```Ruby
-    class Array
-      def flatten_once!
-        res = []
+```ruby
+class Array
+  def flatten_once!
+    res = []
 
-        each do |e|
-          [*e].each { |f| res << f }
-        end
-
-        replace(res)
-      end
-
-      def flatten_once
-        dup.flatten_once!
-      end
+    each do |e|
+      [*e].each { |f| res << f }
     end
-    ```
+
+    replace(res)
+  end
+
+  def flatten_once
+    dup.flatten_once!
+  end
+end
+```
 
 3.8. When defining binary operators, name the argument `other`.
 
-    ```Ruby
-    def +(other)
-      # body omitted
-    end
-    ```
+```ruby
+def +(other)
+  # body omitted
+end
+```
 
 ##10. References
 
