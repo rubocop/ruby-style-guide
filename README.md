@@ -14,6 +14,10 @@
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
 
+```ruby
+def hello
+end
+```
 
 ##1. Layout
 
