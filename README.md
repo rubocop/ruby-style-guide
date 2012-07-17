@@ -21,6 +21,11 @@ end
 
 ##1. Layout
 
+```ruby
+def bye
+end
+```
+
 1.1. Use `UTF-8` as the source file encoding.
 
 1.2. Use two **spaces** per indentation level, no tabs.
@@ -34,6 +39,11 @@ end
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
     endings creeping in:
+
+```ruby
+def bye
+end
+```
 
         ```$ git config --global core.autocrlf true```
 
