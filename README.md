@@ -700,14 +700,21 @@ syntax.
 
 ##9. Exceptions
 
+* Use `e` as the rescued variable:
+
+```ruby
+rescue StandardError => e
+```
+
+
 * Signal exceptions using the `fail` keyword. Use `raise` only when
   catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
 
     ```Ruby
     begin
       fail 'Oops';
-    rescue => error
-      raise if error.message != 'Oops'
+    rescue => e
+      raise if e.message != 'Oops'
     end
     ```
 
