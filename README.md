@@ -99,7 +99,7 @@ You can generate a PDF or an HTML copy of this guide using
     configuration setting to protect your project from Windows line
     endings creeping in:
 
-        ```$ git config --global core.autocrlf true```
+        $ git config --global core.autocrlf true
 
 * Use spaces around operators, after commas, colons and semicolons, around `{`
   and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
