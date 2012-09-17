@@ -1,0 +1,59 @@
+<%#|
+  Canonical view: app/views/people/index.html.erb
+  NOTE: "#|" signifies a meta-comment.
+
+  Use only erb (though we want to move to haml soon...)
+  Prefer regular views over cells. Cells great sometimes, but they probably
+  aren't the solution you are looking for.
+%>
+
+<%#| Use erb comments over html comments. %>
+<%# Display a list of people %>
+<div>
+  <%#| Indent all block-level elements %>
+
+  <%#|
+    Learn and use all the right rails helpers and conventions.
+    This one renders an "app/views/people/_person.html.haml"
+    for each person, and assigns the local variable "person"
+  %>
+  <%= render @people %>
+
+  <% @people.each do |person| %>
+    <%#| Indent code blocks, if, else, etc. %>
+    <%#| ... %>
+  <% end %>
+
+  <%#|
+    - Use link_to over <a> tags.
+    - Prefer polymorphic routes over named routes, named routes over params hash, params hash over hard-coded url.
+    - Use paths over urls unless it is truly important to have a full url.
+  %>
+  <%= link_to 'Edit', [:edit, @person] %>
+
+  <%#| Use the block form of link_to when there is html content inside of this link. %>
+  <% link_to @person do %>
+    <span>@person.name</span>
+  <% end %>
+
+  <%#|
+    Use naked form_fors wherever possible. If you need to pass in anything but
+    the class and id, your controllers probably stink.
+  %>
+  <%= form_for @person do |f| %>
+    <%#| ... %>
+  <% end %>
+
+</div>
+
+<%#|
+  If you are using a '/' in the template name when rendering a partial, you
+  probably don't understand the template rendering conventions well enough.
+  Read through the rails guides, and then write it without a '/'.
+
+  When you see UI duplication, common patterns, widgets, etc., extract them
+  into a helper method that says what you mean.
+
+  Use overlay_link_to and overlay_form_for for links and forms within an
+  overlay dialog.
+%>
