@@ -1,19 +1,19 @@
 ## Table of Contents
 
-* [Source Code Layout](#1.-source-code-layout)
-* [Comments](#2.-comments)
-* [Naming](#3.-naming)
-* [General Syntax](#4.-general-syntax)
-* [Strings](#4.-strings)
-* [Conditionals](#6.-conditionals)
-* [Collections](#7.-collections)
-* [Iteration](#8.-iteration)
-* [Methods](#9.-methods)
-* [Exceptions](#10.-exceptions)
-* [Regular Expressions](#11.-regular-expressions)
-* [Classes](#12.-classes)
-* [Misc](#13.-misc)
-* [References](#14.-references)
+* [Source Code Layout](#1-source-code-layout)
+* [Comments](#2-comments)
+* [Naming](#3-naming)
+* [General Syntax](#4-general-syntax)
+* [Strings](#4-strings)
+* [Conditionals](#6-conditionals)
+* [Collections](#7-collections)
+* [Iteration](#8-iteration)
+* [Methods](#9-methods)
+* [Exceptions](#10-exceptions)
+* [Regular Expressions](#11-regular-expressions)
+* [Classes](#12-classes)
+* [Misc](#13-misc)
+* [References](#14-references)
 
 ##1. Source Code Layout
 
