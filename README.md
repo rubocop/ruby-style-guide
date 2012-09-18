@@ -504,48 +504,51 @@ hash = { :one => 1, :two => 2, :three => 3 }
 
 7.10. Leave a single space padding inside the braces of a hash.
 
-    ```Ruby
-    # bad
-    hash = {:one => 1, :two => 2}
+```Ruby
+# bad
+hash = {:one => 1, :two => 2}
 
-    # good
-    hash = { :one => 1, :two => 2 }
+# good
+hash = { :one => 1, :two => 2 }
+```
 
 7.11. Leave no padding inside the brackets of an array.
 
-    ```Ruby
-    # bad
-    array = [ 1, 2, 3 ]
+```Ruby
+# bad
+array = [ 1, 2, 3 ]
 
-    # good
-    array = [1, 2, 3]
+# good
+array = [1, 2, 3]
+```
 
 7.12. Use a single line for arrays and hashes if they will fit.
 
 7.13. Format multiline hashes and arrays by indenting two-spaces.
 
-    ```Ruby
-    hash = {
-      :name => 'peter',
-      :professional => 'teacher',
-      :favourite_color => 'green'
-    }
+```Ruby
+hash = {
+  :name => 'peter',
+  :professional => 'teacher',
+  :favourite_color => 'green'
+}
 
-    array = [
-      'Happy Sauce',
-      'Awesome people eating computers'
-    ]
-    ```
+array = [
+  'Happy Sauce',
+  'Awesome people eating computers'
+]
+```
 
 7.14. You may optionally align hash values if it improves readability. Especially
     when there are many keys.
 
-    ```Ruby
-    hash = {
-      :name             => 'peter',
-      :professional     => 'teacher',
-      :favourite_color  => 'green'
-    }
+```Ruby
+hash = {
+  :name             => 'peter',
+  :professional     => 'teacher',
+  :favourite_color  => 'green'
+}
+```
 
 7.15. Prefer `size` over `length` for getting the number of elements.
 
@@ -557,40 +560,40 @@ hash = { :one => 1, :two => 2, :three => 3 }
   doesn't introduce a new scope (unlike `each`) and variables defined
   in its block will be visible outside it.
 
-    ```Ruby
-    arr = [1, 2, 3]
+```Ruby
+arr = [1, 2, 3]
 
-    # bad
-    for elem in arr do
-      puts elem
-    end
+# bad
+for elem in arr do
+  puts elem
+end
 
-    # good
-    arr.each { |elem| puts elem }
-    ```
+# good
+arr.each { |elem| puts elem }
+```
 
-    ```Ruby
-    # boolean expression
-    if some_condition && some_other_condition
-      do_something
-    end
+```Ruby
+# boolean expression
+if some_condition && some_other_condition
+  do_something
+end
 
-    # control flow
-    document.saved? or document.save!
-    ```
+# control flow
+document.saved? or document.save!
+```
 
 8.2. Favour modifier `while/until` usage when you have a single-line
   body.
 
-    ```Ruby
-    # bad
-    while some_condition
-      do_something
-    end
+```Ruby
+# bad
+while some_condition
+  do_something
+end
 
-    # good
-    do_something while some_condition
-    ```
+# good
+do_something while some_condition
+```
 
 8.3. Favour `until` over `while` for negative conditions.
 
