@@ -17,42 +17,42 @@
 
 ##1. Source Code Layout
 
-1.1. Use `UTF-8` as the source file encoding.
+0. Use `UTF-8` as the source file encoding.
 
-1.2. Use two **spaces** per indentation level, no tabs.
+0. Use two **spaces** per indentation level, no tabs.
 
-1.3. Leave no trailing whitespace of any kind.
+0. Leave no trailing whitespace of any kind.
 
-1.4. Do not leave a blank line at the bottom of the file.
+0. Do not leave a blank line at the bottom of the file.
 
-1.5 Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
+0. Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
 
-1.6 Keep lines shorter than 80 characters.
+0. Keep lines shorter than 80 characters.
 
 ##2. Comments
 
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
-2.1. Write self-documenting code. If feel you need a comment, refactor the code until a comment feels like overkill. Then, ignore the rest of this section.
+0. Write self-documenting code. If feel you need a comment, refactor the code until a comment feels like overkill. Then, ignore the rest of this section.
 
-2.2. Comments longer than a word are capitalized and use punctuation.
+0. Comments longer than a word are capitalized and use punctuation.
 
-2.3. Avoid superfluous comments.
+0. Avoid superfluous comments.
 
 ```Ruby
 # bad
 counter += 1 # increments counter by one
 ```
 
-2.4. Keep existing comments up-to-date. An outdated is worse than no comment
+0. Keep existing comments up-to-date. An outdated is worse than no comment
 at all.
 
-2.5. Avoid writing comments to explain bad code. Refactor the code to
+0. Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory.
 
-2.6. Avoid code banners. Your class is probably too big if you need them. Refactor!
+0. Avoid code banners. Your class is probably too big if you need them. Refactor!
 
 ```Ruby
 ################################################
@@ -60,16 +60,16 @@ at all.
 ################################################
 ```
 
-2.7. Parameter explanations, examples, return descriptions, etc., are often overkill, but you should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
+0. Parameter explanations, examples, return descriptions, etc., are often overkill, but you should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
 
-2.8. Write inline comments like this:
+0. Write inline comments like this:
 
 ```Ruby
 # This is a description of the line.
 @pages.each { |p| puts p.name }
 ```
 
-2.9. Write comments for methods, classes, modules, etc., like this:
+0. Write comments for methods, classes, modules, etc., like this:
 
 ```Ruby
 # Print a log line to STDOUT. You can customize the output by specifying
@@ -99,18 +99,18 @@ end
 
 ##3. Naming
 
-3.1. Use `snake_case` for methods and variables.
+0. Use `snake_case` for methods and variables.
 
-3.2. Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
+0. Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
 
-3.3. Use `SCREAMING_SNAKE_CASE` for other constants.
+0. Use `SCREAMING_SNAKE_CASE` for other constants.
 
-3.4. The names of predicate methods (methods that return a boolean value)
+0. The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `Array#empty?`).
 
-3.5. The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
+0. The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
   arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if and only if
   there exists a safe version of that *dangerous* method.
 
@@ -158,7 +158,7 @@ class Array
 end
 ```
 
-3.8. When defining binary operators, name the argument `other`.
+0. When defining binary operators, name the argument `other`.
 
 ```Ruby
 def +(other)
@@ -282,7 +282,7 @@ end
 
 ##6. Conditionals
 
-6.1. Indent `when` as deep as `case`.
+0. Indent `when` as deep as `case`.
 
 ```Ruby
 case
@@ -306,7 +306,7 @@ kind = case year
        end
 ```
 
-6.2. Never use `then` for multi-line `if/unless`.
+0. Never use `then` for multi-line `if/unless`.
 
 ```Ruby
 # bad
@@ -320,7 +320,7 @@ if some_condition
 end
 ```
 
-6.3. Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
+0. Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
   It's more common and obviously more concise.
 
 ```Ruby
@@ -331,9 +331,9 @@ result = if some_condition then something else something_else end
 result = some_condition ? something : something_else
 ```
 
-6.4. Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
+0. Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
 
-6.5. Use one expression per branch in a ternary operator. This
+0. Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
   `if/else` constructs in these cases.
 
@@ -349,13 +349,13 @@ else
 end
 ```
 
-6.6. Never use `if x; ...`. Use the ternary operator instead.
+0. Never use `if x; ...`. Use the ternary operator instead.
 
-6.7. Use `when x then ...` for one-line cases.
+0. Use `when x then ...` for one-line cases.
 
-6.8. Never use `when x; ...`. See the previous rule.
+0. Never use `when x; ...`. See the previous rule.
 
-6.9. Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
+0. Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
   wrong operators.)
 
@@ -429,7 +429,7 @@ end
 
 ##7. Collections
 
-7.1. Prefer literal array and hash creation notation (unless you need to
+0. Prefer literal array and hash creation notation (unless you need to
 pass parameters to their constructors, that is).
 
 ```Ruby
@@ -442,7 +442,7 @@ arr = []
 hash = {}
 ```
 
-7.2. Prefer `%w` to the literal array syntax when you need an array of single-word
+0. Prefer `%w` to the literal array syntax when you need an array of single-word
 strings.
 
 ```Ruby
@@ -453,7 +453,7 @@ STATES = ['draft', 'open', 'closed']
 STATES = %w(draft open closed)
 ```
 
-7.4. Use parentheses are the delimeters for `%w`.
+0. Use parentheses are the delimeters for `%w`.
 
 ```Ruby
 # bad
@@ -463,21 +463,21 @@ STATES = %w[draft open closed]
 STATES = %w(draft open closed)
 ```
 
-7.3. Avoid %W.
+0. Avoid %W.
 
-7.4. Avoid the creation of huge gaps in arrays.
+0. Avoid the creation of huge gaps in arrays.
 
 ```Ruby
 arr = []
 arr[100] = 1 # now you have an array with lots of nils
 ```
 
-7.5. Use `Set` instead of `Array` when dealing with unique elements. `Set`
+0. Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
 
-7.6. Use symbols instead of strings as hash keys.
+0. Use symbols instead of strings as hash keys.
 
 ```Ruby
 # bad
@@ -487,9 +487,9 @@ hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 hash = { :one => 1, :two => 2, :three => 3 }
 ```
 
-7.7. Avoid the use of mutable object as hash keys.
+0. Avoid the use of mutable object as hash keys.
 
-7.8. Use the old hashrocket hash syntax instead of the new 1.9 syntax (even though it is nicer!).
+0. Use the old hashrocket hash syntax instead of the new 1.9 syntax (even though it is nicer!).
   We would eventually like to move towards the new syntax, but that's too much change for now.
 
 ```Ruby
@@ -500,7 +500,7 @@ hash = { one: 1, two: 2, three: 3 }
 hash = { :one => 1, :two => 2, :three => 3 }
 ```
 
-7.9. Rely on the fact that hashes in 1.9 are ordered.
+0. Rely on the fact that hashes in 1.9 are ordered.
 
 7.10. Leave a single space padding inside the braces of a hash.
 
@@ -554,7 +554,7 @@ hash = {
 
 ##8. Iteration
 
-8.1. Never use `for`, unless you know exactly why. Most of the time iterators
+0. Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
   doesn't introduce a new scope (unlike `each`) and variables defined
@@ -582,7 +582,7 @@ end
 document.saved? or document.save!
 ```
 
-8.2. Favour modifier `while/until` usage when you have a single-line
+0. Favour modifier `while/until` usage when you have a single-line
   body.
 
 ```Ruby
@@ -595,7 +595,7 @@ end
 do_something while some_condition
 ```
 
-8.3. Favour `until` over `while` for negative conditions.
+0. Favour `until` over `while` for negative conditions.
 
 ```Ruby
 # bad
@@ -605,19 +605,19 @@ do_something while !some_condition
 do_something until some_condition
 ```
 
-8.4. Never modify a collection while traversing it.
+0. Never modify a collection while traversing it.
 
-8.5. Know the iterators provided to you by Hash, Array, and enumerable. Don't re-invent the wheel.
+0. Know the iterators provided to you by Hash, Array, and enumerable. Don't re-invent the wheel.
 
-8.6. Prefer `map` over `collect`, `find` over `detect`, `select` over
+0. Prefer `map` over `collect`, `find` over `detect`, `select` over
   `find_all`, `reduce` over `inject`.
 
-8.5. When using `reduce` with short blocks, name the arguments `|a, e|`
+0. When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
 
 ##9. Methods
 
-9.1. Use empty lines between `def`s and to break up a method into logical
+0. Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
 ```Ruby
@@ -634,7 +634,7 @@ def some_method
 end
 ```
 
-9.2. Indent the parameters of a method call if they span over multiple lines.
+0. Indent the parameters of a method call if they span over multiple lines.
 
 ```Ruby
 # starting point (line is too long)
