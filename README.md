@@ -597,13 +597,13 @@ do_something while some_condition
 
 8.3. Favour `until` over `while` for negative conditions.
 
-    ```Ruby
-    # bad
-    do_something while !some_condition
+```Ruby
+# bad
+do_something while !some_condition
 
-    # good
-    do_something until some_condition
-    ```
+# good
+do_something until some_condition
+```
 
 8.4. Never modify a collection while traversing it.
 
@@ -620,55 +620,55 @@ do_something while some_condition
 9.1. Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
-    ```Ruby
-    def some_method
-      data = initialize(options)
+```Ruby
+def some_method
+  data = initialize(options)
 
-      data.manipulate!
+  data.manipulate!
 
-      data.result
-    end
+  data.result
+end
 
-    def some_method
-      result
-    end
-    ```
+def some_method
+  result
+end
+```
 
 9.2. Indent the parameters of a method call if they span over multiple lines.
 
-    ```Ruby
-    # starting point (line is too long)
-    def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
-    end
+```Ruby
+# starting point (line is too long)
+def send_mail(source)
+  Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+end
 
-    # bad
-    Mailer.deliver(to: 'bob@example.com',
-                   from: 'us@example.com',
-                   subject: 'Important message',
-                   body: source.text)
+# bad
+Mailer.deliver(to: 'bob@example.com',
+               from: 'us@example.com',
+               subject: 'Important message',
+               body: source.text)
 
-    # good
-    Mailer.deliver(
-      :to => 'bob@example.com',
-      :from => 'us@example.com',
-      :subject => 'Important message',
-      :body => source.text
-    )
-    ```
+# good
+Mailer.deliver(
+  :to => 'bob@example.com',
+  :from => 'us@example.com',
+  :subject => 'Important message',
+  :body => source.text
+)
+```
 
 * Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
 
-     ```Ruby
-     def some_method
-       # body omitted
-     end
+```Ruby
+def some_method
+  # body omitted
+end
 
-     def some_method_with_arguments(arg1, arg2)
-       # body omitted
-     end
-     ```
+def some_method_with_arguments(arg1, arg2)
+  # body omitted
+end
+```
 
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
@@ -676,59 +676,59 @@ do_something while some_condition
   access methods. Use parentheses around the arguments of all other
   method invocations.
 
-    ```Ruby
-    class Person
-      attr_reader :name, :age
+```Ruby
+class Person
+  attr_reader :name, :age
 
-      # omitted
-    end
+  # omitted
+end
 
-    temperance = Person.new('Temperance', 30)
-    temperance.name
+temperance = Person.new('Temperance', 30)
+temperance.name
 
-    puts temperance.age
+puts temperance.age
 
-    x = Math.sin(y)
-    array.delete(e)
-    ```
+x = Math.sin(y)
+array.delete(e)
+```
 
 * Avoid `return` where not required.
 
-    ```Ruby
-    # bad
-    def some_method(some_arr)
-      return some_arr.size
-    end
+```Ruby
+# bad
+def some_method(some_arr)
+  return some_arr.size
+end
 
-    # good
-    def some_method(some_arr)
-      some_arr.size
-    end
-    ```
+# good
+def some_method(some_arr)
+  some_arr.size
+end
+```
 
 * Use spaces around the `=` operator when assigning default values to method parameters:
 
-    ```Ruby
-    # bad
-    def some_method(arg1=:default, arg2=nil, arg3=[])
-      # do something...
-    end
+```Ruby
+# bad
+def some_method(arg1=:default, arg2=nil, arg3=[])
+  # do something...
+end
 
-    # good
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
-      # do something...
-    end
-    ```
+# good
+def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+  # do something...
+end
+```
 
 * Never put a space between a method name and the opening parenthesis.
 
-    ```Ruby
-    # bad
-    f (3 + 2) + 1
+```Ruby
+# bad
+f (3 + 2) + 1
 
-    # good
-    f(3 + 2) + 1
-    ```
+# good
+f(3 + 2) + 1
+```
 
 * If the first argument to a method begins with an open parenthesis,
   always use parentheses in the method invocation. For example, write
@@ -738,20 +738,20 @@ do_something while some_condition
 
 * Use `e` as the rescued variable:
 
-    ```Ruby
-    rescue StandardError => e
-    ```
+```Ruby
+rescue StandardError => e
+```
 
 * Signal exceptions using the `fail` keyword. Use `raise` only when
   catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
 
-    ```Ruby
-    begin
-      fail 'Oops';
-    rescue => e
-      raise if e.message != 'Oops'
-    end
-    ```
+```Ruby
+begin
+  fail 'Oops';
+rescue => e
+  raise if e.message != 'Oops'
+end
+```
 
 * Never return from an `ensure` block. If you explicitly return from a
   method inside an `ensure` block, the return will take precedence over
@@ -759,164 +759,134 @@ do_something while some_condition
   exception had been raised at all. In effect, the exception will be
   silently thrown away.
 
-    ```Ruby
-    def foo
-      begin
-        fail
-      ensure
-        return 'very bad idea'
-      end
-    end
-    ```
+```Ruby
+def foo
+  begin
+    fail
+  ensure
+    return 'very bad idea'
+  end
+end
+```
 
 * Use *implicit begin blocks* when possible.
 
-    ```Ruby
-    # bad
-    def foo
-      begin
-        # main logic goes here
-      rescue
-        # failure handling goes here
-      end
-    end
+```Ruby
+# bad
+def foo
+  begin
+    # main logic goes here
+  rescue
+    # failure handling goes here
+  end
+end
 
-    # good
-    def foo
-      # main logic goes here
-    rescue
-      # failure handling goes here
-    end
-    ```
-
-* Mitigate the proliferation of `begin` blocks via the use of
-  *contingency methods* (a term coined by Avdi Grimm).
-
-    ```Ruby
-    # bad
-    begin
-      something_that_might_fail
-    rescue IOError
-      # handle IOError
-    end
-
-    begin
-      something_else_that_might_fail
-    rescue IOError
-      # handle IOError
-    end
-
-    # good
-    def with_io_error_handling
-       yield
-    rescue
-      # handle IOError
-    end
-
-    with_io_error_handling { something_that_might_fail }
-
-    with_io_error_handling { something_else_that_might_fail }
-    ```
+# good
+def foo
+  # main logic goes here
+rescue
+  # failure handling goes here
+end
+```
 
 * Don't suppress exceptions.
 
-    ```Ruby
-    # bad
-    begin
-      # an exception occurs here
-    rescue SomeError
-      # the rescue clause does absolutely nothing
-    end
+```Ruby
+# bad
+begin
+  # an exception occurs here
+rescue SomeError
+  # the rescue clause does absolutely nothing
+end
 
-    # bad
-    do_something rescue nil
-    ```
+# bad
+do_something rescue nil
+```
 
 * Don't use exceptions for flow of control.
 
-    ```Ruby
-    # bad
-    begin
-      n / d
-    rescue ZeroDivisionError
-      puts 'Cannot divide by 0!'
-    end
+```Ruby
+# bad
+begin
+  n / d
+rescue ZeroDivisionError
+  puts 'Cannot divide by 0!'
+end
 
-    # good
-    if d.zero?
-      puts 'Cannot divide by 0!'
-    else
-      n / d
-    end
-    ```
+# good
+if d.zero?
+  puts 'Cannot divide by 0!'
+else
+  n / d
+end
+```
 
 * Avoid rescuing the `Exception` class.  This will trap signals and calls to
   `exit`, requiring you to `kill -9` the process.
 
-    ```Ruby
-    # bad
-    begin
-      # calls to exit and kill signals will be caught (except kill -9)
-      exit
-    rescue Exception
-      puts "you didn't really want to exit, right?"
-      # exception handling
-    end
+```Ruby
+# bad
+begin
+  # calls to exit and kill signals will be caught (except kill -9)
+  exit
+rescue Exception
+  puts "you didn't really want to exit, right?"
+  # exception handling
+end
 
-    # good
-    begin
-      # a blind rescue rescues from StandardError, not Exception as many
-      # programmers assume.
-    rescue => e
-      # exception handling
-    end
+# good
+begin
+  # a blind rescue rescues from StandardError, not Exception as many
+  # programmers assume.
+rescue => e
+  # exception handling
+end
 
-    # also good
-    begin
-      # an exception occurs here
+# also good
+begin
+  # an exception occurs here
 
-    rescue StandardError => e
-      # exception handling
-    end
-
-    ```
+rescue StandardError => e
+  # exception handling
+end
+```
 
 * Put more specific exceptions higher up the rescue chain, otherwise
   they'll never be rescued from.
 
-    ```Ruby
-    # bad
-    begin
-      # some code
-    rescue Exception => e
-      # some handling
-    rescue StandardError => e
-      # some handling
-    end
+```Ruby
+# bad
+begin
+  # some code
+rescue Exception => e
+  # some handling
+rescue StandardError => e
+  # some handling
+end
 
-    # good
-    begin
-      # some code
-    rescue StandardError => e
-      # some handling
-    rescue Exception => e
-      # some handling
-    end
-    ```
+# good
+begin
+  # some code
+rescue StandardError => e
+  # some handling
+rescue Exception => e
+  # some handling
+end
+```
 
 * Release external resources obtained by your program in an ensure
 block.
 
-    ```Ruby
-    f = File.open('testfile')
-    begin
-      # .. process
-    rescue
-      # .. handle error
-    ensure
-      f.close unless f.nil?
-    end
-    ```
+```Ruby
+f = File.open('testfile')
+begin
+  # .. process
+rescue
+  # .. handle error
+ensure
+  f.close unless f.nil?
+end
+```
 
 * Favour the use of exceptions for the standard library over
 introducing new exception classes.
@@ -927,33 +897,33 @@ introducing new exception classes.
   `string['text']`
 * For simple constructions you can use regexp directly through string index.
 
-    ```Ruby
-    match = string[/regexp/]             # get content of matched regexp
-    first_group = string[/text(grp)/, 1] # get content of captured group
-    string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
-    ```
+```Ruby
+match = string[/regexp/]             # get content of matched regexp
+first_group = string[/text(grp)/, 1] # get content of captured group
+string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
+```
 
 * Use non capturing groups when you don't use captured result of parenthesis.
 
-    ```Ruby
-    /(first|second)/   # bad
-    /(?:first|second)/ # good
-    ```
+```Ruby
+/(first|second)/   # bad
+/(?:first|second)/ # good
+```
 
 * Avoid using $1-9 as it can be hard to track what they contain. Named groups
   can be used instead.
 
-    ```Ruby
-    # bad
-    /(regexp)/ =~ string
-    ...
-    process $1
+```Ruby
+# bad
+/(regexp)/ =~ string
+...
+process $1
 
-    # good
-    /(?<meaningful_var>regexp)/ =~ string
-    ...
-    process meaningful_var
-    ```
+# good
+/(?<meaningful_var>regexp)/ =~ string
+...
+process meaningful_var
+```
 
 * Character classes have only few special characters you should care about:
   `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
@@ -962,38 +932,38 @@ introducing new exception classes.
   If you want to match the whole string use: `\A` and `\z` (not to be
   confused with `\Z` which is the equivalent of `/\n?\z/`).
 
-    ```Ruby
-    string = "some injection\nusername"
-    string[/^username$/]   # matches
-    string[/\Ausername\z/] # don't match
-    ```
+```Ruby
+string = "some injection\nusername"
+string[/^username$/]   # matches
+string[/\Ausername\z/] # don't match
+```
 
 * Use `%r` only for regular expressions matching *more than* one '/' character.
 
-    ```Ruby
-    # bad
-    %r(\s+)
+```Ruby
+# bad
+%r(\s+)
 
-    # still bad
-    %r(^/(.*)$)
-    # should be /^\/(.*)$/
+# still bad
+%r(^/(.*)$)
+# should be /^\/(.*)$/
 
-    # good
-    %r(^/blog/2011/(.*)$)
-    ```
+# good
+%r(^/blog/2011/(.*)$)
+```
 
 * Use `x` modifier for complex regexps. This makes them more readable and you
   can add some useful comments. Just be careful as spaces are ignored.
 
-    ```Ruby
-    regexp = %r{
-      start         # some text
-      \s            # white space char
-      (group)       # first group
-      (?:alt1|alt2) # some alternation
-      end
-    }x
-    ```
+```Ruby
+regexp = %r{
+  start         # some text
+  \s            # white space char
+  (group)       # first group
+  (?:alt1|alt2) # some alternation
+  end
+}x
+```
 
 * For complex replacements `sub`/`gsub` can be used with block or hash.
 
@@ -1001,160 +971,161 @@ introducing new exception classes.
 
 * Use `{...}` over `do...end` for single-line blocks.
 
-    ```Ruby
-    # good
-    names.each { |name| puts name }
+```Ruby
+# good
+names.each { |name| puts name }
 
-    # bad
-    names.each do |name|
-      puts name
-    end
-    ```
+# bad
+names.each do |name|
+  puts name
+end
+```
 
 * Use `{...}` over `do...end` when chaining.
 
-    ```Ruby
-    # good
-    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+```Ruby
+# good
+names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
 
-    # good
-    expect {
-      page.publish
-    }.to raise_error(StandardError)
+# good
+expect {
+  page.publish
+}.to raise_error(StandardError)
 
-    # bad
-    names.select do |name|
-      name.start_with?('S')
-    end.map { |name| name.upcase }
-    ```
+# bad
+names.select do |name|
+  name.start_with?('S')
+end.map { |name| name.upcase }
+```
 
 * Use the old lambda syntax over the new literal syntax. NOTE: We prefer the new syntax, but
   are staying with the old for consistency with the existing codebase.
 
-    ```Ruby
-    # bad
-    lambda = ->(a, b) { a + b }
-    lambda.(1, 2)
+```Ruby
+# bad
+lambda = ->(a, b) { a + b }
+lambda.(1, 2)
 
-    # good
-    lambda = lambda { |a, b| a + b }
-    lambda.call(1, 2)
-    ```
+# good
+lambda = lambda { |a, b| a + b }
+lambda.call(1, 2)
+```
 
 * Use `_` for unused block parameters.
 
-    ```Ruby
-    # bad
-    result = hash.map { |k, v| v + 1 }
+```Ruby
+# bad
+result = hash.map { |k, v| v + 1 }
 
-    # good
-    result = hash.map { |_, v| v + 1 }
-    ```
+# good
+result = hash.map { |_, v| v + 1 }
+```
 
 ##13. Classes
 
 13.1. Avoid `self` where not required.
 
-    ```Ruby
-    # bad
-    def ready?
-      if self.last_reviewed_at > self.last_updated_at
-        self.worker.update(self.content, self.options)
-        self.status = :in_progress
-      end
-      self.status == :verified
-    end
+```Ruby
+# bad
+def ready?
+  if self.last_reviewed_at > self.last_updated_at
+    self.worker.update(self.content, self.options)
+    self.status = :in_progress
+  end
+  self.status == :verified
+end
 
-    # good
-    def ready?
-      if last_reviewed_at > last_updated_at
-        worker.update(content, options)
-        self.status = :in_progress
-      end
-      status == :verified
-    end
-    ```
+# good
+def ready?
+  if last_reviewed_at > last_updated_at
+    worker.update(content, options)
+    self.status = :in_progress
+  end
+  status == :verified
+end
+```
 
 13.2. As a corollary, avoid shadowing methods with local variables unless they are both equivalent
 
-    ```Ruby
-    class Foo
-      attr_accessor :options
+```Ruby
+class Foo
+  attr_accessor :options
 
-      # ok
-      def initialize(options)
-        self.options = options
-        # both options and self.options are equivalent here
-      end
+  # ok
+  def initialize(options)
+    self.options = options
+    # both options and self.options are equivalent here
+  end
 
-      # bad
-      def do_something(options = {})
-        unless options[:when] == :later
-          output(self.options[:message])
-        end
-      end
-
-      # good
-      def do_something(params = {})
-        unless params[:when] == :later
-          output(options[:message])
-        end
-      end
+  # bad
+  def do_something(options = {})
+    unless options[:when] == :later
+      output(self.options[:message])
     end
+  end
+
+  # good
+  def do_something(params = {})
+    unless params[:when] == :later
+      output(options[:message])
+    end
+  end
+end
+```
 
 13.3 Use the `attr` family of functions to define trivial accessors or
 mutators.
 
-    ```Ruby
-    # bad
-    class Person
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
+```Ruby
+# bad
+class Person
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
 
-      def first_name
-        @first_name
-      end
+  def first_name
+    @first_name
+  end
 
-      def last_name
-        @last_name
-      end
-    end
+  def last_name
+    @last_name
+  end
+end
 
-    # good
-    class Person
-      attr_reader :first_name, :last_name
+# good
+class Person
+  attr_reader :first_name, :last_name
 
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
-    end
-    ```
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+end
+```
 
 13.4. Avoid the usage of class (`@@`) variables due to their "nasty" behavior
 in inheritance.
 
-    ```Ruby
-    class Parent
-      @@class_var = 'parent'
+```Ruby
+class Parent
+  @@class_var = 'parent'
 
-      def self.print_class_var
-        puts @@class_var
-      end
-    end
+  def self.print_class_var
+    puts @@class_var
+  end
+end
 
-    class Child < Parent
-      @@class_var = 'child'
-    end
+class Child < Parent
+  @@class_var = 'child'
+end
 
-    Parent.print_class_var # => will print "child"
-    ```
+Parent.print_class_var # => will print "child"
+```
 
-    As you can see all the classes in a class hierarchy actually share one
-    class variable. Class instance variables should usually be preferred
-    over class variables.
+As you can see all the classes in a class hierarchy actually share one
+class variable. Class instance variables should usually be preferred
+over class variables.
 
 13.5. Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
@@ -1164,20 +1135,21 @@ everything `public` (which is the default).
 
 13.7. Indent `private` and `protected` methods.
 
-    ```Ruby
-    class SomeClass
+```Ruby
+class SomeClass
 
-      def public_method
-        # ...
-      end
+  def public_method
+    # ...
+  end
 
-      private
+  private
 
-        def private_method
-          # ...
-        end
-
+    def private_method
+      # ...
     end
+
+end
+```
 
 13.9. Order methods in your classes by visibility: `public`, then `protected`, and `private` at the bottom.
 
@@ -1186,33 +1158,33 @@ everything `public` (which is the default).
 13.10. Use `def self.method` to define singleton methods. This makes the methods
   more resistant to refactoring changes.
 
-    ```Ruby
-    class TestClass
-      # bad
-      def TestClass.some_method
-        # body omitted
-      end
+```Ruby
+class TestClass
+  # bad
+  def TestClass.some_method
+    # body omitted
+  end
 
-      # good
-      def self.some_other_method
-        # body omitted
-      end
+  # good
+  def self.some_other_method
+    # body omitted
+  end
 
-      # Also possible and convenient when you
-      # have to define many singleton methods.
-      class << self
-        def first_method
-          # body omitted
-        end
-
-        def second_method_etc
-          # body omitted
-        end
-      end
+  # Also possible and convenient when you
+  # have to define many singleton methods.
+  class << self
+    def first_method
+      # body omitted
     end
-    ```
 
-##12. Misc
+    def second_method_etc
+      # body omitted
+    end
+  end
+end
+```
+
+##14. Misc
 
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
@@ -1220,19 +1192,19 @@ everything `public` (which is the default).
 * If you really have to, add "global" methods to Kernel and make them private.
 * Use class instance variables instead of global variables.
 
-    ```Ruby
-    #bad
-    $foo_bar = 1
+```Ruby
+#bad
+$foo_bar = 1
 
-    #good
-    class Foo
-      class << self
-        attr_accessor :bar
-      end
-    end
+#good
+class Foo
+  class << self
+    attr_accessor :bar
+  end
+end
 
-    Foo.bar = 1
-    ```
+Foo.bar = 1
+```
 
 * Avoid `alias` when `alias_method` will do.
 * Avoid needless metaprogramming.
@@ -1242,47 +1214,47 @@ everything `public` (which is the default).
 * Avoid line continuation (\\) where not required. In practice, avoid using
   line continuations at all.
 
-    ```Ruby
-    # bad
-    result = 1 - \
-             2
+```Ruby
+# bad
+result = 1 - \
+         2
 
-    # good (but still ugly as hell)
-    result = 1 \
-             - 2
-    ```
+# good (but still ugly as hell)
+result = 1 \
+         - 2
+```
 
 * Using the return value of `=` (an assignment) is ok, but surround the
   assignment with parenthesis.
 
-    ```Ruby
-    # good - shows intended use of assignment
-    if (v = array.grep(/foo/)) ...
+```Ruby
+# good - shows intended use of assignment
+if (v = array.grep(/foo/)) ...
 
-    # bad
-    if v = array.grep(/foo/) ...
+# bad
+if v = array.grep(/foo/) ...
 
-    # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == 'hello' ...
-    ```
+# also good - shows intended use of assignment and has correct precedence.
+if (v = self.next_value) == 'hello' ...
+```
 
 * Use `||=` freely to initialize variables.
 
-    ```Ruby
-    # set name to Bozhidar, only if it's nil or false
-    name ||= 'Bozhidar'
-    ```
+```Ruby
+# set name to Bozhidar, only if it's nil or false
+name ||= 'Bozhidar'
+```
 
 * Don't use `||=` to initialize boolean variables. (Consider what
 would happen if the current value happened to be `false`.)
 
-    ```Ruby
-    # bad - would set enabled to true even if it was false
-    enabled ||= true
+```Ruby
+# bad - would set enabled to true even if it was false
+enabled ||= true
 
-    # good
-    enabled = true if enabled.nil?
-    ```
+# good
+enabled = true if enabled.nil?
+```
 
 * Avoid using Perl-style special variables (like `$0-9`, `$``,
   etc. ). They are quite cryptic and their use in anything but
