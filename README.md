@@ -41,10 +41,10 @@
 
 0. Avoid superfluous comments.
 
-```Ruby
-# bad
-counter += 1 # increments counter by one
-```
+    ```Ruby
+    # bad
+    counter += 1 # increments counter by one
+    ```
 
 0. Keep existing comments up-to-date. An outdated is worse than no comment
 at all.
