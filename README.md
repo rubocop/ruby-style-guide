@@ -1,20 +1,21 @@
 ## Table of Contents
 
-* [Source Code Layout](#source-code-layout)
-* [Syntax](#syntax)
-* [Naming](#naming)
-* [Comments](#comments)
-* [Annotations](#annotations)
-* [Classes](#classes)
-* [Exceptions](#exceptions)
-* [Collections](#collections)
-* [Strings](#strings)
-* [Regular Expressions](#regular-expressions)
-* [Percent Literals](#percent-literals)
-* [Metaprogramming](#metaprogramming)
-* [Misc](#misc)
+* [Source Code Layout](#1.-source-code-layout)
+* [Comments](#2.-comments)
+* [Naming](#3.-naming)
+* [General Syntax](#4.-general-syntax)
+* [Strings](#4.-strings)
+* [Conditionals](#6.-conditionals)
+* [Collections](#7.-collections)
+* [Iteration](#8.-iteration)
+* [Methods](#9.-methods)
+* [Exceptions](#10.-exceptions)
+* [Regular Expressions](#11.-regular-expressions)
+* [Classes](#12.-classes)
+* [Misc](#13.-misc)
+* [References](#14.-references)
 
-##1. Layout
+##1. Source Code Layout
 
 1.1. Use `UTF-8` as the source file encoding.
 
@@ -22,28 +23,21 @@
 
 1.3. Leave no trailing whitespace of any kind.
 
-1.4. Leave a blank line at the bottom of every file.
+1.4. Do not leave a blank line at the bottom of the file.
 
 1.5 Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
   Windows users have to be extra careful.)
-    * If you're using Git you might want to add the following
-    configuration setting to protect your project from Windows line
-    endings creeping in:
 
-```$ git config --global core.autocrlf true```
-
-
-1.6 Keep lines fewer than 80 characters.
+1.6 Keep lines shorter than 80 characters.
 
 ##2. Comments
 
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
-2.1. Write self-documenting code. If feel you need a comment, refactor the code until a comment feels like overkill. Ignore the rest of this
+2.1. Write self-documenting code. If feel you need a comment, refactor the code until a comment feels like overkill. Then, ignore the rest of this section.
 
-2.2. Comments longer than a word are capitalized and use punctuation. Use [one
-  space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
+2.2. Comments longer than a word are capitalized and use punctuation.
 
 2.3. Avoid superfluous comments.
 
@@ -66,7 +60,16 @@ at all.
 ################################################
 ```
 
-2.6. Write methods, classes, modules, etc., comments like this:
+2.7. Parameter explanations, examples, return descriptions, etc., are often overkill, but you should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
+
+2.8. Write inline comments like this:
+
+```ruby
+# This is a description of the line.
+@pages.each { |p| puts p.name }
+```
+
+2.9. Write comments for methods, classes, modules, etc., like this:
 
 ```ruby
 # Print a log line to STDOUT. You can customize the output by specifying
@@ -93,15 +96,6 @@ def log(*msgs, &block)
   ...
 end
 ```
-
-2.7. Write inline comments like this:
-
-```ruby
-# This is a description of the line.
-@pages.each { |p| puts p.name }
-```
-
-2.8. Parameter explanations, examples, return descriptions, etc., are often overkill, but you should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
 
 ##3. Naming
 
@@ -202,7 +196,7 @@ end
     some(arg).other
     [1, 2, 3].length
     ```
-## Strings
+##5. Strings
 
 * Prefer string interpolation instead of string concatenation:
 
@@ -285,11 +279,9 @@ end
     end
     ```
 
-##5. Conditionals
+##6. Conditionals
 
-* Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both the "The Ruby
-  Programming Language" and "Programming Ruby".
+6.1. Indent `when` as deep as `case`.
 
     ```Ruby
     case
@@ -313,7 +305,7 @@ end
            end
     ```
 
-  * Never use `then` for multi-line `if/unless`.
+6.2. Never use `then` for multi-line `if/unless`.
 
     ```Ruby
     # bad
@@ -327,7 +319,7 @@ end
     end
     ```
 
-* Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
+6.3. Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
   It's more common and obviously more concise.
 
     ```Ruby
@@ -338,7 +330,9 @@ end
     result = some_condition ? something : something_else
     ```
 
-* Use one expression per branch in a ternary operator. This
+6.4. Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
+
+6.5. Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
   `if/else` constructs in these cases.
 
@@ -354,20 +348,18 @@ end
     end
     ```
 
-* Never use `if x; ...`. Use the ternary operator instead.
+6.6. Never use `if x; ...`. Use the ternary operator instead.
 
-* Use `when x then ...` for one-line cases.
+6.7. Use `when x then ...` for one-line cases.
 
-* Never use `when x; ...`. See the previous rule.
+6.8. Never use `when x; ...`. See the previous rule.
 
-* Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
+6.9. Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
   wrong operators.)
 
-* Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
-
-* Favour modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `and/or`.
+6.10. Favour modifier `if/unless` usage when you have a single-line
+  body.
 
     ```Ruby
     # bad
@@ -377,12 +369,9 @@ end
 
     # good
     do_something if some_condition
-
-    # another good option
-    some_condition and do_something
     ```
 
-* Favour `unless` over `if` for negative conditions (or control
+6.11. Favour `unless` over `if` for negative conditions (or control
   flow `or`).
 
     ```Ruby
@@ -396,7 +385,7 @@ end
     some_condition or do_something
       ```
 
-* Never use `unless` with `else`. Rewrite these with the positive case first.
+6.12. Never use `unless` with `else`. Rewrite these with the positive case first.
 
     ```Ruby
     # bad
@@ -414,7 +403,7 @@ end
     end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while`,
+6.12. Don't use parentheses around the condition of an `if/unless/while`,
   unless the condition contains an assignment (see "Using the return
   value of `=`" below).
 
@@ -435,11 +424,11 @@ end
     end
     ```
 
-* Favour `!` over `not`. The latter binds more loosely, and can lead to confusing results.
+6.13. Favour `!` over `not`. The latter binds more loosely, and can lead to confusing results.
 
-##6. Collections
+##7. Collections
 
-* Prefer literal array and hash creation notation (unless you need to
+7.1. Prefer literal array and hash creation notation (unless you need to
 pass parameters to their constructors, that is).
 
     ```Ruby
@@ -452,7 +441,7 @@ pass parameters to their constructors, that is).
     hash = {}
     ```
 
-* Prefer `%w` to the literal array syntax when you need an array of
+7.2. Prefer `%w` to the literal array syntax when you need an array of single-word
 strings.
 
     ```Ruby
@@ -463,20 +452,30 @@ strings.
     STATES = %w(draft open closed)
     ```
 
-* Avoid %W.
+7.4. Use parentheses are the delimeters for `%w`.
 
-* Avoid the creation of huge gaps in arrays.
+    ```Ruby
+    # bad
+    STATES = %w[draft open closed]
+
+    # good
+    STATES = %w(draft open closed)
+
+7.3. Avoid %W.
+
+7.4. Avoid the creation of huge gaps in arrays.
 
     ```Ruby
     arr = []
     arr[100] = 1 # now you have an array with lots of nils
     ```
 
-* Use `Set` instead of `Array` when dealing with unique elements. `Set`
+7.5. Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
-* Use symbols instead of strings as hash keys.
+
+7.6. Use symbols instead of strings as hash keys.
 
     ```Ruby
     # bad
@@ -486,8 +485,9 @@ strings.
     hash = { one: 1, two: 2, three: 3 }
     ```
 
-* Avoid the use of mutable object as hash keys.
-* Use the new 1.9 literal hash syntax in preference to the hashrocket
+7.7. Avoid the use of mutable object as hash keys.
+
+7.8. Use the new 1.9 literal hash syntax in preference to the hashrocket
 syntax.
 
     ```Ruby
@@ -498,17 +498,47 @@ syntax.
     hash = { one: 1, two: 2, three: 3 }
     ```
 
-* Rely on the fact that hashes in 1.9 are ordered.
+7.9. Rely on the fact that hashes in 1.9 are ordered.
 
-* Use `%w` to define arrays of single-word strings.
+7.10. Leave a single space padding inside the braces of a hash.
 
     ```Ruby
-    STATES = %w(draft open closed)
-    ```
+    # bad
+    hash = {one: 1, two: 2}
 
-##7. Iteration
+    # good
+    hash = { one: 1, two: 2 }
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
+7.11. Leave no padding inside the brackets of an array.
+
+    ```Ruby
+    # bad
+    array = [ 1, 2, 3 ]
+
+    # good
+    array = [1, 2, 3]
+
+7.12. Use a single line for arrays and hashes if they will fit.
+
+7.13. Format multiline hashes and arrays by indenting two-spaces.
+
+    ```Ruby
+    hash = {
+      name: 'peter',
+      professional: 'teacher',
+      favourite_color: 'green'
+    }
+
+    array = [
+      'Happy Sauce',
+      'Awesome people eating computers'
+    ]
+
+7.14. Prefer `size` over `length` for getting the number of elements.
+
+##8. Iteration
+
+8.1. Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
   doesn't introduce a new scope (unlike `each`) and variables defined
@@ -536,7 +566,7 @@ syntax.
     document.saved? or document.save!
     ```
 
-* Favour modifier `while/until` usage when you have a single-line
+8.2. Favour modifier `while/until` usage when you have a single-line
   body.
 
     ```Ruby
@@ -549,7 +579,7 @@ syntax.
     do_something while some_condition
     ```
 
-* Favour `until` over `while` for negative conditions.
+8.3. Favour `until` over `while` for negative conditions.
 
     ```Ruby
     # bad
@@ -559,15 +589,17 @@ syntax.
     do_something until some_condition
     ```
 
-* Never modify a collection while traversing it.
+8.4. Never modify a collection while traversing it.
 
-3.7 When using `reduce` with short blocks, name the arguments `|a, e|`
+8.5. Know the iterators provided to you by Hash, Array, and enumerable. Don't re-invent the wheel.
+
+8.6. Prefer `map` over `collect`, `find` over `detect`, `select` over
+  `find_all`, `reduce` over `inject`.
+
+8.5. When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
 
-3.9. Prefer `map` over `collect`, `find` over `detect`, `select` over
-  `find_all`, `reduce` over `inject` and `size` over `length`.
-
-##8. Methods
+##9. Methods
 
 * Use empty lines between `def`s and to break up a method into logical
   paragraphs.
@@ -698,14 +730,13 @@ syntax.
   always use parentheses in the method invocation. For example, write
 `f((3 + 2) + 1)`.
 
-##9. Exceptions
+##10. Exceptions
 
 * Use `e` as the rescued variable:
 
 ```ruby
 rescue StandardError => e
 ```
-
 
 * Signal exceptions using the `fail` keyword. Use `raise` only when
   catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
@@ -886,7 +917,7 @@ block.
 * Favour the use of exceptions for the standard library over
 introducing new exception classes.
 
-## Regular Expressions
+##11. Regular Expressions
 
 * Don't use regular expressions if you just need plain text search in string:
   `string['text']`
@@ -962,7 +993,7 @@ introducing new exception classes.
 
 * For complex replacements `sub`/`gsub` can be used with block or hash.
 
-##10. Blocks / Procs
+##12. Blocks / Procs
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
@@ -1016,9 +1047,9 @@ introducing new exception classes.
     result = hash.map { |_, v| v + 1 }
     ```
 
-##11. Classes
+##13. Classes
 
-* Avoid `self` where not required.
+13.1. Avoid `self` where not required.
 
     ```Ruby
     # bad
@@ -1040,7 +1071,7 @@ introducing new exception classes.
     end
     ```
 
-* As a corollary, avoid shadowing methods with local variables unless they are both equivalent
+13.2. As a corollary, avoid shadowing methods with local variables unless they are both equivalent
 
     ```Ruby
     class Foo
@@ -1067,7 +1098,7 @@ introducing new exception classes.
       end
     end
 
-* Use the `attr` family of functions to define trivial accessors or
+13.3 Use the `attr` family of functions to define trivial accessors or
 mutators.
 
     ```Ruby
@@ -1098,45 +1129,7 @@ mutators.
     end
     ```
 
-* Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.
-
-    ```Ruby
-    # bad
-    class Animal
-      # abstract method
-      def speak
-      end
-    end
-
-    # extend superclass
-    class Duck < Animal
-      def speak
-        puts 'Quack! Quack'
-      end
-    end
-
-    # extend superclass
-    class Dog < Animal
-      def speak
-        puts 'Bau! Bau!'
-      end
-    end
-
-    # good
-    class Duck
-      def speak
-        puts 'Quack! Quack'
-      end
-    end
-
-    class Dog
-      def speak
-        puts 'Bau! Bau!'
-      end
-    end
-    ```
-
-* Avoid the usage of class (`@@`) variables due to their "nasty" behavior
+13.4. Avoid the usage of class (`@@`) variables due to their "nasty" behavior
 in inheritance.
 
     ```Ruby
@@ -1159,26 +1152,34 @@ in inheritance.
     class variable. Class instance variables should usually be preferred
     over class variables.
 
-* Assign proper visibility levels to methods (`private`, `protected`)
+13.5. Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default).
 
-* Don't indent `public`, `protected`, and `private` methods. Leave one blank line above and below them.
+13.6. Prefer `private` visibility over `protected` unless you truly know you need the latter.
+
+13.7. Indent `private` and `protected` methods.
 
     ```Ruby
     class SomeClass
+
       def public_method
         # ...
       end
 
-    private
+      private
 
-      def private_method
-        # ...
-      end
+        def private_method
+          # ...
+        end
+
     end
 
-* Use `def self.method` to define singleton methods. This makes the methods
+13.9. Order methods in your classes by visibility: `public`, then `protected`, and `private` at the bottom.
+
+13.9. Order class methods before instance methods.
+
+13.10. Use `def self.method` to define singleton methods. This makes the methods
   more resistant to refactoring changes.
 
     ```Ruby
@@ -1207,17 +1208,7 @@ everything `public` (which is the default).
     end
     ```
 
-##10. References
-
-- Eloquent Ruby
-
-- The Well-grounded Rubyist
-
-- Rails guides
-
-- Clean Code (Robert C. Martin)
-
-## Misc
+##12. Misc
 
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
@@ -1295,3 +1286,16 @@ would happen if the current value happened to be `false`.)
   one-liner scripts is discouraged.
 
 * Prefer `()` as delimiters for all `%` literals.
+
+
+##14. References
+
+Read these books and guides:
+
+- Eloquent Ruby
+
+- The Well-grounded Rubyist
+
+- Rails guides
+
+- Clean Code (Robert C. Martin)
