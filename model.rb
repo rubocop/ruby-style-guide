@@ -47,7 +47,7 @@ class Person < ActiveRecord::Base
 
   audited :associated_with => :uncle
 
-  #| Use scopes instead of scope-class-methods for one-liners.
+  #| Use "scope" instead of scope-class-methods for one-liners (never use "scope" for multi-line scopes)
 
   scope :very_old, where("age > #{VERY_OLD}")
   scope :active, where(:state => 'active')

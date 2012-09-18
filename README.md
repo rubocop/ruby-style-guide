@@ -655,6 +655,13 @@ Mailer.deliver(
   :subject => 'Important message',
   :body => source.text
 )
+
+# also good
+create(
+  :invitation,
+  :email => 'bob@example.com,
+  :role => :author
+)
 ```
 
 * Use `def` with parentheses when there are arguments. Omit the
