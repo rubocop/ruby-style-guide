@@ -1,1 +1,2 @@
-- Multi-line method calls.
+- Improve the rule numbering, making it automatic.
+- Improve the meta comments in example files so that they are more readable.

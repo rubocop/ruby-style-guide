@@ -41,10 +41,10 @@
 
 2.3. Avoid superfluous comments.
 
-```ruby
-# bad
-counter += 1 # increments counter by one
-```
+    ```Ruby
+    # bad
+    counter += 1 # increments counter by one
+    ```
 
 2.4. Keep existing comments up-to-date. An outdated is worse than no comment
 at all.
@@ -54,48 +54,48 @@ at all.
 
 2.6. Avoid code banners. Your class is probably too big if you need them. Refactor!
 
-```ruby
-################################################
-# Code banners are a code smell
-################################################
-```
+    ```Ruby
+    ################################################
+    # Code banners are a code smell
+    ################################################
+    ```
 
 2.7. Parameter explanations, examples, return descriptions, etc., are often overkill, but you should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
 
 2.8. Write inline comments like this:
 
-```ruby
-# This is a description of the line.
-@pages.each { |p| puts p.name }
-```
+    ```Ruby
+    # This is a description of the line.
+    @pages.each { |p| puts p.name }
+    ```
 
 2.9. Write comments for methods, classes, modules, etc., like this:
 
-```ruby
-# Print a log line to STDOUT. You can customize the output by specifying
-# a block.
-#
-# msgs  - Zero or more String messages that will be printed to the log
-#         separated by spaces.
-# block - An optional block that can be used to customize the date format.
-#         If it is present, it will be sent a Time object representing
-#         the current time. Your block should return a String version of
-#         the time, formatted however you please.
-#
-# Examples
-#
-#   log("An error occurred.")
-#
-#   log("No such file", "/var/log/server.log") do |time|
-#     time.strftime("%Y-%m-%d %H:%M:%S")
-#   end
-#
-# Returns nothing.
-#
-def log(*msgs, &block)
-  ...
-end
-```
+    ```Ruby
+    # Print a log line to STDOUT. You can customize the output by specifying
+    # a block.
+    #
+    # msgs  - Zero or more String messages that will be printed to the log
+    #         separated by spaces.
+    # block - An optional block that can be used to customize the date format.
+    #         If it is present, it will be sent a Time object representing
+    #         the current time. Your block should return a String version of
+    #         the time, formatted however you please.
+    #
+    # Examples
+    #
+    #   log("An error occurred.")
+    #
+    #   log("No such file", "/var/log/server.log") do |time|
+    #     time.strftime("%Y-%m-%d %H:%M:%S")
+    #   end
+    #
+    # Returns nothing.
+    #
+    def log(*msgs, &block)
+      ...
+    end
+    ```
 
 ##3. Naming
 
@@ -114,57 +114,57 @@ end
   arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if and only if
   there exists a safe version of that *dangerous* method.
 
-```ruby
-# bad - there is not matching 'safe' method
-class Person
-  def update!
-  end
-end
+    ```Ruby
+    # bad - there is not matching 'safe' method
+    class Person
+      def update!
+      end
+    end
 
-# good
-class Person
-  def update
-  end
-end
+    # good
+    class Person
+      def update
+      end
+    end
 
-# good
-class Person
-  def update!
-  end
+    # good
+    class Person
+      def update!
+      end
 
-  def update
-  end
-end
-```
+      def update
+      end
+    end
+    ```
 
 3.6 Define the non-bang (safe) method in terms of the bang (dangerous)
   one if possible.
 
-```ruby
-class Array
-  def flatten_once!
-    res = []
+    ```Ruby
+    class Array
+      def flatten_once!
+        res = []
 
-    each do |e|
-      [*e].each { |f| res << f }
+        each do |e|
+          [*e].each { |f| res << f }
+        end
+
+        replace(res)
+      end
+
+      def flatten_once
+        dup.flatten_once!
+      end
     end
-
-    replace(res)
-  end
-
-  def flatten_once
-    dup.flatten_once!
-  end
-end
-```
+    ```
 
 3.8. When defining binary operators, name the argument `other`.
 
-```ruby
-def +(other)
-  # body omitted
-end
-```
+    ```Ruby
+    def +(other)
+      # body omitted
+    end
+    ```
 
 ##4. General Syntax
 
@@ -383,7 +383,7 @@ end
 
     # another good option
     some_condition or do_something
-      ```
+    ```
 
 6.12. Never use `unless` with `else`. Rewrite these with the positive case first.
 
@@ -482,20 +482,20 @@ strings.
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { one: 1, two: 2, three: 3 }
+    hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
 7.7. Avoid the use of mutable object as hash keys.
 
-7.8. Use the new 1.9 literal hash syntax in preference to the hashrocket
-syntax.
+7.8. Use the old hashrocket hash syntax instead of the new 1.9 syntax (even though it is nicer!).
+  We would eventually like to move towards the new syntax, but that's too much change for now.
 
     ```Ruby
     # bad
-    hash = { :one => 1, :two => 2, :three => 3 }
-
-    # good
     hash = { one: 1, two: 2, three: 3 }
+
+    # good (even though it looks better)
+    hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
 7.9. Rely on the fact that hashes in 1.9 are ordered.
@@ -504,10 +504,10 @@ syntax.
 
     ```Ruby
     # bad
-    hash = {one: 1, two: 2}
+    hash = {:one => 1, :two => 2}
 
     # good
-    hash = { one: 1, two: 2 }
+    hash = { :one => 1, :two => 2 }
 
 7.11. Leave no padding inside the brackets of an array.
 
@@ -524,17 +524,28 @@ syntax.
 
     ```Ruby
     hash = {
-      name: 'peter',
-      professional: 'teacher',
-      favourite_color: 'green'
+      :name => 'peter',
+      :professional => 'teacher',
+      :favourite_color => 'green'
     }
 
     array = [
       'Happy Sauce',
       'Awesome people eating computers'
     ]
+    ```
 
-7.14. Prefer `size` over `length` for getting the number of elements.
+7.14. You may optionally align hash values if it improves readability. Especially
+    when there are many keys.
+
+    ```Ruby
+    hash = {
+      :name             => 'peter',
+      :professional     => 'teacher',
+      :favourite_color  => 'green'
+    }
+
+7.15. Prefer `size` over `length` for getting the number of elements.
 
 ##8. Iteration
 
@@ -601,7 +612,7 @@ syntax.
 
 ##9. Methods
 
-* Use empty lines between `def`s and to break up a method into logical
+9.1. Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
     ```Ruby
@@ -618,7 +629,7 @@ syntax.
     end
     ```
 
-* Align the parameters of a method call if they span over multiple lines.
+9.2. Indent the parameters of a method call if they span over multiple lines.
 
     ```Ruby
     # starting point (line is too long)
@@ -626,31 +637,19 @@ syntax.
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
     end
 
-    # bad (normal indent)
-    def send_mail(source)
-      Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
-        body: source.text)
-    end
-
-    # bad (double indent)
-    def send_mail(source)
-      Mailer.deliver(
-          to: 'bob@example.com',
-          from: 'us@example.com',
-          subject: 'Important message',
-          body: source.text)
-    end
+    # bad
+    Mailer.deliver(to: 'bob@example.com',
+                   from: 'us@example.com',
+                   subject: 'Important message',
+                   body: source.text)
 
     # good
-    def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com',
-                     from: 'us@example.com',
-                     subject: 'Important message',
-                     body: source.text)
-    end
+    Mailer.deliver(
+      :to => 'bob@example.com',
+      :from => 'us@example.com',
+      :subject => 'Important message',
+      :body => source.text
+    )
     ```
 
 * Use `def` with parentheses when there are arguments. Omit the
@@ -734,9 +733,9 @@ syntax.
 
 * Use `e` as the rescued variable:
 
-```ruby
-rescue StandardError => e
-```
+    ```Ruby
+    rescue StandardError => e
+    ```
 
 * Signal exceptions using the `fail` keyword. Use `raise` only when
   catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
@@ -995,15 +994,9 @@ introducing new exception classes.
 
 ##12. Blocks / Procs
 
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
-  `{...}` for multi-line blocks (multiline chaining is always
-  ugly). Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
-  when chaining.
+* Use `{...}` over `do...end` for single-line blocks.
 
     ```Ruby
-    names = ['Bozhidar', 'Steve', 'Sarah']
-
     # good
     names.each { |name| puts name }
 
@@ -1011,9 +1004,18 @@ introducing new exception classes.
     names.each do |name|
       puts name
     end
+    ```
 
+* Use `{...}` over `do...end` when chaining.
+
+    ```Ruby
     # good
     names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+
+    # good
+    expect {
+      page.publish
+    }.to raise_error(StandardError)
 
     # bad
     names.select do |name|
@@ -1021,20 +1023,17 @@ introducing new exception classes.
     end.map { |name| name.upcase }
     ```
 
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - it this code really readable and can't the blocks contents be extracted into
-    nifty methods.
-
-* Use the new lambda literal syntax.
+* Use the old lambda syntax over the new literal syntax. NOTE: We prefer the new syntax, but
+  are staying with the old for consistency with the existing codebase.
 
     ```Ruby
     # bad
-    lambda = lambda { |a, b| a + b }
-    lambda.call(1, 2)
-
-    # good
     lambda = ->(a, b) { a + b }
     lambda.(1, 2)
+
+    # good
+    lambda = lambda { |a, b| a + b }
+    lambda.call(1, 2)
     ```
 
 * Use `_` for unused block parameters.
@@ -1235,7 +1234,6 @@ everything `public` (which is the default).
 * Do not mutate arguments unless that is the purpose of the method.
 * Avoid more than three levels of block nesting.
 
-
 * Avoid line continuation (\\) where not required. In practice, avoid using
   line continuations at all.
 
@@ -1286,7 +1284,6 @@ would happen if the current value happened to be `false`.)
   one-liner scripts is discouraged.
 
 * Prefer `()` as delimiters for all `%` literals.
-
 
 ##14. References
 
