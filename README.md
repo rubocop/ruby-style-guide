@@ -160,11 +160,11 @@ at all.
 
 3.8. When defining binary operators, name the argument `other`.
 
-    ```Ruby
-    def +(other)
-      # body omitted
-    end
-    ```
+```Ruby
+def +(other)
+  # body omitted
+end
+```
 
 ##4. General Syntax
 
@@ -173,12 +173,12 @@ at all.
   interpreter, but its proper use is the key to writing easily
   readable code.
 
-    ```Ruby
-    sum = 1 + 2
-    a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
-    ```
+```Ruby
+sum = 1 + 2
+a, b = 1, 2
+1 > 2 ? true : false; puts 'Hi'
+[1, 2, 3].each { |e| puts e }
+```
 
     The only exception is when using the exponent operator:
 
