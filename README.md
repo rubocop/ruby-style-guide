@@ -54,48 +54,48 @@ at all.
 
 0. Avoid code banners. Your class is probably too big if you need them. Refactor!
 
-```Ruby
-################################################
-# Code banners are a code smell
-################################################
-```
+    ```Ruby
+    ################################################
+    # Code banners are a code smell
+    ################################################
+    ```
 
 0. Parameter explanations, examples, return descriptions, etc., are often overkill, but you should consider adding them to public API methods. If you do add them, follow [tomdoc's conventions](http://tomdoc.org/).
 
 0. Write inline comments like this:
 
-```Ruby
-# This is a description of the line.
-@pages.each { |p| puts p.name }
-```
+    ```Ruby
+    # This is a description of the line.
+    @pages.each { |p| puts p.name }
+    ```
 
 0. Write comments for methods, classes, modules, etc., like this:
 
-```Ruby
-# Print a log line to STDOUT. You can customize the output by specifying
-# a block.
-#
-# msgs  - Zero or more String messages that will be printed to the log
-#         separated by spaces.
-# block - An optional block that can be used to customize the date format.
-#         If it is present, it will be sent a Time object representing
-#         the current time. Your block should return a String version of
-#         the time, formatted however you please.
-#
-# Examples
-#
-#   log("An error occurred.")
-#
-#   log("No such file", "/var/log/server.log") do |time|
-#     time.strftime("%Y-%m-%d %H:%M:%S")
-#   end
-#
-# Returns nothing.
-#
-def log(*msgs, &block)
-  ...
-end
-```
+    ```Ruby
+    # Print a log line to STDOUT. You can customize the output by specifying
+    # a block.
+    #
+    # msgs  - Zero or more String messages that will be printed to the log
+    #         separated by spaces.
+    # block - An optional block that can be used to customize the date format.
+    #         If it is present, it will be sent a Time object representing
+    #         the current time. Your block should return a String version of
+    #         the time, formatted however you please.
+    #
+    # Examples
+    #
+    #   log("An error occurred.")
+    #
+    #   log("No such file", "/var/log/server.log") do |time|
+    #     time.strftime("%Y-%m-%d %H:%M:%S")
+    #   end
+    #
+    # Returns nothing.
+    #
+    def log(*msgs, &block)
+      ...
+    end
+    ```
 
 ##3. Naming
 
@@ -114,57 +114,57 @@ end
   arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if and only if
   there exists a safe version of that *dangerous* method.
 
-```Ruby
-# bad - there is not matching 'safe' method
-class Person
-  def update!
-  end
-end
+    ```Ruby
+    # bad - there is not matching 'safe' method
+    class Person
+      def update!
+      end
+    end
 
-# good
-class Person
-  def update
-  end
-end
+    # good
+    class Person
+      def update
+      end
+    end
 
-# good
-class Person
-  def update!
-  end
+    # good
+    class Person
+      def update!
+      end
 
-  def update
-  end
-end
-```
+      def update
+      end
+    end
+    ```
 
 3.6 Define the non-bang (safe) method in terms of the bang (dangerous)
   one if possible.
 
-```Ruby
-class Array
-  def flatten_once!
-    res = []
+    ```Ruby
+    class Array
+      def flatten_once!
+        res = []
 
-    each do |e|
-      [*e].each { |f| res << f }
+        each do |e|
+          [*e].each { |f| res << f }
+        end
+
+        replace(res)
+      end
+
+      def flatten_once
+        dup.flatten_once!
+      end
     end
-
-    replace(res)
-  end
-
-  def flatten_once
-    dup.flatten_once!
-  end
-end
-```
+    ```
 
 0. When defining binary operators, name the argument `other`.
 
-```Ruby
-def +(other)
-  # body omitted
-end
-```
+    ```Ruby
+    def +(other)
+      # body omitted
+    end
+    ```
 
 ##4. General Syntax
 
@@ -173,96 +173,96 @@ end
   interpreter, but its proper use is the key to writing easily
   readable code.
 
-```Ruby
-sum = 1 + 2
-a, b = 1, 2
-1 > 2 ? true : false; puts 'Hi'
-[1, 2, 3].each { |e| puts e }
-```
+    ```Ruby
+    sum = 1 + 2
+    a, b = 1, 2
+    1 > 2 ? true : false; puts 'Hi'
+    [1, 2, 3].each { |e| puts e }
+    ```
 
 The only exception is when using the exponent operator:
 
-```Ruby
-# bad
-e = M * c ** 2
+    ```Ruby
+    # bad
+    e = M * c ** 2
 
-# good
-e = M * c**2
-```
+    # good
+    e = M * c**2
+    ```
 
 * No spaces after `(`, `[` or before `]`, `)`.
 
-```Ruby
-some(arg).other
-[1, 2, 3].length
-```
+    ```Ruby
+    some(arg).other
+    [1, 2, 3].length
+    ```
 
 ##5. Strings
 
 * Prefer string interpolation instead of string concatenation:
 
-```Ruby
-# bad
-email_with_name = user.name + ' <' + user.email + '>'
+    ```Ruby
+    # bad
+    email_with_name = user.name + ' <' + user.email + '>'
 
-# good
-email_with_name = "#{user.name} <#{user.email}>"
-```
+    # good
+    email_with_name = "#{user.name} <#{user.email}>"
+    ```
 
 * Prefer single-quoted strings when you don't need string interpolation or
   special symbols such as `\t`, `\n`, `'`, etc.
 
-```Ruby
-# bad
-name = "Bozhidar"
+    ```Ruby
+    # bad
+    name = "Bozhidar"
 
-# good
-name = 'Bozhidar'
-```
+    # good
+    name = 'Bozhidar'
+    ```
 
 * Don't use `{}` around instance variables being interpolated into a
   string.
 
-```Ruby
-class Person
-  attr_reader :first_name, :last_name
+    ```Ruby
+    class Person
+      attr_reader :first_name, :last_name
 
-  def initialize(first_name, last_name)
-    @first_name = first_name
-    @last_name = last_name
-  end
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
 
-  # bad
-  def to_s
-    "#{@first_name} #{@last_name}"
-  end
+      # bad
+      def to_s
+        "#{@first_name} #{@last_name}"
+      end
 
-  # good
-  def to_s
-    "#@first_name #@last_name"
-  end
-end
-```
+      # good
+      def to_s
+        "#@first_name #@last_name"
+      end
+    end
+    ```
 
 * Use `%()` for single-line strings which require both interpolation
   and embedded double-quotes. For multi-line strings, prefer heredocs.
 
-```Ruby
-# bad (no interpolation needed)
-%(<div class="text">Some text</div>)
-# should be '<div class="text">Some text</div>'
+    ```Ruby
+    # bad (no interpolation needed)
+    %(<div class="text">Some text</div>)
+    # should be '<div class="text">Some text</div>'
 
-# bad (no double-quotes)
-%(This is #{quality} style)
-# should be "This is #{quality} style"
+    # bad (no double-quotes)
+    %(This is #{quality} style)
+    # should be "This is #{quality} style"
 
-# bad (multiple lines)
-%(<div>\n<span class="big">#{exclamation}</span>\n</div>)
-# should be a heredoc.
+    # bad (multiple lines)
+    %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
+    # should be a heredoc.
 
-# good (requires interpolation, has quotes, single line)
-%(<tr><td class="name">#{name}</td>)
-```
+    # good (requires interpolation, has quotes, single line)
+    %(<tr><td class="name">#{name}</td>)
+    ```
 
 * Avoid %q and %Q.
 
@@ -270,66 +270,66 @@ end
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
 
-```Ruby
-# good and also fast
-html = ''
-html << '<h1>Page title</h1>'
+    ```Ruby
+    # good and also fast
+    html = ''
+    html << '<h1>Page title</h1>'
 
-paragraphs.each do |paragraph|
-  html << "<p>#{paragraph}</p>"
-end
-```
+    paragraphs.each do |paragraph|
+      html << "<p>#{paragraph}</p>"
+    end
+    ```
 
 ##6. Conditionals
 
 0. Indent `when` as deep as `case`.
 
-```Ruby
-case
-when song.name == 'Misty'
-  puts 'Not again!'
-when song.duration > 120
-  puts 'Too long!'
-when Time.now.hour > 21
-  puts "It's too late"
-else
-  song.play
-end
+    ```Ruby
+    case
+    when song.name == 'Misty'
+      puts 'Not again!'
+    when song.duration > 120
+      puts 'Too long!'
+    when Time.now.hour > 21
+      puts "It's too late"
+    else
+      song.play
+    end
 
-kind = case year
-       when 1850..1889 then 'Blues'
-       when 1890..1909 then 'Ragtime'
-       when 1910..1929 then 'New Orleans Jazz'
-       when 1930..1939 then 'Swing'
-       when 1940..1950 then 'Bebop'
-       else 'Jazz'
-       end
-```
+    kind = case year
+           when 1850..1889 then 'Blues'
+           when 1890..1909 then 'Ragtime'
+           when 1910..1929 then 'New Orleans Jazz'
+           when 1930..1939 then 'Swing'
+           when 1940..1950 then 'Bebop'
+           else 'Jazz'
+           end
+    ```
 
 0. Never use `then` for multi-line `if/unless`.
 
-```Ruby
-# bad
-if some_condition then
-  # body omitted
-end
+    ```Ruby
+    # bad
+    if some_condition then
+      # body omitted
+    end
 
-# good
-if some_condition
-  # body omitted
-end
-```
+    # good
+    if some_condition
+      # body omitted
+    end
+    ```
 
 0. Favour the ternary operator(`?:`) over `if/then/else/end` constructs.
   It's more common and obviously more concise.
 
-```Ruby
-# bad
-result = if some_condition then something else something_else end
+    ```Ruby
+    # bad
+    result = if some_condition then something else something_else end
 
-# good
-result = some_condition ? something : something_else
-```
+    # good
+    result = some_condition ? something : something_else
+    ```
 
 0. Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
 
@@ -337,17 +337,17 @@ result = some_condition ? something : something_else
   also means that ternary operators must not be nested. Prefer
   `if/else` constructs in these cases.
 
-```Ruby
-# bad
-some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
+    ```Ruby
+    # bad
+    some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
 
-# good
-if some_condition
-  nested_condition ? nested_something : nested_something_else
-else
-  something_else
-end
-```
+    # good
+    if some_condition
+      nested_condition ? nested_something : nested_something_else
+    else
+      something_else
+    end
+    ```
 
 0. Never use `if x; ...`. Use the ternary operator instead.
 
@@ -362,68 +362,68 @@ end
 6.10. Favour modifier `if/unless` usage when you have a single-line
   body.
 
-```Ruby
-# bad
-if some_condition
-  do_something
-end
+    ```Ruby
+    # bad
+    if some_condition
+      do_something
+    end
 
-# good
-do_something if some_condition
-```
+    # good
+    do_something if some_condition
+    ```
 
 6.11. Favour `unless` over `if` for negative conditions (or control
   flow `or`).
 
-```Ruby
-# bad
-do_something if !some_condition
+    ```Ruby
+    # bad
+    do_something if !some_condition
 
-# good
-do_something unless some_condition
+    # good
+    do_something unless some_condition
 
-# another good option
-some_condition or do_something
-```
+    # another good option
+    some_condition or do_something
+    ```
 
 6.12. Never use `unless` with `else`. Rewrite these with the positive case first.
 
-```Ruby
-# bad
-unless success?
-  puts 'failure'
-else
-  puts 'success'
-end
+    ```Ruby
+    # bad
+    unless success?
+      puts 'failure'
+    else
+      puts 'success'
+    end
 
-# good
-if success?
-  puts 'success'
-else
-  puts 'failure'
-end
-```
+    # good
+    if success?
+      puts 'success'
+    else
+      puts 'failure'
+    end
+    ```
 
 6.12. Don't use parentheses around the condition of an `if/unless/while`,
   unless the condition contains an assignment (see "Using the return
   value of `=`" below).
 
-```Ruby
-# bad
-if (x > 10)
-  # body omitted
-end
+    ```Ruby
+    # bad
+    if (x > 10)
+      # body omitted
+    end
 
-# good
-if x > 10
-  # body omitted
-end
+    # good
+    if x > 10
+      # body omitted
+    end
 
-# ok
-if (x = self.next_value)
-  # body omitted
-end
-```
+    # ok
+    if (x = self.next_value)
+      # body omitted
+    end
+    ```
 
 6.13. Favour `!` over `not`. The latter binds more loosely, and can lead to confusing results.
 
@@ -432,45 +432,45 @@ end
 0. Prefer literal array and hash creation notation (unless you need to
 pass parameters to their constructors, that is).
 
-```Ruby
-# bad
-arr = Array.new
-hash = Hash.new
+    ```Ruby
+    # bad
+    arr = Array.new
+    hash = Hash.new
 
-# good
-arr = []
-hash = {}
-```
+    # good
+    arr = []
+    hash = {}
+    ```
 
 0. Prefer `%w` to the literal array syntax when you need an array of single-word
 strings.
 
-```Ruby
-# bad
-STATES = ['draft', 'open', 'closed']
+    ```Ruby
+    # bad
+    STATES = ['draft', 'open', 'closed']
 
-# good
-STATES = %w(draft open closed)
-```
+    # good
+    STATES = %w(draft open closed)
+    ```
 
 0. Use parentheses are the delimeters for `%w`.
 
-```Ruby
-# bad
-STATES = %w[draft open closed]
+    ```Ruby
+    # bad
+    STATES = %w[draft open closed]
 
-# good
-STATES = %w(draft open closed)
-```
+    # good
+    STATES = %w(draft open closed)
+    ```
 
 0. Avoid %W.
 
 0. Avoid the creation of huge gaps in arrays.
 
-```Ruby
-arr = []
-arr[100] = 1 # now you have an array with lots of nils
-```
+    ```Ruby
+    arr = []
+    arr[100] = 1 # now you have an array with lots of nils
+    ```
 
 0. Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
@@ -479,26 +479,26 @@ arr[100] = 1 # now you have an array with lots of nils
 
 0. Use symbols instead of strings as hash keys.
 
-```Ruby
-# bad
-hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
+    ```Ruby
+    # bad
+    hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
-# good
-hash = { :one => 1, :two => 2, :three => 3 }
-```
+    # good
+    hash = { :one => 1, :two => 2, :three => 3 }
+    ```
 
 0. Avoid the use of mutable object as hash keys.
 
 0. Use the old hashrocket hash syntax instead of the new 1.9 syntax (even though it is nicer!).
   We would eventually like to move towards the new syntax, but that's too much change for now.
 
-```Ruby
-# bad
-hash = { one: 1, two: 2, three: 3 }
+    ```Ruby
+    # bad
+    hash = { one: 1, two: 2, three: 3 }
 
-# good (even though it looks better)
-hash = { :one => 1, :two => 2, :three => 3 }
-```
+    # good (even though it looks better)
+    hash = { :one => 1, :two => 2, :three => 3 }
+    ```
 
 0. Rely on the fact that hashes in 1.9 are ordered.
 
