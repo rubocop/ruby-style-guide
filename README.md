@@ -1,19 +1,19 @@
 ## Table of Contents
 
-* [Source Code Layout](#1-source-code-layout)
-* [Comments](#2-comments)
-* [Naming](#3-naming)
-* [General Syntax](#4-general-syntax)
-* [Strings](#4-strings)
-* [Conditionals](#6-conditionals)
-* [Collections](#7-collections)
-* [Iteration](#8-iteration)
-* [Methods](#9-methods)
-* [Exceptions](#10-exceptions)
-* [Regular Expressions](#11-regular-expressions)
-* [Classes](#12-classes)
-* [Misc](#13-misc)
-* [References](#14-references)
+* [1. Source Code Layout](#1-source-code-layout)
+* [2. Comments](#2-comments)
+* [3. Naming](#3-naming)
+* [4. General Syntax](#4-general-syntax)
+* [5. Strings](#4-strings)
+* [6. Conditionals](#6-conditionals)
+* [7. Collections](#7-collections)
+* [8. Iteration](#8-iteration)
+* [9. Methods](#9-methods)
+* [10. Exceptions](#10-exceptions)
+* [11. Regular Expressions](#11-regular-expressions)
+* [12. Classes](#12-classes)
+* [13. Misc](#13-misc)
+* [14. References](#14-references)
 
 ##1. Source Code Layout
 
@@ -359,7 +359,17 @@ The only exception is when using the exponent operator:
   of thumb: If you have to use outer parentheses, you are using the
   wrong operators.)
 
-6.10. Favour modifier `if/unless` usage when you have a single-line
+    ```Ruby
+    # boolean expression
+    if some_condition && some_other_condition
+      do_something
+    end
+
+    # control flow
+    document.saved? or document.save!
+    ```
+
+0. Favour modifier `if/unless` usage when you have a single-line
   body.
 
     ```Ruby
@@ -372,7 +382,7 @@ The only exception is when using the exponent operator:
     do_something if some_condition
     ```
 
-6.11. Favour `unless` over `if` for negative conditions (or control
+0. Favour `unless` over `if` for negative conditions (or control
   flow `or`).
 
     ```Ruby
@@ -386,7 +396,7 @@ The only exception is when using the exponent operator:
     some_condition or do_something
     ```
 
-6.12. Never use `unless` with `else`. Rewrite these with the positive case first.
+0. Never use `unless` with `else`. Rewrite these with the positive case first.
 
     ```Ruby
     # bad
@@ -404,7 +414,7 @@ The only exception is when using the exponent operator:
     end
     ```
 
-6.12. Don't use parentheses around the condition of an `if/unless/while`,
+0. Don't use parentheses around the condition of an `if/unless/while`,
   unless the condition contains an assignment (see "Using the return
   value of `=`" below).
 
@@ -425,7 +435,7 @@ The only exception is when using the exponent operator:
     end
     ```
 
-6.13. Favour `!` over `not`. The latter binds more loosely, and can lead to confusing results.
+0. Favour `!` over `not`. The latter binds more loosely, and can lead to confusing results.
 
 ##7. Collections
 
@@ -502,7 +512,7 @@ strings.
 
 0. Rely on the fact that hashes in 1.9 are ordered.
 
-7.10. Leave a single space padding inside the braces of a hash.
+0. Leave a single space padding inside the braces of a hash.
 
     ```Ruby
     # bad
@@ -512,7 +522,7 @@ strings.
     hash = { :one => 1, :two => 2 }
     ```
 
-7.11. Leave no padding inside the brackets of an array.
+0. Leave no padding inside the brackets of an array.
 
     ```Ruby
     # bad
@@ -522,9 +532,9 @@ strings.
     array = [1, 2, 3]
     ```
 
-7.12. Use a single line for arrays and hashes if they will fit.
+0. Use a single line for arrays and hashes if they will fit.
 
-7.13. Format multiline hashes and arrays by indenting two-spaces.
+0. Format multiline hashes and arrays by indenting two-spaces.
 
     ```Ruby
     hash = {
@@ -539,7 +549,7 @@ strings.
     ]
     ```
 
-7.14. You may optionally align hash values if it improves readability. Especially
+0. You may optionally align hash values if it improves readability. Especially
     when there are many keys.
 
     ```Ruby
@@ -550,7 +560,7 @@ strings.
     }
     ```
 
-7.15. Prefer `size` over `length` for getting the number of elements.
+0. Prefer `size` over `length` for getting the number of elements.
 
 ##8. Iteration
 
@@ -570,16 +580,6 @@ strings.
 
     # good
     arr.each { |elem| puts elem }
-    ```
-
-    ```Ruby
-    # boolean expression
-    if some_condition && some_other_condition
-      do_something
-    end
-
-    # control flow
-    document.saved? or document.save!
     ```
 
 0. Favour modifier `while/until` usage when you have a single-line
@@ -664,7 +664,7 @@ strings.
     )
     ```
 
-* Use `def` with parentheses when there are arguments. Omit the
+0. Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
 
     ```Ruby
@@ -677,7 +677,7 @@ strings.
     end
     ```
 
-* Omit parentheses around parameters for methods that are part of an
+0. Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
   access methods. Use parentheses around the arguments of all other
@@ -699,7 +699,7 @@ strings.
     array.delete(e)
     ```
 
-* Avoid `return` where not required.
+0. Avoid `return` where not required.
 
     ```Ruby
     # bad
@@ -713,7 +713,7 @@ strings.
     end
     ```
 
-* Use spaces around the `=` operator when assigning default values to method parameters:
+0. Use spaces around the `=` operator when assigning default values to method parameters:
 
     ```Ruby
     # bad
@@ -727,7 +727,7 @@ strings.
     end
     ```
 
-* Never put a space between a method name and the opening parenthesis.
+0. Never put a space between a method name and the opening parenthesis.
 
     ```Ruby
     # bad
@@ -737,19 +737,19 @@ strings.
     f(3 + 2) + 1
     ```
 
-* If the first argument to a method begins with an open parenthesis,
+0. If the first argument to a method begins with an open parenthesis,
   always use parentheses in the method invocation. For example, write
 `f((3 + 2) + 1)`.
 
 ##10. Exceptions
 
-* Use `e` as the rescued variable:
+0. Use `e` as the rescued variable:
 
     ```Ruby
     rescue StandardError => e
     ```
 
-* Signal exceptions using the `fail` keyword. Use `raise` only when
+0. Signal exceptions using the `fail` keyword. Use `raise` only when
   catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
 
     ```Ruby
@@ -760,7 +760,7 @@ strings.
     end
     ```
 
-* Never return from an `ensure` block. If you explicitly return from a
+0. Never return from an `ensure` block. If you explicitly return from a
   method inside an `ensure` block, the return will take precedence over
   any exception being raised, and the method will return as if no
   exception had been raised at all. In effect, the exception will be
@@ -776,7 +776,7 @@ strings.
     end
     ```
 
-* Use *implicit begin blocks* when possible.
+0. Use *implicit begin blocks* when possible.
 
     ```Ruby
     # bad
@@ -796,7 +796,7 @@ strings.
     end
     ```
 
-* Don't suppress exceptions.
+0. Don't suppress exceptions.
 
     ```Ruby
     # bad
@@ -810,7 +810,7 @@ strings.
     do_something rescue nil
     ```
 
-* Don't use exceptions for flow of control.
+0. Don't use exceptions for flow of control.
 
     ```Ruby
     # bad
@@ -828,7 +828,7 @@ strings.
     end
     ```
 
-* Avoid rescuing the `Exception` class.  This will trap signals and calls to
+0. Avoid rescuing the `Exception` class.  This will trap signals and calls to
   `exit`, requiring you to `kill -9` the process.
 
     ```Ruby
@@ -858,7 +858,7 @@ strings.
     end
     ```
 
-* Put more specific exceptions higher up the rescue chain, otherwise
+0. Put more specific exceptions higher up the rescue chain, otherwise
   they'll never be rescued from.
 
     ```Ruby
@@ -881,7 +881,7 @@ strings.
     end
     ```
 
-* Release external resources obtained by your program in an ensure
+0. Release external resources obtained by your program in an ensure
 block.
 
     ```Ruby
@@ -895,14 +895,14 @@ block.
     end
     ```
 
-* Favour the use of exceptions for the standard library over
+0. Favour the use of exceptions for the standard library over
 introducing new exception classes.
 
 ##11. Regular Expressions
 
-* Don't use regular expressions if you just need plain text search in string:
+0. Don't use regular expressions if you just need plain text search in string:
   `string['text']`
-* For simple constructions you can use regexp directly through string index.
+0. For simple constructions you can use regexp directly through string index.
 
     ```Ruby
     match = string[/regexp/]             # get content of matched regexp
@@ -910,14 +910,14 @@ introducing new exception classes.
     string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
     ```
 
-* Use non capturing groups when you don't use captured result of parenthesis.
+0. Use non capturing groups when you don't use captured result of parenthesis.
 
     ```Ruby
     /(first|second)/   # bad
     /(?:first|second)/ # good
     ```
 
-* Avoid using $1-9 as it can be hard to track what they contain. Named groups
+0. Avoid using $1-9 as it can be hard to track what they contain. Named groups
   can be used instead.
 
     ```Ruby
@@ -932,10 +932,10 @@ introducing new exception classes.
     process meaningful_var
     ```
 
-* Character classes have only few special characters you should care about:
+0. Character classes have only few special characters you should care about:
   `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
 
-* Be careful with `^` and `$` as they match start/end of line, not string endings.
+0. Be careful with `^` and `$` as they match start/end of line, not string endings.
   If you want to match the whole string use: `\A` and `\z` (not to be
   confused with `\Z` which is the equivalent of `/\n?\z/`).
 
@@ -945,7 +945,7 @@ introducing new exception classes.
     string[/\Ausername\z/] # don't match
     ```
 
-* Use `%r` only for regular expressions matching *more than* one '/' character.
+0. Use `%r` only for regular expressions matching *more than* one '/' character.
 
     ```Ruby
     # bad
@@ -959,7 +959,7 @@ introducing new exception classes.
     %r(^/blog/2011/(.*)$)
     ```
 
-* Use `x` modifier for complex regexps. This makes them more readable and you
+0. Use `x` modifier for complex regexps. This makes them more readable and you
   can add some useful comments. Just be careful as spaces are ignored.
 
     ```Ruby
@@ -972,11 +972,11 @@ introducing new exception classes.
     }x
     ```
 
-* For complex replacements `sub`/`gsub` can be used with block or hash.
+0. For complex replacements `sub`/`gsub` can be used with block or hash.
 
 ##12. Blocks / Procs
 
-* Use `{...}` over `do...end` for single-line blocks.
+0. Use `{...}` over `do...end` for single-line blocks.
 
     ```Ruby
     # good
@@ -988,7 +988,7 @@ introducing new exception classes.
     end
     ```
 
-* Use `{...}` over `do...end` when chaining.
+0. Use `{...}` over `do...end` when chaining.
 
     ```Ruby
     # good
@@ -1005,7 +1005,7 @@ introducing new exception classes.
     end.map { |name| name.upcase }
     ```
 
-* Use the old lambda syntax over the new literal syntax. NOTE: We prefer the new syntax, but
+0. Use the old lambda syntax over the new literal syntax. NOTE: We prefer the new syntax, but
   are staying with the old for consistency with the existing codebase.
 
     ```Ruby
@@ -1018,7 +1018,7 @@ introducing new exception classes.
     lambda.call(1, 2)
     ```
 
-* Use `_` for unused block parameters.
+0. Use `_` for unused block parameters.
 
     ```Ruby
     # bad
@@ -1193,11 +1193,11 @@ everything `public` (which is the default).
 
 ##14. Misc
 
-* Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
+0. Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
-* Avoid parameter lists longer than three or four parameters.
-* If you really have to, add "global" methods to Kernel and make them private.
-* Use class instance variables instead of global variables.
+0. Avoid parameter lists longer than three or four parameters.
+0. If you really have to, add "global" methods to Kernel and make them private.
+0. Use class instance variables instead of global variables.
 
     ```Ruby
     #bad
@@ -1213,12 +1213,12 @@ everything `public` (which is the default).
     Foo.bar = 1
     ```
 
-* Avoid `alias` when `alias_method` will do.
-* Avoid needless metaprogramming.
-* Do not mutate arguments unless that is the purpose of the method.
-* Avoid more than three levels of block nesting.
+0. Avoid `alias` when `alias_method` will do.
+0. Avoid needless metaprogramming.
+0. Do not mutate arguments unless that is the purpose of the method.
+0. Avoid more than three levels of block nesting.
 
-* Avoid line continuation (\\) where not required. In practice, avoid using
+0. Avoid line continuation (\\) where not required. In practice, avoid using
   line continuations at all.
 
     ```Ruby
@@ -1231,7 +1231,7 @@ everything `public` (which is the default).
              - 2
     ```
 
-* Using the return value of `=` (an assignment) is ok, but surround the
+0. Using the return value of `=` (an assignment) is ok, but surround the
   assignment with parenthesis.
 
     ```Ruby
@@ -1245,14 +1245,14 @@ everything `public` (which is the default).
     if (v = self.next_value) == 'hello' ...
     ```
 
-* Use `||=` freely to initialize variables.
+0. Use `||=` freely to initialize variables.
 
     ```Ruby
     # set name to Bozhidar, only if it's nil or false
     name ||= 'Bozhidar'
     ```
 
-* Don't use `||=` to initialize boolean variables. (Consider what
+0. Don't use `||=` to initialize boolean variables. (Consider what
 would happen if the current value happened to be `false`.)
 
     ```Ruby
@@ -1263,11 +1263,11 @@ would happen if the current value happened to be `false`.)
     enabled = true if enabled.nil?
     ```
 
-* Avoid using Perl-style special variables (like `$0-9`, `$``,
+0. Avoid using Perl-style special variables (like `$0-9`, `$``,
   etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged.
 
-* Prefer `()` as delimiters for all `%` literals.
+0. Prefer `()` as delimiters for all `%` literals.
 
 ##14. References
 
