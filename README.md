@@ -469,7 +469,7 @@ strings.
     STATES = %w(draft open closed)
     ```
 
-0. Avoid %W.
+0. Avoid `%W`.
 
 0. Avoid the creation of huge gaps in arrays.
 
