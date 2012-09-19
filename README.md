@@ -180,7 +180,7 @@ at all.
     [1, 2, 3].each { |e| puts e }
     ```
 
-The only exception is when using the exponent operator:
+    The only exception is when using the exponent operator:
 
     ```Ruby
     # bad
@@ -1080,7 +1080,7 @@ introducing new exception classes.
     end
     ```
 
-13.3 Use the `attr` family of functions to define trivial accessors or
+0. Use the `attr` family of functions to define trivial accessors or
 mutators.
 
     ```Ruby
