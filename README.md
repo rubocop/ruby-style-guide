@@ -12,7 +12,8 @@
 0. [Blocks / Procs](#12-blocks--procs)
 0. [Classes](#13-classes)
 0. [Misc](#14-misc)
-0. [References](#14-references)
+0. [Rails](#15-misc)
+0. [References](#16-references)
 
 ##1. Source Code Layout
 
@@ -1265,7 +1266,11 @@ would happen if the current value happened to be `false`.)
 
 0. Prefer `()` as delimiters for all `%` literals.
 
-##14. References
+##15. Rails
+
+See the examples in `model.rb`, `model_spec.rb`, `factory.rb`, and `view.html.erb` for canonical examples.
+
+##16. References
 
 Read these books and guides:
 
