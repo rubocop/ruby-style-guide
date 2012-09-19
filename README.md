@@ -9,7 +9,7 @@
 0. [Methods](#9-methods)
 0. [Exceptions](#10-exceptions)
 0. [Regular Expressions](#11-regular-expressions)
-0. [Blocks / Procs](#12-blocks-procs)
+0. [Blocks / Procs](#12-blocks--procs)
 0. [Classes](#13-classes)
 0. [Misc](#14-misc)
 0. [References](#14-references)
@@ -30,9 +30,6 @@
 0. Keep lines shorter than 80 characters.
 
 ##2. Comments
-
-> Good code is like a good joke - it needs no explanation. <br/>
-> -- Russ Olsen
 
 0. Write self-documenting code. If feel you need a comment, refactor the code until a comment feels like overkill. Then, ignore the rest of this section.
 
@@ -505,7 +502,7 @@ strings.
     # bad
     hash = { one: 1, two: 2, three: 3 }
 
-    # good (even though it looks better)
+    # good (even though it looks worse)
     hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
