@@ -260,7 +260,7 @@ at all.
     %(<tr><td class="name">#{name}</td>)
     ```
 
-0. Avoid %q and %Q.
+0. Avoid `%q` and `%Q`.
 
 0. Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
