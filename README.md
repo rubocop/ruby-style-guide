@@ -1,6 +1,6 @@
 ## Table of Contents
 
-* [1. Source Code Layout](#1-source-code-layout)
+*[1. Source Code Layout](#1-source-code-layout)
 * [2. Comments](#2-comments)
 * [3. Naming](#3-naming)
 * [4. General Syntax](#4-general-syntax)
@@ -168,7 +168,7 @@ at all.
 
 ##4. General Syntax
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
+0. Use spaces around operators, after commas, colons and semicolons, around `{`
   and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
   interpreter, but its proper use is the key to writing easily
   readable code.
@@ -190,7 +190,7 @@ The only exception is when using the exponent operator:
     e = M * c**2
     ```
 
-* No spaces after `(`, `[` or before `]`, `)`.
+0. No spaces after `(`, `[` or before `]`, `)`.
 
     ```Ruby
     some(arg).other
@@ -199,7 +199,7 @@ The only exception is when using the exponent operator:
 
 ##5. Strings
 
-* Prefer string interpolation instead of string concatenation:
+0. Prefer string interpolation instead of string concatenation:
 
     ```Ruby
     # bad
@@ -209,7 +209,7 @@ The only exception is when using the exponent operator:
     email_with_name = "#{user.name} <#{user.email}>"
     ```
 
-* Prefer single-quoted strings when you don't need string interpolation or
+0. Prefer single-quoted strings when you don't need string interpolation or
   special symbols such as `\t`, `\n`, `'`, etc.
 
     ```Ruby
@@ -220,7 +220,7 @@ The only exception is when using the exponent operator:
     name = 'Bozhidar'
     ```
 
-* Don't use `{}` around instance variables being interpolated into a
+0. Don't use `{}` around instance variables being interpolated into a
   string.
 
     ```Ruby
@@ -244,7 +244,7 @@ The only exception is when using the exponent operator:
     end
     ```
 
-* Use `%()` for single-line strings which require both interpolation
+0. Use `%()` for single-line strings which require both interpolation
   and embedded double-quotes. For multi-line strings, prefer heredocs.
 
     ```Ruby
@@ -264,9 +264,9 @@ The only exception is when using the exponent operator:
     %(<tr><td class="name">#{name}</td>)
     ```
 
-* Avoid %q and %Q.
+0. Avoid %q and %Q.
 
-* Avoid using `String#+` when you need to construct large data chunks.
+0. Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
 
