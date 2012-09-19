@@ -1126,9 +1126,9 @@ in inheritance.
     Parent.print_class_var # => will print "child"
     ```
 
-As you can see all the classes in a class hierarchy actually share one
-class variable. Class instance variables should usually be preferred
-over class variables.
+  As you can see all the classes in a class hierarchy actually share one
+  class variable. Class instance variables should usually be preferred
+  over class variables.
 
 0. Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage. Don't go off leaving
