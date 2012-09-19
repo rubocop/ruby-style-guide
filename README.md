@@ -1,5 +1,3 @@
-## Table of Contents
-
 0. [Source Code Layout](#1-source-code-layout)
 0. [Comments](#2-comments)
 0. [Naming](#3-naming)
