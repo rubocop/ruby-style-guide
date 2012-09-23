@@ -247,7 +247,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
   
 * Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
-* Only use trailing `if/unless` when they are are rare footnotes that can be
+* Only use trailing `if/unless` when they are rare footnotes that can be
   ignored in the usual, "go-right" case.  That is, the statement you start with should
   almost always execute.
   (A good alternative for assertions and other one-line code that rarely executes is control-flow `and/or`.)
