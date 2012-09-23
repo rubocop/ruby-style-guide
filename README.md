@@ -79,7 +79,7 @@ You can generate a PDF or an HTML copy of this guide using
 > -- Jerry Coffin (on indentation)
 
 * Use `UTF-8` as the source file encoding.
-* Use two **spaces** per indentation level.
+* Use two **spaces** per indentation level. No hard tabs.
 
     ```Ruby
     # good
@@ -319,7 +319,7 @@ You can generate a PDF or an HTML copy of this guide using
     document.saved? or document.save!
     ```
 
-* Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
+* Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `and/or`.
@@ -463,9 +463,9 @@ You can generate a PDF or an HTML copy of this guide using
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
     ask themselves - it this code really readable and can't the blocks contents be extracted into
-    nifty methods.
+    nifty methods?
 
-* Avoid `return` where not required.
+* Avoid `return` where not required for flow of control.
 
     ```Ruby
     # bad
@@ -479,7 +479,7 @@ You can generate a PDF or an HTML copy of this guide using
     end
     ```
 
-* Avoid `self` where not required.
+* Avoid `self` where not required. (It is only required when calling a self write accessor.)
 
     ```Ruby
     # bad
@@ -495,13 +495,13 @@ You can generate a PDF or an HTML copy of this guide using
     def ready?
       if last_reviewed_at > last_updated_at
         worker.update(content, options)
-        status = :in_progress
+        self.status = :in_progress
       end
       status == :verified
     end
     ```
 
-* As a corollary, avoid shadowing methods with local variables unless they are both equivalent
+* As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
 
     ```Ruby
     class Foo
@@ -559,7 +559,7 @@ You can generate a PDF or an HTML copy of this guide using
     ```
 
 * Using the return value of `=` (an assignment) is ok, but surround the
-  assignment with parenthesis.
+  assignment with parentheses.
 
     ```Ruby
     # good - shows intended use of assignment
@@ -611,8 +611,7 @@ would happen if the current value happened to be `false`.)
 * Always run the Ruby interpreter with the `-w` option so it will warn
 you if you forget either of the rules above!
 
-* When the keys of your hash are symbols use the Ruby 1.9 hash literal
-syntax.
+* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
 
     ```Ruby
     # bad
@@ -622,7 +621,7 @@ syntax.
     hash = { one: 1, two: 2 }
     ```
 
-* Use the new lambda literal syntax.
+* The new lambda literal syntax is preferred in Ruby 1.9.
 
     ```Ruby
     # bad
@@ -956,7 +955,7 @@ in *Ruby* now, not in *Python*.
     end
 
 * Use `def self.method` to define singleton methods. This makes the methods
-  more resistant to refactoring changes.
+  more resistant to refactoring changes since the class name is not repeated.
 
     ```Ruby
     class TestClass
@@ -1033,7 +1032,7 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-* Mitigate the proliferation of `begin` blocks via the use of
+* Mitigate the proliferation of `begin` blocks by using
   *contingency methods* (a term coined by Avdi Grimm).
 
     ```Ruby
@@ -1202,7 +1201,7 @@ strings.
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
-* Use symbols instead of strings as hash keys.
+* Prefer symbols instead of strings as hash keys.
 
     ```Ruby
     # bad
@@ -1212,9 +1211,8 @@ strings.
     hash = { one: 1, two: 2, three: 3 }
     ```
 
-* Avoid the use of mutable object as hash keys.
-* Use the new 1.9 literal hash syntax in preference to the hashrocket
-syntax.
+* Avoid the use of mutable objects as hash keys.
+* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
 
     ```Ruby
     # bad
@@ -1224,7 +1222,7 @@ syntax.
     hash = { one: 1, two: 2, three: 3 }
     ```
 
-* Rely on the fact that hashes in 1.9 are ordered.
+* Rely on the fact that hashes in Ruby 1.9 are ordered.
 * Never modify a collection while traversing it.
 
 ## Strings
@@ -1307,7 +1305,7 @@ syntax.
     string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
     ```
 
-* Use non capturing groups when you don't use captured result of parenthesis.
+* Use non-capturing groups when you don't use captured result of parentheses.
 
     ```Ruby
     /(first|second)/   # bad
@@ -1405,6 +1403,8 @@ syntax.
 
 ## Metaprogramming
 
+* Avoid needless metaprogramming.
+
 * Do not mess around in core classes when writing libraries. (Do not monkey
 patch them.)
 
@@ -1493,7 +1493,6 @@ patch them.)
 * Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
 * Code in a functional way, avoiding mutation when that makes sense.
-* Avoid needless metaprogramming.
 * Do not mutate arguments unless that is the purpose of the method.
 * Avoid more than three levels of block nesting.
 * Be consistent. In an ideal world, be consistent with these guidelines.
