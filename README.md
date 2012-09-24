@@ -104,7 +104,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Align the parameters of a method call if they span over multiple lines.
+* Align the parameters of a method call if they span over multiple lines using normal indent.
 
     ```Ruby
     # starting point (line is too long)
@@ -112,7 +112,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
     end
 
-    # bad (normal indent)
+    # good (normal indent)
     def send_mail(source)
       Mailer.deliver(
         to: 'bob@example.com',
@@ -130,7 +130,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
           body: source.text)
     end
 
-    # good
+    # bad
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com',
                      from: 'us@example.com',
