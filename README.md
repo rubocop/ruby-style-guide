@@ -13,7 +13,6 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 * [Collections](#collections)
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
-* [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
 
@@ -153,11 +152,11 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
      ```Ruby
      def some_method
-       # body omitted
+       ...
      end
 
      def some_method_with_arguments(arg1, arg2)
-       # body omitted
+       ...
      end
      ```
 
@@ -184,18 +183,19 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     ```Ruby
     # bad
     if some_condition then
-      # body omitted
+      ...
     end
 
     # good
     if some_condition
-      # body omitted
+      ...
     end
     ```
 
 * Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
   `if/else` constructs in these cases.
+  Avoid multi-line ternary; use `if/unless` instead.
 
     ```Ruby
     # bad
@@ -244,8 +244,6 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     (flag = top_of_page?) or reset_page
     
     ```
-  
-* Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Only use trailing `if/unless` when they are rare footnotes that can be
   ignored in the usual, "go-right" case.  That is, the statement you start with should
@@ -305,17 +303,17 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     ```Ruby
     # bad
     if (x > 10)
-      # body omitted
+      ...
     end
 
     # good
     if x > 10
-      # body omitted
+      ...
     end
 
     # ok
     if (x = self.next_value)
-      # body omitted
+      ...
     end
     ```
 
@@ -352,7 +350,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     class Person
       attr_reader :name, :age
 
-      # omitted
+      ...
     end
 
     temperance = Person.new('Temperance', 30)
@@ -392,10 +390,10 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
     ask themselves - it this code really readable and can't the blocks contents be extracted into
-    nifty methods.
+    nifty methods?
 
-* Avoid `return` where not required.
-  It's more succinct, and will still work if you refactor your code into a block later.
+* Avoid `return` where not needed for flow of control.
+  Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.
 
     ```Ruby
     # bad
@@ -409,7 +407,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Avoid `self` where not required. (It is only required when calling a self write accessor.)
+* Only use `self` when required for calling a self write accessor.
 
     ```Ruby
     # bad
@@ -498,14 +496,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     if v = array.grep(/foo/) ...
 
     # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == 'hello' ...
-    ```
-
-* Use `||=` to initialize variables the first time.
-
-    ```Ruby
-    # set name to Bozhidar, only if it's nil or false
-    name ||= 'Bozhidar'
+    if (v = next_value) == 'hello' ...
     ```
 
 * Don't use `||=` to initialize boolean variables. (Consider what
@@ -595,8 +586,6 @@ would happen if the current value happened to be `false`.)
 
 ## Classes
 
-* When designing class hierarchies make sure that they conform to the
-  [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
 * Try to make your classes as
   [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))
   as possible.
@@ -634,12 +623,12 @@ in accordance with their intended usage.
     ```Ruby
     class SomeClass
       def public_method
-        # ...
+        ...
       end
 
       private
       def private_method
-        # ...
+        ...
       end
     end
 
@@ -649,23 +638,23 @@ in accordance with their intended usage.
     class TestClass
       # bad
       def TestClass.some_method
-        # body omitted
+        ...
       end
 
       # good
       def self.some_other_method
-        # body omitted
+        ...
       end
 
       # Also possible and convenient when you
       # have to define many singleton methods.
       class << self
         def first_method
-          # body omitted
+          ...
         end
 
         def second_method_etc
-          # body omitted
+          ...
         end
       end
     end
@@ -977,32 +966,6 @@ introducing new exception classes.
 
 * For complex replacements `sub`/`gsub` can be used with a block or hash.
 
-## Percent Literals
-
-* Use `%()` for single-line strings which require both interpolation
-  and embedded double-quotes. For multi-line strings, prefer << heredocs.
-
-    ```Ruby
-    # bad (no interpolation needed)
-    %(<div class="text">Some text</div>)
-    # should be '<div class="text">Some text</div>'
-
-    # bad (no double-quotes)
-    %(This is #{quality} style)
-    # should be "This is #{quality} style"
-
-    # bad (multiple lines)
-    %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
-    # should be a heredoc.
-
-    # good (requires interpolation, has quotes, single line)
-    %(<tr><td class="name">#{name}</td>)
-    ```
-
-* Avoid `%q`, `%Q`, `%x`, `%s`, and `%W`.
-
-* Prefer `()` as delimiters for all `%` literals.
-
 ## Metaprogramming
 
 * Only use metaprogramming when necessary.  For example, `deliver_<mail_message>` in TMail was completely
@@ -1029,26 +992,6 @@ introducing new exception classes.
     ```
 
   - `define_method` is preferable to `class_eval { def ... }`
-
-* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the rails code):
-
-    ```ruby
-    # from activesupport/lib/active_support/core_ext/string/output_safety.rb
-    UNSAFE_STRING_METHODS.each do |unsafe_method|
-      if 'String'.respond_to?(unsafe_method)
-        class_eval <<-EOT, __FILE__, __LINE__ + 1
-          def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
-            to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
-          end                                       # end
-
-          def #{unsafe_method}!(*args)              # def capitalize!(*args)
-            @dirty = true                           #   @dirty = true
-            super                                   #   super
-          end                                       # end
-        EOT
-      end
-    end
-    ```
 
 * Avoid `method_missing` if possible. Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.launch_state = false`). Consider using delegation, proxy, or `define_method` instead.  If you must, use `method_missing`,
   - be sure to [also define `respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html)
