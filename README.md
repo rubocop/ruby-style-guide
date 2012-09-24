@@ -954,8 +954,8 @@ in *Ruby* now, not in *Python*.
       end
     end
 
-* Use `def self.method` to define singleton methods. This makes the methods
-  more resistant to refactoring changes since the class name is not repeated.
+* Use `def self.method` to define singleton methods. This makes the code
+  easier to refactor since the class name is not repeated.
 
     ```Ruby
     class TestClass
