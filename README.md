@@ -861,17 +861,6 @@ introducing new exception classes.
     "#{ user.last_name }, #{ user.first_name }"
     ```
 
-* Prefer single-quoted strings when you don't need string interpolation or
-  special symbols such as `\t`, `\n`, `'`, etc.
-
-    ```Ruby
-    # bad
-    name = "Bozhidar"
-
-    # good
-    name = 'Bozhidar'
-    ```
-
 * `String#<<` performs better by mutating the string in place.  `String#+`, avoids mutation (which is good
   in a functional way) but therefore runs slower since it creates a new string object.
 
