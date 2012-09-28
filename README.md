@@ -147,7 +147,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ## Syntax
 
-* Use `def` with parentheses when there are arguments. Omit the
+* Prefer parentheses around arguments in method declaration.  Omit the
   parentheses when the method doesn't accept any arguments.
 
      ```Ruby
@@ -343,7 +343,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
-  access methods. Use parentheses around the arguments of all other
+  access methods. It is preferred to use parentheses around the arguments of all other
   method invocations.
 
     ```Ruby
@@ -393,7 +393,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     nifty methods?
 
 * Avoid `return` where not needed for flow of control.
-  Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.
+  (Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.)
 
     ```Ruby
     # bad
