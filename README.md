@@ -32,15 +32,13 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily
-  readable code.
+* Use spaces around operators and `=>`, after commas, colons and semicolons, around `{`
+  and before `}`.
 
     ```Ruby
-    sum = 1 + 2
-    a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
+    a, b = 1, 2 + 3
+    location = { :city => 'Santa Barbara', :state => 'CA' }
+    size > 10 ? 'large' : 'small'
     [1, 2, 3].each { |e| puts e }
     ```
 
@@ -1012,8 +1010,66 @@ introducing new exception classes.
 
 ## Misc
 
-* Write `ruby -w` safe code.
-* Code in a functional way, avoiding mutation and other side-effects unless performance concerns require the side-effects.
+* Write `ruby -w` safe code when practical.
+* When code patterns are repeated, use separate lines and extra whitespace when practical to align columns
+  so that the code is tabular.  This makes the patterns obvious which helps to spot/prevent bugs.
+
+    ```ruby
+    # bad
+    PROMOTIONAL_METHODS = [
+                    [ 'review_site', 'Content / Review Site'],
+                    [ 'coupon_site', 'Discount / Coupon Site' ],
+                    [ 'display', 'Display' ],
+                    [ 'email', 'Email' ],
+                    [ 'rewards', 'Rewards / Incentive' ],
+                    [ 'leads', 'Lead Form / Co Reg' ],
+                    [ 'search', 'Search' ],
+                    [ 'social_media', 'Social Media' ],
+                    [ 'software', 'Software' ],
+                    [ 'other', 'Other' ]
+                  ],
+    ...
+    # good
+      PROMOTIONAL_METHODS = [
+                    [ 'review_site',  'Content / Review Site'],
+                    [ 'coupon_site',  'Discount / Coupon Site' ],
+                    [ 'display',      'Display' ],
+                    [ 'email',        'Email' ],
+                    [ 'rewards',      'Rewards / Incentive' ],
+                    [ 'leads',        'Lead Form / Co Reg' ],
+                    [ 'search',       'Search' ],
+                    [ 'social_media', 'Social Media' ],
+                    [ 'software',     'Software' ],
+                    [ 'other',        'Other' ]
+                  ],
+    ...
+    # bad
+          params = {
+            'phone' => calling_phone_number.to_param,
+            'LastName' => last_name,
+            'FirstName' => first_name,
+            'Address' => primary_address,
+            'ApartmentNum' => secondary_address,
+            'City' => city_name,
+            'State' => state,
+            'Zipcode' => zip
+          }
+    ...
+    # good
+          params = {
+            'phone'         => calling_phone_number.to_param,
+            'LastName'      => last_name,
+            'FirstName'     => first_name,
+            'Address'       => primary_address,
+            'ApartmentNum'  => secondary_address,
+            'City'          => city_name,
+            'State'         => state,
+            'Zipcode'       => zip
+          }
+
+    ```
+ 
+* Code in a functional way, avoiding mutation and other side-effects unless performance concerns require them.
   Mutating arguments is a side-effect so don't do it unless that is the purpose of the method.
 * Don't put required parameters into options hashes.
 * Try to keep methods to 10 lines of code or less. Ideally, most methods will be shorter than
