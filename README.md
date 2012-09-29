@@ -18,7 +18,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ## Source Code Layout
 
-* Use two **spaces** per indentation level. No tabs.
+* Use two **spaces** per indentation level. No hard tabs.
 
     ```Ruby
     # good
@@ -1069,8 +1069,8 @@ introducing new exception classes.
 
     ```
  
-* Code in a functional way, avoiding mutation and other side-effects unless performance concerns require them.
-  Mutating arguments is a side-effect so don't do it unless that is the purpose of the method.
+* Prefer code written in the functional style:  avoid side-effects like object mutation unless required by performance concerns.
+  Mutating arguments is a side-effect so don't do it unless that is the sole purpose of the method.
 * Don't put required parameters into options hashes.
 * Try to keep methods to 10 lines of code or less. Ideally, most methods will be shorter than
   5 lines of code. Comments and empty lines do not count.
