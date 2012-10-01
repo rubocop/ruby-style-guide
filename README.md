@@ -33,13 +33,14 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     ```
 
 * Use spaces around operators and `=>`, after commas, colons and semicolons, around `{`
-  and before `}`.
+  and before `}`.  (But there is no need for spaces inside the empty hash `{}`.)
 
     ```Ruby
     a, b = 1, 2 + 3
     location = { :city => 'Santa Barbara', :state => 'CA' }
     size > 10 ? 'large' : 'small'
     [1, 2, 3].each { |e| puts e }
+    params = {}
     ```
 
     The only exception is when using the exponent operator:
@@ -57,6 +58,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     ```Ruby
     some(arg).other
     [1, 2, 3].length
+    collection = []
     ```
 
 * Indent `when` as deep as `case`. I know that many would disagree
