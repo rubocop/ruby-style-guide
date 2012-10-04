@@ -17,7 +17,6 @@ class Person < ActiveRecord::Base
   #. Don't list attributes that exist in the db but should not be used
   #. (e.g. STI columns that don't apply to this model).
   attr_accessible :age,
-                  :birthday
                   :name,
                   :birthday
   # protected     admin
@@ -34,11 +33,9 @@ class Person < ActiveRecord::Base
   include AnotherModule
 
   #. Use the "validates" form over "validates_[uniqueness]_of".
-  validates :name,
-    :presence => true
-    :uniqueness => true
-  validates :age,
-    :numericality => true
+  validates :name, presence: true,      uniqueness: true
+  validates :age,  numericality: true
+
   #. Use "must" to designate validation callbacks (e.g. "name_must_be_german")
   validate :must_be_awesome
 

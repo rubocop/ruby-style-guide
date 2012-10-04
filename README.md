@@ -491,19 +491,21 @@ strings.
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { :one => 1, :two => 2, :three => 3 }
+    hash = { one: 1, two: 2, three: 3 }
     ```
 
 0. Avoid the use of mutable object as hash keys.
 
 0. Use the old hashrocket hash syntax instead of the new 1.9 syntax (even though it is nicer!).
   We would eventually like to move towards the new syntax, but that's too much change for now.
+0. Use the new Ruby 1.9 has syntax whenever possible. For cases in which
+   the hash keys cannot be symbolized, use the old syntax.
 
     ```Ruby
-    # bad
+    # good
     hash = { one: 1, two: 2, three: 3 }
 
-    # good (even though it looks worse)
+    # deprecated
     hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
@@ -513,10 +515,10 @@ strings.
 
     ```Ruby
     # bad
-    hash = {:one => 1, :two => 2}
+    hash = {one: 1, two: 2}
 
     # good
-    hash = { :one => 1, :two => 2 }
+    hash = { one: 1, two: 2 }
     ```
 
 0. Leave no padding inside the brackets of an array.
@@ -535,9 +537,9 @@ strings.
 
     ```Ruby
     hash = {
-      :name => 'peter',
-      :professional => 'teacher',
-      :favourite_color => 'green'
+      name:             'peter',
+      professional:     'teacher',
+      favourite_color:  'green'
     }
 
     array = [
@@ -551,9 +553,9 @@ strings.
 
     ```Ruby
     hash = {
-      :name             => 'peter',
-      :professional     => 'teacher',
-      :favourite_color  => 'green'
+      name:             'peter',
+      professional:     'teacher',
+      favourite_color:  'green'
     }
     ```
 
@@ -647,17 +649,17 @@ strings.
 
     # good
     Mailer.deliver(
-      :to => 'bob@example.com',
-      :from => 'us@example.com',
-      :subject => 'Important message',
-      :body => source.text
+      to:         'bob@example.com',
+      from:       'us@example.com',
+      subject:    'Important message',
+      body:       source.text
     )
 
     # also good
     create(
       :invitation,
-      :email => 'bob@example.com,
-      :role => :author
+      email:      'bob@example.com',
+      role:       :author
     )
     ```
 
