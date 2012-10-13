@@ -57,21 +57,21 @@ You can generate a PDF or an HTML copy of this guide using
 
 ## Table of Contents
 
-* [Source Code Layout](#source-code-layout)
-* [Syntax](#syntax)
-* [Naming](#naming)
-* [Comments](#comments)
-* [Annotations](#annotations)
-* [Classes](#classes)
-* [Exceptions](#exceptions)
-* [Collections](#collections)
-* [Strings](#strings)
-* [Regular Expressions](#regular-expressions)
-* [Percent Literals](#percent-literals)
-* [Metaprogramming](#metaprogramming)
-* [Misc](#misc)
+1. [Source Code Layout](#1-source-code-layout)
+1. [Syntax](#2-syntax)
+1. [Naming](#3-naming)
+1. [Comments](#4-comments)
+1. [Annotations](#5-annotations)
+1. [Classes](#6-classes)
+1. [Exceptions](#7-exceptions)
+1. [Collections](#8-collections)
+1. [Strings](#9-strings)
+1. [Regular Expressions](#10-regular-expressions)
+1. [Percent Literals](#11-percent-literals)
+1. [Metaprogramming](#12-metaprogramming)
+1. [Misc](#13-misc)
 
-## Source Code Layout
+## 1. Source Code Layout
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
@@ -213,7 +213,7 @@ You can generate a PDF or an HTML copy of this guide using
 1. Keep lines fewer than 80 characters.
 1. Avoid trailing whitespace.
 
-## Syntax
+## 2. Syntax
 
 1. Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
@@ -644,7 +644,7 @@ you if you forget either of the rules above!
     result = hash.map { |_, v| v + 1 }
     ```
 
-## Naming
+## 3. Naming
 
 > The only real difficulties in programming are cache invalidation and
 > naming things. <br/>
@@ -723,7 +723,7 @@ you if you forget either of the rules above!
   reason the use of `select` is encouraged over `find_all` is that it
   goes together nicely with `reject` and its name is pretty self-explanatory.
 
-## Comments
+## 4. Comments
 
 > Good code is its own best documentation. As you're about to add a
 > comment, ask yourself, "How can I improve the code so that this
@@ -750,7 +750,7 @@ at all.
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
-## Annotations
+## 5. Annotations
 
 1. Annotations should usually be written on the line immediately above
   the relevant code.
@@ -790,7 +790,7 @@ at all.
 1. Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-## Classes
+## 6. Classes
 
 1. When designing class hierarchies make sure that they conform to the
   [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
@@ -985,7 +985,7 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-## Exceptions
+## 7. Exceptions
 
 1. Signal exceptions using the `fail` keyword. Use `raise` only when
   catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
@@ -1166,7 +1166,7 @@ block.
 1. Favor the use of exceptions for the standard library over
 introducing new exception classes.
 
-## Collections
+## 8. Collections
 
 1. Prefer literal array and hash creation notation (unless you need to
 pass parameters to their constructors, that is).
@@ -1227,7 +1227,7 @@ strings.
 1. Rely on the fact that hashes in Ruby 1.9 are ordered.
 1. Never modify a collection while traversing it.
 
-## Strings
+## 9. Strings
 
 1. Prefer string interpolation instead of string concatenation:
 
@@ -1295,7 +1295,7 @@ strings.
     end
     ```
 
-## Regular Expressions
+## 10. Regular Expressions
 
 1. Don't use regular expressions if you just need plain text search in string:
   `string['text']`
@@ -1357,7 +1357,7 @@ strings.
 
 1. For complex replacements `sub`/`gsub` can be used with block or hash.
 
-## Percent Literals
+## 11. Percent Literals
 
 1. Use `%w` freely.
 
@@ -1403,7 +1403,7 @@ strings.
 
 1. Prefer `()` as delimiters for all `%` literals.
 
-## Metaprogramming
+## 12. Metaprogramming
 
 1. Avoid needless metaprogramming.
 
@@ -1466,7 +1466,7 @@ patch them.)
     # best of all, though, would to define_method as each findable attribute is declared
     ```
 
-## Misc
+## 13. Misc
 
 1. Write `ruby -w` safe code.
 1. Avoid hashes as optional parameters. Does the method do too much?
