@@ -1076,6 +1076,14 @@ in *Ruby* now, not in *Python*.
     # bad
     do_something rescue nil
     ```
+    
+* Avoid using `rescue` in its modifier form.    
+
+    ```
+    # bad - this catches all StandardError exceptions
+    do_something rescue nil
+    ```
+
 
 * Don't use exceptions for flow of control.
 
