@@ -820,7 +820,7 @@ at all.
       end
 
       def to_s
-        "#@first_name #@last_name"
+        "#{@first_name} #{@last_name}"
       end
     end
     ```
@@ -1086,8 +1086,8 @@ in *Ruby* now, not in *Python*.
     # bad
     do_something rescue nil
     ```
-    
-* Avoid using `rescue` in its modifier form.    
+
+* Avoid using `rescue` in its modifier form.
 
     ```
     # bad - this catches all StandardError exceptions
@@ -1249,7 +1249,7 @@ strings.
     # bad - if we make a mistake we might not spot it right away
     heroes[:batman] # => "Bruce Wayne"
     heroes[:supermann] # => nil
-    
+
     # good - fetch raises a KeyError making the problem obvious
     heroes.fetch(:supermann)
     ```
