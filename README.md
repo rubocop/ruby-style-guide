@@ -620,6 +620,12 @@ you if you forget either of the rules above!
 
     # good
     hash = { one: 1, two: 2 }
+    
+    # bad
+    hash = { foo: :bar, baz: :qux }
+    
+    # good
+    hash = { :foo => :bar, :baz => :qux }
     ```
 
 * The new lambda literal syntax is preferred in Ruby 1.9.
