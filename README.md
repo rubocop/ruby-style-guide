@@ -57,7 +57,8 @@ You can generate a PDF or an HTML copy of this guide using
 
 Translations of the guide are available in the following languages:
 
-* [Chinese](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
+* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
+* [Chinese Traditional](https://github.com/JuanitoFatas/rails-style-guide/blob/master/README-zhTW.md)
 
 ## Table of Contents
 
