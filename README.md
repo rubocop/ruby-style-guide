@@ -55,6 +55,10 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
+Translations of the guide are available in the following languages:
+
+* [Chinese](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
+
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
