@@ -55,6 +55,11 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
+Translations of the guide are available in the following languages:
+
+* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
+* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
+
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
@@ -206,6 +211,16 @@ You can generate a PDF or an HTML copy of this guide using
                      subject: 'Important message',
                      body: source.text)
     end
+    ```
+
+* Add underscores to big numeric literals to improve their readability.
+
+    ```Ruby
+    # bad - how many 0s are there?
+    num = 1000000
+
+    # good - much easier to parse for the human brain
+    num = 1_000_000
     ```
 
 * Use RDoc and its conventions for API documentation.  Don't put an
@@ -1076,6 +1091,14 @@ in *Ruby* now, not in *Python*.
     # bad
     do_something rescue nil
     ```
+    
+* Avoid using `rescue` in its modifier form.    
+
+    ```Ruby
+    # bad - this catches all StandardError exceptions
+    do_something rescue nil
+    ```
+
 
 * Don't use exceptions for flow of control.
 
@@ -1222,6 +1245,18 @@ strings.
 
     # good
     hash = { one: 1, two: 2, three: 3 }
+    ```
+
+* Use `fetch` when dealing with hash keys that should be present.
+
+    ```Ruby
+    heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+    # bad - if we make a mistake we might not spot it right away
+    heroes[:batman] # => "Bruce Wayne"
+    heroes[:supermann] # => nil
+    
+    # good - fetch raises a KeyError making the problem obvious
+    heroes.fetch(:supermann)
     ```
 
 * Rely on the fact that hashes in Ruby 1.9 are ordered.
