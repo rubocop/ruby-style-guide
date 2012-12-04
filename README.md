@@ -956,7 +956,9 @@ in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
 * Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them.
+  method definitions they apply to. Leave one blank line above them
+  and one line below them in in order to emphasize it applies to all
+  methods below it.
 
     ```Ruby
     class SomeClass
@@ -965,7 +967,12 @@ in *Ruby* now, not in *Python*.
       end
 
       private
+
       def private_method
+        # ...
+      end
+  
+      def another_private_method
         # ...
       end
     end
