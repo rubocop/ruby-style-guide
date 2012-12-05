@@ -225,7 +225,7 @@ Translations of the guide are available in the following languages:
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Keep lines fewer than 80 characters.
+* Keep lines up to 80 characters.
 * Avoid trailing whitespace.
 
 ## Syntax
