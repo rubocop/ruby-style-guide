@@ -737,6 +737,16 @@ you if you forget either of the rules above!
   Smalltalk and are not common in other programming languages. The
   reason the use of `select` is encouraged over `find_all` is that it
   goes together nicely with `reject` and its name is pretty self-explanatory.
+  
+* Use `flat_map` instead of `map` + `flatten`.
+
+    ```Ruby
+    # bad
+    all_songs = users.map(&:songs).flatten.uniq
+
+    # good
+    all_songs = users.flat_map(&:songs).uniq
+    ```
 
 ## Comments
 
