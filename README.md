@@ -141,7 +141,7 @@ Translations of the guide are available in the following languages:
     ```
 
 * Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both the "The Ruby
+  with this one, but it's the style established in both "The Ruby
   Programming Language" and "Programming Ruby".
 
     ```Ruby
@@ -183,7 +183,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Align the parameters of a method call if they span over multiple lines.
+* Align the parameters of a method call if they span more than one line.
 
     ```Ruby
     # starting point (line is too long)
@@ -218,7 +218,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Add underscores to big numeric literals to improve their readability.
+* Add underscores to large numeric literals to improve their readability.
 
     ```Ruby
     # bad - how many 0s are there?
@@ -230,7 +230,7 @@ Translations of the guide are available in the following languages:
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Keep lines up to 80 characters.
+* Limit lines to 80 characters.
 * Avoid trailing whitespace.
 
 ## Syntax
@@ -434,7 +434,7 @@ Translations of the guide are available in the following languages:
     ```
 
 * Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
+  internal DSL (e.g. Rake, Rails, RSpec), methods that have
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
   access methods. Use parentheses around the arguments of all other
   method invocations.
@@ -482,7 +482,7 @@ Translations of the guide are available in the following languages:
     ```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - is this code really readable and can't the blocks contents be extracted into
+    ask themselves - is this code really readable and can the blocks' contents be extracted into
     nifty methods?
 
 * Avoid `return` where not required for flow of control.
@@ -971,8 +971,9 @@ in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
 * Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them
-  and one line below them in in order to emphasize it applies to all
+  method definitions they apply to. Leave one blank line above the
+  visibility modifier
+  and one blank line below in order to emphasize that it applies to all
   methods below it.
 
     ```Ruby
@@ -1025,7 +1026,7 @@ in *Ruby* now, not in *Python*.
 ## Exceptions
 
 * Signal exceptions using the `fail` keyword. Use `raise` only when
-  catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
+  catching an exception and re-raising it (because here you're not failing, but explicitly and intentionally raising an exception).
 
     ```Ruby
     begin
@@ -1051,7 +1052,7 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-* Use *implicit begin blocks* when possible.
+* Use *implicit begin blocks* where possible.
 
     ```Ruby
     # bad
@@ -1386,7 +1387,7 @@ strings.
     process meaningful_var
     ```
 
-* Character classes have only few special characters you should care about:
+* Character classes have only a few special characters you should care about:
   `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
 
 * Be careful with `^` and `$` as they match start/end of line, not string endings.
@@ -1464,8 +1465,8 @@ strings.
 
 * Avoid needless metaprogramming.
 
-* Do not mess around in core classes when writing libraries. (Do not monkey
-patch them.)
+* Do not mess around in core classes when writing libraries.
+  (Do not monkey-patch them.)
 
 * The block form of `class_eval` is preferable to the string-interpolated form.
   - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`, so that your backtraces make sense:
@@ -1476,7 +1477,7 @@ patch them.)
 
   - `define_method` is preferable to `class_eval{ def ... }`
 
-* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the rails code):
+* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the Rails code):
 
     ```ruby
     # from activesupport/lib/active_support/core_ext/string/output_safety.rb
@@ -1531,7 +1532,8 @@ patch them.)
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
-* If you really have to, add "global" methods to Kernel and make them private.
+* If you really need "global" methods, add them to Kernel
+  and make them private.
 * Use class instance variables instead of global variables.
 
     ```Ruby
