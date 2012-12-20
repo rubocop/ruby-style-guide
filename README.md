@@ -55,6 +55,11 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
+The [rubocop](https://github.com/bbatsov/rubocop) project aims to
+provide an automated way to check whether a Ruby code base complies
+with the style guide. Currently it's far from being production ready and it's missing
+lots of features. Everyone is naturally invited to help improve it!
+
 Translations of the guide are available in the following languages:
 
 * [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
