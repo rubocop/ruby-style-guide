@@ -1355,6 +1355,10 @@ strings.
 
 ## Regular Expressions
 
+> Some people, when confronted with a problem, think
+> "I know, I'll use regular expressions." Now they have two problems.<br/>
+> -- Jamie Zawinski
+
 * Don't use regular expressions if you just need plain text search in string:
   `string['text']`
 * For simple constructions you can use regexp directly through string index.
