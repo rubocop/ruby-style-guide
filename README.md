@@ -71,7 +71,7 @@ Translations of the guide are available in the following languages:
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
-* [Annotations](#annotations)
+    * [Comment Annotations](#comment-annotations)
 * [Classes](#classes)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
@@ -780,7 +780,7 @@ at all.
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try. --Yoda)
 
-## Annotations
+### Comment Annotations
 
 * Annotations should usually be written on the line immediately above
   the relevant code.
