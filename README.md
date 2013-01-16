@@ -55,6 +55,11 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
+The [rubocop](https://github.com/bbatsov/rubocop) project aims to
+provide an automated way to check whether a Ruby code base complies
+with the style guide. Currently it's far from being production ready and it's missing
+lots of features. Everyone is naturally invited to help improve it!
+
 Translations of the guide are available in the following languages:
 
 * [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
@@ -66,7 +71,7 @@ Translations of the guide are available in the following languages:
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
-* [Annotations](#annotations)
+    * [Comment Annotations](#comment-annotations)
 * [Classes](#classes)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
@@ -136,7 +141,7 @@ Translations of the guide are available in the following languages:
     ```
 
 * Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both the "The Ruby
+  with this one, but it's the style established in both "The Ruby
   Programming Language" and "Programming Ruby".
 
     ```Ruby
@@ -178,7 +183,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Align the parameters of a method call if they span over multiple lines.
+* Align the parameters of a method call if they span more than one line.
 
     ```Ruby
     # starting point (line is too long)
@@ -213,7 +218,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Add underscores to big numeric literals to improve their readability.
+* Add underscores to large numeric literals to improve their readability.
 
     ```Ruby
     # bad - how many 0s are there?
@@ -225,7 +230,7 @@ Translations of the guide are available in the following languages:
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Keep lines fewer than 80 characters.
+* Limit lines to 80 characters.
 * Avoid trailing whitespace.
 
 ## Syntax
@@ -429,7 +434,7 @@ Translations of the guide are available in the following languages:
     ```
 
 * Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
+  internal DSL (e.g. Rake, Rails, RSpec), methods that have
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
   access methods. Use parentheses around the arguments of all other
   method invocations.
@@ -477,7 +482,7 @@ Translations of the guide are available in the following languages:
     ```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - is this code really readable and can't the blocks contents be extracted into
+    ask themselves - is this code really readable and can the blocks' contents be extracted into
     nifty methods?
 
 * Avoid `return` where not required for flow of control.
@@ -738,6 +743,16 @@ you if you forget either of the rules above!
   reason the use of `select` is encouraged over `find_all` is that it
   goes together nicely with `reject` and its name is pretty self-explanatory.
 
+* Use `flat_map` instead of `map` + `flatten`.
+
+    ```Ruby
+    # bad
+    all_songs = users.map(&:songs).flatten.uniq
+
+    # good
+    all_songs = users.flat_map(&:songs).uniq
+    ```
+
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
@@ -765,7 +780,7 @@ at all.
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try. --Yoda)
 
-## Annotations
+### Comment Annotations
 
 * Annotations should usually be written on the line immediately above
   the relevant code.
@@ -956,8 +971,9 @@ in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
 * Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them
-  and one line below them in in order to emphasize it applies to all
+  method definitions they apply to. Leave one blank line above the
+  visibility modifier
+  and one blank line below in order to emphasize that it applies to all
   methods below it.
 
     ```Ruby
@@ -971,7 +987,7 @@ in *Ruby* now, not in *Python*.
       def private_method
         # ...
       end
-  
+
       def another_private_method
         # ...
       end
@@ -1009,8 +1025,9 @@ in *Ruby* now, not in *Python*.
 
 ## Exceptions
 
-* Signal exceptions using the `fail` keyword. Use `raise` only when
-  catching an exception and re-raising it (because here you're not failing, but explicitly and purposefully raising an exception).
+* Signal exceptions using the `fail` method. Use `raise` only when
+  catching an exception and re-raising it (because here you're not
+  failing, but explicitly and purposefully raising an exception).
 
     ```Ruby
     begin
@@ -1036,7 +1053,7 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
-* Use *implicit begin blocks* when possible.
+* Use *implicit begin blocks* where possible.
 
     ```Ruby
     # bad
@@ -1098,8 +1115,8 @@ in *Ruby* now, not in *Python*.
     # bad
     do_something rescue nil
     ```
-    
-* Avoid using `rescue` in its modifier form.    
+
+* Avoid using `rescue` in its modifier form.
 
     ```Ruby
     # bad - this catches all StandardError exceptions
@@ -1261,7 +1278,7 @@ strings.
     # bad - if we make a mistake we might not spot it right away
     heroes[:batman] # => "Bruce Wayne"
     heroes[:supermann] # => nil
-    
+
     # good - fetch raises a KeyError making the problem obvious
     heroes.fetch(:supermann)
     ```
@@ -1339,6 +1356,10 @@ strings.
 
 ## Regular Expressions
 
+> Some people, when confronted with a problem, think
+> "I know, I'll use regular expressions." Now they have two problems.<br/>
+> -- Jamie Zawinski
+
 * Don't use regular expressions if you just need plain text search in string:
   `string['text']`
 * For simple constructions you can use regexp directly through string index.
@@ -1371,7 +1392,7 @@ strings.
     process meaningful_var
     ```
 
-* Character classes have only few special characters you should care about:
+* Character classes have only a few special characters you should care about:
   `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
 
 * Be careful with `^` and `$` as they match start/end of line, not string endings.
@@ -1449,8 +1470,8 @@ strings.
 
 * Avoid needless metaprogramming.
 
-* Do not mess around in core classes when writing libraries. (Do not monkey
-patch them.)
+* Do not mess around in core classes when writing libraries.
+  (Do not monkey-patch them.)
 
 * The block form of `class_eval` is preferable to the string-interpolated form.
   - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`, so that your backtraces make sense:
@@ -1461,7 +1482,7 @@ patch them.)
 
   - `define_method` is preferable to `class_eval{ def ... }`
 
-* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the rails code):
+* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the Rails code):
 
     ```ruby
     # from activesupport/lib/active_support/core_ext/string/output_safety.rb
@@ -1516,7 +1537,8 @@ patch them.)
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
-* If you really have to, add "global" methods to Kernel and make them private.
+* If you really need "global" methods, add them to Kernel
+  and make them private.
 * Use class instance variables instead of global variables.
 
     ```Ruby
