@@ -580,18 +580,27 @@ Translations of the guide are available in the following languages:
              - 2
     ```
 
-* Using the return value of `=` (an assignment) is ok, but surround the
-  assignment with parentheses.
+* Don't use the return value of `=` (an assignment) in conditional expressions.
 
     ```Ruby
-    # good - shows intended use of assignment
-    if (v = array.grep(/foo/)) ...
+    # bad (+ a warning)
+    if (v = array.grep(/foo/))
+      do_something(v)
+      ...
+    end
 
-    # bad
-    if v = array.grep(/foo/) ...
+    # bad (+ a warning)
+    if v = array.grep(/foo/
+      do_something(v)
+      ...
+    end
 
-    # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == 'hello' ...
+    # good
+    v = array.grep(/foo/)
+    if v
+      do_something(v)
+      ...
+    end
     ```
 
 * Use `||=` freely to initialize variables.
