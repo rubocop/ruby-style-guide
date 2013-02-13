@@ -590,7 +590,7 @@ Translations of the guide are available in the following languages:
     end
 
     # bad (+ a warning)
-    if v = array.grep(/foo/
+    if v = array.grep(/foo/)
       do_something(v)
       ...
     end
