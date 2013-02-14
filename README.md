@@ -642,17 +642,7 @@ would happen if the current value happened to be `false`.)
 * Always run the Ruby interpreter with the `-w` option so it will warn
 you if you forget either of the rules above!
 
-* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
-
-    ```Ruby
-    # bad
-    hash = { :one => 1, :two => 2 }
-
-    # good
-    hash = { one: 1, two: 2 }
-    ```
-
-* The new lambda literal syntax is preferred in Ruby 1.9.
+* Use the new lambda literal syntax.
 
     ```Ruby
     # bad
@@ -1309,7 +1299,7 @@ strings.
     ```
 
 * Avoid the use of mutable objects as hash keys.
-* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
+* Use the hash literal syntax when your hash keys are symbols.
 
     ```Ruby
     # bad
@@ -1476,12 +1466,6 @@ strings.
 * For complex replacements `sub`/`gsub` can be used with block or hash.
 
 ## Percent Literals
-
-* Use `%w` freely.
-
-    ```Ruby
-    STATES = %w(draft open closed)
-    ```
 
 * Use `%()` for single-line strings which require both interpolation
   and embedded double-quotes. For multi-line strings, prefer heredocs.
