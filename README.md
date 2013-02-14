@@ -670,6 +670,16 @@ you if you forget either of the rules above!
 > naming things. <br/>
 > -- Phil Karlton
 
+* Name identifiers in English.
+
+    ```Ruby
+    # bad - variable name written in Bulgarian with latin characters
+    zaplata = 1000
+
+    # good
+    salary = 1000
+    ```
+
 * Use `snake_case` for methods and variables.
 * Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
@@ -677,8 +687,9 @@ you if you forget either of the rules above!
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `Array#empty?`).
-* The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
-  arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if
+* The names of potentially "dangerous" methods (i.e. methods that
+  modify `self` or the arguments, `exit!` (doesn't run the finalizers
+  like `exit` does), etc.) should end with an exclamation mark if
   there exists a safe version of that *dangerous* method.
 
     ```Ruby
@@ -762,6 +773,7 @@ you if you forget either of the rules above!
 > -- Steve McConnell
 
 * Write self-documenting code and ignore the rest of this section. Seriously!
+* Write comments in English.
 * Comments longer than a word are capitalized and use punctuation. Use [one
   space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
 * Avoid superfluous comments.
