@@ -1364,8 +1364,8 @@ strings.
     name = 'Bozhidar'
     ```
 
-* Don't use `{}` around instance variables being interpolated into a
-  string.
+* Don't leave out `{}` around instance and global variables being
+  interpolated into a string.
 
     ```Ruby
     class Person
@@ -1376,16 +1376,23 @@ strings.
         @last_name = last_name
       end
 
-      # bad
+      # bad - valid, but awkward
       def to_s
-        "#{@first_name} #{@last_name}"
+        "#@first_name #@last_name"
       end
 
       # good
       def to_s
-        "#@first_name #@last_name"
+        "#{@first_name} #{@last_name}"
       end
     end
+
+    $global = 0
+    # bad
+    puts "$global = #$global"
+
+    # good
+    puts "$global = #{$global}"
     ```
 
 * Avoid using `String#+` when you need to construct large data chunks.
