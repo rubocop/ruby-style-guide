@@ -755,6 +755,9 @@ you if you forget either of the rules above!
   goes together nicely with `reject` and its name is pretty self-explanatory.
 
 * Use `flat_map` instead of `map` + `flatten`.
+  This does not apply for arrays with a depth greater than 2, i.e.
+  if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
+  `flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
 
     ```Ruby
     # bad
