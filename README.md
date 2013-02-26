@@ -895,6 +895,8 @@ constructor and comparison operators for you.
     end
     ````
 
+* Don't extend a `Struct.new` - it already is a new class. Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
+
 * Consider adding factory methods to provide additional sensible ways
 to create instances of a particular class.
 
@@ -971,23 +973,6 @@ in inheritance.
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
-* make `attr` methods `private` unless they need to be externally accessible.
-    ```Ruby
-    # bad
-    class Person
-      attr_reader :first_name, :last_name
-
-      ...
-    end
-    
-    # better
-    class Person
-      attr_reader :first_name, :last_name
-      private :first_name, :last_name
-
-      ...
-    end
-    ```
 * Indent the `public`, `protected`, and `private` methods as much the
   method definitions they apply to. Leave one blank line above the
   visibility modifier
@@ -1551,20 +1536,7 @@ strings.
 ## Misc
 
 * Write `ruby -w` safe code.
-* Constantise complex regular expressions.
-
-    ```Ruby
-    # bad
-    path_string.gsub('\\', '/').sub(/\/\/\w+\/\w+\$?\//, '').sub(/\/$/, '')
-
-    # better
-    UNC_PATH_START = /\/\/\w+\/\w+\$?\//
-    TRAILING_SLASH = /\/$/ 
-    path_string.gsub('\\', '/').sub(UNC_PATH_START, '').sub(TRAILING_SLASH, '')
-    ```
-
 * Avoid hashes as optional parameters. Does the method do too much?
-* Don't extend a `Struct.new` - it already is a new class. Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
