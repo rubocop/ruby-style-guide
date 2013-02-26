@@ -786,7 +786,7 @@ you if you forget either of the rules above!
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date. An outdated is worse than no comment
+* Keep existing comments up-to-date. An outdated comment is worse than no comment
 at all.
 
 > Good code is like a good joke - it needs no explanation. <br/>
@@ -928,6 +928,7 @@ mutators.
       end
     end
     ```
+
 * Consider using `Struct.new`, which defines the trivial accessors,
 constructor and comparison operators for you.
 
@@ -943,9 +944,11 @@ constructor and comparison operators for you.
     end
 
     # better
-    class Person < Struct.new(:first_name, :last_name)
+    Person = Struct.new(:first_name, :last_name) do
     end
     ````
+
+* Don't extend a `Struct.new` - it already is a new class. Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
 
 * Consider adding factory methods to provide additional sensible ways
 to create instances of a particular class.
