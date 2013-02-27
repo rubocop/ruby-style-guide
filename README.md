@@ -1638,3 +1638,6 @@ doesn't know about its existence. Tweet about the guide, share it with
 your friends and colleagues. Every comment, suggestion or opinion we
 get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
+
+Cheers,<br/>
+[Bozhidar](https://twitter.com/bbatsov)
