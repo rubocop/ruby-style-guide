@@ -687,7 +687,7 @@ you if you forget either of the rules above!
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `Array#empty?`).
-* The names of potentially "dangerous" methods (i.e. methods that
+* The names of potentially *dangerous* methods (i.e. methods that
   modify `self` or the arguments, `exit!` (doesn't run the finalizers
   like `exit` does), etc.) should end with an exclamation mark if
   there exists a safe version of that *dangerous* method.
