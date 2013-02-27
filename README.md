@@ -681,9 +681,68 @@ you if you forget either of the rules above!
     ```
 
 * Use `snake_case` for symbols, methods and variables.
+
+    ```Ruby
+    # bad
+    :'some symbol'
+    :SomeSymbol
+    :someSymbol
+
+    someVar = 5
+
+    def someMethod
+      ...
+    end
+
+    def SomeMethod
+     ...
+    end
+
+    # good
+    :some_symbol
+
+    def some_method
+      ...
+    end
+    ```
+
 * Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
+
+    ```Ruby
+    # bad
+    class Someclass
+      ...
+    end
+
+    class Some_Class
+      ...
+    end
+
+    class SomeXml
+      ...
+    end
+
+    # good
+    class SomeClass
+      ...
+    end
+
+    class SomeXML
+      ...
+    end
+    ```
+
 * Use `SCREAMING_SNAKE_CASE` for other constants.
+
+    ```Ruby
+    # bad
+    SomeConst = 5
+
+    # good
+    SOME_CONST = 5
+    ```
+
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `Array#empty?`).
