@@ -680,7 +680,7 @@ you if you forget either of the rules above!
     salary = 1000
     ```
 
-* Use `snake_case` for methods and variables.
+* Use `snake_case` for symbols, methods and variables.
 * Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
 * Use `SCREAMING_SNAKE_CASE` for other constants.
