@@ -64,6 +64,7 @@ Translations of the guide are available in the following languages:
 
 * [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
 * [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
+* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
 
 ## Table of Contents
 
@@ -579,18 +580,27 @@ Translations of the guide are available in the following languages:
              - 2
     ```
 
-* Using the return value of `=` (an assignment) is ok, but surround the
-  assignment with parentheses.
+* Don't use the return value of `=` (an assignment) in conditional expressions.
 
     ```Ruby
-    # good - shows intended use of assignment
-    if (v = array.grep(/foo/)) ...
+    # bad (+ a warning)
+    if (v = array.grep(/foo/))
+      do_something(v)
+      ...
+    end
 
-    # bad
-    if v = array.grep(/foo/) ...
+    # bad (+ a warning)
+    if v = array.grep(/foo/)
+      do_something(v)
+      ...
+    end
 
-    # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == 'hello' ...
+    # good
+    v = array.grep(/foo/)
+    if v
+      do_something(v)
+      ...
+    end
     ```
 
 * Use `||=` freely to initialize variables.
@@ -611,7 +621,7 @@ would happen if the current value happened to be `false`.)
     enabled = true if enabled.nil?
     ```
 
-* Avoid using Perl-style special variables (like `$0-9`, `$``,
+* Avoid using Perl-style special variables (like `$0-9`, `$`,
   etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged.
 
@@ -632,17 +642,7 @@ would happen if the current value happened to be `false`.)
 * Always run the Ruby interpreter with the `-w` option so it will warn
 you if you forget either of the rules above!
 
-* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
-
-    ```Ruby
-    # bad
-    hash = { :one => 1, :two => 2 }
-
-    # good
-    hash = { one: 1, two: 2 }
-    ```
-
-* The new lambda literal syntax is preferred in Ruby 1.9.
+* Use the new lambda literal syntax.
 
     ```Ruby
     # bad
@@ -670,15 +670,85 @@ you if you forget either of the rules above!
 > naming things. <br/>
 > -- Phil Karlton
 
-* Use `snake_case` for methods and variables.
+* Name identifiers in English.
+
+    ```Ruby
+    # bad - variable name written in Bulgarian with latin characters
+    zaplata = 1000
+
+    # good
+    salary = 1000
+    ```
+
+* Use `snake_case` for symbols, methods and variables.
+
+    ```Ruby
+    # bad
+    :'some symbol'
+    :SomeSymbol
+    :someSymbol
+
+    someVar = 5
+
+    def someMethod
+      ...
+    end
+
+    def SomeMethod
+     ...
+    end
+
+    # good
+    :some_symbol
+
+    def some_method
+      ...
+    end
+    ```
+
 * Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
+
+    ```Ruby
+    # bad
+    class Someclass
+      ...
+    end
+
+    class Some_Class
+      ...
+    end
+
+    class SomeXml
+      ...
+    end
+
+    # good
+    class SomeClass
+      ...
+    end
+
+    class SomeXML
+      ...
+    end
+    ```
+
 * Use `SCREAMING_SNAKE_CASE` for other constants.
+
+    ```Ruby
+    # bad
+    SomeConst = 5
+
+    # good
+    SOME_CONST = 5
+    ```
+
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `Array#empty?`).
-* The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
-  arguments, `exit!` (doesn't run the finalizers like `exit` does), etc.) should end with an exclamation mark if
+* The names of potentially *dangerous* methods (i.e. methods that
+  modify `self` or the arguments, `exit!` (doesn't run the finalizers
+  like `exit` does), etc.) should end with an exclamation mark if
   there exists a safe version of that *dangerous* method.
 
     ```Ruby
@@ -744,6 +814,9 @@ you if you forget either of the rules above!
   goes together nicely with `reject` and its name is pretty self-explanatory.
 
 * Use `flat_map` instead of `map` + `flatten`.
+  This does not apply for arrays with a depth greater than 2, i.e.
+  if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
+  `flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
 
     ```Ruby
     # bad
@@ -762,6 +835,7 @@ you if you forget either of the rules above!
 > -- Steve McConnell
 
 * Write self-documenting code and ignore the rest of this section. Seriously!
+* Write comments in English.
 * Comments longer than a word are capitalized and use punctuation. Use [one
   space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
 * Avoid superfluous comments.
@@ -771,7 +845,7 @@ you if you forget either of the rules above!
     counter += 1 # increments counter by one
     ```
 
-* Keep existing comments up-to-date. An outdated is worse than no comment
+* Keep existing comments up-to-date. An outdated comment is worse than no comment
 at all.
 
 > Good code is like a good joke - it needs no explanation. <br/>
@@ -822,6 +896,44 @@ at all.
 
 ## Classes
 
+* Use a consistent structure in your class definitions.
+
+    ```Ruby
+    class Person
+      # extend and include go first
+      extend SomeModule
+      include AnotherModule
+
+      # constants are next
+      SOME_CONSTANT = 20
+
+      # afterwards we have attribute macros
+      attr_reader :name
+
+      # followed by other macros (if any)
+      validates :name
+
+      # public class methods are next in line
+      def self.some_method
+      end
+
+      # followed by public instance methods
+      def some_method
+      end
+
+      # protected and private methods are grouped near the end
+      protected
+
+      def some_protected_method
+      end
+
+      private
+
+      def some_private_method
+      end
+    end
+    ```
+
 * When designing class hierarchies make sure that they conform to the
   [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
 * Try to make your classes as
@@ -840,7 +952,7 @@ at all.
       end
 
       def to_s
-        "#@first_name #@last_name"
+        "#{@first_name} #{@last_name}"
       end
     end
     ```
@@ -875,6 +987,7 @@ mutators.
       end
     end
     ```
+
 * Consider using `Struct.new`, which defines the trivial accessors,
 constructor and comparison operators for you.
 
@@ -890,9 +1003,11 @@ constructor and comparison operators for you.
     end
 
     # better
-    class Person < Struct.new(:first_name, :last_name)
+    Person = Struct.new(:first_name, :last_name) do
     end
     ````
+
+* Don't extend a `Struct.new` - it already is a new class. Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
 
 * Consider adding factory methods to provide additional sensible ways
 to create instances of a particular class.
@@ -1261,7 +1376,7 @@ strings.
     ```
 
 * Avoid the use of mutable objects as hash keys.
-* The new hash literal syntax is preferred in Ruby 1.9 when your hash keys are symbols.
+* Use the hash literal syntax when your hash keys are symbols.
 
     ```Ruby
     # bad
@@ -1316,8 +1431,8 @@ strings.
     name = 'Bozhidar'
     ```
 
-* Don't use `{}` around instance variables being interpolated into a
-  string.
+* Don't leave out `{}` around instance and global variables being
+  interpolated into a string.
 
     ```Ruby
     class Person
@@ -1328,16 +1443,23 @@ strings.
         @last_name = last_name
       end
 
-      # bad
+      # bad - valid, but awkward
       def to_s
-        "#{@first_name} #{@last_name}"
+        "#@first_name #@last_name"
       end
 
       # good
       def to_s
-        "#@first_name #@last_name"
+        "#{@first_name} #{@last_name}"
       end
     end
+
+    $global = 0
+    # bad
+    puts "$global = #$global"
+
+    # good
+    puts "$global = #{$global}"
     ```
 
 * Avoid using `String#+` when you need to construct large data chunks.
@@ -1421,12 +1543,6 @@ strings.
 * For complex replacements `sub`/`gsub` can be used with block or hash.
 
 ## Percent Literals
-
-* Use `%w` freely.
-
-    ```Ruby
-    STATES = %w(draft open closed)
-    ```
 
 * Use `%()` for single-line strings which require both interpolation
   and embedded double-quotes. For multi-line strings, prefer heredocs.
@@ -1581,3 +1697,6 @@ doesn't know about its existence. Tweet about the guide, share it with
 your friends and colleagues. Every comment, suggestion or opinion we
 get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
+
+Cheers,<br/>
+[Bozhidar](https://twitter.com/bbatsov)
