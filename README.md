@@ -44,7 +44,7 @@ I didn't come up with all the rules out of nowhere - they are mostly
 based on my extensive career as a professional software engineer,
 feedback and suggestions from members of the Ruby community and
 various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"](http://pragprog.com/book/ruby3/programming-ruby-1-9)
+["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
 and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 
 The guide is still a work in progress - some rules are lacking
@@ -308,7 +308,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Never use `if x: ...` - it is removed in Ruby 1.9. Use
+* Never use `if x: ...` - as of Ruby 1.9 it has been removed. Use
   the ternary operator instead.
 
     ```Ruby
@@ -322,7 +322,7 @@ Translations of the guide are available in the following languages:
 * Never use `if x; ...`. Use the ternary operator instead.
 
 * Use `when x then ...` for one-line cases. The alternative syntax
-  `when x: ...` is removed in Ruby 1.9.
+  `when x: ...` has been removed as of Ruby 1.9.
 
 * Never use `when x; ...`. See the previous rule.
 
@@ -1398,7 +1398,7 @@ strings.
     heroes.fetch(:supermann)
     ```
 
-* Rely on the fact that hashes in Ruby 1.9 are ordered.
+* Rely on the fact that as of Ruby 1.9 hashes are ordered.
 * Never modify a collection while traversing it.
 
 ## Strings
