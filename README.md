@@ -486,7 +486,7 @@ Translations of the guide are available in the following languages:
     ask themselves - is this code really readable and can the blocks' contents be extracted into
     nifty methods?
 
-* Avoid `return` where not required for flow of control.
+* Avoid `return` when it's obvious
 
     ```Ruby
     # bad
@@ -499,6 +499,10 @@ Translations of the guide are available in the following languages:
       some_arr.size
     end
     ```
+    
+    In case of more complex functions you can add `return`. When there's at least one return in 
+    the function anyway, it's good practice to make all returns explicit. When in doubt, default
+    to include `return`.
 
 * Avoid `self` where not required. (It is only required when calling a self write accessor.)
 
