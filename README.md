@@ -236,19 +236,6 @@ Translations of the guide are available in the following languages:
 
 ## Syntax
 
-* Use `def` with parentheses when there are arguments. Omit the
-  parentheses when the method doesn't accept any arguments.
-
-     ```Ruby
-     def some_method
-       # body omitted
-     end
-
-     def some_method_with_arguments(arg1, arg2)
-       # body omitted
-     end
-     ```
-
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
