@@ -1,36 +1,6 @@
 # Prelude
 
-> Style is what separates the good from the great. <br/>
-> -- Bozhidar Batsov
-
-The goal of this guide is to present a set of best practices and style
-prescriptions for Ruby on Rails 3 development. It's a complementary
-guide to the already existing community-driven
-[Ruby coding style guide](https://github.com/bbatsov/ruby-style-guide).
-
-While in the guide the section [Testing Rails applications](#testing-rails-applications)
-is after [Developing Rails applications](#developing-rails-applications) I truly believe
-that
-[Behaviour-Driven Development](http://en.wikipedia.org/wiki/Behavior_Driven_Development)
-(BDD) is the best way to develop software. Keep that in mind.
-
-Rails is an opinionated framework and this is an opinionated guide. In
-my mind I'm totally certain that
-[RSpec](https://www.relishapp.com/rspec) is superior to Test::Unit,
-[Sass](http://sass-lang.com/) is superior to CSS and
-[Haml](http://haml-lang.com/) ([Slim](http://slim-lang.com/)) is
-superior to Erb. So don't expect to find any Test::Unit, CSS or Erb
-advice in here.
-
-Some of the advice here is applicable only to Rails 3.1+.
-
-You can generate a PDF or an HTML copy of this guide using
-[Transmuter](https://github.com/TechnoGate/transmuter).
-
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/rails-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/rails-style-guide/blob/master/README-zhTW.md)
+This guide presents best practices and style guidelines for Ruby on Rails development at Wistia.
 
 # Table of Contents
 
