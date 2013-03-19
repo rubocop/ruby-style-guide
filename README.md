@@ -434,6 +434,23 @@ Translations of the guide are available in the following languages:
     do_something until some_condition
     ```
 
+* Use Kernel#loop with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
+
+   ```Ruby
+   # bad
+   begin
+     puts val
+     val += 1
+   end while val < 0
+
+   # good
+   loop do
+     puts val
+     val += 1
+     break unless val < 0
+   end
+   ```
+
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that have
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
