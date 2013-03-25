@@ -1414,6 +1414,17 @@ strings.
     # good - fetch raises a KeyError making the problem obvious
     heroes.fetch(:supermann)
     ```
+* Use `fetch` with second argument to set a default value
+   
+   ```Ruby
+   batman = { name: 'Bruce Wayne', is_evil: false }
+
+   # bad - if we just use || operator with falsy value we won't get the expected result 
+   batman[:is_evil] || true # => true
+
+   #good - fetch work correctly with falsy values
+   batman.fetch(:is_evil, true) # => false
+   ```
 
 * Rely on the fact that as of Ruby 1.9 hashes are ordered.
 * Never modify a collection while traversing it.
