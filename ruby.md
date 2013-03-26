@@ -267,9 +267,8 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
 
 * Never use `when x; ...`. See the previous rule.
 
-* Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
-  of thumb: If you have to use outer parentheses, you are using the
-  wrong operators.)
+* Use `&&/||` for boolean expressions and control flow.
+  Do not use `and/or`; they are too commonly confused for operator synonyms.
 
     ```Ruby
     # boolean expression
@@ -278,13 +277,16 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
     end
 
     # control flow
+    document.saved? || document.save!
+
+    # evil control flow:
     document.saved? or document.save!
     ```
 
 * Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `and/or`.
+  body.
 
     ```Ruby
     # bad
@@ -296,21 +298,20 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
     do_something if some_condition
 
     # another good option
-    some_condition and do_something
+    some_condition && do_something
     ```
 
-* Favor `unless` over `if` for negative conditions (or control
-  flow `or`).
+* Don't use `unless` when your body is more than one line:
 
     ```Ruby
-    # bad
-    do_something if !some_condition
-
     # good
     do_something unless some_condition
 
-    # another good option
-    some_condition or do_something
+    # bad
+    unless some_condition
+      do_something
+      do_something_else
+    end
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
