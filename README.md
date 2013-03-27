@@ -911,7 +911,7 @@ at all.
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-## Classes
+## Classes & Modules
 
 * Use a consistent structure in your class definitions.
 
@@ -947,6 +947,64 @@ at all.
       private
 
       def some_private_method
+      end
+    end
+    ```
+
+* Prefer modules to classes with only class methods. Classes should be
+  used only when it makes sense to create instances out of them.
+
+    ```Ruby
+    # bad
+    class SomeClass
+      def self.some_method
+        # body omitted
+      end
+
+      def self.some_other_method
+      end
+    end
+
+    # good
+    module SomeClass
+      module_function
+
+      def some_method
+        # body omitted
+      end
+
+      def some_other_method
+      end
+    end
+    ```
+
+* Favor the use of `module_function` over `extend self` when you want
+  to turn a module's instance methods into class methods.
+
+    ```Ruby
+    # bad
+    module Utilities
+      extend self
+
+      def parse_something(string)
+        # do stuff here
+      end
+
+      def other_utility_method(number, string)
+        # do some more stuff
+      end
+    end
+
+    # good
+    module Utilities
+      module_function
+
+      def parse_something(string)
+        # do stuff here
+      end
+
+      def other_utility_method(number, string)
+        # do some more stuff
       end
     end
     ```
@@ -1415,11 +1473,11 @@ strings.
     heroes.fetch(:supermann)
     ```
 * Use `fetch` with second argument to set a default value
-   
+
    ```Ruby
    batman = { name: 'Bruce Wayne', is_evil: false }
 
-   # bad - if we just use || operator with falsy value we won't get the expected result 
+   # bad - if we just use || operator with falsy value we won't get the expected result
    batman[:is_evil] || true # => true
 
    #good - fetch work correctly with falsy values
