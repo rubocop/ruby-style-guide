@@ -73,7 +73,7 @@ Translations of the guide are available in the following languages:
 * [Naming](#naming)
 * [Comments](#comments)
     * [Comment Annotations](#comment-annotations)
-* [Classes](#classes)
+* [Classes](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
