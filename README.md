@@ -471,6 +471,8 @@ Translations of the guide are available in the following languages:
 
     x = Math.sin(y)
     array.delete(e)
+
+    bowling.score.should == 0
     ```
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
