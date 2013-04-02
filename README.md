@@ -152,7 +152,7 @@ Translations of the guide are available in the following languages:
     when song.duration > 120
       puts 'Too long!'
     when Time.now.hour > 21
-      puts "It's too late"
+      puts 'It's too late'
     else
       song.play
     end
