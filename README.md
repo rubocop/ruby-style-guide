@@ -569,6 +569,7 @@ would happen if the current value happened to be `false`.)
 
 * Prefer
   * `map` over `collect`
+  * `reduce` over `inject`
   * `find` over `detect`
   * `select` over `find_all`
   * `size` over `length`
