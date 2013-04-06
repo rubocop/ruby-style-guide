@@ -1824,14 +1824,14 @@ strings.
 * Avoid parameter lists longer than three or four parameters.
 * If you really need "global" methods, add them to Kernel
   and make them private.
-* Use class instance variables instead of global variables.
+* Use module instance variables instead of global variables.
 
     ```Ruby
     # bad
     $foo_bar = 1
 
-    # good
-    class Foo
+    #good
+    module Foo
       class << self
         attr_accessor :bar
       end
