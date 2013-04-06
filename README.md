@@ -1482,7 +1482,7 @@ strings.
    # bad - if we just use || operator with falsy value we won't get the expected result
    batman[:is_evil] || true # => true
 
-   #good - fetch work correctly with falsy values
+   # good - fetch work correctly with falsy values
    batman.fetch(:is_evil, true) # => false
    ```
 
@@ -1746,10 +1746,10 @@ strings.
 * Use class instance variables instead of global variables.
 
     ```Ruby
-    #bad
+    # bad
     $foo_bar = 1
 
-    #good
+    # good
     class Foo
       class << self
         attr_accessor :bar
