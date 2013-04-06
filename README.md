@@ -93,14 +93,14 @@ Translations of the guide are available in the following languages:
 * Use two **spaces** per indentation level. No hard tabs.
 
     ```Ruby
-    # good
-    def some_method
-      do_something
-    end
-
     # bad - four spaces
     def some_method
         do_something
+    end
+
+    # good
+    def some_method
+      do_something
     end
     ```
 
@@ -484,21 +484,21 @@ Translations of the guide are available in the following languages:
     ```Ruby
     names = ['Bozhidar', 'Steve', 'Sarah']
 
-    # good
-    names.each { |name| puts name }
-
     # bad
     names.each do |name|
       puts name
     end
 
     # good
-    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+    names.each { |name| puts name }
 
     # bad
     names.select do |name|
       name.start_with?('S')
     end.map { |name| name.upcase }
+
+    # good
+    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
     ```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
