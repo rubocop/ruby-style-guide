@@ -55,10 +55,8 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-The [rubocop](https://github.com/bbatsov/rubocop) project aims to
-provide an automated way to check whether a Ruby code base complies
-with the style guide. Currently it's far from being production ready and it's missing
-lots of features. Everyone is naturally invited to help improve it!
+[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
+based on this style guide.
 
 Translations of the guide are available in the following languages:
 
@@ -81,6 +79,7 @@ Translations of the guide are available in the following languages:
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
+* [Tools](#tools)
 
 ## Source Code Layout
 
@@ -1767,6 +1766,24 @@ strings.
 * Avoid more than three levels of block nesting.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
+
+## Tools
+
+Here's some tools to help you automatically check Ruby code against
+this guide.
+
+### RuboCop
+
+[RuboCop](https://github.com/bbatsov/rubocop) is a Ruby code style
+checker based on this style guide. RuboCop already covers a
+significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
+and has good Emacs integration.
+
+### RubyMine
+
+[RubyMine's](http://www.jetbrains.com/ruby/) code inspections are
+[partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
+on this guide.
 
 # Contributing
 
