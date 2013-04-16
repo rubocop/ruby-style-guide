@@ -709,6 +709,18 @@ you if you forget either of the rules above!
 and clear, `warn` allows you to suppress warnings if you need to (by
 setting the warn level to 0 via `-W0`).
 
+* Favor the use of `sprintf` over the fairly cryptic `String#%` method.
+
+    ```Ruby
+    # bad
+    '%d %d' % [20, 10]
+    # => '20 10'
+
+    # good
+    sprintf('%d %d', 20, 10)
+    # => '20 10'
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
