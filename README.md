@@ -1781,7 +1781,7 @@ and has good Emacs integration.
 
 ### RubyMine
 
-[RubyMine's](http://www.jetbrains.com/ruby/) code inspections are
+[RubyMine](http://www.jetbrains.com/ruby/)'s code inspections are
 [partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
 on this guide.
 
