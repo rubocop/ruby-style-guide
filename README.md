@@ -700,6 +700,15 @@ you if you forget either of the rules above!
     result = hash.map { |_, v| v + 1 }
     ```
 
+* Use `$stdout/$stderr/$stdin` instead of
+  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` are constants, and
+  while you can actually reassign (possibly to redirect some stream)
+  constants in Ruby, you'll get an interpreter warning if you do so.
+
+* Use `warn` instead of `$stderr.puts`. Apart from being more concise
+and clear, `warn` allows you to suppress warnings if you need to (by
+setting the warn level to 0 via `-W0`).
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
