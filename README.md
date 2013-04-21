@@ -854,7 +854,8 @@ setting the warn level to 0 via `-W0`).
 
 * When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
-* When defining binary operators, name the argument `other`.
+* When defining binary operators, name the argument `other`(`<<` and
+  `[]` are exceptions to the rule, since their semantics are different).
 
     ```Ruby
     def +(other)
