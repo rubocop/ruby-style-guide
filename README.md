@@ -129,6 +129,25 @@ Translations of the guide are available in the following languages:
     puts 'foo', 'bar' # this applies to puts in particular
     ```
 
+* Do use `;` to place empty class definitions on one line.
+
+    ```Ruby
+    # bad
+    class FooError < StandardError
+    end
+
+    # good
+    class FooError < StandardError; end
+    ```
+
+* It is acceptable to use `;` just before the `end` in a single-statement
+  method.
+
+    ```Ruby
+    # ok
+    def area(height, width) height * width; end
+    ```
+
 * Use spaces around operators, after commas, colons and semicolons, around `{`
   and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
   interpreter, but its proper use is the key to writing easily
