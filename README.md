@@ -773,10 +773,10 @@ setting the warn level to 0 via `-W0`).
 
     ```Ruby
     # bad - variable name written in Bulgarian with latin characters
-    zaplata = 1000
+    zaplata = 1_000
 
     # good
-    salary = 1000
+    salary = 1_000
     ```
 
 * Use `snake_case` for symbols, methods and variables.
