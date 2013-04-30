@@ -691,6 +691,18 @@ Translations of the guide are available in the following languages:
              - 2
     ```
 
+* When continuing a chained method invocation on another line keep the `.` on the second line.
+
+    ```Ruby
+    # bad - need to consult first line to understand second line
+    one.two.three.
+      four
+
+    # good - it's immediately clear what's going on the second line
+    one.two.three
+      .four
+    ```
+
 * Don't use the return value of `=` (an assignment) in conditional expressions.
 
     ```Ruby
