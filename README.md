@@ -276,6 +276,48 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* Use spaces around the `=` operator when assigning default values to method parameters:
+
+    ```Ruby
+    # bad
+    def some_method(arg1=:default, arg2=nil, arg3=[])
+      # do something...
+    end
+
+    # good
+    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+      # do something...
+    end
+    ```
+
+    While several Ruby books suggest the first style, the second is much more prominent
+    in practice (and arguably a bit more readable).
+
+* Avoid line continuation (\\) where not required. In practice, avoid using
+  line continuations at all.
+
+    ```Ruby
+    # bad
+    result = 1 - \
+             2
+
+    # good (but still ugly as hell)
+    result = 1 \
+             - 2
+    ```
+
+* When continuing a chained method invocation on another line keep the `.` on the second line.
+
+    ```Ruby
+    # bad - need to consult first line to understand second line
+    one.two.three.
+      four
+
+    # good - it's immediately clear what's going on the second line
+    one.two.three
+      .four
+    ```
+
 * Align the parameters of a method call if they span more than one line.
 
     ```Ruby
@@ -659,48 +701,6 @@ Translations of the guide are available in the following languages:
         end
       end
     end
-    ```
-
-* Use spaces around the `=` operator when assigning default values to method parameters:
-
-    ```Ruby
-    # bad
-    def some_method(arg1=:default, arg2=nil, arg3=[])
-      # do something...
-    end
-
-    # good
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
-      # do something...
-    end
-    ```
-
-    While several Ruby books suggest the first style, the second is much more prominent
-    in practice (and arguably a bit more readable).
-
-* Avoid line continuation (\\) where not required. In practice, avoid using
-  line continuations at all.
-
-    ```Ruby
-    # bad
-    result = 1 - \
-             2
-
-    # good (but still ugly as hell)
-    result = 1 \
-             - 2
-    ```
-
-* When continuing a chained method invocation on another line keep the `.` on the second line.
-
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
     ```
 
 * Don't use the return value of `=` (an assignment) in conditional expressions.
