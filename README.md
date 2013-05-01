@@ -835,7 +835,7 @@ setting the warn level to 0 via `-W0`).
     # => 'one, two, three'
     ```
 
-* Use `[*var]` instead of explicit `Array` check, when dealing with a
+* Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing with a
   variable you want to treat as an Array, but you're not certain it's
   an array.
 
@@ -846,6 +846,9 @@ setting the warn level to 0 via `-W0`).
 
     # good
     [*paths].each { |path| do_something(path) }
+
+    # good (and a bit more readable)
+    Array(paths).each { |path| do_something(path) }
     ```
 
 ## Naming
