@@ -835,6 +835,19 @@ setting the warn level to 0 via `-W0`).
     # => 'one, two, three'
     ```
 
+* Use `[*var]` instead of explicit `Array` check, when dealing with a
+  variable you want to treat as an Array, but you're not certain it's
+  an array.
+
+    ```Ruby
+    # bad
+    paths = [paths] unless paths.is_a? Array
+    paths.each { |path| do_something(path) }
+
+    # good
+    [*paths].each { |path| do_something(path) }
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
