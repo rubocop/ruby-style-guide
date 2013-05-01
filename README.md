@@ -822,6 +822,19 @@ setting the warn level to 0 via `-W0`).
     # => '20 10'
     ```
 
+* Favor the use of `Array#join` over the fairly cryptic `Array#*` with
+  a string argument.
+
+    ```Ruby
+    # bad
+    %w(one two three) * ', '
+    # => 'one, two, three'
+
+    # good
+    %w(one two three).join(', ')
+    # => 'one, two, three'
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
