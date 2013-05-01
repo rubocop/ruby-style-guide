@@ -851,6 +851,16 @@ setting the warn level to 0 via `-W0`).
     Array(paths).each { |path| do_something(path) }
     ```
 
+* Use ranges instead of complex comparison logic when possible.
+
+    ```Ruby
+    # bad
+    do_something if x >= 1000 && x < 2000
+
+    # good
+    do_something if (1000...2000).include?(x)
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
