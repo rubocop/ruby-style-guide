@@ -367,6 +367,20 @@ Translations of the guide are available in the following languages:
   empty line between the comment block and the `def`.
 * Limit lines to 80 characters.
 * Avoid trailing whitespace.
+* Don't use block comments. They cannot be preceded by whitespace and are not
+as easy to spots as regular comments.
+
+    ```Ruby
+    # bad
+    == begin
+    comment line
+    another comment line
+    == end
+
+    # good
+    # comment line
+    # another comment line
+    ```
 
 ## Syntax
 
