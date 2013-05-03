@@ -574,6 +574,12 @@ would happen if the current value happened to be `false`.)
   * `select` over `find_all`
   * `size` over `length`
 
+* Company names with capitals in the middle (e.g. RingRevenue) should drop the inner capitalization so that rails string helpers don't insert underscores in the middle
+  Examples:
+  * RingRevenue: Constantize: Ringrevenue, underscored: ringrevenue
+  * HubSpot     => Hubspot hubspot
+  * HubspotIntegration => hubspot_integration
+
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
