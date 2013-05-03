@@ -44,7 +44,7 @@ I didn't come up with all the rules out of nowhere - they are mostly
 based on my extensive career as a professional software engineer,
 feedback and suggestions from members of the Ruby community and
 various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"](http://pragprog.com/book/ruby3/programming-ruby-1-9)
+["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
 and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 
 The guide is still a work in progress - some rules are lacking
@@ -55,10 +55,8 @@ mind for now.
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-The [rubocop](https://github.com/bbatsov/rubocop) project aims to
-provide an automated way to check whether a Ruby code base complies
-with the style guide. Currently it's far from being production ready and it's missing
-lots of features. Everyone is naturally invited to help improve it!
+[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
+based on this style guide.
 
 Translations of the guide are available in the following languages:
 
@@ -73,7 +71,7 @@ Translations of the guide are available in the following languages:
 * [Naming](#naming)
 * [Comments](#comments)
     * [Comment Annotations](#comment-annotations)
-* [Classes](#classes)
+* [Classes](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
@@ -81,6 +79,7 @@ Translations of the guide are available in the following languages:
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
+* [Tools](#tools)
 
 ## Source Code Layout
 
@@ -93,14 +92,14 @@ Translations of the guide are available in the following languages:
 * Use two **spaces** per indentation level. No hard tabs.
 
     ```Ruby
-    # good
-    def some_method
-      do_something
-    end
-
     # bad - four spaces
     def some_method
         do_something
+    end
+
+    # good
+    def some_method
+      do_something
     end
     ```
 
@@ -111,6 +110,66 @@ Translations of the guide are available in the following languages:
     endings creeping in:
 
         $ git config --global core.autocrlf true
+
+* Don't use `;` to separate statements and expressions. As a
+  corollary - use one expression per line.
+
+    ```Ruby
+    # bad
+    puts 'foobar'; # superfluous semicolon
+
+    puts 'foo'; puts 'bar' # two expression on the same line
+
+    # good
+    puts 'foobar'
+
+    puts 'foo'
+    puts 'bar'
+
+    puts 'foo', 'bar' # this applies to puts in particular
+    ```
+
+* Prefer a single-line format for class definitions with no body.
+
+    ```Ruby
+    # bad
+    class FooError < StandardError
+    end
+
+    # good
+    class FooError < StandardError; end
+    ```
+
+* Avoid single-line methods. Although they are somewhat popular in the
+  wild, there are a few peculiarities about their definition syntax
+  that make their use undesirable. At any rate - there should no more
+  than one expression in a single-line method.
+
+    ```Ruby
+    # bad
+    def too_much; something; something_else; end
+
+    # okish - notice that the first ; is required
+    def no_braces_method; body end
+
+    # okish - notice that the second ; is optional
+    def no_braces_method; body; end
+
+    # okish - valid syntax, but no ; make it kind of hard to read
+    def some_method() body end
+
+    # good
+    def some_method
+      body
+    end
+    ```
+
+    One exception to the rule are empty-body methods.
+
+    ```Ruby
+    # good
+    def no_op; end
+    ```
 
 * Use spaces around operators, after commas, colons and semicolons, around `{`
   and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
@@ -124,7 +183,7 @@ Translations of the guide are available in the following languages:
     [1, 2, 3].each { |e| puts e }
     ```
 
-    The only exception is when using the exponent operator:
+    The only exception, regarding operators, is the exponent operator:
 
     ```Ruby
     # bad
@@ -133,6 +192,39 @@ Translations of the guide are available in the following languages:
     # good
     e = M * c**2
     ```
+
+    `{` and `}` deserve a bit of clarification, since they are used
+    for block and hash literals, as well as embedded expressions in
+    strings. For hash literals two styles are considered acceptable.
+
+    ```Ruby
+    # good - space after { and before }
+    { one: 1, two: 2 }
+
+    # good - no space after { and before }
+    {one: 1, two: 2}
+    ```
+
+    The first variant is slightly more readable (and arguably more
+    popular in the Ruby community in general). The second variant has
+    the advantage of adding visual difference between block and hash
+    literals. Whichever one you pick - apply it consistently.
+
+    As far as embedded expressions go, there are also two acceptable
+    options:
+
+    ```Ruby
+    # good - no spaces
+    "string#{expr}"
+
+    # ok - arguably more readable
+    "string#{ expr }"
+    ```
+
+    The first style is extremely more popular and you're generally
+    advised to stick with it. The second, on the other hand, is
+    (arguably) a bit more readable. As with hashes - pick one style
+    and apply it consistently.
 
 * No spaces after `(`, `[` or before `]`, `)`.
 
@@ -184,6 +276,48 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* Use spaces around the `=` operator when assigning default values to method parameters:
+
+    ```Ruby
+    # bad
+    def some_method(arg1=:default, arg2=nil, arg3=[])
+      # do something...
+    end
+
+    # good
+    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+      # do something...
+    end
+    ```
+
+    While several Ruby books suggest the first style, the second is much more prominent
+    in practice (and arguably a bit more readable).
+
+* Avoid line continuation (\\) where not required. In practice, avoid using
+  line continuations at all.
+
+    ```Ruby
+    # bad
+    result = 1 - \
+             2
+
+    # good (but still ugly as hell)
+    result = 1 \
+             - 2
+    ```
+
+* When continuing a chained method invocation on another line keep the `.` on the second line.
+
+    ```Ruby
+    # bad - need to consult first line to understand second line
+    one.two.three.
+      four
+
+    # good - it's immediately clear what's going on the second line
+    one.two.three
+      .four
+    ```
+
 * Align the parameters of a method call if they span more than one line.
 
     ```Ruby
@@ -233,6 +367,20 @@ Translations of the guide are available in the following languages:
   empty line between the comment block and the `def`.
 * Limit lines to 80 characters.
 * Avoid trailing whitespace.
+* Don't use block comments. They cannot be preceded by whitespace and are not
+as easy to spots as regular comments.
+
+    ```Ruby
+    # bad
+    == begin
+    comment line
+    another comment line
+    == end
+
+    # good
+    # comment line
+    # another comment line
+    ```
 
 ## Syntax
 
@@ -308,7 +456,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Never use `if x: ...` - it is removed in Ruby 1.9. Use
+* Never use `if x: ...` - as of Ruby 1.9 it has been removed. Use
   the ternary operator instead.
 
     ```Ruby
@@ -322,7 +470,7 @@ Translations of the guide are available in the following languages:
 * Never use `if x; ...`. Use the ternary operator instead.
 
 * Use `when x then ...` for one-line cases. The alternative syntax
-  `when x: ...` is removed in Ruby 1.9.
+  `when x: ...` has been removed as of Ruby 1.9.
 
 * Never use `when x; ...`. See the previous rule.
 
@@ -434,6 +582,23 @@ Translations of the guide are available in the following languages:
     do_something until some_condition
     ```
 
+* Use Kernel#loop with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
+
+   ```Ruby
+   # bad
+   begin
+     puts val
+     val += 1
+   end while val < 0
+
+   # good
+   loop do
+     puts val
+     val += 1
+     break unless val < 0
+   end
+   ```
+
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that have
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
@@ -454,6 +619,8 @@ Translations of the guide are available in the following languages:
 
     x = Math.sin(y)
     array.delete(e)
+
+    bowling.score.should == 0
     ```
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
@@ -465,21 +632,21 @@ Translations of the guide are available in the following languages:
     ```Ruby
     names = ['Bozhidar', 'Steve', 'Sarah']
 
-    # good
-    names.each { |name| puts name }
-
     # bad
     names.each do |name|
       puts name
     end
 
     # good
-    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+    names.each { |name| puts name }
 
     # bad
     names.select do |name|
       name.start_with?('S')
     end.map { |name| name.upcase }
+
+    # good
+    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
     ```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
@@ -548,36 +715,6 @@ Translations of the guide are available in the following languages:
         end
       end
     end
-    ```
-
-* Use spaces around the `=` operator when assigning default values to method parameters:
-
-    ```Ruby
-    # bad
-    def some_method(arg1=:default, arg2=nil, arg3=[])
-      # do something...
-    end
-
-    # good
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
-      # do something...
-    end
-    ```
-
-    While several Ruby books suggest the first style, the second is much more prominent
-    in practice (and arguably a bit more readable).
-
-* Avoid line continuation (\\) where not required. In practice, avoid using
-  line continuations at all.
-
-    ```Ruby
-    # bad
-    result = 1 - \
-             2
-
-    # good (but still ugly as hell)
-    result = 1 \
-             - 2
     ```
 
 * Don't use the return value of `=` (an assignment) in conditional expressions.
@@ -664,6 +801,66 @@ you if you forget either of the rules above!
     result = hash.map { |_, v| v + 1 }
     ```
 
+* Use `$stdout/$stderr/$stdin` instead of
+  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` are constants, and
+  while you can actually reassign (possibly to redirect some stream)
+  constants in Ruby, you'll get an interpreter warning if you do so.
+
+* Use `warn` instead of `$stderr.puts`. Apart from being more concise
+and clear, `warn` allows you to suppress warnings if you need to (by
+setting the warn level to 0 via `-W0`).
+
+* Favor the use of `sprintf` over the fairly cryptic `String#%` method.
+
+    ```Ruby
+    # bad
+    '%d %d' % [20, 10]
+    # => '20 10'
+
+    # good
+    sprintf('%d %d', 20, 10)
+    # => '20 10'
+    ```
+
+* Favor the use of `Array#join` over the fairly cryptic `Array#*` with
+  a string argument.
+
+    ```Ruby
+    # bad
+    %w(one two three) * ', '
+    # => 'one, two, three'
+
+    # good
+    %w(one two three).join(', ')
+    # => 'one, two, three'
+    ```
+
+* Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing with a
+  variable you want to treat as an Array, but you're not certain it's
+  an array.
+
+    ```Ruby
+    # bad
+    paths = [paths] unless paths.is_a? Array
+    paths.each { |path| do_something(path) }
+
+    # good
+    [*paths].each { |path| do_something(path) }
+
+    # good (and a bit more readable)
+    Array(paths).each { |path| do_something(path) }
+    ```
+
+* Use ranges instead of complex comparison logic when possible.
+
+    ```Ruby
+    # bad
+    do_something if x >= 1000 && x < 2000
+
+    # good
+    do_something if (1000...2000).include?(x)
+    ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
@@ -674,10 +871,10 @@ you if you forget either of the rules above!
 
     ```Ruby
     # bad - variable name written in Bulgarian with latin characters
-    zaplata = 1000
+    zaplata = 1_000
 
     # good
-    salary = 1000
+    salary = 1_000
     ```
 
 * Use `snake_case` for symbols, methods and variables.
@@ -797,7 +994,8 @@ you if you forget either of the rules above!
 
 * When using `reduce` with short blocks, name the arguments `|a, e|`
   (accumulator, element).
-* When defining binary operators, name the argument `other`.
+* When defining binary operators, name the argument `other`(`<<` and
+  `[]` are exceptions to the rule, since their semantics are different).
 
     ```Ruby
     def +(other)
@@ -894,7 +1092,7 @@ at all.
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-## Classes
+## Classes & Modules
 
 * Use a consistent structure in your class definitions.
 
@@ -930,6 +1128,64 @@ at all.
       private
 
       def some_private_method
+      end
+    end
+    ```
+
+* Prefer modules to classes with only class methods. Classes should be
+  used only when it makes sense to create instances out of them.
+
+    ```Ruby
+    # bad
+    class SomeClass
+      def self.some_method
+        # body omitted
+      end
+
+      def self.some_other_method
+      end
+    end
+
+    # good
+    module SomeClass
+      module_function
+
+      def some_method
+        # body omitted
+      end
+
+      def some_other_method
+      end
+    end
+    ```
+
+* Favor the use of `module_function` over `extend self` when you want
+  to turn a module's instance methods into class methods.
+
+    ```Ruby
+    # bad
+    module Utilities
+      extend self
+
+      def parse_something(string)
+        # do stuff here
+      end
+
+      def other_utility_method(number, string)
+        # do some more stuff
+      end
+    end
+
+    # good
+    module Utilities
+      module_function
+
+      def parse_something(string)
+        # do stuff here
+      end
+
+      def other_utility_method(number, string)
+        # do some more stuff
       end
     end
     ```
@@ -1397,8 +1653,19 @@ strings.
     # good - fetch raises a KeyError making the problem obvious
     heroes.fetch(:supermann)
     ```
+* Use `fetch` with second argument to set a default value
 
-* Rely on the fact that hashes in Ruby 1.9 are ordered.
+   ```Ruby
+   batman = { name: 'Bruce Wayne', is_evil: false }
+
+   # bad - if we just use || operator with falsy value we won't get the expected result
+   batman[:is_evil] || true # => true
+
+   # good - fetch work correctly with falsy values
+   batman.fetch(:is_evil, true) # => false
+   ```
+
+* Rely on the fact that as of Ruby 1.9 hashes are ordered.
 * Never modify a collection while traversing it.
 
 ## Strings
@@ -1649,20 +1916,20 @@ strings.
 ## Misc
 
 * Write `ruby -w` safe code.
-* Avoid hashes as optional parameters. Does the method do too much?
+* Avoid hashes as optional parameters. Does the method do too much? (Object initializers are exceptions for this rule).
 * Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than
   5 LOC. Empty lines do not contribute to the relevant LOC.
 * Avoid parameter lists longer than three or four parameters.
 * If you really need "global" methods, add them to Kernel
   and make them private.
-* Use class instance variables instead of global variables.
+* Use module instance variables instead of global variables.
 
     ```Ruby
-    #bad
+    # bad
     $foo_bar = 1
 
     #good
-    class Foo
+    module Foo
       class << self
         attr_accessor :bar
       end
@@ -1680,6 +1947,24 @@ strings.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
+## Tools
+
+Here's some tools to help you automatically check Ruby code against
+this guide.
+
+### RuboCop
+
+[RuboCop](https://github.com/bbatsov/rubocop) is a Ruby code style
+checker based on this style guide. RuboCop already covers a
+significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
+and has good Emacs integration.
+
+### RubyMine
+
+[RubyMine](http://www.jetbrains.com/ruby/)'s code inspections are
+[partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
+on this guide.
+
 # Contributing
 
 Nothing written in this guide is set in stone. It's my desire to work
@@ -1689,6 +1974,11 @@ community.
 
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
+
+# License
+
+![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
+This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
 # Spread the Word
 
