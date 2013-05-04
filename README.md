@@ -1600,7 +1600,8 @@ pass parameters to their constructors, that is).
     ```
 
 * Prefer `%w` to the literal array syntax when you need an array of
-strings.
+words(non-empty strings without spaces and special characters in them).
+Apply this rule only to arrays with two or more elements.
 
     ```Ruby
     # bad
