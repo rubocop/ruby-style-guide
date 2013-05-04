@@ -1611,6 +1611,18 @@ Apply this rule only to arrays with two or more elements.
     STATES = %w(draft open closed)
     ```
 
+* Prefer `%i` to the literal array syntax when you need an array of
+symbols(and you don't need to maintain Ruby 1.9 compatibility). Apply
+this rule only to arrays with two or more elements.
+
+    ```Ruby
+    # bad
+    STATES = [:draft, :open, :closed]
+
+    # good
+    STATES = %i(draft open closed)
+    ```
+
 * Avoid the creation of huge gaps in arrays.
 
     ```Ruby
