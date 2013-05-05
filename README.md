@@ -384,6 +384,20 @@ as easy to spots as regular comments.
 
 ## Syntax
 
+* Use `::` only to reference constants(this includes classes and
+modules). Never use `::` for method invocation.
+
+    ```Ruby
+    # bad
+    SomeClass::some_method
+    some_object::some_method
+
+    # good
+    SomeClass.some_method
+    some_object.some_method
+    SomeModule::SomeClass::SOME_CONST
+    ```
+
 * Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
 
