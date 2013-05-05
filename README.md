@@ -1034,6 +1034,8 @@ setting the warn level to 0 via `-W0`).
 
 * Write self-documenting code and ignore the rest of this section. Seriously!
 * Write comments in English.
+* Use one space between the leading `#` character of the comment and the text
+  of the comment.
 * Comments longer than a word are capitalized and use punctuation. Use [one
   space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
 * Avoid superfluous comments.
