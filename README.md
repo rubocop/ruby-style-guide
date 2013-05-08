@@ -488,6 +488,16 @@ modules). Never use `::` for method invocation.
 
 * Never use `when x; ...`. See the previous rule.
 
+* Use `!` instead of `not`.
+
+    ```Ruby
+    # bad - braces are required because of op precedence
+    x = (not something)
+
+    # good
+    x = !something
+    ```
+
 * Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
   of thumb: If you have to use outer parentheses, you are using the
   wrong operators.)
