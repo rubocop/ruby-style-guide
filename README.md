@@ -537,8 +537,16 @@ modules). Never use `::` for method invocation.
     # bad
     do_something if !some_condition
 
+    # bad
+    do_something if not some_condition
+
     # good
     do_something unless some_condition
+
+    # good
+    unless some_condition
+      # body omitted
+    end
 
     # another good option
     some_condition or do_something
