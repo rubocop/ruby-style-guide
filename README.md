@@ -293,7 +293,7 @@ Translations of the guide are available in the following languages:
     While several Ruby books suggest the first style, the second is much more prominent
     in practice (and arguably a bit more readable).
 
-* Avoid line continuation (\\) where not required. In practice, avoid using
+* Avoid line continuation `\` where not required. In practice, avoid using
   line continuations at all.
 
     ```Ruby
