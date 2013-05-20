@@ -498,24 +498,33 @@ modules). Never use `::` for method invocation.
     x = !something
     ```
 
-* Use `&&/||` for boolean expressions, `and/or` for control flow.  (Rule
-  of thumb: If you have to use outer parentheses, you are using the
-  wrong operators.)
+* The `and` and `or` keywords are banned. It's just not worth
+  it. Always use `&&` and `||` instead.
 
     ```Ruby
+    # bad
+    # boolean expression
+    if some_condition and some_other_condition
+      do_something
+    end
+
+    # control flow
+    document.saved? or document.save!
+
+    # good
     # boolean expression
     if some_condition && some_other_condition
       do_something
     end
 
     # control flow
-    document.saved? or document.save!
+    document.saved? || document.save!
     ```
 
 * Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `and/or`.
+  body. Another good alternative is the usage of control flow `&&/||`.
 
     ```Ruby
     # bad
@@ -527,11 +536,11 @@ modules). Never use `::` for method invocation.
     do_something if some_condition
 
     # another good option
-    some_condition and do_something
+    some_condition && do_something
     ```
 
 * Favor `unless` over `if` for negative conditions (or control
-  flow `or`).
+  flow `||`).
 
     ```Ruby
     # bad
@@ -541,7 +550,7 @@ modules). Never use `::` for method invocation.
     do_something unless some_condition
 
     # another good option
-    some_condition or do_something
+    some_condition || do_something
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
