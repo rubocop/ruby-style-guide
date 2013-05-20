@@ -1701,7 +1701,7 @@ this rule only to arrays with two or more elements.
     # good - fetch raises a KeyError making the problem obvious
     heroes.fetch(:supermann)
     ```
-* Use `fetch` with second argument to set a default value
+* Use `fetch` with second argument to use a default value
 
    ```Ruby
    batman = { name: 'Bruce Wayne', is_evil: false }
