@@ -1893,9 +1893,51 @@ this rule only to arrays with two or more elements.
     %r(^/blog/2011/(.*)$)
     ```
 
-* Avoid `%q`, `%Q`, `%x`, `%s`, and `%W`.
+* Avoid `%q`, `%Q` unless you have a string with both `'` and `"` in
+  it. Regular string literals are more readable and should be
+  preferred unless a lot of characters would have to be escaped in
+  them.
 
-* Prefer `()` as delimiters for all `%` literals.
+    ```Ruby
+    # bad
+    name = %q(Bruce Wayne)
+    time = %q(8 o'clock)
+    question = %q("What did you say?")
+
+    # good
+    name = 'Bruce Wayne'
+    time = "8 o'clock"
+    question = '"What did you say?"'
+    ```
+
+* Avoid the use of `%x` unless you're going to invoke a command with backquotes in it(which is rather unlikely).
+
+    ```Ruby
+    # bad
+    date = %x(date)
+
+    # good
+    date = `date`
+    echo = %x(echo `date`)
+    ```
+
+* Avoid the use of `%s`. It seems that the community has decided
+  `:"some string"` is the preferred way to created a symbol with
+  spaces in it.
+
+* Prefer `()` as delimiters for all `%` literals, expect `%r`. Given
+  the nature of regexp in many scenarios a less command character than
+  `(` might be a better choice for a delimiter.
+
+    ```Ruby
+    # bad
+    %w[one two three]
+    %q{"Test's king!", John said.}
+
+    # good
+    %w(one tho three)
+    %q{"Test's king!", John said.}
+    ```
 
 ## Metaprogramming
 
