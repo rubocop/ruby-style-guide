@@ -1859,7 +1859,7 @@ this rule only to arrays with two or more elements.
 
 ## Percent Literals
 
-* Use `%()` for single-line strings which require both interpolation
+* Use `%()`(it's a shorthand for `%Q`) for single-line strings which require both interpolation
   and embedded double-quotes. For multi-line strings, prefer heredocs.
 
     ```Ruby
@@ -1879,21 +1879,7 @@ this rule only to arrays with two or more elements.
     %(<tr><td class="name">#{name}</td>)
     ```
 
-* Use `%r` only for regular expressions matching *more than* one '/' character.
-
-    ```Ruby
-    # bad
-    %r(\s+)
-
-    # still bad
-    %r(^/(.*)$)
-    # should be /^\/(.*)$/
-
-    # good
-    %r(^/blog/2011/(.*)$)
-    ```
-
-* Avoid `%q`, `%Q` unless you have a string with both `'` and `"` in
+* Avoid `%q` unless you have a string with both `'` and `"` in
   it. Regular string literals are more readable and should be
   preferred unless a lot of characters would have to be escaped in
   them.
@@ -1908,6 +1894,20 @@ this rule only to arrays with two or more elements.
     name = 'Bruce Wayne'
     time = "8 o'clock"
     question = '"What did you say?"'
+    ```
+
+* Use `%r` only for regular expressions matching *more than* one '/' character.
+
+    ```Ruby
+    # bad
+    %r(\s+)
+
+    # still bad
+    %r(^/(.*)$)
+    # should be /^\/(.*)$/
+
+    # good
+    %r(^/blog/2011/(.*)$)
     ```
 
 * Avoid the use of `%x` unless you're going to invoke a command with backquotes in it(which is rather unlikely).
