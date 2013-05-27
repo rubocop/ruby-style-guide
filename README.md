@@ -136,8 +136,11 @@ Translations of the guide are available in the following languages:
     class FooError < StandardError
     end
 
-    # good
+    # okish
     class FooError < StandardError; end
+    
+    # good
+    FooError = Class.new(StandardError)
     ```
 
 * Avoid single-line methods. Although they are somewhat popular in the
