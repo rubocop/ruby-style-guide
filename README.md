@@ -543,11 +543,6 @@ modules). Never use `::` for method invocation.
     # good
     do_something unless some_condition
 
-    # good
-    unless some_condition
-      # body omitted
-    end
-
     # another good option
     some_condition or do_something
     ```
