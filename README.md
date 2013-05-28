@@ -1690,6 +1690,8 @@ this rule only to arrays with two or more elements.
     arr[100] = 1 # now you have an array with lots of nils
     ```
 
+* When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.
+
 * Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
