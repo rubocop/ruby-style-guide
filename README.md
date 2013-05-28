@@ -138,7 +138,7 @@ Translations of the guide are available in the following languages:
 
     # okish
     class FooError < StandardError; end
-    
+
     # good
     FooError = Class.new(StandardError)
     ```
@@ -837,6 +837,16 @@ you if you forget either of the rules above!
       tmp = a * 7
       tmp * b / 50
     end
+    ```
+
+* Prefer `proc` over `Proc.new`.
+
+    ```Ruby
+    # bad
+    p = Proc.new { |n| puts n }
+
+    # good
+    p = proc { |n| puts n }
     ```
 
 * Use `_` for unused block parameters.
