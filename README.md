@@ -662,6 +662,22 @@ modules). Never use `::` for method invocation.
     bowling.score.should == 0
     ```
 
+* Omit parentheses for method calls with no arguments.
+
+    ```Ruby
+    # bad
+    Kernel.exit!()
+    2.even?()
+    fork()
+    'test'.upcase()
+
+    # good
+    Kernel.exit!
+    2.even?
+    fork
+    'test'.upcase
+    ```
+
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
   ugly). Always use `do...end` for "control flow" and "method
