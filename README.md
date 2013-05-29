@@ -1837,6 +1837,20 @@ this rule only to arrays with two or more elements.
     end
     ```
 
+* When using heredocs for multi-line strings keep in mind the fact
+  that they preserve leading whitespace. It's a good practice to
+  employ some margin based on which to trim the excessive whitespace.
+
+    ```Ruby
+    code = <<-END.gsub(/^\s+\|/, '')
+      |def test
+      |  some_method
+      |  other_method
+      |end
+    END
+    #=> "def\n  some_method\n  \nother_method\nend"
+    ```
+
 ## Regular Expressions
 
 > Some people, when confronted with a problem, think
