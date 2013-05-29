@@ -405,10 +405,22 @@ modules). Never use `::` for method invocation.
   parentheses when the method doesn't accept any arguments.
 
      ```Ruby
+     # bad
+     def some_method()
+       # body omitted
+     end
+
+     # good
      def some_method
        # body omitted
      end
 
+     # bad
+     def some_method_with_arguments arg1, arg2
+       # body omitted
+     end
+
+     # good
      def some_method_with_arguments(arg1, arg2)
        # body omitted
      end
