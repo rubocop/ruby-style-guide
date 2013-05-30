@@ -1,7 +1,7 @@
 # Prelude
 
-> Style is what separates the good from the great. <br/>
-> -- Bozhidar Batsov
+> Role models are important. <br/>
+> -- Officer Alex J. Murphy / RoboCop
 
 One thing has always bothered me as Ruby developer - Python developers
 have a great programming style reference
