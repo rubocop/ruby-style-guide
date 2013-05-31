@@ -825,6 +825,22 @@ would happen if the current value happened to be `false`.)
     enabled = true if enabled.nil?
     ```
 
+* Avoid explicit use of the case equality operator `===`. As it name
+  implies it's meant to be used implicitly by `case` expressions and
+  outside of them it yields some pretty confusing code.
+
+    ```Ruby
+    # bad
+    Array === something
+    (1..100) === 7
+    /something/ === some_string
+
+    # good
+    something.is_a?(Array)
+    (1..100).include?(7)
+    some_string =~ /something/
+    ```
+
 * Avoid using Perl-style special variables (like `$0-9`, `$`,
   etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged.
