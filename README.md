@@ -589,9 +589,7 @@ modules). Never use `::` for method invocation.
     end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while`,
-  unless the condition contains an assignment (see "Using the return
-  value of `=`" below).
+* Don't use parentheses around the condition of an `if/unless/while/until`.
 
     ```Ruby
     # bad
@@ -601,11 +599,6 @@ modules). Never use `::` for method invocation.
 
     # good
     if x > 10
-      # body omitted
-    end
-
-    # ok
-    if (x = self.next_value)
       # body omitted
     end
     ```
