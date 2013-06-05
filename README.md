@@ -458,6 +458,23 @@ modules). Never use `::` for method invocation.
     end
     ```
 
+* Always put the condition on the same line as the `if`/`unless` in a multi-line conditional.
+
+    ```Ruby
+    # bad
+    if
+      some_condition
+      do_something
+      do_something_else
+    end
+
+    # good
+    if some_condition
+      do_something
+      do_something_else
+    end
+    ```
+
 * Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
   It's more common and obviously more concise.
 
