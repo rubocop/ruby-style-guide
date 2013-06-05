@@ -2023,7 +2023,7 @@ this rule only to arrays with two or more elements.
   `:"some string"` is the preferred way to created a symbol with
   spaces in it.
 
-* Prefer `()` as delimiters for all `%` literals, expect `%r`. Given
+* Prefer `()` as delimiters for all `%` literals, except `%r`. Given
   the nature of regexp in many scenarios a less command character than
   `(` might be a better choice for a delimiter.
 
