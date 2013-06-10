@@ -643,7 +643,7 @@ modules). Never use `::` for method invocation.
     do_something until some_condition
     ```
 
-* Use Kernel#loop with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
+* Use `Kernel#loop` with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
 
    ```Ruby
    # bad
