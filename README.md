@@ -976,6 +976,22 @@ setting the warn level to 0 via `-W0`).
     do_something if (1000...2000).include?(x)
     ```
 
+* Avoid the use of `BEGIN` blocks.
+
+* Never use `END` blocks. Use `Kernel#at_exit` instead.
+
+    ```ruby
+    # bad
+
+    END { puts 'Goodbye!' }
+
+    # good
+
+    at_exit { puts 'Goodbye!' }
+    ```
+
+* Avoid the use of flip-flops.
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
