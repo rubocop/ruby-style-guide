@@ -321,21 +321,15 @@ Translations of the guide are available in the following languages:
       .four
     ```
 
-* Align the parameters of a method call if they span more than one line.
+* Align the parameters of a method call if they span more than one
+  line. When aligning parameters is not appropriate due to line-length
+  constraints, single indent for the lines after the first is also
+  acceptable.
 
     ```Ruby
     # starting point (line is too long)
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
-    end
-
-    # bad (normal indent)
-    def send_mail(source)
-      Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
-        body: source.text)
     end
 
     # bad (double indent)
@@ -353,6 +347,16 @@ Translations of the guide are available in the following languages:
                      from: 'us@example.com',
                      subject: 'Important message',
                      body: source.text)
+    end
+
+    # good (normal indent)
+    def send_mail(source)
+      Mailer.deliver(
+        to: 'bob@example.com',
+        from: 'us@example.com',
+        subject: 'Important message',
+        body: source.text
+      )
     end
     ```
 
