@@ -620,6 +620,28 @@ modules). Never use `::` for method invocation.
     end
     ```
 
+* Never use `while/until condition do` for multi-line `while/until`.
+
+    ```Ruby
+    # bad
+    while x > 5 do
+      # body omitted
+    end
+
+    until x > 5 do
+      # body omitted
+    end
+
+    # good
+    while x > 5
+      # body omitted
+    end
+
+    until x > 5
+      # body omitted
+    end
+    ```
+
 * Favor modifier `while/until` usage when you have a single-line
   body.
 
