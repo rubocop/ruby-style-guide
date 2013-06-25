@@ -1879,6 +1879,18 @@ this rule only to arrays with two or more elements.
     name = 'Bozhidar'
     ```
 
+* Don't use the character literal syntax `?x`. Since Ruby 1.9 it's
+  basically redundant - `?x` would interpreted as `'x'` (a string with
+  a single character in it).
+
+    ```Ruby
+    # bad
+    char = ?c
+
+    # good
+    char = 'c'
+    ```
+
 * Don't leave out `{}` around instance and global variables being
   interpolated into a string.
 
