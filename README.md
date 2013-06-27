@@ -8,7 +8,7 @@ have a great programming style reference
 ([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
 an official guide, documenting Ruby coding style and best
 practices. And I do believe that style matters. I also believe that
-such fine fellows, like us Ruby developers, should be quite capable to
+such crafty coders, like us Ruby developers, should be quite capable to
 produce this coveted document.
 
 This guide started its life as our internal company Ruby coding guidelines
