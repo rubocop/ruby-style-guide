@@ -951,7 +951,8 @@ you if you forget either of the rules above!
 and clear, `warn` allows you to suppress warnings if you need to (by
 setting the warn level to 0 via `-W0`).
 
-* Favor the use of `sprintf` over the fairly cryptic `String#%` method.
+* Favor the use of `sprintf` and its alias `format` over the fairly
+  cryptic `String#%` method.
 
     ```Ruby
     # bad
@@ -960,6 +961,9 @@ setting the warn level to 0 via `-W0`).
 
     # good
     sprintf('%d %d', 20, 10)
+    # => '20 10'
+
+    format('%d %d', 20, 10)
     # => '20 10'
     ```
 
@@ -1651,10 +1655,10 @@ in *Ruby* now, not in *Python*.
     ```Ruby
     # bad - this catches exceptions of StandardError class and its descendant classes
     read_file rescue handle_error($!)
-    
+
     # good - this catches only the exceptions of Errno::ENOENT class and its descedant classes
     def foo
-      read_file 
+      read_file
     rescue Errno::ENOENT => ex
       handle_error(ex)
     end
