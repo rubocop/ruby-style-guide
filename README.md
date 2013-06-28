@@ -1407,6 +1407,18 @@ mutators.
     end
     ```
 
+* Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
+
+    ```Ruby
+    # bad - creates a single attribute accessor (deprecated in 1.9)
+    attr :something, true
+    attr :one, :two, :three # behaves as attr_read
+
+    # good
+    attr_accessor :something
+    attr_reader :one, :two, :three
+    ```
+
 * Consider using `Struct.new`, which defines the trivial accessors,
 constructor and comparison operators for you.
 
