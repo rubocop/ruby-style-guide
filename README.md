@@ -1565,7 +1565,7 @@ in *Ruby* now, not in *Python*.
 
     ```Ruby
     begin
-      fail 'Oops';
+      fail 'Oops'
     rescue => error
       raise if error.message != 'Oops'
     end
