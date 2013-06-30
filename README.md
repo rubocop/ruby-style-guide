@@ -820,17 +820,20 @@ modules). Never use `::` for method invocation.
     end
     ```
 
-* Don't use the return value of `=` (an assignment) in conditional expressions.
+* Don't use the return value of `=` (an assignment) in conditional
+  expressions unless the assignment is wrapped in parentheses. This is
+  a fairly popular idiom among Rubyists that's sometimes referred to as
+  *safe assignment in condition*.
 
     ```Ruby
     # bad (+ a warning)
-    if (v = array.grep(/foo/))
+    if v = array.grep(/foo/)
       do_something(v)
       ...
     end
 
-    # bad (+ a warning)
-    if v = array.grep(/foo/)
+    # good (MRI would still complain, but RuboCop won't)
+    if (v = array.grep(/foo/))
       do_something(v)
       ...
     end
