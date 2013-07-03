@@ -1674,7 +1674,7 @@ in *Ruby* now, not in *Python*.
     # bad - this catches exceptions of StandardError class and its descendant classes
     read_file rescue handle_error($!)
 
-    # good - this catches only the exceptions of Errno::ENOENT class and its descedant classes
+    # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
     def foo
       read_file
     rescue Errno::ENOENT => ex
