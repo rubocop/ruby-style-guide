@@ -1418,7 +1418,7 @@ mutators.
     ```Ruby
     # bad - creates a single attribute accessor (deprecated in 1.9)
     attr :something, true
-    attr :one, :two, :three # behaves as attr_read
+    attr :one, :two, :three # behaves as attr_reader
 
     # good
     attr_accessor :something
