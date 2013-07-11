@@ -1032,7 +1032,7 @@ setting the warn level to 0 via `-W0`).
     ```Ruby
     # bad
     def roles
-      %w(read edit create) + ( admin? %w(destroy) : [] )
+      %w(read edit create) + ( admin? ? %w(destroy) : [] )
     end
 
     # ok
