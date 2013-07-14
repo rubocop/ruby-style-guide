@@ -2117,7 +2117,7 @@ this rule only to arrays with two or more elements.
 
     # good
     %w(one tho three)
-    %q{"Test's king!", John said.}
+    %q("Test's king!", John said.)
     ```
 
 ## Metaprogramming
