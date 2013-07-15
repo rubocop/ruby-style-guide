@@ -1868,6 +1868,20 @@ this rule only to arrays with two or more elements.
    batman.fetch(:is_evil, true) # => false
    ```
 
+* Prefer the use of the block instead of the default value in `fetch`
+
+   ```Ruby
+   batman = {name: 'Bruce Wayne'}
+   
+   # bad - if we use the default value, we eager evaluate it
+   # so it can slow the program down if done multiple times
+   batman.fetch(:powers, get_batman_powers) # get_batman_powers has an expensive call
+
+   # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
+
+   batman.fetch(:powers) { get_batman_powers }
+   ```
+
 * Rely on the fact that as of Ruby 1.9 hashes are ordered.
 * Never modify a collection while traversing it.
 
