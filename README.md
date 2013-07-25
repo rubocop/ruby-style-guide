@@ -1878,7 +1878,6 @@ this rule only to arrays with two or more elements.
    batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
 
    # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
-
    batman.fetch(:powers) { get_batman_powers }
    ```
 
