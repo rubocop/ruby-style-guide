@@ -565,7 +565,7 @@ would happen if the current value happened to be `false`.)
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
-  (i.e. `Array#empty?`).
+  (e.g. `Array#empty?`).
 * The names of potentially "dangerous" or surprising methods (e.g. methods that have side-effects like mutating a variable
   or changing the process flow) should end with an exclamation mark.
 
