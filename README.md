@@ -2226,6 +2226,7 @@ this rule only to arrays with two or more elements.
 * Avoid `alias` when `alias_method` will do.
 * Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
+* Prefer `Time.now` over `Time.new` when retrieving the current system time.
 * Code in a functional way, avoiding mutation when that makes sense.
 * Do not mutate arguments unless that is the purpose of the method.
 * Avoid more than three levels of block nesting.
