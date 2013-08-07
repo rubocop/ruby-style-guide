@@ -1026,6 +1026,23 @@ setting the warn level to 0 via `-W0`).
     at_exit { puts 'Goodbye!' }
     ```
 
+* It's ok to use local variables to improve readability when array value
+  is constructed in relation to external conditions.
+
+    ```Ruby
+    # bad
+    def roles
+      %w(read edit create) + ( admin? ? %w(destroy) : [] )
+    end
+
+    # ok
+    def roles
+      roles  = %w(read edit create)
+      roles += %w(destroy) if admin?
+      roles
+    end
+    ```
+
 * Avoid the use of flip-flops.
 
 ## Naming
