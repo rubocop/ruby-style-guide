@@ -7,8 +7,8 @@ One thing has always bothered me as Ruby developer - Python developers
 have a great programming style reference
 ([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
 an official guide, documenting Ruby coding style and best
-practices. And I do believe that style matters. I also believe that a 
-great hacker community, such as Ruby has, should be quite capable of 
+practices. And I do believe that style matters. I also believe that a
+great hacker community, such as Ruby has, should be quite capable of
 producing this coveted document.
 
 This guide started its life as our internal company Ruby coding guidelines
@@ -1012,6 +1012,37 @@ setting the warn level to 0 via `-W0`).
     do_something if x.between?(1000, 2000)
     ```
 
+* Favor the use of predicate methods to explicit comparisons with
+  `==`. Numeric comparisons are OK.
+
+    ```Ruby
+    # bad
+    if x % 2 == 0
+    end
+
+    if x % 2 == 1
+    end
+
+    if x == nil
+    end
+
+    # good
+    if x.even?
+    end
+
+    if x.odd?
+    end
+
+    if x.nil?
+    end
+
+    if x.zero?
+    end
+
+    if x == 0
+    end
+    ```
+
 * Avoid the use of `BEGIN` blocks.
 
 * Never use `END` blocks. Use `Kernel#at_exit` instead.
@@ -1872,7 +1903,7 @@ this rule only to arrays with two or more elements.
 
    ```Ruby
    batman = { name: 'Bruce Wayne' }
-   
+
    # bad - if we use the default value, we eager evaluate it
    # so it can slow the program down if done multiple times
    batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
