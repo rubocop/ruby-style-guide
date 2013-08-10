@@ -109,7 +109,9 @@ Translations of the guide are available in the following languages:
     configuration setting to protect your project from Windows line
     endings creeping in:
 
-        $ git config --global core.autocrlf true
+    ```bash
+    $ git config --global core.autocrlf true
+    ```
 
 * Don't use `;` to separate statements and expressions. As a
   corollary - use one expression per line.
