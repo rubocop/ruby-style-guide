@@ -1080,7 +1080,10 @@ setting the warn level to 0 via `-W0`).
 * Name identifiers in English.
 
     ```Ruby
-    # bad - variable name written in Bulgarian with latin characters
+    # bad - identifier using non-ascii characters
+    заплата = 1_000
+
+    # bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
     zaplata = 1_000
 
     # good
