@@ -970,7 +970,15 @@ setting the warn level to 0 via `-W0`).
     sprintf('%d %d', 20, 10)
     # => '20 10'
 
+    # good
+    sprintf('%{first} %{second}', first: 20, second: 10)
+    # => '20 10'
+
     format('%d %d', 20, 10)
+    # => '20 10'
+
+    # good
+    format('%{first} %{second}', first: 20, second: 10)
     # => '20 10'
     ```
 
