@@ -804,8 +804,8 @@ Never use `::` for regular method invocation.
 
       # ok
       def initialize(options)
+        # @options and self.options are equivalent here
         self.options = options
-        # both options and self.options are equivalent here
       end
 
       # bad
