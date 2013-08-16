@@ -448,8 +448,14 @@ Never use `::` for regular method invocation.
       puts elem
     end
 
+    # note that elem is accessible outside of the for loop
+    elem #=> 3
+
     # good
     arr.each { |elem| puts elem }
+
+    # elem is not accessible outside each's block
+    elem #=> NameError: undefined local variable or method `elem'
     ```
 
 * Never use `then` for multi-line `if/unless`.
