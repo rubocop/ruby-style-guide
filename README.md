@@ -948,6 +948,22 @@ you if you forget either of the rules above!
     p = proc { |n| puts n }
     ```
 
+* Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
+
+    ```Ruby
+    # bad - looks similar to Enumeration access
+    l = ->(v) { puts v }
+    l[1]
+
+    # also bad - uncommon syntax
+    l = ->(v) { puts v }
+    l.(1)
+
+    # good
+    l = ->(v) { puts v }
+    l.call(1)
+    ```
+
 * Use `_` for unused block parameters.
 
     ```Ruby
