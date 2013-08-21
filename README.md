@@ -1897,6 +1897,21 @@ this rule only to arrays with two or more elements.
     hash = { one: 1, two: 2, three: 3 }
     ```
 
+* Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead
+  of `Hash#has_value?`. As noted
+  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765)
+  by Matz, the longer forms are considered deprecated.
+
+    ```Ruby
+    # bad
+    hash.has_key?(:test)
+    hash.has_value?(value)
+
+    # good
+    hash.key?(:test)
+    hash.value?(value)
+    ```
+
 * Use `fetch` when dealing with hash keys that should be present.
 
     ```Ruby
@@ -1908,6 +1923,7 @@ this rule only to arrays with two or more elements.
     # good - fetch raises a KeyError making the problem obvious
     heroes.fetch(:supermann)
     ```
+
 * Use `fetch` with second argument to use a default value.
 
    ```Ruby
