@@ -299,7 +299,7 @@ Translations of the guide are available in the following languages:
     in practice (and arguably a bit more readable).
 
 * Avoid line continuation `\` where not required. In practice, avoid using
-  line continuations at all.
+  line continuations for anything but string concatenation.
 
     ```Ruby
     # bad
@@ -309,6 +309,9 @@ Translations of the guide are available in the following languages:
     # good (but still ugly as hell)
     result = 1 \
              - 2
+
+    long_string = 'First part of the long string' \
+                  ' and second part of the long string'
     ```
 
 * When continuing a chained method invocation on another line keep the `.` on the second line.
