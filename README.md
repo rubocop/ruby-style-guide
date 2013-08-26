@@ -1264,7 +1264,7 @@ setting the warn level to 0 via `-W0`).
 
     ```Ruby
     # bad
-    counter += 1 # increments counter by one
+    counter += 1 # Increments counter by one.
     ```
 
 * Keep existing comments up-to-date. An outdated comment is worse than no comment
