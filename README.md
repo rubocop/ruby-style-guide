@@ -602,11 +602,18 @@ Never use `::` for regular method invocation.
     some_condition || do_something
     ```
 
-* Never use `unless` with `else`. Rewrite these with the positive case first.
+* Never use `unless` with `else`. `if not` is ok in multi-line bodies. Rewrite these with the positive case first.
 
     ```Ruby
     # bad
     unless success?
+      puts 'failure'
+    else
+      puts 'success'
+    end
+    
+    # ok
+    if not success?
       puts 'failure'
     else
       puts 'success'
