@@ -1262,6 +1262,18 @@ setting the warn level to 0 via `-W0`).
     all_songs = users.flat_map(&:songs).uniq
     ```
 
+* Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't
+  do a new array allocation and that's a good thing.
+
+
+    ```Ruby
+    # bad
+    array.reverse.each { ... }
+
+    # good
+    array.reverse_each { ... }
+    ```
+
 ## Comments
 
 > Good code is its own best documentation. As you're about to add a
