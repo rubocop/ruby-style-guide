@@ -893,9 +893,19 @@ would happen if the current value happened to be `false`.)
     some_string =~ /something/
     ```
 
-* Avoid using Perl-style special variables (like `$0-9`, `$`,
+* Avoid using Perl-style special variables (like `$:`, `$;`,
   etc. ). They are quite cryptic and their use in anything but
-  one-liner scripts is discouraged.
+  one-liner scripts is discouraged. Use the human-friendly
+  aliases provided by the `English` library.
+
+    ```
+    # bad
+    $:.unshift File.dirname(__FILE__)
+
+    # good
+    require 'English'
+    $LOAD_PATH.unshift File.dirname(__FILE__)
+    ```
 
 * Never put a space between a method name and the opening parenthesis.
 
@@ -2133,14 +2143,29 @@ this rule only to arrays with two or more elements.
     /(?:first|second)/ # good
     ```
 
-* Avoid using $1-9 as it can be hard to track what they contain. Named groups
+* Don't use the cryptic Perl-legacy variables denoting last regexp group matches
+  (`$1`, `$2`, etc). Use `Regexp.last_match[n]` instead.
+
+    ```Ruby
+    /(regexp)/ =~ string
+    ...
+
+    # bad
+    process $1
+
+    # good
+    process Regexp.last_match[1]
+    ```
+
+
+* Avoid using numbered groups as it can be hard to track what they contain. Named groups
   can be used instead.
 
     ```Ruby
     # bad
     /(regexp)/ =~ string
     ...
-    process $1
+    process Regexp.last_match[1]
 
     # good
     /(?<meaningful_var>regexp)/ =~ string
