@@ -723,6 +723,29 @@ Never use `::` for regular method invocation.
     bowling.score.should == 0
     ```
 
+* Omit the outer braces around an implicit options hash.
+
+    ```Ruby
+    # bad
+    user.set({ name: 'John', age: 45, permissions: { read: true } })
+
+    # good
+    User.set(name: 'John', age: 45, permissions: { read: true })
+    ```
+
+* Omit both the outer braces and parentheses for methods that are
+  part of an internal DSL.
+
+    ```Ruby
+    class Person < ActiveRecord::Base
+      # bad
+      validates(:name, { presence: true, length: { within: 1..10 } })
+
+      # good
+      validates :name, presence: true, length: { within: 1..10 }
+    end
+    ```
+
 * Omit parentheses for method calls with no arguments.
 
     ```Ruby
