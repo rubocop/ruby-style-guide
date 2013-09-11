@@ -377,26 +377,27 @@ Translations of the guide are available in the following languages:
 
     # acceptable
     Rails.cache.fetch [current_user, current_client,
-                       Candy.maximum(:updated_at),
-                       ChocolateFactory.maximum(:updated_at),
-                       'factory_related_candy_ids'] do
-                         Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
+                      Candy.maximum(:updated_at),
+                      ChocolateFactory.maximum(:updated_at),
+                      'factory_related_candy_ids'] do
+                        Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.
+                          pluck(:id))
     end
 
     # good
     Rails.cache.fetch [current_user, current_client,
-                       Candy.maximum(:updated_at),
-                       ChocolateFactory.maximum(:updated_at),
-                       'factory_related_candy_ids'] do
+                      Candy.maximum(:updated_at),
+                      ChocolateFactory.maximum(:updated_at),
+                      'factory_related_candy_ids'] do
       Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
     end
 
     # good
     Rails.cache.fetch(
       [current_user, current_client,
-       Candy.maximum(:updated_at),
-       ChocolateFactory.maximum(:updated_at),
-       'factory_related_candy_ids']
+      Candy.maximum(:updated_at),
+      ChocolateFactory.maximum(:updated_at),
+      'factory_related_candy_ids']
     ) do
       Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
     end
