@@ -238,7 +238,7 @@ Translations of the guide are available in the following languages:
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as the line on which `case` appears.
+* Indent `when`, `else`, and `end` as deep as the line on which `case` or `if` appears.
 
     ```Ruby
     case
@@ -259,6 +259,12 @@ Translations of the guide are available in the following languages:
     when 1930..1939 then 'Swing'
     when 1940..1950 then 'Bebop'
     else 'Jazz'
+    end
+
+    instrument = if song.rock?
+      :guitar
+    else
+      :piano
     end
     ```
 
