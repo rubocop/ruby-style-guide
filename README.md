@@ -921,7 +921,7 @@ would happen if the current value happened to be `false`.)
   one-liner scripts is discouraged. Use the human-friendly
   aliases provided by the `English` library.
 
-    ```
+    ```Ruby
     # bad
     $:.unshift File.dirname(__FILE__)
 
