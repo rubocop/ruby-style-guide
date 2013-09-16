@@ -238,9 +238,7 @@ Translations of the guide are available in the following languages:
     [1, 2, 3].length
     ```
 
-* Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both "The Ruby
-  Programming Language" and "Programming Ruby".
+* Indent `when`, `else`, and `end` as deep as the line on which `case` or `if` appears.
 
     ```Ruby
     case
@@ -255,13 +253,19 @@ Translations of the guide are available in the following languages:
     end
 
     kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
+    when 1850..1889 then 'Blues'
+    when 1890..1909 then 'Ragtime'
+    when 1910..1929 then 'New Orleans Jazz'
+    when 1930..1939 then 'Swing'
+    when 1940..1950 then 'Bebop'
+    else 'Jazz'
+    end
+
+    instrument = if song.rock?
+      :guitar
+    else
+      :piano
+    end
     ```
 
 * Use empty lines between `def`s and to break up a method into logical
