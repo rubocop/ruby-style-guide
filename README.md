@@ -268,6 +268,54 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* When assigning the result of conditional expression to a variable, preserve the usual alignment of it's branches.
+
+    ```Ruby
+    # bad - pretty convoluted
+    kind = case year
+    when 1850..1889 then 'Blues'
+    when 1890..1909 then 'Ragtime'
+    when 1910..1929 then 'New Orleans Jazz'
+    when 1930..1939 then 'Swing'
+    when 1940..1950 then 'Bebop'
+    else 'Jazz'
+    end
+
+    # good - it's apparent what's going on
+    kind = case year
+           when 1850..1889 then 'Blues'
+           when 1890..1909 then 'Ragtime'
+           when 1910..1929 then 'New Orleans Jazz'
+           when 1930..1939 then 'Swing'
+           when 1940..1950 then 'Bebop'
+           else 'Jazz'
+           end
+
+    result = if some_cond
+               calc_something
+             else
+               cal_something_else
+             end
+
+    # good (and a bit more width efficient)
+    kind =
+      case year
+      when 1850..1889 then 'Blues'
+      when 1890..1909 then 'Ragtime'
+      when 1910..1929 then 'New Orleans Jazz'
+      when 1930..1939 then 'Swing'
+      when 1940..1950 then 'Bebop'
+      else 'Jazz'
+      end
+
+    result =
+      if some_cond
+        calc_something
+      else
+        cal_something_else
+      end
+    ```
+
 * Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
