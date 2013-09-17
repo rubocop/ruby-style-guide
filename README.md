@@ -268,7 +268,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* When assigning the result of conditional expression to a variable, preserve the usual alignment of it's branches.
+* When assigning the result of a conditional expression to a variable, preserve the usual alignment of its branches.
 
     ```Ruby
     # bad - pretty convoluted
