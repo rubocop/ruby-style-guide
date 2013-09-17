@@ -281,6 +281,12 @@ Translations of the guide are available in the following languages:
     else 'Jazz'
     end
 
+    result = if some_cond
+      calc_something
+    else
+      calc_something_else
+    end
+
     # good - it's apparent what's going on
     kind = case year
            when 1850..1889 then 'Blues'
@@ -294,7 +300,7 @@ Translations of the guide are available in the following languages:
     result = if some_cond
                calc_something
              else
-               cal_something_else
+               calc_something_else
              end
 
     # good (and a bit more width efficient)
@@ -312,7 +318,7 @@ Translations of the guide are available in the following languages:
       if some_cond
         calc_something
       else
-        cal_something_else
+        calc_something_else
       end
     ```
 
