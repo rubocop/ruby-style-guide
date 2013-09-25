@@ -322,8 +322,8 @@ Translations of the guide are available in the following languages:
       end
     ```
 
-* Use empty lines between `def`s and to break up a method into logical
-  paragraphs.
+* Use empty lines between method definitions and also to break up a method into logical
+  paragraphs internally.
 
     ```Ruby
     def some_method
