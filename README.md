@@ -2190,6 +2190,8 @@ this rule only to arrays with two or more elements.
 * When using heredocs for multi-line strings keep in mind the fact
   that they preserve leading whitespace. It's a good practice to
   employ some margin based on which to trim the excessive whitespace.
+  (Or if ActiveSupport is available, consider employing 
+  [String#strip_heredoc](http://apidock.com/rails/String/strip_heredoc)).
 
     ```Ruby
     code = <<-END.gsub(/^\s+\|/, '')
