@@ -1799,6 +1799,19 @@ in *Ruby* now, not in *Python*.
     fail 'message'
     ```
 
+* Prefer supplying an exception class and a message as two separate
+  arguments to `fail/raise`, instead of an exception instance.
+
+    ```Ruby
+    # bad
+    fail SomeException.new('message')
+    # Note that there is no way to do `fail SomeException.new('message'), backtrace`.
+
+    # good
+    fail SomeException, 'message'
+    # Consistent with `fail SomeException, 'message', backtrace`.
+    ```
+
 * Never return from an `ensure` block. If you explicitly return from a
   method inside an `ensure` block, the return will take precedence over
   any exception being raised, and the method will return as if no
