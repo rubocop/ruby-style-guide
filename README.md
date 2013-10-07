@@ -1789,6 +1789,16 @@ in *Ruby* now, not in *Python*.
     end
     ```
 
+* Don't specify `RuntimeError` explicitly in the two argument version of `fail/raise`.
+
+    ```Ruby
+    # bad
+    fail RuntimeError, 'message'
+
+    # good - signals a RuntimeError by default
+    fail 'message'
+    ```
+
 * Never return from an `ensure` block. If you explicitly return from a
   method inside an `ensure` block, the return will take precedence over
   any exception being raised, and the method will return as if no
