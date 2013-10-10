@@ -238,6 +238,16 @@ Translations of the guide are available in the following languages:
     [1, 2, 3].length
     ```
 
+* No space after `!`.
+
+    ```Ruby
+    # bad
+    ! something
+
+    # good
+    !something
+    ```
+
 * Indent `when` as deep as `case`. I know that many would disagree
   with this one, but it's the style established in both "The Ruby
   Programming Language" and "Programming Ruby".
