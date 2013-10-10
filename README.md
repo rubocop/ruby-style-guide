@@ -433,6 +433,50 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* Similar rules apply if you're dealing with method accepting multiple
+  arguments and a block. In this case is ok to introduce a local variable
+  containing array of arguments for sake of readability.
+
+    ```Ruby
+    # starting point (line is too long)
+    Rails.cache.fetch [current_user, current_client, Candy.maximum(:updated_at), ChocolateFactory.maximum(:updated_at), 'factory_related_candy_ids'] do
+      Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
+    end
+
+    # acceptable
+    Rails.cache.fetch [current_user, current_client,
+                      Candy.maximum(:updated_at),
+                      ChocolateFactory.maximum(:updated_at),
+                      'factory_related_candy_ids'] do
+                        Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.
+                          pluck(:id))
+    end
+
+    # good
+    Rails.cache.fetch [current_user, current_client,
+                      Candy.maximum(:updated_at),
+                      ChocolateFactory.maximum(:updated_at),
+                      'factory_related_candy_ids'] do
+      Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
+    end
+
+    # good
+    Rails.cache.fetch(
+      [current_user, current_client,
+      Candy.maximum(:updated_at),
+      ChocolateFactory.maximum(:updated_at),
+      'factory_related_candy_ids']
+    ) do
+      Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
+    end
+
+    # good
+    cache_arguments = [user, client, Candy.maximum(:cached_at), Registry.maximum(:cached_at), "factory_related_candy_ids"]
+    Rails.cache.fetch(cache_arguments) do
+      Candy.where(chocolate_factory_id: ChocolateFactory.in_some_scope.pluck(:id))
+    end
+    ```
+
 * Add underscores to large numeric literals to improve their readability.
 
     ```Ruby
