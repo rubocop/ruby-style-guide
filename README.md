@@ -433,6 +433,25 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* Align the elements of array literals spanning multiple lines.
+
+    ```Ruby
+    # bad - single indent
+    menu_item = ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
+      "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
+
+    # good
+    menu_item = [
+      "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
+      "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"
+    ]
+
+    # good
+    menu_item =
+      ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
+       "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
+    ```
+
 * Add underscores to large numeric literals to improve their readability.
 
     ```Ruby
