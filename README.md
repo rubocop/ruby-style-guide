@@ -634,20 +634,25 @@ Never use `::` for regular method invocation.
     x = !something
     ```
 
-* Avoid the use of `!!` to convert an object to a `boolean` value.
+* Avoid the use of `!!`.
 
     ```Ruby
-    # bad - doesn't work properly with boolean values
+    # bad
     x = 'test'
-    !!x # => true
+    # obscure nil check
+    if !!x
+      # body omitted
+    end
+
     x = false
+    # double negation is useless on booleans
     !!x # => false
 
-    # good - works for all values (+ it's more readable)
+    # good
     x = 'test'
-    !x.nil? # => true
-    x = false
-    !x.nil? # => true
+    if !x.nil?
+      # body omitted
+    end
     ```
 
 * The `and` and `or` keywords are banned. It's just not worth
