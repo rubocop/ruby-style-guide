@@ -634,7 +634,7 @@ Never use `::` for regular method invocation.
     x = !something
     ```
 
-* Avoid the use of `!!`.
+* Avoid the use of `!!` to convert an object to a `boolean` value.
 
     ```Ruby
     # bad - doesn't work properly with boolean values
