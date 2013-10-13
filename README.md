@@ -236,22 +236,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
       calc_something_else
     end
 
-    # good - it's apparent what's going on
-    kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
-
-    result = if some_cond
-               calc_something
-             else
-               calc_something_else
-             end
-
     # good (and a bit more width efficient)
     kind =
       case year
