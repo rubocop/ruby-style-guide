@@ -161,6 +161,7 @@ The purpose of this is to prevent us from wasting time arguing about things that
 ## Whitespace
 
 * Try to limit lines to 80 characters.
+* End each file with a blank newline.
 * Remove all trailing spaces using
 [https://github.com/SublimeText/TrailingSpaces](Trailing Spaces) (but don't use the annoying live-highlighting)
 
@@ -173,22 +174,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
 
 
 ## Syntax
-
-* Use `::` only to reference constants(this includes classes and
-modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-Never use `::` for regular method invocation.
-
-    ```Ruby
-    # bad
-    SomeClass::some_method
-    some_object::some_method
-
-    # good
-    SomeClass.some_method
-    some_object.some_method
-    SomeModule::SomeClass::SOME_CONST
-    SomeModule::SomeClass()
-    ```
 
 * Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
@@ -268,33 +253,13 @@ Never use `::` for regular method invocation.
 
     # good
     x = 'test'
-    if !x.nil?
+    unless x.nil?
       # body omitted
     end
     ```
 
 * The `and` and `or` keywords are banned. It's just not worth
   it. Always use `&&` and `||` instead.
-
-    ```Ruby
-    # bad
-    # boolean expression
-    if some_condition and some_other_condition
-      do_something
-    end
-
-    # control flow
-    document.saved? or document.save!
-
-    # good
-    # boolean expression
-    if some_condition && some_other_condition
-      do_something
-    end
-
-    # control flow
-    document.saved? || document.save!
-    ```
 
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `&&/||`.
@@ -307,26 +272,6 @@ Never use `::` for regular method invocation.
 
     # good
     do_something if some_condition
-
-    # another good option
-    some_condition && do_something
-    ```
-
-* Favor `unless` over `if` for negative conditions (or control
-  flow `||`).
-
-    ```Ruby
-    # bad
-    do_something if !some_condition
-
-    # bad
-    do_something if not some_condition
-
-    # good
-    do_something unless some_condition
-
-    # another good option
-    some_condition || do_something
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
@@ -347,7 +292,7 @@ Never use `::` for regular method invocation.
     end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while/until`.
+* Don't use parentheses around the condition of an `if/unless/while`.
 
     ```Ruby
     # bad
@@ -360,68 +305,6 @@ Never use `::` for regular method invocation.
       # body omitted
     end
     ```
-
-* Never use `while/until condition do` for multi-line `while/until`.
-
-    ```Ruby
-    # bad
-    while x > 5 do
-      # body omitted
-    end
-
-    until x > 5 do
-      # body omitted
-    end
-
-    # good
-    while x > 5
-      # body omitted
-    end
-
-    until x > 5
-      # body omitted
-    end
-    ```
-
-* Favor modifier `while/until` usage when you have a single-line
-  body.
-
-    ```Ruby
-    # bad
-    while some_condition
-      do_something
-    end
-
-    # good
-    do_something while some_condition
-    ```
-
-* Favor `until` over `while` for negative conditions.
-
-    ```Ruby
-    # bad
-    do_something while !some_condition
-
-    # good
-    do_something until some_condition
-    ```
-
-* Use `Kernel#loop` with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
-
-   ```Ruby
-   # bad
-   begin
-     puts val
-     val += 1
-   end while val < 0
-
-   # good
-   loop do
-     puts val
-     val += 1
-     break unless val < 0
-   end
-   ```
 
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that have
@@ -457,128 +340,11 @@ Never use `::` for regular method invocation.
     User.set(name: 'John', age: 45, permissions: { read: true })
     ```
 
-* Omit both the outer braces and parentheses for methods that are
-  part of an internal DSL.
-
-    ```Ruby
-    class Person < ActiveRecord::Base
-      # bad
-      validates(:name, { presence: true, length: { within: 1..10 } })
-
-      # good
-      validates :name, presence: true, length: { within: 1..10 }
-    end
-    ```
-
 * Omit parentheses for method calls with no arguments.
-
-    ```Ruby
-    # bad
-    Kernel.exit!()
-    2.even?()
-    fork()
-    'test'.upcase()
-
-    # good
-    Kernel.exit!
-    2.even?
-    fork
-    'test'.upcase
-    ```
-
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
-  `{...}` for multi-line blocks (multiline chaining is always
-  ugly). Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
-  when chaining.
-
-    ```Ruby
-    names = ['Bozhidar', 'Steve', 'Sarah']
-
-    # bad
-    names.each do |name|
-      puts name
-    end
-
-    # good
-    names.each { |name| puts name }
-
-    # bad
-    names.select do |name|
-      name.start_with?('S')
-    end.map { |name| name.upcase }
-
-    # good
-    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
-    ```
-
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - is this code really readable and can the blocks' contents be extracted into
-    nifty methods?
 
 * Avoid `return` where not required for flow of control.
 
-    ```Ruby
-    # bad
-    def some_method(some_arr)
-      return some_arr.size
-    end
-
-    # good
-    def some_method(some_arr)
-      some_arr.size
-    end
-    ```
-
 * Avoid `self` where not required. (It is only required when calling a self write accessor.)
-
-    ```Ruby
-    # bad
-    def ready?
-      if self.last_reviewed_at > self.last_updated_at
-        self.worker.update(self.content, self.options)
-        self.status = :in_progress
-      end
-      self.status == :verified
-    end
-
-    # good
-    def ready?
-      if last_reviewed_at > last_updated_at
-        worker.update(content, options)
-        self.status = :in_progress
-      end
-      status == :verified
-    end
-    ```
-
-* As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
-
-    ```Ruby
-    class Foo
-      attr_accessor :options
-
-      # ok
-      def initialize(options)
-        self.options = options
-        # both options and self.options are equivalent here
-      end
-
-      # bad
-      def do_something(options = {})
-        unless options[:when] == :later
-          output(self.options[:message])
-        end
-      end
-
-      # good
-      def do_something(params = {})
-        unless params[:when] == :later
-          output(options[:message])
-        end
-      end
-    end
-    ```
 
 * Don't use the return value of `=` (an assignment) in conditional
   expressions unless the assignment is wrapped in parentheses. This is
@@ -586,21 +352,14 @@ Never use `::` for regular method invocation.
   *safe assignment in condition*.
 
     ```Ruby
-    # bad (+ a warning)
+    # bad
     if v = array.grep(/foo/)
       do_something(v)
       ...
     end
 
-    # good (MRI would still complain, but RuboCop won't)
-    if (v = array.grep(/foo/))
-      do_something(v)
-      ...
-    end
-
     # good
-    v = array.grep(/foo/)
-    if v
+    if (v = array.grep(/foo/))
       do_something(v)
       ...
     end
@@ -622,30 +381,6 @@ would happen if the current value happened to be `false`.)
 
     # good
     enabled = true if enabled.nil?
-    ```
-
-* Use the new lambda literal syntax for single line body blocks. Use the
-  `lambda` method for multi-line blocks.
-
-    ```Ruby
-    # bad
-    l = lambda { |a, b| a + b }
-    l.call(1, 2)
-
-    # correct, but looks extremely awkward
-    l = ->(a, b) do
-      tmp = a * 7
-      tmp * b / 50
-    end
-
-    # good
-    l = ->(a, b) { a + b }
-    l.call(1, 2)
-
-    l = lambda do |a, b|
-      tmp = a * 7
-      tmp * b / 50
-    end
     ```
 
 * Avoid use of nested conditionals for flow of control.
@@ -715,12 +450,7 @@ would happen if the current value happened to be `false`.)
       def some_method
       end
 
-      # protected and private methods are grouped near the end
-      protected
-
-      def some_protected_method
-      end
-
+      # private methods are grouped near the end
       private
 
       def some_private_method
@@ -755,43 +485,6 @@ would happen if the current value happened to be `false`.)
     end
     ```
 
-* Favor the use of `module_function` over `extend self` when you want
-  to turn a module's instance methods into class methods.
-
-    ```Ruby
-    # bad
-    module Utilities
-      extend self
-
-      def parse_something(string)
-        # do stuff here
-      end
-
-      def other_utility_method(number, string)
-        # do some more stuff
-      end
-    end
-
-    # good
-    module Utilities
-      module_function
-
-      def parse_something(string)
-        # do stuff here
-      end
-
-      def other_utility_method(number, string)
-        # do some more stuff
-      end
-    end
-    ```
-
-* When designing class hierarchies make sure that they conform to the
-  [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
-* Try to make your classes as
-  [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))
-  as possible.
-
 * Use the `attr` family of functions to define trivial accessors or
 mutators.
 
@@ -823,57 +516,7 @@ mutators.
     end
     ```
 
-* Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
-
-    ```Ruby
-    # bad - creates a single attribute accessor (deprecated in 1.9)
-    attr :something, true
-    attr :one, :two, :three # behaves as attr_reader
-
-    # good
-    attr_accessor :something
-    attr_reader :one, :two, :three
-    ```
-
-* Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.
-
-    ```Ruby
-    # bad
-    class Animal
-      # abstract method
-      def speak
-      end
-    end
-
-    # extend superclass
-    class Duck < Animal
-      def speak
-        puts 'Quack! Quack'
-      end
-    end
-
-    # extend superclass
-    class Dog < Animal
-      def speak
-        puts 'Bau! Bau!'
-      end
-    end
-
-    # good
-    class Duck
-      def speak
-        puts 'Quack! Quack'
-      end
-    end
-
-    class Dog
-      def speak
-        puts 'Bau! Bau!'
-      end
-    end
-    ```
-
-* Avoid the usage of class (`@@`) variables due to their "nasty" behavior
+* Avoid the usage of class (`@@`) variables due to their strange behavior
 in inheritance.
 
     ```Ruby
