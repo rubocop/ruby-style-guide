@@ -375,34 +375,19 @@ The purpose of this is to prevent us from wasting time arguing about things that
     ]
     ```
 
-* Add underscores to large numeric literals to improve their readability.
+## Whitespace
 
-    ```Ruby
-    # bad - how many 0s are there?
-    num = 1000000
+* Try to limit lines to 80 characters.
+* Remove all trailing spaces using
+[https://github.com/SublimeText/TrailingSpaces](Trailing Spaces) (but don't use the annoying live-highlighting)
 
-    # good - much easier to parse for the human brain
-    num = 1_000_000
+    ```json
+    {
+      "trailing_spaces_enabled" : false,
+      "trailing_spaces_trim_on_save": true
+    }
     ```
 
-* Use RDoc and its conventions for API documentation.  Don't put an
-  empty line between the comment block and the `def`.
-* Limit lines to 80 characters.
-* Avoid trailing whitespace.
-* Don't use block comments. They cannot be preceded by whitespace and are not
-as easy to spot as regular comments.
-
-    ```Ruby
-    # bad
-    == begin
-    comment line
-    another comment line
-    == end
-
-    # good
-    # comment line
-    # another comment line
-    ```
 
 ## Syntax
 
