@@ -6,6 +6,7 @@
 ## Table of Contents
 
 * [Coding Style](#coding-style)
+* [Documentation](#documentation)
 * [Whitespace](#whitespace)
 * [Syntax](#syntax)
 * [Naming](#naming)
@@ -158,9 +159,24 @@
     end
     ```
 
+## Documentation
+
+* Capitalize the first letter of comments but omit periods at the end of statements.
+
+* Use the minimum viable tomdoc format.
+
+    ```Ruby
+    # Duplicate some text an arbitrary number of times
+    #
+    # Returns the duplicated String
+    def multiplex(text, count)
+      text * count
+    end
+    ```
+
 ## Whitespace
 
-* Try to limit lines to 80 characters.
+* Limit lines to 80 characters.
 * End each file with a blank newline.
 * Remove all trailing spaces using
 [https://github.com/SublimeText/TrailingSpaces](Trailing Spaces) (but don't use the annoying live-highlighting)
