@@ -1007,23 +1007,6 @@ would happen if the current value happened to be `false`.)
 * Try to make your classes as
   [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))
   as possible.
-* Always supply a proper `to_s` method for classes that represent
-  domain objects.
-
-    ```Ruby
-    class Person
-      attr_reader :first_name, :last_name
-
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
-
-      def to_s
-        "#{@first_name} #{@last_name}"
-      end
-    end
-    ```
 
 * Use the `attr` family of functions to define trivial accessors or
 mutators.
@@ -1066,38 +1049,6 @@ mutators.
     # good
     attr_accessor :something
     attr_reader :one, :two, :three
-    ```
-
-* Consider using `Struct.new`, which defines the trivial accessors,
-constructor and comparison operators for you.
-
-    ```Ruby
-    # good
-    class Person
-      attr_reader :first_name, :last_name
-
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
-    end
-
-    # better
-    Person = Struct.new(:first_name, :last_name) do
-    end
-    ````
-
-* Don't extend a `Struct.new` - it already is a new class. Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
-
-* Consider adding factory methods to provide additional sensible ways
-to create instances of a particular class.
-
-    ```Ruby
-    class Person
-      def self.create(options_hash)
-        # body omitted
-      end
-    end
     ```
 
 * Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.
@@ -1162,10 +1113,9 @@ in inheritance.
     over class variables.
 
 * Assign proper visibility levels to methods (`private`, `protected`)
-in accordance with their intended usage. Don't go off leaving
-everything `public` (which is the default). After all we're coding
-in *Ruby* now, not in *Python*.
-* Indent the `public`, `protected`, and `private` methods as much the
+in accordance with their intended usage.
+* Avoid using `protected`.
+* Indent the `public` and `private` methods as much the
   method definitions they apply to. Leave one blank line above the
   visibility modifier
   and one blank line below in order to emphasize that it applies to all
