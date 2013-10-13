@@ -1,7 +1,7 @@
 
 # The Grouper Ruby Style Guide
 
-The purpose of this is to prevent us from wasting time arguing about things that don't matter.
+  The purpose of this document is to prevent us from wasting time arguing about things that don't matter. If there are any portions of the codebase that don't follow these rules, feel free to fix them.
 
 ## Table of Contents
 
