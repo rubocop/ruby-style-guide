@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-* [Source Code Layout](#source-code-layout)
+* [Coding Style](#coding-style)
 * [Whitespace](#whitespace)
 * [Syntax](#syntax)
 * [Naming](#naming)
@@ -16,7 +16,7 @@
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
 
-## Source Code Layout
+## Coding Style
 
 * Use soft-tabs with two **spaces** per indentation level.
 
