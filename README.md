@@ -18,53 +18,7 @@ The purpose of this is to prevent us from wasting time arguing about things that
 
 ## Source Code Layout
 
-> Nearly everybody is convinced that every style but their own is
-> ugly and unreadable. Leave out the "but their own" and they're
-> probably right... <br/>
-> -- Jerry Coffin (on indentation)
-
-* Use `UTF-8` as the source file encoding.
-* Use two **spaces** per indentation level. No hard tabs.
-
-    ```Ruby
-    # bad - four spaces
-    def some_method
-        do_something
-    end
-
-    # good
-    def some_method
-      do_something
-    end
-    ```
-
-* Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
-  Windows users have to be extra careful.)
-    * If you're using Git you might want to add the following
-    configuration setting to protect your project from Windows line
-    endings creeping in:
-
-    ```bash
-    $ git config --global core.autocrlf true
-    ```
-
-* Don't use `;` to separate statements and expressions. As a
-  corollary - use one expression per line.
-
-    ```Ruby
-    # bad
-    puts 'foobar'; # superfluous semicolon
-
-    puts 'foo'; puts 'bar' # two expression on the same line
-
-    # good
-    puts 'foobar'
-
-    puts 'foo'
-    puts 'bar'
-
-    puts 'foo', 'bar' # this applies to puts in particular
-    ```
+* Use soft-tabs with two **spaces** per indentation level.
 
 * Prefer a single-line format for class definitions with no body.
 
@@ -80,92 +34,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
     FooError = Class.new(StandardError)
     ```
 
-* Avoid single-line methods. Although they are somewhat popular in the
-  wild, there are a few peculiarities about their definition syntax
-  that make their use undesirable. At any rate - there should be no more
-  than one expression in a single-line method.
-
-    ```Ruby
-    # bad
-    def too_much; something; something_else; end
-
-    # okish - notice that the first ; is required
-    def no_braces_method; body end
-
-    # okish - notice that the second ; is optional
-    def no_braces_method; body; end
-
-    # okish - valid syntax, but no ; make it kind of hard to read
-    def some_method() body end
-
-    # good
-    def some_method
-      body
-    end
-    ```
-
-    One exception to the rule are empty-body methods.
-
-    ```Ruby
-    # good
-    def no_op; end
-    ```
-
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily
-  readable code.
-
-    ```Ruby
-    sum = 1 + 2
-    a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
-    ```
-
-    The only exception, regarding operators, is the exponent operator:
-
-    ```Ruby
-    # bad
-    e = M * c ** 2
-
-    # good
-    e = M * c**2
-    ```
-
-    `{` and `}` deserve a bit of clarification, since they are used
-    for block and hash literals, as well as embedded expressions in
-    strings. For hash literals two styles are considered acceptable.
-
-    ```Ruby
-    # good - space after { and before }
-    { one: 1, two: 2 }
-
-    # good - no space after { and before }
-    {one: 1, two: 2}
-    ```
-
-    The first variant is slightly more readable (and arguably more
-    popular in the Ruby community in general). The second variant has
-    the advantage of adding visual difference between block and hash
-    literals. Whichever one you pick - apply it consistently.
-
-    As far as embedded expressions go, there are also two acceptable
-    options:
-
-    ```Ruby
-    # good - no spaces
-    "string#{expr}"
-
-    # ok - arguably more readable
-    "string#{ expr }"
-    ```
-
-    The first style is extremely more popular and you're generally
-    advised to stick with it. The second, on the other hand, is
-    (arguably) a bit more readable. As with hashes - pick one style
-    and apply it consistently.
-
 * No spaces after `(`, `[` or before `]`, `)`.
 
     ```Ruby
@@ -176,11 +44,8 @@ The purpose of this is to prevent us from wasting time arguing about things that
 * No space after `!`.
 
     ```Ruby
-    # bad
-    ! something
-
     # good
-    !something
+    !array.include?(thing)
     ```
 
 * Indent `when` as deep as `case`. I know that many would disagree
@@ -213,45 +78,7 @@ The purpose of this is to prevent us from wasting time arguing about things that
     end
     ```
 
-* When assigning the result of a conditional expression to a variable, preserve the usual alignment of its branches.
-
-    ```Ruby
-    # bad - pretty convoluted
-    kind = case year
-    when 1850..1889 then 'Blues'
-    when 1890..1909 then 'Ragtime'
-    when 1910..1929 then 'New Orleans Jazz'
-    when 1930..1939 then 'Swing'
-    when 1940..1950 then 'Bebop'
-    else 'Jazz'
-    end
-
-    result = if some_cond
-      calc_something
-    else
-      calc_something_else
-    end
-
-    # good (and a bit more width efficient)
-    kind =
-      case year
-      when 1850..1889 then 'Blues'
-      when 1890..1909 then 'Ragtime'
-      when 1910..1929 then 'New Orleans Jazz'
-      when 1930..1939 then 'Swing'
-      when 1940..1950 then 'Bebop'
-      else 'Jazz'
-      end
-
-    result =
-      if some_cond
-        calc_something
-      else
-        calc_something_else
-      end
-    ```
-
-* Use empty lines between method definitions and also to break up a method into logical
+* Use empty lines between `def`s also to break up a method into logical
   paragraphs internally.
 
     ```Ruby
@@ -301,18 +128,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
                   ' and second part of the long string'
     ```
 
-* When continuing a chained method invocation on another line keep the `.` on the second line.
-
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
-
 * Align the parameters of a method call if they span more than one
   line. When aligning parameters is not appropriate due to line-length
   constraints, single indent for the lines after the first is also
@@ -322,15 +137,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
     # starting point (line is too long)
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
-    end
-
-    # bad (double indent)
-    def send_mail(source)
-      Mailer.deliver(
-          to: 'bob@example.com',
-          from: 'us@example.com',
-          subject: 'Important message',
-          body: source.text)
     end
 
     # bad (too much indentation)
@@ -350,25 +156,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
         body: source.text
       )
     end
-    ```
-
-* Align the elements of array literals spanning multiple lines.
-
-    ```Ruby
-    # bad - single indent
-    menu_item = ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
-      "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
-
-    # bad - looks strange
-    menu_item =
-      ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
-       "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
-
-    # good
-    menu_item = [
-      "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
-      "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"
-    ]
     ```
 
 ## Whitespace
