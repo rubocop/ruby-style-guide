@@ -337,7 +337,7 @@ The purpose of this is to prevent us from wasting time arguing about things that
           body: source.text)
     end
 
-    # good
+    # bad (too much indentation)
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com',
                      from: 'us@example.com',
@@ -363,16 +363,16 @@ The purpose of this is to prevent us from wasting time arguing about things that
     menu_item = ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
       "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
 
+    # bad - looks strange
+    menu_item =
+      ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
+       "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
+
     # good
     menu_item = [
       "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
       "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"
     ]
-
-    # good
-    menu_item =
-      ["Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam", "Spam",
-       "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
     ```
 
 * Add underscores to large numeric literals to improve their readability.
