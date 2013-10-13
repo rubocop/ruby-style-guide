@@ -1245,65 +1245,14 @@ Apply this rule only to arrays with two or more elements.
     email_with_name = "#{user.name} <#{user.email}>"
     ```
 
-* Consider padding string interpolation code with space. It more clearly sets the
-  code apart from the string.
-
-    ```Ruby
-    "#{ user.last_name }, #{ user.first_name }"
-    ```
-
-* Prefer single-quoted strings when you don't need string interpolation or
-  special symbols such as `\t`, `\n`, `'`, etc.
+* Prefer double-quoted strings. Interpolation and escaped characters will always work without a delimiter change, and `'` is a lot more common than `"` in string literals.
 
     ```Ruby
     # bad
-    name = "Bozhidar"
-
-    # good
     name = 'Bozhidar'
-    ```
-
-* Don't use the character literal syntax `?x`. Since Ruby 1.9 it's
-  basically redundant - `?x` would interpreted as `'x'` (a string with
-  a single character in it).
-
-    ```Ruby
-    # bad
-    char = ?c
 
     # good
-    char = 'c'
-    ```
-
-* Don't leave out `{}` around instance and global variables being
-  interpolated into a string.
-
-    ```Ruby
-    class Person
-      attr_reader :first_name, :last_name
-
-      def initialize(first_name, last_name)
-        @first_name = first_name
-        @last_name = last_name
-      end
-
-      # bad - valid, but awkward
-      def to_s
-        "#@first_name #@last_name"
-      end
-
-      # good
-      def to_s
-        "#{@first_name} #{@last_name}"
-      end
-    end
-
-    $global = 0
-    # bad
-    puts "$global = #$global"
-
-    # good
-    puts "$global = #{$global}"
+    name = "Bozhidar"
     ```
 
 * Avoid using `String#+` when you need to construct large data chunks.
@@ -1318,20 +1267,6 @@ Apply this rule only to arrays with two or more elements.
     paragraphs.each do |paragraph|
       html << "<p>#{paragraph}</p>"
     end
-    ```
-
-* When using heredocs for multi-line strings keep in mind the fact
-  that they preserve leading whitespace. It's a good practice to
-  employ some margin based on which to trim the excessive whitespace.
-
-    ```Ruby
-    code = <<-END.gsub(/^\s+\|/, '')
-      |def test
-      |  some_method
-      |  other_method
-      |end
-    END
-    #=> "def\n  some_method\n  \nother_method\nend"
     ```
 
 ## Regular Expressions
