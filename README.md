@@ -541,33 +541,11 @@ in inheritance.
 
 * Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage.
-* Avoid using `protected`.
-* Indent the `public` and `private` methods as much the
-  method definitions they apply to. Leave one blank line above the
-  visibility modifier
-  and one blank line below in order to emphasize that it applies to all
-  methods below it.
 
-    ```Ruby
-    class SomeClass
-      def public_method
-        # ...
-      end
-
-      private
-
-      def private_method
-        # ...
-      end
-
-      def another_private_method
-        # ...
-      end
-    end
-    ```
+* Avoid using `protected` as it's rarely useful.
 
 * Use `def self.method` to define singleton methods. This makes the code
-  easier to refactor since the class name is not repeated. Avoid `class << self` as it is easy to miss.
+  easier to refactor since the class name is not repeated.
 
     ```Ruby
     class TestClass
@@ -595,6 +573,39 @@ in accordance with their intended usage.
 
     end
     ```
+
+* Avoid `class << self` except when necessary, e.g. single accessors and aliased attributes.
+
+    ```Ruby
+    class TestClass
+      # bad
+      class << self
+        def first_method
+          # body omitted
+        end
+
+        def second_method_etc
+          # body omitted
+        end
+      end
+
+      # good
+      class << self
+        attr_accessor :per_page
+        alias_method :nwo, :find_by_name_with_owner
+      end
+
+      def self.first_method
+        # body omitted
+      end
+
+      def self.second_method_etc
+        # body omitted
+      end
+    end
+    ```
+
+
 
 ## Exceptions
 
@@ -648,6 +659,8 @@ Apply this rule only to arrays with two or more elements.
     # good
     STATES = %w(draft open closed)
     ```
+
+* Use symbols instead of strings as hash keys.
 
 * Always use the hash literal syntax when your hash keys are symbols.
 
