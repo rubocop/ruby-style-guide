@@ -1140,7 +1140,7 @@ in accordance with their intended usage.
     ```
 
 * Use `def self.method` to define singleton methods. This makes the code
-  easier to refactor since the class name is not repeated.
+  easier to refactor since the class name is not repeated. Avoid `class << self` as it is easy to miss.
 
     ```Ruby
     class TestClass
@@ -1149,13 +1149,7 @@ in accordance with their intended usage.
         # body omitted
       end
 
-      # good
-      def self.some_other_method
-        # body omitted
-      end
-
-      # Also possible and convenient when you
-      # have to define many singleton methods.
+      # bad
       class << self
         def first_method
           # body omitted
@@ -1165,139 +1159,17 @@ in accordance with their intended usage.
           # body omitted
         end
       end
+
+
+      # good
+      def self.some_other_method
+        # body omitted
+      end
+
     end
     ```
 
 ## Exceptions
-
-* Signal exceptions using the `fail` method. Use `raise` only when
-  catching an exception and re-raising it (because here you're not
-  failing, but explicitly and purposefully raising an exception).
-
-    ```Ruby
-    begin
-      fail 'Oops'
-    rescue => error
-      raise if error.message != 'Oops'
-    end
-    ```
-
-* Don't specify `RuntimeError` explicitly in the two argument version of `fail/raise`.
-
-    ```Ruby
-    # bad
-    fail RuntimeError, 'message'
-
-    # good - signals a RuntimeError by default
-    fail 'message'
-    ```
-
-* Prefer supplying an exception class and a message as two separate
-  arguments to `fail/raise`, instead of an exception instance.
-
-    ```Ruby
-    # bad
-    fail SomeException.new('message')
-    # Note that there is no way to do `fail SomeException.new('message'), backtrace`.
-
-    # good
-    fail SomeException, 'message'
-    # Consistent with `fail SomeException, 'message', backtrace`.
-    ```
-
-* Never return from an `ensure` block. If you explicitly return from a
-  method inside an `ensure` block, the return will take precedence over
-  any exception being raised, and the method will return as if no
-  exception had been raised at all. In effect, the exception will be
-  silently thrown away.
-
-    ```Ruby
-    def foo
-      begin
-        fail
-      ensure
-        return 'very bad idea'
-      end
-    end
-    ```
-
-* Use *implicit begin blocks* where possible.
-
-    ```Ruby
-    # bad
-    def foo
-      begin
-        # main logic goes here
-      rescue
-        # failure handling goes here
-      end
-    end
-
-    # good
-    def foo
-      # main logic goes here
-    rescue
-      # failure handling goes here
-    end
-    ```
-
-* Mitigate the proliferation of `begin` blocks by using
-  *contingency methods* (a term coined by Avdi Grimm).
-
-    ```Ruby
-    # bad
-    begin
-      something_that_might_fail
-    rescue IOError
-      # handle IOError
-    end
-
-    begin
-      something_else_that_might_fail
-    rescue IOError
-      # handle IOError
-    end
-
-    # good
-    def with_io_error_handling
-       yield
-    rescue IOError
-      # handle IOError
-    end
-
-    with_io_error_handling { something_that_might_fail }
-
-    with_io_error_handling { something_else_that_might_fail }
-    ```
-
-* Don't suppress exceptions.
-
-    ```Ruby
-    # bad
-    begin
-      # an exception occurs here
-    rescue SomeError
-      # the rescue clause does absolutely nothing
-    end
-
-    # bad
-    do_something rescue nil
-    ```
-
-* Avoid using `rescue` in its modifier form.
-
-    ```Ruby
-    # bad - this catches exceptions of StandardError class and its descendant classes
-    read_file rescue handle_error($!)
-
-    # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
-    def foo
-      read_file
-    rescue Errno::ENOENT => ex
-      handle_error(ex)
-    end
-    ```
-
 
 * Don't use exceptions for flow of control.
 
@@ -1306,102 +1178,37 @@ in accordance with their intended usage.
     begin
       n / d
     rescue ZeroDivisionError
-      puts 'Cannot divide by 0!'
+      puts "Cannot divide by 0!"
     end
 
     # good
     if d.zero?
-      puts 'Cannot divide by 0!'
+      puts "Cannot divide by 0!"
     else
       n / d
     end
     ```
 
-* Avoid rescuing the `Exception` class.  This will trap signals and calls to
-  `exit`, requiring you to `kill -9` the process.
+* Avoid rescuing the `Exception` class.
 
     ```Ruby
     # bad
-    begin
-      # calls to exit and kill signals will be caught (except kill -9)
-      exit
-    rescue Exception
-      puts "you didn't really want to exit, right?"
-      # exception handling
-    end
-
-    # good
-    begin
-      # a blind rescue rescues from StandardError, not Exception as many
-      # programmers assume.
-    rescue => e
-      # exception handling
-    end
-
-    # also good
     begin
       # an exception occurs here
-
-    rescue StandardError => e
+    rescue
       # exception handling
     end
 
-    ```
-
-* Put more specific exceptions higher up the rescue chain, otherwise
-  they'll never be rescued from.
-
-    ```Ruby
-    # bad
+    # still bad
     begin
-      # some code
-    rescue Exception => e
-      # some handling
-    rescue StandardError => e
-      # some handling
-    end
-
-    # good
-    begin
-      # some code
-    rescue StandardError => e
-      # some handling
-    rescue Exception => e
-      # some handling
+      # an exception occurs here
+    rescue Exception
+      # exception handling
     end
     ```
-
-* Release external resources obtained by your program in an ensure
-block.
-
-    ```Ruby
-    f = File.open('testfile')
-    begin
-      # .. process
-    rescue
-      # .. handle error
-    ensure
-      f.close unless f.nil?
-    end
-    ```
-
-* Favor the use of exceptions for the standard library over
-introducing new exception classes.
 
 ## Collections
 
-* Prefer literal array and hash creation notation (unless you need to
-pass parameters to their constructors, that is).
-
-    ```Ruby
-    # bad
-    arr = Array.new
-    hash = Hash.new
-
-    # good
-    arr = []
-    hash = {}
-    ```
 
 * Prefer `%w` to the literal array syntax when you need an array of
 words(non-empty strings without spaces and special characters in them).
@@ -1415,43 +1222,7 @@ Apply this rule only to arrays with two or more elements.
     STATES = %w(draft open closed)
     ```
 
-* Prefer `%i` to the literal array syntax when you need an array of
-symbols(and you don't need to maintain Ruby 1.9 compatibility). Apply
-this rule only to arrays with two or more elements.
-
-    ```Ruby
-    # bad
-    STATES = [:draft, :open, :closed]
-
-    # good
-    STATES = %i(draft open closed)
-    ```
-
-* Avoid the creation of huge gaps in arrays.
-
-    ```Ruby
-    arr = []
-    arr[100] = 1 # now you have an array with lots of nils
-    ```
-
-* When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.
-
-* Use `Set` instead of `Array` when dealing with unique elements. `Set`
-  implements a collection of unordered values with no duplicates. This
-  is a hybrid of `Array`'s intuitive inter-operation facilities and
-  `Hash`'s fast lookup.
-* Prefer symbols instead of strings as hash keys.
-
-    ```Ruby
-    # bad
-    hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
-
-    # good
-    hash = { one: 1, two: 2, three: 3 }
-    ```
-
-* Avoid the use of mutable objects as hash keys.
-* Use the hash literal syntax when your hash keys are symbols.
+* Always use the hash literal syntax when your hash keys are symbols.
 
     ```Ruby
     # bad
@@ -1461,60 +1232,6 @@ this rule only to arrays with two or more elements.
     hash = { one: 1, two: 2, three: 3 }
     ```
 
-* Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead
-  of `Hash#has_value?`. As noted
-  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765)
-  by Matz, the longer forms are considered deprecated.
-
-    ```Ruby
-    # bad
-    hash.has_key?(:test)
-    hash.has_value?(value)
-
-    # good
-    hash.key?(:test)
-    hash.value?(value)
-    ```
-
-* Use `Hash#fetch` when dealing with hash keys that should be present.
-
-    ```Ruby
-    heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
-    # bad - if we make a mistake we might not spot it right away
-    heroes[:batman] # => "Bruce Wayne"
-    heroes[:supermann] # => nil
-
-    # good - fetch raises a KeyError making the problem obvious
-    heroes.fetch(:supermann)
-    ```
-
-* Introduce default values for hash keys via `Hash#fetch` as opposed to using custom logic.
-
-   ```Ruby
-   batman = { name: 'Bruce Wayne', is_evil: false }
-
-   # bad - if we just use || operator with falsy value we won't get the expected result
-   batman[:is_evil] || true # => true
-
-   # good - fetch work correctly with falsy values
-   batman.fetch(:is_evil, true) # => false
-   ```
-
-* Prefer the use of the block instead of the default value in `Hash#fetch`.
-
-   ```Ruby
-   batman = { name: 'Bruce Wayne' }
-
-   # bad - if we use the default value, we eager evaluate it
-   # so it can slow the program down if done multiple times
-   batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
-
-   # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
-   batman.fetch(:powers) { get_batman_powers }
-   ```
-
-* Rely on the fact that as of Ruby 1.9 hashes are ordered.
-* Never modify a collection while traversing it.
 
 ## Strings
 
