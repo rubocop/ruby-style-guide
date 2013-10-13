@@ -6,6 +6,7 @@ The purpose of this is to prevent us from wasting time arguing about things that
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
+* [Whitespace](#whitespace)
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
@@ -432,61 +433,6 @@ Never use `::` for regular method invocation.
      end
      ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
-
-    ```Ruby
-    arr = [1, 2, 3]
-
-    # bad
-    for elem in arr do
-      puts elem
-    end
-
-    # note that elem is accessible outside of the for loop
-    elem #=> 3
-
-    # good
-    arr.each { |elem| puts elem }
-
-    # elem is not accessible outside each's block
-    elem #=> NameError: undefined local variable or method `elem'
-    ```
-
-* Never use `then` for multi-line `if/unless`.
-
-    ```Ruby
-    # bad
-    if some_condition then
-      # body omitted
-    end
-
-    # good
-    if some_condition
-      # body omitted
-    end
-    ```
-
-* Always put the condition on the same line as the `if`/`unless` in a multi-line conditional.
-
-    ```Ruby
-    # bad
-    if
-      some_condition
-      do_something
-      do_something_else
-    end
-
-    # good
-    if some_condition
-      do_something
-      do_something_else
-    end
-    ```
-
 * Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
   It's more common and obviously more concise.
 
@@ -513,24 +459,6 @@ Never use `::` for regular method invocation.
       something_else
     end
     ```
-
-* Never use `if x: ...` - as of Ruby 1.9 it has been removed. Use
-  the ternary operator instead.
-
-    ```Ruby
-    # bad
-    result = if some_condition: something else something_else end
-
-    # good
-    result = some_condition ? something : something_else
-    ```
-
-* Never use `if x; ...`. Use the ternary operator instead.
-
-* Use `when x then ...` for one-line cases. The alternative syntax
-  `when x: ...` has been removed as of Ruby 1.9.
-
-* Never use `when x; ...`. See the previous rule.
 
 * Use `!` instead of `not`.
 
@@ -585,8 +513,6 @@ Never use `::` for regular method invocation.
     # control flow
     document.saved? || document.save!
     ```
-
-* Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
   body. Another good alternative is the usage of control flow `&&/||`.
