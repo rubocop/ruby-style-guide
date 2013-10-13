@@ -828,7 +828,7 @@ Never use `::` for regular method invocation.
 
     ```Ruby
     # set name to Bozhidar, only if it's nil or false
-    name ||= 'Bozhidar'
+    name ||= "Bozhidar"
     ```
 
 * Don't use `||=` to initialize boolean variables. (Consider what
@@ -841,53 +841,6 @@ would happen if the current value happened to be `false`.)
     # good
     enabled = true if enabled.nil?
     ```
-
-* Avoid explicit use of the case equality operator `===`. As it name
-  implies it's meant to be used implicitly by `case` expressions and
-  outside of them it yields some pretty confusing code.
-
-    ```Ruby
-    # bad
-    Array === something
-    (1..100) === 7
-    /something/ === some_string
-
-    # good
-    something.is_a?(Array)
-    (1..100).include?(7)
-    some_string =~ /something/
-    ```
-
-* Avoid using Perl-style special variables (like `$:`, `$;`,
-  etc. ). They are quite cryptic and their use in anything but
-  one-liner scripts is discouraged. Use the human-friendly
-  aliases provided by the `English` library.
-
-    ```Ruby
-    # bad
-    $:.unshift File.dirname(__FILE__)
-
-    # good
-    require 'English'
-    $LOAD_PATH.unshift File.dirname(__FILE__)
-    ```
-
-* Never put a space between a method name and the opening parenthesis.
-
-    ```Ruby
-    # bad
-    f (3 + 2) + 1
-
-    # good
-    f(3 + 2) + 1
-    ```
-
-* If the first argument to a method begins with an open parenthesis,
-  always use parentheses in the method invocation. For example, write
-`f((3 + 2) + 1)`.
-
-* Always run the Ruby interpreter with the `-w` option so it will warn
-you if you forget either of the rules above!
 
 * Use the new lambda literal syntax for single line body blocks. Use the
   `lambda` method for multi-line blocks.
