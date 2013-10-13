@@ -9,8 +9,6 @@ The purpose of this is to prevent us from wasting time arguing about things that
 * [Whitespace](#whitespace)
 * [Syntax](#syntax)
 * [Naming](#naming)
-* [Comments](#comments)
-    * [Comment Annotations](#comment-annotations)
 * [Classes](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
@@ -905,76 +903,6 @@ would happen if the current value happened to be `false`.)
 
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the arguments, `exit!`, etc.) should end with an exclamation mark. Bang methods should only exist if a non-bang method exists. ([More on this](http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist)).
 
-
-## Comments
-
-> Good code is its own best documentation. As you're about to add a
-> comment, ask yourself, "How can I improve the code so that this
-> comment isn't needed?" Improve the code and then document it to make
-> it even clearer. <br/>
-> -- Steve McConnell
-
-* Write self-documenting code and ignore the rest of this section. Seriously!
-* Write comments in English.
-* Use one space between the leading `#` character of the comment and the text
-  of the comment.
-* Comments longer than a word are capitalized and use punctuation. Use [one
-  space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
-* Avoid superfluous comments.
-
-    ```Ruby
-    # bad
-    counter += 1 # Increments counter by one.
-    ```
-
-* Keep existing comments up-to-date. An outdated comment is worse than no comment
-at all.
-
-> Good code is like a good joke - it needs no explanation. <br/>
-> -- Russ Olsen
-
-* Avoid writing comments to explain bad code. Refactor the code to
-  make it self-explanatory. (Do or do not - there is no try. --Yoda)
-
-### Comment Annotations
-
-* Annotations should usually be written on the line immediately above
-  the relevant code.
-* The annotation keyword is followed by a colon and a space, then a note
-  describing the problem.
-* If multiple lines are required to describe the problem, subsequent
-  lines should be indented two spaces after the `#`.
-
-    ```Ruby
-    def bar
-      # FIXME: This has crashed occasionally since v3.2.1. It may
-      #   be related to the BarBazUtil upgrade.
-      baz(:quux)
-    end
-    ```
-
-* In cases where the problem is so obvious that any documentation would
-  be redundant, annotations may be left at the end of the offending line
-  with no note. This usage should be the exception and not the rule.
-
-    ```Ruby
-    def bar
-      sleep 100 # OPTIMIZE
-    end
-    ```
-
-* Use `TODO` to note missing features or functionality that should be
-  added at a later date.
-* Use `FIXME` to note broken code that needs to be fixed.
-* Use `OPTIMIZE` to note slow or inefficient code that may cause
-  performance problems.
-* Use `HACK` to note code smells where questionable coding practices
-  were used and should be refactored away.
-* Use `REVIEW` to note anything that should be looked at to confirm it
-  is working as intended. For example: `REVIEW: Are we sure this is how the
-  client does X currently?`
-* Use other custom annotation keywords if it feels appropriate, but be
-  sure to document them in your project's `README` or similar.
 
 ## Classes & Modules
 
