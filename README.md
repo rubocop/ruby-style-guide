@@ -913,32 +913,6 @@ you if you forget either of the rules above!
     end
     ```
 
-* Prefer `proc` over `Proc.new`.
-
-    ```Ruby
-    # bad
-    p = Proc.new { |n| puts n }
-
-    # good
-    p = proc { |n| puts n }
-    ```
-
-* Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
-
-    ```Ruby
-    # bad - looks similar to Enumeration access
-    l = ->(v) { puts v }
-    l[1]
-
-    # also bad - uncommon syntax
-    l = ->(v) { puts v }
-    l.(1)
-
-    # good
-    l = ->(v) { puts v }
-    l.call(1)
-    ```
-
 * Avoid use of nested conditionals for flow of control.
   Prefer a guard clause when you can assert invalid data. A guard clause is a conditional
   statement at the top of a function that bails out as soon as it can.
