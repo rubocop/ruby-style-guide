@@ -16,6 +16,7 @@
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
+* [Specs](#specs)
 
 ## Coding Style
 
@@ -802,3 +803,10 @@ Apply this rule only to arrays with two or more elements.
     # good
     %r(^/blog/2011/(.*)$)
     ```
+
+
+## Specs
+
+* Always write specs before you write your code
+
+* Follow the guidelines from [betterspecs.org](http://betterspecs.org/)
