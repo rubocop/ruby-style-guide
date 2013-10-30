@@ -43,6 +43,12 @@
     [1, 2, 3].length
     ```
 
+* Use spaces around `{` and before `}`.
+
+  ```Ruby
+  [1, 2, 3].each { |e| puts e }
+  ```
+
 * No space after `!`.
 
     ```Ruby
