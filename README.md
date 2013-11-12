@@ -2434,7 +2434,7 @@ this rule only to arrays with two or more elements.
     %q{"Test's king!", John said.}
 
     # good
-    %w(one tho three)
+    %w(one two three)
     %q("Test's king!", John said.)
     ```
 
