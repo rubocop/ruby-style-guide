@@ -835,10 +835,10 @@ Never use `::` for regular method invocation.
 
     ```Ruby
     # bad
-    User.set({ name: 'John', age: 45, permissions: { read: true } })
+    user.set({ name: 'John', age: 45, permissions: { read: true } })
 
     # good
-    User.set(name: 'John', age: 45, permissions: { read: true })
+    user.set(name: 'John', age: 45, permissions: { read: true })
     ```
 
 * Omit both the outer braces and parentheses for methods that are
