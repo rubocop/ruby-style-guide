@@ -1347,7 +1347,8 @@ setting the warn level to 0 via `-W0`).
 
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
-  (i.e. `Array#empty?`).
+  (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't
+  end in a question mark.
 * The names of potentially *dangerous* methods (i.e. methods that
   modify `self` or the arguments, `exit!` (doesn't run the finalizers
   like `exit` does), etc.) should end with an exclamation mark if
