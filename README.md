@@ -433,6 +433,28 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* Align the parameters of a method definition if they span more than one line.
+
+  ```Ruby
+  # starting point (line is too long)
+  def some_unfortunate_method(with, an, inordinately, long, list, of, required, arguments, that, also, has, options = {})
+  end
+  ```
+  
+  ```Ruby
+  # bad - single indent
+  def some_unfortunate_method(with, an, inordinately, long, list, of, required,
+    arguments, that, also, has, options = {})
+  end
+  ```
+
+  ```Ruby
+  # good
+  def some_unfortunate_method(with, an, inordinately, long, list, of, required,
+                              arguments, that, also, has, options = {})
+  end
+  ```
+
 * Align the elements of array literals spanning multiple lines.
 
     ```Ruby
