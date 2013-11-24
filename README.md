@@ -900,17 +900,18 @@ Never use `::` for regular method invocation.
     ask themselves - is this code really readable and can the blocks' contents be extracted into
     nifty methods?
 
-* Avoid `return` where not required for flow of control.
+* ALWAYS use `return` to signify a return value of a function. NEVER use an implied return value.
 
     ```Ruby
     # bad
-    def some_method(some_arr)
-      return some_arr.size
+    def inc_counter
+      @counter = @counter + 1 #does return value matter here?
     end
 
     # good
-    def some_method(some_arr)
-      some_arr.size
+    def inc_counter
+      @counter = @counter + 1
+      return @counter #minimally verbose, but explicit and clear.
     end
     ```
 
