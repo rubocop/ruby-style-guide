@@ -2192,15 +2192,14 @@ this rule only to arrays with two or more elements.
     "#{ user.last_name }, #{ user.first_name }"
     ```
 
-* Prefer single-quoted strings when you don't need string interpolation or
-  special symbols such as `\t`, `\n`, `'`, etc.
+* Always prefer double-quoted strings
 
     ```Ruby
     # bad
-    name = "Bozhidar"
+    name = 'Bozhidar'
 
     # good
-    name = 'Bozhidar'
+    name = "Bozhidar"
     ```
 
 * Don't use the character literal syntax `?x`. Since Ruby 1.9 it's
