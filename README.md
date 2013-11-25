@@ -2539,6 +2539,11 @@ this rule only to arrays with two or more elements.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
+
+* Avoid writing methods that are over 10 lines long! 
+* Short Methods are much more readable. 
+
+
 ## Tools
 
 Here's some tools to help you automatically check Ruby code against
