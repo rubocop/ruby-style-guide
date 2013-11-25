@@ -1538,13 +1538,13 @@ at all.
       def some_method
       end
 
-      # protected and private methods are grouped near the end
-      protected
+    # protected and private methods are grouped near the end
+    protected
 
       def some_protected_method
       end
 
-      private
+    private
 
       def some_private_method
       end
@@ -1772,7 +1772,7 @@ in inheritance.
 in accordance with their intended usage. Don't go off leaving
 everything `public` (which is the default). After all we're coding
 in *Ruby* now, not in *Python*.
-* Indent the `public`, `protected`, and `private` methods as much the
+* Don't indent the `public`, `protected`, and `private` methods as much the
   method definitions they apply to. Leave one blank line above the
   visibility modifier
   and one blank line below in order to emphasize that it applies to all
@@ -1784,7 +1784,7 @@ in *Ruby* now, not in *Python*.
         # ...
       end
 
-      private
+    private
 
       def private_method
         # ...
