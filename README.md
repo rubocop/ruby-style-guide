@@ -90,7 +90,7 @@ Translations of the guide are available in the following languages:
 > -- Jerry Coffin (on indentation)
 
 * Use `UTF-8` as the source file encoding.
-* Use two **spaces** per indentation level. No hard tabs.
+* Use two **spaces** per indentation level (aka soft tabs). No hard tabs.
 
     ```Ruby
     # bad - four spaces
@@ -104,7 +104,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Use Unix-style line endings. (*BSD/Solaris/Linux/OSX users are covered by default,
+* Use Unix-style line endings. (*BSD/Solaris/Linux/OS X users are covered by default,
   Windows users have to be extra careful.)
     * If you're using Git you might want to add the following
     configuration setting to protect your project from Windows line
