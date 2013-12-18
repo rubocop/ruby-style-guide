@@ -135,14 +135,14 @@ Translations of the guide are available in the following languages:
 * Prefer a single-line format for class definitions with no body.
 
     ```Ruby
-    # bad
+    # good
     class FooError < StandardError
     end
 
-    # okish
+    # bad
     class FooError < StandardError; end
 
-    # good
+    # bad
     FooError = Class.new(StandardError)
     ```
 
