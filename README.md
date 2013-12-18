@@ -155,13 +155,13 @@ Translations of the guide are available in the following languages:
     # bad
     def too_much; something; something_else; end
 
-    # okish - notice that the first ; is required
+    # bad - notice that the first ; is required
     def no_braces_method; body end
 
-    # okish - notice that the second ; is optional
+    # bad - notice that the second ; is optional
     def no_braces_method; body; end
 
-    # okish - valid syntax, but no ; make it kind of hard to read
+    # bad - valid syntax, but no ; make it kind of hard to read
     def some_method() body end
 
     # good
@@ -170,10 +170,10 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-    One exception to the rule are empty-body methods.
+    One may think that a valid exception to the rule are empty-body methods.  We disagree.
 
     ```Ruby
-    # good
+    # bad
     def no_op; end
     ```
 
@@ -207,7 +207,7 @@ Translations of the guide are available in the following languages:
     # good - space after { and before }
     { one: 1, two: 2 }
 
-    # good - no space after { and before }
+    # better - no space after { and before }
     {one: 1, two: 2}
     ```
 
@@ -375,7 +375,7 @@ Translations of the guide are available in the following languages:
     result = 1 - \
              2
 
-    # good (but still ugly as hell)
+    # bad (but still ugly as hell)
     result = 1 \
              - 2
 
@@ -386,14 +386,16 @@ Translations of the guide are available in the following languages:
 * When continuing a chained method invocation on another line keep the `.` on the second line.
 
     ```Ruby
-    # bad - need to consult first line to understand second line
+    # good - can tell that there is more to read below
     one.two.three.
       four
 
-    # good - it's immediately clear what's going on the second line
+    # not so great - it's immediately clear what's going on the second line
     one.two.three
       .four
     ```
+    
+    Both are not very great (POLA), and who knows if that can really not violate the LoD there, but whatever.
 
 * Align the parameters of a method call if they span more than one
   line. When aligning parameters is not appropriate due to line-length
