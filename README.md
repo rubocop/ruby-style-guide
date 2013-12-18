@@ -386,11 +386,11 @@ Translations of the guide are available in the following languages:
 * When continuing a chained method invocation on another line keep the `.` on the second line.
 
     ```Ruby
-    # good - can tell that there is more to read below
+    # less good - can tell that there is more to read below
     one.two.three.
       four
 
-    # not so great - it's immediately clear what's going on the second line
+    # good - it's immediately clear what's going on the second line
     one.two.three
       .four
     ```
@@ -455,6 +455,8 @@ Translations of the guide are available in the following languages:
        "Baked beans", "Spam", "Spam", "Spam", "Spam", "Spam"]
     ```
 
+   In any case, it's nice to use the %w{} instead of the literal words in arrays.
+
 * Add underscores to large numeric literals to improve their readability.
 
     ```Ruby
@@ -467,8 +469,8 @@ Translations of the guide are available in the following languages:
 
 * Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Limit lines to 80 characters.
-* Avoid trailing whitespace.
+* Limit lines to 100 characters.
+* Avoid trailing whitespace.  In fact, trim it aggressively.
 * Don't use block comments. They cannot be preceded by whitespace and are not
 as easy to spot as regular comments.
 
@@ -651,7 +653,7 @@ Never use `::` for regular method invocation.
     # double negation is useless on booleans
     !!x # => false
 
-    # good
+    # horrible
     x = 'test'
     if !x.nil?
       # body omitted
@@ -696,6 +698,7 @@ Never use `::` for regular method invocation.
     do_something if some_condition
 
     # another good option
+    # this is better when "some_condition" has a side effect
     some_condition && do_something
     ```
 
@@ -748,10 +751,10 @@ Never use `::` for regular method invocation.
     end
     ```
 
-* Never use `while/until condition do` for multi-line `while/until`.
+* At your leisure, use `while/until condition do` for multi-line `while/until`.
 
     ```Ruby
-    # bad
+    # fine - if you have an opinion, let us know
     while x > 5 do
       # body omitted
     end
@@ -1173,11 +1176,11 @@ setting the warn level to 0 via `-W0`).
     paths = [paths] unless paths.is_a? Array
     paths.each { |path| do_something(path) }
 
-    # good
-    [*paths].each { |path| do_something(path) }
-
-    # good (and a bit more readable)
+    # good 
     Array(paths).each { |path| do_something(path) }
+    
+    # good (and a bit more readable)
+    [*paths].each { |path| do_something(path) }
     ```
 
 * Use ranges or `Comparable#between?` instead of complex comparison logic when possible.
