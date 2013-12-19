@@ -236,7 +236,7 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     some(arg).other
-    [1, 2, 3].length
+    [1, 2, 3].size
     ```
 
 * No space after `!`.
