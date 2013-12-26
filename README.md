@@ -2568,6 +2568,10 @@ community.
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
 
+## How to Contribute?
+
+It's easy, just follow the [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
+
 # License
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
