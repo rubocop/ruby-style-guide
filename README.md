@@ -2456,7 +2456,7 @@ this rule only to arrays with two or more elements.
 
   - `define_method` is preferable to `class_eval{ def ... }`
 
-* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice I learned from the Rails code):
+* When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice used in Rails code):
 
     ```ruby
     # from activesupport/lib/active_support/core_ext/string/output_safety.rb
