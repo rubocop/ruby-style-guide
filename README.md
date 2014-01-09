@@ -1009,6 +1009,24 @@ would happen if the current value happened to be `false`.)
     enabled = true if enabled.nil?
     ```
 
+* Use `&&=` to preprocess variables that may or may not exist. Using `&&=` will change the value only if it exists, removing the need to check its existence with `if`.
+
+    ```Ruby
+    # bad
+    if something
+      something = something.downcase
+    end
+
+    # ok
+    something = something.downcase if something
+
+    # good
+    something = something && something.downcase
+
+    # better
+    something &&= something.downcase
+    ```
+
 * Avoid explicit use of the case equality operator `===`. As its name
   implies it is meant to be used implicitly by `case` expressions and
   outside of them it yields some pretty confusing code.
