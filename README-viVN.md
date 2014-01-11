@@ -1,34 +1,33 @@
-# Prelude
+# Lời giới hiệu
+> Các mô hình về vai trò là rất quan trọng. <br/>
+> - Văn phòng Alex J. Murphy / RoboCop
 
-> Role models are important. <br/>
-> -- Officer Alex J. Murphy / RoboCop
+Một điều luôn làm tôi suy nghĩ với vai trò của Ruby coder - Các Python
+coder có một tài liệu tham khảo về phong cách viết code rất tốt 
+([PEP-8] (http://www.python.org/dev/peps/pep-0008/)) và chúng ta, những 
+Ruby coder, vẵn chưa có một tài liệu chính thức hướng dẫ về phong cách 
+viết  Ruby cũng như những mô hình thực hành tốt nhất. 
+Và tôi tin rằng cần một phong cách viết code tốt. Tôi cũng tin rằng một
+cộng đồng lập trình lớn như cộng đồng Ruby, hẳn có đủ năng lực viết ra 
+những tài liệu cần thiết này.
 
-One thing has always bothered me as a Ruby developer - Python developers
-have a great programming style reference
-([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
-an official guide, documenting Ruby coding style and best
-practices. And I do believe that style matters. I also believe that a
-great hacker community, such as Ruby has, should be quite capable of
-producing this coveted document.
+Bản tài liệu này ban đầu được viết để dùng hướng dẫn cách viết code Ruby
+cho nội bộ công ty chúng tôi (với sự tin tưởng từ các bạn). Trong một số
+thời điểm, tôi quyết định rằng công việc tôi đang làm hẳn là rất thú vị 
+với các thành viên của cộng đồng Ruby nói chung và nó cũng cần thiết cho
+nội bộ các công ty khắc. Và thế giới sẽ được hưởng lợi từ mô hình dựa 
+vào cộng đồng và phản biện từ cộng đồng sẽ giúp tìm ra những bài học áp 
+dụng, những thành ngữ và những quy định viết code Ruby.
 
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was
-doing might be interesting to members of the Ruby community in general
-and that the world had little need for another internal company
-guideline. But the world could certainly benefit from a
-community-driven and community-sanctioned set of practices, idioms and
-style prescriptions for Ruby programming.
+Từ khi bắt đầu viết, tôi đã nhận được rất nhiều phản hồi, đặc biệt là các
+thành viên thuộc cộng đồng Ruby trên thế giới. Xin cảm ơn các bạn đã gợi ý
+và hỗ trợ cho tôi! Cùng nhau làm việc, chúng ta có viết ra cho một nguồn 
+tư liệu mang lại nhiều lợi ích cho mỗi nhà phát triển code Ruby.
 
-Since the inception of the guide I've received a lot of feedback from
-members of the exceptional Ruby community around the world. Thanks for
-all the suggestions and the support! Together we can make a resource
-beneficial to each and every Ruby developer out there.
+Bằng cách này, nếu bạn đang tìm hiểu Rails, bạn có thể muốn tham khảo thêm tài liệu 
+[Ruby on Rails 3 & 4 Style Guide] (https://github.com/bbatsov/rails-style-guide).
 
-By the way, if you're into Rails you might want to check out the
-complementary
-[Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
-
-# The Ruby Style Guide
+# Hướng dẫn phong cách viêt code Ruby (Ruby Style)
 
 This Ruby style guide recommends best practices so that real-world Ruby
 programmers can write code that can be maintained by other real-world Ruby
@@ -60,20 +59,20 @@ based on this style guide.
 
 Translations of the guide are available in the following languages:
 
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/haibt/ruby-style-guide/blob/master/README-viVN.md)
+* [Tiếng Trung giản thể](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
+* [Tiếng Trung truyền thống](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
+* [Tiếng Pháp](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
+* [Tiếng Tây Ban Nha](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
+* [Tiếng Việt](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
 
-## Table of Contents
+## Mục lục
 
-* [Source Code Layout](#source-code-layout)
-* [Syntax](#syntax)
-* [Naming](#naming)
-* [Comments](#comments)
+* [Source code layout/Bố cục trình bày khi viết code ](#source-code-layout)
+* [Syntax/Cú pháp](#syntax)
+* [Naming/Cách đặt tên](#naming)
+* [Comments/Viết chú thích](#comments)
     * [Comment Annotations](#comment-annotations)
-* [Classes](#classes--modules)
+* [Classes/Lớp đối tượng](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
@@ -81,9 +80,9 @@ Translations of the guide are available in the following languages:
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
-* [Tools](#tools)
+* [Tools/Công cụ](#tools)
 
-## Source Code Layout
+## Source code layout/Bố cục trình bày khi viết code 
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
