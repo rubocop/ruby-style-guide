@@ -1,8 +1,8 @@
-# Lời giới hiệu
+# Lời giới thiệu
 > Các mô hình về vai trò là rất quan trọng. <br/>
 > - Văn phòng Alex J. Murphy / RoboCop
 
-Một điều luôn làm tôi suy nghĩ với vai trò của Ruby coder - Các Python
+Một điều luôn làm tôi suy nghĩ với vai trò của một Ruby coder - Các Python
 coder có một tài liệu tham khảo về phong cách viết code rất tốt 
 ([PEP-8] (http://www.python.org/dev/peps/pep-0008/)) và chúng ta, những 
 Ruby coder, vẵn chưa có một tài liệu chính thức hướng dẫ về phong cách 
@@ -27,29 +27,29 @@ tư liệu mang lại nhiều lợi ích cho mỗi nhà phát triển code Ruby.
 Bằng cách này, nếu bạn đang tìm hiểu Rails, bạn có thể muốn tham khảo thêm tài liệu 
 [Ruby on Rails 3 & 4 Style Guide] (https://github.com/bbatsov/rails-style-guide).
 
-# Hướng dẫn phong cách viêt code Ruby (Ruby Style)
+# Hướng dẫn cách viêt code Ruby (Ruby Style)
 
-This Ruby style guide recommends best practices so that real-world Ruby
-programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a
-style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
+Bản hướng dẫn cách viết code Ruby giới thiệu những phương án thực hành tốt nhất mà 
+các lập trình viên trong thế giới Ruby code đã viết và được cập nhật, chỉnh sửa bởi
+các thành viên khác. Bản hướng dẫn vừa đưa ra phương án sử dụng thực tế tốt nhất, 
+vừa đề cập cả những ý tưởng đã bị nhật xét là không tối ưu. Việc này sẽ giúp tránh
+được rủi ro cho tất cả mọi người &ndash; Việc này hẳn cũng tốt đấy chứ.
 
-The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted I've
-assumed that is pretty obvious).
 
-I didn't come up with all the rules out of nowhere - they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Ruby community and
-various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
-and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+Bản hướng dẫn này được chia thành các phần bao gồm các quy tắc có liên quan đến nhau. 
+Tôi đã cố gắng để thêm các quy tắc liên quan đằng sau (Tôi cho rằng nếu các bạn không
+nhất thiết phải xem, có thể bỏ qua những quy tắc đó).
 
-The guide is still a work in progress - some rules are lacking
-examples, some rules don't have examples that illustrate them clearly
-enough. In due time these issues will be addressed - just keep them in
-mind for now.
+Tôi không vô cớ mà đưa ra những quy tắc viết code này - chúng đều dựa trên những kinh
+nghiệm sâu sắc trong nghề của tôi khi làm kỹ sư phát triển phần mềm chuyên nghiệp. 
+Các quy tắc cũng được tổng hợp từ những kiến nghị và gợi ý từ các thành viên khác, 
+cũng như những nguồn tài liệu về lập trình Ruby được đánh giá cao, như là 
+["Programming Ruby 1.9/Lập tình Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
+và ["The Ruby Programming Language/Ngôn ngữ lập trình Ruby"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+
+Bản hướng dẫn này vẫn đang tiếp tục được cập nhật - một số quy tắc đang thiếu các ví 
+dụ mình hoạ, một số ví dụ minh họa thì không được rõ ý. Những vấn đề này sẽ được giải
+quyết trong thời gian tới - bạn hãy ghi nhớ điều này. 
 
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
