@@ -350,22 +350,22 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Avoid comma after the last parameter in a method definition or call,
-  especially when the parameters are not on separate lines.
+* Avoid comma after the last parameter in a method call, especially when the
+  parameters are not on separate lines.
 
     ```Ruby
     # bad - easier to move/add/remove parameters, but still not preferred
-    def some_method(
-                     size,
-                     count,
-                     color,
-                   )
+    some_method(
+                 size,
+                 count,
+                 color,
+               )
 
     # bad
-    def some_method(size, count, color, )
+    some_method(size, count, color, )
 
     # good
-    def some_method(size, count, color)
+    some_method(size, count, color)
     ```
 
 * Use spaces around the `=` operator when assigning default values to method parameters:
