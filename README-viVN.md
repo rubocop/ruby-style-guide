@@ -51,13 +51,12 @@ Bản hướng dẫn này vẫn đang tiếp tục được cập nhật - một
 dụ mình hoạ, một số ví dụ minh họa thì không được rõ ý. Những vấn đề này sẽ được giải
 quyết trong thời gian tới - bạn hãy ghi nhớ điều này. 
 
-You can generate a PDF or an HTML copy of this guide using
+Bạn có thể xuất ra file PDF hay bản HTML nhờ sử dụng các công cụ 
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
-based on this style guide.
+[RuboCop](https://github.com/bbatsov/rubocop) là bộ phân tích mã code, dựa trên bản hướng dẫn này.
 
-Translations of the guide are available in the following languages:
+Các bản dịch cho ngôn ngữ khác đã có dưới đây:
 
 * [Tiếng Trung giản thể](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
 * [Tiếng Trung truyền thống](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
