@@ -25,9 +25,9 @@ và hỗ trợ cho tôi! Cùng nhau làm việc, chúng ta có viết ra cho m�
 tư liệu mang lại nhiều lợi ích cho mỗi nhà phát triển code Ruby.
 
 Bằng cách này, nếu bạn đang tìm hiểu Rails, bạn có thể muốn tham khảo thêm tài liệu 
-[Ruby on Rails 3 & 4 Style Guide] (https://github.com/bbatsov/rails-style-guide).
+[Hướng dẫn viết code Ruby on Rails 3 & 4 / Ruby on Rails 3 & 4 Style Guide] (https://github.com/bbatsov/rails-style-guide).
 
-# Hướng dẫn cách viêt code Ruby (Ruby Style)
+# Hướng dẫn cách viết code Ruby (Ruby Style)
 
 Bản hướng dẫn cách viết code Ruby giới thiệu những phương án thực hành tốt nhất mà 
 các lập trình viên trong thế giới Ruby code đã viết và được cập nhật, chỉnh sửa bởi
@@ -44,8 +44,8 @@ Tôi không vô cớ mà đưa ra những quy tắc viết code này - chúng đ
 nghiệm sâu sắc trong nghề của tôi khi làm kỹ sư phát triển phần mềm chuyên nghiệp. 
 Các quy tắc cũng được tổng hợp từ những kiến nghị và gợi ý từ các thành viên khác, 
 cũng như những nguồn tài liệu về lập trình Ruby được đánh giá cao, như là 
-["Programming Ruby 1.9/Lập tình Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
-và ["The Ruby Programming Language/Ngôn ngữ lập trình Ruby"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+["Lập trình Ruby 1.9 / Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
+và ["Ngôn ngữ lập trình Ruby / The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 
 Bản hướng dẫn này vẫn đang tiếp tục được cập nhật - một số quy tắc đang thiếu các ví 
 dụ mình hoạ, một số ví dụ minh họa thì không được rõ ý. Những vấn đề này sẽ được giải
@@ -66,12 +66,12 @@ Các bản dịch cho ngôn ngữ khác đã có dưới đây:
 
 ## Mục lục
 
-* [Source code layout/Bố cục trình bày khi viết code ](#source-code-layout)
-* [Syntax/Cú pháp](#syntax)
-* [Naming/Cách đặt tên](#naming)
-* [Comments/Viết chú thích](#comments)
+* [Bố cục trình bày khi viết code / Source code layout](#b%E1%BB%91-c%E1%BB%A5c-tr%C3%ACnh-b%C3%A0y-khi-vi%E1%BA%BFt-code--source-code-layout)
+* [Cú pháp / Syntax](#c%C3%BA-ph%C3%A1p--syntax)
+* [Cách đặt tên / Naming](#c%C3%A1ch-%C4%91%E1%BA%B7t-t%C3%AAn--naming)
+* [Viết chú thích / Comments](#vi%E1%BA%BFt-ch%C3%BA-th%C3%ADch--comments)
     * [Comment Annotations](#comment-annotations)
-* [Classes/Lớp đối tượng](#classes--modules)
+* [Lớp đối tượng và Module / Classes & Modules](#l%E1%BB%9Bp-%C4%91%E1%BB%91i-t%C6%B0%E1%BB%A3ng-v%C3%A0-module--classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
@@ -79,9 +79,9 @@ Các bản dịch cho ngôn ngữ khác đã có dưới đây:
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
-* [Tools/Công cụ](#tools)
+* [Các công cụ / Tools](#c%C3%A1c-c%C3%B4ng-c%E1%BB%A5--tools)
 
-## Source code layout/Bố cục trình bày khi viết code 
+## Bố cục trình bày khi viết code / Source code layout 
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
@@ -481,7 +481,7 @@ as easy to spot as regular comments.
     # another comment line
     ```
 
-## Syntax
+## Cú pháp / Syntax
 
 * Use `::` only to reference constants(this includes classes and
 modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
@@ -1281,7 +1281,7 @@ setting the warn level to 0 via `-W0`).
       end
     ```
 
-## Naming
+## Cách đặt tên / Naming
 
 > The only real difficulties in programming are cache invalidation and
 > naming things. <br/>
@@ -1460,7 +1460,7 @@ setting the warn level to 0 via `-W0`).
     array.reverse_each { ... }
     ```
 
-## Comments
+## Viết chú thích / Comments
 
 > Good code is its own best documentation. As you're about to add a
 > comment, ask yourself, "How can I improve the code so that this
@@ -1530,7 +1530,7 @@ at all.
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-## Classes & Modules
+## Lớp đối tượng và Module / Classes & Modules
 
 * Use a consistent structure in your class definitions.
 
@@ -2557,7 +2557,7 @@ this rule only to arrays with two or more elements.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
-## Tools
+## Các công cụ / Tools
 
 Here's some tools to help you automatically check Ruby code against
 this guide.
