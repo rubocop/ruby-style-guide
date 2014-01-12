@@ -920,6 +920,33 @@ Never use `::` for regular method invocation.
     ask themselves - is this code really readable and can the blocks' contents be extracted into
     nifty methods?
 
+* Consider using explicit block argument to avoid writing block
+  literal that just passes its arguments to another block. Beware of
+  the performance impact, though, as the block gets converted to a
+  Proc.
+
+    ```Ruby
+    require 'tempfile'
+
+    # bad
+    def with_tmp_dir
+      Dir.mktmpdir do |tmp_dir|
+        Dir.chdir(tmp_dir) { |dir| yield dir }  # block just passes arguments
+      end
+    end
+
+    # good
+    def with_tmp_dir(&block)
+      Dir.mktmpdir do |tmp_dir|
+        Dir.chdir(tmp_dir, &block)
+      end
+    end
+
+    with_tmp_dir do |dir|
+      puts "dir is accessible as parameter and pwd is set: #{dir}"
+    end
+    ```
+
 * Avoid `return` where not required for flow of control.
 
     ```Ruby
