@@ -64,6 +64,7 @@ Translations of the guide are available in the following languages:
 * [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
 * [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
 * [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
+* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
 
 ## Table of Contents
 
