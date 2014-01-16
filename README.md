@@ -38,7 +38,7 @@ supposed to help risks not getting used at all &ndash; no matter how good it is.
 
 The guide is separated into several sections of related rules. I've
 tried to add the rationale behind the rules (if it's omitted I've
-assumed that is pretty obvious).
+assumed it's pretty obvious).
 
 I didn't come up with all the rules out of nowhere - they are mostly
 based on my extensive career as a professional software engineer,
