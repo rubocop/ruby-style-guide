@@ -1538,7 +1538,7 @@ at all.
   make it self-explanatory.
 
 > Do or do not - there is no try. <br/>
-> --Yoda
+> -- Yoda
 
 ### Comment Annotations
 
