@@ -217,6 +217,18 @@ Translations of the guide are available in the following languages:
     the advantage of adding visual difference between block and hash
     literals. Whichever one you pick - apply it consistently.
 
+    When it comes to several occurrences of { and } next to each other
+    (e.g.: hash within a line block), surround only the first one with
+    white spaces.
+
+    ```Ruby
+    # bad
+    it { { should eq 2 } }
+
+    # good
+    it {{ should eq 2 }}
+    ```
+
     As far as embedded expressions go, there are also two acceptable
     options:
 
