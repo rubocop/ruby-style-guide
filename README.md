@@ -218,8 +218,8 @@ Translations of the guide are available in the following languages:
     literals. Whichever one you pick - apply it consistently.
 
     When it comes to several occurrences of { and } next to each other
-    (e.g.: hash within a line block), surround only the first one with
-    white spaces.
+    (e.g.: hash within a in-line block), surround the braces group with
+    white spaces, without white spaces between them.
 
     ```Ruby
     # bad
