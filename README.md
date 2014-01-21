@@ -223,10 +223,10 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     # bad
-    it { { should eq 2 } }
+    let(:foo) { { bar: 2 } }
 
     # good
-    it {{ should eq 2 }}
+    let(:foo) {{ bar: 2 }}
     ```
 
     As far as embedded expressions go, there are also two acceptable
