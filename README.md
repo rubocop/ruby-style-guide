@@ -139,10 +139,10 @@ Translations of the guide are available in the following languages:
     class FooError < StandardError
     end
 
-    # okish
+    # good
     class FooError < StandardError; end
 
-    # good
+    # good (only in meta programming)
     FooError = Class.new(StandardError)
     ```
 
@@ -155,13 +155,13 @@ Translations of the guide are available in the following languages:
     # bad
     def too_much; something; something_else; end
 
-    # okish - notice that the first ; is required
+    # bad
     def no_braces_method; body end
 
-    # okish - notice that the second ; is optional
+    # bad
     def no_braces_method; body; end
 
-    # okish - valid syntax, but no ; make it kind of hard to read
+    # bad
     def some_method() body end
 
     # good
@@ -401,9 +401,15 @@ Translations of the guide are available in the following languages:
   acceptable.
 
     ```Ruby
-    # starting point (line is too long)
+    # starting point (line is too long - over 80 characters)
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+    end
+    
+    # bad (not indenting everything)
+    def send_mail(source)
+      Mailer.deliver(to: 'bob@example.com', from: 'us@example.com',
+                     subject: 'Important message', body: source.text)
     end
 
     # bad (double indent)
@@ -977,7 +983,7 @@ Never use `::` for regular method invocation.
       ...
     end
 
-    # good (MRI would still complain, but RuboCop won't)
+    # bad
     if (v = array.grep(/foo/))
       do_something(v)
       ...
@@ -1064,7 +1070,7 @@ you if you forget either of the rules above!
     l = lambda { |a, b| a + b }
     l.call(1, 2)
 
-    # correct, but looks extremely awkward
+    # bad
     l = ->(a, b) do
       tmp = a * 7
       tmp * b / 50
@@ -1083,10 +1089,10 @@ you if you forget either of the rules above!
 * Prefer `proc` over `Proc.new`.
 
     ```Ruby
-    # bad
+    # good (because proc is deprecated)
     p = Proc.new { |n| puts n }
 
-    # good
+    # bad (deprecated)
     p = proc { |n| puts n }
     ```
 
@@ -1512,6 +1518,8 @@ at all.
   client does X currently?`
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
+* Any annotation should be added to the backlog and include the created story ID.
+* Any annotation should include your initials.
 
 ## Classes & Modules
 
@@ -2540,6 +2548,21 @@ this rule only to arrays with two or more elements.
 * Be consistent. In an ideal world, be consistent with these guidelines.
 * Use common sense.
 
+## Rails
+
+* Use boolean methods instead of comparision operators when possible.
+    ```Ruby
+    # bad
+    if foo == nil
+      ...
+    end
+    
+    # good
+    if foo.nil?
+      ...
+    end
+    ```
+
 ## Tools
 
 Here's some tools to help you automatically check Ruby code against
@@ -2557,6 +2580,7 @@ and has good Emacs integration.
 [RubyMine](http://www.jetbrains.com/ruby/)'s code inspections are
 [partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
 on this guide.
+
 
 # Contributing
 
