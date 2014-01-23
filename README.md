@@ -189,6 +189,16 @@ Translations of the guide are available in the following languages:
     1 > 2 ? true : false; puts 'Hi'
     [1, 2, 3].each { |e| puts e }
     ```
+    Same rules apply when it comes to several occurrences of `{` and `}`
+    next to each other (e.g.: hash within a in-line block).
+
+    ```Ruby
+    # bad
+    let(:foo) {{ bar: 2 }}
+
+    # good
+    let(:foo) { { bar: 2 } }
+    ```
 
     The only exception, regarding operators, is the exponent operator:
 
@@ -216,18 +226,6 @@ Translations of the guide are available in the following languages:
     popular in the Ruby community in general). The second variant has
     the advantage of adding visual difference between block and hash
     literals. Whichever one you pick - apply it consistently.
-
-    When it comes to several occurrences of { and } next to each other
-    (e.g.: hash within a in-line block), surround the braces group with
-    white spaces, without white spaces between them.
-
-    ```Ruby
-    # bad
-    let(:foo) { { bar: 2 } }
-
-    # good
-    let(:foo) {{ bar: 2 }}
-    ```
 
     As far as embedded expressions go, there are also two acceptable
     options:
