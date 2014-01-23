@@ -1596,7 +1596,11 @@ at all.
       # followed by other macros (if any)
       validates :name
 
-      # public class methods are next in line
+      # initialize is next in line
+      def initialize
+      end
+
+      # followed by public class methods
       def self.some_method
       end
 
