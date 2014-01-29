@@ -1400,6 +1400,8 @@ setting the warn level to 0 via `-W0`).
     end
     ```
 
+* Use `snake_case` for naming files. Class `SomeClass` should be in `some_class.rb` file.
+
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 
     ```Ruby
