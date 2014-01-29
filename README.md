@@ -1400,6 +1400,10 @@ setting the warn level to 0 via `-W0`).
     end
     ```
 
+* Use `snake_case` for naming files, e.g. `hello_world.rb`.
+
+* Aim to have just a single class/module per source file. Name the file name as the class/module, but replacing CamelCase with snake_case.
+
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 
     ```Ruby
