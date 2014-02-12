@@ -2508,7 +2508,7 @@ this rule only to arrays with two or more elements.
     ```
 
 * Avoid the use of `%s`. It seems that the community has decided
-  `:"some string"` is the preferred way to created a symbol with
+  `:"some string"` is the preferred way to create a symbol with
   spaces in it.
 
 * Prefer `()` as delimiters for all `%` literals, except `%r`. Since
