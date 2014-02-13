@@ -2285,6 +2285,17 @@ this rule only to arrays with two or more elements.
    batman.fetch(:powers) { get_batman_powers }
    ```
 
+* Use `Hash#values_at` when you need to retrieve several values consecutively from a hash.
+
+    ```Ruby
+    # bad
+    email = data['email']
+    nickname = data['nickname']
+
+    # good
+    email, username = data.values_at('email', 'nickname')
+    ```
+
 * Rely on the fact that as of Ruby 1.9 hashes are ordered.
 * Never modify a collection while traversing it.
 
