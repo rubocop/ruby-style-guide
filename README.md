@@ -2337,6 +2337,16 @@ this rule only to arrays with two or more elements.
     puts "$global = #{$global}"
     ```
 
+* Don't use `Object#to_s` on interpolated objects. It's invoked on them automatically.
+
+    ```Ruby
+    # bad
+    message = "This is the #{result.to_s}."
+
+    # good
+    message = "This is the #{result}."
+    ```
+
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
