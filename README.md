@@ -1037,10 +1037,16 @@ Never use `::` for regular method invocation.
     end
     ```
 
-* Use `||=` freely to initialize variables.
+* Use `||=` to initialize variables only if they're not already initialized.
 
     ```Ruby
-    # set name to Bozhidar, only if it's nil or false
+    # bad
+    name = name ? name : 'Bozhidar'
+
+    # bad
+    name = 'Bozhidar' unless name
+
+    # good - set name to Bozhidar, only if it's nil or false
     name ||= 'Bozhidar'
     ```
 
