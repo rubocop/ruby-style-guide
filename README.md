@@ -1170,14 +1170,35 @@ you if you forget either of the rules above!
     l.call(1)
     ```
 
-* Use `_` for unused block parameters.
+* Prefix with `_` unused block parameters and local variables. It's
+  also acceptable to use just `_` (although it's a bit less
+  descriptive). This convention is recognized by the Ruby interpreter
+  and tools like RuboCop and will suppress their unused variable warnings.
 
     ```Ruby
     # bad
     result = hash.map { |k, v| v + 1 }
 
+    def something(x)
+      unused_var, used_var = something_else(x)
+      # ...
+    end
+
+    # good
+    result = hash.map { |_k, v| v + 1 }
+
+    def something(x)
+      _unused_var, used_var = something_else(x)
+      # ...
+    end
+
     # good
     result = hash.map { |_, v| v + 1 }
+
+    def something(x)
+      _, used_var = something_else(x)
+      # ...
+    end
     ```
 
 * Use `$stdout/$stderr/$stdin` instead of
