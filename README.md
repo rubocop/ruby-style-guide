@@ -2499,7 +2499,7 @@ this rule only to arrays with two or more elements.
     %(<tr><td class="name">#{name}</td>)
     ```
 
-* Avoid `%q` unless you have a string with both `'` and `"` in
+* Avoid `%()` unless you have a string with both `'` and `"` in
   it. Regular string literals are more readable and should be
   preferred unless a lot of characters would have to be escaped in
   them.
@@ -2509,11 +2509,14 @@ this rule only to arrays with two or more elements.
     name = %q(Bruce Wayne)
     time = %q(8 o'clock)
     question = %q("What did you say?")
+    something = "\"…'…\"…' … '…\"…'…\""
+    something = '"…\'…"…\' … \'…"…\'…"'
 
     # good
     name = 'Bruce Wayne'
     time = "8 o'clock"
     question = '"What did you say?"'
+    something = %("…'…"…' … '…"…'…")
     ```
 
 * Use `%r` only for regular expressions matching *more than* one '/' character.
