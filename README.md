@@ -1037,6 +1037,26 @@ Never use `::` for regular method invocation.
     end
     ```
 
+* Use shorthand self assignment operators whenever applicable.
+
+    ```Ruby
+    # bad
+    x = x + y
+    x = x * y
+    x = x**y
+    x = x / y
+    x = x || y
+    x = x && y
+
+    # good
+    x += y
+    x *= y
+    x **= y
+    x /= y
+    x ||= y
+    x &&= y
+    ```
+
 * Use `||=` to initialize variables only if they're not already initialized.
 
     ```Ruby
