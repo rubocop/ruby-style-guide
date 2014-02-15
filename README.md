@@ -2244,7 +2244,7 @@ this rule only to arrays with two or more elements.
     ```
 
 * Avoid the use of mutable objects as hash keys.
-* Use the hash literal syntax when your hash keys are symbols.
+* Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
 
     ```Ruby
     # bad
