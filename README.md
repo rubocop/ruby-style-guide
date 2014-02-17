@@ -1559,6 +1559,18 @@ setting the warn level to 0 via `-W0`).
   reason the use of `select` is encouraged over `find_all` is that it
   goes together nicely with `reject` and its name is pretty self-explanatory.
 
+* Don't use `count` as a substitute for `size`. For `Enumerable`
+objects other than `Array` it will iterate the entire collection in
+order to determine its size.
+
+    ```Ruby
+    # bad
+    some_hash.count
+
+    # good
+    some_hash.size
+    ```
+
 * Use `flat_map` instead of `map` + `flatten`.
   This does not apply for arrays with a depth greater than 2, i.e.
   if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
