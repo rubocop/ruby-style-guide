@@ -641,6 +641,25 @@ Never use `::` for regular method invocation.
 
 * Never use `if x; ...`. Use the ternary operator instead.
 
+* Leverage the fact that `if` and `case` are expressions which return a result.
+
+    ```Ruby
+    # bad
+    if condition
+      result = x
+    else
+      result = y
+    end
+
+    # good
+    result =
+      if condition
+        x
+      else
+        y
+      end
+    ```
+
 * Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` has been removed as of Ruby 1.9.
 
