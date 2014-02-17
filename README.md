@@ -487,6 +487,7 @@ Translations of the guide are available in the following languages:
   empty line between the comment block and the `def`.
 * Limit lines to 80 characters.
 * Avoid trailing whitespace.
+* End each file with a newline.
 * Don't use block comments. They cannot be preceded by whitespace and are not
 as easy to spot as regular comments.
 
