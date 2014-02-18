@@ -411,9 +411,10 @@ Translations of the guide are available in the following languages:
 
 * Adopt a consistent multi-line method chaining style. There are two
   popular styles in the Ruby community, both of which are considered
-  good - leading `.` and trailing `.`.
+  good - leading `.` (Option A) and trailing `.` (Option B).
 
-    * When continuing a chained method invocation on another line keep the `.` on the second line.
+    * **(Option A)** When continuing a chained method invocation on
+      another line keep the `.` on the second line.
 
         ```Ruby
         # bad - need to consult first line to understand second line
@@ -425,7 +426,9 @@ Translations of the guide are available in the following languages:
           .four
         ```
 
-    * When continuing a chained method invocation on another line, include the `.` on the first line to indicate that the expression continues.
+    * **(Option B)** When continuing a chained method invocation on another line,
+      include the `.` on the first line to indicate that the
+      expression continues.
 
         ```Ruby
         # bad - need to read ahead to the second line to know that the chain continues
@@ -2418,10 +2421,11 @@ hash rockets syntax.
 
 * Adopt a consistent string literal quoting style. There are two
   popular styles in the Ruby community, both of which are considered
-  good - single quotes by default and double quotes by default.
+  good - single quotes by default (Option A) and double quotes by default (Option B).
 
-    * Prefer single-quoted strings when you don't need string interpolation or
-      special symbols such as `\t`, `\n`, `'`, etc.
+    * **(Option A)** Prefer single-quoted strings when you don't need
+      string interpolation or special symbols such as `\t`, `\n`, `'`,
+      etc.
 
         ```Ruby
         # bad
@@ -2431,7 +2435,8 @@ hash rockets syntax.
         name = 'Bozhidar'
         ```
 
-    * Prefer double-quotes unless your string literal contains `"` or escape characters you want to suppress.
+    * **(Option B)** Prefer double-quotes unless your string literal
+      contains `"` or escape characters you want to suppress.
 
         ```Ruby
         # bad
