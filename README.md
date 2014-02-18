@@ -2391,16 +2391,34 @@ hash rockets syntax.
     "#{ user.last_name }, #{ user.first_name }"
     ```
 
-* Prefer single-quoted strings when you don't need string interpolation or
-  special symbols such as `\t`, `\n`, `'`, etc.
+* Adopt a consistent string literal quoting style. There are two
+  popular styles in the Ruby community, both of which are considered
+  good - single quotes by default and double quotes by default.
 
-    ```Ruby
-    # bad
-    name = "Bozhidar"
+    * Prefer single-quoted strings when you don't need string interpolation or
+      special symbols such as `\t`, `\n`, `'`, etc.
 
-    # good
-    name = 'Bozhidar'
-    ```
+        ```Ruby
+        # bad
+        name = "Bozhidar"
+
+        # good
+        name = 'Bozhidar'
+        ```
+
+    * Prefer double-quotes unless your string literal contains `"` or escape characters you want to suppress.
+
+        ```Ruby
+        # bad
+        name = 'Bozhidar'
+
+        # good
+        name = "Bozhidar"
+        ```
+
+    The second style is arguably a bit more popular in the Ruby
+    community. The string literals in the this guide, however, are
+    aligned with the first style.
 
 * Don't use the character literal syntax `?x`. Since Ruby 1.9 it's
   basically redundant - `?x` would interpreted as `'x'` (a string with
