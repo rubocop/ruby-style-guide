@@ -403,17 +403,33 @@ Translations of the guide are available in the following languages:
                   ' and second part of the long string'
     ```
 
-* When continuing a chained method invocation on another line keep the `.` on the second line.
+* Adopt a consistent multi-line method chaining style. There are two
+  popular styles in the Ruby community, both of which are considered
+  good - leading `.` and trailing `.`.
 
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
+    * When continuing a chained method invocation on another line keep the `.` on the second line.
 
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
+        ```Ruby
+        # bad - need to consult first line to understand second line
+        one.two.three.
+          four
+
+        # good - it's immediately clear what's going on the second line
+        one.two.three
+          .four
+        ```
+
+    * When continuing a chained method invocation on another line, include the `.` on the first line to indicate that the expression continues.
+
+        ```Ruby
+        # bad - need to read ahead to the second line to know that the chain continues
+        one.two.three
+          .four
+
+        # good - it's immediately clear that the expression continues beyond the first line
+        one.two.three.
+          four
+        ```
 
 * Align the parameters of a method call if they span more than one
   line. When aligning parameters is not appropriate due to line-length
