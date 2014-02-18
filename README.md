@@ -431,6 +431,9 @@ Translations of the guide are available in the following languages:
           four
         ```
 
+    A discussion on the merits of both alternative styles can be found
+    [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
+
 * Align the parameters of a method call if they span more than one
   line. When aligning parameters is not appropriate due to line-length
   constraints, single indent for the lines after the first is also
