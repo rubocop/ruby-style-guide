@@ -403,24 +403,35 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-trailing-params-comma"></a>
-  Avoid comma after the last parameter in a method call, especially when the
+  Avoid comma after the last parameter in a method call when the
   parameters are not on separate lines.
 <sup>[[link](#no-trailing-params-comma)]</sup>
 
   ```Ruby
-  # bad - easier to move/add/remove parameters, but still not preferred
-  some_method(
-               size,
-               count,
-               color,
-             )
-
   # bad
   some_method(size, count, color, )
 
   # good
   some_method(size, count, color)
   ```
+
+* Include comma after the last parameter in a method call when the
+  parameters are on separate lines.
+
+  ```Ruby
+  # bad
+  some_method(
+               size,
+               count,
+               color
+             )
+
+  # good
+  some_method(
+               size,
+               count,
+               color,
+             )
 
 * <a name="spaces-around-equals"></a>
   Use spaces around the `=` operator when assigning default values to method
