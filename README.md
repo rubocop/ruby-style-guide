@@ -1704,6 +1704,9 @@ at all.
       extend SomeModule
       include AnotherModule
 
+      # inner classes 
+      CustomErrorKlass = Class.new(StandardError)
+
       # constants are next
       SOME_CONSTANT = 20
 
@@ -1730,6 +1733,47 @@ at all.
       private
 
       def some_private_method
+      end
+    end
+    ```
+
+* Don't nest multi line classes within classes. Try to have such nested 
+  classes each in their own file in a folder named like the containing class.
+
+    ```Ruby
+    # bad
+    
+    # foo.rb
+    class Foo
+      class Bar
+        # 30 methods inside
+      end
+
+      class Car
+        # 20 methods inside
+      end
+
+      # 30 methods inside
+    end
+
+    # good
+
+    # foo.rb
+    class Foo
+      # 30 methods inside
+    end
+
+    # foo/bar.rb
+    class Foo
+      class Bar
+        # 30 methods inside
+      end
+    end
+
+    # foo/car.rb
+    class Foo
+      class Car
+        # 20 methods inside
       end
     end
     ```
