@@ -703,27 +703,6 @@ Never use `::` for regular method invocation.
     x = !something
     ```
 
-* Avoid the use of `!!`.
-
-    ```Ruby
-    # bad
-    x = 'test'
-    # obscure nil check
-    if !!x
-      # body omitted
-    end
-
-    x = false
-    # double negation is useless on booleans
-    !!x # => false
-
-    # good
-    x = 'test'
-    unless x.nil?
-      # body omitted
-    end
-    ```
-
 * The `and` and `or` keywords are banned. It's just not worth
   it. Always use `&&` and `||` instead.
 
