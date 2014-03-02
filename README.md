@@ -724,29 +724,6 @@ Never use `::` for regular method invocation.
     end
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
-
-    ```Ruby
-    # bad
-    # boolean expression
-    if some_condition and some_other_condition
-      do_something
-    end
-
-    # control flow
-    document.saved? or document.save!
-
-    # good
-    # boolean expression
-    if some_condition && some_other_condition
-      do_something
-    end
-
-    # control flow
-    document.saved? || document.save!
-    ```
-
 * Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
