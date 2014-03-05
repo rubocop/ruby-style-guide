@@ -380,12 +380,12 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     # bad
-    def some_method(arg1=:default, arg2=nil, arg3=[])
+    def some_method(arg1=:default, arg2=nil, arg3=[], arg4:'default')
       # do something...
     end
 
     # good
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+    def some_method(arg1 = :default, arg2 = nil, arg3 = [], arg4: 'default')
       # do something...
     end
     ```
