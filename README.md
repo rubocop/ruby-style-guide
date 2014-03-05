@@ -196,6 +196,16 @@ Translations of the guide are available in the following languages:
     1 > 2 ? true : false; puts 'Hi'
     [1, 2, 3].each { |e| puts e }
     ```
+    Same rules apply when it comes to several occurrences of `{` and `}`
+    next to each other (e.g.: hash within a in-line block).
+
+    ```Ruby
+    # bad
+    let(:foo) {{ bar: 2 }}
+
+    # good
+    let(:foo) { { bar: 2 } }
+    ```
 
     The only exception, regarding operators, is the exponent operator:
 
