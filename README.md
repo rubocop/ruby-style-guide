@@ -129,7 +129,7 @@ Translations of the guide are available in the following languages:
     # bad
     puts 'foobar'; # superfluous semicolon
 
-    puts 'foo'; puts 'bar' # two expression on the same line
+    puts 'foo'; puts 'bar' # two expressions on the same line
 
     # good
     puts 'foobar'
@@ -169,7 +169,7 @@ Translations of the guide are available in the following languages:
     # okish - notice that the second ; is optional
     def no_braces_method; body; end
 
-    # okish - valid syntax, but no ; make it kind of hard to read
+    # okish - valid syntax, but no ; makes it kind of hard to read
     def some_method() body end
 
     # good
@@ -992,7 +992,7 @@ Never use `::` for regular method invocation.
     end
 
     with_tmp_dir do |dir|
-      puts "dir is accessible as parameter and pwd is set: #{dir}"
+      puts "dir is accessible as a parameter and pwd is set: #{dir}"
     end
     ```
 
@@ -1407,27 +1407,27 @@ setting the warn level to 0 via `-W0`).
   Prefer a guard clause when you can assert invalid data. A guard clause is a conditional
   statement at the top of a function that bails out as soon as it can.
 
-    ```Ruby
-    # bad
-      def compute_thing(thing)
-        if thing[:foo]
-          update_with_bar(thing)
-          if thing[:foo][:bar]
-            partial_compute(thing)
-          else
-            re_compute(thing)
-          end
-        end
-      end
-
-    # good
-      def compute_thing(thing)
-        return unless thing[:foo]
-        update_with_bar(thing[:foo])
-        return re_compute(thing) unless thing[:foo][:bar]
+  ```Ruby
+  # bad
+  def compute_thing(thing)
+    if thing[:foo]
+      update_with_bar(thing)
+      if thing[:foo][:bar]
         partial_compute(thing)
+      else
+        re_compute(thing)
       end
-    ```
+    end
+  end
+
+  # good
+  def compute_thing(thing)
+    return unless thing[:foo]
+    update_with_bar(thing[:foo])
+    return re_compute(thing) unless thing[:foo][:bar]
+    partial_compute(thing)
+  end
+  ```
 
 ## Naming
 
@@ -1525,7 +1525,7 @@ setting the warn level to 0 via `-W0`).
   there exists a safe version of that *dangerous* method.
 
     ```Ruby
-    # bad - there is not matching 'safe' method
+    # bad - there is no matching 'safe' method
     class Person
       def update!
       end
@@ -2638,7 +2638,7 @@ hash rockets syntax.
     ```Ruby
     string = "some injection\nusername"
     string[/^username$/]   # matches
-    string[/\Ausername\z/] # don't match
+    string[/\Ausername\z/] # doesn't match
     ```
 
 * Use `x` modifier for complex regexps. This makes them more readable and you
