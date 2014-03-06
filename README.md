@@ -35,37 +35,37 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 ### Use spaces around operators and `=>`, after commas, colons and semicolons, around `{`
   and before `}`.  (But there is no need for spaces inside the empty hash `{}`.)
 
-    ```Ruby
+```ruby
     a, b = 1, 2 + 3
     location = { :city => 'Santa Barbara', :state => 'CA' }
     size > 10 ? 'large' : 'small'
     [1, 2, 3].each { |e| puts e }
     params = {}
-    ```
+```
 
     The only exception is when using the exponent operator:
 
-    ```Ruby
+```ruby
     # bad
     e = M * c ** 2
 
     # good
     e = M * c**2
-    ```
+```
 
 ### No spaces after `(`, `[` or before `]`, `)`.
 
-    ```Ruby
+```ruby
     some(arg).other
     [1, 2, 3].length
     collection = []
-    ```
+```
 
 ### Indent `when` as deep as `case`. I know that many would disagree
   with this one, but it's the style established in both the "The Ruby
   Programming Language" and "Programming Ruby".
 
-    ```Ruby
+```ruby
     case
     when song.name == 'Misty'
       puts 'Not again!'
@@ -85,12 +85,12 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
            when 1940..1950 then 'Bebop'
            else 'Jazz'
            end
-    ```
+```
 
 ### Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
-    ```Ruby
+```ruby
     def some_method
       data = initialize(options)
 
@@ -102,11 +102,11 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     def some_method
       result
     end
-    ```
+```
 
 ### Align the parameters of a method call if they span over multiple lines using normal indent.
 
-    ```Ruby
+```ruby
     # starting point (line is too long)
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
@@ -137,7 +137,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
                      subject: 'Important message',
                      body: source.text)
     end
-    ```
+```
 
 ### Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
@@ -150,7 +150,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 ### Prefer parentheses around arguments in method declaration.  Omit the
   parentheses when the method doesn't accept any arguments.
 
-     ```Ruby
+ ```ruby
      def some_method
        ...
      end
@@ -158,7 +158,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
      def some_method_with_arguments(arg1, arg2)
        ...
      end
-     ```
+ ```
 
 ### Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
@@ -166,7 +166,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
   doesn't introduce a new scope (unlike `each`) and variables defined
   in its block will be visible outside it.
 
-    ```Ruby
+```ruby
     arr = [1, 2, 3]
 
     # bad
@@ -176,11 +176,11 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     # good
     arr.each { |elem| puts elem }
-    ```
+```
 
 ### Never use `then` for multi-line `if/unless`.
 
-    ```Ruby
+```ruby
     # bad
     if some_condition then
       ...
@@ -190,14 +190,14 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     if some_condition
       ...
     end
-    ```
+```
 
 ### Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
   `if/else` constructs in these cases.
   Avoid multi-line ternary; use `if/unless` instead.
 
-    ```Ruby
+```ruby
     # bad
     some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
 
@@ -207,25 +207,25 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     else
       something_else
     end
-    ```
+```
 
 ### Never use `if x: ...` - it is removed in Ruby 1.9. Use multi-line if or
   the ternary operator instead.
 
-    ```Ruby
+```ruby
     # bad
     result = if some_condition: something else something_else end
 
     # good
     result = some_condition ? something : something_else
-    ```
+```
 
 ### Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` is removed in Ruby 1.9.
 
 ### Use `&&/||` for boolean expressions, `and/or` for control flow.
 
-    ```Ruby
+```ruby
     # boolean expression
     if document.text_changed? || document.settings_changed?
       document.save!
@@ -233,24 +233,24 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     # control flow
     document.saved? or document.save!
-    ```
+```
 
   Beware: `and/or` have lower precedence than `=`!
   
-    ```Ruby
+```ruby
     flag = top_of_page? or reset_page
     
     # is equivalent to
     (flag = top_of_page?) or reset_page
     
-    ```
+```
 
 ### Only use trailing `if/unless` when they are rare footnotes that can be
   ignored in the usual, "go-right" case.  That is, the statement you start with should
   almost always execute.
   (A good alternative for assertions and other one-line code that rarely executes is control-flow `and/or`.)
 
-    ```Ruby
+```ruby
     # bad -- the raise rarely executes
     raise ArgumentError, "name must be provided" unless name.present?
 
@@ -262,12 +262,12 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     
     # good -- the if is almost always true
     send_notification(users) if users.any?
-    ```
+```
 
 ### Favor `unless` over `if` for negative conditions (or use control
   flow `or`).
 
-    ```Ruby
+```ruby
     # bad
     do_something if !some_condition
 
@@ -276,11 +276,11 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     # another good option
     some_condition or do_something
-    ```
+```
 
 ### Never use `unless` with `else`. Rewrite these with the positive case first.
 
-    ```Ruby
+```ruby
     # bad
     unless success?
       puts 'failure'
@@ -294,13 +294,13 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     else
       puts 'failure'
     end
-    ```
+```
 
 ### Don't use parentheses around the condition of an `if/unless/while`,
   unless the condition contains an assignment (see "Using the return
   value of `=`" below).
 
-    ```Ruby
+```ruby
     # bad
     if (x > 10)
       ...
@@ -315,12 +315,12 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     if (x = self.next_value)
       ...
     end
-    ```
+```
 
 ### Favor modifier `while/until` usage when you have a single-line
   body.
 
-    ```Ruby
+```ruby
     # bad
     while some_condition
       do_something
@@ -328,17 +328,17 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     # good
     do_something while some_condition
-    ```
+```
 
 ### Favor `until` over `while` for negative conditions.
 
-    ```Ruby
+```ruby
     # bad
     do_something while !some_condition
 
     # good
     do_something until some_condition
-    ```
+```
 
 ### Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
@@ -346,7 +346,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
   access methods. It is preferred to use parentheses around the arguments of all other
   method invocations.
 
-    ```Ruby
+```ruby
     class Person
       attr_reader :name, :age
 
@@ -360,7 +360,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     x = Math.sin(y)
     array.delete(e)
-    ```
+```
 
 ### Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
@@ -368,7 +368,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
   definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
   when chaining.
 
-    ```Ruby
+```ruby
     names = ['Bozhidar', 'Steve', 'Sarah']
 
     # good
@@ -386,7 +386,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     names.select do |name|
       name.start_with?('S')
     end.map { |name| name.upcase }
-    ```
+```
 
     Some will argue that multiline chaining would look OK with the use of {...}, but they should
     ask themselves - it this code really readable and can't the blocks contents be extracted into
@@ -395,7 +395,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 ### Avoid `return` where not needed for flow of control.
   (Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.)
 
-    ```Ruby
+```ruby
     # bad
     def some_method(some_arr)
       return some_arr.size
@@ -405,11 +405,11 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     def some_method(some_arr)
       some_arr.size
     end
-    ```
+```
 
 ### Only use `self` when required for calling a self write accessor.
 
-    ```Ruby
+```ruby
     # bad
     def ready?
       if self.last_reviewed_at > self.last_updated_at
@@ -427,11 +427,11 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
       end
       status == :verified
     end
-    ```
+```
 
 ### As a corollary, avoid shadowing methods with local variables unless they are both equivalent
 
-    ```Ruby
+```ruby
     class Foo
       attr_accessor :options
 
@@ -458,7 +458,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ### Use spaces around the `=` operator when assigning default values to method parameters:
 
-    ```Ruby
+```Ruby
     # bad
     def some_method(arg1=:default, arg2=nil, arg3=[])
       # do something...
@@ -475,7 +475,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ### Avoid line continuation (\\) unless absolutely required.
 
-    ```Ruby
+```ruby
     # bad
     result = 1 \
              - 2
@@ -483,12 +483,12 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     # better
     result = 1 -
              2
-    ```
+```
 
 ### Using the return value of `=` (an assignment) is ok, but surround the
   assignment with parentheses to it clear you are not mistakenly using `=` when you meant `==`.
 
-    ```Ruby
+```ruby
     # good - shows intended use of assignment
     if (v = array.grep(/foo/)) ...
 
@@ -497,47 +497,47 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
     # also good - shows intended use of assignment and has correct precedence.
     if (v = next_value) == 'hello' ...
-    ```
+```
 
 ### Don't use `||=` to initialize boolean variables. (Consider what
 would happen if the current value happened to be `false`.)
 
-    ```Ruby
+```ruby
     # bad - would set enabled to true even if it was false
     enabled ||= true
 
     # good
     enabled = true if enabled.nil?
-    ```
+```
 
 ### Avoid using Perl-style special variables (like `$0-9`, `$``,
   etc. ). They are cryptic and global.
 
 ### Never put a space between a method name and the opening parenthesis.
 
-    ```Ruby
+```ruby
     # bad
     f (3 + 2) + 1
 
     # good
     f(3 + 2) + 1
-    ```
+```
 
 ### Ruby 1.9 hash literal syntax is preferred when the hash keys are symbols.
 
-    ```Ruby
+```ruby
     # bad
     hash = { :one => 1, :two => 2 }
 
     # good
     hash = { one: 1, two: 2 }
-    ```
+```
 
 ### `lambda` is preferred over `proc`/`Proc.new`. This is because `lambda`s enforce argument list cardinality and have unsurprising `return` semantics. (Only use `proc` if you really need a return statement that returns from the enclosing code.)  More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
 
 ### Ruby 1.9 `lambda` literal syntax is preferred.
 
-    ```Ruby
+```ruby
     # bad
     lambda = lambda { |a, b| a + b }
     lambda.call(1, 2)
@@ -545,17 +545,17 @@ would happen if the current value happened to be `false`.)
     # good
     lambda = ->(a, b) { a + b }
     lambda.(1, 2)
-    ```
+```
 
 ### Use `_` for unused block parameters.
 
-    ```Ruby
+```ruby
     # bad
     result = hash.map { |k, v| v + 1 }
 
     # good
     result = hash.map { |_, v| v + 1 }
-    ```
+```
 
 ## Naming
 
@@ -603,7 +603,7 @@ would happen if the current value happened to be `false`.)
 ### Use @ class variables when you want separate values per subclass.
   Use @@ variables when you want process-wide globals (such as for a process-wide cache).
 
-    ```Ruby
+```ruby
     class Parent
       @@class_var = 'parent'
 
@@ -617,7 +617,7 @@ would happen if the current value happened to be `false`.)
     end
 
     Parent.print_class_var # => will print "child"
-    ```
+```
 
     As you can see all the classes in a class hierarchy actually share one
     class variable. Class instance variables should usually be preferred
@@ -629,7 +629,7 @@ in accordance with their intended usage.
 ### Indent the `public`, `protected`, and `private` methods as much the
   method definitions they apply to. Leave one blank line above them.
 
-    ```Ruby
+```ruby
     class SomeClass
       def public_method
         ...
@@ -643,7 +643,7 @@ in accordance with their intended usage.
 
 ### Use `def self.method` to define singleton methods so you don't have to repeat the class name (Don't Repeat Yourself).
 
-    ```Ruby
+```Ruby
     class TestClass
       # bad
       def TestClass.some_method
@@ -677,7 +677,7 @@ in accordance with their intended usage.
   exception had been raised at all. In effect, the exception will be
   silently thrown away.
 
-    ```Ruby
+```ruby
     def foo
       begin
         fail
@@ -685,11 +685,11 @@ in accordance with their intended usage.
         return 'very bad idea'
       end
     end
-    ```
+```
 
 ### Use *implicit begin blocks* when possible.
 
-    ```Ruby
+```ruby
     # bad
     def foo
       begin
@@ -705,12 +705,12 @@ in accordance with their intended usage.
     rescue
       # failure handling goes here
     end
-    ```
+```
 
 ### Mitigate the proliferation of `begin` blocks by using
   *contingency methods* (a term coined by Avdi Grimm).
 
-    ```Ruby
+```ruby
     # bad
     begin
       something_that_might_fail
@@ -734,11 +734,11 @@ in accordance with their intended usage.
     with_io_error_handling { something_that_might_fail }
 
     with_io_error_handling { something_else_that_might_fail }
-    ```
+```
 
 ### Don't suppress exceptions.
 
-    ```Ruby
+```ruby
     # bad
     begin
       # an exception occurs here
@@ -748,11 +748,11 @@ in accordance with their intended usage.
 
     # bad
     do_something rescue nil
-    ```
+```
 
 ### Don't use exceptions for flow of control.
 
-    ```Ruby
+```ruby
     # bad
     begin
       n / d
@@ -766,12 +766,12 @@ in accordance with their intended usage.
     else
       n / d
     end
-    ```
+```
 
 ### Avoid rescuing the `Exception` class.  This will trap signals and calls to
   `exit`, requiring you to `kill -9` the process.
 
-    ```Ruby
+```ruby
     # bad
     begin
       # calls to exit and kill signals will be caught (except kill -9)
@@ -797,12 +797,12 @@ in accordance with their intended usage.
       # exception handling
     end
 
-    ```
+```
 
 ### Put more specific exceptions higher up the rescue chain, otherwise
   they'll never be rescued from.
 
-    ```Ruby
+```ruby
     # bad
     begin
       # some code
@@ -820,12 +820,12 @@ in accordance with their intended usage.
     rescue Exception => e
       # some handling
     end
-    ```
+```
 
 ### Release external resources obtained by your program in an ensure
 block.
 
-    ```Ruby
+```ruby
     f = File.open('testfile')
     begin
       # .. process
@@ -834,7 +834,7 @@ block.
     ensure
       f.close unless f.nil?
     end
-    ```
+```
 
 ### Use exceptions from the standard library for simple cases so you can avoid
 introducing new exception classes.
@@ -855,25 +855,25 @@ introducing new exception classes.
 
 ### Prefer string interpolation instead of string concatenation:
 
-    ```Ruby
+```ruby
     # bad
     email_with_name = user.name + ' <' + user.email + '>'
 
     # good
     email_with_name = "#{user.name} <#{user.email}>"
-    ```
+```
 
 ### Consider padding string interpolation code with space. It more clearly sets the
   code apart from the string.
 
-    ```Ruby
+```ruby
     "#{ user.last_name }, #{ user.first_name }"
-    ```
+```
 
 ### `String#<<` performs better by mutating the string in place.  `String#+`, avoids mutation (which is good
   in a functional way) but therefore runs slower since it creates a new string object.
 
-    ```Ruby
+```ruby
     # faster
     html = ''
 
@@ -892,13 +892,13 @@ introducing new exception classes.
     html = paragraphs.map do |paragraph|
       "<p>#{paragraph}</p>"
     end.join
-    ```
+```
 
 ## Regular Expressions
 
 ### Don't use a regular expression when a plain string will do:
 
-    ```Ruby
+```ruby
     # bad
     if command[/quit/]
       ...
@@ -908,20 +908,20 @@ introducing new exception classes.
     if command['quit']
       ...
     end
-    ```
+```
   
 ### For simple constructions you can use regexp directly through string index.
 
-    ```Ruby
+```ruby
     match = string[/regexp/]             # get content of matched regexp
     first_group = string[/text(grp)/, 1] # get content of captured group
     string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
-    ```
+```
 
 ### Avoid using $1-9 as it can be hard to track what they contain and they live globally. Numbered indexes
   or named groups can be used instead.
 
-    ```Ruby
+```ruby
     # bad
     /\A(https?):/ =~ url
     ...
@@ -936,23 +936,23 @@ introducing new exception classes.
     /\A(?<protocol>https?):/ =~ url
     ...
     setup_connection(protocol)
-    ```
+```
 
 ### Be careful not to use `^` and `$` for anchors (like in other languages) because in
   Ruby they also match newlines.
   For anchors, use `\A` and `\z` (not to be
   confused with `\Z` which is the equivalent of `/\n?\z/`).
 
-    ```Ruby
+```ruby
     string = "some injection\nusername"
     string[/^username$/]   # matches
     string[/\Ausername\z/] # don't match
-    ```
+```
 
 ### Use `x` modifier for complex regexps so that you can use whitespace and comments to
   make them more readable. Just be careful as spaces are ignored.
 
-    ```Ruby
+```ruby
     regexp = %r{
       start         # some text
       \s            # white space char
@@ -960,7 +960,7 @@ introducing new exception classes.
       (?:alt1|alt2) # some alternation
       end
     }x
-    ```
+```
 
 ### For complex replacements `sub`/`gsub` can be used with a block or hash.
 
