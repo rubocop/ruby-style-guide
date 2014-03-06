@@ -18,7 +18,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ## Source Code Layout
 
-* Use two **spaces** per indentation level. No hard tabs.
+### Use two **spaces** per indentation level. No hard tabs.
 
     ```Ruby
     # good
@@ -32,7 +32,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Use spaces around operators and `=>`, after commas, colons and semicolons, around `{`
+### Use spaces around operators and `=>`, after commas, colons and semicolons, around `{`
   and before `}`.  (But there is no need for spaces inside the empty hash `{}`.)
 
     ```Ruby
@@ -53,7 +53,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     e = M * c**2
     ```
 
-* No spaces after `(`, `[` or before `]`, `)`.
+### No spaces after `(`, `[` or before `]`, `)`.
 
     ```Ruby
     some(arg).other
@@ -61,7 +61,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     collection = []
     ```
 
-* Indent `when` as deep as `case`. I know that many would disagree
+### Indent `when` as deep as `case`. I know that many would disagree
   with this one, but it's the style established in both the "The Ruby
   Programming Language" and "Programming Ruby".
 
@@ -87,7 +87,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
            end
     ```
 
-* Use empty lines between `def`s and to break up a method into logical
+### Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
     ```Ruby
@@ -104,7 +104,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Align the parameters of a method call if they span over multiple lines using normal indent.
+### Align the parameters of a method call if they span over multiple lines using normal indent.
 
     ```Ruby
     # starting point (line is too long)
@@ -139,15 +139,15 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Use RDoc and its conventions for API documentation.  Don't put an
+### Use RDoc and its conventions for API documentation.  Don't put an
   empty line between the comment block and the `def`.
-* Avoid lines longer than 120 characters.
-* Avoid trailing whitespace.
-* Use `UTF-8` as the source file encoding when you need more than plain ASCII.
+### Avoid lines longer than 120 characters.
+### Avoid trailing whitespace.
+### Use `UTF-8` as the source file encoding when you need more than plain ASCII.
 
 ## Syntax
 
-* Prefer parentheses around arguments in method declaration.  Omit the
+### Prefer parentheses around arguments in method declaration.  Omit the
   parentheses when the method doesn't accept any arguments.
 
      ```Ruby
@@ -160,7 +160,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
      end
      ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
+### Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
   doesn't introduce a new scope (unlike `each`) and variables defined
@@ -178,7 +178,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     arr.each { |elem| puts elem }
     ```
 
-* Never use `then` for multi-line `if/unless`.
+### Never use `then` for multi-line `if/unless`.
 
     ```Ruby
     # bad
@@ -192,7 +192,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Use one expression per branch in a ternary operator. This
+### Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
   `if/else` constructs in these cases.
   Avoid multi-line ternary; use `if/unless` instead.
@@ -209,7 +209,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Never use `if x: ...` - it is removed in Ruby 1.9. Use multi-line if or
+### Never use `if x: ...` - it is removed in Ruby 1.9. Use multi-line if or
   the ternary operator instead.
 
     ```Ruby
@@ -220,10 +220,10 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     result = some_condition ? something : something_else
     ```
 
-* Use `when x then ...` for one-line cases. The alternative syntax
+### Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` is removed in Ruby 1.9.
 
-* Use `&&/||` for boolean expressions, `and/or` for control flow.
+### Use `&&/||` for boolean expressions, `and/or` for control flow.
 
     ```Ruby
     # boolean expression
@@ -245,7 +245,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     
     ```
 
-* Only use trailing `if/unless` when they are rare footnotes that can be
+### Only use trailing `if/unless` when they are rare footnotes that can be
   ignored in the usual, "go-right" case.  That is, the statement you start with should
   almost always execute.
   (A good alternative for assertions and other one-line code that rarely executes is control-flow `and/or`.)
@@ -264,7 +264,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     send_notification(users) if users.any?
     ```
 
-* Favor `unless` over `if` for negative conditions (or use control
+### Favor `unless` over `if` for negative conditions (or use control
   flow `or`).
 
     ```Ruby
@@ -278,7 +278,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     some_condition or do_something
     ```
 
-* Never use `unless` with `else`. Rewrite these with the positive case first.
+### Never use `unless` with `else`. Rewrite these with the positive case first.
 
     ```Ruby
     # bad
@@ -296,7 +296,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while`,
+### Don't use parentheses around the condition of an `if/unless/while`,
   unless the condition contains an assignment (see "Using the return
   value of `=`" below).
 
@@ -317,7 +317,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Favor modifier `while/until` usage when you have a single-line
+### Favor modifier `while/until` usage when you have a single-line
   body.
 
     ```Ruby
@@ -330,7 +330,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     do_something while some_condition
     ```
 
-* Favor `until` over `while` for negative conditions.
+### Favor `until` over `while` for negative conditions.
 
     ```Ruby
     # bad
@@ -340,7 +340,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     do_something until some_condition
     ```
 
-* Omit parentheses around parameters for methods that are part of an
+### Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that are with
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
   access methods. It is preferred to use parentheses around the arguments of all other
@@ -362,7 +362,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     array.delete(e)
     ```
 
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
+### Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
   ugly). Always use `do...end` for "control flow" and "method
   definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
@@ -392,7 +392,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     ask themselves - it this code really readable and can't the blocks contents be extracted into
     nifty methods?
 
-* Avoid `return` where not needed for flow of control.
+### Avoid `return` where not needed for flow of control.
   (Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.)
 
     ```Ruby
@@ -407,7 +407,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* Only use `self` when required for calling a self write accessor.
+### Only use `self` when required for calling a self write accessor.
 
     ```Ruby
     # bad
@@ -429,7 +429,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     end
     ```
 
-* As a corollary, avoid shadowing methods with local variables unless they are both equivalent
+### As a corollary, avoid shadowing methods with local variables unless they are both equivalent
 
     ```Ruby
     class Foo
@@ -456,7 +456,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
       end
     end
 
-* Use spaces around the `=` operator when assigning default values to method parameters:
+### Use spaces around the `=` operator when assigning default values to method parameters:
 
     ```Ruby
     # bad
@@ -473,7 +473,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     While several Ruby books suggest the first style, the second is much more prominent
     in practice (and arguably a bit more readable).
 
-* Avoid line continuation (\\) unless absolutely required.
+### Avoid line continuation (\\) unless absolutely required.
 
     ```Ruby
     # bad
@@ -485,7 +485,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
              2
     ```
 
-* Using the return value of `=` (an assignment) is ok, but surround the
+### Using the return value of `=` (an assignment) is ok, but surround the
   assignment with parentheses to it clear you are not mistakenly using `=` when you meant `==`.
 
     ```Ruby
@@ -499,7 +499,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     if (v = next_value) == 'hello' ...
     ```
 
-* Don't use `||=` to initialize boolean variables. (Consider what
+### Don't use `||=` to initialize boolean variables. (Consider what
 would happen if the current value happened to be `false`.)
 
     ```Ruby
@@ -510,10 +510,10 @@ would happen if the current value happened to be `false`.)
     enabled = true if enabled.nil?
     ```
 
-* Avoid using Perl-style special variables (like `$0-9`, `$``,
+### Avoid using Perl-style special variables (like `$0-9`, `$``,
   etc. ). They are cryptic and global.
 
-* Never put a space between a method name and the opening parenthesis.
+### Never put a space between a method name and the opening parenthesis.
 
     ```Ruby
     # bad
@@ -523,7 +523,7 @@ would happen if the current value happened to be `false`.)
     f(3 + 2) + 1
     ```
 
-* Ruby 1.9 hash literal syntax is preferred when the hash keys are symbols.
+### Ruby 1.9 hash literal syntax is preferred when the hash keys are symbols.
 
     ```Ruby
     # bad
@@ -533,9 +533,9 @@ would happen if the current value happened to be `false`.)
     hash = { one: 1, two: 2 }
     ```
 
-* `lambda` is preferred over `proc`/`Proc.new`. This is because `lambda`s enforce argument list cardinality and have unsurprising `return` semantics. (Only use `proc` if you really need a return statement that returns from the enclosing code.)  More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
+### `lambda` is preferred over `proc`/`Proc.new`. This is because `lambda`s enforce argument list cardinality and have unsurprising `return` semantics. (Only use `proc` if you really need a return statement that returns from the enclosing code.)  More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
 
-* Ruby 1.9 `lambda` literal syntax is preferred.
+### Ruby 1.9 `lambda` literal syntax is preferred.
 
     ```Ruby
     # bad
@@ -547,7 +547,7 @@ would happen if the current value happened to be `false`.)
     lambda.(1, 2)
     ```
 
-* Use `_` for unused block parameters.
+### Use `_` for unused block parameters.
 
     ```Ruby
     # bad
@@ -559,24 +559,24 @@ would happen if the current value happened to be `false`.)
 
 ## Naming
 
-* Use `snake_case` for methods and variables.
-* Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
+### Use `snake_case` for methods and variables.
+### Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
   RFC, XML uppercase.)
-* Use `SCREAMING_SNAKE_CASE` for other constants.
-* The names of predicate methods (methods that return a boolean value)
+### Use `SCREAMING_SNAKE_CASE` for other constants.
+### The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (e.g. `Array#empty?`).
-* The names of potentially "dangerous" or surprising methods (e.g. methods that have side-effects like mutating a variable
+### The names of potentially "dangerous" or surprising methods (e.g. methods that have side-effects like mutating a variable
   or changing the process flow) should end with an exclamation mark.
 
-* Prefer
+### Prefer
   * `map` over `collect`
   * `reduce` over `inject`
   * `find` over `detect`
   * `select` over `find_all`
   * `size` over `length`
 
-* Company names with capitals in the middle (e.g. RingRevenue) should drop the inner capitalization so that rails string helpers don't insert underscores in the middle
+### Company names with capitals in the middle (e.g. RingRevenue) should drop the inner capitalization so that rails string helpers don't insert underscores in the middle
   Examples:
   * RingRevenue: Constantize: Ringrevenue, underscored: ringrevenue
   * HubSpot     => Hubspot hubspot
@@ -590,17 +590,17 @@ would happen if the current value happened to be `false`.)
 > it even clearer. <br/>
 > -- Steve McConnell
 
-* Enough said.
+### Enough said.
 
 
 ## Classes
 
-* Try to make your classes as
+### Try to make your classes as
   [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))
   as possible.
 
 
-* Use @ class variables when you want separate values per subclass.
+### Use @ class variables when you want separate values per subclass.
   Use @@ variables when you want process-wide globals (such as for a process-wide cache).
 
     ```Ruby
@@ -623,10 +623,10 @@ would happen if the current value happened to be `false`.)
     class variable. Class instance variables should usually be preferred
     over class variables.
 
-* Assign proper visibility levels to methods (`private`, `protected`)
+### Assign proper visibility levels to methods (`private`, `protected`)
 in accordance with their intended usage.
 
-* Indent the `public`, `protected`, and `private` methods as much the
+### Indent the `public`, `protected`, and `private` methods as much the
   method definitions they apply to. Leave one blank line above them.
 
     ```Ruby
@@ -641,7 +641,7 @@ in accordance with their intended usage.
       end
     end
 
-* Use `def self.method` to define singleton methods so you don't have to repeat the class name (Don't Repeat Yourself).
+### Use `def self.method` to define singleton methods so you don't have to repeat the class name (Don't Repeat Yourself).
 
     ```Ruby
     class TestClass
@@ -671,7 +671,7 @@ in accordance with their intended usage.
 
 ## Exceptions
 
-* Never return from an `ensure` block. If you explicitly return from a
+### Never return from an `ensure` block. If you explicitly return from a
   method inside an `ensure` block, the return will take precedence over
   any exception being raised, and the method will return as if no
   exception had been raised at all. In effect, the exception will be
@@ -687,7 +687,7 @@ in accordance with their intended usage.
     end
     ```
 
-* Use *implicit begin blocks* when possible.
+### Use *implicit begin blocks* when possible.
 
     ```Ruby
     # bad
@@ -707,7 +707,7 @@ in accordance with their intended usage.
     end
     ```
 
-* Mitigate the proliferation of `begin` blocks by using
+### Mitigate the proliferation of `begin` blocks by using
   *contingency methods* (a term coined by Avdi Grimm).
 
     ```Ruby
@@ -736,7 +736,7 @@ in accordance with their intended usage.
     with_io_error_handling { something_else_that_might_fail }
     ```
 
-* Don't suppress exceptions.
+### Don't suppress exceptions.
 
     ```Ruby
     # bad
@@ -750,7 +750,7 @@ in accordance with their intended usage.
     do_something rescue nil
     ```
 
-* Don't use exceptions for flow of control.
+### Don't use exceptions for flow of control.
 
     ```Ruby
     # bad
@@ -768,7 +768,7 @@ in accordance with their intended usage.
     end
     ```
 
-* Avoid rescuing the `Exception` class.  This will trap signals and calls to
+### Avoid rescuing the `Exception` class.  This will trap signals and calls to
   `exit`, requiring you to `kill -9` the process.
 
     ```Ruby
@@ -799,7 +799,7 @@ in accordance with their intended usage.
 
     ```
 
-* Put more specific exceptions higher up the rescue chain, otherwise
+### Put more specific exceptions higher up the rescue chain, otherwise
   they'll never be rescued from.
 
     ```Ruby
@@ -822,7 +822,7 @@ in accordance with their intended usage.
     end
     ```
 
-* Release external resources obtained by your program in an ensure
+### Release external resources obtained by your program in an ensure
 block.
 
     ```Ruby
@@ -836,24 +836,24 @@ block.
     end
     ```
 
-* Use exceptions from the standard library for simple cases so you can avoid
+### Use exceptions from the standard library for simple cases so you can avoid
 introducing new exception classes.
 
 ## Collections
 
-* Use `Set` instead of `Array` when dealing with unique elements. `Set`
+### Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
 
-* Avoid the use of mutable object as hash keys.
+### Avoid the use of mutable object as hash keys.
 
-* Rely on the fact that hashes in 1.9 are ordered.
-* Never modify a collection while traversing it.
+### Rely on the fact that hashes in 1.9 are ordered.
+### Never modify a collection while traversing it.
 
 ## Strings
 
-* Prefer string interpolation instead of string concatenation:
+### Prefer string interpolation instead of string concatenation:
 
     ```Ruby
     # bad
@@ -863,14 +863,14 @@ introducing new exception classes.
     email_with_name = "#{user.name} <#{user.email}>"
     ```
 
-* Consider padding string interpolation code with space. It more clearly sets the
+### Consider padding string interpolation code with space. It more clearly sets the
   code apart from the string.
 
     ```Ruby
     "#{ user.last_name }, #{ user.first_name }"
     ```
 
-* `String#<<` performs better by mutating the string in place.  `String#+`, avoids mutation (which is good
+### `String#<<` performs better by mutating the string in place.  `String#+`, avoids mutation (which is good
   in a functional way) but therefore runs slower since it creates a new string object.
 
     ```Ruby
@@ -896,7 +896,7 @@ introducing new exception classes.
 
 ## Regular Expressions
 
-* Don't use a regular expression when a plain string will do:
+### Don't use a regular expression when a plain string will do:
 
     ```Ruby
     # bad
@@ -910,7 +910,7 @@ introducing new exception classes.
     end
     ```
   
-* For simple constructions you can use regexp directly through string index.
+### For simple constructions you can use regexp directly through string index.
 
     ```Ruby
     match = string[/regexp/]             # get content of matched regexp
@@ -918,7 +918,7 @@ introducing new exception classes.
     string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
     ```
 
-* Avoid using $1-9 as it can be hard to track what they contain and they live globally. Numbered indexes
+### Avoid using $1-9 as it can be hard to track what they contain and they live globally. Numbered indexes
   or named groups can be used instead.
 
     ```Ruby
@@ -938,7 +938,7 @@ introducing new exception classes.
     setup_connection(protocol)
     ```
 
-* Be careful not to use `^` and `$` for anchors (like in other languages) because in
+### Be careful not to use `^` and `$` for anchors (like in other languages) because in
   Ruby they also match newlines.
   For anchors, use `\A` and `\z` (not to be
   confused with `\Z` which is the equivalent of `/\n?\z/`).
@@ -949,7 +949,7 @@ introducing new exception classes.
     string[/\Ausername\z/] # don't match
     ```
 
-* Use `x` modifier for complex regexps so that you can use whitespace and comments to
+### Use `x` modifier for complex regexps so that you can use whitespace and comments to
   make them more readable. Just be careful as spaces are ignored.
 
     ```Ruby
@@ -962,14 +962,14 @@ introducing new exception classes.
     }x
     ```
 
-* For complex replacements `sub`/`gsub` can be used with a block or hash.
+### For complex replacements `sub`/`gsub` can be used with a block or hash.
 
 ## Metaprogramming
 
-* Only use metaprogramming when necessary.  For example, `deliver_<mail_message>` in TMail was completely
+### Only use metaprogramming when necessary.  For example, `deliver_<mail_message>` in TMail was completely
   unnecessary since it was equivalent to simply `deliver(:mail_message)`.
 
-* Do not monkey patch core classes unless you really need to change their behavior
+### Do not monkey patch core classes unless you really need to change their behavior
   generally across all code in the process including other gems and libraries (separation of concerns!):
 
     ```ruby
@@ -982,7 +982,7 @@ introducing new exception classes.
     
     ```
 
-* The block form of `class_eval` is preferable to the string-interpolated form.
+### The block form of `class_eval` is preferable to the string-interpolated form.
   - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`, so that your backtraces make sense:
 
     ```ruby
@@ -991,7 +991,7 @@ introducing new exception classes.
 
   - `define_method` is preferable to `class_eval { def ... }`
 
-* Avoid `method_missing` if possible. Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.launch_state = false`). Consider using delegation, proxy, or `define_method` instead.  If you must, use `method_missing`,
+### Avoid `method_missing` if possible. Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.launch_state = false`). Consider using delegation, proxy, or `define_method` instead.  If you must, use `method_missing`,
   - be sure to [also define `respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html)
   - only catch methods with a well-defined prefix, such as `find_by_*` -- make your code as assertive as possible.
   - call `super` at the end of your statement
@@ -1021,8 +1021,8 @@ introducing new exception classes.
 
 ## Misc
 
-* Write `ruby -w` safe code when practical.
-* When code patterns are repeated, use separate lines and extra whitespace when practical to align columns
+### Write `ruby -w` safe code when practical.
+### When code patterns are repeated, use separate lines and extra whitespace when practical to align columns
   so that the code is tabular.  This makes the patterns obvious which helps to spot/prevent bugs.
 
     ```ruby
@@ -1080,12 +1080,12 @@ introducing new exception classes.
 
     ```
  
-* Prefer code written in the functional style:  avoid side-effects like object mutation unless required by performance concerns.
+### Prefer code written in the functional style:  avoid side-effects like object mutation unless required by performance concerns.
   Mutating arguments is a side-effect so don't do it unless that is the sole purpose of the method.
 * Don't put required parameters into options hashes.
-* Try to keep methods to 10 lines of code or less. Ideally, most methods will be shorter than
+### Try to keep methods to 10 lines of code or less. Ideally, most methods will be shorter than
   5 lines of code. Comments and empty lines do not count.
-* Try to keep parameter lists limited to three or four parameters.
-* Avoid `alias` when `alias_method` will do.
-* Use `OptionParser` for parsing complex command line options and
+### Try to keep parameter lists limited to three or four parameters.
+### Avoid `alias` when `alias_method` will do.
+### Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
