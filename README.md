@@ -18,7 +18,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ## Source Code Layout
 
-### Use two **spaces** per indentation level. No hard tabs.  
+### Use two **spaces** per indentation level. No hard tabs.
 
 ```ruby
 # good
@@ -87,8 +87,7 @@ kind = case year
        end
 ```
 
-### Use empty lines between `def`s and to break up a method into logical
-  paragraphs.
+### Use empty lines between `def`s and to break up a method into logical paragraphs.
 
 ```ruby
 def some_method
@@ -139,18 +138,21 @@ def send_mail(source)
 end
 ```
 
-### Use RDoc and its conventions for API documentation.  Don't put an
-  empty line between the comment block and the `def`.
+### Use RDoc and its conventions for API documentation.
+  Don't put an empty line between the comment block and the `def`.
+
 ### Avoid lines longer than 120 characters.
+
 ### Avoid trailing whitespace.
+
 ### Use `UTF-8` as the source file encoding when you need more than plain ASCII.
 
 ## Syntax
 
-### Prefer parentheses around arguments in method declaration.  Omit the
-  parentheses when the method doesn't accept any arguments.
+### Prefer parentheses around arguments in method declaration.
+ Omit the parentheses when the method doesn't accept any arguments.
 
- ```ruby
+```ruby
 def some_method
   ...
 end
@@ -158,13 +160,13 @@ end
 def some_method_with_arguments(arg1, arg2)
   ...
 end
- ```
+```
 
-### Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
+### Never use `for`, unless you know exactly why.
+Most of the time iterators should be used instead. `for` is implemented in terms of `each` (so
+you're adding a level of indirection), but with a twist - `for`
+doesn't introduce a new scope (unlike `each`) and variables defined
+in its block will be visible outside it.
 
 ```ruby
 arr = [1, 2, 3]
@@ -192,10 +194,10 @@ if some_condition
 end
 ```
 
-### Use one expression per branch in a ternary operator. This
-  also means that ternary operators must not be nested. Prefer
-  `if/else` constructs in these cases.
-  Avoid multi-line ternary; use `if/unless` instead.
+### Use one expression per branch in a ternary operator.
+This also means that ternary operators must not be nested. Prefer
+`if/else` constructs in these cases.
+Avoid multi-line ternary; use `if/unless` instead.
 
 ```ruby
 # bad
@@ -209,8 +211,8 @@ else
 end
 ```
 
-### Never use `if x: ...` - it is removed in Ruby 1.9. Use multi-line if or
-  the ternary operator instead.
+### Never use `if x: ...` - it is removed in Ruby 1.9.
+Use multi-line if or the ternary operator instead.
 
 ```ruby
 # bad
@@ -220,8 +222,8 @@ result = if some_condition: something else something_else end
 result = some_condition ? something : something_else
 ```
 
-### Use `when x then ...` for one-line cases. The alternative syntax
-  `when x: ...` is removed in Ruby 1.9.
+### Use `when x then ...` for one-line cases.
+The alternative syntax `when x: ...` is removed in Ruby 1.9.
 
 ### Use `&&/||` for boolean expressions, `and/or` for control flow.
 
@@ -235,7 +237,7 @@ end
 document.saved? or document.save!
 ```
 
-  Beware: `and/or` have lower precedence than `=`!
+Beware: `and/or` have lower precedence than `=`!
 
 ```ruby
 flag = top_of_page? or reset_page
@@ -245,9 +247,8 @@ flag = top_of_page? or reset_page
 
 ```
 
-### Only use trailing `if/unless` when they are rare footnotes that can be
-  ignored in the usual, "go-right" case.  That is, the statement you start with should
-  almost always execute.
+### Only use trailing `if/unless` when they are rare footnotes that can be ignored in the usual, "go-right" case.
+That is, the statement you start with should almost always execute.
   (A good alternative for assertions and other one-line code that rarely executes is control-flow `and/or`.)
 
 ```ruby
@@ -264,8 +265,7 @@ formt(page) unless page.already_formatted?
 send_notification(users) if users.any?
 ```
 
-### Favor `unless` over `if` for negative conditions (or use control
-  flow `or`).
+### Favor `unless` over `if` for negative conditions (or use control flow `or`).
 
 ```ruby
 # bad
@@ -296,9 +296,8 @@ else
 end
 ```
 
-### Don't use parentheses around the condition of an `if/unless/while`,
-  unless the condition contains an assignment (see "Using the return
-  value of `=`" below).
+### Don't use parentheses around the condition of an `if/unless/while`, unless the condition contains an assignment.
+(see "Using the return value of `=`" below).
 
 ```ruby
 # bad
@@ -317,8 +316,7 @@ if (x = self.next_value)
 end
 ```
 
-### Favor modifier `while/until` usage when you have a single-line
-  body.
+### Favor modifier `while/until` usage when you have a single-line body.
 
 ```ruby
 # bad
@@ -340,11 +338,11 @@ do_something while !some_condition
 do_something until some_condition
 ```
 
-### Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that are with
-  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
-  access methods. It is preferred to use parentheses around the arguments of all other
-  method invocations.
+### Omit parentheses around parameters for methods that are part of an internal DSL
+(e.g. Rake, Rails, RSpec), methods that are with
+"keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
+access methods. It is preferred to use parentheses around the arguments of all other
+method invocations.
 
 ```ruby
 class Person
@@ -363,10 +361,10 @@ array.delete(e)
 ```
 
 ### Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
-  `{...}` for multi-line blocks (multiline chaining is always
-  ugly). Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
-  when chaining.
+`{...}` for multi-line blocks (multiline chaining is always
+ugly). Always use `do...end` for "control flow" and "method
+definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
+when chaining.
 
 ```ruby
 names = ['Bozhidar', 'Steve', 'Sarah']
@@ -393,7 +391,7 @@ ask themselves - it this code really readable and can't the blocks contents be e
 nifty methods?
 
 ### Avoid `return` where not needed for flow of control.
-  (Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.)
+(Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.)
 
 ```ruby
 # bad
@@ -486,8 +484,8 @@ result = 1 -
          2
 ```
 
-### Using the return value of `=` (an assignment) is ok, but surround the
-  assignment with parentheses to it clear you are not mistakenly using `=` when you meant `==`.
+### Using the return value of `=` (an assignment) is ok
+But surround the assignment with parentheses to it clear you are not mistakenly using `=` when you meant `==`.
 
 ```ruby
 # good - shows intended use of assignment
@@ -500,8 +498,8 @@ if v = array.grep(/foo/) ...
 if (v = next_value) == 'hello' ...
 ```
 
-### Don't use `||=` to initialize boolean variables. (Consider what
-would happen if the current value happened to be `false`.)
+### Don't use `||=` to initialize boolean variables.
+(Consider what would happen if the current value happened to be `false`.)
 
 ```ruby
 # bad - would set enabled to true even if it was false
@@ -511,8 +509,8 @@ enabled ||= true
 enabled = true if enabled.nil?
 ```
 
-### Avoid using Perl-style special variables (like `$0-9`, `$``,
-  etc. ). They are cryptic and global.
+### Avoid using Perl-style special variables (like `$0-9`, `$``, etc. ).
+They are cryptic and global.
 
 ### Never put a space between a method name and the opening parenthesis.
 
@@ -534,7 +532,10 @@ hash = { :one => 1, :two => 2 }
 hash = { one: 1, two: 2 }
 ```
 
-### `lambda` is preferred over `proc`/`Proc.new`. This is because `lambda`s enforce argument list cardinality and have unsurprising `return` semantics. (Only use `proc` if you really need a return statement that returns from the enclosing code.)  More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
+### `lambda` is preferred over `proc`/`Proc.new`.
+This is because `lambda`s enforce argument list cardinality and have unsurprising `return` semantics.
+(Only use `proc` if you really need a return statement that returns from the enclosing code.)
+More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
 
 ### Ruby 1.9 `lambda` literal syntax is preferred.
 
@@ -561,14 +562,16 @@ result = hash.map { |_, v| v + 1 }
 ## Naming
 
 ### Use `snake_case` for methods and variables.
-### Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,
-  RFC, XML uppercase.)
+
+### Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML uppercase.)
+
 ### Use `SCREAMING_SNAKE_CASE` for other constants.
-### The names of predicate methods (methods that return a boolean value)
-  should end in a question mark.
-  (e.g. `Array#empty?`).
-### The names of potentially "dangerous" or surprising methods (e.g. methods that have side-effects like mutating a variable
-  or changing the process flow) should end with an exclamation mark.
+
+### The names of predicate methods (methods that return a boolean value) should end in a question mark.
+  (e.g. `Array#empty?`)
+
+### The names of potentially "dangerous" or surprising methods should end in an exclamation mark!
+(e.g. methods that have side-effects like mutating a variable or changing the process flow)
 
 ### Prefer
   * `map` over `collect`
@@ -578,10 +581,10 @@ result = hash.map { |_, v| v + 1 }
   * `size` over `length`
 
 ### Company names with capitals in the middle (e.g. RingRevenue) should drop the inner capitalization so that rails string helpers don't insert underscores in the middle
-  Examples:
-  * RingRevenue: Constantize: Ringrevenue, underscored: ringrevenue
-  * HubSpot     => Hubspot hubspot
-  * HubspotIntegration => hubspot_integration
+Examples:
+* RingRevenue: Constantize: Ringrevenue, underscored: ringrevenue
+* HubSpot     => Hubspot hubspot
+* HubspotIntegration => hubspot_integration
 
 ## Comments
 
@@ -596,13 +599,10 @@ result = hash.map { |_, v| v + 1 }
 
 ## Classes
 
-### Try to make your classes as
-  [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\))
-  as possible.
-
+### Try to make your classes as [SOLID](http://en.wikipedia.org/wiki/SOLID_(object-oriented_design\)) as possible.
 
 ### Use @ class variables when you want separate values per subclass.
-  Use @@ variables when you want process-wide globals (such as for a process-wide cache).
+Use @@ variables when you want process-wide globals (such as for a process-wide cache).
 
 ```ruby
 class Parent
@@ -624,11 +624,9 @@ As you can see all the classes in a class hierarchy actually share one
 class variable. Class instance variables should usually be preferred
 over class variables.
 
-### Assign proper visibility levels to methods (`private`, `protected`)
-in accordance with their intended usage.
+### Assign proper visibility levels to methods (`private`, `protected`) in accordance with their intended usage.
 
-### Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them.
+### Indent the `public`, `protected`, and `private` methods as much the method definitions they apply to. Leave one blank line above them.
 
 ```ruby
 class SomeClass
@@ -673,11 +671,12 @@ end
 
 ## Exceptions
 
-### Never return from an `ensure` block. If you explicitly return from a
-  method inside an `ensure` block, the return will take precedence over
-  any exception being raised, and the method will return as if no
-  exception had been raised at all. In effect, the exception will be
-  silently thrown away.
+### Never return from an `ensure` block.
+If you explicitly return from a
+method inside an `ensure` block, the return will take precedence over
+any exception being raised, and the method will return as if no
+exception had been raised at all. In effect, the exception will be
+silently thrown away.
 
 ```ruby
 def foo
@@ -709,8 +708,7 @@ rescue
 end
 ```
 
-### Mitigate the proliferation of `begin` blocks by using
-  *contingency methods* (a term coined by Avdi Grimm).
+### Mitigate the proliferation of `begin` blocks by using *contingency methods* (a term coined by Avdi Grimm).
 
 ```ruby
 # bad
@@ -770,8 +768,7 @@ else
 end
 ```
 
-### Avoid rescuing the `Exception` class.  This will trap signals and calls to
-  `exit`, requiring you to `kill -9` the process.
+### Avoid rescuing the `Exception` class.  This will trap signals and calls to `exit`, requiring you to `kill -9` the process.
 
 ```ruby
 # bad
@@ -800,8 +797,7 @@ rescue StandardError => e
 end
 ```
 
-### Put more specific exceptions higher up the rescue chain, otherwise
-  they'll never be rescued from.
+### Put more specific exceptions higher up the rescue chain, otherwise they'll never be rescued from.
 
 ```ruby
 # bad
@@ -823,8 +819,7 @@ rescue Exception => e
 end
 ```
 
-### Release external resources obtained by your program in an ensure
-block.
+### Release external resources obtained by your program in an ensure block.
 
 ```ruby
 f = File.open('testfile')
@@ -837,19 +832,19 @@ ensure
 end
 ```
 
-### Use exceptions from the standard library for simple cases so you can avoid
-introducing new exception classes.
+### Use exceptions from the standard library for simple cases so you can avoid introducing new exception classes.
 
 ## Collections
 
-### Use `Set` instead of `Array` when dealing with unique elements. `Set`
-  implements a collection of unordered values with no duplicates. This
-  is a hybrid of `Array`'s intuitive inter-operation facilities and
-  `Hash`'s fast lookup.
+### Use `Set` instead of `Array` when dealing with unique elements.
+`Set` implements a collection of unordered values with no duplicates. This
+is a hybrid of `Array`'s intuitive inter-operation facilities and
+`Hash`'s fast lookup.
 
 ### Avoid the use of mutable object as hash keys.
 
 ### Rely on the fact that hashes in 1.9 are ordered.
+
 ### Never modify a collection while traversing it.
 
 ## Strings
@@ -864,15 +859,14 @@ email_with_name = user.name + ' <' + user.email + '>'
 email_with_name = "#{user.name} <#{user.email}>"
 ```
 
-### Consider padding string interpolation code with space. It more clearly sets the
-  code apart from the string.
+### Consider padding string interpolation code with space. It more clearly sets the code apart from the string.
 
 ```ruby
 "#{ user.last_name }, #{ user.first_name }"
 ```
 
-### `String#<<` performs better by mutating the string in place.  `String#+`, avoids mutation (which is good
-  in a functional way) but therefore runs slower since it creates a new string object.
+### `String#<<` performs better by mutating the string in place.
+`String#+`, avoids mutation (which is good in a functional way) but therefore runs slower since it creates a new string object.
 
 ```ruby
 # faster
@@ -910,7 +904,7 @@ if command['quit']
   ...
 end
 ```
-  
+
 ### For simple constructions you can use regexp directly through string index.
 
 ```ruby
@@ -919,8 +913,7 @@ first_group = string[/text(grp)/, 1] # get content of captured group
 string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
 ```
 
-### Avoid using $1-9 as it can be hard to track what they contain and they live globally. Numbered indexes
-  or named groups can be used instead.
+### Avoid using $1-9 as it can be hard to track what they contain and they live globally. Numbered indexes or named groups can be used instead.
 
 ```ruby
 # bad
@@ -939,10 +932,8 @@ setup_connection(protocol)
 setup_connection(protocol)
 ```
 
-### Be careful not to use `^` and `$` for anchors (like in other languages) because in
-  Ruby they also match newlines.
-  For anchors, use `\A` and `\z` (not to be
-  confused with `\Z` which is the equivalent of `/\n?\z/`).
+### Be careful not to use `^` and `$` for anchors (like in other languages) because in Ruby they also match newlines.
+For anchors, use `\A` and `\z` (not to be confused with `\Z` which is the equivalent of `/\n?\z/`).
 
 ```ruby
 string = "some injection\nusername"
@@ -950,8 +941,8 @@ string[/^username$/]   # matches
 string[/\Ausername\z/] # don't match
 ```
 
-### Use `x` modifier for complex regexps so that you can use whitespace and comments to
-  make them more readable. Just be careful as spaces are ignored.
+### Use `x` modifier for complex regexps so that you can use whitespace and comments to make them more readable.
+Just be careful as spaces are ignored.
 
 ```ruby
 regexp = %r{
@@ -967,11 +958,12 @@ regexp = %r{
 
 ## Metaprogramming
 
-### Only use metaprogramming when necessary.  For example, `deliver_<mail_message>` in TMail was completely
-  unnecessary since it was equivalent to simply `deliver(:mail_message)`.
+### Only use metaprogramming when necessary.
+For example, `deliver_<mail_message>` in TMail was completely
+unnecessary since it was equivalent to simply `deliver(:mail_message)`.
 
-### Do not monkey patch core classes unless you really need to change their behavior
-  generally across all code in the process including other gems and libraries (separation of concerns!):
+### Do not monkey patch core classes unless you really need to change their behavior.
+Generally across all code in the process including other gems and libraries (separation of concerns!):
 
 ```ruby
 # bad
@@ -991,7 +983,9 @@ class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
 
   - `define_method` is preferable to `class_eval { def ... }`
 
-### Avoid `method_missing` if possible. Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.launch_state = false`). Consider using delegation, proxy, or `define_method` instead.  If you must, use `method_missing`,
+### Avoid `method_missing` if possible.
+Backtraces become messy; the behavior is not listed in `#methods`; misspelled method calls might silently work (`nukes.launch_state = false`).
+Consider using delegation, proxy, or `define_method` instead.  If you must, use `method_missing`,
   - be sure to [also define `respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html)
   - only catch methods with a well-defined prefix, such as `find_by_*` -- make your code as assertive as possible.
   - call `super` at the end of your statement
@@ -1022,70 +1016,77 @@ end
 ## Misc
 
 ### Write `ruby -w` safe code when practical.
-### When code patterns are repeated, use separate lines and extra whitespace when practical to align columns
-  so that the code is tabular.  This makes the patterns obvious which helps to spot/prevent bugs.
+Try an editor that will show you these when you save.
+
+### When code patterns are repeated, use separate lines and extra whitespace when practical to align columns so that the code is tabular.
+This makes the patterns obvious which helps to spot/prevent bugs.
 
 ```ruby
 # bad
-    PROMOTIONAL_METHODS = [
-                    [ 'review_site', 'Content / Review Site'],
-                    [ 'coupon_site', 'Discount / Coupon Site' ],
-                    [ 'display', 'Display' ],
-                    [ 'email', 'Email' ],
-                    [ 'rewards', 'Rewards / Incentive' ],
-                    [ 'leads', 'Lead Form / Co Reg' ],
-                    [ 'search', 'Search' ],
-                    [ 'social_media', 'Social Media' ],
-                    [ 'software', 'Software' ],
-                    [ 'other', 'Other' ]
-                  ],
-    ...
-    # good
-      PROMOTIONAL_METHODS = [
-                    [ 'review_site',  'Content / Review Site'],
-                    [ 'coupon_site',  'Discount / Coupon Site' ],
-                    [ 'display',      'Display' ],
-                    [ 'email',        'Email' ],
-                    [ 'rewards',      'Rewards / Incentive' ],
-                    [ 'leads',        'Lead Form / Co Reg' ],
-                    [ 'search',       'Search' ],
-                    [ 'social_media', 'Social Media' ],
-                    [ 'software',     'Software' ],
-                    [ 'other',        'Other' ]
-                  ],
-    ...
-    # bad
-          params = {
-            'phone' => calling_phone_number.to_param,
-            'LastName' => last_name,
-            'FirstName' => first_name,
-            'Address' => primary_address,
-            'ApartmentNum' => secondary_address,
-            'City' => city_name,
-            'State' => state,
-            'Zipcode' => zip
-          }
-    ...
-    # good
-          params = {
-            'phone'         => calling_phone_number.to_param,
-            'LastName'      => last_name,
-            'FirstName'     => first_name,
-            'Address'       => primary_address,
-            'ApartmentNum'  => secondary_address,
-            'City'          => city_name,
-            'State'         => state,
-            'Zipcode'       => zip
-          }
-
+PROMOTIONAL_METHODS = [
+                [ 'review_site', 'Content / Review Site'],
+                [ 'coupon_site', 'Discount / Coupon Site' ],
+                [ 'display', 'Display' ],
+                [ 'email', 'Email' ],
+                [ 'rewards', 'Rewards / Incentive' ],
+                [ 'leads', 'Lead Form / Co Reg' ],
+                [ 'search', 'Search' ],
+                [ 'social_media', 'Social Media' ],
+                [ 'software', 'Software' ],
+                [ 'other', 'Other' ]
+              ],
+...
+# good
+  PROMOTIONAL_METHODS = [
+                [ 'review_site',  'Content / Review Site'],
+                [ 'coupon_site',  'Discount / Coupon Site' ],
+                [ 'display',      'Display' ],
+                [ 'email',        'Email' ],
+                [ 'rewards',      'Rewards / Incentive' ],
+                [ 'leads',        'Lead Form / Co Reg' ],
+                [ 'search',       'Search' ],
+                [ 'social_media', 'Social Media' ],
+                [ 'software',     'Software' ],
+                [ 'other',        'Other' ]
+              ],
+...
+# bad
+      params = {
+        'phone' => calling_phone_number.to_param,
+        'LastName' => last_name,
+        'FirstName' => first_name,
+        'Address' => primary_address,
+        'ApartmentNum' => secondary_address,
+        'City' => city_name,
+        'State' => state,
+        'Zipcode' => zip
+      }
+...
+# good
+      params = {
+        'phone'         => calling_phone_number.to_param,
+        'LastName'      => last_name,
+        'FirstName'     => first_name,
+        'Address'       => primary_address,
+        'ApartmentNum'  => secondary_address,
+        'City'          => city_name,
+        'State'         => state,
+        'Zipcode'       => zip
+      }
 ```
- 
-### Prefer code written in the functional style:  avoid side-effects like object mutation unless required by performance concerns.
-  Mutating arguments is a side-effect so don't do it unless that is the sole purpose of the method.
+
+### Prefer code written in the functional style
+avoid side-effects like object mutation unless required by performance concerns.
+ Mutating arguments is a side-effect so don't do it unless that is the sole purpose of the method.
 * Don't put required parameters into options hashes.
-### Try to keep methods to 10 lines of code or less. Ideally, most methods will be shorter than
-  5 lines of code. Comments and empty lines do not count.
+
+### Try to keep methods to 10 lines of code or less.
+Ideally, most methods will be shorter than 5 lines of code. Comments and empty lines do not count.
+
 ### Try to keep parameter lists limited to three or four parameters.
+
 ### Avoid `alias` when `alias_method` will do.
+
 ### Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
+
