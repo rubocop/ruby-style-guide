@@ -20,7 +20,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ### Use two **spaces** per indentation level. No hard tabs.  
 
-    ```Ruby
+```ruby
     # good
     def some_method
       do_something
@@ -30,7 +30,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
     def some_method
         do_something
     end
-    ```
+```
 
 ### Use spaces around operators and `=>`, after commas, colons and semicolons, around `{`
   and before `}`.  (But there is no need for spaces inside the empty hash `{}`.)
