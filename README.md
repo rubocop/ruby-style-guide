@@ -18,7 +18,7 @@ RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ru
 
 ## Source Code Layout
 
-### Use two **spaces** per indentation level. No hard tabs.
+### Use two **spaces** per indentation level. No hard tabs.  
 
     ```Ruby
     # good
