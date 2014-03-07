@@ -834,6 +834,8 @@ end
 
 ### Use exceptions from the standard library for simple cases so you can avoid introducing new exception classes.
 
+### If you create a custom exception class, always inherit from `StandardError` not `Exception`
+
 ## Collections
 
 ### Use `Set` instead of `Array` when dealing with unique elements.
