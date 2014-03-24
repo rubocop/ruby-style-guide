@@ -2304,7 +2304,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * Prefer `%w` to the literal array syntax when you need an array of
-  words(non-empty strings without spaces and special characters in them).
+  words (non-empty strings without spaces and special characters in them).
   Apply this rule only to arrays with two or more elements.
 
   ```Ruby
@@ -2316,7 +2316,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * Prefer `%i` to the literal array syntax when you need an array of
-  symbols(and you don't need to maintain Ruby 1.9 compatibility). Apply
+  symbols (and you don't need to maintain Ruby 1.9 compatibility). Apply
   this rule only to arrays with two or more elements.
 
   ```Ruby
