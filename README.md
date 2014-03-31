@@ -526,10 +526,10 @@ Translations of the guide are available in the following languages:
 
   ```Ruby
   # bad
-  == begin
+  =begin
   comment line
   another comment line
-  == end
+  =end
 
   # good
   # comment line
