@@ -882,7 +882,7 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-* Use `Kernel#loop` with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
+* Use `Kernel#loop` with `break` rather than `begin/end/until` or `begin/end/while` for post-loop tests.
 
   ```Ruby
   # bad
