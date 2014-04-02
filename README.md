@@ -864,6 +864,24 @@ Translations of the guide are available in the following languages:
   do_something until some_condition
   ```
 
+* Use `Kernel#loop` instead of `while/until` when you need an infinite loop.
+
+    ```ruby
+    # bad
+    while true
+      do_something
+    end
+
+    while false
+      do_something
+    end
+
+    # good
+    loop do
+      do_something
+    end
+    ```
+
 * Use `Kernel#loop` with break rather than `begin/end/until` or `begin/end/while` for post-loop tests.
 
   ```Ruby
