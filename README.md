@@ -1392,6 +1392,22 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+* Don't do explicit non-`nil` checks unless you're dealing with boolean values.
+
+    ```ruby
+    # bad
+    do_something if !something.nil?
+    do_something if something != nil
+
+    # good
+    do_something if something
+
+    # good - dealing with a boolean
+    def value_set?
+      !@some_boolean.nil?
+    end
+    ```
+
 * Avoid the use of `BEGIN` blocks.
 
 * Never use `END` blocks. Use `Kernel#at_exit` instead.
