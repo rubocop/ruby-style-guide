@@ -284,7 +284,7 @@ resultado = if condicao
   
 
 # bom (e um pouco mais largamente eficiente)
-kind =
+tipo =
   case ano
   when 1850..1889 then 'Blues'
   when 1890..1909 then 'Ragtime'
@@ -349,7 +349,7 @@ def algum_metodo (arg1 =: default, arg2 = nil, arg3 = [])
 end
 ```
 
-while diversos livros de Ruby sugerem o primeiro estilo, o segundo é muito mais proeminente na prática (e, possivelmente, um pouco mais legível).
+Enquanto diversos livros de Ruby sugerem o primeiro estilo, o segundo é muito mais proeminente na prática (e, possivelmente, um pouco mais legível).
 
 Evitar a continuação da linha `\` onde não é necessário. Na prática, evitar o uso de continuação da linha para nada além de concatenação de seqüência de caracteres.
 
@@ -398,43 +398,43 @@ Uma discussão sobre os méritos de ambos os estilos alternativos pode ser encon
 * Alinhar os parâmetros de um método chamado se eles se espalham por mais de um linha. Quando alinhar parâmetros não é apropriado devido à restrições de comprimento da linha, identação única para as linhas após a primeira é também aceitável.
 
 ```Ruby
-# início (a linha é muito longa)
+# ponto de início (a linha é muito longa)
 def enviar_email(source)
-  Mailer.Deliver (to: 'bob@example.com,' from: 'us@example.com', subject: 'Mensagem importante', body: source.text)
+  Mailer.deliver(to: 'bob@example.com,' from: 'us@example.com', subject: 'Mensagem importante', body: source.text)
 end
 
 # ruim (dupla identação)
 def send_mail(source)
-  Mailer.Deliver (
+  Mailer.deliver(
       to: 'bob@example.com',
       from: 'us@example.com',
       subject: 'Mensagem importante',
       body: source.text)
 end
 
-# good
+# bom
 def send_mail(source)
-  Mailer.Deliver (to: 'bob@example.com',
-                  from: 'us@example.com',
-                  subject: 'Mensagem importante',
-                  body: source.text)
+  Mailer.deliver(to: 'bob@example.com',
+                 from: 'us@example.com',
+                 subject: 'Mensagem importante',
+                 body: source.text)
 end
 
 # bom (identação única)
 def send_mail(source)
-  Mailer.Deliver (
+  Mailer.deliver(
     to: 'bob@example.com',
     from: 'us@example.com',
     subject: 'Mensagem importante',
     body: source.text
-)
+  )
 end
 ```
 
 * Alinhe os elementos do array de literais, abrangendo várias linhas.
 
 ```Ruby
-# ruim - identação único
+# ruim - identação única
 menu_item = ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
   'Feijão', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
@@ -460,7 +460,7 @@ num = 1000000
 num = 1_000_000
 ```
 
-* Use RDoc e suas convenções para a documentação da API. Não coloque uma linha vazia entre o bloco de comentários e o 'def'.
+* Use RDoc e suas convenções para a documentação da API. Não coloque uma linha vazia entre o bloco de comentários e o `def`.
 
 * Limitar as linhas à 80 caracteres.
 
@@ -472,10 +472,10 @@ num = 1_000_000
 
 ```Ruby
 # mau
-= begin
+=begin
 linha de comentário
 outra linha de comentário
-= end
+=end
 
 # bom
 # linha de comentário
@@ -484,7 +484,7 @@ outra linha de comentário
 
 ## Sintaxe
 
-* Use ':: ' apenas a referência constantes (isso inclui as classes e
+* Use `::` apenas a referência constantes (isso inclui as classes e
 módulos) e construtores (como `Array()` ou `Nokogiri::HTML()`).
 Nunca use `::` para invocação de método regular.
 
@@ -500,7 +500,7 @@ AlgumModulo::AlgumaClasse::SOME_CONST
 AlgumModulo::AlgumaClasse()
 ```
 
-* Use 'def' entre parênteses, quando há argumentos. Omita os
+* Use `def` com parênteses, quando há argumentos. Omita os
 parênteses quando o método não aceita quaisquer argumentos.
 
 ```Ruby
@@ -520,12 +520,12 @@ def algum_metodo_com_argumentos arg1, arg2
 end
 
 # bom
-def algum_metodo_com_argumentos (arg1, arg2)
+def algum_metodo_com_argumentos(arg1, arg2)
   #corpo omitido
 end
 ```
 
-* Nunca use `for`, ao menos que você sabe exatamente por que. A maioria dos iteradores de vezes devem ser usado em vez disso. `for` é implementada em termos de `each` (assim você está adicionando um nível de indireção), mas com uma reviravolta - `for` não introduz um novo escopo (ao contrário de `each`) e as variáveis definidas em seu bloco serão visíveis fora dela.
+* Nunca use `for`, à menos que você sabe exatamente por que. A maioria dos iteradores de vezes devem ser usado em vez disso. `for` é implementado em termos de `each` (assim você está adicionando um nível de indireção), mas com uma reviravolta - `for` não introduz um novo escopo (ao contrário de `each`) e as variáveis definidas em seu bloco serão visíveis fora dela.
 
 ```Ruby
 arr = [1, 2, 3]
@@ -542,10 +542,10 @@ elem #=> 3
 arr.each { |elem| puts elem }
 
 # elem não é acessível fora do cada bloco
-elem #=> NameError: indefinido local variável ou método 'elem'
+elem #=> NameError: undefined local variable or method 'elem'
 ```
 
-* Nunca use 'then' para multi-linhas `if/unless`.
+* Nunca use `then` para multi-linhas `if/unless`.
 
 ```Ruby
 # mau
@@ -576,7 +576,7 @@ if alguma_condicao
 end
 ```
 
-* Favoreça o operador ternário (`?:`) sobre construções de ' if/then/else/end'. É obviamente mais conciso e mais comum.
+* Favoreça o operador ternário (`?:`) sobre construções de `if/then/else/end`. É obviamente mais conciso e mais comum.
 
 ```Ruby
 # mau
@@ -637,7 +637,7 @@ resultado =
 
 * Nunca use `when x; ...`. Consulte a regra anterior.
 
-* Use '!' em vez de 'not'.
+* Use `!` em vez de `not`.
 
 ```Ruby
 # mau - chaves são necessárias por causa da precedência de operadores
@@ -668,7 +668,7 @@ unless x.nil?
 end
 ```
 
-* As palavras-chave `and` e `or` são proibidas. Não vale a pena. Sempre use `&&` e `||` em vez disso.
+* As palavras-chave `and` e `or` são proibidas. Não valem a pena. Sempre use `&&` e `||` em vez disso.
 
 ```Ruby
 # mau
@@ -778,7 +778,7 @@ until x > 5
 end
 ```
 
-* Favoreça o uso do modificador 'while/until' quando você tem uma linha única.
+* Favoreça o uso do modificador `while/until` quando você tem uma linha única.
 
 ```Ruby
 # mau
@@ -790,7 +790,7 @@ end
 faca_alguma_coisa while alguma_condicao
 ```
 
-* Favoreça 'until' sobre o 'while' para condições negativas.
+* Favoreça `until` sobre o `while` para condições negativas.
 
 ```Ruby
 # mau
@@ -800,7 +800,7 @@ faca_alguma_coisa while !alguma_condicao
 faca_alguma_coisa until alguma_condicao
 ```
 
-* Use 'Kernel#loop' com break ao invés de `begin/end/until` ou `begin/end/while` para testes pós-loop.
+* Use `Kernel#loop` com break ao invés de `begin/end/until` ou `begin/end/while` para testes pós-loop.
 
 ```Ruby
 # mau
@@ -826,13 +826,13 @@ class Pessoa
   # omitido
 end
 
-Temperanca = Pessoa.new('Temperança', 30)
-Temperanca.name
+temperanca = Pessoa.new('Temperança', 30)
+temperanca.nome
 
-puts temperance.idade
+puts temperanca.idade
 
 x = Math.sin(y)
-array.Delete(e)
+array.delete(e)
 
 boliche.score.should == 0
 ```
@@ -856,7 +856,7 @@ class Pessoa < ActiveRecord::Base
   validates(:nome, { presence: true, length: { within: 1..10 } })
 
   # bom
-  validates : nome, presence: true, length: { within: 1..10 }
+  validates :nome, presence: true, length: { within: 1..10 }
 end
 ```
 
@@ -876,7 +876,7 @@ fork
 'teste'.upcase
 ```
 
-* Prefira `{...}` sobre `do..end` para blocos de linha única. Evitar o uso de `{...}' para a linha multi blocos (encadeamento de várias linhas é sempre feio). Use sempre `do..end` para "fluxo de controle" e "definições de métodos" (por exemplo, em Rakefiles e certos DSLs). Evite o `do..end` quando encadeando.
+* Prefira `{...}` sobre `do..end` para blocos de linha única. Evitar o uso de `{...}` para a linha multi blocos (encadeamento de várias linhas é sempre feio). Use sempre `do..end` para "fluxo de controle" e "definições de métodos" (por exemplo, em Rakefiles e certos DSLs). Evite o `do..end` quando encadeando.
 
 ```Ruby
 nomes = ['Bozhidar', 'Steve', 'Sarah']
