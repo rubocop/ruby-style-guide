@@ -8,20 +8,19 @@ Uma coisa que sempre me incomodou como um desenvolvedor Ruby - desenvolvedores P
 Este guia começou sua vida com as diretrizes internas de codificação em Ruby (escrito por mim mesmo). Em um dado momento eu decidi que o trabalho que estava fazendo poderia ser interessante para os membros da comunidade Ruby em geral e que o mundo não tinha necessidade para outra diretriz interna de uma empresa. Mas o mundo certamente poderia se beneficiar de um conjunto de práticas, expressões idiomáticas e prescrições de estilo de programação Ruby orientado e sancionado pela Comunidade.
 
 Desde a criação do guia, eu recebi um monte de feedback de
-Membros da excepcional comunidade Ruby mundo a fora. Obrigado por
+membros da excepcional comunidade Ruby mundo a fora. Obrigado por
 todas as sugestões e o apoio! Juntos podemos fazer um recurso
 benéfico para cada desenvolvedor Ruby lá fora.
 
 A propósito, se você está no Rails você pode querer verificar o
 complementar [Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
 
-O Guia de Estilo Ruby
+# O Guia de Estilo Ruby
 
 Este guia de estilo Ruby recomenda as melhores práticas para que programadores reais de Ruby possam escrever códigos que possam ser mantidos por outros programadores reais de Ruby. Um guia de estilo que reflete o uso que o mundo real está acostumado e um
 guia de estilo que se prende a um ideal que foi rejeitado pelo povo supõe-se que o melhor é não usá-lo para nada – não importa o quão bom seja.
 
-O guia é separado em várias seções de regras relacionadas. Tenho
-Tentei adicionar a lógica por trás das regras (se estiver omitido, eu assumi que é bastante óbvio).
+O guia é separado em várias seções de regras relacionadas. Tentei adicionar a lógica por trás das regras (se estiver omitido, eu assumi que é bastante óbvio).
 
 Eu não vim com todas as regras do nada - são na maioria
 com base na minha extensa carreira como profissional de engenharia de software, comentários e sugestões dos membros da comunidade Ruby e
@@ -64,15 +63,13 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 * [Miscelânea](#misc)
 * [Ferramentas](#tools)
 
-# # Layout do código fonte
+## Layout do código fonte
 
-> Quase todo mundo está convencido que todos os estilos, exceto os seus são
-> feios e ilegíveis. Deixe de lado o "exceto seus próprios" e eles estarão
-> Provavelmente certo... <br/>
+> Quase todo mundo está convencido que todos os estilos, exceto os seus são > feios e ilegíveis. Deixe de lado o "exceto seus próprios" e eles estarão provavelmente certo... <br/>
 > -- Jerry Coffin (sobre recuo)
 
-* Use 'UTF-8' como a codificação do arquivo de fonte.
-* Use dois ** espaços ** por nível de recuo (conhecido como soft tabs). Nada de hard tabs.
+* Use `UTF-8` como a codificação do arquivo de fonte.
+* Use dois **espaços** por nível de recuo (conhecido como soft tabs). Nada de hard tabs.
 
   ```Ruby
   # mau - quatro espaços
@@ -86,7 +83,7 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
   end
   ```
 
-* Use o finais de linha no estilo Unix. (* Usuários BSD/Solaris/Linux/OS X estão cobertos por padrão, usuários do Windows precisam ter cuidado extra).
+* Use os finais de linha no estilo Unix. (* Usuários BSD/Solaris/Linux/OS X estão cobertos por padrão, usuários do Windows precisam ter cuidado extra).
 * Se você estiver usando o Git, você pode querer adicionar a seguinte
 definição de configuração para proteger o seu projeto do aterrorizante fim de linha do Windows:
 
@@ -127,15 +124,14 @@ FooError = Class.new(StandardError)
 ```
 
 Evite o métodos de linha única. Embora sejam um tanto populares no
-selvagem, existem algumas peculiaridades sobre a sintaxe de definição
-Isso torna seu uso indesejável. De qualquer forma - não deveria haver mais do que uma expressão em um método de linha única.
+mundo selvagem, existem algumas peculiaridades sobre a sintaxe de definição que torna seu uso indesejável. De qualquer forma - não deveria haver mais do que uma expressão em um método de linha única.
 
 ```Ruby
 # mau
 def muito; alguma_coisa; alguma_outra_coisa; end
 
 # ok - Observe que o primeiro ; é necessário
-def metodo_sem_parenteses; corpo; end
+def metodo_sem_parenteses; corpo end
 
 # ok - Observe que o segundo ; é opcional
 def metodo_sem_parenteses; corpo; end
@@ -143,8 +139,8 @@ def metodo_sem_parenteses; corpo; end
 # okish - sintaxe válida, mas sem o ; é difícil de ler
 def metodo() corpo end
 
-# Bom
-def metodo
+# bom
+def algum_metodo
   corpo
 end
 ```
@@ -153,15 +149,15 @@ Uma exceção à regra são os métodos de corpo vazio.
 
 ```Ruby
 # bom
-def no_op; fim
+def no_op; end
 ```
 
 * Use espaços em torno de operadores, após vírgulas, dois-pontos e ponto e vírgula, em volta do `{` e antes do `}`. Espaço em branco pode ser (na maioria dos casos) irrelevante para o intérprete de Ruby, mas sua utilização correcta é a chave para escrever um código facilmente legível.
 
 ```Ruby
-sum = 1 + 2
+soma = 1 + 2
 a, b = 1, 2
-1 > 2 ? true : false; puts 'Hi'
+1 > 2 ? true : false; puts 'Olá'
 [1, 2, 3].each { |e| puts e }
 ```
 
@@ -175,7 +171,7 @@ e = M * c * * 2
 e = M * c**2
 ```
 
-' {' e '}' merecem um pouco de esclarecimento, pois eles são usados
+`{` e `}` merecem um pouco de esclarecimento, pois eles são usados
 para blocos e hashes literais, bem como expressões incorporadas em
 seqüências de caracteres. Para hash, dois estilos literais são considerados aceitáveis.
 
@@ -203,13 +199,13 @@ Com as expressões incorporadas, há também duas opções aceitáveis:
 ```
 
 O primeiro estilo é extremamente mais popular e é geralmente
-aconselhados a ficar com ele. O segundo, por outro lado, é
+aconselhado a ficar com ele. O segundo, por outro lado, é
 (sem dúvidas) um pouco mais legível. Como com hashes - escolha um estilo e aplique-o de forma consistente.
 
 * Sem espaços após `(`, `[` ou antes `]`, `)`.
 
 ```Ruby
-alguns(arg).outro
+some(arg).other
 [1, 2, 3].size
 ```
 
@@ -228,26 +224,26 @@ alguns(arg).outro
 ```Ruby
 # mau
 case
-  when song.name = = 'Misty'
+  when musica.nome == 'Misty'
     puts 'Não!'
-  when song.duration > 120
+  when musica.duracao > 120
     puts 'Muito tempo'!
   when Time.now.hour > 21
     puts "É tarde demais"
   else
-    Song.Play
+    musica.Play
 end
 
 # bom
 case
-when song.name = = 'Misty'
-  coloca 'Não!'
-when song.duration > 120
-  coloca 'Muito tempo'!
+when musica.nome == 'Misty'
+  puts 'Não!'
+when musica.duracao > 120
+  puts 'Muito tempo'!
 when Time.now.hour > 21
-  coloca "É tarde demais"
+  puts "É tarde demais"
 else
-  Song.Play
+  musica.play
 end
 ```
 
@@ -270,7 +266,7 @@ else
   calc_outro_algo
 end
 
-# boa - é evidente o que está acontecendo
+# bom - é evidente o que está acontecendo
 tipo = case ano
        when 1850..1889 then 'Blues'
        when 1890..1909 then 'Ragtime'
@@ -309,17 +305,17 @@ resultado =
 * Usar linhas vazias entre as definições de método e também para quebrar um método em parágrafos de lógica internas.
 
 ```Ruby
-def alguma_metodo
+def algum_metodo
   data = initialize(options)
 
   data.manipulate!
 
   data.result
-ebd
+end
 
-def alguma_metodo
+def algum_metodo
   result
-fim
+end
 ```
 
 * Evitar a vírgula após o último parâmetro em uma chamada de método, especialmente quando os parâmetros não são em linhas separadas.
@@ -330,7 +326,7 @@ algum_metodo (
               tamanho,
               contagem,
               cor,
-            )
+             )
 
 # mau
 algum_metodo (tamanho, contagem, cor, )
@@ -339,40 +335,40 @@ algum_metodo (tamanho, contagem, cor, )
 algum_metodo (tamanho, contagem, cor)
 ```
 
-* Use espaços em torno do operador `=` quando a atribuição de valores padrão para os parâmetros do método:
+* Use espaços em torno do operador `=` quando para atribuição de valores padrão para os parâmetros do método:
 
 ```Ruby
 # mau
-def algum_metodo (arg1 =: default, arg2 = nil, arg3=[])
+def algum_metodo (arg1=:default, arg2=nil, arg3=[])
   # fazer alguma coisa...
-fim
+end
 
 # Bom
 def algum_metodo (arg1 =: default, arg2 = nil, arg3 = [])
   # fazer alguma coisa...
-fim
+end
 ```
 
 Enquanto diversos livros de Ruby sugerem o primeiro estilo, o segundo é muito mais proeminente na prática (e, possivelmente, um pouco mais legível).
 
-Evitar a continuação da linha ' \' onde não é necessário. Na prática, evitar o uso de continuação da linha para nada além de concatenação de seqüência de caracteres.
+Evitar a continuação da linha `\` onde não é necessário. Na prática, evitar o uso de continuação da linha para nada além de concatenação de seqüência de caracteres.
 
 ```Ruby
 # mau
 resultado = 1 - \
-2
+            2
 
 # bom (mas ainda feio como o inferno)
 resultado = 1 \
--2
+            - 2
 
 long_string = 'Primeira parte da longa cadeia de caracteres' \
               'e a segunda parte da seqüência de caracteres longa'
 ```
 
-* Adote um método consistente de estilo de encadeamento multi-linha. Existem dois estilos populares na comunidade Ruby, ambos dos quais são considerados bom - conduz `.` (opção A) e à direita de '.' (opção B).
+* Adote um método consistente de estilo de encadeamento multi-linha. Existem dois estilos populares na comunidade Ruby, ambos dos quais são considerados bom - iniciando `.` (Opção A) e finalizando de `.` (Opção B).
 
-* **(Opção A) ** quando continuando uma invocação de método encadeada em outra linha, mantenha o `.` na segunda linha.
+* **(Opção A)** Quando continuando uma invocação de método encadeada em outra linha, mantenha o `.` na segunda linha.
 
 ```Ruby
 # mau - precisa consultar a primeira linha para entender a segunda linha
