@@ -76,13 +76,13 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 
   ```Ruby
   # mau - quatro espaços
-  def some_method
-      do_something
+  def algum_metodo
+      fazer_algo
   end
 
   # bom
-  def some_method
-    do_something
+  def algum_metodo
+    fazer_algo
   end
   ```
 
@@ -304,4 +304,82 @@ resultado =
   else
     calc_outro_algo
   end
+```
+
+* Usar linhas vazias entre as definições de método e também para quebrar um método em parágrafos de lógica internas.
+
+```Ruby
+def alguma_metodo
+  data = initialize(options)
+
+  data.manipulate!
+
+  data.result
+ebd
+
+def alguma_metodo
+  result
+fim
+```
+
+* Evitar a vírgula após o último parâmetro em uma chamada de método, especialmente quando os parâmetros não são em linhas separadas.
+
+```Ruby
+# ruim - mais fácil de mover ou adicionar/remover parâmetros, mas ainda não preferível
+algum_metodo (
+              tamanho,
+              contagem,
+              cor,
+            )
+
+# mau
+algum_metodo (tamanho, contagem, cor, )
+
+# Bom
+algum_metodo (tamanho, contagem, cor)
+```
+
+* Use espaços em torno do operador `=` quando a atribuição de valores padrão para os parâmetros do método:
+
+```Ruby
+# mau
+def algum_metodo (arg1 =: default, arg2 = nil, arg3=[])
+  # fazer alguma coisa...
+fim
+
+# Bom
+def algum_metodo (arg1 =: default, arg2 = nil, arg3 = [])
+  # fazer alguma coisa...
+fim
+```
+
+Enquanto diversos livros de Ruby sugerem o primeiro estilo, o segundo é muito mais proeminente na prática (e, possivelmente, um pouco mais legível).
+
+Evitar a continuação da linha ' \' onde não é necessário. Na prática, evitar o uso de continuação da linha para nada além de concatenação de seqüência de caracteres.
+
+```Ruby
+# mau
+resultado = 1 - \
+2
+
+# bom (mas ainda feio como o inferno)
+resultado = 1 \
+-2
+
+long_string = 'Primeira parte da longa cadeia de caracteres' \
+              'e a segunda parte da seqüência de caracteres longa'
+```
+
+* Adote um método consistente de estilo de encadeamento multi-linha. Existem dois estilos populares na comunidade Ruby, ambos dos quais são considerados bom - conduz `.` (opção A) e à direita de '.' (opção B).
+
+* **(Opção A) ** quando continuando uma invocação de método encadeada em outra linha, mantenha o `.` na segunda linha.
+
+```Ruby
+# mau - precisa consultar a primeira linha para entender a segunda linha
+um.dois.tres.
+  quatro
+
+# boa - é imediatamente evidente o que está acontecendo a segunda linha
+um.dois.tres
+  .quatro
 ```
