@@ -249,7 +249,7 @@ end
 
 * Quando você atribuir o resultado de uma expressão condicional a uma variável, preservar o alinhamento normal dos seus ramos.
 
-' ' Ruby
+```Ruby
 # ruim - muito complicado
 tipo = case ano
 when 1850..1889 then 'Blues'
