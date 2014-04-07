@@ -660,8 +660,8 @@ Never use `::` for regular method invocation.
     end
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
+* The `and` and `or` keywords are only acceptable for flow control.
+  Always use `&&` and `||` in boolean expressions.
 
     ```Ruby
     # bad
@@ -670,9 +670,6 @@ Never use `::` for regular method invocation.
       do_something
     end
 
-    # control flow
-    document.saved? or document.save!
-
     # good
     # boolean expression
     if some_condition && some_other_condition
@@ -680,7 +677,10 @@ Never use `::` for regular method invocation.
     end
 
     # control flow
-    document.saved? || document.save!
+    document.save or raise DocumentSavingError, "The document didn't save! (lolwut)"
+
+    # control flow
+    render :error and return
     ```
 
 * Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
