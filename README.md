@@ -771,6 +771,23 @@ Translations of the guide are available in the following languages:
   some_condition && do_something
   ```
 
+* Avoid modifier `if/unless` usage at the end of a
+  non-trivial multi-line block.
+
+  ```Ruby
+  # bad
+  10.times do
+    # multi-line body omitted
+  end if some_condition
+  
+  # good
+  if some_condition
+    10.times do
+      # multi-line body omitted
+    end
+  end
+  ```
+
 * Favor `unless` over `if` for negative conditions (or control
   flow `||`).
 
