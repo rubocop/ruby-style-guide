@@ -779,7 +779,7 @@ Translations of the guide are available in the following languages:
   10.times do
     # multi-line body omitted
   end if some_condition
-  
+
   # good
   if some_condition
     10.times do
@@ -2957,6 +2957,11 @@ community.
 
 Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
+
+You can also support the project (and RuboCop) with financial
+contributions via [gittip](https://www.gittip.com/bbatsov).
+
+[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
 ## How to Contribute?
 
