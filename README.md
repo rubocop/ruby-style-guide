@@ -194,8 +194,8 @@ Translations of the guide are available in the following languages:
   ```Ruby
   sum = 1 + 2
   a, b = 1, 2
-  1 > 2 ? true : false; puts 'Hi'
   [1, 2, 3].each { |e| puts e }
+  class FooError < StandardError; end
   ```
 
   The only exception, regarding operators, is the exponent operator:
