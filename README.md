@@ -1558,6 +1558,8 @@ Translations of the guide are available in the following languages:
 
 * Use `snake_case` for naming files, e.g. `hello_world.rb`.
 
+* Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
+
 * Aim to have just a single class/module per source file. Name the file name as
   the class/module, but replacing CamelCase with snake_case.
 
