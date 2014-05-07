@@ -1548,7 +1548,43 @@ at all.
 
       private
 
+      def _some_private_method
+      end
+    end
+    ```
+
+* Prefix private method names with an underscore character (`_`). Don't prefix
+  protected method names.
+    ```Ruby
+    # bad
+    class SomeClass
+
+      protected
+
+      def _some_protected_method
+        # body omitted
+      end
+
+      private
+
       def some_private_method
+        # body omitted
+      end
+    end
+
+    # good
+    class SomeClass
+
+      protected
+
+      def some_protected_method
+        # body omitted
+      end
+
+      private
+
+      def _some_private_method
+        # body omitted
       end
     end
     ```
@@ -1788,11 +1824,11 @@ in *Ruby* now, not in *Python*.
 
       private
 
-      def private_method
+      def _private_method
         # ...
       end
 
-      def another_private_method
+      def _another_private_method
         # ...
       end
     end
