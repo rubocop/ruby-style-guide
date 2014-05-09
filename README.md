@@ -2903,7 +2903,7 @@ Translations of the guide are available in the following languages:
   # bad
   $foo_bar = 1
 
-  #good
+  # good
   module Foo
     class << self
       attr_accessor :bar
