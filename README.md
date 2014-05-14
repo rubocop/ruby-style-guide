@@ -890,7 +890,7 @@ Translations of the guide are available in the following languages:
       do_something
     end
 
-    while false
+    until false
       do_something
     end
 
