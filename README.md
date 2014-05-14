@@ -1459,8 +1459,10 @@ Translations of the guide are available in the following languages:
 * Avoid the use of flip-flops.
 
 * Avoid use of nested conditionals for flow of control.
-  Prefer a guard clause when you can assert invalid data. A guard clause is a conditional
-  statement at the top of a function that bails out as soon as it can.
+
+  Prefer a guard clause when you can assert invalid data. A guard clause
+  is a conditional statement at the top of a function that bails out as
+  soon as it can.
 
   ```Ruby
   # bad
@@ -1481,6 +1483,23 @@ Translations of the guide are available in the following languages:
     update_with_bar(thing[:foo])
     return re_compute(thing) unless thing[:foo][:bar]
     partial_compute(thing)
+  end
+  ```
+
+  Prefer `next` in loops instead of conditional blocks.
+
+  ```Ruby
+  # bad
+  [0, 1, 2, 3].each do |item|
+    if item > 1
+      puts item
+    end
+  end
+
+  # good
+  [0, 1, 2, 3].each do |item|
+    next unless item > 1
+    puts item
   end
   ```
 
