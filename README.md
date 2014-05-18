@@ -63,10 +63,10 @@
     ```Ruby
     # bad
     case
-      when song.name == 'Misty'
-        puts 'Not again!'
+      when song.name == "Misty"
+        puts "Not again!"
       when song.duration > 120
-        puts 'Too long!'
+        puts "Too long!"
       when Time.now.hour > 21
         puts "It's too late"
       else
@@ -75,10 +75,10 @@
 
     # good
     case
-    when song.name == 'Misty'
-      puts 'Not again!'
+    when song.name == "Misty"
+      puts "Not again!"
     when song.duration > 120
-      puts 'Too long!'
+      puts "Too long!"
     when Time.now.hour > 21
       puts "It's too late"
     else
@@ -132,8 +132,8 @@
     result = 1 \
              - 2
 
-    long_string = 'First part of the long string' \
-                  ' and second part of the long string'
+    long_string = "First part of the long string" \
+                  " and second part of the long string"
     ```
 
 * Single indent the parameters of a method call if they span more than one
@@ -142,23 +142,23 @@
     ```Ruby
     # starting point (line is too long)
     def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+      Mailer.deliver(to: "bob@example.com", from: "us@example.com", subject: "Important message", body: source.text)
     end
 
     # bad (too much indentation)
     def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com',
-                     from: 'us@example.com',
-                     subject: 'Important message',
+      Mailer.deliver(to: "bob@example.com",
+                     from: "us@example.com",
+                     subject: "Important message",
                      body: source.text)
     end
 
     # good (normal indent)
     def send_mail(source)
       Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
+        to: "bob@example.com",
+        from: "us@example.com",
+        subject: "Important message",
         body: source.text
       )
     end
@@ -262,7 +262,7 @@
 
     ```Ruby
     # bad
-    x = 'test'
+    x = "test"
     # obscure nil check
     if !!x
       # body omitted
@@ -273,7 +273,7 @@
     !!x # => false
 
     # good
-    x = 'test'
+    x = "test"
     unless x.nil?
       # body omitted
     end
@@ -300,16 +300,16 @@
     ```Ruby
     # bad
     unless success?
-      puts 'failure'
+      puts "failure"
     else
-      puts 'success'
+      puts "success"
     end
 
     # good
     if success?
-      puts 'success'
+      puts "success"
     else
-      puts 'failure'
+      puts "failure"
     end
     ```
 
@@ -340,7 +340,7 @@
       # omitted
     end
 
-    temperance = Person.new('Temperance', 30)
+    temperance = Person.new("Temperance", 30)
     temperance.name
 
     puts temperance.age
@@ -355,10 +355,10 @@
 
     ```Ruby
     # bad
-    user.set({ name: 'John', age: 45, permissions: { read: true } })
+    user.set({ name: "John", age: 45, permissions: { read: true } })
 
     # good
-    User.set(name: 'John', age: 45, permissions: { read: true })
+    User.set(name: "John", age: 45, permissions: { read: true })
     ```
 
 * Omit parentheses for method calls with no arguments.
@@ -542,7 +542,7 @@ in inheritance.
 
     ```Ruby
     class Parent
-      @@class_var = 'parent'
+      @@class_var = "parent"
 
       def self.print_class_var
         puts @@class_var
@@ -550,7 +550,7 @@ in inheritance.
     end
 
     class Child < Parent
-      @@class_var = 'child'
+      @@class_var = "child"
     end
 
     Parent.print_class_var # => will print "child"
@@ -675,7 +675,7 @@ Apply this rule only to arrays with two or more elements.
 
     ```Ruby
     # bad
-    STATES = ['draft', 'open', 'closed']
+    STATES = ["draft", "open", "closed"]
 
     # good
     STATES = %w(draft open closed)
@@ -700,7 +700,7 @@ Apply this rule only to arrays with two or more elements.
 
     ```Ruby
     # bad
-    email_with_name = user.name + ' <' + user.email + '>'
+    email_with_name = user.name + " <" + user.email + ">"
 
     # good
     email_with_name = "#{user.name} <#{user.email}>"
@@ -722,8 +722,8 @@ Apply this rule only to arrays with two or more elements.
 
     ```Ruby
     # good and also fast
-    html = ''
-    html << '<h1>Page title</h1>'
+    html = ""
+    html << "<h1>Page title</h1>"
 
     paragraphs.each do |paragraph|
       html << "<p>#{paragraph}</p>"
@@ -780,7 +780,7 @@ Apply this rule only to arrays with two or more elements.
     ```Ruby
     # bad (no interpolation needed)
     %(<div class="text">Some text</div>)
-    # should be '<div class="text">Some text</div>'
+    # should be "<div class="text">Some text</div>"
 
     # bad (no double-quotes)
     %(This is #{quality} style)
@@ -794,7 +794,7 @@ Apply this rule only to arrays with two or more elements.
     %(<tr><td class="name">#{name}</td>)
     ```
 
-* Use `%r` only for regular expressions matching *more than* one '/' character.
+* Use `%r` only for regular expressions matching *more than* one "/" character.
 
     ```Ruby
     # bad
