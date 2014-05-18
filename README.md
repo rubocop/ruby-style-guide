@@ -136,10 +136,8 @@
                   ' and second part of the long string'
     ```
 
-* Align the parameters of a method call if they span more than one
-  line. When aligning parameters is not appropriate due to line-length
-  constraints, single indent for the lines after the first is also
-  acceptable.
+* Single indent the parameters of a method call if they span more than one
+  line.
 
     ```Ruby
     # starting point (line is too long)
