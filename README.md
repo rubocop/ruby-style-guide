@@ -210,51 +210,51 @@ This applies for specs and config files as well.
 If you are tempted to use more than 1 line of separation, take it as an
 indicator that the file/class you are working might be too big.
 
-    ```ruby
+```ruby
 
-    # Class comment (notice empty line at the start of the file)
+# Class comment (notice empty line at the start of the file)
 
-    class Bad
+class Bad
 
-      # Method comment
+  # Method comment
 
-      def public_method
-        if bad
-          ...
-        else
-          ...
-        end
-        fail
-      end
-
-      private
-      def private_method
-      end
-
+  def public_method
+    if bad
+      ...
+    else
+      ...
     end
-    ```
+    fail
+  end
 
-    ```ruby
-      # Class comment (if you _really_ need one)
-      class Good
-        attr_accessor :no_line
+  private
+  def private_method
+  end
 
-        def public_method
-          if much_better
-            ...
-          else
-            ...
-          end
+end
+```
 
-          succeed
-        end
+```ruby
+# Class comment (if you _really_ need one)
+class Good
+  attr_accessor :no_line
 
-        private
+  def public_method
+    if much_better
+      ...
+    else
+      ...
+    end
 
-        def private_method
-        end
-      end
-    ```
+    succeed
+  end
+
+  private
+
+  def private_method
+  end
+end
+```
 
 ## Syntax
 
