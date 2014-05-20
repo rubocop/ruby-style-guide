@@ -195,15 +195,15 @@
 
 ### Newlines
 
-Newlines are our friends. But newlines are also a complicated matter.
+Newlines are our friends, but they are also a complicated matter.
 The simplest rules for consistent newlines are the following:
 
 * Never have 2 newlines in a row
-* Treat every indentation level as if it were an invisible newline
-* No newlines around classes (that reside in their own file)
+* No newlines immediately after an increase, or immediately before a decrease in indentation.
+* No newlines around class declarations (that reside in their own file)
 * No newlines between comments and their related methods
-* Add newlines around class/module macros (except when separated by indentation)
-* _Prefer_ newlines to separate `if else` and similar blocks within methods.
+* Separate class/module macros from methods of groups of macros using a newline (`attr_accessor`, `private` etc)
+* Add newlines to separate `if else` and similar blocks within methods
 
 This applies for specs and config files as well.
 
