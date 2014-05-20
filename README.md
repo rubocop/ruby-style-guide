@@ -193,6 +193,68 @@
     }
     ```
 
+### Newlines
+
+Newlines are our friends, but they are also a complicated matter.
+The simplest rules for consistent newlines are the following:
+
+* Never have 2 newlines in a row
+* No newlines immediately after an increase, or immediately before a decrease in indentation.
+* No newlines around class declarations (that reside in their own file)
+* No newlines between comments and their related methods
+* Separate class/module macros from methods of groups of macros using a newline (`attr_accessor`, `private` etc)
+* Add newlines to separate `if else` and similar blocks within methods
+
+This applies for specs and config files as well.
+
+If you are tempted to use more than 1 line of separation, take it as an
+indicator that the file/class you are working might be too big.
+
+```ruby
+
+# Class comment (notice empty line at the start of the file)
+
+class Bad
+
+  # Method comment
+
+  def public_method
+    if bad
+      ...
+    else
+      ...
+    end
+    fail
+  end
+
+  private
+  def private_method
+  end
+
+end
+```
+
+```ruby
+# Class comment (if you _really_ need one)
+class Good
+  attr_accessor :no_line
+
+  def public_method
+    if much_better
+      ...
+    else
+      ...
+    end
+
+    succeed
+  end
+
+  private
+
+  def private_method
+  end
+end
+```
 
 ## Syntax
 
