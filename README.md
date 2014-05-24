@@ -1126,6 +1126,27 @@ Translations of the guide are available in the following languages:
     ...
   end
   ```
+  
+* Do not use `=` (the assignment operator) more than once in an expression
+
+  There is a valid shorthand syntax for making multiple assignments on a single line,
+  but it only uses the assignment operator (`=`) once. If you use `=` more than
+  once in an expression it be difficult to read - and might be a bug
+
+  ```Ruby
+  locks = { baz: :quux }
+  opts  = { foo: :bar }
+
+  # good
+  @current_locks = locks
+  @current_opts = opts
+
+  # good - shorthand assignment
+  @current_locks, @current_opts = locs, opts
+
+  # bad - subtle bug, equivalent to @current_locks = [locks, opts]
+  @current_locks = locks, @current_opts = opts
+  ```
 
 * Use shorthand self assignment operators whenever applicable.
 
