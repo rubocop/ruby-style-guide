@@ -1142,7 +1142,7 @@ Translations of the guide are available in the following languages:
   @current_opts = opts
 
   # good - shorthand assignment
-  @current_locks, @current_opts = locs, opts
+  @current_locks, @current_opts = locks, opts
 
   # bad - subtle bug, equivalent to @current_locks = [locks, opts]
   @current_locks = locks, @current_opts = opts
