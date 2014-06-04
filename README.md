@@ -8,16 +8,12 @@ This styleguide is a modification of [bbatsov/ruby-style-guide](https://github.c
 * [Syntax](#syntax)
 * [Naming](#naming)
 * [Comments](#comments)
-  * [Comment Annotations](#comment-annotations)
 * [Classes](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
-* [Regular Expressions](#regular-expressions)
-* [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
-* [Tools](#tools)
 
 ## Source Code Layout
 
