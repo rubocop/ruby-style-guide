@@ -259,7 +259,7 @@ raise ArgumentError, "name must be provided" unless name.present?
 name.present? or raise ArgumentError, "name must be provided"
 
 # good -- the unless is a rare footnote
-formt(page) unless page.already_formatted?
+format(page) unless page.already_formatted?
 
 # good -- the if is almost always true
 send_notification(users) if users.any?
