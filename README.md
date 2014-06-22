@@ -387,7 +387,7 @@ end.map { |name| name.upcase }
 ```
 
 Some will argue that multiline chaining would look OK with the use of {...}, but they should
-ask themselves - it this code really readable and can't the blocks contents be extracted into
+ask themselves: is this code really readable and can't the blocks contents be extracted into
 nifty methods?
 
 ### Avoid `return` where not needed for flow of control.
