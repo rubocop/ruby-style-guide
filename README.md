@@ -390,7 +390,7 @@ Some will argue that multiline chaining would look OK with the use of {...}, but
 ask themselves: is this code really readable and can't the blocks contents be extracted into
 nifty methods?
 
-### Avoid `return` where not needed for flow of control.
+### Avoid `return` where not needed for flow of control. Prefer `if`/`else` or `&&`/`||`.
 (Omitting `return` is more succinct and declarative, and your code will still work if you refactor it into a block later.)
 
 ```ruby
@@ -402,6 +402,46 @@ end
 # good
 def some_method(some_arr)
   some_arr.size
+end
+
+# bad
+def click_url
+  return "http://#{click_domain}/c" if click_domain.nonblank?
+  return click_url_for_hostname(vanity_domain) if vanity_domain.nonblank?
+  click_url_for_hostname(CLICK_URL_DEFAULT_DOMAIN)
+end
+
+# good
+def click_url
+  if click_domain.nonblank?
+    "http://#{click_domain}/c"
+  elsif vanity_domain.nonblank?
+    click_url_for_hostname(vanity_domain)
+  else
+    click_url_for_hostname(CLICK_URL_DEFAULT_DOMAIN)
+  end
+end
+
+# bad
+def should_redirect?
+  return false unless rendered?
+  return true if redirect_location.nonblank?
+  return true if global_redirect?
+  return false
+end
+
+# good
+def should_redirect?
+  !rendered && (redirect_location.nonblank? || global_redirect?)
+end
+
+# better still
+def have_redirect?
+  redirect_location.nonblank? || global_redirect?
+end
+
+def should_redirect?
+  !rendered && have_redirect?
 end
 ```
 
