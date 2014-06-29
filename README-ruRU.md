@@ -1,4 +1,4 @@
-# Prelude
+# Вступление
 
 > Role models are important. <br/>
 > -- Officer Alex J. Murphy / RoboCop
@@ -28,7 +28,7 @@ By the way, if you're into Rails you might want to check out the
 complementary
 [Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
 
-# The Ruby Style Guide
+# Руби: руководство по стилю оформления
 
 This Ruby style guide recommends best practices so that real-world Ruby
 programmers can write code that can be maintained by other real-world Ruby
@@ -64,25 +64,26 @@ You can generate a PDF or an HTML copy of this guide using
 [RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
 based on this style guide.
 
-Translations of the guide are available in the following languages:
+Переводы данного руководства доступны на следующих языках:
 
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
+* [английский (исходная версия)](https://github.com/bbatsov/ruby-style-guide/blob/master/README.md)
+* [вьетнамский](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
+* [испанский](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
+* [китайский традиционный](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
+* [китайский упрощенный](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
+* [французский](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
+* [португальский](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
+* [русский (данный документ)](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
+* [японский](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
-* [Syntax](#syntax)
-* [Naming](#naming)
+* [Синтаксис](#syntax)
+* [Наименование](#naming)
 * [Comments](#comments)
   * [Comment Annotations](#comment-annotations)
-* [Classes](#classes--modules)
+* [Классы и модули](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
 * [Strings](#strings)
@@ -1504,7 +1505,7 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-## Naming
+## Наименование
 
 > The only real difficulties in programming are cache invalidation and
 > naming things. <br/>
@@ -1703,7 +1704,7 @@ Translations of the guide are available in the following languages:
   array.reverse_each { ... }
   ```
 
-## Comments
+## Комментарии
 
 > Good code is its own best documentation. As you're about to add a
 > comment, ask yourself, "How can I improve the code so that this
@@ -1737,7 +1738,7 @@ Translations of the guide are available in the following languages:
 * Avoid writing comments to explain bad code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try. --Yoda)
 
-### Comment Annotations
+### Пометки в комментариях
 
 * Annotations should usually be written on the line immediately above
   the relevant code.
@@ -1784,7 +1785,7 @@ Translations of the guide are available in the following languages:
 * Use other custom annotation keywords if it feels appropriate, but be
   sure to document them in your project's `README` or similar.
 
-## Classes & Modules
+## Классы и модули
 
 * Use a consistent structure in your class definitions.
 
@@ -2534,7 +2535,7 @@ Translations of the guide are available in the following languages:
 
 * Never modify a collection while traversing it.
 
-## Strings
+## Строки
 
 * Prefer string interpolation and string formatting instead of string concatenation:
 
@@ -2668,7 +2669,7 @@ Translations of the guide are available in the following languages:
   #=> "def test\n  some_method\n  other_method\nend\n"
   ```
 
-## Regular Expressions
+## Регулярные выражения
 
 > Some people, when confronted with a problem, think
 > "I know, I'll use regular expressions." Now they have two problems.<br/>
@@ -2833,7 +2834,7 @@ Translations of the guide are available in the following languages:
   %q("Test's king!", John said.)
   ```
 
-## Metaprogramming
+## Метапрограммирование
 
 * Avoid needless metaprogramming.
 
@@ -2903,7 +2904,7 @@ Translations of the guide are available in the following languages:
     # best of all, though, would to define_method as each findable attribute is declared
     ```
 
-## Misc
+## Разное
 
 * Write `ruby -w` safe code.
 
@@ -2950,7 +2951,7 @@ Translations of the guide are available in the following languages:
 
 * Use common sense.
 
-## Tools
+## Инструментарий
 
 Here's some tools to help you automatically check Ruby code against
 this guide.
@@ -2983,16 +2984,16 @@ contributions via [gittip](https://www.gittip.com/bbatsov).
 
 [![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
-## How to Contribute?
+## Как сотрудничать в проекте?
 
 It's easy, just follow the [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
 
-# License
+# Лицензирование
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
 This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
-# Spread the Word
+# Расскажи другому
 
 A community-driven style guide is of little use to a community that
 doesn't know about its existence. Tweet about the guide, share it with
@@ -3001,4 +3002,4 @@ get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
 
 Cheers,<br/>
-[Bozhidar](https://twitter.com/bbatsov)
+[Божидар](https://twitter.com/bbatsov)
