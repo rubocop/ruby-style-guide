@@ -79,19 +79,19 @@ based on this style guide.
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
-* [Синтаксис](#syntax)
-* [Наименование](#naming)
-* [Comments](#comments)
-  * [Comment Annotations](#comment-annotations)
-* [Классы и модули](#classes--modules)
+* [Синтаксис](#синтаксис)
+* [Наименование](#наименование)
+* [Комментарии](#комментарии)
+  * [Пометки в комментариях](#пометки-в-комментариях)
+* [Классы и модули](#классы-и-модули)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
-* [Strings](#strings)
-* [Regular Expressions](#regular-expressions)
+* [Строки](#строки)
+* [Regular Expressions](#регулярные-выражения)
 * [Percent Literals](#percent-literals)
-* [Metaprogramming](#metaprogramming)
-* [Misc](#misc)
-* [Tools](#tools)
+* [Metaprogramming](#метапрограммирование)
+* [Разное](#разное)
+* [Инструментарий](#инструментария)
 
 ## Source Code Layout
 
