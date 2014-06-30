@@ -11,6 +11,8 @@
 Также я верю, что такое замечательное сообщество разработчиков, которое есть у Руби,
 вполне имеет силы создать этот давно назревший документ.
 
+Это руководство появилось на свет в нашей фирме в виде нашего внутреннего руководства
+по оформлению кода на Руби (). И в какой-то момент я решил, что эта 
 This guide started its life as our internal company Ruby coding guidelines
 (written by yours truly). At some point I decided that the work I was
 doing might be interesting to members of the Ruby community in general
@@ -78,38 +80,38 @@ based on this style guide.
 
 ## Table of Contents
 
-* [Source Code Layout](#source-code-layout)
+* [Организация исходного кода](#Организация-исходного-кода)
 * [Синтаксис](#Синтаксис)
 * [Наименование](#Hаименование)
 * [Комментарии](#Комментарии)
   * [Пометки в комментариях](#Пометки-в-комментариях)
 * [Классы и модули](#Классы-и-модули)
 * [Исключения](#Исключения)
-* [Collections](#collections)
+* [Коллекции](#Коллекции)
 * [Строки](#строки)
 * [Регулярные выражения](#Регулярные-выражения)
-* [Percent Literals](#percent-literals)
+* [Процентные литералы](#Процентные-литералы)
 * [Метапрограммирование](#Метапрограммирование)
 * [Разное](#Разное)
 * [Инструментарий](#Инструментарий)
 
-## Source Code Layout
+## Организация исходного кода
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* Use `UTF-8` as the source file encoding.
-* Use two **spaces** per indentation level (aka soft tabs). No hard tabs.
+* Используйте `UTF-8` в качестве кодировке для исходного кода.
+* Используйте два **пробела** на уровень отступа (т.е. мягкую табуляцию). Никаких знаков табуляции.
 
   ```Ruby
-  # bad - four spaces
+  # плохо - четыре пробела
   def some_method
       do_something
   end
 
-  # good
+  # хорошо
   def some_method
     do_something
   end
@@ -2146,7 +2148,7 @@ based on this style guide.
   end
   ```
 
-## Exceptions
+## Исключения
 
 * Signal exceptions using the `fail` method. Use `raise` only when
   catching an exception and re-raising it (because here you're not
@@ -2363,7 +2365,7 @@ based on this style guide.
 * Favor the use of exceptions for the standard library over
   introducing new exception classes.
 
-## Collections
+## Коллекции
 
 * Prefer literal array and hash creation notation (unless you need to
   pass parameters to their constructors, that is).
@@ -2750,7 +2752,7 @@ based on this style guide.
 
 * For complex replacements `sub`/`gsub` can be used with block or hash.
 
-## Percent Literals
+## Процентные литералы
 
 * Use `%()`(it's a shorthand for `%Q`) for single-line strings which require both
   interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
