@@ -79,19 +79,19 @@ based on this style guide.
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
-* [Синтаксис](#синтаксис)
-* [Наименование](#наименование)
-* [Комментарии](#комментарии)
-  * [Пометки в комментариях](#пометки-в-комментариях)
-* [Классы и модули](#классы-и-модули)
-* [Exceptions](#exceptions)
+* [Синтаксис](#Синтаксис)
+* [Наименование](#Hаименование)
+* [Комментарии](#Комментарии)
+  * [Пометки в комментариях](#Пометки-в-комментариях)
+* [Классы и модули](#Классы-и-модули)
+* [Исключения](#Исключения)
 * [Collections](#collections)
 * [Строки](#строки)
-* [Regular Expressions](#регулярные-выражения)
+* [Регулярные выражения](#Регулярные-выражения)
 * [Percent Literals](#percent-literals)
-* [Metaprogramming](#метапрограммирование)
-* [Разное](#разное)
-* [Инструментарий](#инструментария)
+* [Метапрограммирование](#Метапрограммирование)
+* [Разное](#Разное)
+* [Инструментарий](#Инструментарий)
 
 ## Source Code Layout
 
@@ -539,7 +539,7 @@ based on this style guide.
   # another comment line
   ```
 
-## Syntax
+## Синтаксис
 
 * Use `::` only to reference constants(this includes classes and
   modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
