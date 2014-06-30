@@ -3,13 +3,13 @@
 > Role models are important. <br/>
 > -- Officer Alex J. Murphy / RoboCop
 
-One thing has always bothered me as a Ruby developer - Python developers
-have a great programming style reference
-([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
-an official guide, documenting Ruby coding style and best
-practices. And I do believe that style matters. I also believe that a
-great hacker community, such as Ruby has, should be quite capable of
-producing this coveted document.
+Один из вопросов, который меня всегда беспокоил как разработчика на Руби, - это то,
+что у разработчиков на Питоне есть великолепное руководству по стилю оформления
+([PEP-8](http://www.python.org/dev/peps/pep-0008/)), а у нас
+никогда не было официального руководства, описывавшего бы стиль оформления кода на Руби
+и дающего примеры его успешного применения. Я же уверен, что стиль оформления крайне важен.
+Также я верю, что такое замечательное сообщество разработчиков, которое есть у Руби,
+вполне имеет силы создать этот давно назревший документ.
 
 This guide started its life as our internal company Ruby coding guidelines
 (written by yours truly). At some point I decided that the work I was
