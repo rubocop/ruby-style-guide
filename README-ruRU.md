@@ -11,24 +11,20 @@
 Также я верю, что такое замечательное сообщество разработчиков, которое есть у Руби,
 вполне имеет силы создать этот давно назревший документ.
 
-Это руководство появилось на свет в нашей фирме в виде нашего внутреннего руководства
-по оформлению кода на Руби (). И в какой-то момент я решил, что эта 
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was
-doing might be interesting to members of the Ruby community in general
-and that the world had little need for another internal company
-guideline. But the world could certainly benefit from a
-community-driven and community-sanctioned set of practices, idioms and
-style prescriptions for Ruby programming.
+Это наставление появилось на свет в нашей фирме в виде  внутреннего руководства
+по оформлению кода на Руби (составленного вашим покорным слугой). И в какой-то момент я решил,
+что данная работа, которой я тогда занимался, может быть интересной и другим членам сообщества
+программистов на Руби и что миру вовсе не нужно еще одно руководство для внутреннего пользования:
+окружающий мир может получить пользу от совместно создаваемого и одобренного сообществом
+набора практик, идиом и стилистических предписаний для программирования на Руби.
 
-Since the inception of the guide I've received a lot of feedback from
-members of the exceptional Ruby community around the world. Thanks for
-all the suggestions and the support! Together we can make a resource
-beneficial to each and every Ruby developer out there.
+Со времени опубликования этого руководства я получил многочисленные отклики от членов сообщества
+программистов на Руби из разных уголков со всего мира. Я очень благодарен им за полезные
+предложения и поддержку! Нашими общими усилиями мы сможем сделать этот ресурс полезным
+для всех и каждого разработчика на Руби.
 
-By the way, if you're into Rails you might want to check out the
-complementary
-[Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
+И кстати, если вы работаете с Rails, вы можете взглянуть на дополняющее это руководство
+[Ruby on Rails 3 & 4: Руководство по стилю оформления](https://github.com/bbatsov/rails-style-guide).
 
 # Руби: руководство по стилю оформления
 
@@ -78,7 +74,7 @@ based on this style guide.
 * [русский (данный документ)](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
 * [японский](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 
-## Table of Contents
+## Оглавление
 
 * [Организация исходного кода](#Организация-исходного-кода)
 * [Синтаксис](#Синтаксис)
