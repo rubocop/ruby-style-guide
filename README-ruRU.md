@@ -127,12 +127,12 @@ based on this style guide.
   corollary - use one expression per line.
 
   ```Ruby
-  # bad
+  # плохо
   puts 'foobar'; # superfluous semicolon
 
   puts 'foo'; puts 'bar' # two expressions on the same line
 
-  # good
+  # хорошо
   puts 'foobar'
 
   puts 'foo'
@@ -144,14 +144,14 @@ based on this style guide.
 * Prefer a single-line format for class definitions with no body.
 
   ```Ruby
-  # bad
+  # плохо
   class FooError < StandardError
   end
 
-  # okish
+  # сносно
   class FooError < StandardError; end
 
-  # good
+  # хорошо
   FooError = Class.new(StandardError)
   ```
 
@@ -161,19 +161,19 @@ based on this style guide.
   than one expression in a single-line method.
 
   ```Ruby
-  # bad
+  # плохо
   def too_much; something; something_else; end
 
-  # okish - notice that the first ; is required
+  # сносно - notice that the first ; is required
   def no_braces_method; body end
 
-  # okish - notice that the second ; is optional
+  # сносно - notice that the second ; is optional
   def no_braces_method; body; end
 
-  # okish - valid syntax, but no ; makes it kind of hard to read
+  # сносно - valid syntax, but no ; makes it kind of hard to read
   def some_method() body end
 
-  # good
+  # хорошо
   def some_method
     body
   end
@@ -182,7 +182,7 @@ based on this style guide.
   One exception to the rule are empty-body methods.
 
   ```Ruby
-  # good
+  # хорошо
   def no_op; end
   ```
 
@@ -201,10 +201,10 @@ based on this style guide.
   The only exception, regarding operators, is the exponent operator:
 
   ```Ruby
-  # bad
+  # плохо
   e = M * c ** 2
 
-  # good
+  # хорошо
   e = M * c**2
   ```
 
@@ -213,10 +213,10 @@ based on this style guide.
   strings. For hash literals two styles are considered acceptable.
 
   ```Ruby
-  # good - space after { and before }
+  # хорошо - space after { and before }
   { one: 1, two: 2 }
 
-  # good - no space after { and before }
+  # хорошо - no space after { and before }
   {one: 1, two: 2}
   ```
 
@@ -229,7 +229,7 @@ based on this style guide.
   options:
 
   ```Ruby
-  # good - no spaces
+  # хорошо - no spaces
   "string#{expr}"
 
   # ok - arguably more readable
@@ -251,7 +251,7 @@ based on this style guide.
 * No space after `!`.
 
   ```Ruby
-  # bad
+  # плохо
   ! something
 
   # good
@@ -263,7 +263,7 @@ based on this style guide.
   Programming Language" and "Programming Ruby".
 
   ```Ruby
-  # bad
+  # плохо
   case
     when song.name == 'Misty'
       puts 'Not again!'
@@ -275,7 +275,7 @@ based on this style guide.
       song.play
   end
 
-  # good
+  # хорошо
   case
   when song.name == 'Misty'
     puts 'Not again!'
@@ -292,7 +292,7 @@ based on this style guide.
   the usual alignment of its branches.
 
   ```Ruby
-  # bad - pretty convoluted
+  # плохо - pretty convoluted
   kind = case year
   when 1850..1889 then 'Blues'
   when 1890..1909 then 'Ragtime'
@@ -364,14 +364,14 @@ based on this style guide.
   parameters are not on separate lines.
 
   ```Ruby
-  # bad - easier to move/add/remove parameters, but still not preferred
+  # плохо - easier to move/add/remove parameters, but still not preferred
   some_method(
                size,
                count,
                color,
              )
 
-  # bad
+  # плохо
   some_method(size, count, color, )
 
   # good
@@ -381,7 +381,7 @@ based on this style guide.
 * Use spaces around the `=` operator when assigning default values to method parameters:
 
   ```Ruby
-  # bad
+  # плохо
   def some_method(arg1=:default, arg2=nil, arg3=[])
     # do something...
   end
@@ -399,7 +399,7 @@ based on this style guide.
   line continuations for anything but string concatenation.
 
   ```Ruby
-  # bad
+  # плохо
   result = 1 - \
            2
 
@@ -419,7 +419,7 @@ based on this style guide.
     another line keep the `.` on the second line.
 
     ```Ruby
-    # bad - need to consult first line to understand second line
+    # плохо - need to consult first line to understand second line
     one.two.three.
       four
 
@@ -433,7 +433,7 @@ based on this style guide.
     expression continues.
 
     ```Ruby
-    # bad - need to read ahead to the second line to know that the chain continues
+    # плохо - need to read ahead to the second line to know that the chain continues
     one.two.three
       .four
 
@@ -456,7 +456,7 @@ based on this style guide.
     Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
   end
 
-  # bad (double indent)
+  # плохо (double indent)
   def send_mail(source)
     Mailer.deliver(
         to: 'bob@example.com',
@@ -487,7 +487,7 @@ based on this style guide.
 * Align the elements of array literals spanning multiple lines.
 
   ```Ruby
-  # bad - single indent
+  # плохо - single indent
   menu_item = ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
@@ -506,7 +506,7 @@ based on this style guide.
 * Add underscores to large numeric literals to improve their readability.
 
   ```Ruby
-  # bad - how many 0s are there?
+  # плохо - how many 0s are there?
   num = 1000000
 
   # good - much easier to parse for the human brain
@@ -526,7 +526,7 @@ based on this style guide.
   as easy to spot as regular comments.
 
   ```Ruby
-  # bad
+  # плохо
   =begin
   comment line
   another comment line
@@ -539,42 +539,42 @@ based on this style guide.
 
 ## Синтаксис
 
-* Use `::` only to reference constants(this includes classes and
-  modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-  Never use `::` for regular method invocation.
+* Используйте `::` только для обращения к константам (в том числе к классам и модулям)
+  и конструкторам класса (например, `Array()` or `Nokogiri::HTML()`).
+  Никогда не используйте `::` для обычного вызова методов.
 
   ```Ruby
-  # bad
+  # плохо
   SomeClass::some_method
   some_object::some_method
 
-  # good
+  # хорошо
   SomeClass.some_method
   some_object.some_method
   SomeModule::SomeClass::SOME_CONST
   SomeModule::SomeClass()
   ```
 
-* Use `def` with parentheses when there are arguments. Omit the
-  parentheses when the method doesn't accept any arguments.
+* Используйте `def` со скобками, когда у метода есть аргументы. Опускайте скобки
+  когда метод не принимает аргументов.
 
    ```Ruby
-   # bad
+   # плохо
    def some_method()
      # body omitted
    end
 
-   # good
+   # хорошо
    def some_method
      # body omitted
    end
 
-   # bad
+   # плохо
    def some_method_with_arguments arg1, arg2
      # body omitted
    end
 
-   # good
+   # хорошо
    def some_method_with_arguments(arg1, arg2)
      # body omitted
    end
@@ -589,7 +589,7 @@ based on this style guide.
   ```Ruby
   arr = [1, 2, 3]
 
-  # bad
+  # плохо
   for elem in arr do
     puts elem
   end
@@ -607,7 +607,7 @@ based on this style guide.
 * Never use `then` for multi-line `if/unless`.
 
   ```Ruby
-  # bad
+  # плохо
   if some_condition then
     # body omitted
   end
@@ -621,7 +621,7 @@ based on this style guide.
 * Always put the condition on the same line as the `if`/`unless` in a multi-line conditional.
 
   ```Ruby
-  # bad
+  # плохо
   if
     some_condition
     do_something
@@ -639,7 +639,7 @@ based on this style guide.
   It's more common and obviously more concise.
 
   ```Ruby
-  # bad
+  # плохо
   result = if some_condition then something else something_else end
 
   # good
@@ -651,7 +651,7 @@ based on this style guide.
   `if/else` constructs in these cases.
 
   ```Ruby
-  # bad
+  # плохо
   some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
 
   # good
@@ -666,7 +666,7 @@ based on this style guide.
   the ternary operator instead.
 
   ```Ruby
-  # bad
+  # плохо
   result = if some_condition: something else something_else end
 
   # good
@@ -678,7 +678,7 @@ based on this style guide.
 * Leverage the fact that `if` and `case` are expressions which return a result.
 
   ```Ruby
-  # bad
+  # плохо
   if condition
     result = x
   else
@@ -702,7 +702,7 @@ based on this style guide.
 * Use `!` instead of `not`.
 
   ```Ruby
-  # bad - braces are required because of op precedence
+  # плохо - braces are required because of op precedence
   x = (not something)
 
   # good
@@ -712,7 +712,7 @@ based on this style guide.
 * Avoid the use of `!!`.
 
   ```Ruby
-  # bad
+  # плохо
   x = 'test'
   # obscure nil check
   if !!x
@@ -734,7 +734,7 @@ based on this style guide.
   it. Always use `&&` and `||` instead.
 
   ```Ruby
-  # bad
+  # плохо
   # boolean expression
   if some_condition and some_other_condition
     do_something
@@ -759,7 +759,7 @@ based on this style guide.
   body. Another good alternative is the usage of control flow `&&/||`.
 
   ```Ruby
-  # bad
+  # плохо
   if some_condition
     do_something
   end
@@ -775,7 +775,7 @@ based on this style guide.
   non-trivial multi-line block.
 
   ```Ruby
-  # bad
+  # плохо
   10.times do
     # multi-line body omitted
   end if some_condition
@@ -792,10 +792,10 @@ based on this style guide.
   flow `||`).
 
   ```Ruby
-  # bad
+  # плохо
   do_something if !some_condition
 
-  # bad
+  # плохо
   do_something if not some_condition
 
   # good
@@ -808,7 +808,7 @@ based on this style guide.
 * Never use `unless` with `else`. Rewrite these with the positive case first.
 
   ```Ruby
-  # bad
+  # плохо
   unless success?
     puts 'failure'
   else
@@ -826,7 +826,7 @@ based on this style guide.
 * Don't use parentheses around the condition of an `if/unless/while/until`.
 
   ```Ruby
-  # bad
+  # плохо
   if (x > 10)
     # body omitted
   end
@@ -840,7 +840,7 @@ based on this style guide.
 * Never use `while/until condition do` for multi-line `while/until`.
 
   ```Ruby
-  # bad
+  # плохо
   while x > 5 do
     # body omitted
   end
@@ -863,7 +863,7 @@ based on this style guide.
   body.
 
   ```Ruby
-  # bad
+  # плохо
   while some_condition
     do_something
   end
@@ -875,7 +875,7 @@ based on this style guide.
 * Favor `until` over `while` for negative conditions.
 
   ```Ruby
-  # bad
+  # плохо
   do_something while !some_condition
 
   # good
@@ -885,7 +885,7 @@ based on this style guide.
 * Use `Kernel#loop` instead of `while/until` when you need an infinite loop.
 
     ```ruby
-    # bad
+    # плохо
     while true
       do_something
     end
@@ -903,7 +903,7 @@ based on this style guide.
 * Use `Kernel#loop` with `break` rather than `begin/end/until` or `begin/end/while` for post-loop tests.
 
   ```Ruby
-  # bad
+  # плохо
   begin
     puts val
     val += 1
@@ -944,7 +944,7 @@ based on this style guide.
 * Omit the outer braces around an implicit options hash.
 
   ```Ruby
-  # bad
+  # плохо
   user.set({ name: 'John', age: 45, permissions: { read: true } })
 
   # good
@@ -956,7 +956,7 @@ based on this style guide.
 
   ```Ruby
   class Person < ActiveRecord::Base
-    # bad
+    # плохо
     validates(:name, { presence: true, length: { within: 1..10 } })
 
     # good
@@ -967,7 +967,7 @@ based on this style guide.
 * Omit parentheses for method calls with no arguments.
 
   ```Ruby
-  # bad
+  # плохо
   Kernel.exit!()
   2.even?()
   fork()
@@ -989,7 +989,7 @@ based on this style guide.
   ```Ruby
   names = ['Bozhidar', 'Steve', 'Sarah']
 
-  # bad
+  # плохо
   names.each do |name|
     puts name
   end
@@ -997,7 +997,7 @@ based on this style guide.
   # good
   names.each { |name| puts name }
 
-  # bad
+  # плохо
   names.select do |name|
     name.start_with?('S')
   end.map { |name| name.upcase }
@@ -1018,7 +1018,7 @@ based on this style guide.
   ```Ruby
   require 'tempfile'
 
-  # bad
+  # плохо
   def with_tmp_dir
     Dir.mktmpdir do |tmp_dir|
       Dir.chdir(tmp_dir) { |dir| yield dir }  # block just passes arguments
@@ -1040,7 +1040,7 @@ based on this style guide.
 * Avoid `return` where not required for flow of control.
 
   ```Ruby
-  # bad
+  # плохо
   def some_method(some_arr)
     return some_arr.size
   end
@@ -1054,7 +1054,7 @@ based on this style guide.
 * Avoid `self` where not required. (It is only required when calling a self write accessor.)
 
   ```Ruby
-  # bad
+  # плохо
   def ready?
     if self.last_reviewed_at > self.last_updated_at
       self.worker.update(self.content, self.options)
@@ -1085,7 +1085,7 @@ based on this style guide.
       # both options and self.options are equivalent here
     end
 
-    # bad
+    # плохо
     def do_something(options = {})
       unless options[:when] == :later
         output(self.options[:message])
@@ -1107,7 +1107,7 @@ based on this style guide.
   *safe assignment in condition*.
 
   ```Ruby
-  # bad (+ a warning)
+  # плохо (+ a warning)
   if v = array.grep(/foo/)
     do_something(v)
     ...
@@ -1130,7 +1130,7 @@ based on this style guide.
 * Use shorthand self assignment operators whenever applicable.
 
   ```Ruby
-  # bad
+  # плохо
   x = x + y
   x = x * y
   x = x**y
@@ -1150,10 +1150,10 @@ based on this style guide.
 * Use `||=` to initialize variables only if they're not already initialized.
 
   ```Ruby
-  # bad
+  # плохо
   name = name ? name : 'Bozhidar'
 
-  # bad
+  # плохо
   name = 'Bozhidar' unless name
 
   # good - set name to Bozhidar, only if it's nil or false
@@ -1164,7 +1164,7 @@ based on this style guide.
   would happen if the current value happened to be `false`.)
 
   ```Ruby
-  # bad - would set enabled to true even if it was false
+  # плохо - would set enabled to true even if it was false
   enabled ||= true
 
   # good
@@ -1176,12 +1176,12 @@ based on this style guide.
   check its existence with `if`.
 
   ```Ruby
-  # bad
+  # плохо
   if something
     something = something.downcase
   end
 
-  # bad
+  # плохо
   something = something ? nil : something.downcase
 
   # ok
@@ -1199,7 +1199,7 @@ based on this style guide.
   outside of them it yields some pretty confusing code.
 
   ```Ruby
-  # bad
+  # плохо
   Array === something
   (1..100) === 7
   /something/ === some_string
@@ -1216,7 +1216,7 @@ based on this style guide.
   aliases provided by the `English` library.
 
   ```Ruby
-  # bad
+  # плохо
   $:.unshift File.dirname(__FILE__)
 
   # good
@@ -1227,7 +1227,7 @@ based on this style guide.
 * Never put a space between a method name and the opening parenthesis.
 
   ```Ruby
-  # bad
+  # плохо
   f (3 + 2) + 1
 
   # good
@@ -1245,7 +1245,7 @@ based on this style guide.
   `lambda` method for multi-line blocks.
 
   ```Ruby
-  # bad
+  # плохо
   l = lambda { |a, b| a + b }
   l.call(1, 2)
 
@@ -1268,7 +1268,7 @@ based on this style guide.
 * Prefer `proc` over `Proc.new`.
 
   ```Ruby
-  # bad
+  # плохо
   p = Proc.new { |n| puts n }
 
   # good
@@ -1278,11 +1278,11 @@ based on this style guide.
 * Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
 
   ```Ruby
-  # bad - looks similar to Enumeration access
+  # плохо - looks similar to Enumeration access
   l = ->(v) { puts v }
   l[1]
 
-  # also bad - uncommon syntax
+  # also плохо - uncommon syntax
   l = ->(v) { puts v }
   l.(1)
 
@@ -1297,7 +1297,7 @@ based on this style guide.
   and tools like RuboCop and will suppress their unused variable warnings.
 
   ```Ruby
-  # bad
+  # плохо
   result = hash.map { |k, v| v + 1 }
 
   def something(x)
@@ -1335,7 +1335,7 @@ based on this style guide.
   cryptic `String#%` method.
 
   ```Ruby
-  # bad
+  # плохо
   '%d %d' % [20, 10]
   # => '20 10'
 
@@ -1359,7 +1359,7 @@ based on this style guide.
   a string argument.
 
   ```Ruby
-  # bad
+  # плохо
   %w(one two three) * ', '
   # => 'one, two, three'
 
@@ -1373,7 +1373,7 @@ based on this style guide.
   an array.
 
   ```Ruby
-  # bad
+  # плохо
   paths = [paths] unless paths.is_a? Array
   paths.each { |path| do_something(path) }
 
@@ -1387,7 +1387,7 @@ based on this style guide.
 * Use ranges or `Comparable#between?` instead of complex comparison logic when possible.
 
   ```Ruby
-  # bad
+  # плохо
   do_something if x >= 1000 && x <= 2000
 
   # good
@@ -1401,7 +1401,7 @@ based on this style guide.
   `==`. Numeric comparisons are OK.
 
   ```Ruby
-  # bad
+  # плохо
   if x % 2 == 0
   end
 
@@ -1431,7 +1431,7 @@ based on this style guide.
 * Don't do explicit non-`nil` checks unless you're dealing with boolean values.
 
     ```ruby
-    # bad
+    # плохо
     do_something if !something.nil?
     do_something if something != nil
 
@@ -1449,7 +1449,7 @@ based on this style guide.
 * Never use `END` blocks. Use `Kernel#at_exit` instead.
 
   ```ruby
-  # bad
+  # плохо
   END { puts 'Goodbye!' }
 
   # good
@@ -1465,7 +1465,7 @@ based on this style guide.
   soon as it can.
 
   ```Ruby
-  # bad
+  # плохо
   def compute_thing(thing)
     if thing[:foo]
       update_with_bar(thing)
@@ -1489,7 +1489,7 @@ based on this style guide.
   Prefer `next` in loops instead of conditional blocks.
 
   ```Ruby
-  # bad
+  # плохо
   [0, 1, 2, 3].each do |item|
     if item > 1
       puts item
@@ -1512,10 +1512,10 @@ based on this style guide.
 * Name identifiers in English.
 
   ```Ruby
-  # bad - identifier using non-ascii characters
+  # плохо - identifier using non-ascii characters
   заплата = 1_000
 
-  # bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
+  # плохо - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
   zaplata = 1_000
 
   # good
@@ -1525,7 +1525,7 @@ based on this style guide.
 * Use `snake_case` for symbols, methods and variables.
 
   ```Ruby
-  # bad
+  # плохо
   :'some symbol'
   :SomeSymbol
   :someSymbol
@@ -1552,7 +1552,7 @@ based on this style guide.
   RFC, XML uppercase.)
 
   ```Ruby
-  # bad
+  # плохо
   class Someclass
     ...
   end
@@ -1585,7 +1585,7 @@ based on this style guide.
 * Use `SCREAMING_SNAKE_CASE` for other constants.
 
   ```Ruby
-  # bad
+  # плохо
   SomeConst = 5
 
   # good
@@ -1603,7 +1603,7 @@ based on this style guide.
   there exists a safe version of that *dangerous* method.
 
   ```Ruby
-  # bad - there is no matching 'safe' method
+  # плохо - there is no matching 'safe' method
   class Person
     def update!
     end
@@ -1671,7 +1671,7 @@ based on this style guide.
   order to determine its size.
 
   ```Ruby
-  # bad
+  # плохо
   some_hash.count
 
   # good
@@ -1684,7 +1684,7 @@ based on this style guide.
   `flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
 
   ```Ruby
-  # bad
+  # плохо
   all_songs = users.map(&:songs).flatten.uniq
 
   # good
@@ -1695,7 +1695,7 @@ based on this style guide.
   do a new array allocation and that's a good thing.
 
   ```Ruby
-  # bad
+  # плохо
   array.reverse.each { ... }
 
   # good
@@ -1723,7 +1723,7 @@ based on this style guide.
 * Avoid superfluous comments.
 
   ```Ruby
-  # bad
+  # плохо
   counter += 1 # Increments counter by one.
   ```
 
@@ -1733,7 +1733,7 @@ based on this style guide.
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
-* Avoid writing comments to explain bad code. Refactor the code to
+* Avoid writing comments to explain плохо code. Refactor the code to
   make it self-explanatory. (Do or do not - there is no try. --Yoda)
 
 ### Пометки в комментариях
@@ -1830,7 +1830,7 @@ based on this style guide.
   classes each in their own file in a folder named like the containing class.
 
   ```Ruby
-  # bad
+  # плохо
 
   # foo.rb
   class Foo
@@ -1871,7 +1871,7 @@ based on this style guide.
   used only when it makes sense to create instances out of them.
 
   ```Ruby
-  # bad
+  # плохо
   class SomeClass
     def self.some_method
       # body omitted
@@ -1898,7 +1898,7 @@ based on this style guide.
   to turn a module's instance methods into class methods.
 
   ```Ruby
-  # bad
+  # плохо
   module Utilities
     extend self
 
@@ -1953,7 +1953,7 @@ based on this style guide.
 * Use the `attr` family of functions to define trivial accessors or mutators.
 
   ```Ruby
-  # bad
+  # плохо
   class Person
     def initialize(first_name, last_name)
       @first_name = first_name
@@ -1983,7 +1983,7 @@ based on this style guide.
 * Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
 
   ```Ruby
-  # bad - creates a single attribute accessor (deprecated in 1.9)
+  # плохо - creates a single attribute accessor (deprecated in 1.9)
   attr :something, true
   attr :one, :two, :three # behaves as attr_reader
 
@@ -2029,7 +2029,7 @@ based on this style guide.
 * Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.
 
   ```Ruby
-  # bad
+  # плохо
   class Animal
     # abstract method
     def speak
@@ -2120,7 +2120,7 @@ based on this style guide.
 
   ```Ruby
   class TestClass
-    # bad
+    # плохо
     def TestClass.some_method
       # body omitted
     end
@@ -2161,7 +2161,7 @@ based on this style guide.
 * Don't specify `RuntimeError` explicitly in the two argument version of `fail/raise`.
 
   ```Ruby
-  # bad
+  # плохо
   fail RuntimeError, 'message'
 
   # good - signals a RuntimeError by default
@@ -2172,7 +2172,7 @@ based on this style guide.
   arguments to `fail/raise`, instead of an exception instance.
 
   ```Ruby
-  # bad
+  # плохо
   fail SomeException.new('message')
   # Note that there is no way to do `fail SomeException.new('message'), backtrace`.
 
@@ -2200,7 +2200,7 @@ based on this style guide.
 * Use *implicit begin blocks* where possible.
 
   ```Ruby
-  # bad
+  # плохо
   def foo
     begin
       # main logic goes here
@@ -2221,7 +2221,7 @@ based on this style guide.
   *contingency methods* (a term coined by Avdi Grimm).
 
   ```Ruby
-  # bad
+  # плохо
   begin
     something_that_might_fail
   rescue IOError
@@ -2249,21 +2249,21 @@ based on this style guide.
 * Don't suppress exceptions.
 
   ```Ruby
-  # bad
+  # плохо
   begin
     # an exception occurs here
   rescue SomeError
     # the rescue clause does absolutely nothing
   end
 
-  # bad
+  # плохо
   do_something rescue nil
   ```
 
 * Avoid using `rescue` in its modifier form.
 
   ```Ruby
-  # bad - this catches exceptions of StandardError class and its descendant classes
+  # плохо - this catches exceptions of StandardError class and its descendant classes
   read_file rescue handle_error($!)
 
   # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
@@ -2277,7 +2277,7 @@ based on this style guide.
 * Don't use exceptions for flow of control.
 
   ```Ruby
-  # bad
+  # плохо
   begin
     n / d
   rescue ZeroDivisionError
@@ -2296,7 +2296,7 @@ based on this style guide.
   `exit`, requiring you to `kill -9` the process.
 
   ```Ruby
-  # bad
+  # плохо
   begin
     # calls to exit and kill signals will be caught (except kill -9)
     exit
@@ -2326,7 +2326,7 @@ based on this style guide.
   they'll never be rescued from.
 
   ```Ruby
-  # bad
+  # плохо
   begin
     # some code
   rescue Exception => e
@@ -2367,7 +2367,7 @@ based on this style guide.
   pass parameters to their constructors, that is).
 
   ```Ruby
-  # bad
+  # плохо
   arr = Array.new
   hash = Hash.new
 
@@ -2381,7 +2381,7 @@ based on this style guide.
   Apply this rule only to arrays with two or more elements.
 
   ```Ruby
-  # bad
+  # плохо
   STATES = ['draft', 'open', 'closed']
 
   # good
@@ -2393,7 +2393,7 @@ based on this style guide.
   this rule only to arrays with two or more elements.
 
   ```Ruby
-  # bad
+  # плохо
   STATES = [:draft, :open, :closed]
 
   # good
@@ -2404,14 +2404,14 @@ based on this style guide.
   when the items are not on separate lines.
 
   ```Ruby
-  # bad - easier to move/add/remove items, but still not preferred
+  # плохо - easier to move/add/remove items, but still not preferred
   VALUES = [
              1001,
              2020,
              3333,
            ]
 
-  # bad
+  # плохо
   VALUES = [1001, 2020, 3333, ]
 
   # good
@@ -2435,7 +2435,7 @@ based on this style guide.
 * Prefer symbols instead of strings as hash keys.
 
   ```Ruby
-  # bad
+  # плохо
   hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
   # good
@@ -2447,7 +2447,7 @@ based on this style guide.
 * Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
 
   ```Ruby
-  # bad
+  # плохо
   hash = { :one => 1, :two => 2, :three => 3 }
 
   # good
@@ -2459,7 +2459,7 @@ based on this style guide.
   hash rockets syntax.
 
   ```Ruby
-  # bad
+  # плохо
   { a: 1, 'b' => 2 }
 
   # good
@@ -2472,7 +2472,7 @@ based on this style guide.
   by Matz, the longer forms are considered deprecated.
 
   ```Ruby
-  # bad
+  # плохо
   hash.has_key?(:test)
   hash.has_value?(value)
 
@@ -2485,7 +2485,7 @@ based on this style guide.
 
   ```Ruby
   heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
-  # bad - if we make a mistake we might not spot it right away
+  # плохо - if we make a mistake we might not spot it right away
   heroes[:batman] # => "Bruce Wayne"
   heroes[:supermann] # => nil
 
@@ -2498,7 +2498,7 @@ based on this style guide.
   ```Ruby
   batman = { name: 'Bruce Wayne', is_evil: false }
 
-  # bad - if we just use || operator with falsy value we won't get the expected result
+  # плохо - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
 
   # good - fetch work correctly with falsy values
@@ -2510,7 +2510,7 @@ based on this style guide.
   ```Ruby
   batman = { name: 'Bruce Wayne' }
 
-  # bad - if we use the default value, we eager evaluate it
+  # плохо - if we use the default value, we eager evaluate it
   # so it can slow the program down if done multiple times
   batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
 
@@ -2521,7 +2521,7 @@ based on this style guide.
 * Use `Hash#values_at` when you need to retrieve several values consecutively from a hash.
 
   ```Ruby
-  # bad
+  # плохо
   email = data['email']
   nickname = data['nickname']
 
@@ -2538,7 +2538,7 @@ based on this style guide.
 * Prefer string interpolation and string formatting instead of string concatenation:
 
   ```Ruby
-  # bad
+  # плохо
   email_with_name = user.name + ' <' + user.email + '>'
 
   # good
@@ -2564,7 +2564,7 @@ based on this style guide.
     etc.
 
     ```Ruby
-    # bad
+    # плохо
     name = "Bozhidar"
 
     # good
@@ -2575,7 +2575,7 @@ based on this style guide.
     contains `"` or escape characters you want to suppress.
 
     ```Ruby
-    # bad
+    # плохо
     name = 'Bozhidar'
 
     # good
@@ -2591,7 +2591,7 @@ based on this style guide.
   a single character in it).
 
   ```Ruby
-  # bad
+  # плохо
   char = ?c
 
   # good
@@ -2610,7 +2610,7 @@ based on this style guide.
       @last_name = last_name
     end
 
-    # bad - valid, but awkward
+    # плохо - valid, but awkward
     def to_s
       "#@first_name #@last_name"
     end
@@ -2622,7 +2622,7 @@ based on this style guide.
   end
 
   $global = 0
-  # bad
+  # плохо
   puts "$global = #$global"
 
   # good
@@ -2632,7 +2632,7 @@ based on this style guide.
 * Don't use `Object#to_s` on interpolated objects. It's invoked on them automatically.
 
   ```Ruby
-  # bad
+  # плохо
   message = "This is the #{result.to_s}."
 
   # good
@@ -2687,7 +2687,7 @@ based on this style guide.
 * Use non-capturing groups when you don't use captured result of parentheses.
 
   ```Ruby
-  /(first|second)/   # bad
+  /(first|second)/   # плохо
   /(?:first|second)/ # good
   ```
 
@@ -2698,7 +2698,7 @@ based on this style guide.
   /(regexp)/ =~ string
   ...
 
-  # bad
+  # плохо
   process $1
 
   # good
@@ -2709,7 +2709,7 @@ based on this style guide.
   can be used instead.
 
   ```Ruby
-  # bad
+  # плохо
   /(regexp)/ =~ string
   ...
   process Regexp.last_match[1]
@@ -2754,15 +2754,15 @@ based on this style guide.
   interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
 
   ```Ruby
-  # bad (no interpolation needed)
+  # плохо (no interpolation needed)
   %(<div class="text">Some text</div>)
   # should be '<div class="text">Some text</div>'
 
-  # bad (no double-quotes)
+  # плохо (no double-quotes)
   %(This is #{quality} style)
   # should be "This is #{quality} style"
 
-  # bad (multiple lines)
+  # плохо (multiple lines)
   %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
   # should be a heredoc.
 
@@ -2776,7 +2776,7 @@ based on this style guide.
   them.
 
   ```Ruby
-  # bad
+  # плохо
   name = %q(Bruce Wayne)
   time = %q(8 o'clock)
   question = %q("What did you say?")
@@ -2790,10 +2790,10 @@ based on this style guide.
 * Use `%r` only for regular expressions matching *more than* one '/' character.
 
   ```Ruby
-  # bad
+  # плохо
   %r(\s+)
 
-  # still bad
+  # still плохо
   %r(^/(.*)$)
   # should be /^\/(.*)$/
 
@@ -2805,7 +2805,7 @@ based on this style guide.
   it(which is rather unlikely).
 
   ```Ruby
-  # bad
+  # плохо
   date = %x(date)
 
   # good
@@ -2823,7 +2823,7 @@ based on this style guide.
   delimiter, depending on the regexp's content.
 
   ```Ruby
-  # bad
+  # плохо
   %w[one two three]
   %q{"Test's king!", John said.}
 
@@ -2881,7 +2881,7 @@ based on this style guide.
   - Delegate to assertive, non-magical methods:
 
     ```ruby
-    # bad
+    # плохо
     def method_missing?(meth, *args, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
         # ... lots of code to do a find_by
@@ -2919,7 +2919,7 @@ based on this style guide.
 * Use module instance variables instead of global variables.
 
   ```Ruby
-  # bad
+  # плохо
   $foo_bar = 1
 
   # good
