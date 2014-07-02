@@ -1,79 +1,12 @@
 # Prelude
 
-> Role models are important. <br/>
-> -- Officer Alex J. Murphy / RoboCop
-
-One thing has always bothered me as a Ruby developer - Python developers
-have a great programming style reference
-([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
-an official guide, documenting Ruby coding style and best
-practices. And I do believe that style matters. I also believe that a
-great hacker community, such as Ruby has, should be quite capable of
-producing this coveted document.
-
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was
-doing might be interesting to members of the Ruby community in general
-and that the world had little need for another internal company
-guideline. But the world could certainly benefit from a
-community-driven and community-sanctioned set of practices, idioms and
-style prescriptions for Ruby programming.
-
-Since the inception of the guide I've received a lot of feedback from
-members of the exceptional Ruby community around the world. Thanks for
-all the suggestions and the support! Together we can make a resource
-beneficial to each and every Ruby developer out there.
-
-By the way, if you're into Rails you might want to check out the
-complementary
+If you're into Rails you might want to check out the
+complementary.
 [Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
 
 # The Ruby Style Guide
 
-This Ruby style guide recommends best practices so that real-world Ruby
-programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a
-style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
-
-The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted I've
-assumed it's pretty obvious).
-
-I didn't come up with all the rules out of nowhere - they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Ruby community and
-various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
-and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
-
-There are some areas in which there is no clear consensus in the
-Ruby community regarding a particular style (like string literal quoting,
-spacing inside hash literals, dot position in multi-line method
-chaining, etc.). In such scenarios all popular styles are acknowledged
-and it's up to you to pick one and apply it consistently.
-
-The guide is still a work in progress - some rules are lacking
-examples, some rules don't have examples that illustrate them clearly
-enough. In due time these issues will be addressed - just keep them in
-mind for now.
-
-You can generate a PDF or an HTML copy of this guide using
-[Transmuter](https://github.com/TechnoGate/transmuter).
-
-[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
-based on this style guide.
-
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
+Be consistent.
 
 ## Table of Contents
 
@@ -94,11 +27,6 @@ Translations of the guide are available in the following languages:
 
 ## Source Code Layout
 
-> Nearly everybody is convinced that every style but their own is
-> ugly and unreadable. Leave out the "but their own" and they're
-> probably right... <br/>
-> -- Jerry Coffin (on indentation)
-
 * Use `UTF-8` as the source file encoding.
 * Use two **spaces** per indentation level (aka soft tabs). No hard tabs.
 
@@ -113,6 +41,12 @@ Translations of the guide are available in the following languages:
     do_something
   end
   ```
+
+* Limit lines to 80 characters.
+
+* Avoid trailing whitespace.
+
+* End each file with a newline.
 
 * Use Unix-style line endings. (*BSD/Solaris/Linux/OS X users are covered by default,
   Windows users have to be extra careful.)
@@ -211,36 +145,26 @@ Translations of the guide are available in the following languages:
 
   `{` and `}` deserve a bit of clarification, since they are used
   for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
+  strings. For hash literals, no space after and before `{` and `}`,
+  respectively.
 
   ```Ruby
-  # good - space after { and before }
+  # bad - space after { and before }
   { one: 1, two: 2 }
 
   # good - no space after { and before }
   {one: 1, two: 2}
   ```
 
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
-  As far as embedded expressions go, there are also two acceptable
-  options:
+  As far as embedded expressions go, spaces before and after are unacceptable
 
   ```Ruby
   # good - no spaces
   "string#{expr}"
 
-  # ok - arguably more readable
+  # bad - spaces
   "string#{ expr }"
   ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * No spaces after `(`, `[` or before `]`, `)`.
 
@@ -295,13 +219,13 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # bad - pretty convoluted
   kind = case year
-  when 1850..1889 then 'Blues'
-  when 1890..1909 then 'Ragtime'
-  when 1910..1929 then 'New Orleans Jazz'
-  when 1930..1939 then 'Swing'
-  when 1940..1950 then 'Bebop'
-  else 'Jazz'
-  end
+    when 1850..1889 then 'Blues'
+    when 1890..1909 then 'Ragtime'
+    when 1910..1929 then 'New Orleans Jazz'
+    when 1930..1939 then 'Swing'
+    when 1940..1950 then 'Bebop'
+    else 'Jazz'
+    end
 
   result = if some_cond
     calc_something
@@ -309,7 +233,7 @@ Translations of the guide are available in the following languages:
     calc_something_else
   end
 
-  # good - it's apparent what's going on
+  # bad - whitespace isn't free when you only have 80 characters.
   kind = case year
          when 1850..1889 then 'Blues'
          when 1890..1909 then 'Ragtime'
@@ -326,28 +250,37 @@ Translations of the guide are available in the following languages:
            end
 
   # good (and a bit more width efficient)
-  kind =
-    case year
-    when 1850..1889 then 'Blues'
-    when 1890..1909 then 'Ragtime'
-    when 1910..1929 then 'New Orleans Jazz'
-    when 1930..1939 then 'Swing'
-    when 1940..1950 then 'Bebop'
-    else 'Jazz'
-    end
+  kind = case year
+  when 1850..1889 then 'Blues'
+  when 1890..1909 then 'Ragtime'
+  when 1910..1929 then 'New Orleans Jazz'
+  when 1930..1939 then 'Swing'
+  when 1940..1950 then 'Bebop'
+  else 'Jazz'
+  end
 
-  result =
-    if some_cond
-      calc_something
-    else
-      calc_something_else
-    end
+  result = if some_cond
+    calc_something
+  else
+    calc_something_else
+  end
   ```
 
 * Use empty lines between method definitions and also to break up a method
   into logical paragraphs internally.
 
   ```Ruby
+  # bad
+  def some_method
+    data = initialize(options)
+    data.manipulate!
+    data.result
+  end
+  def some_method
+    result
+  end
+
+  # good
   def some_method
     data = initialize(options)
 
@@ -410,41 +343,21 @@ Translations of the guide are available in the following languages:
 
   long_string = 'First part of the long string' \
                 ' and second part of the long string'
+
   ```
 
-* Adopt a consistent multi-line method chaining style. There are two
-  popular styles in the Ruby community, both of which are considered
-  good - leading `.` (Option A) and trailing `.` (Option B).
+* When continuing a chained method invocation on
+  another line keep the `.` on the second line.
 
-  * **(Option A)** When continuing a chained method invocation on
-    another line keep the `.` on the second line.
+  ```Ruby
+  # bad - need to consult first line to understand second line
+  one.two.three.
+    four
 
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
-    include the `.` on the first line to indicate that the
-    expression continues.
-
-    ```Ruby
-    # bad - need to read ahead to the second line to know that the chain continues
-    one.two.three
-      .four
-
-    # good - it's immediately clear that the expression continues beyond the first line
-    one.two.three.
-      four
-    ```
-
-  A discussion on the merits of both alternative styles can be found
-  [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
+  # good - it's immediately clear what's going on the second line
+  one.two.three
+    .four
+  ```
 
 * Align the parameters of a method call if they span more than one
   line. When aligning parameters is not appropriate due to line-length
@@ -466,7 +379,7 @@ Translations of the guide are available in the following languages:
         body: source.text)
   end
 
-  # good
+  # bad - wastes whitespace
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
                    from: 'us@example.com',
@@ -488,20 +401,20 @@ Translations of the guide are available in the following languages:
 * Align the elements of array literals spanning multiple lines.
 
   ```Ruby
-  # bad - single indent
+  # bad - brackets/parentheses should be on separate line
   menu_item = ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
+
+  # bad
+  menu_item =
+    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
+     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
   # good
   menu_item = [
     'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam'
   ]
-
-  # good
-  menu_item =
-    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
-     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
 * Add underscores to large numeric literals to improve their readability.
@@ -513,16 +426,6 @@ Translations of the guide are available in the following languages:
   # good - much easier to parse for the human brain
   num = 1_000_000
   ```
-
-* Use RDoc and its conventions for API documentation.  Don't put an
-  empty line between the comment block and the `def`.
-
-* Limit lines to 80 characters.
-
-* Avoid trailing whitespace.
-
-* End each file with a newline.
-
 * Don't use block comments. They cannot be preceded by whitespace and are not
   as easy to spot as regular comments.
 
@@ -553,6 +456,9 @@ Translations of the guide are available in the following languages:
   SomeClass.some_method
   some_object.some_method
   SomeModule::SomeClass::SOME_CONST
+
+  # While defining methods using the constant syntax isn't best practice, they
+  # exist, this is the best practice for calling them.
   SomeModule::SomeClass()
   ```
 
@@ -581,7 +487,7 @@ Translations of the guide are available in the following languages:
    end
    ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
+* Never use `for`, unless you know exactly why. Most of the time Enumerable
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
   doesn't introduce a new scope (unlike `each`) and variables defined
@@ -687,18 +593,29 @@ Translations of the guide are available in the following languages:
   end
 
   # good
-  result =
-    if condition
-      x
-    else
-      y
-    end
+  result = if condition
+    x
+  else
+    y
+  end
   ```
 
 * Use `when x then ...` for one-line cases. The alternative syntax
   `when x: ...` has been removed as of Ruby 1.9.
 
 * Never use `when x; ...`. See the previous rule.
+
+  ```ruby
+  # bad
+  case
+  when x; y
+  end
+
+  # good
+  case
+  when x then y
+  end
+  ```
 
 * Use `!` instead of `not`.
 
@@ -710,7 +627,7 @@ Translations of the guide are available in the following languages:
   x = !something
   ```
 
-* Avoid the use of `!!`.
+* Avoid the use of `!!`. Exceptions are for referencing large objects that would stick around longer than necessary.
 
   ```Ruby
   # bad
@@ -721,18 +638,19 @@ Translations of the guide are available in the following languages:
   end
 
   x = false
-  # double negation is useless on booleans
+  # double negation is useless when you know the object is a boolean
   !!x # => false
 
   # good
   x = 'test'
-  unless x.nil?
+  if x
     # body omitted
   end
   ```
 
 * The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
+  it. Always use `&&` and `||` instead. Use parentheses rather than depend on
+  binding differences.
 
   ```Ruby
   # bad
@@ -806,7 +724,7 @@ Translations of the guide are available in the following languages:
   some_condition || do_something
   ```
 
-* Never use `unless` with `else`. Rewrite these with the positive case first.
+* Always write the positive case or 'happy path' first. Prefer to not use `unless` with `else`.
 
   ```Ruby
   # bad
@@ -816,8 +734,23 @@ Translations of the guide are available in the following languages:
     puts 'success'
   end
 
+  if failure?
+    puts 'failure'
+  else
+    puts 'success'
+  end
+
   # good
   if success?
+    puts 'success'
+  else
+    puts 'failure'
+  end
+
+  # less good, but reasonable if there is no reasonable means to determine
+  the positive case.
+  # Prefer unless condition over ! condition
+  unless failure?
     puts 'success'
   else
     puts 'failure'
@@ -983,9 +916,8 @@ Translations of the guide are available in the following languages:
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
-  ugly). Always use `do...end` for "control flow" and "method
-  definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
-  when chaining.
+  ugly). Always use `do...end` for "method definitions" (e.g. in Rakefiles and
+    certain DSLs).
 
   ```Ruby
   names = ['Bozhidar', 'Steve', 'Sarah']
@@ -1007,14 +939,8 @@ Translations of the guide are available in the following languages:
   names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
   ```
 
-  Some will argue that multiline chaining would look OK with the use of {...}, but they should
-  ask themselves - is this code really readable and can the blocks' contents be extracted into
-  nifty methods?
-
-* Consider using explicit block argument to avoid writing block
-  literal that just passes its arguments to another block. Beware of
-  the performance impact, though, as the block gets converted to a
-  Proc.
+* Always use an explicit block argument literal. Beware of the performance
+impact, though, as the block gets converted to a Proc.
 
   ```Ruby
   require 'tempfile'
@@ -1052,7 +978,7 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-* Avoid `self` where not required. (It is only required when calling a self write accessor.)
+* Avoid `self` where not required.
 
   ```Ruby
   # bad
