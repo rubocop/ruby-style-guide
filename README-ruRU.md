@@ -3,7 +3,7 @@
 > Role models are important. <br/>
 > -- Officer Alex J. Murphy / RoboCop
 
-Один из вопросов, который меня всегда беспокоил как разработчика на Руби, - это то,
+Один из вопросов, который меня всегда беспокоил как разработчика на Руби, &mdash; это то,
 что у разработчиков на Питоне есть великолепное руководству по стилю оформления
 ([PEP-8](http://www.python.org/dev/peps/pep-0008/)), а у нас
 никогда не было официального руководства, описывавшего бы стиль оформления кода на Руби
@@ -28,39 +28,39 @@
 
 # Руби: руководство по стилю оформления
 
-This Ruby style guide recommends best practices so that real-world Ruby
-programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a
-style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
+Это руководство по оформлению кода на Руби дает передовые рекодмендации, так что
+обычный программист на Руби сможет создавать код, который с легкостью смогут поддерживать
+другие обычные программисты на Руби. Руководство по оформлению, которое отражает повседневную
+практику, будет применяться постоянно, а руководство, стремящееся к идеалу, который не принимается
+обычными людьми, подвергается риску вообще быть забытым &mdash; не важно, насколько хорошим оно
+является.
 
-The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted I've
-assumed it's pretty obvious).
+Данное руководство разделено на несколько частей, состоящий из связанных по смыслу правил.
+В каждом случае я попытался обосновать появление этих правил (объяснение опущено в ситуациях,
+когда я посчитал его очевидным).
 
-I didn't come up with all the rules out of nowhere - they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Ruby community and
-various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
-and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+Все эти правила не появились из пустоты, они по большей части основываются на моем собственном
+обширном профессиональном опыте в качестве разработчика ПО, отзывах и предложениях других членов
+сообщества программистов на Руби и различных общепризнанных источниках по программированию на Руби,
+например, ["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
+и ["Язык программирования Ruby"](http://www.ozon.ru/context/detail/id/5704300/)(в оригинале
+ ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177)).
 
-There are some areas in which there is no clear consensus in the
-Ruby community regarding a particular style (like string literal quoting,
-spacing inside hash literals, dot position in multi-line method
-chaining, etc.). In such scenarios all popular styles are acknowledged
-and it's up to you to pick one and apply it consistently.
+Во многих областях до сих пор нет единого мнения в среде разработчиков на Руби относительно
+конкретных аспектов стиля оформления (например, оформление строк в кавычках, пробелы при оформлении
+хешей, место расположение точки при многострочном последовательном вызове методов и т.д.).
+В таких ситуациях мы рассматривали все распространенные стили, вам же решать, какой из этих стилей
+вы будете применять последовательно в вашем коде.
 
-The guide is still a work in progress - some rules are lacking
-examples, some rules don't have examples that illustrate them clearly
-enough. In due time these issues will be addressed - just keep them in
-mind for now.
+Это руководство все еще находится в процессе создания: у многих правил нет примеров,
+у других нет примеров, достаточно ясно объясняющих эти правила. В свое время каждое правило
+найдет свое объяснение, а пока просто примите их к сведению.
 
-You can generate a PDF or an HTML copy of this guide using
+Вы можете создать копию этого руководства в форматах PDF или HTML при помощи
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
-based on this style guide.
+[RuboCop](https://github.com/bbatsov/rubocop) &mdash; это анализатор кода,
+основывающийся на правилах этого руководства по оформлению.
 
 Переводы данного руководства доступны на следующих языках:
 
@@ -2999,5 +2999,5 @@ your friends and colleagues. Every comment, suggestion or opinion we
 get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
 
-Cheers,<br/>
+Всего,<br/>
 [Божидар](https://twitter.com/bbatsov)
