@@ -102,7 +102,7 @@
 * Используйте два **пробела** на уровень отступа (т.е. мягкую табуляцию). Никаких знаков табуляции.
 
   ```Ruby
-  # плохо - четыре пробела
+  # плохо (четыре пробела)
   def some_method
       do_something
   end
@@ -155,22 +155,23 @@
   FooError = Class.new(StandardError)
   ```
 
-* Avoid single-line methods. Although they are somewhat popular in the
-  wild, there are a few peculiarities about their definition syntax
-  that make their use undesirable. At any rate - there should be no more
-  than one expression in a single-line method.
+* Избегайте однострочных методов. И хотя они достаточно популярны в среде
+  программистов, существует множество неприятных мелочей, связанных с синтаксисом их
+  определений, которые делают применение таких методов нежелательным. В любом случае
+  однострочные методы не должны содержать больше одного выражения.
+
 
   ```Ruby
   # плохо
   def too_much; something; something_else; end
 
-  # сносно - notice that the first ; is required
+  # сносно (обратите внимание, что первая `;` обязательна)
   def no_braces_method; body end
 
-  # сносно - notice that the second ; is optional
+  # сносно (обратите внимание, что вторая `;` опциональна)
   def no_braces_method; body; end
 
-  # сносно - valid syntax, but no ; makes it kind of hard to read
+  # сносно (корректный синтаксис, но отсутствие `;` создает трудности при прочтении)
   def some_method() body end
 
   # хорошо
@@ -179,7 +180,7 @@
   end
   ```
 
-  One exception to the rule are empty-body methods.
+  Одним исключение в этом правиле являются методы с пустым телом.
 
   ```Ruby
   # хорошо
