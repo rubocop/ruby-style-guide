@@ -113,11 +113,11 @@
   end
   ```
 
-* Use Unix-style line endings. (*BSD/Solaris/Linux/OS X users are covered by default,
-  Windows users have to be extra careful.)
-  * If you're using Git you might want to add the following
-    configuration setting to protect your project from Windows line
-    endings creeping in:
+* Используйте стиль Unix для строк. (пользователи *BSD/Solaris/Linux/OS X используют их по умолчанию,
+  пользователям Windows нужно обратить особое внимание.)
+  * Если вы используете Git, вы можете добавить следующие настройки
+    в вашу конфигурацию, чтобы предотвратить нанамеренное проникновение в ваш код
+    строк, оканчивающихся в стиле Windows:
 
     ```bash
     $ git config --global core.autocrlf true
@@ -255,7 +255,7 @@
   # плохо
   ! something
 
-  # good
+  # хорошо
   !something
   ```
 
@@ -309,7 +309,7 @@
     calc_something_else
   end
 
-  # good - it's apparent what's going on
+  # хорошо - it's apparent what's going on
   kind = case year
          when 1850..1889 then 'Blues'
          when 1890..1909 then 'Ragtime'
@@ -325,7 +325,7 @@
              calc_something_else
            end
 
-  # good (and a bit more width efficient)
+  # хорошо (and a bit more width efficient)
   kind =
     case year
     when 1850..1889 then 'Blues'
@@ -375,7 +375,7 @@
   # плохо
   some_method(size, count, color, )
 
-  # good
+  # хорошо
   some_method(size, count, color)
   ```
 
@@ -387,7 +387,7 @@
     # do something...
   end
 
-  # good
+  # хорошо
   def some_method(arg1 = :default, arg2 = nil, arg3 = [])
     # do something...
   end
@@ -404,7 +404,7 @@
   result = 1 - \
            2
 
-  # good (but still ugly as hell)
+  # хорошо (but still ugly as hell)
   result = 1 \
            - 2
 
@@ -424,7 +424,7 @@
     one.two.three.
       four
 
-    # good - it's immediately clear what's going on the second line
+    # хорошо - it's immediately clear what's going on the second line
     one.two.three
       .four
     ```
@@ -438,7 +438,7 @@
     one.two.three
       .four
 
-    # good - it's immediately clear that the expression continues beyond the first line
+    # хорошо - it's immediately clear that the expression continues beyond the first line
     one.two.three.
       four
     ```
@@ -466,7 +466,7 @@
         body: source.text)
   end
 
-  # good
+  # хорошо
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
                    from: 'us@example.com',
@@ -474,7 +474,7 @@
                    body: source.text)
   end
 
-  # good (normal indent)
+  # хорошо (normal indent)
   def send_mail(source)
     Mailer.deliver(
       to: 'bob@example.com',
@@ -492,13 +492,13 @@
   menu_item = ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
-  # good
+  # хорошо
   menu_item = [
     'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam'
   ]
 
-  # good
+  # хорошо
   menu_item =
     ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
      'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
@@ -510,7 +510,7 @@
   # плохо - how many 0s are there?
   num = 1000000
 
-  # good - much easier to parse for the human brain
+  # хорошо - much easier to parse for the human brain
   num = 1_000_000
   ```
 
@@ -533,7 +533,7 @@
   another comment line
   =end
 
-  # good
+  # хорошо
   # comment line
   # another comment line
   ```
@@ -598,7 +598,7 @@
   # note that elem is accessible outside of the for loop
   elem #=> 3
 
-  # good
+  # хорошо
   arr.each { |elem| puts elem }
 
   # elem is not accessible outside each's block
@@ -613,7 +613,7 @@
     # body omitted
   end
 
-  # good
+  # хорошо
   if some_condition
     # body omitted
   end
@@ -629,7 +629,7 @@
     do_something_else
   end
 
-  # good
+  # хорошо
   if some_condition
     do_something
     do_something_else
@@ -643,7 +643,7 @@
   # плохо
   result = if some_condition then something else something_else end
 
-  # good
+  # хорошо
   result = some_condition ? something : something_else
   ```
 
@@ -655,7 +655,7 @@
   # плохо
   some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
 
-  # good
+  # хорошо
   if some_condition
     nested_condition ? nested_something : nested_something_else
   else
@@ -670,7 +670,7 @@
   # плохо
   result = if some_condition: something else something_else end
 
-  # good
+  # хорошо
   result = some_condition ? something : something_else
   ```
 
@@ -686,7 +686,7 @@
     result = y
   end
 
-  # good
+  # хорошо
   result =
     if condition
       x
@@ -706,7 +706,7 @@
   # плохо - braces are required because of op precedence
   x = (not something)
 
-  # good
+  # хорошо
   x = !something
   ```
 
@@ -724,7 +724,7 @@
   # double negation is useless on booleans
   !!x # => false
 
-  # good
+  # хорошо
   x = 'test'
   unless x.nil?
     # body omitted
@@ -744,7 +744,7 @@
   # control flow
   document.saved? or document.save!
 
-  # good
+  # хорошо
   # boolean expression
   if some_condition && some_other_condition
     do_something
@@ -765,7 +765,7 @@
     do_something
   end
 
-  # good
+  # хорошо
   do_something if some_condition
 
   # another good option
@@ -781,7 +781,7 @@
     # multi-line body omitted
   end if some_condition
 
-  # good
+  # хорошо
   if some_condition
     10.times do
       # multi-line body omitted
@@ -799,7 +799,7 @@
   # плохо
   do_something if not some_condition
 
-  # good
+  # хорошо
   do_something unless some_condition
 
   # another good option
@@ -816,7 +816,7 @@
     puts 'success'
   end
 
-  # good
+  # хорошо
   if success?
     puts 'success'
   else
@@ -832,7 +832,7 @@
     # body omitted
   end
 
-  # good
+  # хорошо
   if x > 10
     # body omitted
   end
@@ -850,7 +850,7 @@
     # body omitted
   end
 
-  # good
+  # хорошо
   while x > 5
     # body omitted
   end
@@ -869,7 +869,7 @@
     do_something
   end
 
-  # good
+  # хорошо
   do_something while some_condition
   ```
 
@@ -879,7 +879,7 @@
   # плохо
   do_something while !some_condition
 
-  # good
+  # хорошо
   do_something until some_condition
   ```
 
@@ -895,7 +895,7 @@
       do_something
     end
 
-    # good
+    # хорошо
     loop do
       do_something
     end
@@ -910,7 +910,7 @@
     val += 1
   end while val < 0
 
-  # good
+  # хорошо
   loop do
     puts val
     val += 1
@@ -948,7 +948,7 @@
   # плохо
   user.set({ name: 'John', age: 45, permissions: { read: true } })
 
-  # good
+  # хорошо
   user.set(name: 'John', age: 45, permissions: { read: true })
   ```
 
@@ -960,7 +960,7 @@
     # плохо
     validates(:name, { presence: true, length: { within: 1..10 } })
 
-    # good
+    # хорошо
     validates :name, presence: true, length: { within: 1..10 }
   end
   ```
@@ -974,7 +974,7 @@
   fork()
   'test'.upcase()
 
-  # good
+  # хорошо
   Kernel.exit!
   2.even?
   fork
@@ -995,7 +995,7 @@
     puts name
   end
 
-  # good
+  # хорошо
   names.each { |name| puts name }
 
   # плохо
@@ -1003,7 +1003,7 @@
     name.start_with?('S')
   end.map { |name| name.upcase }
 
-  # good
+  # хорошо
   names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
   ```
 
@@ -1026,7 +1026,7 @@
     end
   end
 
-  # good
+  # хорошо
   def with_tmp_dir(&block)
     Dir.mktmpdir do |tmp_dir|
       Dir.chdir(tmp_dir, &block)
@@ -1046,7 +1046,7 @@
     return some_arr.size
   end
 
-  # good
+  # хорошо
   def some_method(some_arr)
     some_arr.size
   end
@@ -1064,7 +1064,7 @@
     self.status == :verified
   end
 
-  # good
+  # хорошо
   def ready?
     if last_reviewed_at > last_updated_at
       worker.update(content, options)
@@ -1093,7 +1093,7 @@
       end
     end
 
-    # good
+    # хорошо
     def do_something(params = {})
       unless params[:when] == :later
         output(options[:message])
@@ -1114,13 +1114,13 @@
     ...
   end
 
-  # good (MRI would still complain, but RuboCop won't)
+  # хорошо (MRI would still complain, but RuboCop won't)
   if (v = array.grep(/foo/))
     do_something(v)
     ...
   end
 
-  # good
+  # хорошо
   v = array.grep(/foo/)
   if v
     do_something(v)
@@ -1139,7 +1139,7 @@
   x = x || y
   x = x && y
 
-  # good
+  # хорошо
   x += y
   x *= y
   x **= y
@@ -1157,7 +1157,7 @@
   # плохо
   name = 'Bozhidar' unless name
 
-  # good - set name to Bozhidar, only if it's nil or false
+  # хорошо - set name to Bozhidar, only if it's nil or false
   name ||= 'Bozhidar'
   ```
 
@@ -1168,7 +1168,7 @@
   # плохо - would set enabled to true even if it was false
   enabled ||= true
 
-  # good
+  # хорошо
   enabled = true if enabled.nil?
   ```
 
@@ -1188,7 +1188,7 @@
   # ok
   something = something.downcase if something
 
-  # good
+  # хорошо
   something = something && something.downcase
 
   # better
@@ -1205,7 +1205,7 @@
   (1..100) === 7
   /something/ === some_string
 
-  # good
+  # хорошо
   something.is_a?(Array)
   (1..100).include?(7)
   some_string =~ /something/
@@ -1220,7 +1220,7 @@
   # плохо
   $:.unshift File.dirname(__FILE__)
 
-  # good
+  # хорошо
   require 'English'
   $LOAD_PATH.unshift File.dirname(__FILE__)
   ```
@@ -1231,7 +1231,7 @@
   # плохо
   f (3 + 2) + 1
 
-  # good
+  # хорошо
   f(3 + 2) + 1
   ```
 
@@ -1256,7 +1256,7 @@
     tmp * b / 50
   end
 
-  # good
+  # хорошо
   l = ->(a, b) { a + b }
   l.call(1, 2)
 
@@ -1272,7 +1272,7 @@
   # плохо
   p = Proc.new { |n| puts n }
 
-  # good
+  # хорошо
   p = proc { |n| puts n }
   ```
 
@@ -1287,7 +1287,7 @@
   l = ->(v) { puts v }
   l.(1)
 
-  # good
+  # хорошо
   l = ->(v) { puts v }
   l.call(1)
   ```
@@ -1306,7 +1306,7 @@
     # ...
   end
 
-  # good
+  # хорошо
   result = hash.map { |_k, v| v + 1 }
 
   def something(x)
@@ -1314,7 +1314,7 @@
     # ...
   end
 
-  # good
+  # хорошо
   result = hash.map { |_, v| v + 1 }
 
   def something(x)
@@ -1340,18 +1340,18 @@
   '%d %d' % [20, 10]
   # => '20 10'
 
-  # good
+  # хорошо
   sprintf('%d %d', 20, 10)
   # => '20 10'
 
-  # good
+  # хорошо
   sprintf('%{first} %{second}', first: 20, second: 10)
   # => '20 10'
 
   format('%d %d', 20, 10)
   # => '20 10'
 
-  # good
+  # хорошо
   format('%{first} %{second}', first: 20, second: 10)
   # => '20 10'
   ```
@@ -1364,7 +1364,7 @@
   %w(one two three) * ', '
   # => 'one, two, three'
 
-  # good
+  # хорошо
   %w(one two three).join(', ')
   # => 'one, two, three'
   ```
@@ -1378,10 +1378,10 @@
   paths = [paths] unless paths.is_a? Array
   paths.each { |path| do_something(path) }
 
-  # good
+  # хорошо
   [*paths].each { |path| do_something(path) }
 
-  # good (and a bit more readable)
+  # хорошо (and a bit more readable)
   Array(paths).each { |path| do_something(path) }
   ```
 
@@ -1391,10 +1391,10 @@
   # плохо
   do_something if x >= 1000 && x <= 2000
 
-  # good
+  # хорошо
   do_something if (1000..2000).include?(x)
 
-  # good
+  # хорошо
   do_something if x.between?(1000, 2000)
   ```
 
@@ -1412,7 +1412,7 @@
   if x == nil
   end
 
-  # good
+  # хорошо
   if x.even?
   end
 
@@ -1436,10 +1436,10 @@
     do_something if !something.nil?
     do_something if something != nil
 
-    # good
+    # хорошо
     do_something if something
 
-    # good - dealing with a boolean
+    # хорошо - dealing with a boolean
     def value_set?
       !@some_boolean.nil?
     end
@@ -1453,7 +1453,7 @@
   # плохо
   END { puts 'Goodbye!' }
 
-  # good
+  # хорошо
   at_exit { puts 'Goodbye!' }
   ```
 
@@ -1478,7 +1478,7 @@
     end
   end
 
-  # good
+  # хорошо
   def compute_thing(thing)
     return unless thing[:foo]
     update_with_bar(thing[:foo])
@@ -1497,7 +1497,7 @@
     end
   end
 
-  # good
+  # хорошо
   [0, 1, 2, 3].each do |item|
     next unless item > 1
     puts item
@@ -1519,7 +1519,7 @@
   # плохо - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
   zaplata = 1_000
 
-  # good
+  # хорошо
   salary = 1_000
   ```
 
@@ -1541,7 +1541,7 @@
    ...
   end
 
-  # good
+  # хорошо
   :some_symbol
 
   def some_method
@@ -1566,7 +1566,7 @@
     ...
   end
 
-  # good
+  # хорошо
   class SomeClass
     ...
   end
@@ -1589,7 +1589,7 @@
   # плохо
   SomeConst = 5
 
-  # good
+  # хорошо
   SOME_CONST = 5
   ```
 
@@ -1610,13 +1610,13 @@
     end
   end
 
-  # good
+  # хорошо
   class Person
     def update
     end
   end
 
-  # good
+  # хорошо
   class Person
     def update!
     end
@@ -1675,7 +1675,7 @@
   # плохо
   some_hash.count
 
-  # good
+  # хорошо
   some_hash.size
   ```
 
@@ -1688,7 +1688,7 @@
   # плохо
   all_songs = users.map(&:songs).flatten.uniq
 
-  # good
+  # хорошо
   all_songs = users.flat_map(&:songs).uniq
   ```
 
@@ -1699,7 +1699,7 @@
   # плохо
   array.reverse.each { ... }
 
-  # good
+  # хорошо
   array.reverse_each { ... }
   ```
 
@@ -1846,7 +1846,7 @@
     # 30 methods inside
   end
 
-  # good
+  # хорошо
 
   # foo.rb
   class Foo
@@ -1882,7 +1882,7 @@
     end
   end
 
-  # good
+  # хорошо
   module SomeClass
     module_function
 
@@ -1912,7 +1912,7 @@
     end
   end
 
-  # good
+  # хорошо
   module Utilities
     module_function
 
@@ -1970,7 +1970,7 @@
     end
   end
 
-  # good
+  # хорошо
   class Person
     attr_reader :first_name, :last_name
 
@@ -1988,7 +1988,7 @@
   attr :something, true
   attr :one, :two, :three # behaves as attr_reader
 
-  # good
+  # хорошо
   attr_accessor :something
   attr_reader :one, :two, :three
   ```
@@ -1997,7 +1997,7 @@
   constructor and comparison operators for you.
 
   ```Ruby
-  # good
+  # хорошо
   class Person
     attr_accessor :first_name, :last_name
 
@@ -2051,7 +2051,7 @@
     end
   end
 
-  # good
+  # хорошо
   class Duck
     def speak
       puts 'Quack! Quack'
@@ -2126,7 +2126,7 @@
       # body omitted
     end
 
-    # good
+    # хорошо
     def self.some_other_method
       # body omitted
     end
@@ -2165,7 +2165,7 @@
   # плохо
   fail RuntimeError, 'message'
 
-  # good - signals a RuntimeError by default
+  # хорошо - signals a RuntimeError by default
   fail 'message'
   ```
 
@@ -2177,7 +2177,7 @@
   fail SomeException.new('message')
   # Note that there is no way to do `fail SomeException.new('message'), backtrace`.
 
-  # good
+  # хорошо
   fail SomeException, 'message'
   # Consistent with `fail SomeException, 'message', backtrace`.
   ```
@@ -2210,7 +2210,7 @@
     end
   end
 
-  # good
+  # хорошо
   def foo
     # main logic goes here
   rescue
@@ -2235,7 +2235,7 @@
     # handle IOError
   end
 
-  # good
+  # хорошо
   def with_io_error_handling
      yield
   rescue IOError
@@ -2267,7 +2267,7 @@
   # плохо - this catches exceptions of StandardError class and its descendant classes
   read_file rescue handle_error($!)
 
-  # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
+  # хорошо - this catches only the exceptions of Errno::ENOENT class and its descendant classes
   def foo
     read_file
   rescue Errno::ENOENT => ex
@@ -2285,7 +2285,7 @@
     puts 'Cannot divide by 0!'
   end
 
-  # good
+  # хорошо
   if d.zero?
     puts 'Cannot divide by 0!'
   else
@@ -2306,7 +2306,7 @@
     # exception handling
   end
 
-  # good
+  # хорошо
   begin
     # a blind rescue rescues from StandardError, not Exception as many
     # programmers assume.
@@ -2314,7 +2314,7 @@
     # exception handling
   end
 
-  # also good
+  # also хорошо
   begin
     # an exception occurs here
 
@@ -2336,7 +2336,7 @@
     # some handling
   end
 
-  # good
+  # хорошо
   begin
     # some code
   rescue StandardError => e
@@ -2372,7 +2372,7 @@
   arr = Array.new
   hash = Hash.new
 
-  # good
+  # хорошо
   arr = []
   hash = {}
   ```
@@ -2385,7 +2385,7 @@
   # плохо
   STATES = ['draft', 'open', 'closed']
 
-  # good
+  # хорошо
   STATES = %w(draft open closed)
   ```
 
@@ -2397,7 +2397,7 @@
   # плохо
   STATES = [:draft, :open, :closed]
 
-  # good
+  # хорошо
   STATES = %i(draft open closed)
   ```
 
@@ -2415,7 +2415,7 @@
   # плохо
   VALUES = [1001, 2020, 3333, ]
 
-  # good
+  # хорошо
   VALUES = [1001, 2020, 3333]
   ```
 
@@ -2439,7 +2439,7 @@
   # плохо
   hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
-  # good
+  # хорошо
   hash = { one: 1, two: 2, three: 3 }
   ```
 
@@ -2451,7 +2451,7 @@
   # плохо
   hash = { :one => 1, :two => 2, :three => 3 }
 
-  # good
+  # хорошо
   hash = { one: 1, two: 2, three: 3 }
   ```
 
@@ -2463,7 +2463,7 @@
   # плохо
   { a: 1, 'b' => 2 }
 
-  # good
+  # хорошо
   { :a => 1, 'b' => 2 }
   ```
 
@@ -2477,7 +2477,7 @@
   hash.has_key?(:test)
   hash.has_value?(value)
 
-  # good
+  # хорошо
   hash.key?(:test)
   hash.value?(value)
   ```
@@ -2490,7 +2490,7 @@
   heroes[:batman] # => "Bruce Wayne"
   heroes[:supermann] # => nil
 
-  # good - fetch raises a KeyError making the problem obvious
+  # хорошо - fetch raises a KeyError making the problem obvious
   heroes.fetch(:supermann)
   ```
 
@@ -2502,7 +2502,7 @@
   # плохо - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
 
-  # good - fetch work correctly with falsy values
+  # хорошо - fetch work correctly with falsy values
   batman.fetch(:is_evil, true) # => false
   ```
 
@@ -2515,7 +2515,7 @@
   # so it can slow the program down if done multiple times
   batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
 
-  # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
+  # хорошо - blocks are lazy evaluated, so only triggered in case of KeyError exception
   batman.fetch(:powers) { get_batman_powers }
   ```
 
@@ -2526,7 +2526,7 @@
   email = data['email']
   nickname = data['nickname']
 
-  # good
+  # хорошо
   email, username = data.values_at('email', 'nickname')
   ```
 
@@ -2542,10 +2542,10 @@
   # плохо
   email_with_name = user.name + ' <' + user.email + '>'
 
-  # good
+  # хорошо
   email_with_name = "#{user.name} <#{user.email}>"
 
-  # good
+  # хорошо
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
@@ -2568,7 +2568,7 @@
     # плохо
     name = "Bozhidar"
 
-    # good
+    # хорошо
     name = 'Bozhidar'
     ```
 
@@ -2579,7 +2579,7 @@
     # плохо
     name = 'Bozhidar'
 
-    # good
+    # хорошо
     name = "Bozhidar"
     ```
 
@@ -2595,7 +2595,7 @@
   # плохо
   char = ?c
 
-  # good
+  # хорошо
   char = 'c'
   ```
 
@@ -2616,7 +2616,7 @@
       "#@first_name #@last_name"
     end
 
-    # good
+    # хорошо
     def to_s
       "#{@first_name} #{@last_name}"
     end
@@ -2626,7 +2626,7 @@
   # плохо
   puts "$global = #$global"
 
-  # good
+  # хорошо
   puts "$global = #{$global}"
   ```
 
@@ -2636,7 +2636,7 @@
   # плохо
   message = "This is the #{result.to_s}."
 
-  # good
+  # хорошо
   message = "This is the #{result}."
   ```
 
@@ -2689,7 +2689,7 @@
 
   ```Ruby
   /(first|second)/   # плохо
-  /(?:first|second)/ # good
+  /(?:first|second)/ # хорошо
   ```
 
 * Don't use the cryptic Perl-legacy variables denoting last regexp group matches
@@ -2702,7 +2702,7 @@
   # плохо
   process $1
 
-  # good
+  # хорошо
   process Regexp.last_match[1]
   ```
 
@@ -2715,7 +2715,7 @@
   ...
   process Regexp.last_match[1]
 
-  # good
+  # хорошо
   /(?<meaningful_var>regexp)/ =~ string
   ...
   process meaningful_var
@@ -2767,7 +2767,7 @@
   %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
   # should be a heredoc.
 
-  # good (requires interpolation, has quotes, single line)
+  # хорошо (requires interpolation, has quotes, single line)
   %(<tr><td class="name">#{name}</td>)
   ```
 
@@ -2782,7 +2782,7 @@
   time = %q(8 o'clock)
   question = %q("What did you say?")
 
-  # good
+  # хорошо
   name = 'Bruce Wayne'
   time = "8 o'clock"
   question = '"What did you say?"'
@@ -2798,7 +2798,7 @@
   %r(^/(.*)$)
   # should be /^\/(.*)$/
 
-  # good
+  # хорошо
   %r(^/blog/2011/(.*)$)
   ```
 
@@ -2809,7 +2809,7 @@
   # плохо
   date = %x(date)
 
-  # good
+  # хорошо
   date = `date`
   echo = %x(echo `date`)
   ```
@@ -2828,7 +2828,7 @@
   %w[one two three]
   %q{"Test's king!", John said.}
 
-  # good
+  # хорошо
   %w(one two three)
   %q("Test's king!", John said.)
   ```
@@ -2891,7 +2891,7 @@
       end
     end
 
-    # good
+    # хорошо
     def method_missing?(meth, *args, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
         find_by(prop, *args, &block)
@@ -2923,7 +2923,7 @@
   # плохо
   $foo_bar = 1
 
-  # good
+  # хорошо
   module Foo
     class << self
       attr_accessor :bar
