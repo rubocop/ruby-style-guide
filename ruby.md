@@ -39,6 +39,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
       do_something
     end
 
+
     # bad - four spaces
     def some_method
         do_something
@@ -149,7 +150,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
     )
     ```
 
-* Use empty lines between `def`s and to break up a method into logical
+* Use two empty lines between `def`s, and one to break up a method into logical
   paragraphs.
 
     ```Ruby
@@ -161,18 +162,21 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
       data.result
     end
 
+
     def some_method
       result
     end
     ```
 
-* Align the parameters of a method call if they span more than one line.
+* Align the parameters of a method call if they span more than one line. Prefer
+  creating new lines and indenting once.
 
     ```Ruby
     # starting point (line is too long)
     def send_mail(source)
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
     end
+
 
     # bad (normal indent)
     def send_mail(source)
@@ -183,6 +187,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
         body: source.text)
     end
 
+
     # bad (double indent)
     def send_mail(source)
       Mailer.deliver(
@@ -192,12 +197,15 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
           body: source.text)
     end
 
+
     # good
     def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com',
-                     from: 'us@example.com',
-                     subject: 'Important message',
-                     body: source.text)
+      Mailer.deliver(
+        to: 'bob@example.com',
+        from: 'us@example.com',
+        subject: 'Important message',
+        body: source.text
+      )
     end
     ```
 
@@ -225,6 +233,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
      def some_method
        # body omitted
      end
+
 
      def some_method_with_arguments(arg1, arg2)
        # body omitted
@@ -477,6 +486,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
       return some_arr.size
     end
 
+
     # good
     def some_method(some_arr)
       some_arr.size
@@ -495,6 +505,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
       self.status == :verified
     end
 
+
     # good
     def ready?
       if last_reviewed_at > last_updated_at
@@ -511,11 +522,13 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
     class Foo
       attr_accessor :options
 
+
       # ok
       def initialize(options)
         self.options = options
         # both options and self.options are equivalent here
       end
+
 
       # bad
       def do_something(options = {})
@@ -523,6 +536,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
           output(self.options[:message])
         end
       end
+
 
       # good
       def do_something(params = {})
@@ -540,6 +554,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
     def some_method(arg1=:default, arg2=nil, arg3=[])
       # do something...
     end
+
 
     # good
     def some_method(arg1 = :default, arg2 = nil, arg3 = [])
@@ -677,9 +692,11 @@ you if you forget either of the rules above!
       ...
     end
 
+
     def SomeMethod
      ...
     end
+
 
     # good
     :some_symbol
@@ -741,16 +758,19 @@ you if you forget either of the rules above!
       end
     end
 
+
     # good
     class Person
       def update
       end
     end
 
+
     # good
     class Person
       def update!
       end
+
 
       def update
       end
@@ -771,6 +791,7 @@ you if you forget either of the rules above!
 
         replace(res)
       end
+
 
       def flatten_once
         dup.flatten_once!
@@ -887,30 +908,39 @@ at all.
       extend SomeModule
       include AnotherModule
 
+
       # constants are next
       SOME_CONSTANT = 20
+
 
       # afterwards we have attribute macros
       attr_reader :name
 
+
       # followed by other macros (if any)
       validates :name
+
 
       # public class methods are next in line
       def self.some_method
       end
 
+
       # followed by public instance methods
       def some_method
       end
 
+
       # protected and private methods are grouped near the end
       protected
+
 
       def some_protected_method
       end
 
+
       private
+
 
       def some_private_method
       end
@@ -929,10 +959,12 @@ at all.
     class Person
       attr_reader :first_name, :last_name
 
+
       def initialize(first_name, last_name)
         @first_name = first_name
         @last_name = last_name
       end
+
 
       def to_s
         "#{@first_name} #{@last_name}"
@@ -951,18 +983,22 @@ mutators.
         @last_name = last_name
       end
 
+
       def first_name
         @first_name
       end
+
 
       def last_name
         @last_name
       end
     end
 
+
     # good
     class Person
       attr_reader :first_name, :last_name
+
 
       def initialize(first_name, last_name)
         @first_name = first_name
@@ -979,11 +1015,13 @@ constructor and comparison operators for you.
     class Person
       attr_reader :first_name, :last_name
 
+
       def initialize(first_name, last_name)
         @first_name = first_name
         @last_name = last_name
       end
     end
+
 
     # better
     Person = Struct.new(:first_name, :last_name) do
@@ -1005,6 +1043,8 @@ to create instances of a particular class.
 
 * Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.
 
+QUESTION: Is this something we actually believe?
+
     ```Ruby
     # bad
     class Animal
@@ -1013,12 +1053,14 @@ to create instances of a particular class.
       end
     end
 
+
     # extend superclass
     class Duck < Animal
       def speak
         puts 'Quack! Quack'
       end
     end
+
 
     # extend superclass
     class Dog < Animal
@@ -1027,12 +1069,14 @@ to create instances of a particular class.
       end
     end
 
+
     # good
     class Duck
       def speak
         puts 'Quack! Quack'
       end
     end
+
 
     class Dog
       def speak
@@ -1053,9 +1097,11 @@ in inheritance.
       end
     end
 
+
     class Child < Parent
       @@class_var = 'child'
     end
+
 
     Parent.print_class_var # => will print "child"
     ```
@@ -1065,9 +1111,9 @@ in inheritance.
     over class variables.
 
 * Assign proper visibility levels to methods (`private`, `protected`)
-in accordance with their intended usage. Don't go off leaving
-everything `public` (which is the default). After all we're coding
-in *Ruby* now, not in *Python*.
+  in accordance with their intended usage. Don't go off leaving
+  everything `public` (which is the default). After all we're coding
+  in *Ruby* now, not in *Python*.
 * Indent the `public`, `protected`, and `private` methods as much the
   method definitions they apply to. Leave one blank line above the
   visibility modifier
@@ -1080,11 +1126,14 @@ in *Ruby* now, not in *Python*.
         # ...
       end
 
+
       private
+
 
       def private_method
         # ...
       end
+
 
       def another_private_method
         # ...
@@ -1102,10 +1151,12 @@ in *Ruby* now, not in *Python*.
         # body omitted
       end
 
+
       # good
       def self.some_other_method
         # body omitted
       end
+
 
       # Also possible and convenient when you
       # have to define many singleton methods.
@@ -1113,6 +1164,7 @@ in *Ruby* now, not in *Python*.
         def first_method
           # body omitted
         end
+
 
         def second_method_etc
           # body omitted
@@ -1126,6 +1178,8 @@ in *Ruby* now, not in *Python*.
 * Signal exceptions using the `fail` method. Use `raise` only when
   catching an exception and re-raising it (because here you're not
   failing, but explicitly and purposefully raising an exception).
+
+QUESTION: Do we actually believe this?
 
     ```Ruby
     begin
@@ -1162,6 +1216,7 @@ in *Ruby* now, not in *Python*.
         # failure handling goes here
       end
     end
+
 
     # good
     def foo
@@ -1421,15 +1476,18 @@ strings.
     class Person
       attr_reader :first_name, :last_name
 
+
       def initialize(first_name, last_name)
         @first_name = first_name
         @last_name = last_name
       end
 
+
       # bad - valid, but awkward
       def to_s
         "#@first_name #@last_name"
       end
+
 
       # good
       def to_s
@@ -1592,6 +1650,7 @@ strings.
             to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
           end                                       # end
 
+
           def #{unsafe_method}!(*args)              # def capitalize!(*args)
             @dirty = true                           #   @dirty = true
             super                                   #   super
@@ -1616,6 +1675,7 @@ strings.
         super
       end
     end
+
 
     # good
     def method_missing?(meth, *args, &block)
