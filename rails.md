@@ -746,6 +746,8 @@ specific gems to a `linux` group:
 * Do not remove the `Gemfile.lock` from version control. This is not
   some randomly generated file - it makes sure that all of your team
   members get the same gem versions when they do a `bundle install`.
+* Specify exact versions of gems in the `Gemfile`, e.g. `'gem 'wistia-api',
+  '0.2'`
 
 ## Priceless Gems
 
