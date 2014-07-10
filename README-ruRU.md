@@ -1,7 +1,7 @@
 # Вступление
 
 > Role models are important. <br/>
-> -- Officer Alex J. Murphy / RoboCop
+> -- Офицер Алекс Мёрфи / Робот-полицейский
 
 Один из вопросов, который меня всегда беспокоил как разработчика на Руби, &mdash; это то,
 что у разработчиков на Питоне есть великолепное руководству по стилю оформления
@@ -123,14 +123,14 @@
     $ git config --global core.autocrlf true
     ```
 
-* Don't use `;` to separate statements and expressions. As a
-  corollary - use one expression per line.
+* Не используйте `;` для разделения директив и выражений. Отсюда непосредсвенно следует,
+  что каждая директива должна занимать свою отдельную строку.
 
   ```Ruby
-  # плохо
-  puts 'foobar'; # superfluous semicolon
+  # плохо (точка с запятой избыточна)
+  puts 'foobar';
 
-  puts 'foo'; puts 'bar' # two expressions on the same line
+  puts 'foo'; puts 'bar' # две директивы на одной строке
 
   # хорошо
   puts 'foobar'
@@ -138,10 +138,10 @@
   puts 'foo'
   puts 'bar'
 
-  puts 'foo', 'bar' # this applies to puts in particular
+  puts 'foo', 'bar' # это частное правило для `puts`
   ```
 
-* Prefer a single-line format for class definitions with no body.
+* Используйте преимущественно однострочный формат для определений классов с пустым телом.
 
   ```Ruby
   # плохо
@@ -157,7 +157,7 @@
 
 * Избегайте однострочных методов. И хотя они достаточно популярны в среде
   программистов, существует множество неприятных мелочей, связанных с синтаксисом их
-  определений, которые делают применение таких методов нежелательным. В любом случае
+  определения, которые делают применение таких методов нежелательным. В любом случае
   однострочные методы не должны содержать больше одного выражения.
 
 
@@ -187,10 +187,9 @@
   def no_op; end
   ```
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily
-  readable code.
+* Вставляйте пробелы вокруг операторов, после запятых, двоеточий и точек с запятыми,
+  вокруг `{` и перед `}`. Пробелы (по большей части) игнорируются интерпретатором Руби, но
+  их правильное использование является ключом к написанию легко читаемого кода.
 
   ```Ruby
   sum = 1 + 2
@@ -199,7 +198,7 @@
   class FooError < StandardError; end
   ```
 
-  The only exception, regarding operators, is the exponent operator:
+  Единственным исключением для операторов является оператор степени:
 
   ```Ruby
   # плохо
@@ -209,47 +208,50 @@
   e = M * c**2
   ```
 
-  `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
+  `{` и `}` заслуживают некоторого пояснения, так как они используются
+  для блоков и для литералов хешей, а также для включаемых в строки
+  выражений.
+
+  Для литералов хешей два стиля являются общепринятыми:
 
   ```Ruby
-  # хорошо - space after { and before }
+  # хорошо (пробел после { и до })
   { one: 1, two: 2 }
 
-  # хорошо - no space after { and before }
+  # хорошо (пробелы отсутствуют после { и перед })
   {one: 1, two: 2}
   ```
 
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
-  As far as embedded expressions go, there are also two acceptable
-  options:
+  Первый вариант несколько проще для чтения и, по всей вероятности,
+  более распространен среди членов сообщества программистов на Руби.
+  Второй вариант имеет преимущество в том, что создается видимое различие
+  между блоками и литералами хешей. Какой бы стиль вы ни выбрали, применяйте
+  его единообразно.
+  
+  В случае включаемых в строки выражений существует также два приемлемых
+  варианта:
 
   ```Ruby
-  # хорошо - no spaces
+  # хорошо (без пробелов)
   "string#{expr}"
 
-  # ok - arguably more readable
+  # ok (наверное, читается лучше)
   "string#{ expr }"
   ```
 
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
+  Стиль первого примера гораздо более популярен, и вам следует в целом
+  придерживаться именно его. С другой стороны, второй пример, вероятно,
+  будет прочитан проще. Как и в случает с хешами, выберите один стиль
+  и применяется его последовательно.
 
-* No spaces after `(`, `[` or before `]`, `)`.
+* Не используйте пробел после `(`, `[` или перед `]`, `)`.
 
   ```Ruby
   some(arg).other
   [1, 2, 3].size
   ```
 
-* No space after `!`.
+* Не используйте пробел после `!`.
 
   ```Ruby
   # плохо
