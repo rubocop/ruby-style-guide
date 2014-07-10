@@ -53,16 +53,15 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
 
         $ git config --global core.autocrlf true
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily
-  readable code.
+* Use spaces around operators and after commas, colons and semicolons.
+  Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its
+  proper use is the key to writing easily readable code.
 
     ```Ruby
     sum = 1 + 2
     a, b = 1, 2
     1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
+    [1, 2, 3].each {|e| puts e}
     ```
 
     The only exception is when using the exponent operator:
@@ -75,7 +74,7 @@ This Ruby style guide recommends best practices so that real-world Ruby programm
     e = M * c**2
     ```
 
-* No spaces after `(`, `[` or before `]`, `)`.
+* No spaces after `(`, `[`, `{` or before `]`, `)`, `}`.
 
     ```Ruby
     some(arg).other
