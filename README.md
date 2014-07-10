@@ -1412,6 +1412,9 @@ Translations of the guide are available in the following languages:
   if x == nil
   end
 
+  if x == 0
+  end
+
   # good
   if x.even?
   end
@@ -1423,9 +1426,6 @@ Translations of the guide are available in the following languages:
   end
 
   if x.zero?
-  end
-
-  if x == 0
   end
   ```
 
