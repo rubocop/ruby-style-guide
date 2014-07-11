@@ -241,7 +241,7 @@
 
   Стиль первого примера гораздо более популярен, и вам следует в целом
   придерживаться именно его. С другой стороны, второй пример, вероятно,
-  будет прочитан проще. Как и в случает с хешами, выберите один стиль
+  будет прочитан легче. Как и в случает с хешами, выберите один стиль
   и применяется его последовательно.
 
 * Не используйте пробел после `(`, `[` или перед `]`, `)`.
@@ -261,9 +261,9 @@
   !something
   ```
 
-* Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both "The Ruby
-  Programming Language" and "Programming Ruby".
+* Делайте отступ для `when` таким же, как и для `case`. Я знаю, что многие не согласятся
+  с этим, то этот стиль предписывается как "Языком программирования Ruby",
+  так и "Programming Ruby".
 
   ```Ruby
   # плохо
@@ -291,11 +291,10 @@
   end
   ```
 
-* When assigning the result of a conditional expression to a variable, preserve
-  the usual alignment of its branches.
+* Присваивая результат условного выражения переменной, сохраняйте соответствие уровней отступа.
 
   ```Ruby
-  # плохо - pretty convoluted
+  # плохо (слишком запутано)
   kind = case year
   when 1850..1889 then 'Blues'
   when 1890..1909 then 'Ragtime'
@@ -311,7 +310,7 @@
     calc_something_else
   end
 
-  # хорошо - it's apparent what's going on
+  # хорошо (намерения очевидны)
   kind = case year
          when 1850..1889 then 'Blues'
          when 1890..1909 then 'Ragtime'
@@ -327,7 +326,7 @@
              calc_something_else
            end
 
-  # хорошо (and a bit more width efficient)
+  # хорошо (и не так расточительно)
   kind =
     case year
     when 1850..1889 then 'Blues'
@@ -346,8 +345,8 @@
     end
   ```
 
-* Use empty lines between method definitions and also to break up a method
-  into logical paragraphs internally.
+* Используйте пустые строки для разделения определений методов и выделения
+  логических частей определений внутри них.
 
   ```Ruby
   def some_method
