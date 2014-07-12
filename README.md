@@ -2333,7 +2333,7 @@ Translations of the guide are available in the following languages:
   rescue Exception => e
     # some handling
   rescue StandardError => e
-    # some handling
+    # some handling that will never be executed
   end
 
   # good
