@@ -84,7 +84,7 @@
 * [Классы и модули](#Классы-и-модули)
 * [Исключения](#Исключения)
 * [Коллекции](#Коллекции)
-* [Строки](#строки)
+* [Строки](#Строки)
 * [Регулярные выражения](#Регулярные-выражения)
 * [Процентные литералы](#Процентные-литералы)
 * [Метапрограммирование](#Метапрограммирование)
@@ -2537,7 +2537,7 @@
 
 ## Строки
 
-* Prefer string interpolation and string formatting instead of string concatenation:
+* Используйте интерполяцию строк и форматные шаблоны, а не конкатенацию строк:
 
   ```Ruby
   # плохо
@@ -2934,10 +2934,10 @@
   Foo.bar = 1
   ```
 
-* Avoid `alias` when `alias_method` will do.
+* Избегайте использования `alias`, если достаточно использовать `alias_method`.
 
-* Use `OptionParser` for parsing complex command line options and
-`ruby -s` for trivial command line options.
+* Используйте `OptionParser` для анализа сложных аргуметов командрой строки и
+  `ruby -s` для элеметарных случаев.
 
 * Prefer `Time.now` over `Time.new` when retrieving the current system time.
 
