@@ -708,69 +708,71 @@
     end
   ```
 
-* Use `when x then ...` for one-line cases. The alternative syntax
-  `when x: ...` has been removed as of Ruby 1.9.
+* Используйте `when x then ...` для однострочников. 
+  Альтернативный вариант `when x: ...` отсутствует в Ruby 1.9.
 
-* Never use `when x; ...`. See the previous rule.
+* Избегайте `when x; ...`. Согласно предыдущему правилу.
 
-* Use `!` instead of `not`.
+* Используйте `!` вместо `not`.
 
   ```Ruby
-  # плохо - braces are required because of op precedence
+  # плохо - необходимы скобки ввиду приоритетов операторов.
   x = (not something)
 
   # хорошо
   x = !something
   ```
 
-* Avoid the use of `!!`.
+* Избегайте использования `!!`.
 
   ```Ruby
   # плохо
   x = 'test'
-  # obscure nil check
+  # неявная проверка на nil
   if !!x
-    # body omitted
+    # код опущен для краткости
   end
 
   x = false
-  # double negation is useless on booleans
+  # двойное отрицание бессмысленно для булевых значений
   !!x # => false
 
   # хорошо
   x = 'test'
   unless x.nil?
-    # body omitted
+    # код опущен для краткости
   end
   ```
 
-* The `and` and `or` keywords are banned. It's just not worth
-  it. Always use `&&` and `||` instead.
+* Ключевые слова `and` и `or` запрещены. Они просто не стоят 
+  использования. Всегда заменяйте их на `&&` и `||`.
 
   ```Ruby
   # плохо
-  # boolean expression
+  # булево выражение
   if some_condition and some_other_condition
     do_something
   end
 
-  # control flow
+  # управление потоком исполнения
   document.saved? or document.save!
 
   # хорошо
-  # boolean expression
+  # булево выражение
   if some_condition && some_other_condition
     do_something
   end
 
-  # control flow
+  # управление потоком исполнения
   document.saved? || document.save!
   ```
 
-* Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
+* Избегайте многострочных тернарных операторов `?:` 
+  Используйте вместо них `if/unless`.
 
-* Favor modifier `if/unless` usage when you have a single-line
-  body. Another good alternative is the usage of control flow `&&/||`.
+* Предпочитайте модификатор `if/unless` для однострочников. 
+  Другой отличный вариант - использовать для управления потоком 
+  исполнения `&&/||`.
 
   ```Ruby
   # плохо
@@ -781,12 +783,11 @@
   # хорошо
   do_something if some_condition
 
-  # another good option
+  # еще хороший вариант
   some_condition && do_something
   ```
 
-* Avoid modifier `if/unless` usage at the end of a
-  non-trivial multi-line block.
+* Избегайте `if/unless` в конце нетривиального многострочного блока.
 
   ```Ruby
   # плохо
@@ -802,8 +803,8 @@
   end
   ```
 
-* Favor `unless` over `if` for negative conditions (or control
-  flow `||`).
+* Используйте `unless` вместо `if` для условий отрицания (или `||`
+  для управления потоком исполнения).
 
   ```Ruby
   # плохо
@@ -815,11 +816,12 @@
   # хорошо
   do_something unless some_condition
 
-  # another good option
+  # еще хороший вариант
   some_condition || do_something
   ```
 
-* Never use `unless` with `else`. Rewrite these with the positive case first.
+* Никогда не используйте `unless` вместе с `else`. 
+  Начните с исправления выражение для проверки на положительность.
 
   ```Ruby
   # плохо
@@ -837,44 +839,44 @@
   end
   ```
 
-* Don't use parentheses around the condition of an `if/unless/while/until`.
+* Не используйте скобки для выражения в `if/unless/while/until`.
 
   ```Ruby
   # плохо
   if (x > 10)
-    # body omitted
+    # код опущен для краткости
   end
 
   # хорошо
   if x > 10
-    # body omitted
+    # код опущен для краткости
   end
   ```
 
-* Never use `while/until condition do` for multi-line `while/until`.
+* Никогда не используйте `while/until condition do` для многострочных
+  `while/until`.
 
   ```Ruby
   # плохо
   while x > 5 do
-    # body omitted
+    # код опущен для краткости
   end
 
   until x > 5 do
-    # body omitted
+    # код опущен для краткости
   end
 
   # хорошо
   while x > 5
-    # body omitted
+    # код опущен для краткости
   end
 
   until x > 5
-    # body omitted
+    # код опущен для краткости
   end
   ```
 
-* Favor modifier `while/until` usage when you have a single-line
-  body.
+* Используйте `while/until` для однострочников.
 
   ```Ruby
   # плохо
@@ -886,7 +888,7 @@
   do_something while some_condition
   ```
 
-* Favor `until` over `while` for negative conditions.
+* Используйте `until` вместо `while` для условий на отрицания.
 
   ```Ruby
   # плохо
@@ -896,7 +898,8 @@
   do_something until some_condition
   ```
 
-* Use `Kernel#loop` instead of `while/until` when you need an infinite loop.
+* Используйте `Kernel#loop` вместо `while/until` для бесконечного
+  цикла.
 
     ```ruby
     # плохо
@@ -914,7 +917,8 @@
     end
     ```
 
-* Use `Kernel#loop` with `break` rather than `begin/end/until` or `begin/end/while` for post-loop tests.
+* Используйте `Kernel#loop` с `break` вместо `begin/end/until` или
+  `begin/end/while` для циклов с постусловием.
 
   ```Ruby
   # плохо
@@ -931,11 +935,10 @@
   end
   ```
 
-* Omit parentheses around parameters for methods that are part of an
-  internal DSL (e.g. Rake, Rails, RSpec), methods that have
-  "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
-  access methods. Use parentheses around the arguments of all other
-  method invocations.
+* Не используйте скобки при вызове методов, являющихся частью DSL,
+  таких, как Rake, Rails, RSpec, методов, имеющих статус ключевого
+  слова, например, `attr_reader`, `puts` и при вызове аксессоров.
+  Используйте скобки при вызове прочих методов.
 
   ```Ruby
   class Person
@@ -955,7 +958,8 @@
   bowling.score.should == 0
   ```
 
-* Omit the outer braces around an implicit options hash.
+* Не используйте фигурные скобки для ограничения хешей, передаваемых
+  методу.
 
   ```Ruby
   # плохо
@@ -965,8 +969,9 @@
   user.set(name: 'John', age: 45, permissions: { read: true })
   ```
 
-* Omit both the outer braces and parentheses for methods that are
-  part of an internal DSL.
+* Не используйте ни фигурные скобки для ограничения хешей, 
+  передаваемых методу, ни скобки вокруг параметров для методов,
+  являющихся частью DSL.
 
   ```Ruby
   class Person < ActiveRecord::Base
@@ -978,7 +983,7 @@
   end
   ```
 
-* Omit parentheses for method calls with no arguments.
+* Опускайте скобки при вызове методов без параметров.
 
   ```Ruby
   # плохо
@@ -994,7 +999,7 @@
   'test'.upcase
   ```
 
-* Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
+* Используйте блок `{...}` вместо `do...end` для однострочников.
   `{...}` for multi-line blocks (multiline chaining is always
   ugly). Always use `do...end` for "control flow" and "method
   definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
