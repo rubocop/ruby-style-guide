@@ -187,9 +187,10 @@
   def no_op; end
   ```
 
-* Вставляйте пробелы вокруг операторов, после запятых, двоеточий и точек с запятыми,
-  вокруг `{` и перед `}`. Пробелы (по большей части) игнорируются интерпретатором Руби, но
-  их правильное использование является ключом к написанию легко читаемого кода.
+* Вставляйте пробелы вокруг операторов, после запятых, двоеточий и 
+  точек с запятыми, вокруг `{` и перед `}`. Пробелы (по большей части) 
+  игнорируются интерпретатором Руби, но их правильное использование 
+  является ключом к написанию легко читаемого кода.
 
   ```Ruby
   sum = 1 + 2
@@ -363,11 +364,11 @@
   end
   ```
 
-* Avoid comma after the last parameter in a method call, especially when the
-  parameters are not on separate lines.
+* Избегайте запятых после последнего параметра при вызове метода
+  особенно когда параметры расположены в отдельных строках.
 
   ```Ruby
-  # плохо - easier to move/add/remove parameters, but still not preferred
+  # плохо, хотя проще перемещать/добавлять/удалять строки
   some_method(
                size,
                count,
@@ -381,7 +382,8 @@
   some_method(size, count, color)
   ```
 
-* Use spaces around the `=` operator when assigning default values to method parameters:
+* Вставляйте пробелы вокруг опреатора присваивания `=` когда 
+  назначаете параметрам метода значения по умолчанию:
 
   ```Ruby
   # плохо
@@ -395,18 +397,19 @@
   end
   ```
 
-  While several Ruby books suggest the first style, the second is much more prominent
-  in practice (and arguably a bit more readable).
+  Хотя в некоторых книгах по Ruby рекомендуют первый стиль, второй 
+  гораздо более нагляден.
 
-* Avoid line continuation `\` where not required. In practice, avoid using
-  line continuations for anything but string concatenation.
+* Избегайте продления строк `\` везде, где можно обойтись без него. 
+  Практически не используйте его нигде, кроме как при конкатенации
+  строк.
 
   ```Ruby
   # плохо
   result = 1 - \
            2
 
-  # хорошо (but still ugly as hell)
+  # возможно (но ужасно)
   result = 1 \
            - 2
 
@@ -414,52 +417,55 @@
                 ' and second part of the long string'
   ```
 
-* Adopt a consistent multi-line method chaining style. There are two
-  popular styles in the Ruby community, both of which are considered
-  good - leading `.` (Option A) and trailing `.` (Option B).
+* Используйте единый стиль многострочных последовательных цепочек 
+  вызовов методов. В комьюнити ruby популярны два противоположных 
+  стиля их оформления - с лидирующей точкой `.` (Вариант A) и с 
+  завершающей точкой `.` (Вариант B).
 
-  * **(Option A)** When continuing a chained method invocation on
-    another line keep the `.` on the second line.
+  * **(Вариант A)** Когда продолжаете цепочку вызовов методов на 
+  следующую строку, начинайте её с точки.
 
     ```Ruby
-    # плохо - need to consult first line to understand second line
+    # плохо - нужно посмотреть на предыдущую строку, чтобы понять 
+    # смысл последующей 
     one.two.three.
       four
 
-    # хорошо - it's immediately clear what's going on the second line
+    # хорошо - сразу ясно, что происходит во второй строке
     one.two.three
       .four
     ```
 
-  * **(Option B)** When continuing a chained method invocation on another line,
-    include the `.` on the first line to indicate that the
-    expression continues.
+  * **(Вариант B)** Соответственно, наоборот, когда продолжаете цепочку 
+  вызовов на следующей строке, завершайте строку точкой `.`, давая 
+  понять, что продолжение выражения следует 
 
     ```Ruby
-    # плохо - need to read ahead to the second line to know that the chain continues
+    # плохо - чтобы понять, что выражение не окончено, необходимо 
+    # посмотреть на следующую строку.
     one.two.three
       .four
 
-    # хорошо - it's immediately clear that the expression continues beyond the first line
+    # хорошо - сразу видно, что выражение будет продолжено на 
+    # следующей строке
     one.two.three.
       four
     ```
 
-  A discussion on the merits of both alternative styles can be found
-  [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
+ C аргументами за и против обоих стилей можно ознакомиться в дискуссии
+  [здесь](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
-* Align the parameters of a method call if they span more than one
-  line. When aligning parameters is not appropriate due to line-length
-  constraints, single indent for the lines after the first is also
-  acceptable.
+* Выравнивайте параметры вызова метода, если вызов занимает более
+  одной строки. Если выравнивание невозможно из-за ораничений на длину
+  строки, то используйте одиночный отступ строк.
 
   ```Ruby
-  # starting point (line is too long)
+  # Первоначальный вариант (строка слишком длинная)
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
   end
 
-  # плохо (double indent)
+  # плохо (двойной отступ)
   def send_mail(source)
     Mailer.deliver(
         to: 'bob@example.com',
@@ -476,7 +482,7 @@
                    body: source.text)
   end
 
-  # хорошо (normal indent)
+  # хорошо (одинарный отступ)
   def send_mail(source)
     Mailer.deliver(
       to: 'bob@example.com',
@@ -487,10 +493,10 @@
   end
   ```
 
-* Align the elements of array literals spanning multiple lines.
+* Выравнивайте литералы массива, если они занимают несколько строк.
 
   ```Ruby
-  # плохо - single indent
+  # плохо
   menu_item = ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
@@ -506,45 +512,47 @@
      'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
-* Add underscores to large numeric literals to improve their readability.
+* Добавляйте символ подеркивания в большие числовые константы для 
+  улучшения их восприятия. 
 
   ```Ruby
-  # плохо - how many 0s are there?
+  # плохо - сколько тут нолей?
   num = 1000000
 
-  # хорошо - much easier to parse for the human brain
+  # хорошо - намного проще воспринять число
   num = 1_000_000
   ```
 
-* Use RDoc and its conventions for API documentation.  Don't put an
-  empty line between the comment block and the `def`.
+* Используйте конвенции Rdoc для документирования API. Не вставляйте
+  пустой строки после комментария перед def.
 
-* Limit lines to 80 characters.
+* Ограничивайте строки 80-ю символами.
 
-* Avoid trailing whitespace.
+* Избегайте завершающих строку пробелов.
 
-* End each file with a newline.
+* Оканчивайте каждый файл переводом строки.
 
-* Don't use block comments. They cannot be preceded by whitespace and are not
-  as easy to spot as regular comments.
+* Не используйте блочные комментарии. Они не могут быть сдвинуты на 
+  уровень кода и их не так просто вычленить, как обычные комментарии.
 
   ```Ruby
   # плохо
   =begin
-  comment line
-  another comment line
+  строка комментария
+  еще одна строка комментария
   =end
 
   # хорошо
-  # comment line
-  # another comment line
+  # строка комментария
+  # другая строка комментария
   ```
 
 ## Синтаксис
 
-* Используйте `::` только для обращения к константам (в том числе к классам и модулям)
-  и конструкторам класса (например, `Array()` or `Nokogiri::HTML()`).
-  Никогда не используйте `::` для обычного вызова методов.
+* Используйте `::` только для обращения к константам (в том числе к 
+  классам и модулям) и конструкторам класса (например, `Array()` or 
+  `Nokogiri::HTML()`). Никогда не используйте `::` для обычного вызова 
+  методов.
 
   ```Ruby
   # плохо
@@ -558,8 +566,8 @@
   SomeModule::SomeClass()
   ```
 
-* Используйте `def` со скобками, когда у метода есть аргументы. Опускайте скобки
-  когда метод не принимает аргументов.
+* Используйте `def` со скобками, когда у метода есть аргументы.
+  Опускайте скобки когда метод не принимает аргументов.
 
    ```Ruby
    # плохо
@@ -583,11 +591,11 @@
    end
    ```
 
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
+* Используйте `for` только, если вы точно знаете, почему предпочли его 
+  итератору. `for` реализован с использованием `each` (так что, 
+  получается, что вы неявно используете итератор), однако, используя - 
+  `for`, вы не вводите новую область видимости, а значит переменные,
+  объявленные в теле `for` будут доступны снаружи блока.
 
   ```Ruby
   arr = [1, 2, 3]
@@ -597,17 +605,17 @@
     puts elem
   end
 
-  # note that elem is accessible outside of the for loop
+  # Учтите, elem доступен за пределами цикла
   elem #=> 3
 
   # хорошо
   arr.each { |elem| puts elem }
 
-  # elem is not accessible outside each's block
+  # elem недоступен за пределами блока each
   elem #=> NameError: undefined local variable or method `elem'
   ```
 
-* Never use `then` for multi-line `if/unless`.
+* Никогда не используйте `then` для многострочных условий `if/unless`.
 
   ```Ruby
   # плохо
@@ -621,7 +629,8 @@
   end
   ```
 
-* Always put the condition on the same line as the `if`/`unless` in a multi-line conditional.
+* Всегда помещайте условие для `if`/`unless` в ту же строку, что 
+  содержит `if/then` в многострочном выражении.
 
   ```Ruby
   # плохо
@@ -638,8 +647,8 @@
   end
   ```
 
-* Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
-  It's more common and obviously more concise.
+* Предпочитайте тернарный оператор (`?:`) конструкции 
+  `if/then/else/end`. Он лаконичнее и чаще используется.
 
   ```Ruby
   # плохо
@@ -649,9 +658,10 @@
   result = some_condition ? something : something_else
   ```
 
-* Use one expression per branch in a ternary operator. This
-  also means that ternary operators must not be nested. Prefer
-  `if/else` constructs in these cases.
+* Используйте одно выражение на ветвь тернарного оператора. 
+  Это также означает, что не стоит вкладывать в тернарный оператор
+  другой тернарный оператор. 
+  В таком случае используйте конструкцию `if/else`.
 
   ```Ruby
   # плохо
@@ -665,8 +675,8 @@
   end
   ```
 
-* Never use `if x: ...` - as of Ruby 1.9 it has been removed. Use
-  the ternary operator instead.
+* Не используйте `if x: ...` - т.к. эта конструкция синтаксиса 
+  отсутствует в Ruby 1.9, используйте тернарный оператор.
 
   ```Ruby
   # плохо
@@ -676,9 +686,10 @@
   result = some_condition ? something : something_else
   ```
 
-* Never use `if x; ...`. Use the ternary operator instead.
+* Не используйте `if x; ...`. Замените её тернарным оператором.
 
-* Leverage the fact that `if` and `case` are expressions which return a result.
+* Используйте тот факт, что `if` and `case` являются выражениями, 
+  возвращающими значение.
 
   ```Ruby
   # плохо
