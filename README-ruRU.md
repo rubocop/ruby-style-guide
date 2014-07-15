@@ -2789,22 +2789,22 @@
   question = '"What did you say?"'
   ```
 
-* Use `%r` only for regular expressions matching *more than* one '/' character.
+* Используйте `%r` только для регулярных выражений, которые обрабатывают больше одного знака '/'.
 
   ```Ruby
   # плохо
   %r(\s+)
 
-  # still плохо
+  # все еще плохо
   %r(^/(.*)$)
-  # should be /^\/(.*)$/
+  # должно быть /^\/(.*)$/
 
   # хорошо
   %r(^/blog/2011/(.*)$)
   ```
 
-* Avoid the use of `%x` unless you're going to invoke a command with backquotes in
-  it(which is rather unlikely).
+* Откажитесь от использования `%x`, если вы не хотите вызывать внешнюю команду с обратными кавычками в теле
+  (что само по себе маловероятно).
 
   ```Ruby
   # плохо
@@ -2815,14 +2815,13 @@
   echo = %x(echo `date`)
   ```
 
-* Avoid the use of `%s`. It seems that the community has decided
-  `:"some string"` is the preferred way to create a symbol with
-  spaces in it.
+* Старайтесь избегать `%s`. По общепринятому мнению, предпочтительным способом
+  определения символа с пробелами в имени является `:"some string"`
 
-* Prefer `()` as delimiters for all `%` literals, except `%r`. Since
-  braces often appear inside regular expressions in many scenarios a
-  less common character like `{` might be a better choice for a
-  delimiter, depending on the regexp's content.
+* Используйте `()` в качестве ограничителей для всех литералов с знаком `%` кроме `%r`.
+  Так как круглые скобки очень часто используются в самих регулярных выражениях, во
+  многих случаях менее частый символ `{` может быть лучшим выбором для ограничителя
+  (разумеется, с учетом смысла регулярного выражения).
 
   ```Ruby
   # плохо
