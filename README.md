@@ -1593,6 +1593,16 @@ Translations of the guide are available in the following languages:
   SOME_CONST = 5
   ```
 
+* Avoid acronyms. If the full name of the variable or method is too long consider refactoring.
+
+    ```Ruby
+    # bad
+    soh = SingleOccupantHome.new
+
+    # good
+    single_occupant_home = SingleOccupantHome.new
+    ```
+
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark.
   (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't
