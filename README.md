@@ -596,13 +596,13 @@ Translations of the guide are available in the following languages:
   end
 
   # note that elem is accessible outside of the for loop
-  elem #=> 3
+  elem # => 3
 
   # good
   arr.each { |elem| puts elem }
 
   # elem is not accessible outside each's block
-  elem #=> NameError: undefined local variable or method `elem'
+  elem # => NameError: undefined local variable or method `elem'
   ```
 
 * Never use `then` for multi-line `if/unless`.
@@ -2665,7 +2665,7 @@ Translations of the guide are available in the following languages:
     |  other_method
     |end
   END
-  #=> "def test\n  some_method\n  other_method\nend\n"
+  # => "def test\n  some_method\n  other_method\nend\n"
   ```
 
 ## Regular Expressions
