@@ -2752,23 +2752,24 @@
 
 ## Процентные литералы
 
-* Use `%()`(it's a shorthand for `%Q`) for single-line strings which require both
-  interpolation and embedded double-quotes. For multi-line strings, prefer heredocs.
+* Используйте `%()` (это сокращение от `%Q`) для строк без переносов, в которых
+  реализуется интерполяция и присутствуют двойные кавычки. Для строк с переносами
+  лучше используйте формат HERE Doc.
 
   ```Ruby
-  # плохо (no interpolation needed)
+  # плохо (интерполяция не нужна)
   %(<div class="text">Some text</div>)
-  # should be '<div class="text">Some text</div>'
+  # должно быть '<div class="text">Some text</div>'
 
-  # плохо (no double-quotes)
+  # плохо (нет двойных кавычек)
   %(This is #{quality} style)
-  # should be "This is #{quality} style"
+  # должно быть "This is #{quality} style"
 
-  # плохо (multiple lines)
+  # плохо (строка с переносами)
   %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
-  # should be a heredoc.
+  # лучше применить HERE Doc
 
-  # хорошо (requires interpolation, has quotes, single line)
+  # хорошо (необходима интерполяция, присутствуют кавычки, нет переносов)
   %(<tr><td class="name">#{name}</td>)
   ```
 
