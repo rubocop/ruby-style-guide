@@ -2773,10 +2773,9 @@
   %(<tr><td class="name">#{name}</td>)
   ```
 
-* Avoid `%q` unless you have a string with both `'` and `"` in
-  it. Regular string literals are more readable and should be
-  preferred unless a lot of characters would have to be escaped in
-  them.
+* Избегайте `%q`, если это не случай строки с `'` и `"` одновременно
+  Обычные строки читаются проще, и их следует использовать, если нет
+  излишне большого количества символов, которые нужно будет экранировать.
 
   ```Ruby
   # плохо
