@@ -66,6 +66,13 @@ Translations of the guide are available in the following languages:
 * [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
 * [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
 
+### BeRecruited Style Guide
+
+This fork of the style guide has been customized for BeRecruited.  In particular, we've adopted the
+SeattleRB approach of omitting parentheses in ruby except when they are needed by the parser.
+
+We're using Ruby 2.1.1 as of the last edit of this styleguide.
+
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
@@ -172,7 +179,7 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     def some_method
-      data = initialize(options)
+      data = initialize options
 
       data.manipulate!
 
@@ -188,34 +195,34 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     # starting point (line is too long)
-    def send_mail(source)
+    def send_mail source
       Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
     end
 
     # bad (normal indent)
-    def send_mail(source)
-      Mailer.deliver(
+    def send_mail source
+      Mailer.deliver
         to: 'bob@example.com',
         from: 'us@example.com',
         subject: 'Important message',
-        body: source.text)
+        body: source.text
     end
 
     # bad (double indent)
-    def send_mail(source)
-      Mailer.deliver(
+    def send_mail source
+      Mailer.deliver
           to: 'bob@example.com',
           from: 'us@example.com',
           subject: 'Important message',
-          body: source.text)
+          body: source.text
     end
 
     # good
-    def send_mail(source)
-      Mailer.deliver(to: 'bob@example.com',
+    def send_mail source
+      Mailer.deliver to: 'bob@example.com',
                      from: 'us@example.com',
                      subject: 'Important message',
-                     body: source.text)
+                     body: source.text
     end
     ```
 
@@ -377,6 +384,20 @@ Translations of the guide are available in the following languages:
     end
     ```
 
+* Don't use parentheses unless required by the parser
+
+    ```Ruby
+    # bad
+    def get_ids(list)
+      list.map(&:id)
+    end
+
+    # good
+    def get_ids list
+      list.map &:id
+    end
+    ```
+
 * Don't use parentheses around the condition of an `if/unless/while`,
   unless the condition contains an assignment (see "Using the return
   value of `=`" below).
@@ -424,8 +445,7 @@ Translations of the guide are available in the following languages:
 * Omit parentheses around parameters for methods that are part of an
   internal DSL (e.g. Rake, Rails, RSpec), methods that have
   "keyword" status in Ruby (e.g. `attr_reader`, `puts`) and attribute
-  access methods. Use parentheses around the arguments of all other
-  method invocations.
+  access methods, or when needed to make the parser work correctly.
 
     ```Ruby
     class Person
@@ -434,13 +454,13 @@ Translations of the guide are available in the following languages:
       # omitted
     end
 
-    temperance = Person.new('Temperance', 30)
+    temperance = Person.new 'Temperance', 30
     temperance.name
 
     puts temperance.age
 
-    x = Math.sin(y)
-    array.delete(e)
+    x = Math.sin y
+    array.delete e
     ```
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
@@ -461,11 +481,11 @@ Translations of the guide are available in the following languages:
     end
 
     # good
-    names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+    names.select { |name| name.start_with? 'S' }.map { |name| name.upcase }
 
     # bad
     names.select do |name|
-      name.start_with?('S')
+      name.start_with? 'S'
     end.map { |name| name.upcase }
     ```
 
@@ -477,12 +497,12 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     # bad
-    def some_method(some_arr)
+    def some_method some_arr
       return some_arr.size
     end
 
     # good
-    def some_method(some_arr)
+    def some_method some_arr
       some_arr.size
     end
     ```
@@ -493,7 +513,7 @@ Translations of the guide are available in the following languages:
     # bad
     def ready?
       if self.last_reviewed_at > self.last_updated_at
-        self.worker.update(self.content, self.options)
+        self.worker.update self.content, self.options
         self.status = :in_progress
       end
       self.status == :verified
@@ -502,7 +522,7 @@ Translations of the guide are available in the following languages:
     # good
     def ready?
       if last_reviewed_at > last_updated_at
-        worker.update(content, options)
+        worker.update content, options
         self.status = :in_progress
       end
       status == :verified
@@ -516,22 +536,22 @@ Translations of the guide are available in the following languages:
       attr_accessor :options
 
       # ok
-      def initialize(options)
+      def initialize options
         self.options = options
         # both options and self.options are equivalent here
       end
 
       # bad
-      def do_something(options = {})
+      def do_something options = {}
         unless options[:when] == :later
-          output(self.options[:message])
+          output self.options[:message]
         end
       end
 
       # good
-      def do_something(params = {})
+      def do_something params = {}
         unless params[:when] == :later
-          output(options[:message])
+          output options[:message]
         end
       end
     end
@@ -542,12 +562,12 @@ Translations of the guide are available in the following languages:
     ```Ruby
     # bad
 
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+    def some_method arg1 = :default, arg2 = nil, arg3 = []
       # do something...
     end
 
     # good
-    def some_method(arg1=:default, arg2=nil, arg3=[])
+    def some_method arg1=:default, arg2=nil, arg3=[]
       # do something...
     end
     ```
@@ -570,20 +590,20 @@ Translations of the guide are available in the following languages:
     ```Ruby
     # bad (+ a warning)
     if (v = array.grep(/foo/))
-      do_something(v)
+      do_something v
       ...
     end
 
     # bad (+ a warning)
-    if v = array.grep(/foo/)
-      do_something(v)
+    if v = array.grep /foo/
+      do_something v
       ...
     end
 
     # good
-    v = array.grep(/foo/)
+    v = array.grep /foo/
     if v
-      do_something(v)
+      do_something v
       ...
     end
     ```
@@ -632,7 +652,7 @@ you if you forget either of the rules above!
     ```Ruby
     # bad
     lambda = lambda { |a, b| a + b }
-    lambda.call(1, 2)
+    lambda.call 1, 2
 
     # good
     lambda = ->(a, b) { a + b }
@@ -771,7 +791,7 @@ you if you forget either of the rules above!
           [*e].each { |f| res << f }
         end
 
-        replace(res)
+        replace res
       end
 
       def flatten_once
@@ -852,7 +872,7 @@ at all.
     def bar
       # FIXME: This has crashed occasionally since v3.2.1. It may
       #   be related to the BarBazUtil upgrade.
-      baz(:quux)
+      baz :quux
     end
     ```
 
@@ -931,7 +951,7 @@ at all.
     class Person
       attr_reader :first_name, :last_name
 
-      def initialize(first_name, last_name)
+      def initialize first_name, last_name
         @first_name = first_name
         @last_name = last_name
       end
@@ -948,7 +968,7 @@ mutators.
     ```Ruby
     # bad
     class Person
-      def initialize(first_name, last_name)
+      def initialize first_name, last_name
         @first_name = first_name
         @last_name = last_name
       end
@@ -966,7 +986,7 @@ mutators.
     class Person
       attr_reader :first_name, :last_name
 
-      def initialize(first_name, last_name)
+      def initialize first_name, last_name
         @first_name = first_name
         @last_name = last_name
       end
@@ -981,14 +1001,14 @@ constructor and comparison operators for you.
     class Person
       attr_reader :first_name, :last_name
 
-      def initialize(first_name, last_name)
+      def initialize first_name, last_name
         @first_name = first_name
         @last_name = last_name
       end
     end
 
     # better
-    Person = Struct.new(:first_name, :last_name) do
+    Person = Struct.new :first_name, :last_name do
     end
     ````
 
@@ -999,7 +1019,7 @@ to create instances of a particular class.
 
     ```Ruby
     class Person
-      def self.create(options_hash)
+      def self.create options_hash
         # body omitted
       end
     end
@@ -1380,7 +1400,7 @@ strings.
     heroes[:supermann] # => nil
 
     # good - fetch raises a KeyError making the problem obvious
-    heroes.fetch(:supermann)
+    heroes.fetch :supermann
     ```
 
 * Rely on the fact that as of Ruby 1.9 hashes are ordered.
@@ -1423,7 +1443,7 @@ strings.
     class Person
       attr_reader :first_name, :last_name
 
-      def initialize(first_name, last_name)
+      def initialize first_name, last_name
         @first_name = first_name
         @last_name = last_name
       end
@@ -1588,7 +1608,7 @@ strings.
     ```ruby
     # from activesupport/lib/active_support/core_ext/string/output_safety.rb
     UNSAFE_STRING_METHODS.each do |unsafe_method|
-      if 'String'.respond_to?(unsafe_method)
+      if 'String'.respond_to? unsafe_method
         class_eval <<-EOT, __FILE__, __LINE__ + 1
           def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
             to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
@@ -1611,7 +1631,7 @@ strings.
 
     ```ruby
     # bad
-    def method_missing?(meth, *args, &block)
+    def method_missing? meth, *args, &block
       if /^find_by_(?<prop>.*)/ =~ meth
         # ... lots of code to do a find_by
       else
@@ -1620,9 +1640,9 @@ strings.
     end
 
     # good
-    def method_missing?(meth, *args, &block)
+    def method_missing? meth, *args, &block
       if /^find_by_(?<prop>.*)/ =~ meth
-        find_by(prop, *args, &block)
+        find_by prop, *args, &block
       else
         super
       end
