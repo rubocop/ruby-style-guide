@@ -789,21 +789,32 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-* Favor `unless` over `if` for negative conditions (or control
-  flow `||`).
+* Favor `unless` over `if` when the condition is rare.
 
   ```Ruby
+  # rare condition
   # bad
-  do_something if !some_condition
-
-  # bad
-  do_something if not some_condition
+  do_something if not hell_frozen_over
 
   # good
-  do_something unless some_condition
+  do_something unless hell_frozen_over
+
+  # common condition
+  # bad
+  do_something unless sun_came_out
+
+  # good
+  do_something if not sun_came_out
+  ```
+
+* Optionally favor control flow `||` over unless in simple cases
+
+  ```Ruby
+  # ok
+  a unless b
 
   # another good option
-  some_condition || do_something
+  b || a
   ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
