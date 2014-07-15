@@ -1735,7 +1735,10 @@ Translations of the guide are available in the following languages:
 > -- Russ Olsen
 
 * Avoid writing comments to explain bad code. Refactor the code to
-  make it self-explanatory. (Do or do not - there is no try. --Yoda)
+  make it self-explanatory.
+
+> Do or do not - there is no try. <br/>
+> -- Yoda
 
 ### Comment Annotations
 
