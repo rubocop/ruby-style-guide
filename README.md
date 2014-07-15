@@ -89,6 +89,7 @@ Translations of the guide are available in the following languages:
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
+* [Pronunciation](#pronunciation)
 * [Misc](#misc)
 * [Tools](#tools)
 
@@ -2902,6 +2903,11 @@ Translations of the guide are available in the following languages:
 
     # best of all, though, would to define_method as each findable attribute is declared
     ```
+
+## Pronunciation
+
+* `=>` is pronounced "hash rocket"
+* `=~` is pronounced "bacon cannon"
 
 ## Misc
 
