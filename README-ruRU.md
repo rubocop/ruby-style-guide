@@ -1787,24 +1787,24 @@
 
 ## Классы и модули
 
-* Use a consistent structure in your class definitions.
+* Структурируйте ваши классы единообразно.
 
   ```Ruby
   class Person
-    # extend and include go first
+    # extend и include в начале
     extend SomeModule
     include AnotherModule
 
-    # inner classes
+    # внутернние классы
     CustomErrorKlass = Class.new(StandardError)
 
-    # constants are next
+    # после этого константы
     SOME_CONSTANT = 20
 
-    # afterwards we have attribute macros
+    # после этого макросы методов доступа к атрибутам
     attr_reader :name
 
-    # followed by other macros (if any)
+    # и все прочие макросы (если имеются)
     validates :name
 
     # public class methods are next in line
@@ -2818,7 +2818,7 @@
 * Старайтесь избегать `%s`. По общепринятому мнению, предпочтительным способом
   определения символа с пробелами в имени является `:"some string"`
 
-* Используйте `()` в качестве ограничителей для всех литералов с знаком `%` кроме `%r`.
+* Используйте `()` в качестве ограничителей для всех литералов со знаком `%` кроме `%r`.
   Так как круглые скобки очень часто используются в самих регулярных выражениях, во
   многих случаях менее частый символ `{` может быть лучшим выбором для ограничителя
   (разумеется, с учетом смысла регулярного выражения).
