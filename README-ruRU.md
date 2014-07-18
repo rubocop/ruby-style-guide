@@ -2968,24 +2968,24 @@
 [частично основывается](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
 на этом руководстве.
 
-# Contributing
+# Сотрудничество
 
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Ruby coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Ruby
-community.
+Ничто, описанное в этом руководстве, не высечено в камне. И я очень хотел бы
+сотрудничать со всеми, кто интересуется стилистикой оформления кода на Руби,
+чтобы мы смогли вместе создать ресурс, который был бы полезен для всего сообщества
+программистов на Руби.
 
-Feel free to open tickets or send pull requests with improvements. Thanks in
-advance for your help!
+Не стесняйтесь создавать отчеты об ошибках и присылать мне запросы на интеграцию
+вашего кода. И заранее большое спасибо за вашу помощь!
 
-You can also support the project (and RuboCop) with financial
-contributions via [gittip](https://www.gittip.com/bbatsov).
+Вы можете поддержать проект (и РубоКоп) денежным взносом
+при помощи [gittip](https://www.gittip.com/bbatsov).
 
 [![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
 ## Как сотрудничать в проекте?
 
-It's easy, just follow the [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
+Это просто! Следуйте [руководству по сотрудничеству](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
 
 # Лицензирование
 
