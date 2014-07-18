@@ -3,66 +3,63 @@
 > Role models are important. <br/>
 > -- Officer Alex J. Murphy / RoboCop
 
-One thing has always bothered me as a Ruby developer - Python developers
-have a great programming style reference
-([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got
-an official guide, documenting Ruby coding style and best
-practices. And I do believe that style matters. I also believe that a
-great hacker community, such as Ruby has, should be quite capable of
-producing this coveted document.
+One thing has always bothered me as a Ruby developer - Python developers have a
+great programming style reference
+([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got an official
+guide, documenting Ruby coding style and best practices. And I do believe that
+style matters. I also believe that a great hacker community, such as Ruby has,
+should be quite capable of producing this coveted document.
 
 This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was
-doing might be interesting to members of the Ruby community in general
-and that the world had little need for another internal company
-guideline. But the world could certainly benefit from a
-community-driven and community-sanctioned set of practices, idioms and
-style prescriptions for Ruby programming.
+(written by yours truly). At some point I decided that the work I was doing
+might be interesting to members of the Ruby community in general and that the
+world had little need for another internal company guideline. But the world
+could certainly benefit from a community-driven and community-sanctioned set of
+practices, idioms and style prescriptions for Ruby programming.
 
-Since the inception of the guide I've received a lot of feedback from
-members of the exceptional Ruby community around the world. Thanks for
-all the suggestions and the support! Together we can make a resource
-beneficial to each and every Ruby developer out there.
+Since the inception of the guide I've received a lot of feedback from members of
+the exceptional Ruby community around the world. Thanks for all the suggestions
+and the support! Together we can make a resource beneficial to each and every
+Ruby developer out there.
 
-By the way, if you're into Rails you might want to check out the
-complementary
+By the way, if you're into Rails you might want to check out the complementary
 [Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
 
 # The Ruby Style Guide
 
 This Ruby style guide recommends best practices so that real-world Ruby
 programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a
-style guide that holds to an ideal that has been rejected by the people it is
-supposed to help risks not getting used at all &ndash; no matter how good it is.
+programmers. A style guide that reflects real-world usage gets used, and a style
+guide that holds to an ideal that has been rejected by the people it is supposed
+to help risks not getting used at all &ndash; no matter how good it is.
 
-The guide is separated into several sections of related rules. I've
-tried to add the rationale behind the rules (if it's omitted I've
-assumed it's pretty obvious).
+The guide is separated into several sections of related rules. I've tried to add
+the rationale behind the rules (if it's omitted I've assumed it's pretty
+obvious).
 
-I didn't come up with all the rules out of nowhere - they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Ruby community and
-various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0)
-and ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+I didn't come up with all the rules out of nowhere - they are mostly based on my
+extensive career as a professional software engineer, feedback and suggestions
+from members of the Ruby community and various highly regarded Ruby programming
+resources, such as ["Programming Ruby
+1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0) and ["The Ruby
+Programming
+Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 
-There are some areas in which there is no clear consensus in the
-Ruby community regarding a particular style (like string literal quoting,
-spacing inside hash literals, dot position in multi-line method
-chaining, etc.). In such scenarios all popular styles are acknowledged
-and it's up to you to pick one and apply it consistently.
+There are some areas in which there is no clear consensus in the Ruby community
+regarding a particular style (like string literal quoting, spacing inside hash
+literals, dot position in multi-line method chaining, etc.). In such scenarios
+all popular styles are acknowledged and it's up to you to pick one and apply it
+consistently.
 
-The guide is still a work in progress - some rules are lacking
-examples, some rules don't have examples that illustrate them clearly
-enough. In due time these issues will be addressed - just keep them in
-mind for now.
+The guide is still a work in progress - some rules are lacking examples, some
+rules don't have examples that illustrate them clearly enough. In due time these
+issues will be addressed - just keep them in mind for now.
 
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer,
-based on this style guide.
+[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer, based on this
+style guide.
 
 Translations of the guide are available in the following languages:
 
