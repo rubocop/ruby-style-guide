@@ -2952,21 +2952,21 @@
 
 ## Инструментарий
 
-Here's some tools to help you automatically check Ruby code against
-this guide.
+В этом разделе собраны инструменты, которые могут помочь вам автоматически
+сверить ваш код на Руби с предписаниями этого руководства.
 
-### RuboCop
+### РубоКоп
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a Ruby code style
-checker based on this style guide. RuboCop already covers a
-significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
-and has good Emacs integration.
+[RuboCop](https://github.com/bbatsov/rubocop) - это утиллита проверки стиля
+программного кода на Руби, который основывается на этом руководстве.
+РубоКоп уже реализует большую часть этого руководства, поддерживает MRI 1.9
+и MRI 2.0 и хорошо интегрируется с редактором Емакс.
 
 ### RubyMine
 
-[RubyMine](http://www.jetbrains.com/ruby/)'s code inspections are
-[partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
-on this guide.
+Модуль проверки кода [RubyMine](http://www.jetbrains.com/ruby/)
+[частично основывается](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
+на этом руководстве.
 
 # Contributing
 
