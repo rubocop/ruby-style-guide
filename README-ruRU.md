@@ -2937,20 +2937,25 @@
 
 * <a name="alias-method"></a> Избегайте использования `alias`, если достаточно использовать `alias_method`.<sup>[[link](#alias-method)]</sup>
 
-* <a name="optionparser"></a> Используйте `OptionParser` для анализа сложных аргуметов командрой строки и  `ruby -s` для элеметарных случаев.
-<sup>[[link](#optionparser)]</sup>
+* <a name="optionparser"></a> Используйте `OptionParser` для анализа сложных аргуметов
+  командрой строки и  `ruby -s` для элеметарных случаев.<sup>[[link](#optionparser)]</sup>
 
-* <a name="time-now"></a> Prefer `Time.now` over `Time.new` when retrieving the current system time.<sup>[[link](#time-now)]</sup>
+* <a name="time-now"></a> Используйте вариант `Time.now`, а не `Time.new`, когда хотите получить текущее
+  значение системного времени.<sup>[[link](#time-now)]</sup>
 
-* <a name="functional-code"></a> Code in a functional way, avoiding mutation when that makes sense.<sup>[[link](#functional-code)]</sup>
+* <a name="functional-code"></a> Пишите код в функциональном стиле без изменения значений, когда это подходит
+  по смыслу.<sup>[[link](#functional-code)]</sup>
 
-* <a name="no-arg-mutations"></a> Do not mutate arguments unless that is the purpose of the method.<sup>[[link](#no-arg-mutations)]</sup>
+* <a name="no-arg-mutations"></a> Не изменяйте значения аргументов, если только это
+  не есть цель метода.<sup>[[link](#no-arg-mutations)]</sup>
 
-* <a name="three-is-the-number-thou-shalt-count"></a> Avoid more than three levels of block nesting.<sup>[[link](#three-is-the-number-thou-shalt-count)]</sup>
+* <a name="three-is-the-number-thou-shalt-count"></a> Старайтесь не создавать вложенные структуры
+  с уровнем вложения больше третьего.<sup>[[link](#three-is-the-number-thou-shalt-count)]</sup>
 
-* <a name="be-consistent"></a> Be consistent. In an ideal world, be consistent with these guidelines.<sup>[[link](#be-consistent)]</sup>
+* <a name="be-consistent"></a> Будьте последовательны. В идеальном мире последовательно придерживайтесь
+  данного руководства.<sup>[[link](#be-consistent)]</sup>
 
-* <a name="common-sense"></a> Use common sense.<sup>[[link](#common-sense)]</sup>
+* <a name="common-sense"></a> Руководствуйтесь здравым смыслом.<sup>[[link](#common-sense)]</sup>
 
 ## Инструментарий
 
@@ -2987,12 +2992,14 @@
 
 ## Как сотрудничать в проекте?
 
-Это просто! Следуйте [руководству по сотрудничеству](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
+Это просто! Следуйте [руководству по
+сотрудничеству](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
 
 # Лицензирование
 
 ![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
-This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
+This work is licensed under a [Creative Commons Attribution 3.0 Unported
+License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
 # Расскажи другому
 
