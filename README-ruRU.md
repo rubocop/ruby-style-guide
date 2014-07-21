@@ -2552,16 +2552,17 @@
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="pad-string-interpolation"></a> Consider padding string interpolation code with space. It more clearly sets the  code apart from the string.
-<sup>[[link](#pad-string-interpolation)]</sup>
+* <a name="pad-string-interpolation"></a> Постарайтесь отделять код интерполяции пробелами.
+  Это отделит код интерполяции более четко от окружающего кода.<sup>[[link](#pad-string-interpolation)]</sup>
 
   ```Ruby
   "#{ user.last_name }, #{ user.first_name }"
   ```
 
-* <a name="consistent-string-literals"></a> Adopt a consistent string literal quoting style. There are two  popular styles in the Ruby community, both of which are considered
+* <a name="consistent-string-literals"></a> Adopt a consistent string literal quoting style.
+  There are two  popular styles in the Ruby community, both of which are considered
   good - single quotes by default (Option A) and double quotes by default (Option B).
-<sup>[[link](#consistent-string-literals)]</sup>
+  <sup>[[link](#consistent-string-literals)]</sup>
 
   * **(Option A)** Prefer single-quoted strings when you don't need
     string interpolation or special symbols such as `\t`, `\n`, `'`,
