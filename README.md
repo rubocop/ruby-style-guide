@@ -2267,11 +2267,11 @@ this rule only to arrays with two or more elements.
     STATES = %i(draft open closed)
     ```
 
-* Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
+* Prefer adding a comma after the last item of an `Array` or `Hash` literal, 
+  but only when the items are on separate lines.
 
     ```Ruby
-    # bad - easier to move/add/remove items, but still not preferred
+    # good - easier to move/add/remove items, does not change adjacent lines
     VALUES = [
                1001,
                2020,
