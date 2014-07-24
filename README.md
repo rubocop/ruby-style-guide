@@ -420,8 +420,8 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-  While several Ruby books suggest the first style, the second is much more prominent
-  in practice (and arguably a bit more readable).
+  While several Ruby books suggest the first style, the second is much more
+  prominent in practice (and arguably a bit more readable).
 
 * <a name="no-trailing-backslash"></a>
   Avoid line continuation `\` where not required. In practice, avoid using
@@ -1115,9 +1115,9 @@ Translations of the guide are available in the following languages:
   names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
   ```
 
-  Some will argue that multiline chaining would look OK with the use of {...}, but they should
-  ask themselves - is this code really readable and can the blocks' contents be extracted into
-  nifty methods?
+  Some will argue that multiline chaining would look OK with the use of {...},
+  but they should ask themselves - is this code really readable and can the
+  blocks' contents be extracted into nifty methods?
 
 * <a name="block-argument"></a>
   Consider using explicit block argument to avoid writing block literal that
