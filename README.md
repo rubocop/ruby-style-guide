@@ -2649,7 +2649,7 @@ Translations of the guide are available in the following languages:
   rescue
     # .. handle error
   ensure
-    f.close unless f.nil?
+    f.close if f
   end
   ```
 
