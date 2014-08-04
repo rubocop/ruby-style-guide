@@ -101,11 +101,11 @@
 > -- Jerry Coffin (on indentation)
 
 * <a name="utf-8"></a> Используйте `UTF-8` в качестве кодировке для исходного
-  кода.<sup>[[link](#utf-8)]</sup>
+  кода.<sup>[[ссылка](#utf-8)]</sup>
 
 * <a name="spaces-indentation"></a> Используйте два **пробела** на уровень
   отступа (т.е. мягкую табуляцию). Никаких знаков табуляции.
-  <sup>[[link](#spaces-indentation)]</sup>
+  <sup>[[ссылка](#spaces-indentation)]</sup>
 
   ```Ruby
   # плохо (четыре пробела)
@@ -121,7 +121,7 @@
 
 * <a name="crlf"></a> Используйте стиль Unix для строк (пользователи
   *BSD/Solaris/Linux/OS X используют их по умолчанию,  пользователям Windows
-  нужно обратить особое внимание).<sup>[[link](#crlf)]</sup>
+  нужно обратить особое внимание).<sup>[[ссылка](#crlf)]</sup>
 
   * Если вы используете Git, вы можете добавить следующие настройки
     в вашу конфигурацию, чтобы предотвратить ненамеренное проникновение в ваш
@@ -133,7 +133,7 @@
 
 * <a name="no-semicolon"></a> Не используйте `;` для разделения директив и
   выражений. Отсюда непосредсвенно следует, что каждая директива должна занимать
-  свою отдельную строку.<sup>[[link](#no-semicolon)]</sup>
+  свою отдельную строку.<sup>[[ссылка](#no-semicolon)]</sup>
 
   ```Ruby
   # плохо (точка с запятой избыточна)
@@ -150,7 +150,7 @@
   puts 'foo', 'bar' # это частное правило для `puts`
   ```
 
-* <a name="single-line-classes"></a> Используйте преимущественно однострочный формат для определений классов с пустым телом.<sup>[[link](#single-line-classes)]</sup>
+* <a name="single-line-classes"></a> Используйте преимущественно однострочный формат для определений классов с пустым телом.<sup>[[ссылка](#single-line-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -167,7 +167,7 @@
 * <a name="no-single-line-methods"></a> Избегайте однострочных методов. И хотя они достаточно популярны в среде  программистов, существует множество неприятных мелочей, связанных с синтаксисом их
   определения, которые делают применение таких методов нежелательным. В любом случае
   однострочные методы не должны содержать больше одного выражения.
-<sup>[[link](#no-single-line-methods)]</sup>
+<sup>[[ссылка](#no-single-line-methods)]</sup>
 
 
   ```Ruby
@@ -200,7 +200,7 @@
   запятых, двоеточий и точек с запятыми,  вокруг `{` и перед `}`.
   Пробелы (по большей части) игнорируются интерпретатором Руби, но
   их правильное использование является ключом к написанию легко читаемого кода.
-  <sup>[[link](#spaces-operators)]</sup>
+  <sup>[[ссылка](#spaces-operators)]</sup>
 
   ```Ruby
   sum = 1 + 2
@@ -255,14 +255,14 @@
   будет прочитан легче. Как и в случает с хешами, выберите один стиль
   и применяется его последовательно.
 
-* <a name="no-spaces-braces"></a> Не используйте пробел после `(`, `[` или перед `]`, `)`.<sup>[[link](#no-spaces-braces)]</sup>
+* <a name="no-spaces-braces"></a> Не используйте пробел после `(`, `[` или перед `]`, `)`.<sup>[[ссылка](#no-spaces-braces)]</sup>
 
   ```Ruby
   some(arg).other
   [1, 2, 3].size
   ```
 
-* <a name="no-space-bang"></a> Не используйте пробел после `!`.<sup>[[link](#no-space-bang)]</sup>
+* <a name="no-space-bang"></a> Не используйте пробел после `!`.<sup>[[ссылка](#no-space-bang)]</sup>
 
   ```Ruby
   # плохо
@@ -274,7 +274,7 @@
 
 * <a name="indent-when-to-case"></a> Делайте отступ для `when` таким же, как и для `case`.
   Я знаю, что многие не согласятся  с этим, то этот стиль предписывается как "Языком программирования Ruby",
-  так и "Programming Ruby".<sup>[[link](#indent-when-to-case)]</sup>
+  так и "Programming Ruby".<sup>[[ссылка](#indent-when-to-case)]</sup>
 
   ```Ruby
   # плохо
@@ -303,7 +303,7 @@
   ```
 
 * <a name="indent-conditional-assignment"></a> Присваивая результат условного выражения переменной,
-  сохраняйте соответствие уровней отступа.<sup>[[link](#indent-conditional-assignment)]</sup>
+  сохраняйте соответствие уровней отступа.<sup>[[ссылка](#indent-conditional-assignment)]</sup>
 
   ```Ruby
   # плохо (слишком запутано)
@@ -358,7 +358,7 @@
   ```
 
 * <a name="empty-lines-between-methods"></a> Используйте пустые строки для разделения определений методов и
-  выделения  логических частей определений внутри них.<sup>[[link](#empty-lines-between-methods)]</sup>
+  выделения  логических частей определений внутри них.<sup>[[ссылка](#empty-lines-between-methods)]</sup>
 
   ```Ruby
   def some_method
@@ -376,7 +376,7 @@
 
 
 * <a name="no-trailing-params-comma"></a>  Избегайте запятых после последнего параметра в вызове метода,
-  особенно когда параметры расположены в отдельных строках.<sup>[[link](#no-trailing-params-comma)]</sup>
+  особенно когда параметры расположены в отдельных строках.<sup>[[ссылка](#no-trailing-params-comma)]</sup>
 
 
   ```Ruby
@@ -395,7 +395,7 @@
   ```
 
 * <a name="spaces-around-equals"></a> Вставляйте пробелы вокруг оператора присваивания `=`, когда 
-  назначаете параметрам метода значения по умолчанию:<sup>[[link](#spaces-around-equals)]</sup>
+  назначаете параметрам метода значения по умолчанию:<sup>[[ссылка](#spaces-around-equals)]</sup>
 
 
   ```Ruby
@@ -415,7 +415,7 @@
 
 * <a name="no-trailing-backslash"></a> Не используйте символ продления строк `\` везде, где можно обойтись без него. 
   Практически не используйте его нигде, кроме как при конкатенации
-  строк.<sup>[[link](#no-trailing-backslash)]</sup>
+  строк.<sup>[[ссылка](#no-trailing-backslash)]</sup>
 
 
   ```Ruby
@@ -434,7 +434,7 @@
 * <a name="consistent-multi-line-chains"></a> Используйте единый стиль многострочных последовательных цепочек 
   вызовов методов. В сообществе ruby популярны два противоположных 
   стиля их оформления - с точкой в начале (вариант A) и с точкой
-  в конце (вариант B).<sup>[[link](#consistent-multi-line-chains)]</sup>
+  в конце (вариант B).<sup>[[ссылка](#consistent-multi-line-chains)]</sup>
 
 
   * **(Вариант A)** Когда продолжаете цепочку вызовов методов на 
@@ -473,7 +473,7 @@
 * <a name="no-double-indent"></a> Выравнивайте параметры вызова метода, если вызов занимает более
   одной строки. Если выравнивание невозможно из-за ораничений на длину
   строки, то используйте одинарный отступ.
-  <sup>[[link](#no-double-indent)]</sup>
+  <sup>[[ссылка](#no-double-indent)]</sup>
 
   ```Ruby
   # первоначальный вариант (строка слишком длинная)
@@ -510,7 +510,7 @@
   ```
 
 * <a name="align-multiline-arrays"></a> Выравнивайте элементы литералов массива,
-  если они занимают несколько строк.<sup>[[link](#align-multiline-arrays)]</sup>
+  если они занимают несколько строк.<sup>[[ссылка](#align-multiline-arrays)]</sup>
 
   ```Ruby
   # плохо
@@ -530,7 +530,7 @@
   ```
 
 * <a name="underscores-in-numerics"></a> Добавляйте символ подеркивания в большие числовые константы для 
-  улучшения их восприятия.<sup>[[link](#underscores-in-numerics)]</sup>
+  улучшения их восприятия.<sup>[[ссылка](#underscores-in-numerics)]</sup>
 
 
   ```Ruby
@@ -543,20 +543,20 @@
 
 * <a name="rdoc-conventions"></a> Используйте устоявшиеся правила RDoc
   для описания интерфейсов. Не отделяйте блок комментария от начала определения
-  метода `def` пустой строкой.<sup>[[link](#rdoc-conventions)]</sup>
+  метода `def` пустой строкой.<sup>[[ссылка](#rdoc-conventions)]</sup>
 
 * <a name="80-character-limits"></a> Ограничивайте длину строк 80-ю
-  символами.<sup>[[link](#80-character-limits)]</sup>
+  символами.<sup>[[ссылка](#80-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a> Не оставляйте пробелы в конце строки.
-  <sup>[[link](#no-trailing-whitespace)]</sup>
+  <sup>[[ссылка](#no-trailing-whitespace)]</sup>
 
 * <a name="newline-eof"></a> Завершайте каждый файл переводом строки.
-  <sup>[[link](#newline-eof)]</sup>
+  <sup>[[ссылка](#newline-eof)]</sup>
 
 * <a name="no-block-comments"></a> Не пользуйтесь блочными комментариями. Их
   нельзя разместить на необходимом уровне отступа. К тому же их сложнее
-  воспринимать, чем обычные комментарии.<sup>[[link](#no-block-comments)]</sup>
+  воспринимать, чем обычные комментарии.<sup>[[ссылка](#no-block-comments)]</sup>
 
   ```Ruby
   # плохо
@@ -575,7 +575,7 @@
 * <a name="double-colons"></a> Используйте `::` только для обращения
   к константам (в том числе к классам и модулям)  и конструкторам класса
   (например, `Array()` or `Nokogiri::HTML()`). Никогда не используйте `::`
-  для обычного вызова методов.<sup>[[link](#double-colons)]</sup>
+  для обычного вызова методов.<sup>[[ссылка](#double-colons)]</sup>
 
   ```Ruby
   # плохо
@@ -591,7 +591,7 @@
 
 * <a name="method-parens"></a> Используйте `def` со скобками, когда у метода
   есть аргументы. Опускайте скобки, когда метод не принимает аргументов.
-  <sup>[[link](#method-parens)]</sup>
+  <sup>[[ссылка](#method-parens)]</sup>
 
    ```Ruby
    # плохо
@@ -621,7 +621,7 @@
   образом вы добавляете еще один уровень абстракции), но с некоторыми отличиями:
   не создается отдельная область видимости (в отличии от `each`) и переменные,
   объявленные в теле `for`, будут видны за пределами блока.
-  <sup>[[link](#no-for-loops)]</sup>
+  <sup>[[ссылка](#no-for-loops)]</sup>
 
   ```Ruby
   arr = [1, 2, 3]
@@ -642,7 +642,7 @@
   ```
 
 * <a name="no-then"></a> Не используйте `then` для условий `if/unless`,
-  объявленных на нескольких строках.<sup>[[link](#no-then)]</sup>
+  объявленных на нескольких строках.<sup>[[ссылка](#no-then)]</sup>
 
   ```Ruby
   # плохо
@@ -659,7 +659,7 @@
 
 * <a name="same-line-condition"></a> Всегда записывайте условие для `if/unless`
   на той же строке, что содержит `if/then` в многострочном условии.
-  <sup>[[link](#same-line-condition)]</sup>
+  <sup>[[ссылка](#same-line-condition)]</sup>
 
   ```Ruby
   # плохо
@@ -678,7 +678,7 @@
 
 * <a name="ternary-operator"></a> Предпочитайте тернарный оператор (`?:`)
   конструкциям с `if/then/else/end`. Он используется чаще и по определению
-  более краток.<sup>[[link](#ternary-operator)]</sup>
+  более краток.<sup>[[ссылка](#ternary-operator)]</sup>
 
   ```Ruby
   # плохо
@@ -691,7 +691,7 @@
 * <a name="no-nested-ternary"></a> Используйте только одно выражение в каждой
   ветви тернарного оператора. Отсюда следует, что лучше избегать вложенных
   тернарных операторов. При возникновении такой необходимости применяйте
-  конструкции с `if/else`.<sup>[[link](#no-nested-ternary)]</sup>
+  конструкции с `if/else`.<sup>[[ссылка](#no-nested-ternary)]</sup>
 
   ```Ruby
   # плохо
@@ -707,7 +707,7 @@
 
 * <a name="no-1.8-if-syntax"></a> Не используйте `if x: ...` &mdash; в Руби 1.9
   эту синтаксическую конструкцию удалии, используйте вместо нее тернарные
-  операторы.<sup>[[link](#no-1.8-if-syntax)]</sup>
+  операторы.<sup>[[ссылка](#no-1.8-if-syntax)]</sup>
 
   ```Ruby
   # плохо
@@ -718,11 +718,11 @@
   ```
 
 * <a name="no-semicolon-ifs"></a> Не используйте точку с запятой в `if x; ...`.
-  Применяйте тернарные операторы.<sup>[[link](#no-semicolon-ifs)]</sup>
+  Применяйте тернарные операторы.<sup>[[ссылка](#no-semicolon-ifs)]</sup>
 
 * <a name="use-if-case-returns"></a> Применяйте на пользу тот факт, что `if` and
   `case` являются выражениями, возвращающими результирующие значения.
-  <sup>[[link](#use-if-case-returns)]</sup>
+  <sup>[[ссылка](#use-if-case-returns)]</sup>
 
   ```Ruby
   # плохо
@@ -743,13 +743,13 @@
 
 * <a name="one-line-cases"></a> Применяйте `when x then ...` для однострочных
   выражений. Вариант записи  `when x: ...` был удален, начиная с Руби 1.9.
-  <sup>[[link](#one-line-cases)]</sup>
+  <sup>[[ссылка](#one-line-cases)]</sup>
 
 * <a name="no-when-semicolons"></a> Не используйте `when x; ...` по аналогии
-  с предыдущим правилом.<sup>[[link](#no-when-semicolons)]</sup>
+  с предыдущим правилом.<sup>[[ссылка](#no-when-semicolons)]</sup>
 
 * <a name="bang-not-not"></a> Используйте `!` вместо `not`.
-  <sup>[[link](#bang-not-not)]</sup>
+  <sup>[[ссылка](#bang-not-not)]</sup>
 
   ```Ruby
   # плохо (необходимы скобки из-за неоднозначности приоритетов операторов)
@@ -760,7 +760,7 @@
   ```
 
 * <a name="no-bang-bang"></a> Не используйте `!!`.
-  <sup>[[link](#no-bang-bang)]</sup>
+  <sup>[[ссылка](#no-bang-bang)]</sup>
 
   ```Ruby
   # плохо
@@ -783,7 +783,7 @@
 
 * <a name="no-and-or-or"></a> Ключевые слова `and` и `or` следует забыть. Они
   не несут дополнительной пользы. Всегда используйте `&&` и `||` вместо них.
-  <sup>[[link](#no-and-or-or)]</sup>
+  <sup>[[ссылка](#no-and-or-or)]</sup>
 
   ```Ruby
   # плохо
@@ -806,11 +806,11 @@
   ```
 
 * <a name="no-multiline-ternary"></a> Избегайте многострочных тернарных операторов `?:` 
-  Используйте вместо них `if/unless`.<sup>[[link](#no-multiline-ternary)]</sup>
+  Используйте вместо них `if/unless`.<sup>[[ссылка](#no-multiline-ternary)]</sup>
 
 * <a name="if-as-a-modifier"></a> Для однострочных выражений по возможности
   модификатор `if/unless`. Другим хорошим вариантом являются операторы
-  управления потоком исполнения `&&/||`.<sup>[[link](#if-as-a-modifier)]</sup>
+  управления потоком исполнения `&&/||`.<sup>[[ссылка](#if-as-a-modifier)]</sup>
 
   ```Ruby
   # плохо
@@ -827,7 +827,7 @@
 
 * <a name="no-multiline-if-modifiers"></a>  Избегайте `if/unless` в конце
   нетривиального многострочного блока.
-  <sup>[[link](#no-multiline-if-modifiers)]</sup>
+  <sup>[[ссылка](#no-multiline-if-modifiers)]</sup>
 
   ```Ruby
   # плохо
@@ -845,7 +845,7 @@
 
 * <a name="unless-for-negatives"></a> Используйте `unless` вместо `if`
   для отрицательных условий (или `||` для управления потоком исполнения).
-  <sup>[[link](#unless-for-negatives)]</sup>
+  <sup>[[ссылка](#unless-for-negatives)]</sup>
 
   ```Ruby
   # плохо
@@ -863,7 +863,7 @@
 
 * <a name="no-else-with-unless"></a> Не используйте `unless` вместе с `else`.
   Перепишите такие выражение с положительной проверкой.
-  <sup>[[link](#no-else-with-unless)]</sup>
+  <sup>[[ссылка](#no-else-with-unless)]</sup>
 
   ```Ruby
   # плохо
@@ -882,7 +882,7 @@
   ```
 
 * <a name="no-parens-if"></a> Не используйте скобки для ограничения условных
-  выражений в `if/unless/while/until`.<sup>[[link](#no-parens-if)]</sup>
+  выражений в `if/unless/while/until`.<sup>[[ссылка](#no-parens-if)]</sup>
 
   ```Ruby
   # плохо
@@ -898,7 +898,7 @@
 
 * <a name="no-multiline-while-do"></a> Не используйте `while/until УСЛОВИЕ do`
   для многострочных циклов с `while/until`.
-  <sup>[[link](#no-multiline-while-do)]</sup>
+  <sup>[[ссылка](#no-multiline-while-do)]</sup>
 
   ```Ruby
   # плохо
@@ -921,7 +921,7 @@
   ```
 
 * <a name="while-as-a-modifier"></a> Используйте `while/until` для однострочный
-  выражений.<sup>[[link](#while-as-a-modifier)]</sup>
+  выражений.<sup>[[ссылка](#while-as-a-modifier)]</sup>
 
   ```Ruby
   # плохо
@@ -933,7 +933,7 @@
   do_something while some_condition
   ```
 * <a name="until-for-negatives"></a> Используйте `until` вместо `while`
-  для условий на отрицания.<sup>[[link](#until-for-negatives)]</sup>
+  для условий на отрицания.<sup>[[ссылка](#until-for-negatives)]</sup>
 
   ```Ruby
   # плохо
@@ -943,7 +943,7 @@
   do_something until some_condition
   ```
 * <a name="infinite-loop"></a> Используйте `Kernel#loop` вместо `while/until`
-  для бесконечного цикла.<sup>[[link](#infinite-loop)]</sup>
+  для бесконечного цикла.<sup>[[ссылка](#infinite-loop)]</sup>
 
     ```Ruby
     # плохо
@@ -963,7 +963,7 @@
 
 * <a name="loop-with-break"></a> Используйте `Kernel#loop` с `break` вместо
   `begin/end/until` или `begin/end/while` для циклов с постусловием.
-  <sup>[[link](#loop-with-break)]</sup>
+  <sup>[[ссылка](#loop-with-break)]</sup>
 
   ```Ruby
   # плохо
@@ -984,7 +984,7 @@
   являющихся частью таких DSL, как Rake, Rails, RSpec, методов, имеющих
   статус ключевого слова, например, `attr_reader`, `puts` и при вызове
   аксессоров. Используйте скобки при вызове прочих методов.
-  <sup>[[link](#no-dsl-parens)]</sup>
+  <sup>[[ссылка](#no-dsl-parens)]</sup>
 
   ```Ruby
   class Person
@@ -1005,7 +1005,7 @@
   ```
 
 * <a name="no-braces-opts-hash"></a> Не используйте фигурные скобки для ограничения хешей, передаваемых
-  методу.<sup>[[link](#no-braces-opts-hash)]</sup>
+  методу.<sup>[[ссылка](#no-braces-opts-hash)]</sup>
 
   ```Ruby
   # плохо
@@ -1017,7 +1017,7 @@
 
 * <a name="no-dsl-decorating"></a> Не используйте фигурные скобки для ограничения хешей, 
   передаваемых методу, и скобки вокруг параметров для методов,
-  являющихся частью DSL.<sup>[[link](#no-dsl-decorating)]</sup>
+  являющихся частью DSL.<sup>[[ссылка](#no-dsl-decorating)]</sup>
 
   ```Ruby
   class Person < ActiveRecord::Base
@@ -1030,7 +1030,7 @@
   ```
 
 * <a name="no-args-no-parens"></a> Опускайте скобки при вызове метода без параметров.
-  <sup>[[link](#no-args-no-parens)]</sup>
+  <sup>[[ссылка](#no-args-no-parens)]</sup>
 
 
   ```Ruby
@@ -1052,7 +1052,7 @@
   последовательности вызовов методов всегда выглядят ужасно). Старайтесь
   применять `do...end` для логических операций и определений методов (например,
   для Rakefile и некоторых DSL). Не используйте `do...end` в цепочках вызовов.
-  <sup>[[link](#single-line-blocks)]</sup>
+  <sup>[[ссылка](#single-line-blocks)]</sup>
 
   ```Ruby
   names = ['Bozhidar', 'Steve', 'Sarah']
@@ -1081,7 +1081,7 @@
 * <a name="block-argument"></a> Consider using explicit block argument to avoid writing block  literal that just passes its arguments to another block. Beware of
   the performance impact, though, as the block gets converted to a
   Proc.
-<sup>[[link](#block-argument)]</sup>
+<sup>[[ссылка](#block-argument)]</sup>
 
   ```Ruby
   require 'tempfile'
@@ -1105,7 +1105,7 @@
   end
   ```
 
-* <a name="no-explicit-return"></a> Avoid `return` where not required for flow of control.<sup>[[link](#no-explicit-return)]</sup>
+* <a name="no-explicit-return"></a> Avoid `return` where not required for flow of control.<sup>[[ссылка](#no-explicit-return)]</sup>
 
   ```Ruby
   # плохо
@@ -1119,7 +1119,7 @@
   end
   ```
 
-* <a name="no-self-unless-required"></a> Avoid `self` where not required. (It is only required when calling a self write accessor.)<sup>[[link](#no-self-unless-required)]</sup>
+* <a name="no-self-unless-required"></a> Avoid `self` where not required. (It is only required when calling a self write accessor.)<sup>[[ссылка](#no-self-unless-required)]</sup>
 
   ```Ruby
   # плохо
@@ -1141,7 +1141,7 @@
   end
   ```
 
-* <a name="no-shadowing"></a> As a corollary, avoid shadowing methods with local variables unless they are both equivalent.<sup>[[link](#no-shadowing)]</sup>
+* <a name="no-shadowing"></a> As a corollary, avoid shadowing methods with local variables unless they are both equivalent.<sup>[[ссылка](#no-shadowing)]</sup>
 
   ```Ruby
   class Foo
@@ -1171,7 +1171,7 @@
 
 * <a name="safe-assignment-in-condition"></a> Don't use the return value of `=` (an assignment) in conditional  expressions unless the assignment is wrapped in parentheses. This is
   a fairly popular idiom among Rubyists that's sometimes referred to as
-<sup>[[link](#safe-assignment-in-condition)]</sup>
+<sup>[[ссылка](#safe-assignment-in-condition)]</sup>
 
 
   ```Ruby
@@ -1195,7 +1195,7 @@
   end
   ```
 
-* <a name="self-assignment"></a> Use shorthand self assignment operators whenever applicable.<sup>[[link](#self-assignment)]</sup>
+* <a name="self-assignment"></a> Use shorthand self assignment operators whenever applicable.<sup>[[ссылка](#self-assignment)]</sup>
 
   ```Ruby
   # плохо
@@ -1215,7 +1215,7 @@
   x &&= y
   ```
 
-* <a name="double-pipe-for-uninit"></a> Use `||=` to initialize variables only if they're not already initialized.<sup>[[link](#double-pipe-for-uninit)]</sup>
+* <a name="double-pipe-for-uninit"></a> Use `||=` to initialize variables only if they're not already initialized.<sup>[[ссылка](#double-pipe-for-uninit)]</sup>
 
   ```Ruby
   # плохо
@@ -1229,7 +1229,7 @@
   ```
 
 * <a name="no-double-pipes-for-bools"></a> Don't use `||=` to initialize boolean variables. (Consider what  would happen if the current value happened to be `false`.)
-<sup>[[link](#no-double-pipes-for-bools)]</sup>
+<sup>[[ссылка](#no-double-pipes-for-bools)]</sup>
 
   ```Ruby
   # плохо - would set enabled to true even if it was false
@@ -1241,7 +1241,7 @@
 
 * <a name="double-amper-preprocess"></a> Use `&&=` to preprocess variables that may or may not exist. Using  `&&=` will change the value only if it exists, removing the need to
   check its existence with `if`.
-<sup>[[link](#double-amper-preprocess)]</sup>
+<sup>[[ссылка](#double-amper-preprocess)]</sup>
 
   ```Ruby
   # плохо
@@ -1264,7 +1264,7 @@
 
 * <a name="no-case-equality"></a> Avoid explicit use of the case equality operator `===`. As its name  implies it is meant to be used implicitly by `case` expressions and
   outside of them it yields some pretty confusing code.
-<sup>[[link](#no-case-equality)]</sup>
+<sup>[[ссылка](#no-case-equality)]</sup>
 
   ```Ruby
   # плохо
@@ -1281,7 +1281,7 @@
 * <a name="no-cryptic-perlisms"></a> Avoid using Perl-style special variables (like `$:`, `$;`,  etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged. Use the human-friendly
   aliases provided by the `English` library.
-<sup>[[link](#no-cryptic-perlisms)]</sup>
+<sup>[[ссылка](#no-cryptic-perlisms)]</sup>
 
   ```Ruby
   # плохо
@@ -1292,7 +1292,7 @@
   $LOAD_PATH.unshift File.dirname(__FILE__)
   ```
 
-* <a name="parens-no-spaces"></a> Never put a space between a method name and the opening parenthesis.<sup>[[link](#parens-no-spaces)]</sup>
+* <a name="parens-no-spaces"></a> Never put a space between a method name and the opening parenthesis.<sup>[[ссылка](#parens-no-spaces)]</sup>
 
   ```Ruby
   # плохо
@@ -1304,13 +1304,13 @@
 
 * <a name="parens-as-args"></a> If the first argument to a method begins with an open parenthesis,  always use parentheses in the method invocation. For example, write
   `f((3 + 2) + 1)`.
-<sup>[[link](#parens-as-args)]</sup>
+<sup>[[ссылка](#parens-as-args)]</sup>
 
 * <a name="always-warn-at-runtime"></a> Always run the Ruby interpreter with the `-w` option so it will warn  you if you forget either of the rules above!
-<sup>[[link](#always-warn-at-runtime)]</sup>
+<sup>[[ссылка](#always-warn-at-runtime)]</sup>
 
 * <a name="lambda-multi-line"></a> Use the new lambda literal syntax for single line body blocks. Use the  `lambda` method for multi-line blocks.
-<sup>[[link](#lambda-multi-line)]</sup>
+<sup>[[ссылка](#lambda-multi-line)]</sup>
 
   ```Ruby
   # плохо
@@ -1333,7 +1333,7 @@
   end
   ```
 
-* <a name="proc"></a> Prefer `proc` over `Proc.new`.<sup>[[link](#proc)]</sup>
+* <a name="proc"></a> Prefer `proc` over `Proc.new`.<sup>[[ссылка](#proc)]</sup>
 
   ```Ruby
   # плохо
@@ -1343,7 +1343,7 @@
   p = proc { |n| puts n }
   ```
 
-* <a name="proc-call"></a> Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.<sup>[[link](#proc-call)]</sup>
+* <a name="proc-call"></a> Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.<sup>[[ссылка](#proc-call)]</sup>
 
   ```Ruby
   # плохо - looks similar to Enumeration access
@@ -1362,7 +1362,7 @@
 * <a name="underscore-unused-vars"></a> Prefix with `_` unused block parameters and local variables. It's  also acceptable to use just `_` (although it's a bit less
   descriptive). This convention is recognized by the Ruby interpreter
   and tools like RuboCop and will suppress their unused variable warnings.
-<sup>[[link](#underscore-unused-vars)]</sup>
+<sup>[[ссылка](#underscore-unused-vars)]</sup>
 
   ```Ruby
   # плохо
@@ -1393,14 +1393,14 @@
 * <a name="global-stdout"></a> Use `$stdout/$stderr/$stdin` instead of  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` are constants, and
   while you can actually reassign (possibly to redirect some stream)
   constants in Ruby, you'll get an interpreter warning if you do so.
-<sup>[[link](#global-stdout)]</sup>
+<sup>[[ссылка](#global-stdout)]</sup>
 
 * <a name="warn"></a> Use `warn` instead of `$stderr.puts`. Apart from being more concise  and clear, `warn` allows you to suppress warnings if you need to (by
   setting the warn level to 0 via `-W0`).
-<sup>[[link](#warn)]</sup>
+<sup>[[ссылка](#warn)]</sup>
 
 * <a name="sprintf"></a> Favor the use of `sprintf` and its alias `format` over the fairly  cryptic `String#%` method.
-<sup>[[link](#sprintf)]</sup>
+<sup>[[ссылка](#sprintf)]</sup>
 
   ```Ruby
   # плохо
@@ -1424,7 +1424,7 @@
   ```
 
 * <a name="array-join"></a> Favor the use of `Array#join` over the fairly cryptic `Array#*` with  a string argument.
-<sup>[[link](#array-join)]</sup>
+<sup>[[ссылка](#array-join)]</sup>
 
   ```Ruby
   # плохо
@@ -1438,7 +1438,7 @@
 
 * <a name="splat-arrays"></a> Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing with a  variable you want to treat as an Array, but you're not certain it's
   an array.
-<sup>[[link](#splat-arrays)]</sup>
+<sup>[[ссылка](#splat-arrays)]</sup>
 
   ```Ruby
   # плохо
@@ -1452,7 +1452,7 @@
   Array(paths).each { |path| do_something(path) }
   ```
 
-* <a name="ranges-or-between"></a> Use ranges or `Comparable#between?` instead of complex comparison logic when possible.<sup>[[link](#ranges-or-between)]</sup>
+* <a name="ranges-or-between"></a> Use ranges or `Comparable#between?` instead of complex comparison logic when possible.<sup>[[ссылка](#ranges-or-between)]</sup>
 
   ```Ruby
   # плохо
@@ -1466,7 +1466,7 @@
   ```
 
 * <a name="predicate-methods"></a> Favor the use of predicate methods to explicit comparisons with  `==`. Numeric comparisons are OK.
-<sup>[[link](#predicate-methods)]</sup>
+<sup>[[ссылка](#predicate-methods)]</sup>
 
   ```Ruby
   # плохо
@@ -1496,7 +1496,7 @@
   end
   ```
 
-* <a name="no-non-nil-checks"></a> Don't do explicit non-`nil` checks unless you're dealing with boolean values.<sup>[[link](#no-non-nil-checks)]</sup>
+* <a name="no-non-nil-checks"></a> Don't do explicit non-`nil` checks unless you're dealing with boolean values.<sup>[[ссылка](#no-non-nil-checks)]</sup>
 
     ```Ruby
     # плохо
@@ -1512,9 +1512,9 @@
     end
     ```
 
-* <a name="no-BEGIN-blocks"></a> Avoid the use of `BEGIN` blocks.<sup>[[link](#no-BEGIN-blocks)]</sup>
+* <a name="no-BEGIN-blocks"></a> Avoid the use of `BEGIN` blocks.<sup>[[ссылка](#no-BEGIN-blocks)]</sup>
 
-* <a name="no-END-blocks"></a> Never use `END` blocks. Use `Kernel#at_exit` instead.<sup>[[link](#no-END-blocks)]</sup>
+* <a name="no-END-blocks"></a> Never use `END` blocks. Use `Kernel#at_exit` instead.<sup>[[ссылка](#no-END-blocks)]</sup>
 
   ```Ruby
   # плохо
@@ -1524,9 +1524,9 @@
   at_exit { puts 'Goodbye!' }
   ```
 
-* <a name="no-flip-flops"></a> Avoid the use of flip-flops.<sup>[[link](#no-flip-flops)]</sup>
+* <a name="no-flip-flops"></a> Avoid the use of flip-flops.<sup>[[ссылка](#no-flip-flops)]</sup>
 
-* <a name="no-nested-conditionals"></a> Avoid use of nested conditionals for flow of control.<sup>[[link](#no-nested-conditionals)]</sup>
+* <a name="no-nested-conditionals"></a> Avoid use of nested conditionals for flow of control.<sup>[[ссылка](#no-nested-conditionals)]</sup>
 
   Prefer a guard clause when you can assert invalid data. A guard clause
   is a conditional statement at the top of a function that bails out as
@@ -1577,7 +1577,7 @@
 > naming things. <br/>
 > -- Phil Karlton
 
-* <a name="english-identifiers"></a> Name identifiers in English.<sup>[[link](#english-identifiers)]</sup>
+* <a name="english-identifiers"></a> Name identifiers in English.<sup>[[ссылка](#english-identifiers)]</sup>
 
   ```Ruby
   # плохо - identifier using non-ascii characters
@@ -1590,7 +1590,7 @@
   salary = 1_000
   ```
 
-* <a name="snake-case-symbols-methods-vars"></a> Use `snake_case` for symbols, methods and variables.<sup>[[link](#snake-case-symbols-methods-vars)]</sup>
+* <a name="snake-case-symbols-methods-vars"></a> Use `snake_case` for symbols, methods and variables.<sup>[[ссылка](#snake-case-symbols-methods-vars)]</sup>
 
   ```Ruby
   # плохо
@@ -1617,7 +1617,7 @@
   ```
 
 * <a name="camelcase-classes"></a> Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,  RFC, XML uppercase.)
-<sup>[[link](#camelcase-classes)]</sup>
+<sup>[[ссылка](#camelcase-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -1643,14 +1643,14 @@
   end
   ```
 
-* <a name="snake-case-files"></a> Use `snake_case` for naming files, e.g. `hello_world.rb`.<sup>[[link](#snake-case-files)]</sup>
+* <a name="snake-case-files"></a> Use `snake_case` for naming files, e.g. `hello_world.rb`.<sup>[[ссылка](#snake-case-files)]</sup>
 
-* <a name="snake-case-dirs"></a> Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.<sup>[[link](#snake-case-dirs)]</sup>
+* <a name="snake-case-dirs"></a> Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.<sup>[[ссылка](#snake-case-dirs)]</sup>
 
 * <a name="one-class-per-file"></a> Aim to have just a single class/module per source file. Name the file name as  the class/module, but replacing CamelCase with snake_case.
-<sup>[[link](#one-class-per-file)]</sup>
+<sup>[[ссылка](#one-class-per-file)]</sup>
 
-* <a name="screaming-snake-case"></a> Use `SCREAMING_SNAKE_CASE` for other constants.<sup>[[link](#screaming-snake-case)]</sup>
+* <a name="screaming-snake-case"></a> Use `SCREAMING_SNAKE_CASE` for other constants.<sup>[[ссылка](#screaming-snake-case)]</sup>
 
   ```Ruby
   # плохо
@@ -1663,12 +1663,12 @@
 * <a name="bool-methods-qmark"></a> The names of predicate methods (methods that return a boolean value)  should end in a question mark.
   (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't
   end in a question mark.
-<sup>[[link](#bool-methods-qmark)]</sup>
+<sup>[[ссылка](#bool-methods-qmark)]</sup>
 
 * <a name="dangerous-method-bang"></a> The names of potentially *dangerous* methods (i.e. methods that  modify `self` or the arguments, `exit!` (doesn't run the finalizers
   like `exit` does), etc.) should end with an exclamation mark if
   there exists a safe version of that *dangerous* method.
-<sup>[[link](#dangerous-method-bang)]</sup>
+<sup>[[ссылка](#dangerous-method-bang)]</sup>
 
   ```Ruby
   # плохо - there is no matching 'safe' method
@@ -1694,7 +1694,7 @@
   ```
 
 * <a name="safe-because-unsafe"></a> Define the non-bang (safe) method in terms of the bang (dangerous)  one if possible.
-<sup>[[link](#safe-because-unsafe)]</sup>
+<sup>[[ссылка](#safe-because-unsafe)]</sup>
 
   ```Ruby
   class Array
@@ -1715,10 +1715,10 @@
   ```
 
 * <a name="reduce-blocks"></a> When using `reduce` with short blocks, name the arguments `|a, e|`  (accumulator, element).
-<sup>[[link](#reduce-blocks)]</sup>
+<sup>[[ссылка](#reduce-blocks)]</sup>
 
 * <a name="other-arg"></a> When defining binary operators, name the argument `other`(`<<` and  `[]` are exceptions to the rule, since their semantics are different).
-<sup>[[link](#other-arg)]</sup>
+<sup>[[ссылка](#other-arg)]</sup>
 
   ```Ruby
   def +(other)
@@ -1732,11 +1732,11 @@
   Smalltalk and are not common in other programming languages. The
   reason the use of `select` is encouraged over `find_all` is that it
   goes together nicely with `reject` and its name is pretty self-explanatory.
-<sup>[[link](#map-fine-select-reduce-size)]</sup>
+<sup>[[ссылка](#map-fine-select-reduce-size)]</sup>
 
 * <a name="count-vs-size"></a> Don't use `count` as a substitute for `size`. For `Enumerable`  objects other than `Array` it will iterate the entire collection in
   order to determine its size.
-<sup>[[link](#count-vs-size)]</sup>
+<sup>[[ссылка](#count-vs-size)]</sup>
 
   ```Ruby
   # плохо
@@ -1749,7 +1749,7 @@
 * <a name="flat-map"></a> Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays with a depth greater than 2, i.e.
   if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
   `flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
-<sup>[[link](#flat-map)]</sup>
+<sup>[[ссылка](#flat-map)]</sup>
 
   ```Ruby
   # плохо
@@ -1760,7 +1760,7 @@
   ```
 
 * <a name="reverse-each"></a> Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't  do a new array allocation and that's a good thing.
-<sup>[[link](#reverse-each)]</sup>
+<sup>[[ссылка](#reverse-each)]</sup>
 
   ```Ruby
   # плохо
@@ -1778,17 +1778,17 @@
 > it even clearer. <br/>
 > -- Steve McConnell
 
-* <a name="no-comments"></a> Write self-documenting code and ignore the rest of this section. Seriously!<sup>[[link](#no-comments)]</sup>
+* <a name="no-comments"></a> Write self-documenting code and ignore the rest of this section. Seriously!<sup>[[ссылка](#no-comments)]</sup>
 
-* <a name="english-comments"></a> Write comments in English.<sup>[[link](#english-comments)]</sup>
+* <a name="english-comments"></a> Write comments in English.<sup>[[ссылка](#english-comments)]</sup>
 
 * <a name="hash-space"></a> Use one space between the leading `#` character of the comment and the text  of the comment.
-<sup>[[link](#hash-space)]</sup>
+<sup>[[ссылка](#hash-space)]</sup>
 
 * <a name="english-syntax"></a> Comments longer than a word are capitalized and use punctuation. Use [one  space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
-<sup>[[link](#english-syntax)]</sup>
+<sup>[[ссылка](#english-syntax)]</sup>
 
-* <a name="no-superfluous-comments"></a> Avoid superfluous comments.<sup>[[link](#no-superfluous-comments)]</sup>
+* <a name="no-superfluous-comments"></a> Avoid superfluous comments.<sup>[[ссылка](#no-superfluous-comments)]</sup>
 
   ```Ruby
   # плохо
@@ -1796,24 +1796,24 @@
   ```
 
 * <a name="comment-upkeep"></a> Keep existing comments up-to-date. An outdated comment is worse than no comment  at all.
-<sup>[[link](#comment-upkeep)]</sup>
+<sup>[[ссылка](#comment-upkeep)]</sup>
 
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
 * <a name="refactor-dont-comment"></a> Avoid writing comments to explain плохо code. Refactor the code to  make it self-explanatory. (Do or do not - there is no try. --Yoda)
-<sup>[[link](#refactor-dont-comment)]</sup>
+<sup>[[ссылка](#refactor-dont-comment)]</sup>
 
 ### Пометки в  ентариях
 
 * <a name="annotate-above"></a> Annotations should usually be written on the line immediately above  the relevant code.
-<sup>[[link](#annotate-above)]</sup>
+<sup>[[ссылка](#annotate-above)]</sup>
 
 * <a name="annotate-keywords"></a> The annotation keyword is followed by a colon and a space, then a note  describing the problem.
-<sup>[[link](#annotate-keywords)]</sup>
+<sup>[[ссылка](#annotate-keywords)]</sup>
 
 * <a name="indent-annotations"></a> If multiple lines are required to describe the problem, subsequent  lines should be indented two spaces after the `#`.
-<sup>[[link](#indent-annotations)]</sup>
+<sup>[[ссылка](#indent-annotations)]</sup>
 
   ```Ruby
   def bar
@@ -1825,7 +1825,7 @@
 
 * <a name="rare-eol-annotations"></a> In cases where the problem is so obvious that any documentation would  be redundant, annotations may be left at the end of the offending line
   with no note. This usage should be the exception and not the rule.
-<sup>[[link](#rare-eol-annotations)]</sup>
+<sup>[[ссылка](#rare-eol-annotations)]</sup>
 
   ```Ruby
   def bar
@@ -1834,26 +1834,26 @@
   ```
 
 * <a name="todo"></a> Use `TODO` to note missing features or functionality that should be  added at a later date.
-<sup>[[link](#todo)]</sup>
+<sup>[[ссылка](#todo)]</sup>
 
-* <a name="fixme"></a> Use `FIXME` to note broken code that needs to be fixed.<sup>[[link](#fixme)]</sup>
+* <a name="fixme"></a> Use `FIXME` to note broken code that needs to be fixed.<sup>[[ссылка](#fixme)]</sup>
 
 * <a name="optimize"></a> Use `OPTIMIZE` to note slow or inefficient code that may cause  performance problems.
-<sup>[[link](#optimize)]</sup>
+<sup>[[ссылка](#optimize)]</sup>
 
 * <a name="hack"></a> Use `HACK` to note code smells where questionable coding practices  were used and should be refactored away.
-<sup>[[link](#hack)]</sup>
+<sup>[[ссылка](#hack)]</sup>
 
 * <a name="review"></a> Use `REVIEW` to note anything that should be looked at to confirm it  is working as intended. For example: `REVIEW: Are we sure this is how the
   client does X currently?`
-<sup>[[link](#review)]</sup>
+<sup>[[ссылка](#review)]</sup>
 
 * <a name="document-annotations"></a> Use other custom annotation keywords if it feels appropriate, but be  sure to document them in your project's `README` or similar.
-<sup>[[link](#document-annotations)]</sup>
+<sup>[[ссылка](#document-annotations)]</sup>
 
 ## Классы и модули
 
-* <a name="consistent-classes"></a> Структурируйте ваши классы единообразно.<sup>[[link](#consistent-classes)]</sup>
+* <a name="consistent-classes"></a> Структурируйте ваши классы единообразно.<sup>[[ссылка](#consistent-classes)]</sup>
 
   ```Ruby
   class Person
@@ -1895,7 +1895,7 @@
   ```
 
 * <a name="file-classes"></a> Don't nest multi line classes within classes. Try to have such nested  classes each in their own file in a folder named like the containing class.
-<sup>[[link](#file-classes)]</sup>
+<sup>[[ссылка](#file-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -1936,7 +1936,7 @@
   ```
 
 * <a name="modules-vs-classes"></a> Prefer modules to classes with only class methods. Classes should be  used only when it makes sense to create instances out of them.
-<sup>[[link](#modules-vs-classes)]</sup>
+<sup>[[ссылка](#modules-vs-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -1963,7 +1963,7 @@
   ```
 
 * <a name="module-function"></a> Favor the use of `module_function` over `extend self` when you want  to turn a module's instance methods into class methods.
-<sup>[[link](#module-function)]</sup>
+<sup>[[ссылка](#module-function)]</sup>
 
   ```Ruby
   # плохо
@@ -1994,14 +1994,14 @@
   ```
 
 * <a name="liskov"></a> When designing class hierarchies make sure that they conform to the  [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
-<sup>[[link](#liskov)]</sup>
+<sup>[[ссылка](#liskov)]</sup>
 
 * <a name="solid-design"></a> Try to make your classes as  [SOLID](http://en.wikipedia.org/wiki/SOLID_\(object-oriented_design\))
   as possible.
-<sup>[[link](#solid-design)]</sup>
+<sup>[[ссылка](#solid-design)]</sup>
 
 * <a name="define-to-s"></a> Always supply a proper `to_s` method for classes that represent  domain objects.
-<sup>[[link](#define-to-s)]</sup>
+<sup>[[ссылка](#define-to-s)]</sup>
 
   ```Ruby
   class Person
@@ -2018,7 +2018,7 @@
   end
   ```
 
-* <a name="attr_family"></a> Use the `attr` family of functions to define trivial accessors or mutators.<sup>[[link](#attr_family)]</sup>
+* <a name="attr_family"></a> Use the `attr` family of functions to define trivial accessors or mutators.<sup>[[ссылка](#attr_family)]</sup>
 
   ```Ruby
   # плохо
@@ -2048,7 +2048,7 @@
   end
   ```
 
-* <a name="attr"></a> Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.<sup>[[link](#attr)]</sup>
+* <a name="attr"></a> Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.<sup>[[ссылка](#attr)]</sup>
 
   ```Ruby
   # плохо - creates a single attribute accessor (deprecated in 1.9)
@@ -2061,7 +2061,7 @@
   ```
 
 * <a name="struct-new"></a> Consider using `Struct.new`, which defines the trivial accessors,  constructor and comparison operators for you.
-<sup>[[link](#struct-new)]</sup>
+<sup>[[ссылка](#struct-new)]</sup>
 
   ```Ruby
   # хорошо
@@ -2081,10 +2081,10 @@
 
 * <a name="no-extend-struct-new"></a> Don't extend a `Struct.new` - it already is a new class. Extending it introduces  a superfluous class level and may also introduce weird errors if the file is
   required multiple times.
-<sup>[[link](#no-extend-struct-new)]</sup>
+<sup>[[ссылка](#no-extend-struct-new)]</sup>
 
 * <a name="factory-methods"></a> Consider adding factory methods to provide additional sensible ways  to create instances of a particular class.
-<sup>[[link](#factory-methods)]</sup>
+<sup>[[ссылка](#factory-methods)]</sup>
 
   ```Ruby
   class Person
@@ -2094,7 +2094,7 @@
   end
   ```
 
-* <a name="duck-typing"></a> Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.<sup>[[link](#duck-typing)]</sup>
+* <a name="duck-typing"></a> Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.<sup>[[ссылка](#duck-typing)]</sup>
 
   ```Ruby
   # плохо
@@ -2132,7 +2132,7 @@
   end
   ```
 
-* <a name="no-class-vars"></a> Avoid the usage of class (`@@`) variables due to their "nasty" behavior in inheritance.<sup>[[link](#no-class-vars)]</sup>
+* <a name="no-class-vars"></a> Avoid the usage of class (`@@`) variables due to their "nasty" behavior in inheritance.<sup>[[ссылка](#no-class-vars)]</sup>
 
   ```Ruby
   class Parent
@@ -2157,13 +2157,13 @@
 * <a name="visibility"></a> Assign proper visibility levels to methods (`private`, `protected`)  in accordance with their intended usage. Don't go off leaving
   everything `public` (which is the default). After all we're coding
   in *Ruby* now, not in *Python*.
-<sup>[[link](#visibility)]</sup>
+<sup>[[ссылка](#visibility)]</sup>
 
 * <a name="indent-public-private-protected"></a> Indent the `public`, `protected`, and `private` methods as much the  method definitions they apply to. Leave one blank line above the
   visibility modifier
   and one blank line below in order to emphasize that it applies to all
   methods below it.
-<sup>[[link](#indent-public-private-protected)]</sup>
+<sup>[[ссылка](#indent-public-private-protected)]</sup>
 
   ```Ruby
   class SomeClass
@@ -2184,7 +2184,7 @@
   ```
 
 * <a name="def-self-singletons"></a> Use `def self.method` to define singleton methods. This makes the code  easier to refactor since the class name is not repeated.
-<sup>[[link](#def-self-singletons)]</sup>
+<sup>[[ссылка](#def-self-singletons)]</sup>
 
   ```Ruby
   class TestClass
@@ -2216,7 +2216,7 @@
 
 * <a name="fail-method"></a> Signal exceptions using the `fail` method. Use `raise` only when  catching an exception and re-raising it (because here you're not
   failing, but explicitly and purposefully raising an exception).
-<sup>[[link](#fail-method)]</sup>
+<sup>[[ссылка](#fail-method)]</sup>
 
   ```Ruby
   begin
@@ -2226,7 +2226,7 @@
   end
   ```
 
-* <a name="no-explicit-runtimeerror"></a> Don't specify `RuntimeError` explicitly in the two argument version of `fail/raise`.<sup>[[link](#no-explicit-runtimeerror)]</sup>
+* <a name="no-explicit-runtimeerror"></a> Don't specify `RuntimeError` explicitly in the two argument version of `fail/raise`.<sup>[[ссылка](#no-explicit-runtimeerror)]</sup>
 
   ```Ruby
   # плохо
@@ -2237,7 +2237,7 @@
   ```
 
 * <a name="exception-class-messages"></a> Prefer supplying an exception class and a message as two separate  arguments to `fail/raise`, instead of an exception instance.
-<sup>[[link](#exception-class-messages)]</sup>
+<sup>[[ссылка](#exception-class-messages)]</sup>
 
   ```Ruby
   # плохо
@@ -2253,7 +2253,7 @@
   any exception being raised, and the method will return as if no
   exception had been raised at all. In effect, the exception will be
   silently thrown away.
-<sup>[[link](#no-return-ensure)]</sup>
+<sup>[[ссылка](#no-return-ensure)]</sup>
 
   ```Ruby
   def foo
@@ -2265,7 +2265,7 @@
   end
   ```
 
-* <a name="begin-implicit"></a> Use *implicit begin blocks* where possible.<sup>[[link](#begin-implicit)]</sup>
+* <a name="begin-implicit"></a> Use *implicit begin blocks* where possible.<sup>[[ссылка](#begin-implicit)]</sup>
 
   ```Ruby
   # плохо
@@ -2285,7 +2285,7 @@
   end
   ```
 
-* <a name="contingency-methods"></a> Mitigate the proliferation of `begin` blocks by using<sup>[[link](#contingency-methods)]</sup>
+* <a name="contingency-methods"></a> Mitigate the proliferation of `begin` blocks by using<sup>[[ссылка](#contingency-methods)]</sup>
 
 
   ```Ruby
@@ -2314,7 +2314,7 @@
   with_io_error_handling { something_else_that_might_fail }
   ```
 
-* <a name="dont-hide-exceptions"></a> Don't suppress exceptions.<sup>[[link](#dont-hide-exceptions)]</sup>
+* <a name="dont-hide-exceptions"></a> Don't suppress exceptions.<sup>[[ссылка](#dont-hide-exceptions)]</sup>
 
   ```Ruby
   # плохо
@@ -2328,7 +2328,7 @@
   do_something rescue nil
   ```
 
-* <a name="no-rescue-modifiers"></a> Avoid using `rescue` in its modifier form.<sup>[[link](#no-rescue-modifiers)]</sup>
+* <a name="no-rescue-modifiers"></a> Avoid using `rescue` in its modifier form.<sup>[[ссылка](#no-rescue-modifiers)]</sup>
 
   ```Ruby
   # плохо - this catches exceptions of StandardError class and its descendant classes
@@ -2342,7 +2342,7 @@
   end
   ```
 
-* <a name="no-exceptional-flows"></a> Don't use exceptions for flow of control.<sup>[[link](#no-exceptional-flows)]</sup>
+* <a name="no-exceptional-flows"></a> Don't use exceptions for flow of control.<sup>[[ссылка](#no-exceptional-flows)]</sup>
 
   ```Ruby
   # плохо
@@ -2361,7 +2361,7 @@
   ```
 
 * <a name="no-blind-rescues"></a> Avoid rescuing the `Exception` class.  This will trap signals and calls to  `exit`, requiring you to `kill -9` the process.
-<sup>[[link](#no-blind-rescues)]</sup>
+<sup>[[ссылка](#no-blind-rescues)]</sup>
 
   ```Ruby
   # плохо
@@ -2391,7 +2391,7 @@
   ```
 
 * <a name="exception-ordering"></a> Put more specific exceptions higher up the rescue chain, otherwise  they'll never be rescued from.
-<sup>[[link](#exception-ordering)]</sup>
+<sup>[[ссылка](#exception-ordering)]</sup>
 
   ```Ruby
   # плохо
@@ -2413,7 +2413,7 @@
   end
   ```
 
-* <a name="file-close"></a> Release external resources obtained by your program in an ensure block.<sup>[[link](#file-close)]</sup>
+* <a name="file-close"></a> Release external resources obtained by your program in an ensure block.<sup>[[ссылка](#file-close)]</sup>
 
   ```Ruby
   f = File.open('testfile')
@@ -2427,12 +2427,12 @@
   ```
 
 * <a name="standard-exceptions"></a> Favor the use of exceptions for the standard library over  introducing new exception classes.
-<sup>[[link](#standard-exceptions)]</sup>
+<sup>[[ссылка](#standard-exceptions)]</sup>
 
 ## Коллекции
 
 * <a name="literal-array-hash"></a> Prefer literal array and hash creation notation (unless you need to  pass parameters to their constructors, that is).
-<sup>[[link](#literal-array-hash)]</sup>
+<sup>[[ссылка](#literal-array-hash)]</sup>
 
   ```Ruby
   # плохо
@@ -2446,7 +2446,7 @@
 
 * <a name="percent-w"></a> Prefer `%w` to the literal array syntax when you need an array of  words (non-empty strings without spaces and special characters in them).
   Apply this rule only to arrays with two or more elements.
-<sup>[[link](#percent-w)]</sup>
+<sup>[[ссылка](#percent-w)]</sup>
 
   ```Ruby
   # плохо
@@ -2458,7 +2458,7 @@
 
 * <a name="percent-i"></a> Prefer `%i` to the literal array syntax when you need an array of  symbols (and you don't need to maintain Ruby 1.9 compatibility). Apply
   this rule only to arrays with two or more elements.
-<sup>[[link](#percent-i)]</sup>
+<sup>[[ссылка](#percent-i)]</sup>
 
   ```Ruby
   # плохо
@@ -2469,7 +2469,7 @@
   ```
 
 * <a name="no-trailing-array-commas"></a> Avoid comma after the last item of an `Array` or `Hash` literal, especially  when the items are not on separate lines.
-<sup>[[link](#no-trailing-array-commas)]</sup>
+<sup>[[ссылка](#no-trailing-array-commas)]</sup>
 
   ```Ruby
   # плохо - easier to move/add/remove items, but still not preferred
@@ -2486,21 +2486,21 @@
   VALUES = [1001, 2020, 3333]
   ```
 
-* <a name="no-gappy-arrays"></a> Avoid the creation of huge gaps in arrays.<sup>[[link](#no-gappy-arrays)]</sup>
+* <a name="no-gappy-arrays"></a> Avoid the creation of huge gaps in arrays.<sup>[[ссылка](#no-gappy-arrays)]</sup>
 
   ```Ruby
   arr = []
   arr[100] = 1 # now you have an array with lots of nils
   ```
 
-* <a name="first-and-last"></a> When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.<sup>[[link](#first-and-last)]</sup>
+* <a name="first-and-last"></a> When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.<sup>[[ссылка](#first-and-last)]</sup>
 
 * <a name="set-vs-array"></a> Use `Set` instead of `Array` when dealing with unique elements. `Set`  implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
-<sup>[[link](#set-vs-array)]</sup>
+<sup>[[ссылка](#set-vs-array)]</sup>
 
-* <a name="symbols-as-keys"></a> Prefer symbols instead of strings as hash keys.<sup>[[link](#symbols-as-keys)]</sup>
+* <a name="symbols-as-keys"></a> Prefer symbols instead of strings as hash keys.<sup>[[ссылка](#symbols-as-keys)]</sup>
 
   ```Ruby
   # плохо
@@ -2510,9 +2510,9 @@
   hash = { one: 1, two: 2, three: 3 }
   ```
 
-* <a name="no-mutable-keys"></a> Avoid the use of mutable objects as hash keys.<sup>[[link](#no-mutable-keys)]</sup>
+* <a name="no-mutable-keys"></a> Avoid the use of mutable objects as hash keys.<sup>[[ссылка](#no-mutable-keys)]</sup>
 
-* <a name="hash-literals"></a> Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.<sup>[[link](#hash-literals)]</sup>
+* <a name="hash-literals"></a> Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.<sup>[[ссылка](#hash-literals)]</sup>
 
   ```Ruby
   # плохо
@@ -2524,7 +2524,7 @@
 
 * <a name="no-mixed-hash-syntaces"></a> Don't mix the Ruby 1.9 hash syntax with hash rockets in the same  hash literal. When you've got keys that are not symbols stick to the
   hash rockets syntax.
-<sup>[[link](#no-mixed-hash-syntaces)]</sup>
+<sup>[[ссылка](#no-mixed-hash-syntaces)]</sup>
 
   ```Ruby
   # плохо
@@ -2537,7 +2537,7 @@
 * <a name="hash-key"></a> Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead  of `Hash#has_value?`. As noted
   [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765)
   by Matz, the longer forms are considered deprecated.
-<sup>[[link](#hash-key)]</sup>
+<sup>[[ссылка](#hash-key)]</sup>
 
   ```Ruby
   # плохо
@@ -2549,7 +2549,7 @@
   hash.value?(value)
   ```
 
-* <a name="hash-fetch"></a> Use `Hash#fetch` when dealing with hash keys that should be present.<sup>[[link](#hash-fetch)]</sup>
+* <a name="hash-fetch"></a> Use `Hash#fetch` when dealing with hash keys that should be present.<sup>[[ссылка](#hash-fetch)]</sup>
 
   ```Ruby
   heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
@@ -2561,7 +2561,7 @@
   heroes.fetch(:supermann)
   ```
 
-* <a name="hash-fetch-defaults"></a> Introduce default values for hash keys via `Hash#fetch` as opposed to using custom logic.<sup>[[link](#hash-fetch-defaults)]</sup>
+* <a name="hash-fetch-defaults"></a> Introduce default values for hash keys via `Hash#fetch` as opposed to using custom logic.<sup>[[ссылка](#hash-fetch-defaults)]</sup>
 
   ```Ruby
   batman = { name: 'Bruce Wayne', is_evil: false }
@@ -2573,7 +2573,7 @@
   batman.fetch(:is_evil, true) # => false
   ```
 
-* <a name="use-hash-blocks"></a> Prefer the use of the block instead of the default value in `Hash#fetch`.<sup>[[link](#use-hash-blocks)]</sup>
+* <a name="use-hash-blocks"></a> Prefer the use of the block instead of the default value in `Hash#fetch`.<sup>[[ссылка](#use-hash-blocks)]</sup>
 
   ```Ruby
   batman = { name: 'Bruce Wayne' }
@@ -2586,7 +2586,7 @@
   batman.fetch(:powers) { get_batman_powers }
   ```
 
-* <a name="hash-values-at"></a> Use `Hash#values_at` when you need to retrieve several values consecutively from a hash.<sup>[[link](#hash-values-at)]</sup>
+* <a name="hash-values-at"></a> Use `Hash#values_at` when you need to retrieve several values consecutively from a hash.<sup>[[ссылка](#hash-values-at)]</sup>
 
   ```Ruby
   # плохо
@@ -2597,13 +2597,13 @@
   email, username = data.values_at('email', 'nickname')
   ```
 
-* <a name="ordered-hashes"></a> Rely on the fact that as of Ruby 1.9 hashes are ordered.<sup>[[link](#ordered-hashes)]</sup>
+* <a name="ordered-hashes"></a> Rely on the fact that as of Ruby 1.9 hashes are ordered.<sup>[[ссылка](#ordered-hashes)]</sup>
 
-* <a name="no-modifying-collections"></a> Never modify a collection while traversing it.<sup>[[link](#no-modifying-collections)]</sup>
+* <a name="no-modifying-collections"></a> Never modify a collection while traversing it.<sup>[[ссылка](#no-modifying-collections)]</sup>
 
 ## Строки
 
-* <a name="string-interpolation"></a> Используйте интерполяцию строк и форматные шаблоны, а не конкатенацию строк:<sup>[[link](#string-interpolation)]</sup>
+* <a name="string-interpolation"></a> Используйте интерполяцию строк и форматные шаблоны, а не конкатенацию строк:<sup>[[ссылка](#string-interpolation)]</sup>
 
   ```Ruby
   # плохо
@@ -2617,7 +2617,7 @@
   ```
 
 * <a name="pad-string-interpolation"></a> Постарайтесь отделять код интерполяции пробелами.
-  Это отделит код интерполяции более четко от окружающего кода.<sup>[[link](#pad-string-interpolation)]</sup>
+  Это отделит код интерполяции более четко от окружающего кода.<sup>[[ссылка](#pad-string-interpolation)]</sup>
 
   ```Ruby
   "#{ user.last_name }, #{ user.first_name }"
@@ -2626,7 +2626,7 @@
 * <a name="consistent-string-literals"></a> Adopt a consistent string literal quoting style.
   There are two  popular styles in the Ruby community, both of which are considered
   good - single quotes by default (Option A) and double quotes by default (Option B).
-  <sup>[[link](#consistent-string-literals)]</sup>
+  <sup>[[ссылка](#consistent-string-literals)]</sup>
 
   * **(Option A)** Prefer single-quoted strings when you don't need
     string interpolation or special symbols such as `\t`, `\n`, `'`,
@@ -2657,7 +2657,7 @@
 
 * <a name="no-character-literals"></a> Don't use the character literal syntax `?x`. Since Ruby 1.9 it's  basically redundant - `?x` would interpreted as `'x'` (a string with
   a single character in it).
-<sup>[[link](#no-character-literals)]</sup>
+<sup>[[ссылка](#no-character-literals)]</sup>
 
   ```Ruby
   # плохо
@@ -2668,7 +2668,7 @@
   ```
 
 * <a name="curlies-interpolate"></a> Don't leave out `{}` around instance and global variables being  interpolated into a string.
-<sup>[[link](#curlies-interpolate)]</sup>
+<sup>[[ссылка](#curlies-interpolate)]</sup>
 
   ```Ruby
   class Person
@@ -2698,7 +2698,7 @@
   puts "$global = #{$global}"
   ```
 
-* <a name="no-to-s"></a> Don't use `Object#to_s` on interpolated objects. It's invoked on them automatically.<sup>[[link](#no-to-s)]</sup>
+* <a name="no-to-s"></a> Don't use `Object#to_s` on interpolated objects. It's invoked on them automatically.<sup>[[ссылка](#no-to-s)]</sup>
 
   ```Ruby
   # плохо
@@ -2710,7 +2710,7 @@
 
 * <a name="concat-strings"></a> Avoid using `String#+` when you need to construct large data chunks.  Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
-<sup>[[link](#concat-strings)]</sup>
+<sup>[[ссылка](#concat-strings)]</sup>
 
   ```Ruby
   # good and also fast
@@ -2724,7 +2724,7 @@
 
 * <a name="heredocs"></a> When using heredocs for multi-line strings keep in mind the fact  that they preserve leading whitespace. It's a good practice to
   employ some margin based on which to trim the excessive whitespace.
-<sup>[[link](#heredocs)]</sup>
+<sup>[[ссылка](#heredocs)]</sup>
 
   ```Ruby
   code = <<-END.gsub(/^\s+\|/, '')
@@ -2743,9 +2743,9 @@
 > -- Jamie Zawinski
 
 * <a name="no-regexp-for-plaintext"></a> Don't use regular expressions if you just need plain text search in string:  `string['text']`
-<sup>[[link](#no-regexp-for-plaintext)]</sup>
+<sup>[[ссылка](#no-regexp-for-plaintext)]</sup>
 
-* <a name="regexp-string-index"></a> For simple constructions you can use regexp directly through string index.<sup>[[link](#regexp-string-index)]</sup>
+* <a name="regexp-string-index"></a> For simple constructions you can use regexp directly through string index.<sup>[[ссылка](#regexp-string-index)]</sup>
 
   ```Ruby
   match = string[/regexp/]             # get content of matched regexp
@@ -2753,7 +2753,7 @@
   string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
   ```
 
-* <a name="non-capturing-regexp"></a> Use non-capturing groups when you don't use captured result of parentheses.<sup>[[link](#non-capturing-regexp)]</sup>
+* <a name="non-capturing-regexp"></a> Use non-capturing groups when you don't use captured result of parentheses.<sup>[[ссылка](#non-capturing-regexp)]</sup>
 
   ```Ruby
   /(first|second)/   # плохо
@@ -2761,7 +2761,7 @@
   ```
 
 * <a name="no-perl-regexp-last-matchers"></a> Don't use the cryptic Perl-legacy variables denoting last regexp group matches  (`$1`, `$2`, etc). Use `Regexp.last_match[n]` instead.
-<sup>[[link](#no-perl-regexp-last-matchers)]</sup>
+<sup>[[ссылка](#no-perl-regexp-last-matchers)]</sup>
 
   ```Ruby
   /(regexp)/ =~ string
@@ -2775,7 +2775,7 @@
   ```
 
 * <a name="no-numbered-regexes"></a> Avoid using numbered groups as it can be hard to track what they contain. Named groups  can be used instead.
-<sup>[[link](#no-numbered-regexes)]</sup>
+<sup>[[ссылка](#no-numbered-regexes)]</sup>
 
   ```Ruby
   # плохо
@@ -2790,11 +2790,11 @@
   ```
 
 * <a name="limit-escapes"></a> Character classes have only a few special characters you should care about:  `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
-<sup>[[link](#limit-escapes)]</sup>
+<sup>[[ссылка](#limit-escapes)]</sup>
 
 * <a name="caret-and-dollar-regexp"></a> Be careful with `^` and `$` as they match start/end of line, not string endings.  If you want to match the whole string use: `\A` and `\z` (not to be
   confused with `\Z` which is the equivalent of `/\n?\z/`).
-<sup>[[link](#caret-and-dollar-regexp)]</sup>
+<sup>[[ссылка](#caret-and-dollar-regexp)]</sup>
 
   ```Ruby
   string = "some injection\nusername"
@@ -2803,7 +2803,7 @@
   ```
 
 * <a name="comment-regexes"></a> Use `x` modifier for complex regexps. This makes them more readable and you  can add some useful comments. Just be careful as spaces are ignored.
-<sup>[[link](#comment-regexes)]</sup>
+<sup>[[ссылка](#comment-regexes)]</sup>
 
   ```Ruby
   regexp = /
@@ -2815,13 +2815,13 @@
   /x
   ```
 
-* <a name="gsub-blocks"></a> For complex replacements `sub`/`gsub` can be used with block or hash.<sup>[[link](#gsub-blocks)]</sup>
+* <a name="gsub-blocks"></a> For complex replacements `sub`/`gsub` can be used with block or hash.<sup>[[ссылка](#gsub-blocks)]</sup>
 
 ## Процентные литералы
 
 * <a name="percent-q-shorthand"></a> Используйте `%()` (это сокращение от `%Q`) для строк без переносов, в которых  реализуется интерполяция и присутствуют двойные кавычки. Для строк с переносами
   лучше используйте формат HERE Doc.
-<sup>[[link](#percent-q-shorthand)]</sup>
+<sup>[[ссылка](#percent-q-shorthand)]</sup>
 
   ```Ruby
   # плохо (интерполяция не нужна)
@@ -2842,7 +2842,7 @@
 
 * <a name="percent-q"></a> Избегайте `%q`, если это не случай строки с `'` и `"` одновременно  Обычные строки читаются проще, и их следует использовать, если нет
   излишне большого количества символов, которые нужно будет экранировать.
-<sup>[[link](#percent-q)]</sup>
+<sup>[[ссылка](#percent-q)]</sup>
 
   ```Ruby
   # плохо
@@ -2856,7 +2856,7 @@
   question = '"What did you say?"'
   ```
 
-* <a name="percent-r"></a> Используйте `%r` только для регулярных выражений, которые обрабатывают больше одного знака '/'.<sup>[[link](#percent-r)]</sup>
+* <a name="percent-r"></a> Используйте `%r` только для регулярных выражений, которые обрабатывают больше одного знака '/'.<sup>[[ссылка](#percent-r)]</sup>
 
   ```Ruby
   # плохо
@@ -2871,7 +2871,7 @@
   ```
 
 * <a name="percent-x"></a> Откажитесь от использования `%x`, если вы не хотите вызывать внешнюю команду с обратными кавычками в теле  (что само по себе маловероятно).
-<sup>[[link](#percent-x)]</sup>
+<sup>[[ссылка](#percent-x)]</sup>
 
   ```Ruby
   # плохо
@@ -2883,12 +2883,12 @@
   ```
 
 * <a name="percent-s"></a> Старайтесь избегать `%s`. По общепринятому мнению, предпочтительным способом  определения символа с пробелами в имени является `:"some string"`
-<sup>[[link](#percent-s)]</sup>
+<sup>[[ссылка](#percent-s)]</sup>
 
 * <a name="percent-literal-braces"></a> Используйте `()` в качестве ограничителей для всех литералов со знаком `%` кроме `%r`.  Так как круглые скобки очень часто используются в самих регулярных выражениях, во
   многих случаях менее частый символ `{` может быть лучшим выбором для ограничителя
   (разумеется, с учетом смысла регулярного выражения).
-<sup>[[link](#percent-literal-braces)]</sup>
+<sup>[[ссылка](#percent-literal-braces)]</sup>
 
   ```Ruby
   # плохо
@@ -2902,14 +2902,14 @@
 
 ## Метапрограммирование
 
-* <a name="no-metaprogramming-masturbation"></a> Avoid needless metaprogramming.<sup>[[link](#no-metaprogramming-masturbation)]</sup>
+* <a name="no-metaprogramming-masturbation"></a> Avoid needless metaprogramming.<sup>[[ссылка](#no-metaprogramming-masturbation)]</sup>
 
 * <a name="no-monkey-patching"></a> Do not mess around in core classes when writing libraries.  (Do not monkey-patch them.)
-<sup>[[link](#no-monkey-patching)]</sup>
+<sup>[[ссылка](#no-monkey-patching)]</sup>
 
 * <a name="block-class-eval"></a> The block form of `class_eval` is preferable to the string-interpolated form.  - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`,
     so that your backtraces make sense:
-<sup>[[link](#block-class-eval)]</sup>
+<sup>[[ссылка](#block-class-eval)]</sup>
 
   ```Ruby
   class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
@@ -2918,7 +2918,7 @@
   - `define_method` is preferable to `class_eval{ def ... }`
 
 * <a name="eval-comment-docs"></a> When using `class_eval` (or other `eval`) with string interpolation, add a comment block  showing its appearance if interpolated (a practice used in Rails code):
-<sup>[[link](#eval-comment-docs)]</sup>
+<sup>[[ссылка](#eval-comment-docs)]</sup>
 
   ```Ruby
   # from activesupport/lib/active_support/core_ext/string/output_safety.rb
@@ -2941,7 +2941,7 @@
 * <a name="no-method-missing"></a> Avoid using `method_missing` for metaprogramming because backtraces become messy,  the behavior is not listed in `#methods`, and misspelled method calls might silently
   work, e.g. `nukes.launch_state = false`. Consider using delegation, proxy, or
   `define_method` instead. If you must use `method_missing`:
-<sup>[[link](#no-method-missing)]</sup>
+<sup>[[ссылка](#no-method-missing)]</sup>
 
   - Be sure to [also define `respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html)
   - Only catch methods with a well-defined prefix, such as `find_by_*` -- make your code as assertive as possible.
@@ -2972,19 +2972,19 @@
 
 ## Разное
 
-* <a name="always-warn"></a> Write `ruby -w` safe code.<sup>[[link](#always-warn)]</sup>
+* <a name="always-warn"></a> Write `ruby -w` safe code.<sup>[[ссылка](#always-warn)]</sup>
 
-* <a name="no-optional-hash-params"></a> Avoid hashes as optional parameters. Does the method do too much? (Object initializers are exceptions for this rule).<sup>[[link](#no-optional-hash-params)]</sup>
+* <a name="no-optional-hash-params"></a> Avoid hashes as optional parameters. Does the method do too much? (Object initializers are exceptions for this rule).<sup>[[ссылка](#no-optional-hash-params)]</sup>
 
 * <a name="short-methods"></a> Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than  5 LOC. Empty lines do not contribute to the relevant LOC.
-<sup>[[link](#short-methods)]</sup>
+<sup>[[ссылка](#short-methods)]</sup>
 
-* <a name="too-many-params"></a> Avoid parameter lists longer than three or four parameters.<sup>[[link](#too-many-params)]</sup>
+* <a name="too-many-params"></a> Avoid parameter lists longer than three or four parameters.<sup>[[ссылка](#too-many-params)]</sup>
 
 * <a name="private-global-methods"></a> If you really need "global" methods, add them to Kernel  and make them private.
-<sup>[[link](#private-global-methods)]</sup>
+<sup>[[ссылка](#private-global-methods)]</sup>
 
-* <a name="instance-vars"></a> Use module instance variables instead of global variables.<sup>[[link](#instance-vars)]</sup>
+* <a name="instance-vars"></a> Use module instance variables instead of global variables.<sup>[[ссылка](#instance-vars)]</sup>
 
   ```Ruby
   # плохо
@@ -3000,27 +3000,27 @@
   Foo.bar = 1
   ```
 
-* <a name="alias-method"></a> Избегайте использования `alias`, если достаточно использовать `alias_method`.<sup>[[link](#alias-method)]</sup>
+* <a name="alias-method"></a> Избегайте использования `alias`, если достаточно использовать `alias_method`.<sup>[[ссылка](#alias-method)]</sup>
 
 * <a name="optionparser"></a> Используйте `OptionParser` для анализа сложных аргуметов
-  командрой строки и  `ruby -s` для элеметарных случаев.<sup>[[link](#optionparser)]</sup>
+  командрой строки и  `ruby -s` для элеметарных случаев.<sup>[[ссылка](#optionparser)]</sup>
 
 * <a name="time-now"></a> Используйте вариант `Time.now`, а не `Time.new`, когда хотите получить текущее
-  значение системного времени.<sup>[[link](#time-now)]</sup>
+  значение системного времени.<sup>[[ссылка](#time-now)]</sup>
 
 * <a name="functional-code"></a> Пишите код в функциональном стиле без изменения значений, когда это подходит
-  по смыслу.<sup>[[link](#functional-code)]</sup>
+  по смыслу.<sup>[[ссылка](#functional-code)]</sup>
 
 * <a name="no-arg-mutations"></a> Не изменяйте значения аргументов, если только это
-  не есть цель метода.<sup>[[link](#no-arg-mutations)]</sup>
+  не есть цель метода.<sup>[[ссылка](#no-arg-mutations)]</sup>
 
 * <a name="three-is-the-number-thou-shalt-count"></a> Старайтесь не создавать вложенные структуры
-  с уровнем вложения больше третьего.<sup>[[link](#three-is-the-number-thou-shalt-count)]</sup>
+  с уровнем вложения больше третьего.<sup>[[ссылка](#three-is-the-number-thou-shalt-count)]</sup>
 
 * <a name="be-consistent"></a> Будьте последовательны. В идеальном мире последовательно придерживайтесь
-  данного руководства.<sup>[[link](#be-consistent)]</sup>
+  данного руководства.<sup>[[ссылка](#be-consistent)]</sup>
 
-* <a name="common-sense"></a> Руководствуйтесь здравым смыслом.<sup>[[link](#common-sense)]</sup>
+* <a name="common-sense"></a> Руководствуйтесь здравым смыслом.<sup>[[ссылка](#common-sense)]</sup>
 
 ## Инструментарий
 
