@@ -71,6 +71,7 @@ Translations of the guide are available in the following languages:
 * [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
 * [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
 * [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
+* [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKO.md)
 
 ## Table of Contents
 
@@ -420,8 +421,8 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-  While several Ruby books suggest the first style, the second is much more prominent
-  in practice (and arguably a bit more readable).
+  While several Ruby books suggest the first style, the second is much more
+  prominent in practice (and arguably a bit more readable).
 
 * <a name="no-trailing-backslash"></a>
   Avoid line continuation `\` where not required. In practice, avoid using
@@ -1115,9 +1116,9 @@ Translations of the guide are available in the following languages:
   names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
   ```
 
-  Some will argue that multiline chaining would look OK with the use of {...}, but they should
-  ask themselves - is this code really readable and can the blocks' contents be extracted into
-  nifty methods?
+  Some will argue that multiline chaining would look OK with the use of {...},
+  but they should ask themselves - is this code really readable and can the
+  blocks' contents be extracted into nifty methods?
 
 * <a name="block-argument"></a>
   Consider using explicit block argument to avoid writing block literal that
@@ -2649,7 +2650,7 @@ Translations of the guide are available in the following languages:
   rescue
     # .. handle error
   ensure
-    f.close unless f.nil?
+    f.close if f
   end
   ```
 
@@ -3201,7 +3202,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#percent-s)]</sup>
 
 * <a name="percent-literal-braces"></a>
-  Prefer `()` as delimiters for all `%` literals, except `%r`. Since braces
+  Prefer `()` as delimiters for all `%` literals, except `%r`. Since parentheses
   often appear inside regular expressions in many scenarios a less common
   character like `{` might be a better choice for a delimiter, depending on the
   regexp's content.
