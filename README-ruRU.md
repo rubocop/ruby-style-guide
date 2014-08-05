@@ -436,13 +436,13 @@
                 ' and second part of the long string'
   ```
 
-* <a name="consistent-multi-line-chains"></a> Используйте единый стиль многострочных последовательных цепочек 
-  вызовов методов. В сообществе ruby популярны два противоположных 
-  стиля их оформления - с точкой в начале (вариант A) и с точкой
-  в конце (вариант B).<sup>[[ссылка](#consistent-multi-line-chains)]</sup>
+* <a name="consistent-multi-line-chains"></a> Используйте единый стиль
+  многострочных последовательных цепочек вызовов методов. В сообществе Руби
+  популярны два взаимоисключающих стиля их оформления: с точкой в начале
+  (вариант A) и с точкой в конце (вариант B).
+  <sup>[[ссылка](#consistent-multi-line-chains)]</sup>
 
-
-  * **(Вариант A)** Когда продолжаете цепочку вызовов методов на 
+  * **A** Когда продолжаете цепочку вызовов методов на 
   следующую строку, начинайте её с точки.
 
     ```Ruby
@@ -456,7 +456,7 @@
       .four
     ```
 
-  * **(Вариант B)** Соответственно, наоборот, когда продолжаете цепочку 
+  * **B** Соответственно, наоборот, когда продолжаете цепочку 
   вызовов на следующей строке, завершайте строку точкой `.`, давая 
   понять, что продолжение выражения следует 
 
@@ -475,9 +475,9 @@
  C аргументами за и против обоих стилей можно ознакомиться в дискуссии
   [здесь](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
-* <a name="no-double-indent"></a> Выравнивайте параметры вызова метода, если вызов занимает более
-  одной строки. Если выравнивание невозможно из-за ораничений на длину
-  строки, то используйте одинарный отступ.
+* <a name="no-double-indent"></a> Выравнивайте параметры вызова метода, если
+  вызов занимает более одной строки. Если выравнивание невозможно из-за
+  ограничений на длину строки, то используйте одинарный отступ.
   <sup>[[ссылка](#no-double-indent)]</sup>
 
   ```Ruby
@@ -2610,7 +2610,8 @@
 
 ## Строки
 
-* <a name="string-interpolation"></a> Используйте интерполяцию строк и форматные шаблоны, а не конкатенацию строк:<sup>[[ссылка](#string-interpolation)]</sup>
+* <a name="string-interpolation"></a> Используйте интерполяцию строк и форматные
+  шаблоны, а не конкатенацию строк:<sup>[[ссылка](#string-interpolation)]</sup>
 
   ```Ruby
   # плохо
@@ -2623,8 +2624,9 @@
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="pad-string-interpolation"></a> Постарайтесь отделять код интерполяции пробелами.
-  Это отделит код интерполяции более четко от окружающего кода.<sup>[[ссылка](#pad-string-interpolation)]</sup>
+* <a name="pad-string-interpolation"></a> Постарайтесь отделять код интерполяции
+  пробелами. Это отделит код интерполяции более четко от окружающего кода.
+  <sup>[[ссылка](#pad-string-interpolation)]</sup>
 
   ```Ruby
   "#{ user.last_name }, #{ user.first_name }"
@@ -2662,9 +2664,10 @@
   community. The string literals in this guide, however, are
   aligned with the first style.
 
-* <a name="no-character-literals"></a> Don't use the character literal syntax `?x`. Since Ruby 1.9 it's  basically redundant - `?x` would interpreted as `'x'` (a string with
-  a single character in it).
-<sup>[[ссылка](#no-character-literals)]</sup>
+* <a name="no-character-literals"></a> Don't use the character literal syntax
+  `?x`. Since Ruby 1.9 it's  basically redundant - `?x` would interpreted as
+  `'x'` (a string with a single character in it).
+  <sup>[[ссылка](#no-character-literals)]</sup>
 
   ```Ruby
   # плохо
@@ -2674,8 +2677,9 @@
   char = 'c'
   ```
 
-* <a name="curlies-interpolate"></a> Don't leave out `{}` around instance and global variables being  interpolated into a string.
-<sup>[[ссылка](#curlies-interpolate)]</sup>
+* <a name="curlies-interpolate"></a> Don't leave out `{}` around instance and
+  global variables being  interpolated into a string.
+  <sup>[[ссылка](#curlies-interpolate)]</sup>
 
   ```Ruby
   class Person
@@ -2909,10 +2913,13 @@
 
 ## Метапрограммирование
 
-* <a name="no-metaprogramming-masturbation"></a> Avoid needless metaprogramming.<sup>[[ссылка](#no-metaprogramming-masturbation)]</sup>
+* <a name="no-metaprogramming-masturbation"></a> Откажитесь от метапрограммирования
+  ради метапрограммирования как такового.
+  <sup>[[ссылка](#no-metaprogramming-masturbation)]</sup>
 
-* <a name="no-monkey-patching"></a> Do not mess around in core classes when writing libraries.  (Do not monkey-patch them.)
-<sup>[[ссылка](#no-monkey-patching)]</sup>
+* <a name="no-monkey-patching"></a> Не разводите беспорядок в базовых классах
+  при написании библиотек (не используйте monkey patching).
+  <sup>[[ссылка](#no-monkey-patching)]</sup>
 
 * <a name="block-class-eval"></a> The block form of `class_eval` is preferable to the string-interpolated form.  - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`,
     so that your backtraces make sense:
