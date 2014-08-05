@@ -101,7 +101,7 @@
 > probably right... <br/>
 > -- Jerry Coffin (on indentation)
 
-* <a name="utf-8"></a> Используйте `UTF-8` в качестве кодировке для исходного
+* <a name="utf-8"></a> Используйте `UTF-8` в качестве кодировки для исходного
   кода.<sup>[[ссылка](#utf-8)]</sup>
 
 * <a name="spaces-indentation"></a> Используйте два **пробела** на уровень
@@ -151,7 +151,9 @@
   puts 'foo', 'bar' # это частное правило для `puts`
   ```
 
-* <a name="single-line-classes"></a> Используйте преимущественно однострочный формат для определений классов с пустым телом.<sup>[[ссылка](#single-line-classes)]</sup>
+* <a name="single-line-classes"></a> Используйте преимущественно однострочный
+  формат для определений классов с пустым телом.
+  <sup>[[ссылка](#single-line-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -165,10 +167,12 @@
   FooError = Class.new(StandardError)
   ```
 
-* <a name="no-single-line-methods"></a> Избегайте однострочных методов. И хотя они достаточно популярны в среде  программистов, существует множество неприятных мелочей, связанных с синтаксисом их
-  определения, которые делают применение таких методов нежелательным. В любом случае
-  однострочные методы не должны содержать больше одного выражения.
-<sup>[[ссылка](#no-single-line-methods)]</sup>
+* <a name="no-single-line-methods"></a> Избегайте однострочных методов. И хотя
+  они достаточно популярны в среде  программистов, существует множество
+  неприятных мелочей, связанных с синтаксисом их определения, которые делают
+  применение таких методов нежелательным. В любом случае однострочные методы не
+  должны содержать больше одного выражения.
+  <sup>[[ссылка](#no-single-line-methods)]</sup>
 
 
   ```Ruby
@@ -530,9 +534,9 @@
      'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
-* <a name="underscores-in-numerics"></a> Добавляйте символ подеркивания в большие числовые константы для 
-  улучшения их восприятия.<sup>[[ссылка](#underscores-in-numerics)]</sup>
-
+* <a name="underscores-in-numerics"></a> Добавляйте символ подеркивания
+  в большие числовые константы для улучшения их восприятия.
+  <sup>[[ссылка](#underscores-in-numerics)]</sup>
 
   ```Ruby
   # плохо (Сколько тут нолей?)
@@ -1391,17 +1395,19 @@
   end
   ```
 
-* <a name="global-stdout"></a> Use `$stdout/$stderr/$stdin` instead of  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` are constants, and
-  while you can actually reassign (possibly to redirect some stream)
-  constants in Ruby, you'll get an interpreter warning if you do so.
-<sup>[[ссылка](#global-stdout)]</sup>
+* <a name="global-stdout"></a> Используйте переменные `$stdout/$stderr/$stdin`
+  вместо констант  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` являются
+  константами, поэтому при их переопределении (вы это можете сделать, например,
+  для перенаправления ввода-вывода) интерпретатор будет выдавать предупреждения.
+  <sup>[[ссылка](#global-stdout)]</sup>
 
-* <a name="warn"></a> Use `warn` instead of `$stderr.puts`. Apart from being more concise  and clear, `warn` allows you to suppress warnings if you need to (by
-  setting the warn level to 0 via `-W0`).
-<sup>[[ссылка](#warn)]</sup>
+* <a name="warn"></a> Используйте `warn` вместо `$stderr.puts`. Это не только
+  короче, но и позволит вам скрыть все предупреждения, если вам это понадобится
+  (для этого задайте уроверь предупреждений равный `0` при помощи опции `-W0`).
+  <sup>[[ссылка](#warn)]</sup>
 
-* <a name="sprintf"></a> Favor the use of `sprintf` and its alias `format` over the fairly  cryptic `String#%` method.
-<sup>[[ссылка](#sprintf)]</sup>
+* <a name="sprintf"></a> Используйте `sprintf` и его алиас `format` вместо
+  довольно запутанного метода `String#%`.<sup>[[ссылка](#sprintf)]</sup>
 
   ```Ruby
   # плохо
