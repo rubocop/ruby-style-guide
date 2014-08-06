@@ -2632,14 +2632,14 @@
   "#{ user.last_name }, #{ user.first_name }"
   ```
 
-* <a name="consistent-string-literals"></a> Adopt a consistent string literal quoting style.
-  There are two  popular styles in the Ruby community, both of which are considered
-  good - single quotes by default (Option A) and double quotes by default (Option B).
+* <a name="consistent-string-literals"></a> Постарайтесь внедрить единообразных
+  стиль кавычек для строчных литералов. В среде программистов на Руби есть два
+  популярных стиля, оба из них считаются приемлемыми. Стиль **А** подразумевает
+  одинарные кавычки по умолчанию, а стиль **B** двойные кавычки.
   <sup>[[ссылка](#consistent-string-literals)]</sup>
 
-  * **(Option A)** Prefer single-quoted strings when you don't need
-    string interpolation or special symbols such as `\t`, `\n`, `'`,
-    etc.
+  * **(A)** Используйте одинарные кавычки, если вам не нужна интерполяция строк
+    или специальные символы вроде `\t`, `\n`, `'` и т.д.
 
     ```Ruby
     # плохо
@@ -2649,8 +2649,8 @@
     name = 'Bozhidar'
     ```
 
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
+  * **(B)** Используйте двойные кавычки в ваших строчных литералах, если они не
+    содержат `"` или экранируйте символы, которые не должны интерполироваться.
 
     ```Ruby
     # плохо
@@ -2660,9 +2660,8 @@
     name = "Bozhidar"
     ```
 
-  The second style is arguably a bit more popular in the Ruby
-  community. The string literals in this guide, however, are
-  aligned with the first style.
+  Второй стиль, по некоторым мнениям, более распространен среди разработчиков на
+  Руби. Однако в этом руководстве оформление строк следует первому правилу.
 
 * <a name="no-character-literals"></a> Don't use the character literal syntax
   `?x`. Since Ruby 1.9 it's  basically redundant - `?x` would interpreted as
