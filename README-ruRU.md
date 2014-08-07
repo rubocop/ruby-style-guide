@@ -2663,10 +2663,10 @@
   Второй стиль, по некоторым мнениям, более распространен среди разработчиков на
   Руби. Однако в этом руководстве оформление строк следует первому правилу.
 
-* <a name="no-character-literals"></a> Don't use the character literal syntax
-  `?x`. Since Ruby 1.9 it's  basically redundant - `?x` would interpreted as
-  `'x'` (a string with a single character in it).
-  <sup>[[ссылка](#no-character-literals)]</sup>
+* <a name="no-character-literals"></a> Не используйте запись для литералов
+  алфавитных символов `?x`. Начиная с версии Руби 1.9, этот вариант записи
+  избыточен: `?x` будет интерпретироваться в виде `'x'` (строка
+  с единственным символом в ней).<sup>[[ссылка](#no-character-literals)]</sup>
 
   ```Ruby
   # плохо
@@ -2676,9 +2676,9 @@
   char = 'c'
   ```
 
-* <a name="curlies-interpolate"></a> Don't leave out `{}` around instance and
-  global variables being  interpolated into a string.
-  <sup>[[ссылка](#curlies-interpolate)]</sup>
+* <a name="curlies-interpolate"></a> Всегда применяйте фигурные скобки `{}`
+  вокруг глобальных переменных и переменных экземпляров класса при интерполяции
+  строк.<sup>[[ссылка](#curlies-interpolate)]</sup>
 
   ```Ruby
   class Person
@@ -2689,7 +2689,7 @@
       @last_name = last_name
     end
 
-    # плохо - valid, but awkward
+    # плохо (допустимо, но вычурно)
     def to_s
       "#@first_name #@last_name"
     end
@@ -2708,7 +2708,9 @@
   puts "$global = #{$global}"
   ```
 
-* <a name="no-to-s"></a> Don't use `Object#to_s` on interpolated objects. It's invoked on them automatically.<sup>[[ссылка](#no-to-s)]</sup>
+* <a name="no-to-s"></a> Не используйте метод `Object#to_s` для интерполируемых
+  объектов, он вызывается автоматически при интерполяции.
+  <sup>[[ссылка](#no-to-s)]</sup>
 
   ```Ruby
   # плохо
@@ -2718,12 +2720,14 @@
   message = "This is the #{result}."
   ```
 
-* <a name="concat-strings"></a> Avoid using `String#+` when you need to construct large data chunks.  Instead, use `String#<<`. Concatenation mutates the string instance in-place
-  and is always faster than `String#+`, which creates a bunch of new string objects.
-<sup>[[ссылка](#concat-strings)]</sup>
+* <a name="concat-strings"></a> Не применяйте метод `String#+`, когда вам нужно
+  собрать вместе большие отрезки строк. Вместо этого используйте `String#<<`.
+  Конкатенация изменяет экземпляр строки и всегда работает быстрее, чем `String#+`,
+  который создает целую кучу новых строковых объектов.
+  <sup>[[ссылка](#concat-strings)]</sup>
 
   ```Ruby
-  # good and also fast
+  # хорошо и быстро
   html = ''
   html << '<h1>Page title</h1>'
 
@@ -2732,9 +2736,10 @@
   end
   ```
 
-* <a name="heredocs"></a> When using heredocs for multi-line strings keep in mind the fact  that they preserve leading whitespace. It's a good practice to
-  employ some margin based on which to trim the excessive whitespace.
-<sup>[[ссылка](#heredocs)]</sup>
+* <a name="heredocs"></a> При использовании многострочных HEREDOC не забывайте,
+  что пробелы в начале строк тоже являются частью создаваемой строки. Примером
+  хорошего стиля является применение техник, основывающихся на ограничителях,
+  для удаления ненужных пробелов.<sup>[[ссылка](#heredocs)]</sup>
 
   ```Ruby
   code = <<-END.gsub(/^\s+\|/, '')
