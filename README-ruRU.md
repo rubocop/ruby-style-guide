@@ -1255,15 +1255,15 @@
   end
 
   # плохо
-  something = something ? nil : something.downcase
+  something = something ? something.downcase : nil
 
-  # ok
+  # сносно
   something = something.downcase if something
 
   # хорошо
   something = something && something.downcase
 
-  # better
+  # еще лучше
   something &&= something.downcase
   ```
 
