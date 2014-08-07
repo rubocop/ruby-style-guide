@@ -1967,7 +1967,8 @@ Translations of the guide are available in the following languages:
 
 * <a name="indent-annotations"></a>
   If multiple lines are required to describe the problem, subsequent lines
-  should be indented two spaces after the `#`.
+  should be indented three spaces after the `#` (one general plus two for
+  indentation purpose).
 <sup>[[link](#indent-annotations)]</sup>
 
   ```Ruby
