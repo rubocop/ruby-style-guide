@@ -2757,8 +2757,9 @@
 > "I know, I'll use regular expressions." Now they have two problems.<br/>
 > -- Jamie Zawinski
 
-* <a name="no-regexp-for-plaintext"></a> Don't use regular expressions if you just need plain text search in string:  `string['text']`
-<sup>[[ссылка](#no-regexp-for-plaintext)]</sup>
+* <a name="no-regexp-for-plaintext"></a> Не используйте регулярные выражения,
+  когда вам нужно просто найди в строке подстроку: `string['text']`
+  <sup>[[ссылка](#no-regexp-for-plaintext)]</sup>
 
 * <a name="regexp-string-index"></a> For simple constructions you can use regexp directly through string index.<sup>[[ссылка](#regexp-string-index)]</sup>
 
