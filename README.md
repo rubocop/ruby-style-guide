@@ -2830,7 +2830,7 @@ Translations of the guide are available in the following languages:
   batman[:is_evil] || true # => true
 
   # good - fetch work correctly with falsy values
-  batman.fetch(:is_evil, true) # => false
+  batman.fetch(:is_evil) { true } # => false
   ```
 
 * <a name="use-hash-blocks"></a>
