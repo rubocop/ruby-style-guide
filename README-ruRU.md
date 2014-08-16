@@ -3087,11 +3087,11 @@
 
 # Расскажи другому
 
-A community-driven style guide is of little use to a community that
-doesn't know about its existence. Tweet about the guide, share it with
-your friends and colleagues. Every comment, suggestion or opinion we
-get makes the guide just a little bit better. And we want to have the
-best possible guide, don't we?
+Создаваемое сообществом руководство по стилю оформления будет малопригодным для
+сообщества, которое об этом руководстве ничего не знает. Делитесь ссылками на
+это руководство с вашими друзьями и коллегами доступными вам средствами. Каждый
+получаемый нами комментарий, предложение или мнение сделает это руководство еще
+чуточку лучше. А ведь мы хотим самое лучшее руководство из возможных, не так ли?
 
 Всего,<br/>
 [Божидар](https://twitter.com/bbatsov)
