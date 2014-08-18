@@ -276,9 +276,9 @@ Translations of the guide are available in the following languages:
   !something
   ```
 
-* <a name="range-literals"></a>
+* <a name="no-space-inside-range-literals"></a>
   No space inside range literals.
-<sup>[[link](#range-literals)]</sup>
+<sup>[[link](#no-space-inside-range-literals)]</sup>
 
     ```Ruby
     # bad
