@@ -276,6 +276,20 @@ Translations of the guide are available in the following languages:
   !something
   ```
 
+* <a name="no-space-inside-range-literals"></a>
+  No space inside range literals.
+<sup>[[link](#no-space-inside-range-literals)]</sup>
+
+    ```Ruby
+    # bad
+    1 .. 3
+    'a' ... 'z'
+
+    # good
+    1..3
+    'a'..'z'
+    ```
+
 * <a name="indent-when-to-case"></a>
   Indent `when` as deep as `case`. I know that many would disagree
   with this one, but it's the style established in both "The Ruby
