@@ -1797,21 +1797,26 @@
 > it even clearer. <br/>
 > -- Steve McConnell
 
-* <a name="no-comments"></a> Write self-documenting code and ignore the rest of this section. Seriously!<sup>[[ссылка](#no-comments)]</sup>
+* <a name="no-comments"></a> Write self-documenting code and ignore the rest
+  of this section. Seriously!<sup>[[ссылка](#no-comments)]</sup>
 
-* <a name="english-comments"></a> Write comments in English.<sup>[[ссылка](#english-comments)]</sup>
+* <a name="english-comments"></a> Пишите комментарии по-английски.
+  <sup>[[ссылка](#english-comments)]</sup>
 
-* <a name="hash-space"></a> Use one space between the leading `#` character of the comment and the text  of the comment.
-<sup>[[ссылка](#hash-space)]</sup>
+* <a name="hash-space"></a> Используйте один пробел между символом `#` в начале
+  и текстом самого комментария.<sup>[[ссылка](#hash-space)]</sup>
 
-* <a name="english-syntax"></a> Comments longer than a word are capitalized and use punctuation. Use [one  space](http://en.wikipedia.org/wiki/Sentence_spacing) after periods.
-<sup>[[ссылка](#english-syntax)]</sup>
+* <a name="english-syntax"></a> Комментарии длиной больше одного слова должны
+  оформляться в виде законченных предложений (с большой буквы и со знаками препинания).
+  Разделяйте предложения [одним пробелом](http://en.wikipedia.org/wiki/Sentence_spacing).
+  <sup>[[ссылка](#english-syntax)]</sup>
 
-* <a name="no-superfluous-comments"></a> Avoid superfluous comments.<sup>[[ссылка](#no-superfluous-comments)]</sup>
+* <a name="no-superfluous-comments"></a> Избегайте избыточного комментирования.
+  <sup>[[ссылка](#no-superfluous-comments)]</sup>
 
   ```Ruby
   # плохо
-  counter += 1 # Increments counter by one.
+  counter += 1 # Увеличивает счетчик на единицу.
   ```
 
 * <a name="comment-upkeep"></a> Keep existing comments up-to-date. An outdated comment is worse than no comment  at all.
