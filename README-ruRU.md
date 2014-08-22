@@ -1828,16 +1828,17 @@
 * <a name="refactor-dont-comment"></a> Avoid writing comments to explain плохо code. Refactor the code to  make it self-explanatory. (Do or do not - there is no try. --Yoda)
 <sup>[[ссылка](#refactor-dont-comment)]</sup>
 
-### Пометки в  ентариях
+### Пометки в комментариях
 
-* <a name="annotate-above"></a> Annotations should usually be written on the line immediately above  the relevant code.
-<sup>[[ссылка](#annotate-above)]</sup>
+* <a name="annotate-above"></a> Обычно пометки следует записывать
+  на предшествующей описываемому коду строке.<sup>[[ссылка](#annotate-above)]</sup>
 
-* <a name="annotate-keywords"></a> The annotation keyword is followed by a colon and a space, then a note  describing the problem.
-<sup>[[ссылка](#annotate-keywords)]</sup>
+* <a name="annotate-keywords"></a> Пометка отделяется двоеточием и пробелом, потом
+  следует примечание, описывающее проблему.<sup>[[ссылка](#annotate-keywords)]</sup>
 
-* <a name="indent-annotations"></a> If multiple lines are required to describe the problem, subsequent  lines should be indented two spaces after the `#`.
-<sup>[[ссылка](#indent-annotations)]</sup>
+* <a name="indent-annotations"></a> Если для описания проблемы потребуются несколько
+  строк, то на каждой последующей строке следует сделать отступ в три пробела после
+  символа `#`.<sup>[[ссылка](#indent-annotations)]</sup>
 
   ```Ruby
   def bar
@@ -1847,9 +1848,10 @@
   end
   ```
 
-* <a name="rare-eol-annotations"></a> In cases where the problem is so obvious that any documentation would  be redundant, annotations may be left at the end of the offending line
-  with no note. This usage should be the exception and not the rule.
-<sup>[[ссылка](#rare-eol-annotations)]</sup>
+* <a name="rare-eol-annotations"></a> В тех случаях, когда проблема настолько
+  очевидна, что любые описания покажутся избыточными, пометки можно поставить
+  в конце вызывающей проблему строки. Однако такое применение должно быть
+  исключением, а не правилом.<sup>[[ссылка](#rare-eol-annotations)]</sup>
 
   ```Ruby
   def bar
@@ -1857,23 +1859,27 @@
   end
   ```
 
-* <a name="todo"></a> Use `TODO` to note missing features or functionality that should be  added at a later date.
-<sup>[[ссылка](#todo)]</sup>
+* <a name="todo"></a> Используйте `TODO`, чтобы пометить отсутствующие возможности
+  или функционал, которые должны быть добавлены позже.<sup>[[ссылка](#todo)]</sup>
 
-* <a name="fixme"></a> Use `FIXME` to note broken code that needs to be fixed.<sup>[[ссылка](#fixme)]</sup>
+* <a name="fixme"></a> Используйте `FIXME`, чтобы пометить код с ошибками, который
+    должен быть исправлен.<sup>[[ссылка](#fixme)]</sup>
 
-* <a name="optimize"></a> Use `OPTIMIZE` to note slow or inefficient code that may cause  performance problems.
-<sup>[[ссылка](#optimize)]</sup>
+* <a name="optimize"></a> Используйте `OPTIMIZE`, чтобы пометить медленный или
+  неэффективный код, который может вызвать проблемы с производительностью.
+  <sup>[[ссылка](#optimize)]</sup>
 
-* <a name="hack"></a> Use `HACK` to note code smells where questionable coding practices  were used and should be refactored away.
-<sup>[[ссылка](#hack)]</sup>
+* <a name="hack"></a> Используйте `HACK`, чтобы пометить кода "с душком", который
+  должен быть переработан и использует сомнительные практики разработки.
+  <sup>[[ссылка](#hack)]</sup>
 
-* <a name="review"></a> Use `REVIEW` to note anything that should be looked at to confirm it  is working as intended. For example: `REVIEW: Are we sure this is how the
-  client does X currently?`
-<sup>[[ссылка](#review)]</sup>
+* <a name="review"></a> Используйте `REVIEW`, чтобы пометить все, что должно быть
+  проверено на работоспособность. Например, `REVIEW: Are we sure this is how the
+  client does X currently?`.<sup>[[ссылка](#review)]</sup>
 
-* <a name="document-annotations"></a> Use other custom annotation keywords if it feels appropriate, but be  sure to document them in your project's `README` or similar.
-<sup>[[ссылка](#document-annotations)]</sup>
+* <a name="document-annotations"></a> Используйте персональные пометки, если это
+  подходит по месту, но обязательно опишите их смысл в файле `README` (или похожем)
+  для вашего проекта.<sup>[[ссылка](#document-annotations)]</sup>
 
 ## Классы и модули
 
