@@ -1891,7 +1891,7 @@
     extend SomeModule
     include AnotherModule
 
-    # внутернние классы
+    # вложенные классы
     CustomErrorKlass = Class.new(StandardError)
 
     # после этого константы
