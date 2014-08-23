@@ -1797,8 +1797,9 @@
 > it even clearer. <br/>
 > -- Steve McConnell
 
-* <a name="no-comments"></a> Write self-documenting code and ignore the rest
-  of this section. Seriously!<sup>[[ссылка](#no-comments)]</sup>
+* <a name="no-comments"></a> Пишите говорящий за себя код и смело
+  пропускайте все остальное в этом разделе. Серьезно!
+  <sup>[[ссылка](#no-comments)]</sup>
 
 * <a name="english-comments"></a> Пишите комментарии по-английски.
   <sup>[[ссылка](#english-comments)]</sup>
@@ -1819,14 +1820,19 @@
   counter += 1 # Увеличивает счетчик на единицу.
   ```
 
-* <a name="comment-upkeep"></a> Keep existing comments up-to-date. An outdated comment is worse than no comment  at all.
-<sup>[[ссылка](#comment-upkeep)]</sup>
+* <a name="comment-upkeep"></a> Актуализируйте существующие комментарии.
+  Устаревший комментарий гораздо хуже отсутствующего комментария.
+  <sup>[[ссылка](#comment-upkeep)]</sup>
 
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
-* <a name="refactor-dont-comment"></a> Avoid writing comments to explain плохо code. Refactor the code to  make it self-explanatory. (Do or do not - there is no try. --Yoda)
-<sup>[[ссылка](#refactor-dont-comment)]</sup>
+* <a name="refactor-dont-comment"></a> Не пишите комментарии для объяснения
+  плохого кода. Перепишите код, чтобы он говорил сам за себя.
+  <sup>[[ссылка](#refactor-dont-comment)]</sup>
+
+> Do or do not - there is no try. <br/>
+> --Yoda
 
 ### Пометки в комментариях
 
