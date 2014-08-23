@@ -1832,7 +1832,7 @@
   <sup>[[ссылка](#refactor-dont-comment)]</sup>
 
 > Do or do not - there is no try. <br/>
-> --Yoda
+> -- Yoda
 
 ### Пометки в комментариях
 
