@@ -392,8 +392,9 @@
   ```
 
 
-* <a name="no-trailing-params-comma"></a>  Избегайте запятых после последнего параметра в вызове метода,
-  особенно когда параметры расположены в отдельных строках.<sup>[[ссылка](#no-trailing-params-comma)]</sup>
+* <a name="no-trailing-params-comma"></a>  Избегайте запятых после последнего
+  параметра в вызове метода, особенно когда параметры расположены в отдельных
+  строках.<sup>[[ссылка](#no-trailing-params-comma)]</sup>
 
 
   ```Ruby
@@ -430,9 +431,9 @@
   Хотя в некоторых книгах по Ruby рекомендуют первый стиль, второй
   гораздо более нагляден.
 
-* <a name="no-trailing-backslash"></a> Не используйте символ продления строк `\` везде, где можно обойтись без него.
-  Практически не используйте его нигде, кроме как при конкатенации
-  строк.<sup>[[ссылка](#no-trailing-backslash)]</sup>
+* <a name="no-trailing-backslash"></a> Не используйте символ продления строк `\`
+  везде, где можно обойтись без него. Практически не используйте его нигде,
+  кроме как при конкатенации строк.<sup>[[ссылка](#no-trailing-backslash)]</sup>
 
 
   ```Ruby
@@ -1021,8 +1022,8 @@
   bowling.score.should == 0
   ```
 
-* <a name="no-braces-opts-hash"></a> Не используйте фигурные скобки для ограничения хешей, передаваемых
-  методу.<sup>[[ссылка](#no-braces-opts-hash)]</sup>
+* <a name="no-braces-opts-hash"></a> Не используйте фигурные скобки для ограничения
+  хешей, передаваемых методу.<sup>[[ссылка](#no-braces-opts-hash)]</sup>
 
   ```Ruby
   # плохо
@@ -1033,8 +1034,8 @@
   ```
 
 * <a name="no-dsl-decorating"></a> Не используйте фигурные скобки для ограничения хешей,
-  передаваемых методу, и скобки вокруг параметров для методов,
-  являющихся частью DSL.<sup>[[ссылка](#no-dsl-decorating)]</sup>
+  передаваемых методу, и скобки вокруг параметров для методов, являющихся частью
+  DSL.<sup>[[ссылка](#no-dsl-decorating)]</sup>
 
   ```Ruby
   class Person < ActiveRecord::Base
@@ -1095,10 +1096,10 @@
   ask themselves - is this code really readable and can the blocks' contents be extracted into
   nifty methods?
 
-* <a name="block-argument"></a> Consider using explicit block argument to avoid writing block  literal that just passes its arguments to another block. Beware of
-  the performance impact, though, as the block gets converted to a
-  Proc.
-<sup>[[ссылка](#block-argument)]</sup>
+* <a name="block-argument"></a> Consider using explicit block argument to avoid
+  writing block  literal that just passes its arguments to another block. Beware of
+  the performance impact, though, as the block gets converted to a Proc.
+  <sup>[[ссылка](#block-argument)]</sup>
 
   ```Ruby
   require 'tempfile'
@@ -1122,7 +1123,8 @@
   end
   ```
 
-* <a name="no-explicit-return"></a> Avoid `return` where not required for flow of control.<sup>[[ссылка](#no-explicit-return)]</sup>
+* <a name="no-explicit-return"></a> Avoid `return` where not required for flow
+  of control.<sup>[[ссылка](#no-explicit-return)]</sup>
 
   ```Ruby
   # плохо
@@ -1136,7 +1138,9 @@
   end
   ```
 
-* <a name="no-self-unless-required"></a> Avoid `self` where not required. (It is only required when calling a self write accessor.)<sup>[[ссылка](#no-self-unless-required)]</sup>
+* <a name="no-self-unless-required"></a> Avoid `self` where not required. (It is
+  only required when calling a self write accessor.)
+  <sup>[[ссылка](#no-self-unless-required)]</sup>
 
   ```Ruby
   # плохо
@@ -1158,7 +1162,8 @@
   end
   ```
 
-* <a name="no-shadowing"></a> As a corollary, avoid shadowing methods with local variables unless they are both equivalent.<sup>[[ссылка](#no-shadowing)]</sup>
+* <a name="no-shadowing"></a> As a corollary, avoid shadowing methods with local
+  variables unless they are both equivalent.<sup>[[ссылка](#no-shadowing)]</sup>
 
   ```Ruby
   class Foo
