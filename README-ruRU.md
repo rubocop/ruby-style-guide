@@ -1092,9 +1092,9 @@
   names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
   ```
 
-  Some will argue that multiline chaining would look OK with the use of {...}, but they should
-  ask themselves - is this code really readable and can the blocks' contents be extracted into
-  nifty methods?
+  Некоторые из нас поспорят, что многострочные последовательные вызовы с блоками
+  при использовании {...} выглядят неплохо, но тогда стоит себя спросить, а читается
+  ли такой код и не стоит ли выделить эти блоки в отдельные специальные методы.
 
 * <a name="block-argument"></a> Consider using explicit block argument to avoid
   writing block  literal that just passes its arguments to another block. Beware of
