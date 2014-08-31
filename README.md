@@ -228,10 +228,10 @@ Translations of the guide are available in the following languages:
 
   ```Ruby
   # good - space after { and before }
-  { one: 1, two: 2 }
+  { :one => 1, :two => 2 }
 
   # good - no space after { and before }
-  {one: 1, two: 2}
+  {:one => 1, :two => 2}
   ```
 
   The first variant is slightly more readable (and arguably more
@@ -502,33 +502,33 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # starting point (line is too long)
   def send_mail(source)
-    Mailer.deliver(to: 'bob@example.com', from: 'us@example.com', subject: 'Important message', body: source.text)
+    Mailer.deliver(to: 'bob@example.com', :from => 'us@example.com', :subject => 'Important message', :body => source.text)
   end
 
   # bad (double indent)
   def send_mail(source)
     Mailer.deliver(
-        to: 'bob@example.com',
-        from: 'us@example.com',
-        subject: 'Important message',
-        body: source.text)
+        :to => 'bob@example.com',
+        :from => 'us@example.com',
+        :subject => 'Important message',
+        :body => source.text)
   end
 
   # good
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
-                   from: 'us@example.com',
-                   subject: 'Important message',
-                   body: source.text)
+                   :from => 'us@example.com',
+                   :subject => 'Important message',
+                   :body => source.text)
   end
 
   # good (normal indent)
   def send_mail(source)
     Mailer.deliver(
-      to: 'bob@example.com',
-      from: 'us@example.com',
-      subject: 'Important message',
-      body: source.text
+      :to => 'bob@example.com',
+      :from => 'us@example.com',
+      :subject => 'Important message',
+      :body => source.text
     )
   end
   ```
@@ -1064,10 +1064,10 @@ Translations of the guide are available in the following languages:
 
   ```Ruby
   # bad
-  user.set({ name: 'John', age: 45, permissions: { read: true } })
+  user.set({ :name => 'John', :age => 45, :permissions => { :read => true } })
 
   # good
-  user.set(name: 'John', age: 45, permissions: { read: true })
+  user.set(name: 'John', :age => 45, :permissions => { :read => true })
   ```
 
 * <a name="no-dsl-decorating"></a>
@@ -1078,10 +1078,10 @@ Translations of the guide are available in the following languages:
   ```Ruby
   class Person < ActiveRecord::Base
     # bad
-    validates(:name, { presence: true, length: { within: 1..10 } })
+    validates(:name, { :presence => true, :length => { :within => 1..10 } })
 
     # good
-    validates :name, presence: true, length: { within: 1..10 }
+    validates :name, :presence => true, :length => { :within => 1..10 }
   end
   ```
 
@@ -1509,14 +1509,14 @@ Translations of the guide are available in the following languages:
   # => '20 10'
 
   # good
-  sprintf('%{first} %{second}', first: 20, second: 10)
+  sprintf('%{first} %{second}', :first => 20, :second => 10)
   # => '20 10'
 
   format('%d %d', 20, 10)
   # => '20 10'
 
   # good
-  format('%{first} %{second}', first: 20, second: 10)
+  format('%{first} %{second}', :first => 20, :second => 10)
   # => '20 10'
   ```
 
@@ -2768,7 +2768,7 @@ Translations of the guide are available in the following languages:
   hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
   # good
-  hash = { one: 1, two: 2, three: 3 }
+  hash = { :one => 1, :two => 2, :three => 3 }
   ```
 
 * <a name="no-mutable-keys"></a>
@@ -2776,29 +2776,21 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#no-mutable-keys)]</sup>
 
 * <a name="hash-literals"></a>
-  Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
+  For clarity and consistency, never use the Ruby 1.9 hash literal syntax. Always use the hash rocket syntax.
 <sup>[[link](#hash-literals)]</sup>
 
   ```Ruby
   # bad
-  hash = { :one => 1, :two => 2, :three => 3 }
-
-  # good
   hash = { one: 1, two: 2, three: 3 }
-  ```
-
-* <a name="no-mixed-hash-syntaces"></a>
-  Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash
-  literal. When you've got keys that are not symbols stick to the hash rockets
-  syntax.
-<sup>[[link](#no-mixed-hash-syntaces)]</sup>
-
-  ```Ruby
-  # bad
-  { a: 1, 'b' => 2 }
-
+  hash = { only: :create }
+  hash = { only: [:new, :new_from_widget, :create] }
+  get :preview, id: key
+  
   # good
-  { :a => 1, 'b' => 2 }
+  hash = { :one => 1, :two => 2, :three => 3 }
+  hash = { :only => :create }
+  hash = { :only => [:new, :new_from_widget, :create] }
+  get :preview, :id => key
   ```
 
 * <a name="hash-key"></a>
@@ -2823,7 +2815,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#hash-fetch)]</sup>
 
   ```Ruby
-  heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+  heroes = { :batman => 'Bruce Wayne', :superman => 'Clark Kent' }
   # bad - if we make a mistake we might not spot it right away
   heroes[:batman] # => "Bruce Wayne"
   heroes[:supermann] # => nil
@@ -2838,7 +2830,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#hash-fetch-defaults)]</sup>
 
   ```Ruby
-  batman = { name: 'Bruce Wayne', is_evil: false }
+  batman = { :name => 'Bruce Wayne', :is_evil => false }
 
   # bad - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
@@ -2852,7 +2844,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#use-hash-blocks)]</sup>
 
   ```Ruby
-  batman = { name: 'Bruce Wayne' }
+  batman = { :name => 'Bruce Wayne' }
 
   # bad - if we use the default value, we eager evaluate it
   # so it can slow the program down if done multiple times
