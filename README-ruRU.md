@@ -1191,9 +1191,10 @@
   end
   ```
 
-* <a name="safe-assignment-in-condition"></a> Don't use the return value of `=` (an assignment) in conditional  expressions unless the assignment is wrapped in parentheses. This is
-  a fairly popular idiom among Rubyists that's sometimes referred to as
-<sup>[[ссылка](#safe-assignment-in-condition)]</sup>
+* <a name="safe-assignment-in-condition"></a> Don't use the return value of `=`
+  (an assignment) in conditional  expressions unless the assignment is wrapped
+  in parentheses. This is a fairly popular idiom among Rubyists that's sometimes
+  referred to as.<sup>[[ссылка](#safe-assignment-in-condition)]</sup>
 
 
   ```Ruby
@@ -1217,7 +1218,8 @@
   end
   ```
 
-* <a name="self-assignment"></a> Use shorthand self assignment operators whenever applicable.<sup>[[ссылка](#self-assignment)]</sup>
+* <a name="self-assignment"></a> Use shorthand self assignment operators whenever
+  applicable.<sup>[[ссылка](#self-assignment)]</sup>
 
   ```Ruby
   # плохо
@@ -1237,7 +1239,8 @@
   x &&= y
   ```
 
-* <a name="double-pipe-for-uninit"></a> Use `||=` to initialize variables only if they're not already initialized.<sup>[[ссылка](#double-pipe-for-uninit)]</sup>
+* <a name="double-pipe-for-uninit"></a> Use `||=` to initialize variables only
+  if they're not already initialized.<sup>[[ссылка](#double-pipe-for-uninit)]</sup>
 
   ```Ruby
   # плохо
@@ -1250,8 +1253,9 @@
   name ||= 'Bozhidar'
   ```
 
-* <a name="no-double-pipes-for-bools"></a> Don't use `||=` to initialize boolean variables. (Consider what  would happen if the current value happened to be `false`.)
-<sup>[[ссылка](#no-double-pipes-for-bools)]</sup>
+* <a name="no-double-pipes-for-bools"></a> Don't use `||=` to initialize boolean
+  variables. (Consider what  would happen if the current value happened to be `false`.)
+  <sup>[[ссылка](#no-double-pipes-for-bools)]</sup>
 
   ```Ruby
   # плохо - would set enabled to true even if it was false
@@ -1261,9 +1265,9 @@
   enabled = true if enabled.nil?
   ```
 
-* <a name="double-amper-preprocess"></a> Use `&&=` to preprocess variables that may or may not exist. Using  `&&=` will change the value only if it exists, removing the need to
-  check its existence with `if`.
-<sup>[[ссылка](#double-amper-preprocess)]</sup>
+* <a name="double-amper-preprocess"></a> Use `&&=` to preprocess variables that may
+  or may not exist. Using  `&&=` will change the value only if it exists, removing the need to
+  check its existence with `if`.<sup>[[ссылка](#double-amper-preprocess)]</sup>
 
   ```Ruby
   # плохо
