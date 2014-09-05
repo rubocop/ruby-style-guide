@@ -3317,6 +3317,10 @@ condition](#safe-assignment-in-condition).
     # best of all, though, would to define_method as each findable attribute is declared
     ```
 
+* <a name="prefer-public-send"></a>
+  Prefer `public_send` over `send` so as not to circumvent `private`/`protected` visibility.
+<sup>[[link](#prefer-public-send)]</sup>
+
 ## Misc
 
 * <a name="always-warn"></a>
