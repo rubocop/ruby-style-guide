@@ -943,6 +943,9 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+Note that there is an exception to this rule, namely [safe assignment in
+condition](#safe-assignment-in-condition).
+
 * <a name="no-multiline-while-do"></a>
   Never use `while/until condition do` for multi-line `while/until`.
 <sup>[[link](#no-multiline-while-do)]</sup>
