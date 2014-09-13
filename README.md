@@ -2139,7 +2139,7 @@ Translations of the guide are available in the following languages:
   end
 
   # good
-  module SomeClass
+  module SomeModule
     module_function
 
     def some_method
