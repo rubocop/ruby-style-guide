@@ -913,6 +913,8 @@
     # код опущен для краткости
   end
   ```
+  Однако в этом правиле есть некоторые исключения, например,
+  [надежные присвоения в условных выражениях](#safe-assignment-in-condition).
 
 * <a name="no-multiline-while-do"></a> Не используйте `while/until УСЛОВИЕ do`
   для многострочных циклов с `while/until`.
@@ -1995,7 +1997,7 @@
   end
 
   # хорошо
-  module SomeClass
+  module SomeModule
     module_function
 
     def some_method
