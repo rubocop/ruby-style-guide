@@ -3031,19 +3031,27 @@
 
 ## Разное
 
-* <a name="always-warn"></a> Write `ruby -w` safe code.<sup>[[ссылка](#always-warn)]</sup>
+* <a name="always-warn"></a> Пишите код, не дающий предупреждений при вызове
+  `ruby -w`.<sup>[[ссылка](#always-warn)]</sup>
 
-* <a name="no-optional-hash-params"></a> Avoid hashes as optional parameters. Does the method do too much? (Object initializers are exceptions for this rule).<sup>[[ссылка](#no-optional-hash-params)]</sup>
+* <a name="no-optional-hash-params"></a> Не используйте хеши в качестве
+  необязательных параметров. Возможно, ваш метод просто делает слишком много.
+  Это не касается, однако, методов инициализации объектов.
+  <sup>[[ссылка](#no-optional-hash-params)]</sup>
 
-* <a name="short-methods"></a> Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will be shorter than  5 LOC. Empty lines do not contribute to the relevant LOC.
-<sup>[[ссылка](#short-methods)]</sup>
+* <a name="short-methods"></a> Старайтесь не писать методы длиннее 10 строк. В
+  идеальном случае большинство методов должны быть короче 5 строк. Пустные строки
+  не подсчитываются.<sup>[[ссылка](#short-methods)]</sup>
 
-* <a name="too-many-params"></a> Avoid parameter lists longer than three or four parameters.<sup>[[ссылка](#too-many-params)]</sup>
+* <a name="too-many-params"></a> Не создаваете методы с более чем тремя-четырьмя
+  параметрами.<sup>[[ссылка](#too-many-params)]</sup>
 
-* <a name="private-global-methods"></a> If you really need "global" methods, add them to Kernel  and make them private.
-<sup>[[ссылка](#private-global-methods)]</sup>
+* <a name="private-global-methods"></a> Если вам действительно нужны глобальные
+  функции, включайте их в модуль Kernel и сделайте их приватными.
+  <sup>[[ссылка](#private-global-methods)]</sup>
 
-* <a name="instance-vars"></a> Use module instance variables instead of global variables.<sup>[[ссылка](#instance-vars)]</sup>
+* <a name="instance-vars"></a> Используйте переменные модулей вместо глобальных
+  переменных.<sup>[[ссылка](#instance-vars)]</sup>
 
   ```Ruby
   # плохо
@@ -3059,27 +3067,33 @@
   Foo.bar = 1
   ```
 
-* <a name="alias-method"></a> Избегайте использования `alias`, если достаточно использовать `alias_method`.<sup>[[ссылка](#alias-method)]</sup>
+* <a name="alias-method"></a> Избегайте использования `alias`, если достаточно
+  использовать `alias_method`.<sup>[[ссылка](#alias-method)]</sup>
 
-* <a name="optionparser"></a> Используйте `OptionParser` для анализа сложных аргуметов
-  командрой строки и  `ruby -s` для элеметарных случаев.<sup>[[ссылка](#optionparser)]</sup>
+* <a name="optionparser"></a> Используйте `OptionParser` для анализа сложных
+  аргуметов командрой строки и  `ruby -s` для элеметарных случаев.
+  <sup>[[ссылка](#optionparser)]</sup>
 
-* <a name="time-now"></a> Используйте вариант `Time.now`, а не `Time.new`, когда хотите получить текущее
-  значение системного времени.<sup>[[ссылка](#time-now)]</sup>
+* <a name="time-now"></a> Используйте вариант `Time.now`, а не `Time.new`,
+  когда хотите получить текущее значение системного времени.
+  <sup>[[ссылка](#time-now)]</sup>
 
-* <a name="functional-code"></a> Пишите код в функциональном стиле без изменения значений, когда это подходит
-  по смыслу.<sup>[[ссылка](#functional-code)]</sup>
+* <a name="functional-code"></a> Пишите код в функциональном стиле без изменения
+  значений, когда это подходит по смыслу.<sup>[[ссылка](#functional-code)]</sup>
 
 * <a name="no-arg-mutations"></a> Не изменяйте значения аргументов, если только это
   не есть цель метода.<sup>[[ссылка](#no-arg-mutations)]</sup>
 
-* <a name="three-is-the-number-thou-shalt-count"></a> Старайтесь не создавать вложенные структуры
-  с уровнем вложения больше третьего.<sup>[[ссылка](#three-is-the-number-thou-shalt-count)]</sup>
+* <a name="three-is-the-number-thou-shalt-count"></a> Старайтесь не создавать
+  вложенные структуры с уровнем вложения больше третьего.
+  <sup>[[ссылка](#three-is-the-number-thou-shalt-count)]</sup>
 
-* <a name="be-consistent"></a> Будьте последовательны. В идеальном мире последовательно придерживайтесь
-  данного руководства.<sup>[[ссылка](#be-consistent)]</sup>
+* <a name="be-consistent"></a> Будьте последовательны. В идеальном мире
+  последовательно придерживайтесь данного руководства.
+  <sup>[[ссылка](#be-consistent)]</sup>
 
-* <a name="common-sense"></a> Руководствуйтесь здравым смыслом.<sup>[[ссылка](#common-sense)]</sup>
+* <a name="common-sense"></a> Руководствуйтесь здравым смыслом.
+  <sup>[[ссылка](#common-sense)]</sup>
 
 ## Инструментарий
 
@@ -3112,7 +3126,7 @@
 Вы можете поддержать проект (и РубоКоп) денежным взносом
 при помощи [gittip](https://www.gittip.com/bbatsov).
 
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
+[![Дай Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
 ## Как сотрудничать в проекте?
 
