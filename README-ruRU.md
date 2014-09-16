@@ -2966,21 +2966,24 @@
   при написании библиотек (не используйте monkey patching).
   <sup>[[ссылка](#no-monkey-patching)]</sup>
 
-* <a name="block-class-eval"></a> The block form of `class_eval` is preferable to the string-interpolated form.  - when you use the string-interpolated form, always supply `__FILE__` and `__LINE__`,
-    so that your backtraces make sense:
-<sup>[[ссылка](#block-class-eval)]</sup>
+* <a name="block-class-eval"></a> Используйте `class_eval` с блоком вместно
+  интерполяции значений в строке. Если вы используете интерполяцию, то всегда
+  указывайте дополнительно `__FILE__` and `__LINE__`, чтобы информация о стеке
+  вызова была осмысленной:<sup>[[ссылка](#block-class-eval)]</sup>
 
   ```Ruby
   class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
   ```
 
-  - `define_method` is preferable to `class_eval{ def ... }`
+  - `define_method` предпочтительнее, чем `class_eval{ def ... }`
 
-* <a name="eval-comment-docs"></a> When using `class_eval` (or other `eval`) with string interpolation, add a comment block  showing its appearance if interpolated (a practice used in Rails code):
-<sup>[[ссылка](#eval-comment-docs)]</sup>
+* <a name="eval-comment-docs"></a> При использовании `class_eval` (или других
+  `eval`) с интерполяцией строк обязательно добавляйте комментарий, который
+  будет наглядно показывать, как интерполированные значения будут выглядеть
+  (примеры, используемые в исходном коде Rails):<sup>[[ссылка](#eval-comment-docs)]</sup>
 
   ```Ruby
-  # from activesupport/lib/active_support/core_ext/string/output_safety.rb
+  # из activesupport/lib/active_support/core_ext/string/output_safety.rb
   UNSAFE_STRING_METHODS.each do |unsafe_method|
     if 'String'.respond_to?(unsafe_method)
       class_eval <<-EOT, __FILE__, __LINE__ + 1
@@ -2997,15 +3000,17 @@
   end
   ```
 
-* <a name="no-method-missing"></a> Avoid using `method_missing` for metaprogramming because backtraces become messy,  the behavior is not listed in `#methods`, and misspelled method calls might silently
-  work, e.g. `nukes.launch_state = false`. Consider using delegation, proxy, or
-  `define_method` instead. If you must use `method_missing`:
-<sup>[[ссылка](#no-method-missing)]</sup>
+* <a name="no-method-missing"></a> Избегайте `method_missing` для целей
+  метапрограммирования, так как стек вызова становится нечитаемым, метод не виден
+  в `#methods`, опечатки в вызовах методов пройдут незамеченными, например,
+  `nukes.launch_state = false`. Используйте делегирование, проксирование или же
+  `#define_method`. Если вы используете `method_missing`:
+  <sup>[[ссылка](#no-method-missing)]</sup>
 
-  - Be sure to [also define `respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html)
-  - Only catch methods with a well-defined prefix, such as `find_by_*` -- make your code as assertive as possible.
-  - Call `super` at the end of your statement
-  - Delegate to assertive, non-magical methods:
+  - Обязательно [определите `#respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html);
+  - перехватывайте вызовы только с четко определенными префиксами, например, `#find_by_*` -- задайте в своем коде наиболее узкие рамки для неопределенностей;
+  - вызывайте `#super` в конце ваших выражений;
+  - делегируйте вызовы понятным, "немагическим" методам:
 
     ```Ruby
     # плохо
@@ -3026,7 +3031,7 @@
       end
     end
 
-    # best of all, though, would to define_method as each findable attribute is declared
+    # самым лучшим будет все же использование `#define_method`, так как каждый видимый аргумент будет определен
     ```
 
 ## Разное
