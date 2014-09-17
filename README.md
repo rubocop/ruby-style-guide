@@ -740,22 +740,18 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-* <a name="no-1.8-if-syntax"></a>
-  Do not use `if x: ...` - as of Ruby 1.9 it has been removed. Use the ternary
+* <a name="no-semicolon-ifs"></a>
+  Do not use `if x; ...`. Use the ternary
   operator instead.
-<sup>[[link](#no-1.8-if-syntax)]</sup>
+<sup>[[link](#no-semicolon-ifs)]</sup>
 
   ```Ruby
   # bad
-  result = if some_condition: something else something_else end
+  result = if some_condition; something else something_else end
 
   # good
   result = some_condition ? something : something_else
   ```
-
-* <a name="no-semicolon-ifs"></a>
-  Do not use `if x; ...`. Use the ternary operator instead.
-<sup>[[link](#no-semicolon-ifs)]</sup>
 
 * <a name="use-if-case-returns"></a>
   Leverage the fact that `if` and `case` are expressions which return a
