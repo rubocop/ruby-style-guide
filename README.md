@@ -1691,6 +1691,58 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
+* <a name="map-fine-select-reduce-size"></a>
+  Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
+  `reduce` over `inject` and `size` over `length`. This is not a hard
+  requirement; if the use of the alias enhances readability, it's ok to use it.
+  The rhyming methods are inherited from Smalltalk and are not common in other
+  programming languages. The reason the use of `select` is encouraged over
+  `find_all` is that it goes together nicely with `reject` and its name is
+  pretty self-explanatory.
+<sup>[[link](#map-fine-select-reduce-size)]</sup>
+
+* <a name="count-vs-size"></a>
+  Don't use `count` as a substitute for `size`. For `Enumerable` objects other
+  than `Array` it will iterate the entire collection in order to determine its
+  size.
+<sup>[[link](#count-vs-size)]</sup>
+
+  ```Ruby
+  # bad
+  some_hash.count
+
+  # good
+  some_hash.size
+  ```
+
+* <a name="flat-map"></a>
+  Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays
+  with a depth greater than 2, i.e.  if `users.first.songs == ['a', ['b','c']]`,
+  then use `map + flatten` rather than `flat_map`.  `flat_map` flattens the
+  array by 1, whereas `flatten` flattens it all the way.
+<sup>[[link](#flat-map)]</sup>
+
+  ```Ruby
+  # bad
+  all_songs = users.map(&:songs).flatten.uniq
+
+  # good
+  all_songs = users.flat_map(&:songs).uniq
+  ```
+
+* <a name="reverse-each"></a>
+  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
+  new array allocation and that's a good thing.
+<sup>[[link](#reverse-each)]</sup>
+
+  ```Ruby
+  # bad
+  array.reverse.each { ... }
+
+  # good
+  array.reverse_each { ... }
+  ```
+
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
@@ -1868,58 +1920,6 @@ condition](#safe-assignment-in-condition).
   def +(other)
     # body omitted
   end
-  ```
-
-* <a name="map-fine-select-reduce-size"></a>
-  Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
-  `reduce` over `inject` and `size` over `length`. This is not a hard
-  requirement; if the use of the alias enhances readability, it's ok to use it.
-  The rhyming methods are inherited from Smalltalk and are not common in other
-  programming languages. The reason the use of `select` is encouraged over
-  `find_all` is that it goes together nicely with `reject` and its name is
-  pretty self-explanatory.
-<sup>[[link](#map-fine-select-reduce-size)]</sup>
-
-* <a name="count-vs-size"></a>
-  Don't use `count` as a substitute for `size`. For `Enumerable` objects other
-  than `Array` it will iterate the entire collection in order to determine its
-  size.
-<sup>[[link](#count-vs-size)]</sup>
-
-  ```Ruby
-  # bad
-  some_hash.count
-
-  # good
-  some_hash.size
-  ```
-
-* <a name="flat-map"></a>
-  Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays
-  with a depth greater than 2, i.e.  if `users.first.songs == ['a', ['b','c']]`,
-  then use `map + flatten` rather than `flat_map`.  `flat_map` flattens the
-  array by 1, whereas `flatten` flattens it all the way.
-<sup>[[link](#flat-map)]</sup>
-
-  ```Ruby
-  # bad
-  all_songs = users.map(&:songs).flatten.uniq
-
-  # good
-  all_songs = users.flat_map(&:songs).uniq
-  ```
-
-* <a name="reverse-each"></a>
-  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
-  new array allocation and that's a good thing.
-<sup>[[link](#reverse-each)]</sup>
-
-  ```Ruby
-  # bad
-  array.reverse.each { ... }
-
-  # good
-  array.reverse_each { ... }
   ```
 
 ## Comments
