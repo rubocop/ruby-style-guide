@@ -605,7 +605,7 @@ Translations of the guide are available in the following languages:
 * <a name="double-colons"></a>
     Use `::` only to reference constants(this includes classes and
     modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-    Never use `::` for regular method invocation.
+    Do not use `::` for regular method invocation.
 <sup>[[link](#double-colons)]</sup>
 
   ```Ruby
@@ -648,7 +648,7 @@ Translations of the guide are available in the following languages:
    ```
 
 * <a name="no-for-loops"></a>
-    Never use `for`, unless you know exactly why. Most of the time iterators
+    Do not use `for`, unless you know exactly why. Most of the time iterators
     should be used instead. `for` is implemented in terms of `each` (so
     you're adding a level of indirection), but with a twist - `for`
     doesn't introduce a new scope (unlike `each`) and variables defined
@@ -674,7 +674,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-then"></a>
-  Never use `then` for multi-line `if/unless`.
+  Do not use `then` for multi-line `if/unless`.
 <sup>[[link](#no-then)]</sup>
 
   ```Ruby
@@ -741,7 +741,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-1.8-if-syntax"></a>
-  Never use `if x: ...` - as of Ruby 1.9 it has been removed. Use the ternary
+  Do not use `if x: ...` - as of Ruby 1.9 it has been removed. Use the ternary
   operator instead.
 <sup>[[link](#no-1.8-if-syntax)]</sup>
 
@@ -754,7 +754,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-semicolon-ifs"></a>
-  Never use `if x; ...`. Use the ternary operator instead.
+  Do not use `if x; ...`. Use the ternary operator instead.
 <sup>[[link](#no-semicolon-ifs)]</sup>
 
 * <a name="use-if-case-returns"></a>
@@ -785,7 +785,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#one-line-cases)]</sup>
 
 * <a name="no-when-semicolons"></a>
-  Never use `when x; ...`. See the previous rule.
+  Do not use `when x; ...`. See the previous rule.
 <sup>[[link](#no-when-semicolons)]</sup>
 
 * <a name="bang-not-not"></a>
@@ -908,7 +908,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-else-with-unless"></a>
-  Never use `unless` with `else`. Rewrite these with the positive case first.
+  Do not use `unless` with `else`. Rewrite these with the positive case first.
 <sup>[[link](#no-else-with-unless)]</sup>
 
   ```Ruby
@@ -947,7 +947,7 @@ Note that there is an exception to this rule, namely [safe assignment in
 condition](#safe-assignment-in-condition).
 
 * <a name="no-multiline-while-do"></a>
-  Never use `while/until condition do` for multi-line `while/until`.
+  Do not use `while/until condition do` for multi-line `while/until`.
 <sup>[[link](#no-multiline-while-do)]</sup>
 
   ```Ruby
@@ -1374,7 +1374,7 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="parens-no-spaces"></a>
-  Never put a space between a method name and the opening parenthesis.
+  Do not put a space between a method name and the opening parenthesis.
 <sup>[[link](#parens-no-spaces)]</sup>
 
   ```Ruby
@@ -1629,7 +1629,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#no-BEGIN-blocks)]</sup>
 
 * <a name="no-END-blocks"></a>
-  Never use `END` blocks. Use `Kernel#at_exit` instead.
+  Do not use `END` blocks. Use `Kernel#at_exit` instead.
 <sup>[[link](#no-END-blocks)]</sup>
 
   ```ruby
@@ -2478,7 +2478,7 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="no-return-ensure"></a>
-  Never return from an `ensure` block. If you explicitly return from a method
+  Do not return from an `ensure` block. If you explicitly return from a method
   inside an `ensure` block, the return will take precedence over any exception
   being raised, and the method will return as if no exception had been raised at
   all. In effect, the exception will be silently thrown away.
@@ -2884,7 +2884,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#ordered-hashes)]</sup>
 
 * <a name="no-modifying-collections"></a>
-  Never modify a collection while traversing it.
+  Do not modify a collection while traversing it.
 <sup>[[link](#no-modifying-collections)]</sup>
 
 ## Strings
