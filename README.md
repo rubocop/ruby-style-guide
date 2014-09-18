@@ -5,7 +5,7 @@
 
 One thing has always bothered me as a Ruby developer - Python developers have a
 great programming style reference
-([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got an official
+([PEP-8][]) and we never got an official
 guide, documenting Ruby coding style and best practices. And I do believe that
 style matters. I also believe that a great hacker community, such as Ruby has,
 should be quite capable of producing this coveted document.
@@ -23,7 +23,7 @@ and the support! Together we can make a resource beneficial to each and every
 Ruby developer out there.
 
 By the way, if you're into Rails you might want to check out the complementary
-[Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
+[Ruby on Rails Style Guide][rails-style-guide].
 
 # The Ruby Style Guide
 
@@ -41,9 +41,9 @@ I didn't come up with all the rules out of nowhere - they are mostly based on my
 extensive career as a professional software engineer, feedback and suggestions
 from members of the Ruby community and various highly regarded Ruby programming
 resources, such as ["Programming Ruby
-1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0) and ["The Ruby
+1.9"][pickaxe] and ["The Ruby
 Programming
-Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+Language"][trpl].
 
 There are some areas in which there is no clear consensus in the Ruby community
 regarding a particular style (like string literal quoting, spacing inside hash
@@ -56,9 +56,9 @@ rules don't have examples that illustrate them clearly enough. In due time these
 issues will be addressed - just keep them in mind for now.
 
 You can generate a PDF or an HTML copy of this guide using
-[Transmuter](https://github.com/TechnoGate/transmuter).
+[Transmuter][].
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer, based on this
+[RuboCop][] is a code analyzer, based on this
 style guide.
 
 Translations of the guide are available in the following languages:
@@ -3441,3 +3441,10 @@ best possible guide, don't we?
 
 Cheers,<br/>
 [Bozhidar](https://twitter.com/bbatsov)
+
+[PEP-8]: http://www.python.org/dev/peps/pep-0008/
+[rails-style-guide]: https://github.com/bbatsov/rails-style-guide
+[pickaxe]: http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0
+[trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
+[transmuter]: https://github.com/TechnoGate/transmuter
+[RuboCop]: https://github.com/bbatsov/rubocop
