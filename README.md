@@ -51,9 +51,13 @@ literals, dot position in multi-line method chaining, etc.). In such scenarios
 all popular styles are acknowledged and it's up to you to pick one and apply it
 consistently.
 
-The guide is still a work in progress - some rules are lacking examples, some
-rules don't have examples that illustrate them clearly enough. In due time these
-issues will be addressed - just keep them in mind for now.
+This style guide evolves over time as additional conventions are
+identified and past conventions are rendered obsolete by changes in
+Ruby itself.
+
+Many projects have their own coding style guidelines (often derived
+from this guide). In the event of any conflicts, such
+project-specific guides take precedence for that project.
 
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter][].
@@ -3408,6 +3412,13 @@ and has good Emacs integration.
 on this guide.
 
 # Contributing
+
+The guide is still a work in progress - some rules are lacking examples, some
+rules don't have examples that illustrate them clearly enough. Improving such rules
+is a great (and simple way) to help the Ruby community!
+
+In due time these issues will (hopefully) be addressed - just keep them in mind
+for now.
 
 Nothing written in this guide is set in stone. It's my desire to work
 together with everyone interested in Ruby coding style, so that we could
