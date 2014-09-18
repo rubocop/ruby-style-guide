@@ -495,12 +495,16 @@ Translations of the guide are available in the following languages:
   A discussion on the merits of both alternative styles can be found
   [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
-* <a name="no-double-indent"></a>
-    Align the parameters of a method call if they span more than one
-    line. When aligning parameters is not appropriate due to line-length
-    constraints, single indent for the lines after the first is also
-    acceptable.
-<sup>[[link](#no-double-indent)]</sup>
+* <a name="semantic-alignment"></a>
+    Use relative levels of indent and alignment as semantic indicators of structure
+    when splitting a long method call or Array/Hash literal across many lines.  An
+    opening delimiter should be the last character on the first line and the matching
+    closing delimiter should appear at the start of its line and at the same indent
+    level as the first line with all arguments/members indented at one level deeper
+    on the lines in between.  Any nesting should follow the same style, but with the
+    nested elments indented again one level deeper.  The closing delimiter need not
+    appear alone on its line, but it should appear first first on the line.
+<sup>[[link](#semantic-alignment)]</sup>
 
   ```Ruby
   # starting point (line is too long)
@@ -517,7 +521,7 @@ Translations of the guide are available in the following languages:
         body: source.text)
   end
 
-  # good
+  # bad (indent too deep)
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
                    from: 'us@example.com',
@@ -525,7 +529,7 @@ Translations of the guide are available in the following languages:
                    body: source.text)
   end
 
-  # good (normal indent)
+  # good (normal indent, closing paren at same depth as start of matching statement)
   def send_mail(source)
     Mailer.deliver(
       to: 'bob@example.com',
@@ -534,6 +538,17 @@ Translations of the guide are available in the following languages:
       body: source.text
     )
   end
+  
+  # good, with nesting (nested multiline hash indented again one level deeper)
+  long_object_name.and_a_long_method_name(
+    :with => { 'hash of many' },
+    :and  => 'varied members',
+    :of   => {
+      'mixed' => :types,
+      :and    => 'values'
+    },
+    :this => 'is the last element'
+  ).map(&:to_s)
   ```
 
 * <a name="align-multiline-arrays"></a>
@@ -546,15 +561,15 @@ Translations of the guide are available in the following languages:
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
   # good
+  menu_item =
+    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
+     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
+  
+  # better
   menu_item = [
     'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam'
   ]
-
-  # good
-  menu_item =
-    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
-     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
 * <a name="underscores-in-numerics"></a>
