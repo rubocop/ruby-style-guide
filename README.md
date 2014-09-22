@@ -800,7 +800,9 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-bang-bang"></a>
-  Avoid the use of `!!`.
+  Avoid the use of `!!` for most contexts.  It is acceptable to use `!!` to
+  coerce a method's return value to truthiness.  This can be useful if you
+  want to indicate a non-false/non-nil value, but you want to hide the value.
 <sup>[[link](#no-bang-bang)]</sup>
 
   ```Ruby
@@ -819,6 +821,11 @@ Translations of the guide are available in the following languages:
   x = 'test'
   unless x.nil?
     # body omitted
+  end
+  
+  # OK when used to coerce method or block value to truthiness
+  def child?
+    !!parent_id
   end
   ```
 
