@@ -5,7 +5,7 @@
 
 One thing has always bothered me as a Ruby developer - Python developers have a
 great programming style reference
-([PEP-8](http://www.python.org/dev/peps/pep-0008/)) and we never got an official
+([PEP-8][]) and we never got an official
 guide, documenting Ruby coding style and best practices. And I do believe that
 style matters. I also believe that a great hacker community, such as Ruby has,
 should be quite capable of producing this coveted document.
@@ -23,7 +23,7 @@ and the support! Together we can make a resource beneficial to each and every
 Ruby developer out there.
 
 By the way, if you're into Rails you might want to check out the complementary
-[Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-style-guide).
+[Ruby on Rails Style Guide][rails-style-guide].
 
 # The Ruby Style Guide
 
@@ -41,9 +41,9 @@ I didn't come up with all the rules out of nowhere - they are mostly based on my
 extensive career as a professional software engineer, feedback and suggestions
 from members of the Ruby community and various highly regarded Ruby programming
 resources, such as ["Programming Ruby
-1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0) and ["The Ruby
+1.9"][pickaxe] and ["The Ruby
 Programming
-Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
+Language"][trpl].
 
 There are some areas in which there is no clear consensus in the Ruby community
 regarding a particular style (like string literal quoting, spacing inside hash
@@ -51,14 +51,18 @@ literals, dot position in multi-line method chaining, etc.). In such scenarios
 all popular styles are acknowledged and it's up to you to pick one and apply it
 consistently.
 
-The guide is still a work in progress - some rules are lacking examples, some
-rules don't have examples that illustrate them clearly enough. In due time these
-issues will be addressed - just keep them in mind for now.
+This style guide evolves over time as additional conventions are
+identified and past conventions are rendered obsolete by changes in
+Ruby itself.
+
+Many projects have their own coding style guidelines (often derived
+from this guide). In the event of any conflicts, such
+project-specific guides take precedence for that project.
 
 You can generate a PDF or an HTML copy of this guide using
-[Transmuter](https://github.com/TechnoGate/transmuter).
+[Transmuter][].
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a code analyzer, based on this
+[RuboCop][] is a code analyzer, based on this
 style guide.
 
 Translations of the guide are available in the following languages:
@@ -605,7 +609,7 @@ Translations of the guide are available in the following languages:
 * <a name="double-colons"></a>
     Use `::` only to reference constants(this includes classes and
     modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-    Never use `::` for regular method invocation.
+    Do not use `::` for regular method invocation.
 <sup>[[link](#double-colons)]</sup>
 
   ```Ruby
@@ -648,7 +652,7 @@ Translations of the guide are available in the following languages:
    ```
 
 * <a name="no-for-loops"></a>
-    Never use `for`, unless you know exactly why. Most of the time iterators
+    Do not use `for`, unless you know exactly why. Most of the time iterators
     should be used instead. `for` is implemented in terms of `each` (so
     you're adding a level of indirection), but with a twist - `for`
     doesn't introduce a new scope (unlike `each`) and variables defined
@@ -674,7 +678,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-then"></a>
-  Never use `then` for multi-line `if/unless`.
+  Do not use `then` for multi-line `if/unless`.
 <sup>[[link](#no-then)]</sup>
 
   ```Ruby
@@ -740,22 +744,18 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-* <a name="no-1.8-if-syntax"></a>
-  Never use `if x: ...` - as of Ruby 1.9 it has been removed. Use the ternary
+* <a name="no-semicolon-ifs"></a>
+  Do not use `if x; ...`. Use the ternary
   operator instead.
-<sup>[[link](#no-1.8-if-syntax)]</sup>
+<sup>[[link](#no-semicolon-ifs)]</sup>
 
   ```Ruby
   # bad
-  result = if some_condition: something else something_else end
+  result = if some_condition; something else something_else end
 
   # good
   result = some_condition ? something : something_else
   ```
-
-* <a name="no-semicolon-ifs"></a>
-  Never use `if x; ...`. Use the ternary operator instead.
-<sup>[[link](#no-semicolon-ifs)]</sup>
 
 * <a name="use-if-case-returns"></a>
   Leverage the fact that `if` and `case` are expressions which return a
@@ -785,7 +785,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#one-line-cases)]</sup>
 
 * <a name="no-when-semicolons"></a>
-  Never use `when x; ...`. See the previous rule.
+  Do not use `when x; ...`. See the previous rule.
 <sup>[[link](#no-when-semicolons)]</sup>
 
 * <a name="bang-not-not"></a>
@@ -908,7 +908,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-else-with-unless"></a>
-  Never use `unless` with `else`. Rewrite these with the positive case first.
+  Do not use `unless` with `else`. Rewrite these with the positive case first.
 <sup>[[link](#no-else-with-unless)]</sup>
 
   ```Ruby
@@ -947,7 +947,7 @@ Note that there is an exception to this rule, namely [safe assignment in
 condition](#safe-assignment-in-condition).
 
 * <a name="no-multiline-while-do"></a>
-  Never use `while/until condition do` for multi-line `while/until`.
+  Do not use `while/until condition do` for multi-line `while/until`.
 <sup>[[link](#no-multiline-while-do)]</sup>
 
   ```Ruby
@@ -1358,6 +1358,20 @@ condition](#safe-assignment-in-condition).
   some_string =~ /something/
   ```
 
+* <a name="eql"></a>
+  Do not use `eql?` when using `==` will do. The stricter comparison semantics
+  provided by `eql?` are rarely needed in practice.
+<sup>[[link](#eql)]</sup>
+
+  ```Ruby
+  # bad - eql? is the same as == for strings
+  "ruby".eql? some_str
+
+  # good
+  "ruby" == some_str
+  1.0.eql? == x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  ```
+
 * <a name="no-cryptic-perlisms"></a>
   Avoid using Perl-style special variables (like `$:`, `$;`, etc. ). They are
   quite cryptic and their use in anything but one-liner scripts is discouraged.
@@ -1374,7 +1388,7 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="parens-no-spaces"></a>
-  Never put a space between a method name and the opening parenthesis.
+  Do not put a space between a method name and the opening parenthesis.
 <sup>[[link](#parens-no-spaces)]</sup>
 
   ```Ruby
@@ -1629,7 +1643,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#no-BEGIN-blocks)]</sup>
 
 * <a name="no-END-blocks"></a>
-  Never use `END` blocks. Use `Kernel#at_exit` instead.
+  Do not use `END` blocks. Use `Kernel#at_exit` instead.
 <sup>[[link](#no-END-blocks)]</sup>
 
   ```ruby
@@ -1689,6 +1703,58 @@ condition](#safe-assignment-in-condition).
     next unless item > 1
     puts item
   end
+  ```
+
+* <a name="map-fine-select-reduce-size"></a>
+  Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
+  `reduce` over `inject` and `size` over `length`. This is not a hard
+  requirement; if the use of the alias enhances readability, it's ok to use it.
+  The rhyming methods are inherited from Smalltalk and are not common in other
+  programming languages. The reason the use of `select` is encouraged over
+  `find_all` is that it goes together nicely with `reject` and its name is
+  pretty self-explanatory.
+<sup>[[link](#map-fine-select-reduce-size)]</sup>
+
+* <a name="count-vs-size"></a>
+  Don't use `count` as a substitute for `size`. For `Enumerable` objects other
+  than `Array` it will iterate the entire collection in order to determine its
+  size.
+<sup>[[link](#count-vs-size)]</sup>
+
+  ```Ruby
+  # bad
+  some_hash.count
+
+  # good
+  some_hash.size
+  ```
+
+* <a name="flat-map"></a>
+  Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays
+  with a depth greater than 2, i.e.  if `users.first.songs == ['a', ['b','c']]`,
+  then use `map + flatten` rather than `flat_map`.  `flat_map` flattens the
+  array by 1, whereas `flatten` flattens it all the way.
+<sup>[[link](#flat-map)]</sup>
+
+  ```Ruby
+  # bad
+  all_songs = users.map(&:songs).flatten.uniq
+
+  # good
+  all_songs = users.flat_map(&:songs).uniq
+  ```
+
+* <a name="reverse-each"></a>
+  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
+  new array allocation and that's a good thing.
+<sup>[[link](#reverse-each)]</sup>
+
+  ```Ruby
+  # bad
+  array.reverse.each { ... }
+
+  # good
+  array.reverse_each { ... }
   ```
 
 ## Naming
@@ -1868,58 +1934,6 @@ condition](#safe-assignment-in-condition).
   def +(other)
     # body omitted
   end
-  ```
-
-* <a name="map-fine-select-reduce-size"></a>
-  Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
-  `reduce` over `inject` and `size` over `length`. This is not a hard
-  requirement; if the use of the alias enhances readability, it's ok to use it.
-  The rhyming methods are inherited from Smalltalk and are not common in other
-  programming languages. The reason the use of `select` is encouraged over
-  `find_all` is that it goes together nicely with `reject` and its name is
-  pretty self-explanatory.
-<sup>[[link](#map-fine-select-reduce-size)]</sup>
-
-* <a name="count-vs-size"></a>
-  Don't use `count` as a substitute for `size`. For `Enumerable` objects other
-  than `Array` it will iterate the entire collection in order to determine its
-  size.
-<sup>[[link](#count-vs-size)]</sup>
-
-  ```Ruby
-  # bad
-  some_hash.count
-
-  # good
-  some_hash.size
-  ```
-
-* <a name="flat-map"></a>
-  Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays
-  with a depth greater than 2, i.e.  if `users.first.songs == ['a', ['b','c']]`,
-  then use `map + flatten` rather than `flat_map`.  `flat_map` flattens the
-  array by 1, whereas `flatten` flattens it all the way.
-<sup>[[link](#flat-map)]</sup>
-
-  ```Ruby
-  # bad
-  all_songs = users.map(&:songs).flatten.uniq
-
-  # good
-  all_songs = users.flat_map(&:songs).uniq
-  ```
-
-* <a name="reverse-each"></a>
-  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
-  new array allocation and that's a good thing.
-<sup>[[link](#reverse-each)]</sup>
-
-  ```Ruby
-  # bad
-  array.reverse.each { ... }
-
-  # good
-  array.reverse_each { ... }
   ```
 
 ## Comments
@@ -2478,7 +2492,7 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="no-return-ensure"></a>
-  Never return from an `ensure` block. If you explicitly return from a method
+  Do not return from an `ensure` block. If you explicitly return from a method
   inside an `ensure` block, the return will take precedence over any exception
   being raised, and the method will return as if no exception had been raised at
   all. In effect, the exception will be silently thrown away.
@@ -2884,7 +2898,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#ordered-hashes)]</sup>
 
 * <a name="no-modifying-collections"></a>
-  Never modify a collection while traversing it.
+  Do not modify a collection while traversing it.
 <sup>[[link](#no-modifying-collections)]</sup>
 
 ## Strings
@@ -3317,6 +3331,10 @@ condition](#safe-assignment-in-condition).
     # best of all, though, would to define_method as each findable attribute is declared
     ```
 
+* <a name="prefer-public-send"></a>
+  Prefer `public_send` over `send` so as not to circumvent `private`/`protected` visibility.
+<sup>[[link](#prefer-public-send)]</sup>
+
 ## Misc
 
 * <a name="always-warn"></a>
@@ -3400,7 +3418,7 @@ this guide.
 
 ### RuboCop
 
-[RuboCop](https://github.com/bbatsov/rubocop) is a Ruby code style
+[RuboCop][] is a Ruby code style
 checker based on this style guide. RuboCop already covers a
 significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
 and has good Emacs integration.
@@ -3412,6 +3430,13 @@ and has good Emacs integration.
 on this guide.
 
 # Contributing
+
+The guide is still a work in progress - some rules are lacking examples, some
+rules don't have examples that illustrate them clearly enough. Improving such rules
+is a great (and simple way) to help the Ruby community!
+
+In due time these issues will (hopefully) be addressed - just keep them in mind
+for now.
 
 Nothing written in this guide is set in stone. It's my desire to work
 together with everyone interested in Ruby coding style, so that we could
@@ -3445,3 +3470,10 @@ best possible guide, don't we?
 
 Cheers,<br/>
 [Bozhidar](https://twitter.com/bbatsov)
+
+[PEP-8]: http://www.python.org/dev/peps/pep-0008/
+[rails-style-guide]: https://github.com/bbatsov/rails-style-guide
+[pickaxe]: http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0
+[trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
+[transmuter]: https://github.com/TechnoGate/transmuter
+[RuboCop]: https://github.com/bbatsov/rubocop
