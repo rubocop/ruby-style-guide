@@ -37,13 +37,12 @@ The guide is separated into several sections of related rules. I've tried to add
 the rationale behind the rules (if it's omitted I've assumed it's pretty
 obvious).
 
-I didn't come up with all the rules out of nowhere - they are mostly based on my
-extensive career as a professional software engineer, feedback and suggestions
-from members of the Ruby community and various highly regarded Ruby programming
-resources, such as ["Programming Ruby
-1.9"][pickaxe] and ["The Ruby
-Programming
-Language"][trpl].
+I didn't come up with all the rules out of nowhere - they are mostly
+based on my extensive career as a professional software engineer,
+feedback and suggestions from members of the Ruby community and
+various highly regarded Ruby programming resources, such as
+["Programming Ruby 1.9"][pickaxe] and
+["The Ruby Programming Language"][trpl].
 
 There are some areas in which there is no clear consensus in the Ruby community
 regarding a particular style (like string literal quoting, spacing inside hash
