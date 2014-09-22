@@ -1358,6 +1358,20 @@ condition](#safe-assignment-in-condition).
   some_string =~ /something/
   ```
 
+* <a name="eql"></a>
+  Do not use `eql?` when using `==` will do. The stricter comparison semantics
+  provided by `eql?` are rarely needed in practice.
+<sup>[[link](#eql)]</sup>
+
+  ```Ruby
+  # bad - eql? is the same as == for strings
+  "ruby".eql? some_str
+
+  # good
+  "ruby" == some_str
+  1.0.eql? == x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  ```
+
 * <a name="no-cryptic-perlisms"></a>
   Avoid using Perl-style special variables (like `$:`, `$;`, etc. ). They are
   quite cryptic and their use in anything but one-liner scripts is discouraged.
