@@ -1368,7 +1368,7 @@ condition](#safe-assignment-in-condition).
 
   # good
   "ruby" == some_str
-  1.0.eql? == x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  1.0.eql? x # eql? makes sense here if want to differentiate between Fixnum and Float 1
   ```
 
 * <a name="no-cryptic-perlisms"></a>
