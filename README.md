@@ -509,15 +509,31 @@ would happen if the current value happened to be `false`.)
 * Always run the Ruby interpreter with the `-w` option so it will warn
 you if you forget either of the rules above!
 
-* When the keys of your hash are symbols use the Ruby 1.9 hash literal
-syntax.
+* Choose between hashrocket and new hash syntax using good sence.
+Here are some examples
 
     ```Ruby
     # bad
     hash = { :one => 1, :two => 2 }
+    hash = { one: :value, two: :value }
+    hash = {
+        one:   1,
+        two:   2,
+        three: 3,
+        four:  4
+    }
+    hash = { one => { two => 2 } }
 
     # good
     hash = { one: 1, two: 2 }
+    hash = { one => :value, two => :value }
+    hash = {
+        one   => 1,
+        two   => 2,
+        three => 3,
+        four  => 4
+    }
+    hash = { one: { two: 2 } }
     ```
 
 * Use the new lambda literal syntax.
