@@ -154,18 +154,18 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="single-line-classes"></a>
-  Prefer a single-line format for class definitions with no body.
+  Prefer a multi-line format for class definitions with no body.
 <sup>[[link](#single-line-classes)]</sup>
 
   ```Ruby
-  # bad
+  # Good
   class FooError < StandardError
   end
 
   # okish
   class FooError < StandardError; end
 
-  # good
+  # bad
   FooError = Class.new(StandardError)
   ```
 
@@ -183,10 +183,10 @@ Translations of the guide are available in the following languages:
   # okish - notice that the first ; is required
   def no_braces_method; body end
 
-  # okish - notice that the second ; is optional
+  # bad - notice that the second ; is optional
   def no_braces_method; body; end
 
-  # okish - valid syntax, but no ; makes it kind of hard to read
+  # bad - valid syntax, but no ; makes it kind of hard to read
   def some_method() body end
 
   # good
@@ -194,14 +194,7 @@ Translations of the guide are available in the following languages:
     body
   end
   ```
-
-  One exception to the rule are empty-body methods.
-
-  ```Ruby
-  # good
-  def no_op; end
-  ```
-
+  
 * <a name="spaces-operators"></a>
   Use spaces around operators, after commas, colons and semicolons, around `{`
   and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
