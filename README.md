@@ -2445,6 +2445,30 @@ condition](#safe-assignment-in-condition).
     end
   end
   ```
+* <a name="private-class-methods"></a>
+  Use `private_class_method` to define private class methods instead of just
+  using `private` and writing class methods below it.
+<sup>[[link](#private-class-methods)]</sup>
+
+  ```Ruby
+  # bad - this does not make class methods private defined below the specifier  
+  class TestClass
+    private
+    
+    def self.some_method
+      # body omitted
+    end
+  end
+
+  # good
+  class TestClass
+    def self.some_method
+      # body omitted
+    end
+
+    private_class_method :some_method
+  end
+  ```
 
 ## Exceptions
 
