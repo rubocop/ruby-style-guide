@@ -2290,47 +2290,6 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="duck-typing"></a>
-  Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over
-  inheritance.
-<sup>[[link](#duck-typing)]</sup>
-
-  ```Ruby
-  # bad
-  class Animal
-    # abstract method
-    def speak
-    end
-  end
-
-  # extend superclass
-  class Duck < Animal
-    def speak
-      puts 'Quack! Quack'
-    end
-  end
-
-  # extend superclass
-  class Dog < Animal
-    def speak
-      puts 'Bau! Bau!'
-    end
-  end
-
-  # good
-  class Duck
-    def speak
-      puts 'Quack! Quack'
-    end
-  end
-
-  class Dog
-    def speak
-      puts 'Bau! Bau!'
-    end
-  end
-  ```
-
 * <a name="no-class-vars"></a>
   Avoid the usage of class (`@@`) variables due to their "nasty" behavior in
   inheritance.
@@ -2384,103 +2343,6 @@ condition](#safe-assignment-in-condition).
     def another_private_method
       # ...
     end
-  end
-  ```
-
-* <a name="def-self-singletons"></a>
-  Use `def self.method` to define singleton methods. This makes the code
-  easier to refactor since the class name is not repeated.
-<sup>[[link](#def-self-singletons)]</sup>
-
-  ```Ruby
-  class TestClass
-    # bad
-    def TestClass.some_method
-      # body omitted
-    end
-
-    # good
-    def self.some_other_method
-      # body omitted
-    end
-
-    # Also possible and convenient when you
-    # have to define many singleton methods.
-    class << self
-      def first_method
-        # body omitted
-      end
-
-      def second_method_etc
-        # body omitted
-      end
-    end
-  end
-  ```
-
-* <a name="alias-method-lexically"></a>
-  Prefer `alias` when aliasing methods in lexical class scope as the
-  resolution of `self` in this context is also lexical, and it communicates
-  clearly to the user that the indirection of your alias will not be altered
-  at runtime or by any subclass unless made explicit.
-<sup>[[link](#alias-method-lexically)]</sup>
-
-  ```Ruby
-  class Westerner
-    def first_name
-      @names.first
-    end
-
-    alias given_name first_name
-  end
-  ```
-
-  Since `alias`, like `def`, is a keyword, prefer bareword arguments over
-  symbols or strings. In other words, do `alias foo bar`, not
-  `alias :foo :bar`.
-
-  Also be aware of how Ruby handles aliases and inheritance: an alias
-  references the method that was resolved at the time the alias was defined;
-  it is not dispatched dynamically.
-
-  ```Ruby
-  class Fugitive < Westerner
-    def first_name
-      'Nobody'
-    end
-  end
-  ```
-
-  In this example, `Fugitive#given_name` would still call the original
-  `Westerner#first_name` method, not `Fugitive#first_name`. To override the
-  behavior of `Fugitive#given_name` as well, you'd have to redefine it in the
-  derived class.
-
-  ```Ruby
-  class Fugitive < Westerner
-    def first_name
-      'Nobody'
-    end
-
-    alias given_name first_name
-  end
-  ```
-
-* <a name="alias-method"></a>
-  Always use `alias_method` when aliasing methods of modules, classes, or
-  singleton classes at runtime, as the lexical scope of `alias` leads to
-  unpredictability in these cases.
-<sup>[[link](#alias-method)]</sup>
-
-  ```Ruby
-  module Mononymous
-    def self.included(other)
-      other.class_eval { alias_method :full_name, :given_name }
-    end
-  end
-
-  class Sting < Westerner
-    include Mononymous
   end
   ```
 
@@ -2771,12 +2633,11 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="no-trailing-array-commas"></a>
-  Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
+  Avoid comma after the last item of an `Array` or `Hash` literal, unless the items are on separate lines.
 <sup>[[link](#no-trailing-array-commas)]</sup>
 
   ```Ruby
-  # bad - easier to move/add/remove items, but still not preferred
+  # good - easier to move/add/remove items
   VALUES = [
              1001,
              2020,
@@ -2928,10 +2789,6 @@ condition](#safe-assignment-in-condition).
   email, username = data.values_at('email', 'nickname')
   ```
 
-* <a name="ordered-hashes"></a>
-  Rely on the fact that as of Ruby 1.9 hashes are ordered.
-<sup>[[link](#ordered-hashes)]</sup>
-
 * <a name="no-modifying-collections"></a>
   Do not modify a collection while traversing it.
 <sup>[[link](#no-modifying-collections)]</sup>
@@ -2954,15 +2811,6 @@ condition](#safe-assignment-in-condition).
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="pad-string-interpolation"></a>
-  Consider padding string interpolation code with space. It more clearly sets
-  the code apart from the string.
-<sup>[[link](#pad-string-interpolation)]</sup>
-
-  ```Ruby
-  "#{ user.last_name }, #{ user.first_name }"
-  ```
-
 * <a name="consistent-string-literals"></a>
   Adopt a consistent string literal quoting style. There are two popular
   styles in the Ruby community, both of which are considered good - single
@@ -2980,21 +2828,6 @@ condition](#safe-assignment-in-condition).
     # good
     name = 'Bozhidar'
     ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
-
-    ```Ruby
-    # bad
-    name = 'Bozhidar'
-
-    # good
-    name = "Bozhidar"
-    ```
-
-  The second style is arguably a bit more popular in the Ruby
-  community. The string literals in this guide, however, are
-  aligned with the first style.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
@@ -3304,7 +3137,7 @@ condition](#safe-assignment-in-condition).
 ## Metaprogramming
 
 * <a name="no-metaprogramming-masturbation"></a>
-  Avoid needless metaprogramming.
+  *Avoid needless metaprogramming.*
 <sup>[[link](#no-metaprogramming-masturbation)]</sup>
 
 * <a name="no-monkey-patching"></a>
@@ -3401,6 +3234,7 @@ condition](#safe-assignment-in-condition).
 * <a name="short-methods"></a>
   Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will
   be shorter than 5 LOC. Empty lines do not contribute to the relevant LOC.
+  Lines longer than 30 LOC are reported as error by RuboCop.
 <sup>[[link](#short-methods)]</sup>
 
 * <a name="too-many-params"></a>
