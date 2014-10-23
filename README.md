@@ -1570,22 +1570,6 @@ condition](#safe-assignment-in-condition).
   Array(paths).each { |path| do_something(path) }
   ```
 
-* <a name="ranges-or-between"></a>
-  Use ranges or `Comparable#between?` instead of complex comparison logic when
-  possible.
-<sup>[[link](#ranges-or-between)]</sup>
-
-  ```Ruby
-  # bad
-  do_something if x >= 1000 && x <= 2000
-
-  # good
-  do_something if (1000..2000).include?(x)
-
-  # good
-  do_something if x.between?(1000, 2000)
-  ```
-
 * <a name="predicate-methods"></a>
   Favor the use of predicate methods to explicit comparisons with `==`.
   Numeric comparisons are OK.
@@ -1685,23 +1669,6 @@ condition](#safe-assignment-in-condition).
     update_with_bar(thing[:foo])
     return re_compute(thing) unless thing[:foo][:bar]
     partial_compute(thing)
-  end
-  ```
-
-  Prefer `next` in loops instead of conditional blocks.
-
-  ```Ruby
-  # bad
-  [0, 1, 2, 3].each do |item|
-    if item > 1
-      puts item
-    end
-  end
-
-  # good
-  [0, 1, 2, 3].each do |item|
-    next unless item > 1
-    puts item
   end
   ```
 
@@ -2040,12 +2007,6 @@ condition](#safe-assignment-in-condition).
   Use `HACK` to note code smells where questionable coding practices were used
   and should be refactored away.
 <sup>[[link](#hack)]</sup>
-
-* <a name="review"></a>
-  Use `REVIEW` to note anything that should be looked at to confirm it is
-  working as intended. For example: `REVIEW: Are we sure this is how the client
-  does X currently?`
-<sup>[[link](#review)]</sup>
 
 * <a name="document-annotations"></a>
   Use other custom annotation keywords if it feels appropriate, but be sure to
