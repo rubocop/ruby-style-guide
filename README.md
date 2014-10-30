@@ -3037,6 +3037,23 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
+* <a name="dont-abuse-gsub"></a>
+  Don't use `String#gsub` in scenarios in which you can use a faster more specialized alternative.
+<sup>[[link](#dont-abuse-gsub)]</sup>
+
+    ```Ruby
+    url = 'http://example.com'
+    str = 'lisp-case-rules'
+
+    # bad
+    url.gsub("http://", "https://")
+    str.gsub("-", "_")
+
+    # good
+    url.sub("http://", "https://")
+    str.tr("-", "_")
+    ```
+
 * <a name="heredocs"></a>
   When using heredocs for multi-line strings keep in mind the fact that they
   preserve leading whitespace. It's a good practice to employ some margin based
