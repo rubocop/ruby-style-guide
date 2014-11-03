@@ -4,7 +4,7 @@
 > -- Офицер Алекс Мёрфи / Робот-полицейский
 
 Один из вопросов, который меня всегда беспокоил как разработчика на Руби,
-&mdash; это то, что у разработчиков на Питоне есть великолепное руководству
+&mdash; это то, что у разработчиков на Питоне есть великолепное руководствo
 по стилю оформления ([PEP-8][]), а у нас
 никогда не было официального руководства, описывавшего бы стиль оформления кода
 на Руби и дающего примеры его успешного применения. Я же уверен, что стиль
@@ -12,7 +12,7 @@
 разработчиков, которое есть у Руби, вполне имеет силы создать этот давно
 назревший документ.
 
-Это наставление появилось на свет в нашей фирме в виде  внутреннего руководства
+Это наставление появилось на свет в нашей фирме в виде внутреннего руководства
 по оформлению кода на Руби (составленного вашим покорным слугой). И в какой-то
 момент я решил, что данная работа, которой я тогда занимался, может быть
 интересной и другим членам сообщества программистов на Руби и что миру вовсе
@@ -167,7 +167,7 @@
   ```
 
 * <a name="no-single-line-methods"></a> Избегайте однострочных методов. И хотя
-  они достаточно популярны в среде  программистов, существует множество
+  они достаточно популярны в среде программистов, существует множество
   неприятных мелочей, связанных с синтаксисом их определения, которые делают
   применение таких методов нежелательным. В любом случае однострочные методы не
   должны содержать больше одного выражения.
@@ -374,7 +374,7 @@
   ```
 
 * <a name="empty-lines-between-methods"></a> Используйте пустые строки для разделения определений методов и
-  выделения  логических частей определений внутри них.<sup>[[ссылка](#empty-lines-between-methods)]</sup>
+  выделения логических частей определений внутри них.<sup>[[ссылка](#empty-lines-between-methods)]</sup>
 
   ```Ruby
   def some_method
@@ -546,7 +546,7 @@
      'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
-* <a name="underscores-in-numerics"></a> Добавляйте символ подеркивания
+* <a name="underscores-in-numerics"></a> Добавляйте символ подчеркивания
   в большие числовые константы для улучшения их восприятия.
   <sup>[[ссылка](#underscores-in-numerics)]</sup>
 
@@ -634,7 +634,7 @@
 
 * <a name="no-for-loops"></a> Используйте оператор `for` только в случаях, когда
   вы точно знаете, зачем вы это делаете. В подавляющем большинстве остальных случаев
-  стоит применять итераторы. Оператор `for` реализуюется при помощи `each` (таким
+  стоит применять итераторы. Оператор `for` реализуется при помощи `each` (таким
   образом вы добавляете еще один уровень абстракции), но с некоторыми отличиями:
   не создается отдельная область видимости (в отличии от `each`) и переменные,
   объявленные в теле `for`, будут видны за пределами блока.
@@ -1067,7 +1067,7 @@
   ```
 
 * <a name="single-line-blocks"></a> Используйте преимущественно `{...}` в случае
-  одностроных блоков, а `do...end` в случае многострочных блоков (многострочные
+  однострочных блоков, а `do...end` в случае многострочных блоков (многострочные
   последовательности вызовов методов всегда выглядят ужасно). Старайтесь
   применять `do...end` для логических операций и определений методов (например,
   для Rakefile и некоторых DSL). Не используйте `do...end` в цепочках вызовов.
@@ -1289,9 +1289,10 @@
   something &&= something.downcase
   ```
 
-* <a name="no-case-equality"></a> Avoid explicit use of the case equality operator `===`. As its name  implies it is meant to be used implicitly by `case` expressions and
-  outside of them it yields some pretty confusing code.
-<sup>[[ссылка](#no-case-equality)]</sup>
+* <a name="no-case-equality"></a> Avoid explicit use of the case equality
+  operator `===`. As its name  implies it is meant to be used implicitly by
+  `case` expressions and outside of them it yields some pretty confusing code.
+  <sup>[[ссылка](#no-case-equality)]</sup>
 
   ```Ruby
   # плохо
@@ -1305,10 +1306,10 @@
   some_string =~ /something/
   ```
 
-* <a name="no-cryptic-perlisms"></a> Avoid using Perl-style special variables (like `$:`, `$;`,  etc. ). They are quite cryptic and their use in anything but
-  one-liner scripts is discouraged. Use the human-friendly
-  aliases provided by the `English` library.
-<sup>[[ссылка](#no-cryptic-perlisms)]</sup>
+* <a name="no-cryptic-perlisms"></a> Avoid using Perl-style special variables
+  (like `$:`, `$;`,  etc. ). They are quite cryptic and their use in anything
+  but one-liner scripts is discouraged. Use the human-friendly aliases provided
+  by the `English` library.<sup>[[ссылка](#no-cryptic-perlisms)]</sup>
 
   ```Ruby
   # плохо
@@ -1319,7 +1320,8 @@
   $LOAD_PATH.unshift File.dirname(__FILE__)
   ```
 
-* <a name="parens-no-spaces"></a> Never put a space between a method name and the opening parenthesis.<sup>[[ссылка](#parens-no-spaces)]</sup>
+* <a name="parens-no-spaces"></a> Never put a space between a method name and
+  the opening parenthesis.<sup>[[ссылка](#parens-no-spaces)]</sup>
 
   ```Ruby
   # плохо
@@ -1329,9 +1331,9 @@
   f(3 + 2) + 1
   ```
 
-* <a name="parens-as-args"></a> If the first argument to a method begins with an open parenthesis,  always use parentheses in the method invocation. For example, write
-  `f((3 + 2) + 1)`.
-<sup>[[ссылка](#parens-as-args)]</sup>
+* <a name="parens-as-args"></a> If the first argument to a method begins with an
+  open parenthesis,  always use parentheses in the method invocation.
+  For example, write `f((3 + 2) + 1)`.<sup>[[ссылка](#parens-as-args)]</sup>
 
 * <a name="always-warn-at-runtime"></a> Always run the Ruby interpreter with the `-w` option so it will warn  you if you forget either of the rules above!
 <sup>[[ссылка](#always-warn-at-runtime)]</sup>
