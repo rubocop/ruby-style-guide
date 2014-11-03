@@ -261,14 +261,16 @@
   будет прочитан легче. Как и в случает с хешами, выберите один стиль
   и применяется его последовательно.
 
-* <a name="no-spaces-braces"></a> Не используйте пробел после `(`, `[` или перед `]`, `)`.<sup>[[ссылка](#no-spaces-braces)]</sup>
+* <a name="no-spaces-braces"></a> Не используйте пробел после `(`, `[` или перед
+  `]`, `)`.<sup>[[ссылка](#no-spaces-braces)]</sup>
 
   ```Ruby
   some(arg).other
   [1, 2, 3].size
   ```
 
-* <a name="no-space-bang"></a> Не используйте пробел после `!`.<sup>[[ссылка](#no-space-bang)]</sup>
+* <a name="no-space-bang"></a> Не используйте пробел после `!`.
+  <sup>[[ссылка](#no-space-bang)]</sup>
 
   ```Ruby
   # плохо
@@ -290,9 +292,10 @@
     'a'..'z'
     ```
 
-* <a name="indent-when-to-case"></a> Делайте отступ для `when` таким же, как и для `case`.
-  Я знаю, что многие не согласятся  с этим, то этот стиль предписывается как "Языком программирования Ruby",
-  так и "Programming Ruby".<sup>[[ссылка](#indent-when-to-case)]</sup>
+* <a name="indent-when-to-case"></a> Делайте отступ для `when` таким же, как и
+  для `case`. Я знаю, что многие не согласятся  с этим, то этот стиль
+  предписывается как "Языком программирования Ruby", так и "Programming Ruby".
+  <sup>[[ссылка](#indent-when-to-case)]</sup>
 
   ```Ruby
   # плохо
@@ -320,8 +323,9 @@
   end
   ```
 
-* <a name="indent-conditional-assignment"></a> Присваивая результат условного выражения переменной,
-  сохраняйте соответствие уровней отступа.<sup>[[ссылка](#indent-conditional-assignment)]</sup>
+* <a name="indent-conditional-assignment"></a> Присваивая результат условного
+  выражения переменной, сохраняйте соответствие уровней отступа.
+  <sup>[[ссылка](#indent-conditional-assignment)]</sup>
 
   ```Ruby
   # плохо (слишком запутано)
@@ -375,8 +379,9 @@
     end
   ```
 
-* <a name="empty-lines-between-methods"></a> Используйте пустые строки для разделения определений методов и
-  выделения логических частей определений внутри них.<sup>[[ссылка](#empty-lines-between-methods)]</sup>
+* <a name="empty-lines-between-methods"></a> Используйте пустые строки для
+  разделения определений методов и выделения логических частей определений
+  внутри них.<sup>[[ссылка](#empty-lines-between-methods)]</sup>
 
   ```Ruby
   def some_method
@@ -413,8 +418,9 @@
   some_method(size, count, color)
   ```
 
-* <a name="spaces-around-equals"></a> Вставляйте пробелы вокруг оператора присваивания `=`, когда
-  назначаете параметрам метода значения по умолчанию:<sup>[[ссылка](#spaces-around-equals)]</sup>
+* <a name="spaces-around-equals"></a> Вставляйте пробелы вокруг оператора
+  присваивания `=`, когда назначаете параметрам метода значения по умолчанию:
+  <sup>[[ссылка](#spaces-around-equals)]</sup>
 
 
   ```Ruby
