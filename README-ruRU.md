@@ -2807,26 +2807,31 @@
 > -- Jamie Zawinski
 
 * <a name="no-regexp-for-plaintext"></a> Не используйте регулярные выражения,
-  когда вам нужно просто найди в строке подстроку: `string['text']`
+  когда вам нужно просто найди в строке подстроку: `string['text']`.
   <sup>[[ссылка](#no-regexp-for-plaintext)]</sup>
 
-* <a name="regexp-string-index"></a> For simple constructions you can use regexp directly through string index.<sup>[[ссылка](#regexp-string-index)]</sup>
+* <a name="regexp-string-index"></a> В простейших случаях вы просто можете
+  использовать индексирование строк.<sup>[[ссылка](#regexp-string-index)]</sup>
 
   ```Ruby
-  match = string[/regexp/]             # get content of matched regexp
-  first_group = string[/text(grp)/, 1] # get content of captured group
+  match = string[/regexp/]             # Возвращает найденные совпадения.
+  first_group = string[/text(grp)/, 1] # Возвращает совпадения выделенной группы.
   string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
   ```
 
-* <a name="non-capturing-regexp"></a> Use non-capturing groups when you don't use captured result of parentheses.<sup>[[ссылка](#non-capturing-regexp)]</sup>
+* <a name="non-capturing-regexp"></a> Используйте группировку без сохранения,
+  если вы не планируете использовать содержание выделенной скобками группы.
+  <sup>[[ссылка](#non-capturing-regexp)]</sup>
 
   ```Ruby
   /(first|second)/   # плохо
   /(?:first|second)/ # хорошо
   ```
 
-* <a name="no-perl-regexp-last-matchers"></a> Don't use the cryptic Perl-legacy variables denoting last regexp group matches  (`$1`, `$2`, etc). Use `Regexp.last_match[n]` instead.
-<sup>[[ссылка](#no-perl-regexp-last-matchers)]</sup>
+* <a name="no-perl-regexp-last-matchers"></a> Откажитесь от использования наследия
+  Перла вроде мистических переменных, обозначающих группы совпадений (`$1`, `$2`
+  и т.д.). Вместо этого используйте `Regexp.last_match[n]`.
+  <sup>[[ссылка](#no-perl-regexp-last-matchers)]</sup>
 
   ```Ruby
   /(regexp)/ =~ string
@@ -2839,8 +2844,9 @@
   process Regexp.last_match[1]
   ```
 
-* <a name="no-numbered-regexes"></a> Avoid using numbered groups as it can be hard to track what they contain. Named groups  can be used instead.
-<sup>[[ссылка](#no-numbered-regexes)]</sup>
+* <a name="no-numbered-regexes"></a> Применение пронумерованных групп
+  совпадений может быть сложной задачей. Вместо этого используйте поименованные
+  группы с говорящими именами.<sup>[[ссылка](#no-numbered-regexes)]</sup>
 
   ```Ruby
   # плохо
@@ -2854,39 +2860,48 @@
   process meaningful_var
   ```
 
-* <a name="limit-escapes"></a> Character classes have only a few special characters you should care about:  `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
-<sup>[[ссылка](#limit-escapes)]</sup>
+* <a name="limit-escapes"></a> Классы символов используют лишь небольшой
+  набор метасимволов, которые вам придется обрабатывать: `^`, `-`, `\`, `]`,
+  поэтому нет нужды экранировать `.` или скобки внутри `[]`.
+  <sup>[[ссылка](#limit-escapes)]</sup>
 
-* <a name="caret-and-dollar-regexp"></a> Be careful with `^` and `$` as they match start/end of line, not string endings.  If you want to match the whole string use: `\A` and `\z` (not to be
-  confused with `\Z` which is the equivalent of `/\n?\z/`).
-<sup>[[ссылка](#caret-and-dollar-regexp)]</sup>
+* <a name="caret-and-dollar-regexp"></a> Будьте осторожны с символами `^` и `$`,
+  так как они обозначают начало/конец строки в тексте, а не строчного литерала.
+  Если вам надо обозначить начало и конец литерала, то используйте `\A` и `\z`.
+  Не путайте `\Z` и `\z`: `\Z` является эквивалентом `/\n?\z/`.
+  <sup>[[ссылка](#caret-and-dollar-regexp)]</sup>
 
   ```Ruby
   string = "some injection\nusername"
-  string[/^username$/]   # matches
-  string[/\Ausername\z/] # doesn't match
+  string[/^username$/]   # есть совпадение
+  string[/\Ausername\z/] # нет совпадения
   ```
 
-* <a name="comment-regexes"></a> Use `x` modifier for complex regexps. This makes them more readable and you  can add some useful comments. Just be careful as spaces are ignored.
-<sup>[[ссылка](#comment-regexes)]</sup>
+* <a name="comment-regexes"></a> Используйте модификатор `x` для сложных регулярных
+  выражений. Он поможет вам сделать выражения удобочитаемыми и позволит добавлять
+  комментарии. Не забывайте при этом, что пробелы в данном случае игнорируются.
+  <sup>[[ссылка](#comment-regexes)]</sup>
 
   ```Ruby
   regexp = /
-    start         # some text
-    \s            # white space char
-    (group)       # first group
-    (?:alt1|alt2) # some alternation
+    start         # какой-то текст
+    \s            # знак пробела
+    (group)       # первая группа
+    (?:alt1|alt2) # некоторая дизъюнкция
     end
   /x
   ```
 
-* <a name="gsub-blocks"></a> For complex replacements `sub`/`gsub` can be used with block or hash.<sup>[[ссылка](#gsub-blocks)]</sup>
+* <a name="gsub-blocks"></a> В случае сложных замен либо подстановок `sub`/`gsub`
+  можно использовать с блоком или хешем параметров.
+  <sup>[[ссылка](#gsub-blocks)]</sup>
 
 ## Процентные литералы
 
-* <a name="percent-q-shorthand"></a> Используйте `%()` (это сокращение от `%Q`) для строк без переносов, в которых  реализуется интерполяция и присутствуют двойные кавычки. Для строк с переносами
-  лучше используйте формат HERE Doc.
-<sup>[[ссылка](#percent-q-shorthand)]</sup>
+* <a name="percent-q-shorthand"></a> Используйте `%()` (это сокращение от `%Q`)
+  для строк без переносов, в которых  реализуется интерполяция и присутствуют
+  двойные кавычки. Для строк с переносами лучше используйте формат HERE Doc.
+  <sup>[[ссылка](#percent-q-shorthand)]</sup>
 
   ```Ruby
   # плохо (интерполяция не нужна)
@@ -2905,9 +2920,10 @@
   %(<tr><td class="name">#{name}</td>)
   ```
 
-* <a name="percent-q"></a> Избегайте `%q`, если это не случай строки с `'` и `"` одновременно  Обычные строки читаются проще, и их следует использовать, если нет
-  излишне большого количества символов, которые нужно будет экранировать.
-<sup>[[ссылка](#percent-q)]</sup>
+* <a name="percent-q"></a> Избегайте `%q`, если это не случай строки с `'` и `"`
+  одновременно  Обычные строки читаются проще, и их следует использовать,
+  если нет излишне большого количества символов, которые нужно будет
+  экранировать.<sup>[[ссылка](#percent-q)]</sup>
 
   ```Ruby
   # плохо
@@ -2921,7 +2937,8 @@
   question = '"What did you say?"'
   ```
 
-* <a name="percent-r"></a> Используйте `%r` только для регулярных выражений, которые обрабатывают больше одного знака '/'.<sup>[[ссылка](#percent-r)]</sup>
+* <a name="percent-r"></a> Используйте `%r` только для регулярных выражений,
+  которые обрабатывают больше одного знака '/'.<sup>[[ссылка](#percent-r)]</sup>
 
   ```Ruby
   # плохо
@@ -2935,8 +2952,9 @@
   %r(^/blog/2011/(.*)$)
   ```
 
-* <a name="percent-x"></a> Откажитесь от использования `%x`, если вы не хотите вызывать внешнюю команду с обратными кавычками в теле  (что само по себе маловероятно).
-<sup>[[ссылка](#percent-x)]</sup>
+* <a name="percent-x"></a> Откажитесь от использования `%x`, если только вы ни
+  хотите вызвать внешнюю команду с обратными кавычками в теле  (что само по себе
+  маловероятно).<sup>[[ссылка](#percent-x)]</sup>
 
   ```Ruby
   # плохо
@@ -2947,13 +2965,16 @@
   echo = %x(echo `date`)
   ```
 
-* <a name="percent-s"></a> Старайтесь избегать `%s`. По общепринятому мнению, предпочтительным способом  определения символа с пробелами в имени является `:"some string"`
-<sup>[[ссылка](#percent-s)]</sup>
+* <a name="percent-s"></a> Старайтесь избегать `%s`. По общепринятому мнению,
+  предпочтительным способом  определения символа с пробелами в имени является
+  `:"some string"`.<sup>[[ссылка](#percent-s)]</sup>
 
-* <a name="percent-literal-braces"></a> Используйте `()` в качестве ограничителей для всех литералов со знаком `%` кроме `%r`.  Так как круглые скобки очень часто используются в самих регулярных выражениях, во
-  многих случаях менее частый символ `{` может быть лучшим выбором для ограничителя
-  (разумеется, с учетом смысла регулярного выражения).
-<sup>[[ссылка](#percent-literal-braces)]</sup>
+* <a name="percent-literal-braces"></a> Используйте `()` в качестве ограничителей
+  для всех литералов со знаком `%` кроме `%r`.  Так как круглые скобки очень
+  часто используются в самих регулярных выражениях, во многих случаях менее
+  частый символ `{` может быть лучшим выбором для ограничителя (разумеется,
+  с учетом смысла регулярного выражения).
+  <sup>[[ссылка](#percent-literal-braces)]</sup>
 
   ```Ruby
   # плохо
@@ -3140,8 +3161,8 @@
 Не стесняйтесь создавать отчеты об ошибках и присылать мне запросы на интеграцию
 вашего кода. И заранее большое спасибо за вашу помощь!
 
-Вы можете поддержать проект (и РубоКоп) денежным взносом
-при помощи [gittip](https://www.gittip.com/bbatsov).
+Вы можете поддержать проект (и РубоКоп) денежным взносом при помощи
+[gittip](https://www.gittip.com/bbatsov).
 
 [![Дай Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
 
