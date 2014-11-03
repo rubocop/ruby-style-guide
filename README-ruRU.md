@@ -2270,9 +2270,10 @@
 
 ## Исключения
 
-* <a name="fail-method"></a> Signal exceptions using the `fail` method. Use `raise` only when  catching an exception and re-raising it (because here you're not
-  failing, but explicitly and purposefully raising an exception).
-<sup>[[ссылка](#fail-method)]</sup>
+* <a name="fail-method"></a> Вызывайте исключения при помощи ключевого слова `fail`.
+  Используйте `raise` только при перехвате исключения и вызове его же заново.
+  В этом случае вы не вызываете исключение, а лишь намеренно передаете его дальше
+  по стеку.<sup>[[ссылка](#fail-method)]</sup>
 
   ```Ruby
   begin
@@ -2282,34 +2283,38 @@
   end
   ```
 
-* <a name="no-explicit-runtimeerror"></a> Don't specify `RuntimeError` explicitly in the two argument version of `fail/raise`.<sup>[[ссылка](#no-explicit-runtimeerror)]</sup>
+* <a name="no-explicit-runtimeerror"></a> Нет нужды задавать `RuntimeError` явно
+  в качестве аргумента при вызове `fail/raise` с двумя аргументами.
+  <sup>[[ссылка](#no-explicit-runtimeerror)]</sup>
 
   ```Ruby
   # плохо
   fail RuntimeError, 'message'
 
-  # хорошо - signals a RuntimeError by default
+  # хорошо - вызывает `RuntimeError` по умолчанию
   fail 'message'
   ```
 
-* <a name="exception-class-messages"></a> Prefer supplying an exception class and a message as two separate  arguments to `fail/raise`, instead of an exception instance.
-<sup>[[ссылка](#exception-class-messages)]</sup>
+* <a name="exception-class-messages"></a> Передавайте класс исключения и сообщение
+  в форме двух аргументов для `fail/raise` вместо экземпляра класса исключения.
+  <sup>[[ссылка](#exception-class-messages)]</sup>
 
   ```Ruby
   # плохо
   fail SomeException.new('message')
-  # Note that there is no way to do `fail SomeException.new('message'), backtrace`.
+  # Обратите внимение, что нет возможности вызвать
+  # `fail SomeException.new('message'), backtrace`.
 
   # хорошо
   fail SomeException, 'message'
-  # Consistent with `fail SomeException, 'message', backtrace`.
+  # Работает с `fail SomeException, 'message', backtrace`.
   ```
 
-* <a name="no-return-ensure"></a> Never return from an `ensure` block. If you explicitly return from a  method inside an `ensure` block, the return will take precedence over
-  any exception being raised, and the method will return as if no
-  exception had been raised at all. In effect, the exception will be
-  silently thrown away.
-<sup>[[ссылка](#no-return-ensure)]</sup>
+* <a name="no-return-ensure"></a> Не возвращайте значений в блоке `ensure`.
+  Если вы явным образом возвращаете значение из блока `ensure`, то возвращение
+  будет обрабатываться сначала и метод вернет значение, как если бы исключения
+  не было вовсе. По итогу исключение будет просто тихо проигнорированно.
+  <sup>[[ссылка](#no-return-ensure)]</sup>
 
   ```Ruby
   def foo
@@ -2321,28 +2326,30 @@
   end
   ```
 
-* <a name="begin-implicit"></a> Use *implicit begin blocks* where possible.<sup>[[ссылка](#begin-implicit)]</sup>
+* <a name="begin-implicit"></a> Используйте *имплицитную форму* блока `begin`
+  по возможности.<sup>[[ссылка](#begin-implicit)]</sup>
 
   ```Ruby
   # плохо
   def foo
     begin
-      # main logic goes here
+      # основной код находится здесь
     rescue
-      # failure handling goes here
+      # здесь происходит обработка ошибок
     end
   end
 
   # хорошо
   def foo
-    # main logic goes here
+    # здесь реализуется основная логика
   rescue
-    # failure handling goes here
+    # здесь происходит обработка ошибок
   end
   ```
 
-* <a name="contingency-methods"></a> Mitigate the proliferation of `begin` blocks by using<sup>[[ссылка](#contingency-methods)]</sup>
-
+* <a name="contingency-methods"></a> Смягчайте неудобства, связанные с
+  использование блоков `begin` при помощи *contingency methods* (термин введен
+  Авди Гриммом).<sup>[[ссылка](#contingency-methods)]</sup>
 
   ```Ruby
   # плохо
@@ -2370,27 +2377,29 @@
   with_io_error_handling { something_else_that_might_fail }
   ```
 
-* <a name="dont-hide-exceptions"></a> Don't suppress exceptions.<sup>[[ссылка](#dont-hide-exceptions)]</sup>
+* <a name="dont-hide-exceptions"></a> Не подавляйте исключения без обработки.
+  <sup>[[ссылка](#dont-hide-exceptions)]</sup>
 
   ```Ruby
   # плохо
   begin
-    # an exception occurs here
+    # здесь образовалось исключение
   rescue SomeError
-    # the rescue clause does absolutely nothing
+    # rescue не содержит никакой обработки
   end
 
   # плохо
   do_something rescue nil
   ```
 
-* <a name="no-rescue-modifiers"></a> Avoid using `rescue` in its modifier form.<sup>[[ссылка](#no-rescue-modifiers)]</sup>
+* <a name="no-rescue-modifiers"></a> Откажитесь от использывания `rescue` в виде
+  постмодификатора.<sup>[[ссылка](#no-rescue-modifiers)]</sup>
 
   ```Ruby
-  # плохо - this catches exceptions of StandardError class and its descendant classes
+  # плохо - это перехватывает исключения класса `StandardError` и его наследников
   read_file rescue handle_error($!)
 
-  # хорошо - this catches only the exceptions of Errno::ENOENT class and its descendant classes
+  # хорошо - это перехватывает только исключения класса `Errno::ENOENT` и его наследников
   def foo
     read_file
   rescue Errno::ENOENT => ex
@@ -2398,7 +2407,8 @@
   end
   ```
 
-* <a name="no-exceptional-flows"></a> Don't use exceptions for flow of control.<sup>[[ссылка](#no-exceptional-flows)]</sup>
+* <a name="no-exceptional-flows"></a> Управляйте ветвлением в программе
+  без помощи исключений.<sup>[[ссылка](#no-exceptional-flows)]</sup>
 
   ```Ruby
   # плохо
@@ -2416,60 +2426,64 @@
   end
   ```
 
-* <a name="no-blind-rescues"></a> Avoid rescuing the `Exception` class.  This will trap signals and calls to  `exit`, requiring you to `kill -9` the process.
-<sup>[[ссылка](#no-blind-rescues)]</sup>
+* <a name="no-blind-rescues"></a> Не перехватывайте напрямую класс исключений
+  `Exception`. Это будет перехватывать сигналы и вызовы `exit`, что
+  потребует в крайнем случае завершения процесса при помощи `kill -9`.
+  <sup>[[ссылка](#no-blind-rescues)]</sup>
 
   ```Ruby
   # плохо
   begin
-    # calls to exit and kill signals will be caught (except kill -9)
+    # сигналы выхода будет перехвачены (кроме kill -9)
     exit
   rescue Exception
     puts "you didn't really want to exit, right?"
-    # exception handling
+    # обработка исключений
   end
 
   # хорошо
   begin
-    # a blind rescue rescues from StandardError, not Exception as many
-    # programmers assume.
+    # `rescue` без параметров перехватывает `StandardError`, а не `Exception`,
+    # как предполагают многие разработчики.
   rescue => e
-    # exception handling
+    # обработка исключений
   end
 
-  # also хорошо
+  # тоже хорошо
   begin
-    # an exception occurs here
+    # здесь вызывается исключение
 
   rescue StandardError => e
-    # exception handling
+    # обработка ошибок
   end
   ```
 
-* <a name="exception-ordering"></a> Put more specific exceptions higher up the rescue chain, otherwise  they'll never be rescued from.
-<sup>[[ссылка](#exception-ordering)]</sup>
+* <a name="exception-ordering"></a> Размещайте более специфичные исключения
+  в иерархии проверки, иначе они никогда не будут отфильтрованы.
+  <sup>[[ссылка](#exception-ordering)]</sup>
 
   ```Ruby
   # плохо
   begin
-    # some code
+    # код с ошибкой
   rescue Exception => e
-    # some handling
+    # некоторое действие
   rescue StandardError => e
-    # some handling
+    # некоторое действие
   end
 
   # хорошо
   begin
-    # some code
+    # код с ошибкой
   rescue StandardError => e
-    # some handling
+    # некоторое действие
   rescue Exception => e
-    # some handling
+    # некоторое действие
   end
   ```
 
-* <a name="file-close"></a> Release external resources obtained by your program in an ensure block.<sup>[[ссылка](#file-close)]</sup>
+* <a name="file-close"></a> Освобождайте используемые вашей программой
+  ресурсы в блоке `ensure`.<sup>[[ссылка](#file-close)]</sup>
 
   ```Ruby
   f = File.open('testfile')
@@ -2482,8 +2496,9 @@
   end
   ```
 
-* <a name="standard-exceptions"></a> Favor the use of exceptions for the standard library over  introducing new exception classes.
-<sup>[[ссылка](#standard-exceptions)]</sup>
+* <a name="standard-exceptions"></a> Преимущественно используйте исключения,
+  определенные в стандартной библиотеке, не вводите без нужды новые классы
+  исключений.<sup>[[ссылка](#standard-exceptions)]</sup>
 
 ## Коллекции
 
