@@ -2502,8 +2502,10 @@
 
 ## Коллекции
 
-* <a name="literal-array-hash"></a> Prefer literal array and hash creation notation (unless you need to  pass parameters to their constructors, that is).
-<sup>[[ссылка](#literal-array-hash)]</sup>
+* <a name="literal-array-hash"></a> При создании массивов и хешей применяйте
+  нотацию с литералами. Используйте конструкторы класса, только если вам нужно
+  передать дополнительные параметры при создании коллекций.
+  <sup>[[ссылка](#literal-array-hash)]</sup>
 
   ```Ruby
   # плохо
@@ -2515,9 +2517,10 @@
   hash = {}
   ```
 
-* <a name="percent-w"></a> Prefer `%w` to the literal array syntax when you need an array of  words (non-empty strings without spaces and special characters in them).
-  Apply this rule only to arrays with two or more elements.
-<sup>[[ссылка](#percent-w)]</sup>
+* <a name="percent-w"></a> Используйте нотацию `%w` для литералов массивов,
+  когда вам необходимо создать массив слов (непустых строк без пробелов и
+  метасимволов). Это правило касается лишь массивов с двумя и более
+  элементами.<sup>[[ссылка](#percent-w)]</sup>
 
   ```Ruby
   # плохо
@@ -2527,9 +2530,10 @@
   STATES = %w(draft open closed)
   ```
 
-* <a name="percent-i"></a> Prefer `%i` to the literal array syntax when you need an array of  symbols (and you don't need to maintain Ruby 1.9 compatibility). Apply
-  this rule only to arrays with two or more elements.
-<sup>[[ссылка](#percent-i)]</sup>
+* <a name="percent-i"></a> Используйте нотацию `%i` для литералов массивов,
+  когда вам необходимо создать массив символов. Помните, что эта нотация
+  несовместима с синтаксисом Ruby 1.9 и старше. Это правило касается лишь
+  массивов с двумя и более элементами.<sup>[[ссылка](#percent-i)]</sup>
 
   ```Ruby
   # плохо
@@ -2539,11 +2543,12 @@
   STATES = %i(draft open closed)
   ```
 
-* <a name="no-trailing-array-commas"></a> Avoid comma after the last item of an `Array` or `Hash` literal, especially  when the items are not on separate lines.
-<sup>[[ссылка](#no-trailing-array-commas)]</sup>
+* <a name="no-trailing-array-commas"></a> Не ставьте запятую после последнего
+  элемента в литералах массивов и хешей, особенно если элементы находятся не на
+  разных строках.<sup>[[ссылка](#no-trailing-array-commas)]</sup>
 
   ```Ruby
-  # плохо - easier to move/add/remove items, but still not preferred
+  # плохо (проще перемещать, добавлять и удалять элементы, но не идеально)
   VALUES = [
              1001,
              2020,
@@ -2557,21 +2562,26 @@
   VALUES = [1001, 2020, 3333]
   ```
 
-* <a name="no-gappy-arrays"></a> Avoid the creation of huge gaps in arrays.<sup>[[ссылка](#no-gappy-arrays)]</sup>
+* <a name="no-gappy-arrays"></a> Не создавайте массивы с большими незанятыми
+  промежутками адресов.<sup>[[ссылка](#no-gappy-arrays)]</sup>
 
   ```Ruby
   arr = []
-  arr[100] = 1 # now you have an array with lots of nils
+  arr[100] = 1 # Теперь у вас есть массив с кучей значений `nil`.
   ```
 
-* <a name="first-and-last"></a> When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.<sup>[[ссылка](#first-and-last)]</sup>
+* <a name="first-and-last"></a> При доступе к первому и последнему элементам
+  массива используйте методы `#first` или `#last`, а не индексы `[0]` и `[-1]`.
+  <sup>[[ссылка](#first-and-last)]</sup>
 
-* <a name="set-vs-array"></a> Use `Set` instead of `Array` when dealing with unique elements. `Set`  implements a collection of unordered values with no duplicates. This
-  is a hybrid of `Array`'s intuitive inter-operation facilities and
-  `Hash`'s fast lookup.
-<sup>[[ссылка](#set-vs-array)]</sup>
+* <a name="set-vs-array"></a> Используйте класс `Set` вместо `Array`, если вы
+  работаете с уникальными элементами. Класс `Set` реализует несортированную
+  коллекцию элементов без повторений и является гибридом интуитивных операций
+  класса `Array` и легкого и быстрого доступа класса `Hash`.
+  <sup>[[ссылка](#set-vs-array)]</sup>
 
-* <a name="symbols-as-keys"></a> Prefer symbols instead of strings as hash keys.<sup>[[ссылка](#symbols-as-keys)]</sup>
+* <a name="symbols-as-keys"></a> Используйте символы вместо строк в качестве
+  ключей хешей.<sup>[[ссылка](#symbols-as-keys)]</sup>
 
   ```Ruby
   # плохо
@@ -2581,9 +2591,12 @@
   hash = { one: 1, two: 2, three: 3 }
   ```
 
-* <a name="no-mutable-keys"></a> Avoid the use of mutable objects as hash keys.<sup>[[ссылка](#no-mutable-keys)]</sup>
+* <a name="no-mutable-keys"></a> Не используйте мутируемые объекты в качестве
+  ключей для хешей.<sup>[[ссылка](#no-mutable-keys)]</sup>
 
-* <a name="hash-literals"></a> Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.<sup>[[ссылка](#hash-literals)]</sup>
+* <a name="hash-literals"></a> Применяйте введенный в Ruby 1.9 синтаксис для
+  литералов хешей, когда ключами являются символы.
+  <sup>[[ссылка](#hash-literals)]</sup>
 
   ```Ruby
   # плохо
@@ -2593,9 +2606,10 @@
   hash = { one: 1, two: 2, three: 3 }
   ```
 
-* <a name="no-mixed-hash-syntaces"></a> Don't mix the Ruby 1.9 hash syntax with hash rockets in the same  hash literal. When you've got keys that are not symbols stick to the
-  hash rockets syntax.
-<sup>[[ссылка](#no-mixed-hash-syntaces)]</sup>
+* <a name="no-mixed-hash-syntaces"></a> Не используйте разные способы записи
+  хешей одновременно (нотации до и после Ruby 1.9). Если вы используете не только
+  символы в качестве ключей, то применяйте только старую нотацию со стрелками.
+  <sup>[[ссылка](#no-mixed-hash-syntaces)]</sup>
 
   ```Ruby
   # плохо
@@ -2605,10 +2619,11 @@
   { :a => 1, 'b' => 2 }
   ```
 
-* <a name="hash-key"></a> Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead  of `Hash#has_value?`. As noted
-  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765)
-  by Matz, the longer forms are considered deprecated.
-<sup>[[ссылка](#hash-key)]</sup>
+* <a name="hash-key"></a> Применяйте `Hash#key?` вместо `Hash#has_key?` и
+  `Hash#value?` вместо `Hash#has_value?`. Матц описывает
+  [здесь](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765)
+  свои планы исключить эти методы в будущем.
+  <sup>[[ссылка](#hash-key)]</sup>
 
   ```Ruby
   # плохо
@@ -2620,44 +2635,53 @@
   hash.value?(value)
   ```
 
-* <a name="hash-fetch"></a> Use `Hash#fetch` when dealing with hash keys that should be present.<sup>[[ссылка](#hash-fetch)]</sup>
+* <a name="hash-fetch"></a> Для надежной работы с заданными ключами, о
+  существовании которых доподлинно известно, используйте `Hash#fetch`.
+  <sup>[[ссылка](#hash-fetch)]</sup>
 
   ```Ruby
   heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
-  # плохо - if we make a mistake we might not spot it right away
+  # плохо (закравшуюся ошибку можно и не заметить сразу)
   heroes[:batman] # => "Bruce Wayne"
   heroes[:supermann] # => nil
 
-  # хорошо - fetch raises a KeyError making the problem obvious
+  # хорошо (`Hash#fetch` вызывает `KeyError` и явно указывает на проблему)
   heroes.fetch(:supermann)
   ```
 
-* <a name="hash-fetch-defaults"></a> Introduce default values for hash keys via `Hash#fetch` as opposed to using custom logic.<sup>[[ссылка](#hash-fetch-defaults)]</sup>
+* <a name="hash-fetch-defaults"></a> Задавайте стандартные значения для хешей
+  при помощи `Hash#fetch`, не реализуйте эту логику самостоятельно.
+  <sup>[[ссылка](#hash-fetch-defaults)]</sup>
 
   ```Ruby
   batman = { name: 'Bruce Wayne', is_evil: false }
 
-  # плохо - if we just use || operator with falsy value we won't get the expected result
+  # плохо (например, при использование оператора `||` мы получим неожиданный
+  # результат при ложном значении первого операнда)
   batman[:is_evil] || true # => true
 
-  # хорошо - fetch work correctly with falsy values
+  # хорошо (`Hash#fetch` отрабатывает корректно)
   batman.fetch(:is_evil, true) # => false
   ```
 
-* <a name="use-hash-blocks"></a> Prefer the use of the block instead of the default value in `Hash#fetch`.<sup>[[ссылка](#use-hash-blocks)]</sup>
+* <a name="use-hash-blocks"></a> Используйте блоки вместо значений `Hash#fetch`
+  по умолчанию.<sup>[[ссылка](#use-hash-blocks)]</sup>
 
   ```Ruby
   batman = { name: 'Bruce Wayne' }
 
-  # плохо - if we use the default value, we eager evaluate it
-  # so it can slow the program down if done multiple times
-  batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
+  # плохо (при использовании значения по умолчанию метод его расчета будет
+  # вызываться каждый раз, сильно замедляя выполнение программы при
+  # многократных вызовах)
+    batman.fetch(:powers, get_batman_powers) # get_batman_powers - нагруженный метод
 
-  # хорошо - blocks are lazy evaluated, so only triggered in case of KeyError exception
+  # хорошо (блоки оцениваются лишь по необходимости, когда вызывается KeyError)
   batman.fetch(:powers) { get_batman_powers }
   ```
 
-* <a name="hash-values-at"></a> Use `Hash#values_at` when you need to retrieve several values consecutively from a hash.<sup>[[ссылка](#hash-values-at)]</sup>
+* <a name="hash-values-at"></a> Используйте `Hash#values_at`, когда вам нужно
+  получить несколько значений хеша за один раз.
+  <sup>[[ссылка](#hash-values-at)]</sup>
 
   ```Ruby
   # плохо
@@ -2668,9 +2692,11 @@
   email, username = data.values_at('email', 'nickname')
   ```
 
-* <a name="ordered-hashes"></a> Rely on the fact that as of Ruby 1.9 hashes are ordered.<sup>[[ссылка](#ordered-hashes)]</sup>
+* <a name="ordered-hashes"></a> Вы можете положиться на то, что хеши в Ruby 1.9
+  и младше отсортированны.<sup>[[ссылка](#ordered-hashes)]</sup>
 
-* <a name="no-modifying-collections"></a> Never modify a collection while traversing it.<sup>[[ссылка](#no-modifying-collections)]</sup>
+* <a name="no-modifying-collections"></a> Никогда не модифицируйте коллекцию в
+  процессе ее обхода.<sup>[[ссылка](#no-modifying-collections)]</sup>
 
 ## Строки
 
