@@ -286,7 +286,7 @@ Translations of the guide are available in the following languages:
     ```Ruby
     # bad
     1 .. 3
-    'a' ... 'z'
+    'a' .. 'z'
 
     # good
     1..3
