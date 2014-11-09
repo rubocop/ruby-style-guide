@@ -1616,20 +1616,24 @@
 > naming things. <br/>
 > -- Phil Karlton
 
-* <a name="english-identifiers"></a> Name identifiers in English.<sup>[[ссылка](#english-identifiers)]</sup>
+* <a name="english-identifiers"></a> Используйте английский язык, называя
+  идентификаторы.<sup>[[ссылка](#english-identifiers)]</sup>
 
   ```Ruby
-  # плохо - identifier using non-ascii characters
-  заплата = 1_000
+  # плохо (идентификатор использует символы вне ASCII)
+  зарплата = 1_000
 
-  # плохо - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
-  zaplata = 1_000
+  # плохо (идентификатор - это русское слово, набранное латиницей вместо
+  # кирилицы)
+  zarplata = 1_000
 
   # хорошо
   salary = 1_000
   ```
 
-* <a name="snake-case-symbols-methods-vars"></a> Use `snake_case` for symbols, methods and variables.<sup>[[ссылка](#snake-case-symbols-methods-vars)]</sup>
+* <a name="snake-case-symbols-methods-vars"></a> Используйте `snake_case` для
+  имен символов, методов и переменных.
+  <sup>[[ссылка](#snake-case-symbols-methods-vars)]</sup>
 
   ```Ruby
   # плохо
@@ -1655,8 +1659,9 @@
   end
   ```
 
-* <a name="camelcase-classes"></a> Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP,  RFC, XML uppercase.)
-<sup>[[ссылка](#camelcase-classes)]</sup>
+* <a name="camelcase-classes"></a> Используйте `CamelCase` для имен классов и
+  модулей. Сокращения вроде `HTTP`,  `RFC`, `XML` набирайте заглавными буквами.
+  <sup>[[ссылка](#camelcase-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -1682,14 +1687,21 @@
   end
   ```
 
-* <a name="snake-case-files"></a> Use `snake_case` for naming files, e.g. `hello_world.rb`.<sup>[[ссылка](#snake-case-files)]</sup>
+* <a name="snake-case-files"></a> Используйте `snake_case`, называя файлы,
+  например, `hello_world.rb`.<sup>[[ссылка](#snake-case-files)]</sup>
 
-* <a name="snake-case-dirs"></a> Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.<sup>[[ссылка](#snake-case-dirs)]</sup>
+* <a name="snake-case-dirs"></a> Используйте `snake_case`, называя каталоги,
+  например, `lib/hello_world/hello_world.rb`.
+  <sup>[[ссылка](#snake-case-dirs)]</sup>
 
-* <a name="one-class-per-file"></a> Aim to have just a single class/module per source file. Name the file name as  the class/module, but replacing CamelCase with snake_case.
-<sup>[[ссылка](#one-class-per-file)]</sup>
+* <a name="one-class-per-file"></a> Старайтесь создавать только один класс или
+  модуль в каждом файле исходного кода. Называйте эти файлы по имени класса или
+  модуля, изменив запись в форме `CamelCase` на `snake_case`.
+  <sup>[[ссылка](#one-class-per-file)]</sup>
 
-* <a name="screaming-snake-case"></a> Use `SCREAMING_SNAKE_CASE` for other constants.<sup>[[ссылка](#screaming-snake-case)]</sup>
+* <a name="screaming-snake-case"></a> Используйте `SCREAMING_SNAKE_CASE` для
+  всех других констант кроме имен классов и модулей.
+  <sup>[[ссылка](#screaming-snake-case)]</sup>
 
   ```Ruby
   # плохо
@@ -1699,18 +1711,21 @@
   SOME_CONST = 5
   ```
 
-* <a name="bool-methods-qmark"></a> The names of predicate methods (methods that return a boolean value)  should end in a question mark.
-  (i.e. `Array#empty?`). Methods that don't return a boolean, shouldn't
-  end in a question mark.
-<sup>[[ссылка](#bool-methods-qmark)]</sup>
+* <a name="bool-methods-qmark"></a> Идентификаторы предикативных методов, т.е.
+  методов, возвращающих логическое значение, должны оканчиваться вопросительным
+  знаком. Например, `Array#empty?`. Методы, не возвращающие логическое значение,
+  не должны оканчиваться вопросительным знаком.
+  <sup>[[ссылка](#bool-methods-qmark)]</sup>
 
-* <a name="dangerous-method-bang"></a> The names of potentially *dangerous* methods (i.e. methods that  modify `self` or the arguments, `exit!` (doesn't run the finalizers
-  like `exit` does), etc.) should end with an exclamation mark if
-  there exists a safe version of that *dangerous* method.
-<sup>[[ссылка](#dangerous-method-bang)]</sup>
+* <a name="dangerous-method-bang"></a> Идентификаторы потенциально *опасных*
+  методов, т.е. таких методов, которые могут именить `self` или его аргументы,
+  должны оканчиваться восклицательным знаком, если есть соответствующий
+  *безопасный* вариант такого метода. Например, `exit!`, который не вызывает
+  завершающий скрипт в отличии от `exit`, выполняющего финализацию.
+  <sup>[[ссылка](#dangerous-method-bang)]</sup>
 
   ```Ruby
-  # плохо - there is no matching 'safe' method
+  # плохо (нет соответсвующего безопасного аналога)
   class Person
     def update!
     end
@@ -1732,8 +1747,10 @@
   end
   ```
 
-* <a name="safe-because-unsafe"></a> Define the non-bang (safe) method in terms of the bang (dangerous)  one if possible.
-<sup>[[ссылка](#safe-because-unsafe)]</sup>
+* <a name="safe-because-unsafe"></a> Определяйте безопасный метод (вариант
+  без восклицательного знака) при помощи вызова опасного метода (с
+  восклицательным знаком), если это возможно.
+  <sup>[[ссылка](#safe-because-unsafe)]</sup>
 
   ```Ruby
   class Array
@@ -1753,11 +1770,13 @@
   end
   ```
 
-* <a name="reduce-blocks"></a> When using `reduce` with short blocks, name the arguments `|a, e|`  (accumulator, element).
-<sup>[[ссылка](#reduce-blocks)]</sup>
+* <a name="reduce-blocks"></a> При использовании `#reduce` с коротким блоком,
+  называйте аргументы  `|a, e|`  (accumulator, element).
+  <sup>[[ссылка](#reduce-blocks)]</sup>
 
-* <a name="other-arg"></a> When defining binary operators, name the argument `other`(`<<` and  `[]` are exceptions to the rule, since their semantics are different).
-<sup>[[ссылка](#other-arg)]</sup>
+* <a name="other-arg"></a> При определении бинарных операторов называйте
+  аргумент `other`. Исключение составляют методы `#<<` и  `#[]`, так как их
+  семантика сильно отличается.<sup>[[ссылка](#other-arg)]</sup>
 
   ```Ruby
   def +(other)
@@ -1765,17 +1784,20 @@
   end
   ```
 
-* <a name="map-fine-select-reduce-size"></a> Prefer `map` over `collect`, `find` over `detect`, `select` over  `find_all`, `reduce` over `inject` and `size` over `length`. This is
-  not a hard requirement; if the use of the alias enhances
-  readability, it's ok to use it. The rhyming methods are inherited from
-  Smalltalk and are not common in other programming languages. The
-  reason the use of `select` is encouraged over `find_all` is that it
-  goes together nicely with `reject` and its name is pretty self-explanatory.
-<sup>[[ссылка](#map-fine-select-reduce-size)]</sup>
+* <a name="map-fine-select-reduce-size"></a> Используйте `#map` вместо
+  `#collect`, `#find` вместо `#detect`, `#select` вместо  `#find_all`,
+  `#reduce` вместо `#inject` и `#size` вместо `#length`. Это требование
+  не сложно реализовать. Если использование альтернатив улучшит восприятие кода,
+  то можно использовать и их. Все описанные варианты были взяты из языка
+  Smalltalk и не распространены в других языках программирования. Причиной,
+  почему не следует использовать `#find_all` вместо `#select`, является хорошая
+  сочетаемость с методом `#reject`, и эти наименования очевидны.
+  <sup>[[ссылка](#map-fine-select-reduce-size)]</sup>
 
-* <a name="count-vs-size"></a> Don't use `count` as a substitute for `size`. For `Enumerable`  objects other than `Array` it will iterate the entire collection in
-  order to determine its size.
-<sup>[[ссылка](#count-vs-size)]</sup>
+* <a name="count-vs-size"></a> Не используйте `#count` в качестве заметы для
+  `#size`. Для объектов классов с включенным `Enumerable` (кроме класса`Array`)
+  это приведет к затратному полному обходу всех элементов для определения
+  размера.<sup>[[ссылка](#count-vs-size)]</sup>
 
   ```Ruby
   # плохо
@@ -1785,10 +1807,12 @@
   some_hash.size
   ```
 
-* <a name="flat-map"></a> Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays with a depth greater than 2, i.e.
-  if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
-  `flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
-<sup>[[ссылка](#flat-map)]</sup>
+* <a name="flat-map"></a> Используйте `#flat_map` вместо `#map` + `#flatten`.
+  Это правило не относится к массивам с глубиной больше 2, например, если
+  `users.first.songs == ['a', ['b', 'c']]`, то используйте `#map` + `#flatten`,
+  а не `#flat_map`. Метод `#flat_map` уменьшает глубину на один уровень. Метод
+  `#flatten` сглаживает вложенность любого уровня.
+  <sup>[[ссылка](#flat-map)]</sup>
 
   ```Ruby
   # плохо
@@ -1798,8 +1822,9 @@
   all_songs = users.flat_map(&:songs).uniq
   ```
 
-* <a name="reverse-each"></a> Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't  do a new array allocation and that's a good thing.
-<sup>[[ссылка](#reverse-each)]</sup>
+* <a name="reverse-each"></a> Используйте метод `#reverse_each` вместо
+  `#reverse.each`. Метод `#reverse_each` не создает копию массива, что само по
+  себе хорошо.<sup>[[ссылка](#reverse-each)]</sup>
 
   ```Ruby
   # плохо
