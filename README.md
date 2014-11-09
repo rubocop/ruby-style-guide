@@ -6,9 +6,11 @@
 
 Читайте [руководство][russian] на русском языке.
 
-Другие переводы данного руководства доступны на следующих языках:
+[Оригинал][english] этого руководства был составлен
+[Божидаром Батсовым][bbatsov]. Переводы данного руководства доступны на
+следующих языках:
 
-* [английский (исходная версия)](https://github.com/bbatsov/ruby-style-guide/blob/master/README.md)
+* [английский (исходная версия)][english]
 * [вьетнамский](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
 * [испанский](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
 * [китайский традиционный](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
@@ -20,3 +22,5 @@
 * [японский](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 
 [russian]: https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md
+[english]: https://github.com/bbatsov/ruby-style-guide/blob/master/README.md
+[bbatsov]: https://github.com/bbatsov
