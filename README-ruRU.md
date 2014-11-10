@@ -830,12 +830,14 @@
   document.saved? || document.save!
   ```
 
-* <a name="no-multiline-ternary"></a> Избегайте многострочных тернарных операторов `?:`
-  Используйте вместо них `if/unless`.<sup>[[ссылка](#no-multiline-ternary)]</sup>
+* <a name="no-multiline-ternary"></a> Избегайте многострочных тернарных
+  операторов `? :`. Используйте вместо них `if/unless`.
+  <sup>[[ссылка](#no-multiline-ternary)]</sup>
 
 * <a name="if-as-a-modifier"></a> Для однострочных выражений по возможности
   модификатор `if/unless`. Другим хорошим вариантом являются операторы
-  управления потоком исполнения `&&/||`.<sup>[[ссылка](#if-as-a-modifier)]</sup>
+  управления потоком исполнения `&&/||`.
+  <sup>[[ссылка](#if-as-a-modifier)]</sup>
 
   ```Ruby
   # плохо
@@ -1031,8 +1033,9 @@
   bowling.score.should == 0
   ```
 
-* <a name="no-braces-opts-hash"></a> Не используйте фигурные скобки для ограничения
-  хешей, передаваемых методу.<sup>[[ссылка](#no-braces-opts-hash)]</sup>
+* <a name="no-braces-opts-hash"></a> Не используйте фигурные скобки для
+  ограничения хешей, передаваемых методу.
+  <sup>[[ссылка](#no-braces-opts-hash)]</sup>
 
   ```Ruby
   # плохо
@@ -1042,9 +1045,10 @@
   user.set(name: 'John', age: 45, permissions: { read: true })
   ```
 
-* <a name="no-dsl-decorating"></a> Не используйте фигурные скобки для ограничения хешей,
-  передаваемых методу, и скобки вокруг параметров для методов, являющихся частью
-  DSL.<sup>[[ссылка](#no-dsl-decorating)]</sup>
+* <a name="no-dsl-decorating"></a> Не используйте фигурные скобки для
+  ограничения хешей, передаваемых методу, и скобки вокруг параметров для
+  методов, являющихся частью DSL.
+  <sup>[[ссылка](#no-dsl-decorating)]</sup>
 
   ```Ruby
   class Person < ActiveRecord::Base
@@ -1056,7 +1060,8 @@
   end
   ```
 
-* <a name="no-args-no-parens"></a> Опускайте скобки при вызове метода без параметров.
+* <a name="no-args-no-parens"></a> Опускайте скобки при вызове метода без
+  параметров.
   <sup>[[ссылка](#no-args-no-parens)]</sup>
 
 
@@ -1102,12 +1107,14 @@
   ```
 
   Некоторые из нас поспорят, что многострочные последовательные вызовы с блоками
-  при использовании {...} выглядят неплохо, но тогда стоит себя спросить, а читается
-  ли такой код и не стоит ли выделить эти блоки в отдельные специальные методы.
+  при использовании {...} выглядят неплохо, но тогда стоит себя спросить, а
+  читается ли такой код и не стоит ли выделить эти блоки в отдельные специальные
+  методы.
 
-* <a name="block-argument"></a> Consider using explicit block argument to avoid
-  writing block  literal that just passes its arguments to another block. Beware of
-  the performance impact, though, as the block gets converted to a Proc.
+* <a name="block-argument"></a> Попробуйте использовать блоки напрямую в виде
+  аргумента в случае, когда блок просто передает свои аргументы в другой блок.
+  В этом случае обратите внимание на падение производительности, так как
+  аргументы будут преобразованы в объект класс `Proc`.
   <sup>[[ссылка](#block-argument)]</sup>
 
   ```Ruby
@@ -1116,7 +1123,8 @@
   # плохо
   def with_tmp_dir
     Dir.mktmpdir do |tmp_dir|
-      Dir.chdir(tmp_dir) { |dir| yield dir }  # block just passes arguments
+      # блок просто передает аргументы дальше
+      Dir.chdir(tmp_dir) { |dir| yield dir }
     end
   end
 
@@ -1128,12 +1136,13 @@
   end
 
   with_tmp_dir do |dir|
-    puts "dir is accessible as a parameter and pwd is set: #{dir}"
+    puts "dir доступен в виде параметра, и pwd имеет значение: #{dir}"
   end
   ```
 
-* <a name="no-explicit-return"></a> Avoid `return` where not required for flow
-  of control.<sup>[[ссылка](#no-explicit-return)]</sup>
+* <a name="no-explicit-return"></a> Избегайте ключевого слова `return` везде,
+  где это не нужно для управления ветвлением.
+  <sup>[[ссылка](#no-explicit-return)]</sup>
 
   ```Ruby
   # плохо
@@ -1147,8 +1156,8 @@
   end
   ```
 
-* <a name="no-self-unless-required"></a> Avoid `self` where not required. (It is
-  only required when calling a self write accessor.)
+* <a name="no-self-unless-required"></a> Избегайте ключевого слова `self` везде,
+  где оно не требуется.  (@FIX: It is only required when calling a self write accessor.)
   <sup>[[ссылка](#no-self-unless-required)]</sup>
 
   ```Ruby
@@ -1171,17 +1180,19 @@
   end
   ```
 
-* <a name="no-shadowing"></a> As a corollary, avoid shadowing methods with local
-  variables unless they are both equivalent.<sup>[[ссылка](#no-shadowing)]</sup>
+* <a name="no-shadowing"></a> В качестве бездоказательного утверждения:
+  избегайте маскирования методов локальными переменными, если они не
+  эквивалентны.
+  <sup>[[ссылка](#no-shadowing)]</sup>
 
   ```Ruby
   class Foo
     attr_accessor :options
 
-    # ok
+    # cносно
+    # как options, так и self.options здесь эквивалентны
     def initialize(options)
       self.options = options
-      # both options and self.options are equivalent here
     end
 
     # плохо
