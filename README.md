@@ -1601,6 +1601,9 @@ condition](#safe-assignment-in-condition).
   if x == nil
   end
 
+  if x == 0
+  end
+  
   # good
   if x.even?
   end
@@ -1614,8 +1617,6 @@ condition](#safe-assignment-in-condition).
   if x.zero?
   end
 
-  if x == 0
-  end
   ```
 
 * <a name="no-non-nil-checks"></a>
