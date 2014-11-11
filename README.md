@@ -624,8 +624,8 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="method-parens"></a>
-    Use `def` with parentheses when there are arguments. Omit the
-    parentheses when the method doesn't accept any arguments.
+    Use `def` with parentheses when there are parameters. Omit the
+    parentheses when the method doesn't accept any parameters.
 <sup>[[link](#method-parens)]</sup>
 
    ```Ruby
@@ -640,12 +640,12 @@ Translations of the guide are available in the following languages:
    end
 
    # bad
-   def some_method_with_arguments arg1, arg2
+   def some_method_with_parameters param1, param2
      # body omitted
    end
 
    # good
-   def some_method_with_arguments(arg1, arg2)
+   def some_method_with_parameters(param1, param2)
      # body omitted
    end
    ```
@@ -1925,7 +1925,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#reduce-blocks)]</sup>
 
 * <a name="other-arg"></a>
-  When defining binary operators, name the argument `other`(`<<` and `[]` are
+  When defining binary operators, name the parameter `other`(`<<` and `[]` are
   exceptions to the rule, since their semantics are different).
 <sup>[[link](#other-arg)]</sup>
 
@@ -3299,11 +3299,11 @@ condition](#safe-assignment-in-condition).
   UNSAFE_STRING_METHODS.each do |unsafe_method|
     if 'String'.respond_to?(unsafe_method)
       class_eval <<-EOT, __FILE__, __LINE__ + 1
-        def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
+        def #{unsafe_method}(*params, &block)       # def capitalize(*params, &block)
           to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
         end                                       # end
 
-        def #{unsafe_method}!(*args)              # def capitalize!(*args)
+        def #{unsafe_method}!(*params)              # def capitalize!(*params)
           @dirty = true                           #   @dirty = true
           super                                   #   super
         end                                       # end
@@ -3327,7 +3327,7 @@ condition](#safe-assignment-in-condition).
 
     ```ruby
     # bad
-    def method_missing?(meth, *args, &block)
+    def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
         # ... lots of code to do a find_by
       else
@@ -3336,7 +3336,7 @@ condition](#safe-assignment-in-condition).
     end
 
     # good
-    def method_missing?(meth, *args, &block)
+    def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
         find_by(prop, *args, &block)
       else
@@ -3411,7 +3411,7 @@ condition](#safe-assignment-in-condition).
   Code in a functional way, avoiding mutation when that makes sense.
 <sup>[[link](#functional-code)]</sup>
 
-* <a name="no-arg-mutations"></a>
+* <a name="no-param-mutations"></a>
   Do not mutate arguments unless that is the purpose of the method.
 <sup>[[link](#no-arg-mutations)]</sup>
 
