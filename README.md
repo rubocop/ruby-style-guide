@@ -21,6 +21,10 @@
 * [русский (данный документ)](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
 * [японский](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 
+Если вы хотите оставаться в курсе актуальных изменений, следите за репозиторием
+<iframe src="http://ghbtns.com/github-btn.html?user=arbox&repo=ruby-style-guide&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+
 [russian]: https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md
 [english]: https://github.com/bbatsov/ruby-style-guide/blob/master/README.md
 [bbatsov]: https://github.com/bbatsov
