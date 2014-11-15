@@ -97,6 +97,7 @@
 
 ## Организация исходного кода
 
+<!--- @FIXME -->
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
 > probably right... <br/>
@@ -1210,7 +1211,7 @@
     end
   end
   ```
-
+<!--- @FIXME -->
 * <a name="safe-assignment-in-condition"></a> Don't use the return value of `=`
   (an assignment) in conditional  expressions unless the assignment is wrapped
   in parentheses. This is a fairly popular idiom among Rubyists that's sometimes
@@ -1472,7 +1473,7 @@
   format('%{first} %{second}', first: 20, second: 10)
   # => '20 10'
   ```
-
+<!--- @FIXME -->
 * <a name="array-join"></a> Favor the use of `Array#join` over the fairly cryptic `Array#*` with  a string argument.
 <sup>[[ссылка](#array-join)]</sup>
 
@@ -2196,6 +2197,7 @@
   при многократной загрузке кода из файла.
   <sup>[[ссылка](#no-extend-struct-new)]</sup>
 
+<!-- @FIXME -->
 * <a name="factory-methods"></a> Consider adding factory methods to provide
   additional sensible ways  to create instances of a particular class.
   <sup>[[ссылка](#factory-methods)]</sup>
@@ -2909,6 +2911,7 @@
 
 ## Регулярные выражения
 
+<!--- @FIXME -->
 > Some people, when confronted with a problem, think
 > "I know, I'll use regular expressions." Now they have two problems.<br/>
 > -- Jamie Zawinski
