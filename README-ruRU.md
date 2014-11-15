@@ -1864,7 +1864,8 @@
   и текстом самого комментария.<sup>[[ссылка](#hash-space)]</sup>
 
 * <a name="english-syntax"></a> Комментарии длиной больше одного слова должны
-  оформляться в виде законченных предложений (с большой буквы и со знаками препинания).
+  оформляться в виде законченных предложений (с большой буквы и со знаками
+  препинания).
   Разделяйте предложения [одним пробелом](http://en.wikipedia.org/wiki/Sentence_spacing).
   <sup>[[ссылка](#english-syntax)]</sup>
 
@@ -1945,7 +1946,8 @@
 
 ## Классы и модули
 
-* <a name="consistent-classes"></a> Структурируйте ваши классы единообразно.<sup>[[ссылка](#consistent-classes)]</sup>
+* <a name="consistent-classes"></a> Поддерживайтесь единообразной структуры
+  классов.<sup>[[ссылка](#consistent-classes)]</sup>
 
   ```Ruby
   class Person
@@ -1965,15 +1967,15 @@
     # и все прочие макросы (если имеются)
     validates :name
 
-    # public class methods are next in line
+    # следующими по списку будут публичные методы класса
     def self.some_method
     end
 
-    # followed by public instance methods
+    # и следующие за ними публичные методы экземпляров этого класса
     def some_method
     end
 
-    # protected and private methods are grouped near the end
+    # защищенные и частные методы нужно собрать ближе к концу
     protected
 
     def some_protected_method
@@ -1986,8 +1988,11 @@
   end
   ```
 
-* <a name="file-classes"></a> Don't nest multi line classes within classes. Try to have such nested  classes each in their own file in a folder named like the containing class.
-<sup>[[ссылка](#file-classes)]</sup>
+* <a name="file-classes"></a> Если определение класса занимает несклько строк,
+  постарайтесь вынести такой класс в отдельный файл. Файл с определением стоит
+  поместить в каталог, названный по имени родительского класса, внутри которого
+  определяется вложенный класс.
+  <sup>[[ссылка](#file-classes)]</sup>
 
   ```Ruby
   # плохо
@@ -1995,46 +2000,48 @@
   # foo.rb
   class Foo
     class Bar
-      # 30 methods inside
+      # 30 методов внутри
     end
 
     class Car
-      # 20 methods inside
+      # 20 методов внутри
     end
 
-    # 30 methods inside
+    # 30 методов внутри
   end
 
   # хорошо
 
   # foo.rb
   class Foo
-    # 30 methods inside
+    # 30 методов внутри
   end
 
   # foo/bar.rb
   class Foo
     class Bar
-      # 30 methods inside
+      # 30 методов внутри
     end
   end
 
   # foo/car.rb
   class Foo
     class Car
-      # 20 methods inside
+      # 20 методов внутри
     end
   end
   ```
 
-* <a name="modules-vs-classes"></a> Prefer modules to classes with only class methods. Classes should be  used only when it makes sense to create instances out of them.
-<sup>[[ссылка](#modules-vs-classes)]</sup>
+* <a name="modules-vs-classes"></a> Если класс определяет только методы класса,
+  то трансформируйте такой класс в модуль. Использовать классы логично в тех
+  ситуациях, когда нужно создавать экземпляры класса.
+  <sup>[[ссылка](#modules-vs-classes)]</sup>
 
   ```Ruby
   # плохо
   class SomeClass
     def self.some_method
-      # body omitted
+      # некоторый код
     end
 
     def self.some_other_method
@@ -2046,7 +2053,7 @@
     module_function
 
     def some_method
-      # body omitted
+      # некоторый код
     end
 
     def some_other_method
@@ -2054,8 +2061,10 @@
   end
   ```
 
-* <a name="module-function"></a> Favor the use of `module_function` over `extend self` when you want  to turn a module's instance methods into class methods.
-<sup>[[ссылка](#module-function)]</sup>
+* <a name="module-function"></a> Используйте `module_function` вместо
+  `extend self`, когда вам нужно преобразовать методы экземпляра модуля в
+  методы класса.
+  <sup>[[ссылка](#module-function)]</sup>
 
   ```Ruby
   # плохо
@@ -2063,11 +2072,11 @@
     extend self
 
     def parse_something(string)
-      # do stuff here
+      # здесь реализуется логика
     end
 
     def other_utility_method(number, string)
-      # do some more stuff
+      # здесь реализуется дополнительная логика
     end
   end
 
@@ -2076,24 +2085,27 @@
     module_function
 
     def parse_something(string)
-      # do stuff here
+      # здесь реализуется логика
     end
 
     def other_utility_method(number, string)
-      # do some more stuff
+      # здесь реализуется дополнительная логика
     end
   end
   ```
 
-* <a name="liskov"></a> When designing class hierarchies make sure that they conform to the  [Liskov Substitution Principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
-<sup>[[ссылка](#liskov)]</sup>
+* <a name="liskov"></a> Создавая иерархии классов, проверяйте их на
+  соответствие [принципу подстановки Барбары Лисков][Liskov].
+  <sup>[[ссылка](#liskov)]</sup>
 
-* <a name="solid-design"></a> Try to make your classes as  [SOLID](http://en.wikipedia.org/wiki/SOLID_\(object-oriented_design\))
-  as possible.
-<sup>[[ссылка](#solid-design)]</sup>
+* <a name="solid-design"></a> Проверяйте дизайн ваших классов на
+  соответствие принципу [SOLID](http://en.wikipedia.org/wiki/SOLID_\(object-oriented_design\)),
+  если такая возможность есть.
+  <sup>[[ссылка](#solid-design)]</sup>
 
-* <a name="define-to-s"></a> Always supply a proper `to_s` method for classes that represent  domain objects.
-<sup>[[ссылка](#define-to-s)]</sup>
+* <a name="define-to-s"></a> Для описывающих предметные области объектов всегда
+  определяйте метод `#to_s`.
+  <sup>[[ссылка](#define-to-s)]</sup>
 
   ```Ruby
   class Person
@@ -2110,7 +2122,9 @@
   end
   ```
 
-* <a name="attr_family"></a> Use the `attr` family of functions to define trivial accessors or mutators.<sup>[[ссылка](#attr_family)]</sup>
+* <a name="attr_family"></a> Применяйте макросы из семества `attr_` для
+  тривиальных методов доступа к объекту.
+  <sup>[[ссылка](#attr_family)]</sup>
 
   ```Ruby
   # плохо
@@ -2140,20 +2154,24 @@
   end
   ```
 
-* <a name="attr"></a> Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.<sup>[[ссылка](#attr)]</sup>
+* <a name="attr"></a> Не используйте обобщенную форму `attr`. Используйте
+  `attr_reader` и `attr_accessor` вместо нее.
+  <sup>[[ссылка](#attr)]</sup>
 
   ```Ruby
-  # плохо - creates a single attribute accessor (deprecated in 1.9)
+  # плохо (создает единый метод доступа атрибуту, объявлено нежелательным 1.9)
   attr :something, true
-  attr :one, :two, :three # behaves as attr_reader
+  attr :one, :two, :three # ведет себя как attr_reader
 
   # хорошо
   attr_accessor :something
   attr_reader :one, :two, :three
   ```
 
-* <a name="struct-new"></a> Consider using `Struct.new`, which defines the trivial accessors,  constructor and comparison operators for you.
-<sup>[[ссылка](#struct-new)]</sup>
+* <a name="struct-new"></a> Подумайте об использовании `Struct.new`, эта
+  конструкция даст вам сразу простейшие методы доступа к состоянию,
+  метод инициализации и методы сравнения.
+  <sup>[[ссылка](#struct-new)]</sup>
 
   ```Ruby
   # хорошо
@@ -2166,17 +2184,20 @@
     end
   end
 
-  # better
+  # лучше
   Person = Struct.new(:first_name, :last_name) do
   end
   ````
+<!--- @FIXME -->
+* <a name="no-extend-struct-new"></a> Не дополняйте `Struct.new` при помощи
+  `#extend`. В этом случае уже создается новый класс. При дополнении вы
+  создадите избыточный уровень абстракции, это может привезти к странным ошибкам
+  при многократной загрузке кода из файла.
+  <sup>[[ссылка](#no-extend-struct-new)]</sup>
 
-* <a name="no-extend-struct-new"></a> Don't extend a `Struct.new` - it already is a new class. Extending it introduces  a superfluous class level and may also introduce weird errors if the file is
-  required multiple times.
-<sup>[[ссылка](#no-extend-struct-new)]</sup>
-
-* <a name="factory-methods"></a> Consider adding factory methods to provide additional sensible ways  to create instances of a particular class.
-<sup>[[ссылка](#factory-methods)]</sup>
+* <a name="factory-methods"></a> Consider adding factory methods to provide
+  additional sensible ways  to create instances of a particular class.
+  <sup>[[ссылка](#factory-methods)]</sup>
 
   ```Ruby
   class Person
@@ -2186,7 +2207,9 @@
   end
   ```
 
-* <a name="duck-typing"></a> Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing) over inheritance.<sup>[[ссылка](#duck-typing)]</sup>
+* <a name="duck-typing"></a> Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing)
+  over inheritance.
+  <sup>[[ссылка](#duck-typing)]</sup>
 
   ```Ruby
   # плохо
@@ -2224,7 +2247,9 @@
   end
   ```
 
-* <a name="no-class-vars"></a> Avoid the usage of class (`@@`) variables due to their "nasty" behavior in inheritance.<sup>[[ссылка](#no-class-vars)]</sup>
+* <a name="no-class-vars"></a> Avoid the usage of class (`@@`) variables due to
+  their "nasty" behavior in inheritance.
+  <sup>[[ссылка](#no-class-vars)]</sup>
 
   ```Ruby
   class Parent
@@ -2246,16 +2271,17 @@
   class variable. Class instance variables should usually be preferred
   over class variables.
 
-* <a name="visibility"></a> Assign proper visibility levels to methods (`private`, `protected`)  in accordance with their intended usage. Don't go off leaving
-  everything `public` (which is the default). After all we're coding
-  in *Ruby* now, not in *Python*.
-<sup>[[ссылка](#visibility)]</sup>
+* <a name="visibility"></a> Assign proper visibility levels to methods
+  (`private`, `protected`)  in accordance with their intended usage. Don't
+  go off leaving everything `public` (which is the default). After all we're
+  coding in *Ruby* now, not in *Python*.
+  <sup>[[ссылка](#visibility)]</sup>
 
-* <a name="indent-public-private-protected"></a> Indent the `public`, `protected`, and `private` methods as much the  method definitions they apply to. Leave one blank line above the
-  visibility modifier
-  and one blank line below in order to emphasize that it applies to all
-  methods below it.
-<sup>[[ссылка](#indent-public-private-protected)]</sup>
+* <a name="indent-public-private-protected"></a> Indent the `public`,
+  `protected`, and `private` methods as much the  method definitions they apply
+  to. Leave one blank line above the visibility modifier and one blank line
+  below in order to emphasize that it applies to all methods below it.
+  <sup>[[ссылка](#indent-public-private-protected)]</sup>
 
   ```Ruby
   class SomeClass
@@ -2275,8 +2301,10 @@
   end
   ```
 
-* <a name="def-self-singletons"></a> Use `def self.method` to define singleton methods. This makes the code  easier to refactor since the class name is not repeated.
-<sup>[[ссылка](#def-self-singletons)]</sup>
+* <a name="def-self-singletons"></a> Use `def self.method` to define singleton
+  methods. This makes the code  easier to refactor since the class name is
+  not repeated.
+  <sup>[[ссылка](#def-self-singletons)]</sup>
 
   ```Ruby
   class TestClass
@@ -3232,8 +3260,8 @@
 
 Ничто, описанное в этом руководстве, не высечено в камне. И я очень хотел бы
 сотрудничать со всеми, кто интересуется стилистикой оформления кода на Руби,
-чтобы мы смогли вместе создать ресурс, который был бы полезен для всего сообщества
-программистов на Руби.
+чтобы мы смогли вместе создать ресурс, который был бы полезен для всего
+сообщества программистов на Руби.
 
 Не стесняйтесь создавать отчеты об ошибках и присылать мне запросы на интеграцию
 вашего кода. И заранее большое спасибо за вашу помощь!
@@ -3265,6 +3293,7 @@
 Всего,<br/>
 [Божидар](https://twitter.com/bbatsov)
 
+<!--- Links -->
 [PEP-8]: http://www.python.org/dev/peps/pep-0008/
 [rails-style-guide]: https://github.com/arbox/rails-style-guide/blob/master/README-ruRU.md
 [pickaxe]: http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0
@@ -3272,3 +3301,4 @@
 [entrpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
 [transmuter]: https://github.com/TechnoGate/transmuter
 [RuboCop]: https://github.com/bbatsov/rubocop
+[Liskov]: https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8_%D0%91%D0%B0%D1%80%D0%B1%D0%B0%D1%80%D1%8B_%D0%9B%D0%B8%D1%81%D0%BA%D0%BE%D0%B2
