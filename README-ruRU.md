@@ -1211,21 +1211,23 @@
     end
   end
   ```
-<!--- @FIXME -->
-* <a name="safe-assignment-in-condition"></a> Don't use the return value of `=`
-  (an assignment) in conditional  expressions unless the assignment is wrapped
-  in parentheses. This is a fairly popular idiom among Rubyists that's sometimes
-  referred to as.<sup>[[ссылка](#safe-assignment-in-condition)]</sup>
+
+* <a name="safe-assignment-in-condition"></a> Используйте возвращаемое
+  оператором присваивания (`=`) значение только в случаях, когда все
+  выражение стоит в скобках. Эта идиома достаточно распространена среди
+  программистов на Руби и часто называется *надежное присваивание в логических
+  выражениях*.
+  <sup>[[ссылка](#safe-assignment-in-condition)]</sup>
 
 
   ```Ruby
-  # плохо (+ a warning)
+  # плохо (к тому же вызывает предупреждение)
   if v = array.grep(/foo/)
     do_something(v)
     ...
   end
 
-  # хорошо (MRI would still complain, but RuboCop won't)
+  # хорошо (MRI будет вызывает предупреждение, но не Рубокоп)
   if (v = array.grep(/foo/))
     do_something(v)
     ...
@@ -1239,8 +1241,9 @@
   end
   ```
 
-* <a name="self-assignment"></a> Use shorthand self assignment operators whenever
-  applicable.<sup>[[ссылка](#self-assignment)]</sup>
+* <a name="self-assignment"></a>
+  По возможности используйте сокращенные операторы присваивания.
+  <sup>[[ссылка](#self-assignment)]</sup>
 
   ```Ruby
   # плохо
@@ -1260,8 +1263,10 @@
   x &&= y
   ```
 
-* <a name="double-pipe-for-uninit"></a> Use `||=` to initialize variables only
-  if they're not already initialized.<sup>[[ссылка](#double-pipe-for-uninit)]</sup>
+* <a name="double-pipe-for-uninit"></a>
+  Используйте оператор `||=` для инициализации переменных, только если
+  переменная еще не инициализирована.
+  <sup>[[ссылка](#double-pipe-for-uninit)]</sup>
 
   ```Ruby
   # плохо
@@ -1270,25 +1275,30 @@
   # плохо
   name = 'Bozhidar' unless name
 
-  # хорошо - set name to Bozhidar, only if it's nil or false
+  # хорошо (присвоить переменной name значение Bozhidar, только если ее значение
+  # nil или false
   name ||= 'Bozhidar'
   ```
 
-* <a name="no-double-pipes-for-bools"></a> Don't use `||=` to initialize boolean
-  variables. (Consider what  would happen if the current value happened to be `false`.)
+* <a name="no-double-pipes-for-bools"></a>
+  Не используйте оператор `||=` для инициализации логических переменных.
+  Это вызовет проблемы, если текущим значением переменной будет `false`.
   <sup>[[ссылка](#no-double-pipes-for-bools)]</sup>
 
   ```Ruby
-  # плохо - would set enabled to true even if it was false
+  # плохо (назначит переменной enabled значение true, даже если оно было false)
   enabled ||= true
 
   # хорошо
   enabled = true if enabled.nil?
   ```
 
-* <a name="double-amper-preprocess"></a> Use `&&=` to preprocess variables that may
-  or may not exist. Using  `&&=` will change the value only if it exists, removing the need to
-  check its existence with `if`.<sup>[[ссылка](#double-amper-preprocess)]</sup>
+* <a name="double-amper-preprocess"></a>
+  Используйте оператор `&&=` для предварительной работы с переменными, которые
+  уже или еще не инициализированы. Использование оператора `&&=` изменит
+  значение переменной, только если она инициализирована. При этом отпадает
+  необходимость в проверке с `if`.
+  <sup>[[ссылка](#double-amper-preprocess)]</sup>
 
   ```Ruby
   # плохо
@@ -1309,6 +1319,7 @@
   something &&= something.downcase
   ```
 
+<!--- @FIXME -->
 * <a name="no-case-equality"></a> Avoid explicit use of the case equality
   operator `===`. As its name  implies it is meant to be used implicitly by
   `case` expressions and outside of them it yields some pretty confusing code.
@@ -1326,10 +1337,12 @@
   some_string =~ /something/
   ```
 
-* <a name="no-cryptic-perlisms"></a> Avoid using Perl-style special variables
-  (like `$:`, `$;`,  etc. ). They are quite cryptic and their use in anything
-  but one-liner scripts is discouraged. Use the human-friendly aliases provided
-  by the `English` library.<sup>[[ссылка](#no-cryptic-perlisms)]</sup>
+* <a name="no-cryptic-perlisms"></a>
+  Избегайте специальных переменных, заимствованых из языка Перл, например, `$:`,
+  `$;` и т.д. Они сложно воспринимаются, и их использование приветствуется
+  только в однострочных скриптах. В остальных случаях применяйте легкие для
+  восприятия варианты этих переменных из библиотеки `English`.
+  <sup>[[ссылка](#no-cryptic-perlisms)]</sup>
 
   ```Ruby
   # плохо
@@ -1340,8 +1353,9 @@
   $LOAD_PATH.unshift File.dirname(__FILE__)
   ```
 
-* <a name="parens-no-spaces"></a> Never put a space between a method name and
-  the opening parenthesis.<sup>[[ссылка](#parens-no-spaces)]</sup>
+* <a name="parens-no-spaces"></a>
+  Не оставляйте пробел между именем метода и открывающей скобкой.
+  <sup>[[ссылка](#parens-no-spaces)]</sup>
 
   ```Ruby
   # плохо
@@ -1351,22 +1365,27 @@
   f(3 + 2) + 1
   ```
 
-* <a name="parens-as-args"></a> If the first argument to a method begins with an
-  open parenthesis,  always use parentheses in the method invocation.
-  For example, write `f((3 + 2) + 1)`.<sup>[[ссылка](#parens-as-args)]</sup>
+* <a name="parens-as-args"></a>
+  Если первый аргумент при вызове метода начинается скобкой, то всегда
+  используйте скобки при вызове метода. Например, пишет так: `f((3 + 2) + 1)`.
+  <sup>[[ссылка](#parens-as-args)]</sup>
 
-* <a name="always-warn-at-runtime"></a> Always run the Ruby interpreter with the `-w` option so it will warn  you if you forget either of the rules above!
-<sup>[[ссылка](#always-warn-at-runtime)]</sup>
+* <a name="always-warn-at-runtime"></a>
+  Всегда вызывайте интерпретатор Руби с ключом `-w`, чтобы получать напоминия о
+  правилах, описанных выше, даже если вы о них забываете.
+  <sup>[[ссылка](#always-warn-at-runtime)]</sup>
 
-* <a name="lambda-multi-line"></a> Use the new lambda literal syntax for single line body blocks. Use the  `lambda` method for multi-line blocks.
-<sup>[[ссылка](#lambda-multi-line)]</sup>
+* <a name="lambda-multi-line"></a>
+  Используйте новый синтаксис лямбда-выражений для однострочных блоков. Используйте
+  метод `lambda` для многострочных блоков.
+  <sup>[[ссылка](#lambda-multi-line)]</sup>
 
   ```Ruby
   # плохо
   l = lambda { |a, b| a + b }
   l.call(1, 2)
 
-  # correct, but looks extremely awkward
+  # верно, но выглядит очень странно
   l = ->(a, b) do
     tmp = a * 7
     tmp * b / 50
@@ -1382,7 +1401,9 @@
   end
   ```
 
-* <a name="proc"></a> Prefer `proc` over `Proc.new`.<sup>[[ссылка](#proc)]</sup>
+* <a name="proc"></a>
+  Используйте `proc` вместо `Proc.new`.
+  <sup>[[ссылка](#proc)]</sup>
 
   ```Ruby
   # плохо
@@ -1392,14 +1413,17 @@
   p = proc { |n| puts n }
   ```
 
-* <a name="proc-call"></a> Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.<sup>[[ссылка](#proc-call)]</sup>
+* <a name="proc-call"></a>
+  Используйте `proc.call()` вместо `proc[]` или `proc.()` для
+  лямбда-выражений и блоков.
+  <sup>[[ссылка](#proc-call)]</sup>
 
   ```Ruby
-  # плохо - looks similar to Enumeration access
+  # плохо (выглядит как доступ к энумератору)
   l = ->(v) { puts v }
   l[1]
 
-  # also плохо - uncommon syntax
+  # тоже плохо (редкая формулировка)
   l = ->(v) { puts v }
   l.(1)
 
@@ -1408,10 +1432,12 @@
   l.call(1)
   ```
 
-* <a name="underscore-unused-vars"></a> Prefix with `_` unused block parameters and local variables. It's  also acceptable to use just `_` (although it's a bit less
-  descriptive). This convention is recognized by the Ruby interpreter
-  and tools like RuboCop and will suppress their unused variable warnings.
-<sup>[[ссылка](#underscore-unused-vars)]</sup>
+* <a name="underscore-unused-vars"></a>
+  Начинайте неиспользуемые параметры блока с подчеркивания `_`. Также допустимо
+  использовать только подчеркивание `_`, хотя это и менее информативно. Эта
+  договоренность распознается интерпретатором Руби и Рубокопом и уберет
+  предупреждения о неиспользуемых переменных.
+  <sup>[[ссылка](#underscore-unused-vars)]</sup>
 
   ```Ruby
   # плохо
@@ -1439,19 +1465,23 @@
   end
   ```
 
-* <a name="global-stdout"></a> Используйте переменные `$stdout/$stderr/$stdin`
-  вместо констант  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` являются
-  константами, поэтому при их переопределении (вы это можете сделать, например,
-  для перенаправления ввода-вывода) интерпретатор будет выдавать предупреждения.
+* <a name="global-stdout"></a>
+  Используйте переменные `$stdout/$stderr/$stdin` вместо констант
+  `STDOUT/STDERR/STDIN`. `STDOUT/STDERR/STDIN` являются константами, поэтому при
+  их переопределении (вы это можете сделать, например, для перенаправления
+  ввода-вывода) интерпретатор будет выдавать предупреждения.
   <sup>[[ссылка](#global-stdout)]</sup>
 
-* <a name="warn"></a> Используйте `warn` вместо `$stderr.puts`. Это не только
-  короче, но и позволит вам скрыть все предупреждения, если вам это понадобится
-  (для этого задайте уроверь предупреждений равный `0` при помощи опции `-W0`).
+* <a name="warn"></a>
+  Используйте `warn` вместо `$stderr.puts`. Это не только короче, но и позволит
+  вам скрыть все предупреждения, если вам это понадобится (для этого задайте
+  уроверь предупреждений равный `0` при помощи опции `-W0`).
   <sup>[[ссылка](#warn)]</sup>
 
-* <a name="sprintf"></a> Используйте `sprintf` и его алиас `format` вместо
-  довольно запутанного метода `String#%`.<sup>[[ссылка](#sprintf)]</sup>
+* <a name="sprintf"></a>
+  Используйте `sprintf` и его алиас `format` вместо довольно запутанного метода
+  `String#%`.
+  <sup>[[ссылка](#sprintf)]</sup>
 
   ```Ruby
   # плохо
@@ -1474,8 +1504,9 @@
   # => '20 10'
   ```
 <!--- @FIXME -->
-* <a name="array-join"></a> Favor the use of `Array#join` over the fairly cryptic `Array#*` with  a string argument.
-<sup>[[ссылка](#array-join)]</sup>
+* <a name="array-join"></a>
+  Favor the use of `Array#join` over the fairly cryptic `Array#*` with  a string argument.
+  <sup>[[ссылка](#array-join)]</sup>
 
   ```Ruby
   # плохо
@@ -1487,9 +1518,11 @@
   # => 'one, two, three'
   ```
 
-* <a name="splat-arrays"></a> Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing with a  variable you want to treat as an Array, but you're not certain it's
+* <a name="splat-arrays"></a>
+  Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing
+  with a  variable you want to treat as an Array, but you're not certain it's
   an array.
-<sup>[[ссылка](#splat-arrays)]</sup>
+  <sup>[[ссылка](#splat-arrays)]</sup>
 
   ```Ruby
   # плохо
@@ -1503,7 +1536,10 @@
   Array(paths).each { |path| do_something(path) }
   ```
 
-* <a name="ranges-or-between"></a> Use ranges or `Comparable#between?` instead of complex comparison logic when possible.<sup>[[ссылка](#ranges-or-between)]</sup>
+* <a name="ranges-or-between"></a>
+  Use ranges or `Comparable#between?` instead of complex comparison logic when
+  possible.
+  <sup>[[ссылка](#ranges-or-between)]</sup>
 
   ```Ruby
   # плохо
@@ -1516,8 +1552,10 @@
   do_something if x.between?(1000, 2000)
   ```
 
-* <a name="predicate-methods"></a> Favor the use of predicate methods to explicit comparisons with  `==`. Numeric comparisons are OK.
-<sup>[[ссылка](#predicate-methods)]</sup>
+* <a name="predicate-methods"></a>
+  Favor the use of predicate methods to explicit comparisons with  `==`. Numeric
+  comparisons are OK.
+  <sup>[[ссылка](#predicate-methods)]</sup>
 
   ```Ruby
   # плохо
@@ -1547,7 +1585,9 @@
   end
   ```
 
-* <a name="no-non-nil-checks"></a> Don't do explicit non-`nil` checks unless you're dealing with boolean values.<sup>[[ссылка](#no-non-nil-checks)]</sup>
+* <a name="no-non-nil-checks"></a>
+  Don't do explicit non-`nil` checks unless you're dealing with boolean values.
+  <sup>[[ссылка](#no-non-nil-checks)]</sup>
 
     ```Ruby
     # плохо
@@ -1563,9 +1603,13 @@
     end
     ```
 
-* <a name="no-BEGIN-blocks"></a> Avoid the use of `BEGIN` blocks.<sup>[[ссылка](#no-BEGIN-blocks)]</sup>
+* <a name="no-BEGIN-blocks"></a>
+  Avoid the use of `BEGIN` blocks.
+  <sup>[[ссылка](#no-BEGIN-blocks)]</sup>
 
-* <a name="no-END-blocks"></a> Never use `END` blocks. Use `Kernel#at_exit` instead.<sup>[[ссылка](#no-END-blocks)]</sup>
+* <a name="no-END-blocks"></a>
+  Never use `END` blocks. Use `Kernel#at_exit` instead.
+  <sup>[[ссылка](#no-END-blocks)]</sup>
 
   ```Ruby
   # плохо
@@ -1575,13 +1619,16 @@
   at_exit { puts 'Goodbye!' }
   ```
 
-* <a name="no-flip-flops"></a> Avoid the use of flip-flops.<sup>[[ссылка](#no-flip-flops)]</sup>
+* <a name="no-flip-flops"></a>
+  Avoid the use of flip-flops.
+  <sup>[[ссылка](#no-flip-flops)]</sup>
 
-* <a name="no-nested-conditionals"></a> Avoid use of nested conditionals for flow of control.<sup>[[ссылка](#no-nested-conditionals)]</sup>
-
+* <a name="no-nested-conditionals"></a>
+  Avoid use of nested conditionals for flow of control.
   Prefer a guard clause when you can assert invalid data. A guard clause
   is a conditional statement at the top of a function that bails out as
   soon as it can.
+  <sup>[[ссылка](#no-nested-conditionals)]</sup>
 
   ```Ruby
   # плохо
