@@ -1503,9 +1503,10 @@
   format('%{first} %{second}', first: 20, second: 10)
   # => '20 10'
   ```
-<!--- @FIXME -->
+
 * <a name="array-join"></a>
-  Favor the use of `Array#join` over the fairly cryptic `Array#*` with  a string argument.
+  Используйте `Array#join` вместо достаточно неочевидного `Array#*` со строковым
+  аргументом.
   <sup>[[ссылка](#array-join)]</sup>
 
   ```Ruby
@@ -1519,9 +1520,9 @@
   ```
 
 * <a name="splat-arrays"></a>
-  Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing
-  with a  variable you want to treat as an Array, but you're not certain it's
-  an array.
+  Используйте `[*var]` или `Array()` вместо явной проверки с помощью `Array`,
+  когда вам приходится работать с переменной, которая по вашим ожиданиям должна
+  быть массивом, но вы в этом не полностью уверены.
   <sup>[[ссылка](#splat-arrays)]</sup>
 
   ```Ruby
@@ -1537,8 +1538,8 @@
   ```
 
 * <a name="ranges-or-between"></a>
-  Use ranges or `Comparable#between?` instead of complex comparison logic when
-  possible.
+  Используйте интервалы или метод `Comparable#between?` вместо сложной логики
+  для сравнения, когда это возможно.
   <sup>[[ссылка](#ranges-or-between)]</sup>
 
   ```Ruby
@@ -1553,8 +1554,8 @@
   ```
 
 * <a name="predicate-methods"></a>
-  Favor the use of predicate methods to explicit comparisons with  `==`. Numeric
-  comparisons are OK.
+  Используйте предикативные методы вместо явного сравнения с использованием
+  `==`. Сравнение чисел можно проводить явно.
   <sup>[[ссылка](#predicate-methods)]</sup>
 
   ```Ruby
@@ -1586,7 +1587,8 @@
   ```
 
 * <a name="no-non-nil-checks"></a>
-  Don't do explicit non-`nil` checks unless you're dealing with boolean values.
+  Проводите явную проверку на значение `nil`, только если вы работаете
+  с логическими значениями.
   <sup>[[ссылка](#no-non-nil-checks)]</sup>
 
     ```Ruby
@@ -1597,18 +1599,18 @@
     # хорошо
     do_something if something
 
-    # хорошо - dealing with a boolean
+    # хорошо (логическое значение)
     def value_set?
       !@some_boolean.nil?
     end
     ```
 
 * <a name="no-BEGIN-blocks"></a>
-  Avoid the use of `BEGIN` blocks.
+  Старайтесь не использовать блоки `BEGIN`.
   <sup>[[ссылка](#no-BEGIN-blocks)]</sup>
 
 * <a name="no-END-blocks"></a>
-  Never use `END` blocks. Use `Kernel#at_exit` instead.
+  Никогда не используйте блоки `END`. Используйте метод `Kernel#at_exit`.
   <sup>[[ссылка](#no-END-blocks)]</sup>
 
   ```Ruby
@@ -1619,15 +1621,16 @@
   at_exit { puts 'Goodbye!' }
   ```
 
+<!--- @FIXME -->
 * <a name="no-flip-flops"></a>
-  Avoid the use of flip-flops.
+  Избегайте переменных-перевертышей.
   <sup>[[ссылка](#no-flip-flops)]</sup>
 
+<!--- @FIXME -->
 * <a name="no-nested-conditionals"></a>
-  Avoid use of nested conditionals for flow of control.
-  Prefer a guard clause when you can assert invalid data. A guard clause
-  is a conditional statement at the top of a function that bails out as
-  soon as it can.
+  Избегайте вложенных условий для управления ветвлением. Используйте проверочные
+  выражения. Проверочные выражения - это условные выражения в самом начале
+  функции, которые срабатывают при первой же возможности.
   <sup>[[ссылка](#no-nested-conditionals)]</sup>
 
   ```Ruby
@@ -1652,7 +1655,7 @@
   end
   ```
 
-  Prefer `next` in loops instead of conditional blocks.
+  Используйте в циклах `next` в место блоков с условием.
 
   ```Ruby
   # плохо
