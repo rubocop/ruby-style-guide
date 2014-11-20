@@ -2500,11 +2500,9 @@ condition](#safe-assignment-in-condition).
 
   ```Ruby
   def foo
-    begin
-      fail
-    ensure
-      return 'very bad idea'
-    end
+    fail
+  ensure
+    return 'very bad idea'
   end
   ```
 
