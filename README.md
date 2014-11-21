@@ -492,8 +492,62 @@ would happen if the current value happened to be `false`.)
       end
     ```
 
-## Naming
+### Long Expressions
 
+When a long expression spans multiple lines, first try and refactor so it
+shouldn't be necessary. Otherwise...
+
+```ruby
+def very_bad
+  current_user.
+  update_attributes(name: 'A very long name that spans multiple lines')
+end
+
+def very_bad
+  current_user
+            .assign_attributes(name: 'A very long name that spans multiple lines')
+            .save
+            .what
+end
+
+def bad
+  current_user.
+    update_attributes(name: 'A very long name that spans multiple lines')
+end
+
+def good
+  current_user
+    .update_attributes(name: 'A very long name that spans multiple lines')
+end
+
+def better
+  current_user.update_attributes(
+    name: 'A very long name that spans multiple lines'
+  )
+end
+```
+
+```ruby
+# VERY bad
+def alive?
+  last_breath > 1.minute.ago || pulse.present? ||
+  the_very_smart_doctor_said_so
+end
+
+# Good
+def alive?
+  last_breath > 1.minute.ago || pulse.present? ||
+    the_very_smart_doctor_said_so
+end
+
+# Good - sometimes
+def alive?
+  (last_breath > 1.minute.ago || pulse.present? ||
+    the_very_smart_doctor_said_so)
+end
+```
+
+## Naming
 
 * Use `snake_case` for methods and variables.
 
