@@ -2253,21 +2253,22 @@
   при многократной загрузке кода из файла.
   <sup>[[ссылка](#no-extend-struct-new)]</sup>
 
-<!-- @FIXME -->
-* <a name="factory-methods"></a> Consider adding factory methods to provide
-  additional sensible ways  to create instances of a particular class.
+* <a name="factory-methods"></a>
+  Продумывайте варианты добавления фабричных методов как дополнительной
+  возможности создавать экземпляры конкретного класса.
   <sup>[[ссылка](#factory-methods)]</sup>
 
   ```Ruby
   class Person
     def self.create(options_hash)
-      # body omitted
+      # некоторый код
     end
   end
   ```
 
-* <a name="duck-typing"></a> Prefer [duck-typing](http://en.wikipedia.org/wiki/Duck_typing)
-  over inheritance.
+* <a name="duck-typing"></a>
+  Используйте технику [утиной типизации][duck-typing] (duck typing) вместо
+  наследования.
   <sup>[[ссылка](#duck-typing)]</sup>
 
   ```Ruby
@@ -2306,8 +2307,8 @@
   end
   ```
 
-* <a name="no-class-vars"></a> Avoid the usage of class (`@@`) variables due to
-  their "nasty" behavior in inheritance.
+* <a name="no-class-vars"></a> Избегайте переменных класса (`@@`) из-за их
+  "непристойного" поведения при наследовании.
   <sup>[[ссылка](#no-class-vars)]</sup>
 
   ```Ruby
@@ -2323,53 +2324,54 @@
     @@class_var = 'child'
   end
 
-  Parent.print_class_var # => will print "child"
+  Parent.print_class_var # => вернет "child"
   ```
 
-  As you can see all the classes in a class hierarchy actually share one
-  class variable. Class instance variables should usually be preferred
-  over class variables.
+  Как вы видите, все классы в иерархии фактически делять одну и ту же
+  переменную класса. Как правило, вам следует использовать переменные
+  экземпляра класса вместо переменной класса.
 
-* <a name="visibility"></a> Assign proper visibility levels to methods
-  (`private`, `protected`)  in accordance with their intended usage. Don't
-  go off leaving everything `public` (which is the default). After all we're
-  coding in *Ruby* now, not in *Python*.
+* <a name="visibility"></a>
+  Ограничивайте область видимости методов (`private`, `protected`) в зависимости
+  от их пранируемого применения. Не оставляйте все в зоне `public` (это
+  стандартное значение). В конце концов мы пишем на *Руби*, а не на *Питоне*.
   <sup>[[ссылка](#visibility)]</sup>
 
-* <a name="indent-public-private-protected"></a> Indent the `public`,
-  `protected`, and `private` methods as much the  method definitions they apply
-  to. Leave one blank line above the visibility modifier and one blank line
-  below in order to emphasize that it applies to all methods below it.
+* <a name="indent-public-private-protected"></a>
+  Делайте отступы для указателей `public`, `protected` и `private` такими же,
+  как и у самих определений методов, к которым они относятся. Оставляйте пустую
+  строку выше, а также после указателя, чтобы подчеркнуть, что он относится ко
+  всем определяемым ниже методам.
   <sup>[[ссылка](#indent-public-private-protected)]</sup>
 
   ```Ruby
   class SomeClass
     def public_method
-      # ...
+      # некоторый код
     end
 
     private
 
     def private_method
-      # ...
+      # некоторый код
     end
 
     def another_private_method
-      # ...
+      # некоторый код
     end
   end
   ```
 
-* <a name="def-self-singletons"></a> Use `def self.method` to define singleton
-  methods. This makes the code  easier to refactor since the class name is
-  not repeated.
+* <a name="def-self-singletons"></a>
+  Для определения синглетных методов используйте `def self.method`. Это упростит
+  рефакторинг, так как имя класса будет использоваться только один раз.
   <sup>[[ссылка](#def-self-singletons)]</sup>
 
   ```Ruby
   class TestClass
     # плохо
     def TestClass.some_method
-      # body omitted
+      # некоторый код
     end
 
     # хорошо
@@ -2377,15 +2379,15 @@
       # body omitted
     end
 
-    # Also possible and convenient when you
-    # have to define many singleton methods.
+    # Также допускается и будет удобным, когда
+    # нужно определить много синглетных методов.
     class << self
       def first_method
-        # body omitted
+        # некоторый код
       end
 
       def second_method_etc
-        # body omitted
+        # некоторый код
       end
     end
   end
@@ -3363,3 +3365,4 @@
 [transmuter]: https://github.com/TechnoGate/transmuter
 [RuboCop]: https://github.com/bbatsov/rubocop
 [Liskov]: https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8_%D0%91%D0%B0%D1%80%D0%B1%D0%B0%D1%80%D1%8B_%D0%9B%D0%B8%D1%81%D0%BA%D0%BE%D0%B2
+[duck-typing]: https://ru.wikipedia.org/wiki/%D0%A3%D1%82%D0%B8%D0%BD%D0%B0%D1%8F_%D1%82%D0%B8%D0%BF%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F
