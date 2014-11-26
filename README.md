@@ -3411,8 +3411,8 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#functional-code)]</sup>
 
 * <a name="no-param-mutations"></a>
-  Do not mutate arguments unless that is the purpose of the method.
-<sup>[[link](#no-arg-mutations)]</sup>
+  Do not mutate parameters unless that is the purpose of the method.
+<sup>[[link](#no-param-mutations)]</sup>
 
 * <a name="three-is-the-number-thou-shalt-count"></a>
   Avoid more than three levels of block nesting.
