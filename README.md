@@ -3299,7 +3299,7 @@ condition](#safe-assignment-in-condition).
     if 'String'.respond_to?(unsafe_method)
       class_eval <<-EOT, __FILE__, __LINE__ + 1
         def #{unsafe_method}(*params, &block)       # def capitalize(*params, &block)
-          to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
+          to_str.#{unsafe_method}(*params, &block)  #   to_str.capitalize(*params, &block)
         end                                       # end
 
         def #{unsafe_method}!(*params)              # def capitalize!(*params)
@@ -3337,7 +3337,7 @@ condition](#safe-assignment-in-condition).
     # good
     def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
-        find_by(prop, *args, &block)
+        find_by(prop, *params, &block)
       else
         super
       end
