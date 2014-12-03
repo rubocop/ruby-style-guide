@@ -2888,7 +2888,7 @@ condition](#safe-assignment-in-condition).
   nickname = data['nickname']
 
   # good
-  email, username = data.values_at('email', 'nickname')
+  email, nickname = data.values_at('email', 'nickname')
   ```
 
 * <a name="ordered-hashes"></a>
