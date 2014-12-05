@@ -291,7 +291,7 @@ Translations of the guide are available in the following languages:
 
     # good
     1..3
-    'a'..'z'
+    'a'...'z'
     ```
 
 * <a name="indent-when-to-case"></a>
