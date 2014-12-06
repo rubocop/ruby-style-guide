@@ -69,6 +69,7 @@ Translations of the guide are available in the following languages:
 * [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
 * [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
 * [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
+* [German](https://github.com/arbox/ruby-style-guide/blob/master/README-deDE.md)
 * [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 * [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKO.md)
 * [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
@@ -290,7 +291,7 @@ Translations of the guide are available in the following languages:
 
     # good
     1..3
-    'a'..'z'
+    'a'...'z'
     ```
 
 * <a name="indent-when-to-case"></a>
@@ -624,8 +625,8 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="method-parens"></a>
-    Use `def` with parentheses when there are arguments. Omit the
-    parentheses when the method doesn't accept any arguments.
+    Use `def` with parentheses when there are parameters. Omit the
+    parentheses when the method doesn't accept any parameters.
 <sup>[[link](#method-parens)]</sup>
 
    ```Ruby
@@ -640,12 +641,12 @@ Translations of the guide are available in the following languages:
    end
 
    # bad
-   def some_method_with_arguments arg1, arg2
+   def some_method_with_parameters param1, param2
      # body omitted
    end
 
    # good
-   def some_method_with_arguments(arg1, arg2)
+   def some_method_with_parameters(param1, param2)
      # body omitted
    end
    ```
@@ -1368,7 +1369,7 @@ condition](#safe-assignment-in-condition).
 
   # good
   "ruby" == some_str
-  1.0.eql? == x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  1.0.eql? x # eql? makes sense here if want to differentiate between Fixnum and Float 1
   ```
 
 * <a name="no-cryptic-perlisms"></a>
@@ -1925,7 +1926,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#reduce-blocks)]</sup>
 
 * <a name="other-arg"></a>
-  When defining binary operators, name the argument `other`(`<<` and `[]` are
+  When defining binary operators, name the parameter `other`(`<<` and `[]` are
   exceptions to the rule, since their semantics are different).
 <sup>[[link](#other-arg)]</sup>
 
@@ -2446,6 +2447,72 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
+* <a name="alias-method-lexically"></a>
+  Prefer `alias` when aliasing methods in lexical class scope as the
+  resolution of `self` in this context is also lexical, and it communicates
+  clearly to the user that the indirection of your alias will not be altered
+  at runtime or by any subclass unless made explicit.
+<sup>[[link](#alias-method-lexically)]</sup>
+
+  ```Ruby
+  class Westerner
+    def first_name
+      @names.first
+    end
+
+    alias given_name first_name
+  end
+  ```
+
+  Since `alias`, like `def`, is a keyword, prefer bareword arguments over
+  symbols or strings. In other words, do `alias foo bar`, not
+  `alias :foo :bar`.
+
+  Also be aware of how Ruby handles aliases and inheritance: an alias
+  references the method that was resolved at the time the alias was defined;
+  it is not dispatched dynamically.
+
+  ```Ruby
+  class Fugitive < Westerner
+    def first_name
+      'Nobody'
+    end
+  end
+  ```
+
+  In this example, `Fugitive#given_name` would still call the original
+  `Westerner#first_name` method, not `Fugitive#first_name`. To override the
+  behavior of `Fugitive#given_name` as well, you'd have to redefine it in the
+  derived class.
+
+  ```Ruby
+  class Fugitive < Westerner
+    def first_name
+      'Nobody'
+    end
+
+    alias given_name first_name
+  end
+  ```
+
+* <a name="alias-method"></a>
+  Always use `alias_method` when aliasing methods of modules, classes, or
+  singleton classes at runtime, as the lexical scope of `alias` leads to
+  unpredictability in these cases.
+<sup>[[link](#alias-method)]</sup>
+
+  ```Ruby
+  module Mononymous
+    def self.included(other)
+      other.class_eval { alias_method :full_name, :given_name }
+    end
+  end
+
+  class Sting < Westerner
+    include Mononymous
+  end
+  ```
+
 ## Exceptions
 
 * <a name="fail-method"></a>
@@ -2499,11 +2566,9 @@ condition](#safe-assignment-in-condition).
 
   ```Ruby
   def foo
-    begin
-      fail
-    ensure
-      return 'very bad idea'
-    end
+    fail
+  ensure
+    return 'very bad idea'
   end
   ```
 
@@ -2886,7 +2951,7 @@ condition](#safe-assignment-in-condition).
   ```Ruby
   # bad
   email = data['email']
-  nickname = data['nickname']
+  username = data['nickname']
 
   # good
   email, username = data.values_at('email', 'nickname')
@@ -3036,6 +3101,23 @@ condition](#safe-assignment-in-condition).
     html << "<p>#{paragraph}</p>"
   end
   ```
+
+* <a name="dont-abuse-gsub"></a>
+  Don't use `String#gsub` in scenarios in which you can use a faster more specialized alternative.
+<sup>[[link](#dont-abuse-gsub)]</sup>
+
+    ```Ruby
+    url = 'http://example.com'
+    str = 'lisp-case-rules'
+
+    # bad
+    url.gsub("http://", "https://")
+    str.gsub("-", "_")
+
+    # good
+    url.sub("http://", "https://")
+    str.tr("-", "_")
+    ```
 
 * <a name="heredocs"></a>
   When using heredocs for multi-line strings keep in mind the fact that they
@@ -3282,11 +3364,11 @@ condition](#safe-assignment-in-condition).
   UNSAFE_STRING_METHODS.each do |unsafe_method|
     if 'String'.respond_to?(unsafe_method)
       class_eval <<-EOT, __FILE__, __LINE__ + 1
-        def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
-          to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
+        def #{unsafe_method}(*params, &block)       # def capitalize(*params, &block)
+          to_str.#{unsafe_method}(*params, &block)  #   to_str.capitalize(*params, &block)
         end                                       # end
 
-        def #{unsafe_method}!(*args)              # def capitalize!(*args)
+        def #{unsafe_method}!(*params)              # def capitalize!(*params)
           @dirty = true                           #   @dirty = true
           super                                   #   super
         end                                       # end
@@ -3310,7 +3392,7 @@ condition](#safe-assignment-in-condition).
 
     ```ruby
     # bad
-    def method_missing?(meth, *args, &block)
+    def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
         # ... lots of code to do a find_by
       else
@@ -3319,9 +3401,9 @@ condition](#safe-assignment-in-condition).
     end
 
     # good
-    def method_missing?(meth, *args, &block)
+    def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
-        find_by(prop, *args, &block)
+        find_by(prop, *params, &block)
       else
         super
       end
@@ -3377,10 +3459,6 @@ condition](#safe-assignment-in-condition).
   Foo.bar = 1
   ```
 
-* <a name="alias-method"></a>
-  Avoid `alias` when `alias_method` will do.
-<sup>[[link](#alias-method)]</sup>
-
 * <a name="optionparser"></a>
   Use `OptionParser` for parsing complex command line options and `ruby -s`
   for trivial command line options.
@@ -3394,9 +3472,9 @@ condition](#safe-assignment-in-condition).
   Code in a functional way, avoiding mutation when that makes sense.
 <sup>[[link](#functional-code)]</sup>
 
-* <a name="no-arg-mutations"></a>
-  Do not mutate arguments unless that is the purpose of the method.
-<sup>[[link](#no-arg-mutations)]</sup>
+* <a name="no-param-mutations"></a>
+  Do not mutate parameters unless that is the purpose of the method.
+<sup>[[link](#no-param-mutations)]</sup>
 
 * <a name="three-is-the-number-thou-shalt-count"></a>
   Avoid more than three levels of block nesting.
