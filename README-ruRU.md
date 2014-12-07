@@ -291,7 +291,7 @@
 
     # хорошо
     1..3
-    'a'..'z'
+    'a'...'z'
     ```
 
 * <a name="indent-when-to-case"></a> Делайте отступ для `when` таким же, как и
@@ -618,29 +618,29 @@
   ```
 
 * <a name="method-parens"></a>
-  Используйте `def` со скобками, когда у метода есть аргументы. Опускайте
-  скобки, когда метод не принимает аргументов.
+  Используйте `def` со скобками, когда у метода есть параметры. Опускайте
+  скобки, когда метод не принимает параметров.
   <sup>[[ссылка](#method-parens)]</sup>
 
    ```Ruby
    # плохо
    def some_method()
-     # body omitted
+     # некоторый код
    end
 
    # хорошо
    def some_method
-     # body omitted
+     # некоторый код
    end
 
    # плохо
-   def some_method_with_arguments arg1, arg2
-     # body omitted
+   def some_method_with_parameters param1, param2
+     # некоторый код
    end
 
    # хорошо
-   def some_method_with_arguments(arg1, arg2)
-     # body omitted
+   def some_method_with_parameters(param1, param2)
+     # некоторый код
    end
    ```
 
@@ -1342,6 +1342,19 @@
   (1..100).include?(7)
   some_string =~ /something/
   ```
+* <a name="eql"></a>
+  Do not use `eql?` when using `==` will do. The stricter comparison semantics
+  provided by `eql?` are rarely needed in practice.
+  <sup>[[link](#eql)]</sup>
+
+  ```Ruby
+  # bad - eql? is the same as == for strings
+  "ruby".eql? some_str
+
+  # good
+  "ruby" == some_str
+  1.0.eql? x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  ```
 
 * <a name="no-cryptic-perlisms"></a>
   Избегайте специальных переменных, заимствованых из языка Перл, например, `$:`,
@@ -1842,13 +1855,14 @@
   называйте аргументы  `|a, e|`  (accumulator, element).
   <sup>[[ссылка](#reduce-blocks)]</sup>
 
-* <a name="other-arg"></a> При определении бинарных операторов называйте
-  аргумент `other`. Исключение составляют методы `#<<` и  `#[]`, так как их
-  семантика сильно отличается.<sup>[[ссылка](#other-arg)]</sup>
+* <a name="other-arg"></a>
+  При определении бинарных операторов называйте параметр `other`. Исключение
+  составляют методы `#<<` и  `#[]`, так как их семантика сильно отличается.
+  <sup>[[ссылка](#other-arg)]</sup>
 
   ```Ruby
   def +(other)
-    # body omitted
+    # некоторый код
   end
   ```
 
@@ -2393,6 +2407,74 @@
   end
   ```
 
+<!--- @FIXME -->
+* <a name="alias-method-lexically"></a>
+  Prefer `alias` when aliasing methods in lexical class scope as the
+  resolution of `self` in this context is also lexical, and it communicates
+  clearly to the user that the indirection of your alias will not be altered
+  at runtime or by any subclass unless made explicit.
+<sup>[[link](#alias-method-lexically)]</sup>
+
+  ```Ruby
+  class Westerner
+    def first_name
+      @names.first
+    end
+
+    alias given_name first_name
+  end
+  ```
+
+  Since `alias`, like `def`, is a keyword, prefer bareword arguments over
+  symbols or strings. In other words, do `alias foo bar`, not
+  `alias :foo :bar`.
+
+  Also be aware of how Ruby handles aliases and inheritance: an alias
+  references the method that was resolved at the time the alias was defined;
+  it is not dispatched dynamically.
+
+  ```Ruby
+  class Fugitive < Westerner
+    def first_name
+      'Nobody'
+    end
+  end
+  ```
+
+  In this example, `Fugitive#given_name` would still call the original
+  `Westerner#first_name` method, not `Fugitive#first_name`. To override the
+  behavior of `Fugitive#given_name` as well, you'd have to redefine it in the
+  derived class.
+
+  ```Ruby
+  class Fugitive < Westerner
+    def first_name
+      'Nobody'
+    end
+
+    alias given_name first_name
+  end
+  ```
+
+* <a name="alias-method"></a>
+  Always use `alias_method` when aliasing methods of modules, classes, or
+  singleton classes at runtime, as the lexical scope of `alias` leads to
+  unpredictability in these cases.
+<sup>[[link](#alias-method)]</sup>
+
+  ```Ruby
+  module Mononymous
+    def self.included(other)
+      other.class_eval { alias_method :full_name, :given_name }
+    end
+  end
+
+  class Sting < Westerner
+    include Mononymous
+  end
+  ```
+
+
 ## Исключения
 
 * <a name="fail-method"></a> Вызывайте исключения при помощи ключевого слова `fail`.
@@ -2443,11 +2525,9 @@
 
   ```Ruby
   def foo
-    begin
-      fail
-    ensure
-      return 'very bad idea'
-    end
+    fail
+  ensure
+    return 'very bad idea'
   end
   ```
 
@@ -2804,14 +2884,15 @@
   batman.fetch(:powers) { get_batman_powers }
   ```
 
-* <a name="hash-values-at"></a> Используйте `Hash#values_at`, когда вам нужно
-  получить несколько значений хеша за один раз.
+* <a name="hash-values-at"></a>
+  Используйте `Hash#values_at`, когда вам нужно получить несколько значений хеша
+  за один раз.
   <sup>[[ссылка](#hash-values-at)]</sup>
 
   ```Ruby
   # плохо
   email = data['email']
-  nickname = data['nickname']
+  username = data['nickname']
 
   # хорошо
   email, username = data.values_at('email', 'nickname')
@@ -2951,6 +3032,25 @@
     html << "<p>#{paragraph}</p>"
   end
   ```
+
+<!--- @FIXME -->
+* <a name="dont-abuse-gsub"></a>
+  Don't use `String#gsub` in scenarios in which you can use a faster more specialized alternative.
+<sup>[[link](#dont-abuse-gsub)]</sup>
+
+    ```Ruby
+    url = 'http://example.com'
+    str = 'lisp-case-rules'
+
+    # bad
+    url.gsub("http://", "https://")
+    str.gsub("-", "_")
+
+    # good
+    url.sub("http://", "https://")
+    str.tr("-", "_")
+    ```
+
 
 * <a name="heredocs"></a> При использовании многострочных HEREDOC не забывайте,
   что пробелы в начале строк тоже являются частью создаваемой строки. Примером
@@ -3185,11 +3285,11 @@
   UNSAFE_STRING_METHODS.each do |unsafe_method|
     if 'String'.respond_to?(unsafe_method)
       class_eval <<-EOT, __FILE__, __LINE__ + 1
-        def #{unsafe_method}(*args, &block)       # def capitalize(*args, &block)
-          to_str.#{unsafe_method}(*args, &block)  #   to_str.capitalize(*args, &block)
+        def #{unsafe_method}(*params, &block)       # def capitalize(*params, &block)
+          to_str.#{unsafe_method}(*params, &block)  #   to_str.capitalize(*params, &block)
         end                                       # end
 
-        def #{unsafe_method}!(*args)              # def capitalize!(*args)
+        def #{unsafe_method}!(*params)              # def capitalize!(*params)
           @dirty = true                           #   @dirty = true
           super                                   #   super
         end                                       # end
@@ -3214,7 +3314,7 @@
 
     ```Ruby
     # плохо
-    def method_missing?(meth, *args, &block)
+    def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
         # ... lots of code to do a find_by
       else
@@ -3223,9 +3323,9 @@
     end
 
     # хорошо
-    def method_missing?(meth, *args, &block)
+    def method_missing?(meth, *params, &block)
       if /^find_by_(?<prop>.*)/ =~ meth
-        find_by(prop, *args, &block)
+        find_by(prop, *params, &block)
       else
         super
       end
@@ -3273,9 +3373,6 @@
   Foo.bar = 1
   ```
 
-* <a name="alias-method"></a> Избегайте использования `alias`, если достаточно
-  использовать `alias_method`.<sup>[[ссылка](#alias-method)]</sup>
-
 * <a name="optionparser"></a> Используйте `OptionParser` для анализа сложных
   аргуметов командрой строки и  `ruby -s` для элеметарных случаев.
   <sup>[[ссылка](#optionparser)]</sup>
@@ -3287,8 +3384,9 @@
 * <a name="functional-code"></a> Пишите код в функциональном стиле без изменения
   значений, когда это подходит по смыслу.<sup>[[ссылка](#functional-code)]</sup>
 
-* <a name="no-arg-mutations"></a> Не изменяйте значения аргументов, если только это
-  не есть цель метода.<sup>[[ссылка](#no-arg-mutations)]</sup>
+* <a name="no-param-mutations"></a>
+  Не изменяйте значения параметров, если только это не есть цель метода.
+  <sup>[[ссылка](#no-param-mutations)]</sup>
 
 * <a name="three-is-the-number-thou-shalt-count"></a> Старайтесь не создавать
   вложенные структуры с уровнем вложения больше третьего.
