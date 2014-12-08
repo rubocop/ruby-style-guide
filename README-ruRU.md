@@ -1325,10 +1325,11 @@
   something &&= something.downcase
   ```
 
-<!--- @FIXME -->
-* <a name="no-case-equality"></a> Avoid explicit use of the case equality
-  operator `===`. As its name  implies it is meant to be used implicitly by
-  `case` expressions and outside of them it yields some pretty confusing code.
+* <a name="no-case-equality"></a>
+  Избегайте явного использования оператора равенства в case `===`. Как
+  подсказывает его имя, этот оператор предназначен для имплицитного
+  применения в выражениях `case`, в отрыве от них он приводит только к
+  разночтениям в коде.
   <sup>[[ссылка](#no-case-equality)]</sup>
 
   ```Ruby
@@ -1343,17 +1344,17 @@
   some_string =~ /something/
   ```
 * <a name="eql"></a>
-  Do not use `eql?` when using `==` will do. The stricter comparison semantics
-  provided by `eql?` are rarely needed in practice.
+  Не используйте `eql?`, если будет достаточно `==`. Более строгая семантика
+  сравнения, реализованная в `eql?`, достаточно редко нужна на практике.
   <sup>[[link](#eql)]</sup>
 
   ```Ruby
-  # bad - eql? is the same as == for strings
+  # плохо (`eql?` работает для строк, как и  `==`)
   "ruby".eql? some_str
 
-  # good
+  # хорошо
   "ruby" == some_str
-  1.0.eql? x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  1.0.eql? x # здесь `eql?` имеет смысл, если вы хотите различать классы числа: `Fixnum` vs. `Float`
   ```
 
 * <a name="no-cryptic-perlisms"></a>
@@ -1705,7 +1706,7 @@
   зарплата = 1_000
 
   # плохо (идентификатор - это русское слово, набранное латиницей вместо
-  # кирилицы)
+  # кириллицы)
   zarplata = 1_000
 
   # хорошо
