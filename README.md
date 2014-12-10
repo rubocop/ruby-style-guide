@@ -22,7 +22,11 @@
 * [русский (данный документ)](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
 * [японский](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 
-Если вы хотите оставаться в курсе актуальных изменений, следите за репозиторием и жмите на звездочку!
+В дополнение к настоящему сборнику вас может заинтересовать
+[Rails: руководство по стилю оформления](https://github.com/arbox/rails-style-guide/blob/master/README-ruRU.md).
+
+Если вы хотите оставаться в курсе актуальных изменений, следите за репозиторием
+и жмите на звездочку!
 
 [russian]: https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md
 [english]: https://github.com/bbatsov/ruby-style-guide/blob/master/README.md
