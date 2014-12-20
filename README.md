@@ -1106,36 +1106,33 @@ condition](#safe-assignment-in-condition).
   'test'.upcase
   ```
 
-* <a name="single-line-blocks"></a>
-  Prefer `{...}` over `do...end` for single-line blocks.  Avoid using `{...}`
-  for multi-line blocks (multiline chaining is always ugly). Always use
-  `do...end` for "control flow" and "method definitions" (e.g. in Rakefiles and
-  certain DSLs).  Avoid `do...end` when chaining.
-<sup>[[link](#single-line-blocks)]</sup>
+* <a name="semantic-blocks"></a>
+  Prefer `{...}` over `do...end` where the primary purpose of the block is to return a value. Use `do...end` for blocks where the primary purpose of the block is to execute side effects.
+<sup>[[link](#semantic-blocks)]</sup>
 
   ```Ruby
   names = ['Bozhidar', 'Steve', 'Sarah']
 
   # bad
-  names.each do |name|
+  capitalized_names = names.map do |name|
+    name.capitalize
+  end
+
+  # good
+  capitalized_names = names.map { |name|
+    name.capitalize
+  }
+
+  # bad
+  names.each { |name|
     puts name
   end
 
   # good
-  names.each { |name| puts name }
-
-  # bad
-  names.select do |name|
-    name.start_with?('S')
-  end.map { |name| name.upcase }
-
-  # good
-  names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+  names.each do |name|
+    puts name
+  end
   ```
-
-  Some will argue that multiline chaining would look OK with the use of {...},
-  but they should ask themselves - is this code really readable and can the
-  blocks' contents be extracted into nifty methods?
 
 * <a name="block-argument"></a>
   Consider using explicit block argument to avoid writing block literal that
