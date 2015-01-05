@@ -1705,7 +1705,7 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="map-fine-select-reduce-size"></a>
+* <a name="map-find-select-reduce-size"></a>
   Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
   `reduce` over `inject` and `size` over `length`. This is not a hard
   requirement; if the use of the alias enhances readability, it's ok to use it.
@@ -1713,7 +1713,7 @@ condition](#safe-assignment-in-condition).
   programming languages. The reason the use of `select` is encouraged over
   `find_all` is that it goes together nicely with `reject` and its name is
   pretty self-explanatory.
-<sup>[[link](#map-fine-select-reduce-size)]</sup>
+<sup>[[link](#map-find-select-reduce-size)]</sup>
 
 * <a name="count-vs-size"></a>
   Don't use `count` as a substitute for `size`. For `Enumerable` objects other
