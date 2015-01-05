@@ -1,6 +1,6 @@
 # Вступление
 
-> Role models are important. <br/>
+> Ролевые модели важны. <br/>
 > -- Офицер Алекс Мёрфи / Робот-полицейский
 
 Один из вопросов, который меня всегда беспокоил как разработчика на Руби,
@@ -98,11 +98,9 @@
 
 ## Организация исходного кода
 
-<!--- @FIXME -->
-> Nearly everybody is convinced that every style but their own is
-> ugly and unreadable. Leave out the "but their own" and they're
-> probably right... <br/>
-> -- Jerry Coffin (on indentation)
+> Почти все убеждены, что любой стиль кроме их собственного ужасен и нечитаем.
+> Уберите отсюда "кроме их собственного" &mdash; и они будут, наверное, правы... <br/>
+> -- Джерри Коффин (Jerry Coffin) об отступах
 
 * <a name="utf-8"></a> Используйте `UTF-8` в качестве кодировки для исходного
   кода.<sup>[[ссылка](#utf-8)]</sup>
@@ -1694,6 +1692,7 @@
 
 ## Наименование
 
+<!--- @FIXME -->
 > The only real difficulties in programming are cache invalidation and
 > naming things. <br/>
 > -- Phil Karlton
@@ -1919,12 +1918,11 @@
 
 ## Комментарии
 
-<!--- @FIXME -->
-> Good code is its own best documentation. As you're about to add a
-> comment, ask yourself, "How can I improve the code so that this
-> comment isn't needed?" Improve the code and then document it to make
-> it even clearer. <br/>
-> -- Steve McConnell
+> Хороший код является лучшей документацией для себя. Каждый раз, когда вы
+> готовитесь добавить комментарий, спросите себя: "Как я могу улучшить код,
+> чтобы это комментарий стал ненужным?" Улучшите код и добавьте комментарий,
+> чтобы сделать его еще понятнее. <br/>
+> -- Стив Макконнел (Steve McConnell)
 
 * <a name="no-comments"></a>
   Пишите говорящий за себя код и смело пропускайте все остальное в этом разделе.
@@ -1958,6 +1956,7 @@
   Устаревший комментарий гораздо хуже отсутствующего комментария.
   <sup>[[ссылка](#comment-upkeep)]</sup>
 
+<!--- @FIXME -->
 > Good code is like a good joke - it needs no explanation. <br/>
 > -- Russ Olsen
 
@@ -1965,6 +1964,7 @@
   плохого кода. Перепишите код, чтобы он говорил сам за себя.
   <sup>[[ссылка](#refactor-dont-comment)]</sup>
 
+<!--- @FIXME -->
 > Do or do not - there is no try. <br/>
 > -- Yoda
 
