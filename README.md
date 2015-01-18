@@ -2301,10 +2301,19 @@ condition](#safe-assignment-in-condition).
   ````
 
 * <a name="no-extend-struct-new"></a>
-  Don't extend a `Struct.new` - it already is a new class. Extending it
-  introduces a superfluous class level and may also introduce weird errors if
-  the file is required multiple times.
+  Don't extend an instance initialized by `Struct.new`. Extending it introduces
+  a superfluous class level and may also introduce weird errors if the file is
+  required multiple times.
 <sup>[[link](#no-extend-struct-new)]</sup>
+
+  ```Ruby
+  # bad
+  class Person < Struct.new(:first_name, :last_name)
+  end
+
+  # good
+  Person = Struct.new(:first_name, :last_name)
+  ````
 
 * <a name="factory-methods"></a>
   Consider adding factory methods to provide additional sensible ways to
