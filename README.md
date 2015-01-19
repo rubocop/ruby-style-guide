@@ -1998,7 +1998,7 @@ condition](#safe-assignment-in-condition).
 
 * <a name="indent-annotations"></a>
   If multiple lines are required to describe the problem, subsequent lines
-  should be indented two spaces after the `#`.
+  should be indented three spaces after the `#`.
 <sup>[[link](#indent-annotations)]</sup>
 
   ```Ruby
