@@ -581,8 +581,8 @@ More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_
 
 ```ruby
 # bad
-lambda = lambda { |a, b| a + b }
-lambda.call(1, 2)
+lam = lambda { |a, b| a + b }
+lam.call(1, 2)
 
 # good
 lambda = ->(a, b) { a + b }
@@ -681,7 +681,7 @@ class SomeClass
 end
 ```
 
-### Use `def self.method` to define singleton methods so you don't have to repeat the class name (Don't Repeat Yourself).
+### Use `class << self` or `def self.method` to define singleton methods so you don't have to repeat the class name (Don't Repeat Yourself).
 
 ```ruby
 class TestClass
@@ -695,13 +695,16 @@ class TestClass
     ...
   end
 
-  # Also possible and convenient when you
-  # have to define many singleton methods.
+  # best
+  # this form lets you define many class methods,
+  # and public/private
+  # and attr_reader work as expected.
   class << self
     def first_method
       ...
     end
 
+    private:
     def second_method_etc
       ...
     end
