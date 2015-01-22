@@ -228,10 +228,10 @@ Translations of the guide are available in the following languages:
 
   `{` and `}` deserve a bit of clarification, since they are used
   for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
+  strings. For hash literals two styles are considered acceptable. However, we decided to stick to the second option - with no spaces after `{` and before `}`.
 
   ```Ruby
-  # good - space after { and before }
+  # bad - space after { and before }
   { one: 1, two: 2 }
 
   # good - no space after { and before }
@@ -1067,10 +1067,10 @@ condition](#safe-assignment-in-condition).
 
   ```Ruby
   # bad
-  user.set({ name: 'John', age: 45, permissions: { read: true } })
+  user.set({name: 'John', age: 45, permissions: {read: true}})
 
   # good
-  user.set(name: 'John', age: 45, permissions: { read: true })
+  user.set(name: 'John', age: 45, permissions: {read: true})
   ```
 
 * <a name="no-dsl-decorating"></a>
@@ -1081,10 +1081,10 @@ condition](#safe-assignment-in-condition).
   ```Ruby
   class Person < ActiveRecord::Base
     # bad
-    validates(:name, { presence: true, length: { within: 1..10 } })
+    validates(:name, {presence: true, length: {within: 1..10}})
 
     # good
-    validates :name, presence: true, length: { within: 1..10 }
+    validates :name, presence: true, length: {within: 1..10}
   end
   ```
 
@@ -2681,7 +2681,7 @@ condition](#safe-assignment-in-condition).
   hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
   # good
-  hash = { one: 1, two: 2, three: 3 }
+  hash = {one: 1, two: 2, three: 3}
   ```
 
 * <a name="no-mutable-keys"></a>
@@ -2697,7 +2697,7 @@ condition](#safe-assignment-in-condition).
   hash = { :one => 1, :two => 2, :three => 3 }
 
   # good
-  hash = { one: 1, two: 2, three: 3 }
+  hash = {one: 1, two: 2, three: 3}
   ```
 
 * <a name="no-mixed-hash-syntaces"></a>
@@ -2711,7 +2711,7 @@ condition](#safe-assignment-in-condition).
   { a: 1, 'b' => 2 }
 
   # good
-  { :a => 1, 'b' => 2 }
+  {:a => 1, 'b' => 2}
   ```
 
 * <a name="hash-key"></a>
@@ -2736,7 +2736,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#hash-fetch)]</sup>
 
   ```Ruby
-  heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+  heroes = {batman: 'Bruce Wayne', superman: 'Clark Kent'}
   # bad - if we make a mistake we might not spot it right away
   heroes[:batman] # => "Bruce Wayne"
   heroes[:supermann] # => nil
@@ -2751,7 +2751,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#hash-fetch-defaults)]</sup>
 
   ```Ruby
-  batman = { name: 'Bruce Wayne', is_evil: false }
+  batman = {name: 'Bruce Wayne', is_evil: false}
 
   # bad - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
@@ -2765,7 +2765,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#use-hash-blocks)]</sup>
 
   ```Ruby
-  batman = { name: 'Bruce Wayne' }
+  batman = {name: 'Bruce Wayne'}
 
   # bad - if we use the default value, we eager evaluate it
   # so it can slow the program down if done multiple times
