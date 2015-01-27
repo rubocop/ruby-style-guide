@@ -2402,7 +2402,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#visibility)]</sup>
 
 * <a name="indent-public-private-protected"></a>
-  Indent the `public`, `protected`, and `private` methods as much the method
+  Indent the `public`, `protected`, and `private` methods as much as the method
   definitions they apply to. Leave one blank line above the visibility modifier
   and one blank line below in order to emphasize that it applies to all methods
   below it.
