@@ -3437,6 +3437,26 @@ condition](#safe-assignment-in-condition).
   initializers are exceptions for this rule).
 <sup>[[link](#no-optional-hash-params)]</sup>
 
+* <a name="uniform-keyword-arguments"></a>
+  Don't write a method that accepts regular arguments as well as keyword arguments. In addition to it being confusing, this can create a mess when default values are involved.
+
+    ```ruby
+    # bad
+    def your_method(a=nil, b: nil, c: nil)
+      [a, b, c]
+    end
+
+    # while passing a value only for the 'b' and 'c' keywords, passing value for 'a' becomes necessary:
+    your_method(nil, c: 1)
+
+    # good
+    def your_method(a: nil, b: nil, c: nil)
+      [a, b, c]
+    end
+    your_method(c: 1)
+  ```
+<sup>[[link](#uniform-keyword-arguments)]</sup>
+
 * <a name="short-methods"></a>
   Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will
   be shorter than 5 LOC. Empty lines do not contribute to the relevant LOC.
