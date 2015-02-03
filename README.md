@@ -3342,9 +3342,9 @@ condition](#safe-assignment-in-condition).
 
 ## Metaprogramming
 
-* <a name="no-metaprogramming-masturbation"></a>
+* <a name="no-needless-metaprogramming"></a>
   Avoid needless metaprogramming.
-<sup>[[link](#no-metaprogramming-masturbation)]</sup>
+<sup>[[link](#no-needless-metaprogramming)]</sup>
 
 * <a name="no-monkey-patching"></a>
   Do not mess around in core classes when writing libraries.  (Do not
