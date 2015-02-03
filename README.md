@@ -2980,7 +2980,6 @@ condition](#safe-assignment-in-condition).
   hash = [[:foo, 'bar'], [:biz, 'baz']].to_h
   ```
 
-
 * <a name="ordered-hashes"></a>
   Rely on the fact that as of Ruby 1.9 hashes are ordered.
 <sup>[[link](#ordered-hashes)]</sup>
