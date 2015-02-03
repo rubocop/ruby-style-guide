@@ -2967,6 +2967,20 @@ condition](#safe-assignment-in-condition).
   email, username = data.values_at('email', 'nickname')
   ```
 
+* <a name="to_h"></a>
+  When using Ruby >= 2.0 prefer the `Array#to_h` method for converting an Array to a Hash
+  instead of `Hash.[]` syntax
+<sup>[[link](#to_h)]</sup>
+
+  ```Ruby
+  # bad
+  hash = Hash[[[:foo, 'bar'], [:biz, 'baz']]]
+
+  # good
+  hash = [[:foo, 'bar'], [:biz, 'baz']].to_h
+  ```
+
+
 * <a name="ordered-hashes"></a>
   Rely on the fact that as of Ruby 1.9 hashes are ordered.
 <sup>[[link](#ordered-hashes)]</sup>
