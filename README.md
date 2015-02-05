@@ -3177,7 +3177,7 @@ condition](#safe-assignment-in-condition).
 
 * <a name="no-perl-regexp-last-matchers"></a>
   Don't use the cryptic Perl-legacy variables denoting last regexp group
-  matches (`$1`, `$2`, etc). Use `Regexp.last_match[n]` instead.
+  matches (`$1`, `$2`, etc). Use `Regexp.last_match(n)` instead.
 <sup>[[link](#no-perl-regexp-last-matchers)]</sup>
 
   ```Ruby
@@ -3188,7 +3188,7 @@ condition](#safe-assignment-in-condition).
   process $1
 
   # good
-  process Regexp.last_match[1]
+  process Regexp.last_match(1)
   ```
 
 * <a name="no-numbered-regexes"></a>
@@ -3200,7 +3200,7 @@ condition](#safe-assignment-in-condition).
   # bad
   /(regexp)/ =~ string
   ...
-  process Regexp.last_match[1]
+  process Regexp.last_match(1)
 
   # good
   /(?<meaningful_var>regexp)/ =~ string
