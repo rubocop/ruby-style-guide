@@ -2993,7 +2993,7 @@ condition](#safe-assignment-in-condition).
   When providing an accessor for a collection, provide an alternate form
   to save users from checking for `nil` before accessing an element in
   the collection.
-<sup>[[link](#provide-alternate-accessor-to-collections")]</sup>
+<sup>[[link](#provide-alternate-accessor-to-collections)]</sup>
 
   ```Ruby
   # bad
