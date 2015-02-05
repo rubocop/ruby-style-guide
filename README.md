@@ -2975,6 +2975,42 @@ condition](#safe-assignment-in-condition).
   Do not modify a collection while traversing it.
 <sup>[[link](#no-modifying-collections)]</sup>
 
+* <a name="acessing-elements-directly"></a>
+  When accessing elements of a collection, avoid direct access
+  via `[n]` by using an alternate form of the reader method if it is
+  supplied. This guards you from calling `[]` on `nil`.
+<sup>[[link](#accessing-elements-directly)]</sup>
+
+  ```Ruby
+  # bad
+  Regexp.last_match[1]
+
+  # good
+  Regexp.last_match(1)
+  ```
+
+* <a name="provide-alternate-accessor-to-collections"></a>
+  When providing an accessor for a collection, provide an alternate form
+  to save users from checking for `nil` before accessing an element in
+  the collection.
+<sup>[[link](#provide-alternate-accessor-to_collections")]</sup>
+
+  ```Ruby
+  # bad
+  def awesome_things
+    @awesome_things
+  end
+
+  # good
+  def awesome_things(index = nil)
+    if index && @awesome_things
+      @awesome_things[index]
+    else
+      @awesome_things
+    end
+  end
+  ```
+
 ## Strings
 
 * <a name="string-interpolation"></a>
