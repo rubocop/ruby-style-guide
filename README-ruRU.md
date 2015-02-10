@@ -72,7 +72,7 @@
 * [испанский](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
 * [китайский традиционный](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
 * [китайский упрощенный](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [корейский](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKO.md)
+* [корейский](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
 * [немецкий](https://github.com/arbox/ruby-style-guide/blob/master/README-deDE.md)
 * [французский](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
 * [португальский](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
@@ -1864,7 +1864,7 @@
   end
   ```
 
-* <a name="map-fine-select-reduce-size"></a> Используйте `#map` вместо
+* <a name="map-find-select-reduce-size"></a> Используйте `#map` вместо
   `#collect`, `#find` вместо `#detect`, `#select` вместо  `#find_all`,
   `#reduce` вместо `#inject` и `#size` вместо `#length`. Это требование
   не сложно реализовать. Если использование альтернатив улучшит восприятие кода,
@@ -1872,7 +1872,7 @@
   Smalltalk и не распространены в других языках программирования. Причиной,
   почему не следует использовать `#find_all` вместо `#select`, является хорошая
   сочетаемость с методом `#reject`, и эти наименования очевидны.
-  <sup>[[ссылка](#map-fine-select-reduce-size)]</sup>
+  <sup>[[ссылка](#map-find-select-reduce-size)]</sup>
 
 * <a name="count-vs-size"></a> Не используйте `#count` в качестве заметы для
   `#size`. Для объектов классов с включенным `Enumerable` (кроме класса`Array`)
@@ -1972,9 +1972,10 @@
 * <a name="annotate-keywords"></a> Пометка отделяется двоеточием и пробелом, потом
   следует примечание, описывающее проблему.<sup>[[ссылка](#annotate-keywords)]</sup>
 
-* <a name="indent-annotations"></a> Если для описания проблемы потребуются несколько
-  строк, то на каждой последующей строке следует сделать отступ в три пробела после
-  символа `#`.<sup>[[ссылка](#indent-annotations)]</sup>
+* <a name="indent-annotations"></a>
+  Если для описания проблемы потребуются несколько строк, то на каждой
+  последующей строке следует сделать отступ в три пробела после символа `#`.
+  <sup>[[ссылка](#indent-annotations)]</sup>
 
   ```Ruby
   def bar
@@ -2272,11 +2273,20 @@
   end
   ````
 <!--- @FIXME -->
-* <a name="no-extend-struct-new"></a> Не дополняйте `Struct.new` при помощи
-  `#extend`. В этом случае уже создается новый класс. При дополнении вы
-  создадите избыточный уровень абстракции, это может привезти к странным ошибкам
-  при многократной загрузке кода из файла.
+* <a name="no-extend-struct-new"></a>
+  Не дополняйте `Struct.new` при помощи `#extend`. В этом случае уже создается
+  новый класс. При дополнении вы создадите избыточный уровень абстракции, это
+  может привезти к странным ошибкам при многократной загрузке кода из файла.
   <sup>[[ссылка](#no-extend-struct-new)]</sup>
+
+  ```Ruby
+  # плохо
+  class Person < Struct.new(:first_name, :last_name)
+  end
+
+  # хорошо
+  Person = Struct.new(:first_name, :last_name)
+  ```
 
 * <a name="factory-methods"></a>
   Продумывайте варианты добавления фабричных методов как дополнительной
@@ -2915,6 +2925,44 @@
 * <a name="no-modifying-collections"></a> Никогда не модифицируйте коллекцию в
   процессе ее обхода.<sup>[[ссылка](#no-modifying-collections)]</sup>
 
+<!--- @FIXME -->
+* <a name="accessing-elements-directly"></a>
+  When accessing elements of a collection, avoid direct access
+  via `[n]` by using an alternate form of the reader method if it is
+  supplied. This guards you from calling `[]` on `nil`.
+  <sup>[[link](#accessing-elements-directly)]</sup>
+
+  ```Ruby
+  # плохо
+  Regexp.last_match[1]
+
+  # плохо
+  Regexp.last_match(1)
+  ```
+
+<!--- @FIXME -->
+* <a name="provide-alternate-accessor-to-collections"></a>
+  When providing an accessor for a collection, provide an alternate form
+  to save users from checking for `nil` before accessing an element in
+  the collection.
+  <sup>[[link](#provide-alternate-accessor-to-collections)]</sup>
+
+  ```Ruby
+  # плохо
+  def awesome_things
+    @awesome_things
+  end
+
+  # хорошо
+  def awesome_things(index = nil)
+    if index && @awesome_things
+      @awesome_things[index]
+    else
+      @awesome_things
+    end
+  end
+  ```
+
 ## Строки
 
 * <a name="string-interpolation"></a> Используйте интерполяцию строк и форматные
@@ -3109,7 +3157,7 @@
 
 * <a name="no-perl-regexp-last-matchers"></a> Откажитесь от использования наследия
   Перла вроде мистических переменных, обозначающих группы совпадений (`$1`, `$2`
-  и т.д.). Вместо этого используйте `Regexp.last_match[n]`.
+  и т.д.). Вместо этого используйте `Regexp.last_match(n)`.
   <sup>[[ссылка](#no-perl-regexp-last-matchers)]</sup>
 
   ```Ruby
@@ -3120,7 +3168,7 @@
   process $1
 
   # хорошо
-  process Regexp.last_match[1]
+  process Regexp.last_match(1)
   ```
 
 * <a name="no-numbered-regexes"></a> Применение пронумерованных групп
@@ -3268,9 +3316,9 @@
 
 ## Метапрограммирование
 
-* <a name="no-metaprogramming-masturbation"></a> Откажитесь от метапрограммирования
+* <a name="no-needless-metaprogramming"></a> Откажитесь от метапрограммирования
   ради метапрограммирования как такового.
-  <sup>[[ссылка](#no-metaprogramming-masturbation)]</sup>
+  <sup>[[ссылка](#no-needless-metaprogramming)]</sup>
 
 * <a name="no-monkey-patching"></a> Не разводите беспорядок в базовых классах
   при написании библиотек (не используйте "monkey patching").
