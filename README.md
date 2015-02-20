@@ -6,9 +6,8 @@
 
 Читайте [руководство][russian] на русском языке.
 
-[Оригинал][english] этого руководства был составлен
-[Божидаром Батсовым][bbatsov]. Переводы данного руководства доступны на
-следующих языках:
+[Оригинал][english] этого руководства был составлен [Божидаром Батсовым
+][bbatsov]. Переводы данного руководства доступны на следующих языках:
 
 * [английский (исходная версия)][english]
 * [вьетнамский](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
@@ -27,6 +26,24 @@
 
 Если вы хотите оставаться в курсе актуальных изменений, следите за репозиторием
 и жмите на звездочку!
+
+## Другие руководства:
+
+* https://github.com/bestie/objective-ruby-style-guide
+* https://github.com/chneukirchen/styleguide/blob/master/RUBY-STYLE
+* https://github.com/styleguide/ruby
+* https://github.com/airbnb/ruby
+* https://github.com/thoughtbot/guides/tree/master/style/ruby
+
+## Непрерывная интеграция:
+
+* https://houndci.com/
+
+
+## Buttons
+
+<!-- Place this tag where you want the button to render. -->
+<a data-count-api="/users/arbox#followers" data-count-href="/arbox/followers" data-style="mega" href="https://github.com/arbox" class="github-button">Follow @arbox</a>
 
 [russian]: https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md
 [english]: https://github.com/bbatsov/ruby-style-guide/blob/master/README.md
