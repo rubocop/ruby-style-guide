@@ -753,7 +753,7 @@ style guide.
   ```
 
 * <a name="no-and-or-or"></a>
-  The `and` and `or` keywords are banned. It's just not worth it. Always use
+  The `and` and `or` keywords are banned outside of controllers. Use
   `&&` and `||` instead.
 <sup>[[link](#no-and-or-or)]</sup>
 
@@ -775,6 +775,13 @@ style guide.
 
   # control flow
   document.saved? || document.save!
+  ```
+
+  One exception to the rule are controller redirects.
+
+  ```Ruby
+  # good
+  redirect_to some_where and return
   ```
 
 * <a name="no-multiline-ternary"></a>
@@ -857,7 +864,7 @@ style guide.
   ```
 
 * <a name="no-parens-if"></a>
-  Don't use parentheses around the condition of an `if/unless/while/until`.
+  Use parentheses around the multi-conditional `if/unless/while/until` statements.
 <sup>[[link](#no-parens-if)]</sup>
 
   ```Ruby
@@ -870,10 +877,17 @@ style guide.
   if x > 10
     # body omitted
   end
-  ```
 
-Note that there is an exception to this rule, namely [safe assignment in
-condition](#safe-assignment-in-condition).
+  # bad
+  if x > 10 && y < 20
+    # body omitted
+  end
+
+  # good
+  if (x > 10) && (y < 20)
+    # body omitted
+  end
+  ```
 
 * <a name="no-multiline-while-do"></a>
   Do not use `while/until condition do` for multi-line `while/until`.
@@ -1182,13 +1196,6 @@ condition](#safe-assignment-in-condition).
 
   # good (MRI would still complain, but RuboCop won't)
   if (v = array.grep(/foo/))
-    do_something(v)
-    ...
-  end
-
-  # good
-  v = array.grep(/foo/)
-  if v
     do_something(v)
     ...
   end
