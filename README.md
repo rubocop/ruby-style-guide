@@ -638,6 +638,23 @@ style guide.
   result = some_condition ? something : something_else
   ```
 
+  Do not use the ternary operator when one of the conditions results in nil.
+  Use `&&` instead.
+
+  ```Ruby
+  # bad
+  result = some_condition ? something : nil
+
+  # good
+  result = some_condition && something
+
+  # bad
+  result = some_condition ? nil: something
+
+  # good
+  result = !some_condition && something
+  ```
+
 * <a name="no-nested-ternary"></a>
   Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
