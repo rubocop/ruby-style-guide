@@ -64,19 +64,6 @@ You can generate a PDF or an HTML copy of this guide using
 [RuboCop][] is a code analyzer, based on this
 style guide.
 
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [German](https://github.com/arbox/ruby-style-guide/blob/master/README-deDE.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
-
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
@@ -163,7 +150,7 @@ Translations of the guide are available in the following languages:
   class FooError < StandardError
   end
 
-  # okish
+  # good for ActiveArecord
   class FooError < StandardError; end
 
   # good
@@ -180,15 +167,6 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # bad
   def too_much; something; something_else; end
-
-  # okish - notice that the first ; is required
-  def no_braces_method; body end
-
-  # okish - notice that the second ; is optional
-  def no_braces_method; body; end
-
-  # okish - valid syntax, but no ; makes it kind of hard to read
-  def some_method() body end
 
   # good
   def some_method
@@ -213,7 +191,7 @@ Translations of the guide are available in the following languages:
   sum = 1 + 2
   a, b = 1, 2
   [1, 2, 3].each { |e| puts e }
-  class FooError < StandardError; end
+  class SomeModel < ActiveRecord::Base; end
   ```
 
   The only exception, regarding operators, is the exponent operator:
@@ -226,23 +204,6 @@ Translations of the guide are available in the following languages:
   e = M * c**2
   ```
 
-  `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
-
-  ```Ruby
-  # good - space after { and before }
-  { one: 1, two: 2 }
-
-  # good - no space after { and before }
-  {one: 1, two: 2}
-  ```
-
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
   As far as embedded expressions go, there are also two acceptable
   options:
 
@@ -253,11 +214,6 @@ Translations of the guide are available in the following languages:
   # ok - arguably more readable
   "string#{ expr }"
   ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
