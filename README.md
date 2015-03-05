@@ -304,23 +304,7 @@ style guide.
     calc_something_else
   end
 
-  # good - it's apparent what's going on
-  kind = case year
-         when 1850..1889 then 'Blues'
-         when 1890..1909 then 'Ragtime'
-         when 1910..1929 then 'New Orleans Jazz'
-         when 1930..1939 then 'Swing'
-         when 1940..1950 then 'Bebop'
-         else 'Jazz'
-         end
-
-  result = if some_cond
-             calc_something
-           else
-             calc_something_else
-           end
-
-  # good (and a bit more width efficient)
+  # good
   kind =
     case year
     when 1850..1889 then 'Blues'
@@ -395,9 +379,6 @@ style guide.
   end
   ```
 
-  While several Ruby books suggest the first style, the second is much more
-  prominent in practice (and arguably a bit more readable).
-
 * <a name="no-trailing-backslash"></a>
   Avoid line continuation `\` where not required. In practice, avoid using
   line continuations for anything but string concatenation.
@@ -413,29 +394,12 @@ style guide.
            - 2
 
   long_string = 'First part of the long string' \
-                ' and second part of the long string'
+    ' and second part of the long string'
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style. There are two
-    popular styles in the Ruby community, both of which are considered
-    good - leading `.` (Option A) and trailing `.` (Option B).
-<sup>[[link](#consistent-multi-line-chains)]</sup>
 
-  * **(Option A)** When continuing a chained method invocation on
-    another line keep the `.` on the second line.
-
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
+  * When continuing a chained method invocation on another line,
     include the `.` on the first line to indicate that the
     expression continues.
 
@@ -444,7 +408,8 @@ style guide.
     one.two.three
       .four
 
-    # good - it's immediately clear that the expression continues beyond the first line
+    # good - immediately clear that the expression continues beyond the first line
+    # and you can easily copy and paste into console
     one.two.three.
       four
     ```
@@ -453,11 +418,8 @@ style guide.
   [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
 * <a name="no-double-indent"></a>
-    Align the parameters of a method call if they span more than one
-    line. When aligning parameters is not appropriate due to line-length
-    constraints, single indent for the lines after the first is also
-    acceptable.
-<sup>[[link](#no-double-indent)]</sup>
+    Single indent the parameters of a method call if they span more than one
+    line.<sup>[[link](#no-double-indent)]</sup>
 
   ```Ruby
   # starting point (line is too long)
@@ -474,7 +436,6 @@ style guide.
         body: source.text)
   end
 
-  # good
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
                    from: 'us@example.com',
@@ -482,7 +443,7 @@ style guide.
                    body: source.text)
   end
 
-  # good (normal indent)
+  # good
   def send_mail(source)
     Mailer.deliver(
       to: 'bob@example.com',
@@ -507,11 +468,6 @@ style guide.
     'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam'
   ]
-
-  # good
-  menu_item =
-    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
-     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
 * <a name="underscores-in-numerics"></a>
