@@ -1489,9 +1489,9 @@ style guide.
   ```
 
 * <a name="splat-arrays"></a>
-  Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing
+  Use `Array.wrap()` instead of explicit `Array` check, when dealing
   with a variable you want to treat as an Array, but you're not certain it's an
-  array.
+  array. _This requires `active_support`_
 <sup>[[link](#splat-arrays)]</sup>
 
   ```Ruby
@@ -1499,11 +1499,12 @@ style guide.
   paths = [paths] unless paths.is_a? Array
   paths.each { |path| do_something(path) }
 
-  # good
+  # better but performance hit for large arrays
   [*paths].each { |path| do_something(path) }
-
-  # good (and a bit more readable)
   Array(paths).each { |path| do_something(path) }
+
+  # good
+  Array.wrap(paths).each { |path| do_something(path) }
   ```
 
 * <a name="ranges-or-between"></a>
