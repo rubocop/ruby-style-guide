@@ -64,19 +64,6 @@ You can generate a PDF or an HTML copy of this guide using
 [RuboCop][] is a code analyzer, based on this
 style guide.
 
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [German](https://github.com/arbox/ruby-style-guide/blob/master/README-deDE.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
-
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)
@@ -163,8 +150,8 @@ Translations of the guide are available in the following languages:
   class FooError < StandardError
   end
 
-  # okish
-  class FooError < StandardError; end
+  # good for ActiveRecord
+  class FooError < ActiveRecord::Base; end
 
   # good
   FooError = Class.new(StandardError)
@@ -180,15 +167,6 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # bad
   def too_much; something; something_else; end
-
-  # okish - notice that the first ; is required
-  def no_braces_method; body end
-
-  # okish - notice that the second ; is optional
-  def no_braces_method; body; end
-
-  # okish - valid syntax, but no ; makes it kind of hard to read
-  def some_method() body end
 
   # good
   def some_method
@@ -213,7 +191,7 @@ Translations of the guide are available in the following languages:
   sum = 1 + 2
   a, b = 1, 2
   [1, 2, 3].each { |e| puts e }
-  class FooError < StandardError; end
+  class SomeModel < ActiveRecord::Base; end
   ```
 
   The only exception, regarding operators, is the exponent operator:
@@ -226,23 +204,6 @@ Translations of the guide are available in the following languages:
   e = M * c**2
   ```
 
-  `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
-
-  ```Ruby
-  # good - space after { and before }
-  { one: 1, two: 2 }
-
-  # good - no space after { and before }
-  {one: 1, two: 2}
-  ```
-
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
   As far as embedded expressions go, there are also two acceptable
   options:
 
@@ -253,11 +214,6 @@ Translations of the guide are available in the following languages:
   # ok - arguably more readable
   "string#{ expr }"
   ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
@@ -348,23 +304,7 @@ Translations of the guide are available in the following languages:
     calc_something_else
   end
 
-  # good - it's apparent what's going on
-  kind = case year
-         when 1850..1889 then 'Blues'
-         when 1890..1909 then 'Ragtime'
-         when 1910..1929 then 'New Orleans Jazz'
-         when 1930..1939 then 'Swing'
-         when 1940..1950 then 'Bebop'
-         else 'Jazz'
-         end
-
-  result = if some_cond
-             calc_something
-           else
-             calc_something_else
-           end
-
-  # good (and a bit more width efficient)
+  # good
   kind =
     case year
     when 1850..1889 then 'Blues'
@@ -439,9 +379,6 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-  While several Ruby books suggest the first style, the second is much more
-  prominent in practice (and arguably a bit more readable).
-
 * <a name="no-trailing-backslash"></a>
   Avoid line continuation `\` where not required. In practice, avoid using
   line continuations for anything but string concatenation.
@@ -457,29 +394,12 @@ Translations of the guide are available in the following languages:
            - 2
 
   long_string = 'First part of the long string' \
-                ' and second part of the long string'
+    ' and second part of the long string'
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style. There are two
-    popular styles in the Ruby community, both of which are considered
-    good - leading `.` (Option A) and trailing `.` (Option B).
-<sup>[[link](#consistent-multi-line-chains)]</sup>
 
-  * **(Option A)** When continuing a chained method invocation on
-    another line keep the `.` on the second line.
-
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
+  * When continuing a chained method invocation on another line,
     include the `.` on the first line to indicate that the
     expression continues.
 
@@ -488,7 +408,8 @@ Translations of the guide are available in the following languages:
     one.two.three
       .four
 
-    # good - it's immediately clear that the expression continues beyond the first line
+    # good - immediately clear that the expression continues beyond the first line
+    # and you can easily copy and paste into console
     one.two.three.
       four
     ```
@@ -497,11 +418,8 @@ Translations of the guide are available in the following languages:
   [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
 * <a name="no-double-indent"></a>
-    Align the parameters of a method call if they span more than one
-    line. When aligning parameters is not appropriate due to line-length
-    constraints, single indent for the lines after the first is also
-    acceptable.
-<sup>[[link](#no-double-indent)]</sup>
+    Single indent the parameters of a method call if they span more than one
+    line.<sup>[[link](#no-double-indent)]</sup>
 
   ```Ruby
   # starting point (line is too long)
@@ -518,7 +436,6 @@ Translations of the guide are available in the following languages:
         body: source.text)
   end
 
-  # good
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
                    from: 'us@example.com',
@@ -526,7 +443,7 @@ Translations of the guide are available in the following languages:
                    body: source.text)
   end
 
-  # good (normal indent)
+  # good
   def send_mail(source)
     Mailer.deliver(
       to: 'bob@example.com',
@@ -551,11 +468,6 @@ Translations of the guide are available in the following languages:
     'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam'
   ]
-
-  # good
-  menu_item =
-    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
-     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
 * <a name="underscores-in-numerics"></a>
@@ -726,6 +638,23 @@ Translations of the guide are available in the following languages:
   result = some_condition ? something : something_else
   ```
 
+  Do not use the ternary operator when one of the conditions results in nil.
+  Use `&&` instead.
+
+  ```Ruby
+  # bad
+  result = some_condition ? something : nil
+
+  # good
+  result = some_condition && something
+
+  # bad
+  result = some_condition ? nil: something
+
+  # good
+  result = !some_condition && something
+  ```
+
 * <a name="no-nested-ternary"></a>
   Use one expression per branch in a ternary operator. This
   also means that ternary operators must not be nested. Prefer
@@ -824,7 +753,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-and-or-or"></a>
-  The `and` and `or` keywords are banned. It's just not worth it. Always use
+  The `and` and `or` keywords are banned outside of controllers. Use
   `&&` and `||` instead.
 <sup>[[link](#no-and-or-or)]</sup>
 
@@ -846,6 +775,13 @@ Translations of the guide are available in the following languages:
 
   # control flow
   document.saved? || document.save!
+  ```
+
+  One exception to the rule are controller redirects.
+
+  ```Ruby
+  # good
+  redirect_to some_where and return
   ```
 
 * <a name="no-multiline-ternary"></a>
@@ -928,7 +864,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-parens-if"></a>
-  Don't use parentheses around the condition of an `if/unless/while/until`.
+  Use parentheses around the multi-conditional `if/unless/while/until` statements.
 <sup>[[link](#no-parens-if)]</sup>
 
   ```Ruby
@@ -941,10 +877,17 @@ Translations of the guide are available in the following languages:
   if x > 10
     # body omitted
   end
-  ```
 
-Note that there is an exception to this rule, namely [safe assignment in
-condition](#safe-assignment-in-condition).
+  # bad
+  if x > 10 && y < 20
+    # body omitted
+  end
+
+  # good
+  if (x > 10) && (y < 20)
+    # body omitted
+  end
+  ```
 
 * <a name="no-multiline-while-do"></a>
   Do not use `while/until condition do` for multi-line `while/until`.
@@ -1256,13 +1199,6 @@ condition](#safe-assignment-in-condition).
     do_something(v)
     ...
   end
-
-  # good
-  v = array.grep(/foo/)
-  if v
-    do_something(v)
-    ...
-  end
   ```
 
 * <a name="self-assignment"></a>
@@ -1553,9 +1489,9 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="splat-arrays"></a>
-  Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing
+  Use `Array.wrap()` instead of explicit `Array` check, when dealing
   with a variable you want to treat as an Array, but you're not certain it's an
-  array.
+  array. _This requires `active_support`_
 <sup>[[link](#splat-arrays)]</sup>
 
   ```Ruby
@@ -1563,11 +1499,12 @@ condition](#safe-assignment-in-condition).
   paths = [paths] unless paths.is_a? Array
   paths.each { |path| do_something(path) }
 
-  # good
+  # better but performance hit for large arrays
   [*paths].each { |path| do_something(path) }
-
-  # good (and a bit more readable)
   Array(paths).each { |path| do_something(path) }
+
+  # good
+  Array.wrap(paths).each { |path| do_something(path) }
   ```
 
 * <a name="ranges-or-between"></a>
