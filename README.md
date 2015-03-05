@@ -150,8 +150,8 @@ style guide.
   class FooError < StandardError
   end
 
-  # good for ActiveArecord
-  class FooError < StandardError; end
+  # good for ActiveRecord
+  class FooError < ActiveRecord::Base; end
 
   # good
   FooError = Class.new(StandardError)
