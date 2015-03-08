@@ -2744,9 +2744,9 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="file-close"></a>
-  Release external resources obtained by your program in an ensure block.
-<sup>[[link](#file-close)]</sup>
+* <a name="release-resources"></a>
+  Release external resources obtained by your program in an `ensure` block.
+<sup>[[link](#release-resources)]</sup>
 
   ```Ruby
   f = File.open('testfile')
