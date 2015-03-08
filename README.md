@@ -2759,6 +2759,23 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
+* <a name="auto-release-resources"></a>
+Use versions of resource obtaining methods that do automatic
+resource cleanup when possible.
+<sup>[[link](#auto-release-resources)]</sup>
+
+  ```Ruby
+  # bad - you need to close the file descriptor explicitly
+  f = File.open('testfile')
+    # ...
+  f.close
+
+  # good - the file descriptor is closed automatically
+  File.open('testfile') do |f|
+    # ...
+  end
+  ```
+
 * <a name="standard-exceptions"></a>
   Favor the use of exceptions for the standard library over introducing new
   exception classes.
