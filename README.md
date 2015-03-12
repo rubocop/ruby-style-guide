@@ -3341,7 +3341,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-r"></a>
-  Use `%r` only for regular expressions matching *more than* one '/'
+  Use `%r` only for regular expressions matching *at least* one '/'
   character.
 <sup>[[link](#percent-r)]</sup>
 
@@ -3349,11 +3349,8 @@ resource cleanup when possible.
   # bad
   %r(\s+)
 
-  # still bad
-  %r(^/(.*)$)
-  # should be /^\/(.*)$/
-
   # good
+  %r(^/(.*)$)
   %r(^/blog/2011/(.*)$)
   ```
 
