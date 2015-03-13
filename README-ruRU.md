@@ -2428,13 +2428,12 @@
   end
   ```
 
-<!--- @FIXME -->
 * <a name="alias-method-lexically"></a>
-  Prefer `alias` when aliasing methods in lexical class scope as the
-  resolution of `self` in this context is also lexical, and it communicates
-  clearly to the user that the indirection of your alias will not be altered
-  at runtime or by any subclass unless made explicit.
-<sup>[[link](#alias-method-lexically)]</sup>
+  Используйте `alias` при определении алиасов методов в лексической области
+  видимости класса. `self` в данном случае также имеет лексическую область
+  видимости, и это подчеркивает тот факт, что алиас будет указывать на метод
+  того класса, в котором определен. Вызов не будет перенаправлен неявно.
+  <sup>[[link](#alias-method-lexically)]</sup>
 
   ```Ruby
   class Westerner
@@ -2446,13 +2445,13 @@
   end
   ```
 
-  Since `alias`, like `def`, is a keyword, prefer bareword arguments over
-  symbols or strings. In other words, do `alias foo bar`, not
-  `alias :foo :bar`.
+  Так как `alias`, как и `def`, является ключевым словом, используйте простые
+  имена методов, а не символы или строки в качестве аргументов. Другими словами,
+  пишите `alias foo bar`, а не `alias :foo :bar`.
 
-  Also be aware of how Ruby handles aliases and inheritance: an alias
-  references the method that was resolved at the time the alias was defined;
-  it is not dispatched dynamically.
+  Также обратите внимание, как Ruby обрабатывает алиасы при наследовании: алиас
+  будет привязан к тому методу, который находится в области видимости в момент
+  объявления. Динамическое перенаправление вызова не производится.
 
   ```Ruby
   class Fugitive < Westerner
@@ -2462,10 +2461,9 @@
   end
   ```
 
-  In this example, `Fugitive#given_name` would still call the original
-  `Westerner#first_name` method, not `Fugitive#first_name`. To override the
-  behavior of `Fugitive#given_name` as well, you'd have to redefine it in the
-  derived class.
+  В этом примере `Fugitive#given_name` будет вызывать метод базовго класса
+  `Westerner#first_name`, а не `Fugitive#first_name`. Чтобы переопределить
+  поведение `Fugitive#given_name`, нужно объявить алиас в классе-наследнике.
 
   ```Ruby
   class Fugitive < Westerner
@@ -2478,10 +2476,11 @@
   ```
 
 * <a name="alias-method"></a>
-  Always use `alias_method` when aliasing methods of modules, classes, or
-  singleton classes at runtime, as the lexical scope of `alias` leads to
-  unpredictability in these cases.
-<sup>[[link](#alias-method)]</sup>
+  Всегда применяйте `alias_method` для определения алиасов методов модулей,
+  классов или синглетных классов во время выполнения, так как `alias`
+  использует лексическую область видимости, что приводит к неопределенному
+  поведению в данном случае.
+  <sup>[[link](#alias-method)]</sup>
 
   ```Ruby
   module Mononymous
