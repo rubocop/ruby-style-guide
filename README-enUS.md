@@ -2744,9 +2744,9 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="file-close"></a>
-  Release external resources obtained by your program in an ensure block.
-<sup>[[link](#file-close)]</sup>
+* <a name="release-resources"></a>
+  Release external resources obtained by your program in an `ensure` block.
+<sup>[[link](#release-resources)]</sup>
 
   ```Ruby
   f = File.open('testfile')
@@ -2756,6 +2756,23 @@ condition](#safe-assignment-in-condition).
     # .. handle error
   ensure
     f.close if f
+  end
+  ```
+
+* <a name="auto-release-resources"></a>
+Use versions of resource obtaining methods that do automatic
+resource cleanup when possible.
+<sup>[[link](#auto-release-resources)]</sup>
+
+  ```Ruby
+  # bad - you need to close the file descriptor explicitly
+  f = File.open('testfile')
+    # ...
+  f.close
+
+  # good - the file descriptor is closed automatically
+  File.open('testfile') do |f|
+    # ...
   end
   ```
 
@@ -3324,7 +3341,7 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="percent-r"></a>
-  Use `%r` only for regular expressions matching *more than* one '/'
+  Use `%r` only for regular expressions matching *at least* one '/'
   character.
 <sup>[[link](#percent-r)]</sup>
 
@@ -3332,11 +3349,8 @@ condition](#safe-assignment-in-condition).
   # bad
   %r(\s+)
 
-  # still bad
-  %r(^/(.*)$)
-  # should be /^\/(.*)$/
-
   # good
+  %r(^/(.*)$)
   %r(^/blog/2011/(.*)$)
   ```
 
