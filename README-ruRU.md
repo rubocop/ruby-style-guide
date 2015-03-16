@@ -2956,11 +2956,10 @@
   Regexp.last_match(1)
   ```
 
-<!--- @FIXME -->
 * <a name="provide-alternate-accessor-to-collections"></a>
-  When providing an accessor for a collection, provide an alternate form
-  to save users from checking for `nil` before accessing an element in
-  the collection.
+  При определении методов доступа к коллекции, добавьте альтернативную форму,
+  чтобы оградить пользователей от необходимости проверки на `nil` перед доступом
+  к элементу коллекции.
   <sup>[[link](#provide-alternate-accessor-to-collections)]</sup>
 
   ```Ruby
