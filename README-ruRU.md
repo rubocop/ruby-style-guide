@@ -3145,17 +3145,19 @@
 
 ## Регулярные выражения
 
-<!--- @FIXME -->
-> Some people, when confronted with a problem, think
-> "I know, I'll use regular expressions." Now they have two problems.<br/>
-> -- Jamie Zawinski
+> Многие люди, встречаясь с проблемой, думают:
+> "Я знаю решение, я применю регулярные выражения!"
+> Теперь у них две проблемы.<br/>
+> -- Джейми Цавински / Jamie Zawinski
 
-* <a name="no-regexp-for-plaintext"></a> Не используйте регулярные выражения,
-  когда вам нужно просто найди в строке подстроку: `string['text']`.
+* <a name="no-regexp-for-plaintext"></a>
+  Не используйте регулярные выражения, когда вам нужно просто найти в строке
+  подстроку: `string['text']`.
   <sup>[[ссылка](#no-regexp-for-plaintext)]</sup>
 
-* <a name="regexp-string-index"></a> В простейших случаях вы просто можете
-  использовать индексирование строк.<sup>[[ссылка](#regexp-string-index)]</sup>
+* <a name="regexp-string-index"></a>
+  В простейших случаях вы просто можете использовать индексирование строк.
+  <sup>[[ссылка](#regexp-string-index)]</sup>
 
   ```Ruby
   match = string[/regexp/]             # Возвращает найденные совпадения.
