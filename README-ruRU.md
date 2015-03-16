@@ -3107,29 +3107,31 @@
   end
   ```
 
-<!--- @FIXME -->
 * <a name="dont-abuse-gsub"></a>
-  Don't use `String#gsub` in scenarios in which you can use a faster more specialized alternative.
-<sup>[[link](#dont-abuse-gsub)]</sup>
+  Избегайте метода `String#gsub` в случаях, когда можно использовать более
+  быстрый и специализированный альтернативный метод.
+  <sup>[[link](#dont-abuse-gsub)]</sup>
 
     ```Ruby
     url = 'http://example.com'
     str = 'lisp-case-rules'
 
-    # bad
+    # плохо
     url.gsub("http://", "https://")
     str.gsub("-", "_")
 
-    # good
+    # хорошо
     url.sub("http://", "https://")
     str.tr("-", "_")
     ```
 
 
-* <a name="heredocs"></a> При использовании многострочных HEREDOC не забывайте,
-  что пробелы в начале строк тоже являются частью создаваемой строки. Примером
-  хорошего стиля является применение техник, основывающихся на ограничителях,
-  для удаления ненужных пробелов.<sup>[[ссылка](#heredocs)]</sup>
+* <a name="heredocs"></a>
+  При использовании многострочных HEREDOC не забывайте, что пробелы в начале
+  строк тоже являются частью создаваемой строки. Примером хорошего стиля
+  является применение техник, основывающихся на ограничителях, для удаления
+  ненужных пробелов.
+  <sup>[[ссылка](#heredocs)]</sup>
 
   ```Ruby
   code = <<-END.gsub(/^\s+\|/, '')
