@@ -2942,18 +2942,17 @@
 * <a name="no-modifying-collections"></a> Никогда не модифицируйте коллекцию в
   процессе ее обхода.<sup>[[ссылка](#no-modifying-collections)]</sup>
 
-<!--- @FIXME -->
 * <a name="accessing-elements-directly"></a>
-  When accessing elements of a collection, avoid direct access
-  via `[n]` by using an alternate form of the reader method if it is
-  supplied. This guards you from calling `[]` on `nil`.
+  Получая доступ к элементам коллекций, старайтесь избегать доступа при помощи
+  `[n]`, а используйте альтернативные методы доступа, если таковые определены.
+  Это обезопасит вас от вызова `[]` на `nil`.
   <sup>[[link](#accessing-elements-directly)]</sup>
 
   ```Ruby
   # плохо
   Regexp.last_match[1]
 
-  # плохо
+  # хорошо
   Regexp.last_match(1)
   ```
 
