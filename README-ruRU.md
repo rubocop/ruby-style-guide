@@ -2721,19 +2721,19 @@
     f.close unless f.nil?
   end
   ```
-<!--- @FIXME -->
+
 * <a name="auto-release-resources"></a>
-  Use versions of resource obtaining methods that do automatic resource cleanup
-  when possible.
+  Применяйте варианты доступа к ресурсам, которые гарантируют автоматический
+  возврат выделенных ресурсов, если есть такая возможность.
   <sup>[[link](#auto-release-resources)]</sup>
 
   ```Ruby
-  # bad - you need to close the file descriptor explicitly
+  # плохо (нужно специально закрывать ранее открытый файл)
   f = File.open('testfile')
     # ...
   f.close
 
-  # good - the file descriptor is closed automatically
+  # хорошо (открытый файл закрывается автоматически)
   File.open('testfile') do |f|
     # ...
   end
