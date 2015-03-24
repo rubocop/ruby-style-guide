@@ -1106,6 +1106,18 @@ condition](#safe-assignment-in-condition).
   'test'.upcase
   ```
 
+* <a name="single-action-blocks"></a>
+  Use the proc invocation shorthand when the invoked method is the only operation of a block.
+<sup>[[link](#single-action-blocks)]</sup>
+
+  ```Ruby
+  # bad
+  names.map { |name| name.upcase }
+
+  # good
+  names.map(&:upcase)
+  ```
+
 * <a name="single-line-blocks"></a>
   Prefer `{...}` over `do...end` for single-line blocks.  Avoid using `{...}`
   for multi-line blocks (multiline chaining is always ugly). Always use
@@ -1130,7 +1142,7 @@ condition](#safe-assignment-in-condition).
   end.map { |name| name.upcase }
 
   # good
-  names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+  names.select { |name| name.start_with?('S') }.map(&:upcase)
   ```
 
   Some will argue that multiline chaining would look OK with the use of {...},
