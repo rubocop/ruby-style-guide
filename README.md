@@ -326,6 +326,54 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+* <a name="multi-condition-case-when"></a>
+Put multiple when conditions on separate lines.
+Particularly where the conditions form long, complicated lines.
+<sup>[[link](#multi-condition-case-when)]</sup>
+
+  ```Ruby
+  # good
+
+  case token
+  when :star_op
+    stack.pop * stack.pop
+  when :minus_op, :minus_minus_op
+    also_calculate_that
+    stack.pop - stack.pop
+  when MyModule::SomeDomain::BETA_USERS,
+       MyModule::SomeDomain::INTERNAL_RELEASE
+    stack.pop + stack.pop
+  when :int_literal,
+       :some_complicate_explicit_name,
+       :graduate_borrowers_with_arms,
+       :str_interpolated 
+    token.value
+  end
+  ```
+
+  Though better control of primary domain references should be exercised, this style offers a solution for some 'in the wild' situations. It reads better than:
+
+  ```Ruby
+  # bad
+
+  case token
+  when :star_op
+    stack.pop * stack.pop
+  when :slash_op
+    stack.pop / stack.pop
+  when :minus_op, :minus_minus_op
+    also_calculate_that
+    stack.pop - stack.pop
+  when MyModule::SomeDomain::BETA_USERS, MyModule::SomeDomain::INTERNAL_RELEASE
+    stack.pop + stack.pop
+  when :int_literal, :some_complicate_explicit_name, :graduate_borrowers_with_arms, :str_interpolated 
+    token.value
+  end
+  ```
+
+  The 'bad' example also has the issue of cause the entire when line to diff when one of the conditions is changed or updated
+
+
 * <a name="indent-conditional-assignment"></a>
   When assigning the result of a conditional expression to a variable,
   preserve the usual alignment of its branches.
