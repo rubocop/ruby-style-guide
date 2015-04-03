@@ -572,21 +572,24 @@ hash = { :one => 1, :two => 2 }
 hash = { one: 1, two: 2 }
 ```
 
-### `lambda` is preferred over `proc`/`Proc.new`.
+### `->` / `lambda` are preferred over `proc`/`Proc.new`.
 This is because `lambda`s enforce argument list cardinality and have unsurprising `return` semantics.
 (Only use `proc` if you really need a return statement that returns from the enclosing code.)
 More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
 
-### Ruby 1.9 `lambda` literal syntax is preferred.
+### Ruby 1.9 `->` (stabby lambda) syntax is preferred when there are arguments, since stabby lambda arguments are treated just like regular method arguments. For example, these special arguments work for stabby lambda but not `lambda` or `Proc.new`:
+* default arguments
+* keyword arguments
+* block (`&`) argument
 
 ```ruby
 # bad
-lam = lambda { |a, b| a + b }
+lam = lambda { |a, b| a + (b || 0) }
 lam.call(1, 2)
 
 # good
-lambda = ->(a, b) { a + b }
-lambda.(1, 2)
+lambda = ->(a, b = 0) { a + b }
+lambda.call(1, 2)
 ```
 
 ### Use `_` for unused block parameters.
