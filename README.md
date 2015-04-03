@@ -211,20 +211,6 @@ else
 end
 ```
 
-### Never use `if x: ...` - it is removed in Ruby 1.9.
-Use multi-line if or the ternary operator instead.
-
-```ruby
-# bad
-result = if some_condition: something else something_else end
-
-# good
-result = some_condition ? something : something_else
-```
-
-### Use `when x then ...` for one-line cases.
-The alternative syntax `when x: ...` is removed in Ruby 1.9.
-
 ### Use `&&/||` for boolean expressions, `and/or` for control flow.
 
 ```ruby
@@ -578,7 +564,7 @@ This is because `lambda`s enforce argument list cardinality and have unsurprisin
 (Only use `proc` if you really need a return statement that returns from the enclosing code.)
 More details [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls#Understanding_blocks.2C_Procs_and_methods).
 
-### Ruby 1.9 `->` (stabby lambda) syntax is preferred when there are arguments.
+### `->` (stabby lambda) syntax is preferred when there are arguments.
 
 This is because stabby lambda arguments are treated just like regular method arguments. For example, these special arguments work for stabby lambda but not `lambda` or `Proc.new`:
 * default arguments
