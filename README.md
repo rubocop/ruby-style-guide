@@ -577,8 +577,8 @@ lam = lambda { |a, b| a + (b || 0) }
 lam.call(1, 2)
 
 # good
-lambda = ->(a, b = 0) { a + b }
-lambda.call(1, 2)
+lam = ->(a, b = 0) { a + b }
+lam.call(1, 2)
 ```
 
 ### Use `_` for unused block parameters.
