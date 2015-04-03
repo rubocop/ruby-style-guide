@@ -1,5 +1,5 @@
 # Prelude
-RingRevenue Ruby Style Guide initially forked from https://github.com/bbatsov/ruby-style-guide.
+Invoca Ruby Style Guide initially forked from https://github.com/bbatsov/ruby-style-guide.
 
 ## Table of Contents
 
