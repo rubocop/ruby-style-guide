@@ -3345,11 +3345,11 @@ resource cleanup when possible.
 
   ```Ruby
   # bad
-  %r(\s+)
+  %r{\s+}
 
   # good
-  %r(^/(.*)$)
-  %r(^/blog/2011/(.*)$)
+  %r{^/(.*)$}
+  %r{^/blog/2011/(.*)$}
   ```
 
 * <a name="percent-x"></a>
