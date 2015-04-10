@@ -2069,10 +2069,7 @@ condition](#safe-assignment-in-condition).
 
     # constants are next
     SOME_CONSTANT = 20
-
-    # afterwards we have attribute macros
-    attr_reader :name
-
+    
     # followed by other macros (if any)
     validates :name
 
@@ -2083,6 +2080,9 @@ condition](#safe-assignment-in-condition).
     # followed by public instance methods
     def some_method
     end
+    
+    # finishing off with public attribute macros
+    attr_reader :public_attribute
 
     # protected and private methods are grouped near the end
     protected
@@ -2094,6 +2094,9 @@ condition](#safe-assignment-in-condition).
 
     def some_private_method
     end
+    
+    # finally we have private attribute macros
+    attr_reader :private_attribute
   end
   ```
 
