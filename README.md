@@ -1,6 +1,6 @@
 # Prelude
 
-> Role models are important. <br/>
+> Role models are important. <br>
 > -- Officer Alex J. Murphy / RoboCop
 
 One thing has always bothered me as a Ruby developer - Python developers have a
@@ -98,7 +98,7 @@ Translations of the guide are available in the following languages:
 
 > Nearly everybody is convinced that every style but their own is
 > ugly and unreadable. Leave out the "but their own" and they're
-> probably right... <br/>
+> probably right... <br>
 > -- Jerry Coffin (on indentation)
 
 * <a name="utf-8"></a>
@@ -1760,7 +1760,7 @@ condition](#safe-assignment-in-condition).
 ## Naming
 
 > The only real difficulties in programming are cache invalidation and
-> naming things. <br/>
+> naming things. <br>
 > -- Phil Karlton
 
 * <a name="english-identifiers"></a>
@@ -1941,7 +1941,7 @@ condition](#safe-assignment-in-condition).
 > Good code is its own best documentation. As you're about to add a
 > comment, ask yourself, "How can I improve the code so that this
 > comment isn't needed?" Improve the code and then document it to make
-> it even clearer. <br/>
+> it even clearer. <br>
 > -- Steve McConnell
 
 * <a name="no-comments"></a>
@@ -1976,7 +1976,7 @@ condition](#safe-assignment-in-condition).
   comment at all.
 <sup>[[link](#comment-upkeep)]</sup>
 
-> Good code is like a good joke - it needs no explanation. <br/>
+> Good code is like a good joke - it needs no explanation. <br>
 > -- Russ Olsen
 
 * <a name="refactor-dont-comment"></a>
@@ -3199,7 +3199,7 @@ resource cleanup when possible.
 ## Regular Expressions
 
 > Some people, when confronted with a problem, think
-> "I know, I'll use regular expressions." Now they have two problems.<br/>
+> "I know, I'll use regular expressions." Now they have two problems.<br>
 > -- Jamie Zawinski
 
 * <a name="no-regexp-for-plaintext"></a>
@@ -3603,7 +3603,7 @@ your friends and colleagues. Every comment, suggestion or opinion we
 get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
 
-Cheers,<br/>
+Cheers,<br>
 [Bozhidar](https://twitter.com/bbatsov)
 
 [PEP-8]: http://www.python.org/dev/peps/pep-0008/
