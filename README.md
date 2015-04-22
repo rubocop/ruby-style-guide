@@ -3061,12 +3061,11 @@ resource cleanup when possible.
   ```
 
 * <a name="pad-string-interpolation"></a>
-  Consider padding string interpolation code with space. It more clearly sets
-  the code apart from the string.
+  Don't pad string interpolation code with space.
 <sup>[[link](#pad-string-interpolation)]</sup>
 
   ```Ruby
-  "#{ user.last_name }, #{ user.first_name }"
+  "#{user.last_name}, #{user.first_name}"
   ```
 
 * <a name="consistent-string-literals"></a>
@@ -3086,19 +3085,6 @@ resource cleanup when possible.
     # good
     name = 'Bozhidar'
     ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
-
-    ```Ruby
-    # bad
-    name = 'Bozhidar'
-
-    # good
-    name = "Bozhidar"
-    ```
-
-  The string literals in this guide are aligned with the first style.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
