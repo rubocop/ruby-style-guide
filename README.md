@@ -2086,16 +2086,14 @@ condition](#safe-assignment-in-condition).
     def some_method
     end
 
-    # protected and private methods are grouped near the end
-    protected
 
     def some_protected_method
     end
-
-    private
+    protected :some_protected_method
 
     def some_private_method
     end
+    private :some_private_method
   end
   ```
 
@@ -2404,13 +2402,11 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#visibility)]</sup>
 
 * <a name="indent-public-private-protected"></a>
-  Indent the `public`, `protected`, and `private` methods as much as the method
-  definitions they apply to. Leave one blank line above the visibility modifier
-  and one blank line below in order to emphasize that it applies to all methods
-  below it.
+ Use the 'protected' and 'private' methods to explicitly declare a method as protected/private.
 <sup>[[link](#indent-public-private-protected)]</sup>
 
   ```Ruby
+  # bad
   class SomeClass
     def public_method
       # ...
@@ -2425,6 +2421,22 @@ condition](#safe-assignment-in-condition).
     def another_private_method
       # ...
     end
+  end
+  
+  class SomeClass
+    def public_method
+      # ...
+    end
+
+    def private_method
+      # ...
+    end
+    private :private_method
+  
+    def another_private_method
+      # ...
+    end
+    private :another_private_method
   end
   ```
 
