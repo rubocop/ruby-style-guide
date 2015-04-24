@@ -1,54 +1,10 @@
 # Prelude
 
-> Role models are important. <br>
-> -- Officer Alex J. Murphy / RoboCop
-
-One thing has always bothered me as a Ruby developer - Python developers have a
-great programming style reference
-([PEP-8][]) and we never got an official
-guide, documenting Ruby coding style and best practices. And I do believe that
-style matters. I also believe that a great hacker community, such as Ruby has,
-should be quite capable of producing this coveted document.
-
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was doing
-might be interesting to members of the Ruby community in general and that the
-world had little need for another internal company guideline. But the world
-could certainly benefit from a community-driven and community-sanctioned set of
-practices, idioms and style prescriptions for Ruby programming.
-
-Since the inception of the guide I've received a lot of feedback from members of
-the exceptional Ruby community around the world. Thanks for all the suggestions
-and the support! Together we can make a resource beneficial to each and every
-Ruby developer out there.
-
-By the way, if you're into Rails you might want to check out the complementary
+If you're into Rails you might want to check out the complementary
 [Ruby on Rails Style Guide][rails-style-guide].
 
 # The Ruby Style Guide
 
-This Ruby style guide recommends best practices so that real-world Ruby
-programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a style
-guide that holds to an ideal that has been rejected by the people it is supposed
-to help risks not getting used at all &ndash; no matter how good it is.
-
-The guide is separated into several sections of related rules. I've tried to add
-the rationale behind the rules (if it's omitted I've assumed it's pretty
-obvious).
-
-I didn't come up with all the rules out of nowhere - they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Ruby community and
-various highly regarded Ruby programming resources, such as
-["Programming Ruby 1.9"][pickaxe] and
-["The Ruby Programming Language"][trpl].
-
-There are some areas in which there is no clear consensus in the Ruby community
-regarding a particular style (like string literal quoting, spacing inside hash
-literals, dot position in multi-line method chaining, etc.). In such scenarios
-all popular styles are acknowledged and it's up to you to pick one and apply it
-consistently.
 
 This style guide evolves over time as additional conventions are
 identified and past conventions are rendered obsolete by changes in
@@ -58,24 +14,7 @@ Many projects have their own coding style guidelines (often derived
 from this guide). In the event of any conflicts, such
 project-specific guides take precedence for that project.
 
-You can generate a PDF or an HTML copy of this guide using
-[Transmuter][].
-
-[RuboCop][] is a code analyzer, based on this
-style guide.
-
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [German](https://github.com/arbox/ruby-style-guide/blob/master/README-deDE.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
+[RuboCop][https://github.com/bbatsov/rubocop] is a code analyzer, based on this style guide.
 
 ## Table of Contents
 
@@ -123,20 +62,11 @@ Translations of the guide are available in the following languages:
 
 * <a name="crlf"></a>
   Use Unix-style line endings. (*BSD/Solaris/Linux/OS X users are covered by
-  default, Windows users have to be extra careful.)
+  default)
 <sup>[[link](#crlf)]</sup>
 
-  * If you're using Git you might want to add the following
-    configuration setting to protect your project from Windows line
-    endings creeping in:
-
-    ```bash
-    $ git config --global core.autocrlf true
-    ```
-
 * <a name="no-semicolon"></a>
-  Don't use `;` to separate statements and expressions. As a corollary - use one
-  expression per line.
+  Don't use `;` to separate statements and expressions. As a corollary - use one expression per line.
 <sup>[[link](#no-semicolon)]</sup>
 
   ```Ruby
@@ -233,15 +163,7 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # good - space after { and before }
   { one: 1, two: 2 }
-
-  # good - no space after { and before }
-  {one: 1, two: 2}
   ```
-
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
 
   As far as embedded expressions go, there are also two acceptable
   options:
@@ -249,15 +171,7 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # good - no spaces
   "string#{expr}"
-
-  # ok - arguably more readable
-  "string#{ expr }"
   ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
@@ -439,9 +353,6 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-  While several Ruby books suggest the first style, the second is much more
-  prominent in practice (and arguably a bit more readable).
-
 * <a name="no-trailing-backslash"></a>
   Avoid line continuation `\` where not required. In practice, avoid using
   line continuations for anything but string concatenation.
@@ -461,9 +372,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style. There are two
-    popular styles in the Ruby community, both of which are considered
-    good - leading `.` (Option A) and trailing `.` (Option B).
+    Adopt a consistent multi-line method chaining style, leading `.`.
 <sup>[[link](#consistent-multi-line-chains)]</sup>
 
   * **(Option A)** When continuing a chained method invocation on
@@ -477,20 +386,6 @@ Translations of the guide are available in the following languages:
     # good - it's immediately clear what's going on the second line
     one.two.three
       .four
-    ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
-    include the `.` on the first line to indicate that the
-    expression continues.
-
-    ```Ruby
-    # bad - need to read ahead to the second line to know that the chain continues
-    one.two.three
-      .four
-
-    # good - it's immediately clear that the expression continues beyond the first line
-    one.two.three.
-      four
     ```
 
   A discussion on the merits of both alternative styles can be found
@@ -2466,11 +2361,15 @@ condition](#safe-assignment-in-condition).
 
   ```Ruby
   class Westerner
-    def first_name
+    # Rails
+    alias_method given_name, def first_name 
       @names.first
     end
 
-    alias given_name first_name
+    # Plain Ruby
+    alias given_name def first_name 
+      @names.first
+    end
   end
   ```
 
@@ -2647,7 +2546,7 @@ condition](#safe-assignment-in-condition).
     # the rescue clause does absolutely nothing
   end
 
-  # bad
+  # Very very bad
   do_something rescue nil
   ```
 
@@ -2832,13 +2731,6 @@ resource cleanup when possible.
 <sup>[[link](#no-trailing-array-commas)]</sup>
 
   ```Ruby
-  # bad - easier to move/add/remove items, but still not preferred
-  VALUES = [
-             1001,
-             2020,
-             3333,
-           ]
-
   # bad
   VALUES = [1001, 2020, 3333, ]
 
@@ -2893,20 +2785,9 @@ resource cleanup when possible.
 
   # good
   hash = { one: 1, two: 2, three: 3 }
-  ```
-
-* <a name="no-mixed-hash-syntaces"></a>
-  Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash
-  literal. When you've got keys that are not symbols stick to the hash rockets
-  syntax.
-<sup>[[link](#no-mixed-hash-syntaces)]</sup>
-
-  ```Ruby
-  # bad
-  { a: 1, 'b' => 2 }
 
   # good
-  { :a => 1, 'b' => 2 }
+  hash = { one: 1, two: 2, three: 3, 'four' => 4 }
   ```
 
 * <a name="hash-key"></a>
@@ -3056,9 +2937,9 @@ resource cleanup when possible.
   ```
 
 * <a name="consistent-string-literals"></a>
-  Adopt a consistent string literal quoting style. There are two popular
-  styles in the Ruby community, both of which are considered good - single
-  quotes by default (Option A) and double quotes by default (Option B).
+  There are two popular styles in the Ruby community, both of which are
+  considered good - single quotes by default (Option A) and double quotes by default (Option B). Most importantly, don't change other dev's code for such
+  a small thing.
 <sup>[[link](#consistent-string-literals)]</sup>
 
   * **(Option A)** Prefer single-quoted strings when you don't need
@@ -3542,6 +3423,12 @@ resource cleanup when possible.
   Be consistent. In an ideal world, be consistent with these guidelines.
 <sup>[[link](#be-consistent)]</sup>
 
+* <a name="be-nice"></a>
+  Be nice. When two good styles apply, don't change other people syntax
+  just because you like your own better. This saves your time, saves review
+  time, saves times when looking the git history.
+<sup>[[link](#be-nice)]</sup>
+
 * <a name="common-sense"></a>
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
@@ -3553,42 +3440,14 @@ this guide.
 
 ### RuboCop
 
-[RuboCop][] is a Ruby code style
+[RuboCop][https://github.com/bbatsov/rubocop] is a Ruby code style
 checker based on this style guide. RuboCop already covers a
 significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
 and has good Emacs integration.
 
-### RubyMine
-
-[RubyMine](http://www.jetbrains.com/ruby/)'s code inspections are
-[partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
-on this guide.
-
 # Contributing
 
-The guide is still a work in progress - some rules are lacking examples, some
-rules don't have examples that illustrate them clearly enough. Improving such rules
-is a great (and simple way) to help the Ruby community!
-
-In due time these issues will (hopefully) be addressed - just keep them in mind
-for now.
-
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Ruby coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Ruby
-community.
-
-Feel free to open tickets or send pull requests with improvements. Thanks in
-advance for your help!
-
-You can also support the project (and RuboCop) with financial
-contributions via [gittip](https://www.gittip.com/bbatsov).
-
-[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.2.0/dist/gittip.png)](https://www.gittip.com/bbatsov)
-
-## How to Contribute?
-
-It's easy, just follow the [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
+See: [Bozhidar Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
 
 # License
 
@@ -3603,12 +3462,4 @@ your friends and colleagues. Every comment, suggestion or opinion we
 get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
 
-Cheers,<br>
-[Bozhidar](https://twitter.com/bbatsov)
-
-[PEP-8]: http://www.python.org/dev/peps/pep-0008/
-[rails-style-guide]: https://github.com/bbatsov/rails-style-guide
-[pickaxe]: http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0
-[trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
-[transmuter]: https://github.com/TechnoGate/transmuter
-[RuboCop]: https://github.com/bbatsov/rubocop
+Cheers<br>
