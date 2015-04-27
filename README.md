@@ -1114,7 +1114,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#single-line-blocks)]</sup>
 
   ```Ruby
-  names = ['Bozhidar', 'Steve', 'Sarah']
+  names = %w(Bozhidar Steve Sarah)
 
   # bad
   names.each do |name|
