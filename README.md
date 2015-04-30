@@ -363,24 +363,6 @@ Translations of the guide are available in the following languages:
            else
              calc_something_else
            end
-
-  # good (and a bit more width efficient)
-  kind =
-    case year
-    when 1850..1889 then 'Blues'
-    when 1890..1909 then 'Ragtime'
-    when 1910..1929 then 'New Orleans Jazz'
-    when 1930..1939 then 'Swing'
-    when 1940..1950 then 'Bebop'
-    else 'Jazz'
-    end
-
-  result =
-    if some_cond
-      calc_something
-    else
-      calc_something_else
-    end
   ```
 
 * <a name="empty-lines-between-methods"></a>
@@ -429,18 +411,15 @@ Translations of the guide are available in the following languages:
 
   ```Ruby
   # bad
-  def some_method(arg1=:default, arg2=nil, arg3=[])
+  def some_method(arg1 = :default, arg2 = nil, arg3 = [])
     # do something...
   end
 
   # good
-  def some_method(arg1 = :default, arg2 = nil, arg3 = [])
+  def some_method(arg1=:default, arg2=nil, arg3=[])
     # do something...
   end
   ```
-
-  While several Ruby books suggest the first style, the second is much more
-  prominent in practice (and arguably a bit more readable).
 
 * <a name="no-trailing-backslash"></a>
   Avoid line continuation `\` where not required. In practice, avoid using
@@ -465,6 +444,8 @@ Translations of the guide are available in the following languages:
     popular styles in the Ruby community, both of which are considered
     good - leading `.` (Option A) and trailing `.` (Option B).
 <sup>[[link](#consistent-multi-line-chains)]</sup>
+
+At Goldstar, we use (Option B)
 
   * **(Option A)** When continuing a chained method invocation on
     another line keep the `.` on the second line.
@@ -546,16 +527,16 @@ Translations of the guide are available in the following languages:
   menu_item = ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
 
+  # bad
+  menu_item =
+    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
+     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
+
   # good
   menu_item = [
     'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam'
   ]
-
-  # good
-  menu_item =
-    ['Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam',
-     'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
 * <a name="underscores-in-numerics"></a>
@@ -582,10 +563,6 @@ Translations of the guide are available in the following languages:
 * <a name="no-trailing-whitespace"></a>
   Avoid trailing whitespace.
 <sup>[[link](#no-trailing-whitespace)]</sup>
-
-* <a name="newline-eof"></a>
-  End each file with a newline.
-<sup>[[link](#newline-eof)]</sup>
 
 * <a name="no-block-comments"></a>
     Don't use block comments. They cannot be preceded by whitespace and are not
@@ -683,7 +660,7 @@ Translations of the guide are available in the following languages:
 
   ```Ruby
   # bad
-  if some_condition then
+  if some_condition then   # this is a fireable offense
     # body omitted
   end
 
@@ -736,11 +713,22 @@ Translations of the guide are available in the following languages:
   # bad
   some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
 
-  # good
+  # okay
   if some_condition
     nested_condition ? nested_something : nested_something_else
   else
     something_else
+  end
+
+  # good
+  if some_condition
+    method_wrapping_condition
+  else
+    something_else
+  end
+
+  def method_wrapping_condition
+    nested_condition ? nested_something : nested_something_else
   end
   ```
 
@@ -865,9 +853,6 @@ Translations of the guide are available in the following languages:
 
   # good
   do_something if some_condition
-
-  # another good option
-  some_condition && do_something
   ```
 
 * <a name="no-multiline-if-modifiers"></a>
@@ -902,9 +887,6 @@ Translations of the guide are available in the following languages:
 
   # good
   do_something unless some_condition
-
-  # another good option
-  some_condition || do_something
   ```
 
 * <a name="no-else-with-unless"></a>
@@ -1108,10 +1090,14 @@ condition](#safe-assignment-in-condition).
 
 * <a name="single-line-blocks"></a>
   Prefer `{...}` over `do...end` for single-line blocks.  Avoid using `{...}`
-  for multi-line blocks (multiline chaining is always ugly). Always use
-  `do...end` for "control flow" and "method definitions" (e.g. in Rakefiles and
-  certain DSLs).  Avoid `do...end` when chaining.
+  for multi-line blocks (multiline chaining is always ugly).
+  
 <sup>[[link](#single-line-blocks)]</sup>
+
+  For multiline blocks, only use `{...}` if you care about the values. Use 
+  `do...end` when you don't care about the values.
+
+<sup>[[link](#weirich-blocks)]</sup>
 
   ```Ruby
   names = %w(Bozhidar Steve Sarah)
@@ -1131,6 +1117,16 @@ condition](#safe-assignment-in-condition).
 
   # good
   names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+
+  # good
+  names.select { |name|
+    name.start_with?('S')
+  }.map { |name| name.upcase }
+
+  # good
+  let(:thing) {
+    FactoryGirl.build(:thing)
+  }
   ```
 
   Some will argue that multiline chaining would look OK with the use of {...},
