@@ -1745,8 +1745,11 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="reverse-each"></a>
-  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
-  new array allocation and that's a good thing.
+  Prefer `reverse_each` to `reverse.each` because some classes that `include
+  Enumerable` will provide an efficient implementation. Even in the worst case
+  where a class does not provide a specialized implementation, the general
+  implementation inherited from `Enumerable` will be at least as efficient as
+  using `reverse.each`.
 <sup>[[link](#reverse-each)]</sup>
 
   ```Ruby
