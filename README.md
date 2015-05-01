@@ -3,8 +3,8 @@
 > Role models are important. <br>
 > -- Officer Alex J. Murphy / RoboCop
 
-By the way, if you're into Rails you might want to check out the complementary
-[Ruby on Rails Style Guide][rails-style-guide].
+See also:
+[VHL Rails Style Guide][https://github.com/vhl/rails-style-guide].
 
 # The Ruby Style Guide
 
