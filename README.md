@@ -4,7 +4,7 @@
 > -- Officer Alex J. Murphy / RoboCop
 
 See also:
-[VHL Rails Style Guide][https://github.com/vhl/rails-style-guide].
+[VHL Rails Style Guide](https://github.com/vhl/rails-style-guide).
 
 # The Ruby Style Guide
 
