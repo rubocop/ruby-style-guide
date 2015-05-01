@@ -193,13 +193,7 @@ style guide.
 
   ```
 
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
-  As far as embedded expressions go, there are also two acceptable
-  options:
+  For embedded expressions don't add spaces around the variable inside the curly braces:
 
   ```Ruby
   # bad
@@ -207,13 +201,7 @@ style guide.
   
   # good - no spaces
   "string#{expr}"
-
   ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
