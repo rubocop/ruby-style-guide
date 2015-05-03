@@ -3500,6 +3500,37 @@ resource cleanup when possible.
   initializers are exceptions for this rule).
 <sup>[[link](#no-optional-hash-params)]</sup>
 
+* <a name="uniform-keyword-arguments"></a>
+  Methods should receive standard arguments or keyword arguments, but not both. Use an option hash if you want a method with standard arguments to receive key-value pairs as an argument.
+
+    ```ruby
+    # bad
+    def your_method(a=nil, b: nil, c: nil)
+      [a, b, c]
+    end
+
+    # while passing a value only for the 'b' and 'c' keywords,
+    # passing value for 'a' becomes necessary:
+    your_method(nil, c: 1)
+
+    # good–using keyword arguments
+    def your_method(a: nil, b: nil, c: nil)
+      [a, b, c]
+    end
+    your_method(c: 1)
+
+    # good–using standard arguments, commonly used for initialization
+    def your_method(opts={})
+      a = opts[:a] || nil
+      b = opts[:b] || nil
+      c = opts[:c] || nil
+
+      [a, b, c]
+    end
+    your_method(c: 1)
+  ```
+<sup>[[link](#uniform-keyword-arguments)]</sup>
+
 * <a name="short-methods"></a>
   Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will
   be shorter than 5 LOC. Empty lines do not contribute to the relevant LOC.
