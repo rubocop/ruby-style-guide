@@ -2095,7 +2095,11 @@ condition](#safe-assignment-in-condition).
     def self.some_method
     end
 
-    # followed by public instance methods
+    # initialization goes between class methods and other instance methods
+    def initialize
+    end
+
+    # followed by other public instance methods
     def some_method
     end
 
