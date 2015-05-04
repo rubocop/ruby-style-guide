@@ -6,6 +6,9 @@
 See also:
 [VHL Rails Style Guide](https://github.com/vhl/rails-style-guide).
 
+Here's how our styles are different from the community style guide this is based on:
+https://github.com/bbatsov/ruby-style-guide/compare/master...vhl:master
+
 # The Ruby Style Guide
 
 This Ruby style guide recommends best practices so that real-world Ruby
