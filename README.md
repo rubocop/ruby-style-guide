@@ -1032,6 +1032,18 @@ condition](#safe-assignment-in-condition).
   'test'.upcase
   ```
 
+* <a name="single-action-blocks"></a>
+  Use the proc invocation shorthand when the invoked method is the only operation of a block.
+<sup>[[link](#single-action-blocks)]</sup>
+
+  ```Ruby
+  # bad
+  names.map { |name| name.upcase }
+
+  # good
+  names.map(&:upcase)
+  ```
+
 * <a name="single-line-blocks"></a>
   Prefer `{...}` over `do...end` for single-line blocks.  Avoid using `{...}`
   for multi-line blocks (multiline chaining is always ugly). Always use
@@ -1040,7 +1052,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#single-line-blocks)]</sup>
 
   ```Ruby
-  names = ['Bozhidar', 'Steve', 'Sarah']
+  names = %w(Bozhidar Steve Sarah)
 
   # bad
   names.each do |name|
@@ -1056,7 +1068,7 @@ condition](#safe-assignment-in-condition).
   end.map { |name| name.upcase }
 
   # good
-  names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+  names.select { |name| name.start_with?('S') }.map(&:upcase)
   ```
 
   Some will argue that multiline chaining would look OK with the use of {...},
@@ -1671,8 +1683,11 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="reverse-each"></a>
-  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
-  new array allocation and that's a good thing.
+  Prefer `reverse_each` to `reverse.each` because some classes that `include
+  Enumerable` will provide an efficient implementation. Even in the worst case
+  where a class does not provide a specialized implementation, the general
+  implementation inherited from `Enumerable` will be at least as efficient as
+  using `reverse.each`.
 <sup>[[link](#reverse-each)]</sup>
 
   ```Ruby
@@ -2006,7 +2021,11 @@ condition](#safe-assignment-in-condition).
     def self.some_method
     end
 
-    # followed by public instance methods
+    # initialization goes between class methods and other instance methods
+    def initialize
+    end
+
+    # followed by other public instance methods
     def some_method
     end
 
@@ -3269,11 +3288,11 @@ resource cleanup when possible.
 
   ```Ruby
   # bad
-  %r(\s+)
+  %r{\s+}
 
   # good
-  %r(^/(.*)$)
-  %r(^/blog/2011/(.*)$)
+  %r{^/(.*)$}
+  %r{^/blog/2011/(.*)$}
   ```
 
 * <a name="percent-x"></a>
