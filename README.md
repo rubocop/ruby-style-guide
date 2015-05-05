@@ -44,6 +44,7 @@ style guide.
 * [Classes](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
+* [Enumerables](#enumerables)
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
@@ -2984,6 +2985,31 @@ resource cleanup when possible.
     end
   end
   ```
+
+## Enumerables
+
+* <a name="break-up-enumerables"></a>
+  More than one Enumerable method in a method ramps up complexity exponentially.  
+  Break these down into smaller methods.  
+<sup>[[link](#break-up-enumerables)]</sup>
+
+* <a name="enumerate-right"></a>
+  Make sure you’re using the correct Enumerable method.  If you are aggregating results 
+  into an array or hash, use inject; don’t use an external variable and an each loop.  
+  If you need to transform elements, use map/collect.  
+<sup>[[link](#enumerate-right)]</sup>
+
+* <a name="enum-use-count"></a>
+  Use count instead of select { block }.size.  
+<sup>[[link](#enum-use-count)]</sup>
+
+* <a name="enum-use-any"></a>
+  Use any? rather than select { block }.size > 0.  
+<sup>[[link](#enum-use-any)]</sup>
+
+* <a name="none-vs-select"></a>
+  Use none?  Instead of select { block }.size == 0.
+<sup>[[link](#none-vs-select)]</sup>
 
 ## Strings
 
