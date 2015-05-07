@@ -1421,6 +1421,39 @@ condition](#safe-assignment-in-condition).
   you forget either of the rules above!
 <sup>[[link](#always-warn-at-runtime)]</sup>
 
+* <a name="no-nested-methods"></a>
+  Do not use nested method definitions, use lambda instead.
+  Nested method definitions actually produce methods in the same scope
+  (e.g. class) as the outer method. Furthermore, the "nested method" will be
+  redefined every time the method containing its definition is invoked.
+<sup>[[link](#no-nested-methods)]</sup>
+
+  ```Ruby
+  # bad
+  def foo(x)
+    def bar(y)
+      # body omitted
+    end
+    
+    bar(x)
+  end
+
+  # good - the same as the previous, but no bar redefinition on every foo call
+  def bar(y)
+    # body omitted
+  end
+  
+  def foo(x)
+    bar(x)
+  end
+
+  # also good
+  def foo(x)
+    bar = ->(y) { ... }
+    bar.call(x)
+  end
+  ```
+
 * <a name="lambda-multi-line"></a>
   Use the new lambda literal syntax for single line body blocks. Use the
   `lambda` method for multi-line blocks.
