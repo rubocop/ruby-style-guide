@@ -402,6 +402,31 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+
+* <a name="method-definition-inside-methods"></a>
+    Avoid defining methods inside of methods, as this dynamically defines the "internal" method at the same scope as the "external" method. Instead use a lambda to define a process local to the scope of the method.
+  <sup>[[link](#method-definition-inside-methods)]</sup>
+
+    ```Ruby
+    # good
+    def some_method(argument)
+      internal_process = lambda do |foobar|
+        do_work foobar
+      end
+
+      internal_process(argument)
+    end
+
+    # bad
+    def some_method(argument)
+      def another_method(foobar)
+        do_work foobar
+      end
+
+      another_method(argument)
+    end
+    ```
+
 * <a name="no-trailing-params-comma"></a>
   Avoid comma after the last parameter in a method call, especially when the
   parameters are not on separate lines.
