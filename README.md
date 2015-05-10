@@ -227,8 +227,8 @@ Translations of the guide are available in the following languages:
   ```
 
   `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
+  for block and hash literals, as well as string interpolation.
+  For hash literals two styles are considered acceptable.
 
   ```Ruby
   # good - space after { and before }
@@ -242,22 +242,6 @@ Translations of the guide are available in the following languages:
   popular in the Ruby community in general). The second variant has
   the advantage of adding visual difference between block and hash
   literals. Whichever one you pick - apply it consistently.
-
-  As far as embedded expressions go, there are also two acceptable
-  options:
-
-  ```Ruby
-  # good - no spaces
-  "string#{expr}"
-
-  # ok - arguably more readable
-  "string#{ expr }"
-  ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
@@ -3098,13 +3082,16 @@ resource cleanup when possible.
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="pad-string-interpolation"></a>
-  Consider padding string interpolation code with space. It more clearly sets
-  the code apart from the string.
+* <a name="string-interpolation"></a>
+  With interpolated expressions, there should be no padded-spacing inside the braces.
 <sup>[[link](#pad-string-interpolation)]</sup>
 
   ```Ruby
-  "#{ user.last_name }, #{ user.first_name }"
+  # bad
+  "From: #{ user.first_name }, #{ user.last_name }"
+  
+  # good
+  "From: #{user.first_name}, #{user.last_name}"
   ```
 
 * <a name="consistent-string-literals"></a>
