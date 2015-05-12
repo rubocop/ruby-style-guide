@@ -227,8 +227,8 @@ Translations of the guide are available in the following languages:
   ```
 
   `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
+  for block and hash literals, as well as string interpolation.
+  For hash literals two styles are considered acceptable.
 
   ```Ruby
   # good - space after { and before }
@@ -242,22 +242,6 @@ Translations of the guide are available in the following languages:
   popular in the Ruby community in general). The second variant has
   the advantage of adding visual difference between block and hash
   literals. Whichever one you pick - apply it consistently.
-
-  As far as embedded expressions go, there are also two acceptable
-  options:
-
-  ```Ruby
-  # good - no spaces
-  "string#{expr}"
-
-  # ok - arguably more readable
-  "string#{ expr }"
-  ```
-
-  The first style is extremely more popular and you're generally
-  advised to stick with it. The second, on the other hand, is
-  (arguably) a bit more readable. As with hashes - pick one style
-  and apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
@@ -1106,6 +1090,18 @@ condition](#safe-assignment-in-condition).
   'test'.upcase
   ```
 
+* <a name="single-action-blocks"></a>
+  Use the proc invocation shorthand when the invoked method is the only operation of a block.
+<sup>[[link](#single-action-blocks)]</sup>
+
+  ```Ruby
+  # bad
+  names.map { |name| name.upcase }
+
+  # good
+  names.map(&:upcase)
+  ```
+
 * <a name="single-line-blocks"></a>
   Prefer `{...}` over `do...end` for single-line blocks.  Avoid using `{...}`
   for multi-line blocks (multiline chaining is always ugly). Always use
@@ -1114,7 +1110,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#single-line-blocks)]</sup>
 
   ```Ruby
-  names = ['Bozhidar', 'Steve', 'Sarah']
+  names = %w(Bozhidar Steve Sarah)
 
   # bad
   names.each do |name|
@@ -1130,7 +1126,7 @@ condition](#safe-assignment-in-condition).
   end.map { |name| name.upcase }
 
   # good
-  names.select { |name| name.start_with?('S') }.map { |name| name.upcase }
+  names.select { |name| name.start_with?('S') }.map(&:upcase)
   ```
 
   Some will argue that multiline chaining would look OK with the use of {...},
@@ -1408,6 +1404,39 @@ condition](#safe-assignment-in-condition).
   Always run the Ruby interpreter with the `-w` option so it will warn you if
   you forget either of the rules above!
 <sup>[[link](#always-warn-at-runtime)]</sup>
+
+* <a name="no-nested-methods"></a>
+  Do not use nested method definitions, use lambda instead.
+  Nested method definitions actually produce methods in the same scope
+  (e.g. class) as the outer method. Furthermore, the "nested method" will be
+  redefined every time the method containing its definition is invoked.
+<sup>[[link](#no-nested-methods)]</sup>
+
+  ```Ruby
+  # bad
+  def foo(x)
+    def bar(y)
+      # body omitted
+    end
+
+    bar(x)
+  end
+
+  # good - the same as the previous, but no bar redefinition on every foo call
+  def bar(y)
+    # body omitted
+  end
+
+  def foo(x)
+    bar(x)
+  end
+
+  # also good
+  def foo(x)
+    bar = ->(y) { ... }
+    bar.call(x)
+  end
+  ```
 
 * <a name="lambda-multi-line"></a>
   Use the new lambda literal syntax for single line body blocks. Use the
@@ -1745,8 +1774,11 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="reverse-each"></a>
-  Use `reverse_each` instead of `reverse.each`. `reverse_each` doesn't do a
-  new array allocation and that's a good thing.
+  Prefer `reverse_each` to `reverse.each` because some classes that `include
+  Enumerable` will provide an efficient implementation. Even in the worst case
+  where a class does not provide a specialized implementation, the general
+  implementation inherited from `Enumerable` will be at least as efficient as
+  using `reverse.each`.
 <sup>[[link](#reverse-each)]</sup>
 
   ```Ruby
@@ -2080,7 +2112,11 @@ condition](#safe-assignment-in-condition).
     def self.some_method
     end
 
-    # followed by public instance methods
+    # initialization goes between class methods and other instance methods
+    def initialize
+    end
+
+    # followed by other public instance methods
     def some_method
     end
 
@@ -2956,7 +2992,7 @@ resource cleanup when possible.
   ```
 
 * <a name="use-hash-blocks"></a>
-  Prefer the use of the block instead of the default value in `Hash#fetch`.
+  Prefer the use of the block instead of the default value in `Hash#fetch` if the code that has to be evaluated may have side effects or be expensive.
 <sup>[[link](#use-hash-blocks)]</sup>
 
   ```Ruby
@@ -3046,13 +3082,16 @@ resource cleanup when possible.
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="pad-string-interpolation"></a>
-  Consider padding string interpolation code with space. It more clearly sets
-  the code apart from the string.
+* <a name="string-interpolation"></a>
+  With interpolated expressions, there should be no padded-spacing inside the braces.
 <sup>[[link](#pad-string-interpolation)]</sup>
 
   ```Ruby
-  "#{ user.last_name }, #{ user.first_name }"
+  # bad
+  "From: #{ user.first_name }, #{ user.last_name }"
+
+  # good
+  "From: #{user.first_name}, #{user.last_name}"
   ```
 
 * <a name="consistent-string-literals"></a>
