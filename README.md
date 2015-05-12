@@ -3084,7 +3084,7 @@ resource cleanup when possible.
 
 * <a name="string-interpolation"></a>
   With interpolated expressions, there should be no padded-spacing inside the braces.
-<sup>[[link](#pad-string-interpolation)]</sup>
+<sup>[[link](#string-interpolation)]</sup>
 
   ```Ruby
   # bad
