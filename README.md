@@ -635,6 +635,49 @@ Translations of the guide are available in the following languages:
    end
    ```
 
+* <a name="parallel-assignment"></a>
+    Avoid the use of parallel assignment for defining variables. Parallel
+    assignment is allowed when it is the return of a method call, used with
+    the splat operator, or when used to swap variable assignment. Parallel
+    assignment is less readable than separate assignment. It is also slightly
+    slower than separate assignment.
+<sup>[[link](#parallel-assignment)]</sup>
+
+  ```Ruby
+  # bad
+  a, b, c, d = 'foo', 'bar', 'baz', 'foobar'
+
+  # good
+  a = 'foo'
+  b = 'bar'
+  c = 'baz'
+  d = 'foobar'
+
+  # good - swapping variable assignment
+  # Swapping variable assignment is a special case because it will allow you to
+  # swap the values that are assigned to each variable.
+  a = 'foo'
+  b = 'bar'
+
+  a, b = b, a
+  puts a # => 'bar'
+  puts b # => 'foo'
+
+  # good - method return
+  def multi_return
+    [1, 2]
+  end
+
+  first, second = multi_return
+
+  # good - use with splat
+  first, *list = [1,2,3,4]
+
+  hello_array = *"Hello"
+
+  a = *(1..3)
+  ```
+
 * <a name="no-for-loops"></a>
     Do not use `for`, unless you know exactly why. Most of the time iterators
     should be used instead. `for` is implemented in terms of `each` (so
