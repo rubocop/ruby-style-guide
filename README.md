@@ -1418,7 +1418,7 @@ condition](#safe-assignment-in-condition).
     def bar(y)
       # body omitted
     end
-    
+
     bar(x)
   end
 
@@ -1426,7 +1426,7 @@ condition](#safe-assignment-in-condition).
   def bar(y)
     # body omitted
   end
-  
+
   def foo(x)
     bar(x)
   end
@@ -3089,7 +3089,7 @@ resource cleanup when possible.
   ```Ruby
   # bad
   "From: #{ user.first_name }, #{ user.last_name }"
-  
+
   # good
   "From: #{user.first_name}, #{user.last_name}"
   ```
