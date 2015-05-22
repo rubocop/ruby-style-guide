@@ -2505,10 +2505,10 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="def-self-singletons"></a>
-  Use `def self.method` to define singleton methods. This makes the code
+* <a name="def-self-class-methods"></a>
+  Use `def self.method` to define class methods. This makes the code
   easier to refactor since the class name is not repeated.
-<sup>[[link](#def-self-singletons)]</sup>
+<sup>[[link](#def-self-class-methods)]</sup>
 
   ```Ruby
   class TestClass
