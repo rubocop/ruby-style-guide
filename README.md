@@ -2523,7 +2523,7 @@ condition](#safe-assignment-in-condition).
     end
 
     # Also possible and convenient when you
-    # have to define many singleton methods.
+    # have to define many class methods.
     class << self
       def first_method
         # body omitted
