@@ -1507,6 +1507,19 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
+* <a name="stabby-lambda-no-args"></a>
+Omit the parameter parentheses when defining a stabby lambda with
+no parameters.
+<sup>[[link](#stabby-lambda-no-args)]</sup>
+
+  ```Ruby
+  # bad
+  l = ->() { something }
+
+  # good
+  l = -> { something }
+  ```
+
 * <a name="proc"></a>
   Prefer `proc` over `Proc.new`.
 <sup>[[link](#proc)]</sup>
