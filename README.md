@@ -3057,10 +3057,10 @@ resource cleanup when possible.
 
   # bad - if we use the default value, we eager evaluate it
   # so it can slow the program down if done multiple times
-  batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
+  batman.fetch(:powers, obtain_batman_powers) # obtain_batman_powers is an expensive call
 
   # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
-  batman.fetch(:powers) { get_batman_powers }
+  batman.fetch(:powers) { obtain_batman_powers }
   ```
 
 * <a name="hash-values-at"></a>
