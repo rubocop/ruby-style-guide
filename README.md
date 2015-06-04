@@ -185,8 +185,8 @@ style guide.
   ```
 
   `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as embedded expressions in
-  strings. For hash literals two styles are considered acceptable.
+  for block and hash literals, as well as string interpolation.
+  For hash literals two styles are considered acceptable.
 
   ```Ruby
   # bad - no space after { and before }
@@ -197,15 +197,10 @@ style guide.
 
   ```
 
-  For embedded expressions don't add spaces around the variable inside the curly braces:
-
-  ```Ruby
-  # bad
-  "string#{ expr }"
-  
-  # good - no spaces
-  "string#{expr}"
-  ```
+  The first variant is slightly more readable (and arguably more
+  popular in the Ruby community in general). The second variant has
+  the advantage of adding visual difference between block and hash
+  literals. Whichever one you pick - apply it consistently.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
@@ -577,6 +572,49 @@ style guide.
      # body omitted
    end
    ```
+
+* <a name="parallel-assignment"></a>
+    Avoid the use of parallel assignment for defining variables. Parallel
+    assignment is allowed when it is the return of a method call, used with
+    the splat operator, or when used to swap variable assignment. Parallel
+    assignment is less readable than separate assignment. It is also slightly
+    slower than separate assignment.
+<sup>[[link](#parallel-assignment)]</sup>
+
+  ```Ruby
+  # bad
+  a, b, c, d = 'foo', 'bar', 'baz', 'foobar'
+
+  # good
+  a = 'foo'
+  b = 'bar'
+  c = 'baz'
+  d = 'foobar'
+
+  # good - swapping variable assignment
+  # Swapping variable assignment is a special case because it will allow you to
+  # swap the values that are assigned to each variable.
+  a = 'foo'
+  b = 'bar'
+
+  a, b = b, a
+  puts a # => 'bar'
+  puts b # => 'foo'
+
+  # good - method return
+  def multi_return
+    [1, 2]
+  end
+
+  first, second = multi_return
+
+  # good - use with splat
+  first, *list = [1,2,3,4]
+
+  hello_array = *"Hello"
+
+  a = *(1..3)
+  ```
 
 * <a name="no-for-loops"></a>
     Do not use `for`, unless you know exactly why. Most of the time iterators
@@ -1348,6 +1386,39 @@ condition](#safe-assignment-in-condition).
   you forget either of the rules above!
 <sup>[[link](#always-warn-at-runtime)]</sup>
 
+* <a name="no-nested-methods"></a>
+  Do not use nested method definitions, use lambda instead.
+  Nested method definitions actually produce methods in the same scope
+  (e.g. class) as the outer method. Furthermore, the "nested method" will be
+  redefined every time the method containing its definition is invoked.
+<sup>[[link](#no-nested-methods)]</sup>
+
+  ```Ruby
+  # bad
+  def foo(x)
+    def bar(y)
+      # body omitted
+    end
+
+    bar(x)
+  end
+
+  # good - the same as the previous, but no bar redefinition on every foo call
+  def bar(y)
+    # body omitted
+  end
+
+  def foo(x)
+    bar(x)
+  end
+
+  # also good
+  def foo(x)
+    bar = ->(y) { ... }
+    bar.call(x)
+  end
+  ```
+
 * <a name="lambda-multi-line"></a>
   Use the new lambda literal syntax for single line body blocks. Use the
   `lambda` method for multi-line blocks.
@@ -1372,6 +1443,19 @@ condition](#safe-assignment-in-condition).
     tmp = a * 7
     tmp * b / 50
   end
+  ```
+
+* <a name="stabby-lambda-no-args"></a>
+Omit the parameter parentheses when defining a stabby lambda with
+no parameters.
+<sup>[[link](#stabby-lambda-no-args)]</sup>
+
+  ```Ruby
+  # bad
+  l = ->() { something }
+
+  # good
+  l = -> { something }
   ```
 
 * <a name="proc"></a>
@@ -2384,10 +2468,10 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="def-self-singletons"></a>
-  Use `def self.method` to define singleton methods. This makes the code
+* <a name="def-self-class-methods"></a>
+  Use `def self.method` to define class methods. This makes the code
   easier to refactor since the class name is not repeated.
-<sup>[[link](#def-self-singletons)]</sup>
+<sup>[[link](#def-self-class-methods)]</sup>
 
   ```Ruby
   class TestClass
@@ -2402,7 +2486,7 @@ condition](#safe-assignment-in-condition).
     end
 
     # Also possible and convenient when you
-    # have to define many singleton methods.
+    # have to define many class methods.
     class << self
       def first_method
         # body omitted
@@ -2914,18 +2998,19 @@ resource cleanup when possible.
   ```
 
 * <a name="use-hash-blocks"></a>
-  Prefer the use of the block instead of the default value in `Hash#fetch`.
-<sup>[[link](#use-hash-blocks)]</sup>
+  Prefer the use of the block instead of the default value in `Hash#fetch`
+  if the code that has to be evaluated may have side effects or be expensive.
+  <sup>[[link](#use-hash-blocks)]</sup>
 
   ```Ruby
   batman = { name: 'Bruce Wayne' }
 
   # bad - if we use the default value, we eager evaluate it
   # so it can slow the program down if done multiple times
-  batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
+  batman.fetch(:powers, obtain_batman_powers) # obtain_batman_powers is an expensive call
 
   # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
-  batman.fetch(:powers) { get_batman_powers }
+  batman.fetch(:powers) { obtain_batman_powers }
   ```
 
 * <a name="hash-values-at"></a>
@@ -3029,12 +3114,16 @@ resource cleanup when possible.
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="pad-string-interpolation"></a>
-  Don't pad string interpolation code with space.
-<sup>[[link](#pad-string-interpolation)]</sup>
+* <a name="string-interpolation"></a>
+  With interpolated expressions, there should be no padded-spacing inside the braces.
+<sup>[[link](#string-interpolation)]</sup>
 
   ```Ruby
-  "#{user.last_name}, #{user.first_name}"
+  # bad
+  "From: #{ user.first_name }, #{ user.last_name }"
+
+  # good
+  "From: #{user.first_name}, #{user.last_name}"
   ```
 
 * <a name="consistent-string-literals"></a>
