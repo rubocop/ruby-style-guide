@@ -3630,6 +3630,11 @@ resource cleanup when possible.
   Prefer `Time.now` over `Time.new` when retrieving the current system time.
 <sup>[[link](#time-now)]</sup>
 
+* <a name="prefer-time-over-datetime"></a>
+  Prefer `Time` over `DateTime`, unless you need to deal with dates and times
+  in a [historical context](https://github.com/ruby/ruby/commit/4545875).
+<sup>[[link](#prefer-time-over-datetime)]</sup>
+
 * <a name="functional-code"></a>
   Code in a functional way, avoiding mutation when that makes sense.
 <sup>[[link](#functional-code)]</sup>
