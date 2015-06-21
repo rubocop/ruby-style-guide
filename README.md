@@ -392,7 +392,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#no-trailing-params-comma)]</sup>
 
   ```Ruby
-  # bad - easier to move/add/remove parameters, but still not preferred
+  # bad - easier to move/add/remove parameters, but stil not preferred
   some_method(
                size,
                count,
@@ -1895,7 +1895,7 @@ no parameters.
   ```
 
 * <a name="camelcase-classes"></a>
-  Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
+  Use `PascalCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
   uppercase.)
 <sup>[[link](#camelcase-classes)]</sup>
 
