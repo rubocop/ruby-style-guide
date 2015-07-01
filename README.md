@@ -1851,12 +1851,20 @@ no parameters.
     ...
   end
 
+  class XmlSomething
+    ...
+  end
+
   # good
   class SomeClass
     ...
   end
 
   class SomeXML
+    ...
+  end
+  
+  class XMLSomething
     ...
   end
   ```
