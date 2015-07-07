@@ -658,7 +658,7 @@ over class variables.
 
 ### Assign proper visibility levels to methods (`private`, `protected`) in accordance with their intended usage.
 
-### Indent the `public`, `protected`, and `private` methods as much the method definitions they apply to. Leave one blank line above them.
+### Indent the `public`, `protected`, and `private` methods as much the method definitions they apply to. Leave one blank line above and below them.
 
 ```ruby
 class SomeClass
@@ -667,6 +667,7 @@ class SomeClass
   end
 
   private
+
   def private_method
     ...
   end
@@ -696,7 +697,8 @@ class TestClass
       ...
     end
 
-    private:
+    private
+
     def second_method_etc
       ...
     end
@@ -1126,4 +1128,3 @@ Ideally, most methods will be shorter than 5 lines of code. Comments and empty l
 
 ### Use `OptionParser` for parsing complex command line options and
 `ruby -s` for trivial command line options.
-
