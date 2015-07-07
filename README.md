@@ -445,21 +445,19 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style.
+  When continuing a chained method invocation on another line keep the `.` on
+  the second line.
 <sup>[[link](#consistent-multi-line-chains)]</sup>
 
-  * When continuing a chained method invocation on
-    another line keep the `.` on the second line.
+  ```Ruby
+  # bad - need to consult first line to understand second line
+  one.two.three.
+    four
 
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
+  # good - it's immediately clear what's going on the second line
+  one.two.three
+    .four
+  ```
 
   A discussion on the merits of both alternative styles can be found
   [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
@@ -3144,20 +3142,17 @@ resource cleanup when possible.
   ```
 
 * <a name="consistent-string-literals"></a>
-  Adopt a consistent string literal quoting style.
+  Prefer double-quotes unless your string literal contains `"` or escape
+  characters you want to suppress.
 <sup>[[link](#consistent-string-literals)]</sup>
 
-  * Prefer single-quoted strings when you don't need
-    string interpolation or special symbols such as `\t`, `\n`, `'`,
-    etc.
+  ```Ruby
+  # bad
+  name = 'Bozhidar'
 
-    ```Ruby
-    # bad
-    name = "Bozhidar"
-
-    # good
-    name = 'Bozhidar'
-    ```
+  # good
+  name = "Bozhidar"
+  ```
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
