@@ -1507,6 +1507,19 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
+* <a name="stabby-lambda-with-args"></a>
+Don't omit the parameter parentheses when defining a stabby lambda with
+parameters.
+<sup>[[link](#stabby-lambda-with-args)]</sup>
+
+  ```Ruby
+  # bad
+  l = ->x, y { something(x, y) }
+
+  # good
+  l = ->(x, y) { something(x, y) }
+  ```
+
 * <a name="stabby-lambda-no-args"></a>
 Omit the parameter parentheses when defining a stabby lambda with
 no parameters.
@@ -1925,7 +1938,7 @@ no parameters.
   class SomeXML
     ...
   end
-  
+
   class XMLSomething
     ...
   end
