@@ -3,27 +3,11 @@
 > Role models are important. <br>
 > -- Officer Alex J. Murphy / RoboCop
 
-One thing has always bothered me as a Ruby developer - Python developers have a
-great programming style reference
-([PEP-8][]) and we never got an official
-guide, documenting Ruby coding style and best practices. And I do believe that
-style matters. I also believe that a great hacker community, such as Ruby has,
-should be quite capable of producing this coveted document.
+See also:
+[VHL Rails Style Guide](https://github.com/vhl/rails-style-guide).
 
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was doing
-might be interesting to members of the Ruby community in general and that the
-world had little need for another internal company guideline. But the world
-could certainly benefit from a community-driven and community-sanctioned set of
-practices, idioms and style prescriptions for Ruby programming.
-
-Since the inception of the guide I've received a lot of feedback from members of
-the exceptional Ruby community around the world. Thanks for all the suggestions
-and the support! Together we can make a resource beneficial to each and every
-Ruby developer out there.
-
-By the way, if you're into Rails you might want to check out the complementary
-[Ruby on Rails Style Guide][rails-style-guide].
+Here's how our styles are different from the community style guide this is based on:
+https://github.com/bbatsov/ruby-style-guide/compare/master...vhl:master
 
 # The Ruby Style Guide
 
@@ -44,38 +28,11 @@ various highly regarded Ruby programming resources, such as
 ["Programming Ruby 1.9"][pickaxe] and
 ["The Ruby Programming Language"][trpl].
 
-There are some areas in which there is no clear consensus in the Ruby community
-regarding a particular style (like string literal quoting, spacing inside hash
-literals, dot position in multi-line method chaining, etc.). In such scenarios
-all popular styles are acknowledged and it's up to you to pick one and apply it
-consistently.
-
-This style guide evolves over time as additional conventions are
-identified and past conventions are rendered obsolete by changes in
-Ruby itself.
-
-Many projects have their own coding style guidelines (often derived
-from this guide). In the event of any conflicts, such
-project-specific guides take precedence for that project.
-
 You can generate a PDF or an HTML copy of this guide using
 [Transmuter][].
 
 [RuboCop][] is a code analyzer, based on this
 style guide.
-
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
-* [German](https://github.com/arbox/de-ruby-style-guide/blob/master/README-deDE.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
 
 ## Table of Contents
 
@@ -87,6 +44,7 @@ Translations of the guide are available in the following languages:
 * [Classes](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
+* [Enumerables](#enumerables)
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
@@ -231,11 +189,12 @@ Translations of the guide are available in the following languages:
   For hash literals two styles are considered acceptable.
 
   ```Ruby
+  # bad - no space after { and before }
+  {one: 1, two: 2}
+  
   # good - space after { and before }
   { one: 1, two: 2 }
 
-  # good - no space after { and before }
-  {one: 1, two: 2}
   ```
 
   The first variant is slightly more readable (and arguably more
@@ -445,13 +404,9 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style. There are two
-    popular styles in the Ruby community, both of which are considered
-    good - leading `.` (Option A) and trailing `.` (Option B).
-<sup>[[link](#consistent-multi-line-chains)]</sup>
-
-  * **(Option A)** When continuing a chained method invocation on
+  When continuing a chained method invocation on
     another line keep the `.` on the second line.
+<sup>[[link](#consistent-multi-line-chains)]</sup>
 
     ```Ruby
     # bad - need to consult first line to understand second line
@@ -462,23 +417,6 @@ Translations of the guide are available in the following languages:
     one.two.three
       .four
     ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
-    include the `.` on the first line to indicate that the
-    expression continues.
-
-    ```Ruby
-    # bad - need to read ahead to the second line to know that the chain continues
-    one.two.three
-      .four
-
-    # good - it's immediately clear that the expression continues beyond the first line
-    one.two.three.
-      four
-    ```
-
-  A discussion on the merits of both alternative styles can be found
-  [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
 * <a name="no-double-indent"></a>
     Align the parameters of a method call if they span more than one
@@ -2197,16 +2135,14 @@ no parameters.
     def some_method
     end
 
-    # protected and private methods are grouped near the end
-    protected
 
     def some_protected_method
     end
-
-    private
+    protected :some_protected_method
 
     def some_private_method
     end
+    private :some_private_method
   end
   ```
 
@@ -2515,13 +2451,11 @@ no parameters.
 <sup>[[link](#visibility)]</sup>
 
 * <a name="indent-public-private-protected"></a>
-  Indent the `public`, `protected`, and `private` methods as much as the method
-  definitions they apply to. Leave one blank line above the visibility modifier
-  and one blank line below in order to emphasize that it applies to all methods
-  below it.
+ Use the 'protected' and 'private' methods to explicitly declare a method as protected/private.
 <sup>[[link](#indent-public-private-protected)]</sup>
 
   ```Ruby
+  # bad
   class SomeClass
     def public_method
       # ...
@@ -2536,6 +2470,22 @@ no parameters.
     def another_private_method
       # ...
     end
+  end
+  
+  class SomeClass
+    def public_method
+      # ...
+    end
+
+    def private_method
+      # ...
+    end
+    private :private_method
+  
+    def another_private_method
+      # ...
+    end
+    private :another_private_method
   end
   ```
 
@@ -3142,6 +3092,31 @@ resource cleanup when possible.
   end
   ```
 
+## Enumerables
+
+* <a name="break-up-enumerables"></a>
+  More than one Enumerable method in a method ramps up complexity exponentially.  
+  Break these down into smaller methods.  
+<sup>[[link](#break-up-enumerables)]</sup>
+
+* <a name="enumerate-right"></a>
+  Make sure you’re using the correct Enumerable method.  If you are aggregating results 
+  into an array or hash, use inject; don’t use an external variable and an each loop.  
+  If you need to transform elements, use map/collect.  
+<sup>[[link](#enumerate-right)]</sup>
+
+* <a name="enum-use-count"></a>
+  Use count instead of select { block }.size.  
+<sup>[[link](#enum-use-count)]</sup>
+
+* <a name="enum-use-any"></a>
+  Use any? rather than select { block }.size > 0.  
+<sup>[[link](#enum-use-any)]</sup>
+
+* <a name="none-vs-select"></a>
+  Use none?  Instead of select { block }.size == 0.
+<sup>[[link](#none-vs-select)]</sup>
+
 ## Strings
 
 * <a name="string-interpolation"></a>
@@ -3189,19 +3164,6 @@ resource cleanup when possible.
     # good
     name = 'Bozhidar'
     ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
-
-    ```Ruby
-    # bad
-    name = 'Bozhidar'
-
-    # good
-    name = "Bozhidar"
-    ```
-
-  The string literals in this guide are aligned with the first style.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
