@@ -17,3 +17,6 @@ Metrics/LineLength:
 
 ActionFilter:
   Enabled: false
+
+FindBy:
+  Enabled: false
