@@ -3622,6 +3622,59 @@ resource cleanup when possible.
   Prefer `public_send` over `send` so as not to circumvent `private`/`protected` visibility.
 <sup>[[link](#prefer-public-send)]</sup>
 
+  ```ruby
+  # We have  an ActiveModel Organization that includes concern Activatable
+  module Activatable
+    extend ActiveSupport::Concern
+
+    included do
+      before_create :create_token
+    end
+
+    private
+
+    def reset_token
+      ...
+    end
+
+    def create_token
+      ...
+    end
+
+    def activate!
+      ...
+    end
+  end
+
+  class Organization < ActiveRecord::Base
+    include Activatable
+  end
+
+  linux_organization = Organization.find(...)
+  # BAD - violates privacy
+  linux_organization.send(:reset_token)
+  # GOOD - should throw an exception
+  linux_organization.public_send(:reset_token)
+  ```
+
+* <a name="prefer-__send__"></a>
+  Prefer `__send__` over `send`, as `send` may overlap with existing methods.
+<sup>[[link](#prefer-__send__)]</sup>
+
+  ```ruby
+  require 'socket'
+
+  u1 = UDPSocket.new
+  u1.bind('127.0.0.1', 4913)
+  u2 = UDPSocket.new
+  u2.connect('127.0.0.1', 4913)
+  # Won't send a message to the receiver obj.
+  # Instead it will send a message via UDP socket.
+  u2.send :sleep, 0
+  # Will actually send a message to the receiver obj.
+  u2.__send__ ...
+  ```
+
 ## Misc
 
 * <a name="always-warn"></a>
