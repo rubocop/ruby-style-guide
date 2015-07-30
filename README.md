@@ -1,3 +1,17 @@
+# Config Hound CI to use this guide
+Ruby
+Hound uses RuboCop with this config by default.
+
+If you need to change the way Hound is configured, simply copy the default config into your project, make changes and reference the file in your .hound.yml
+
+> ruby:
+>   config_file: .ruby-style.yml
+
+Add the following code to your .hound.yml to disable Ruby style checking.
+> ruby:
+>  enabled: false
+
+
 # Prelude
 
 > Role models are important. <br>
