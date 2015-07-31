@@ -3691,7 +3691,7 @@ resource cleanup when possible.
 
 ## Tools
 
-Here's some tools to help you automatically check Ruby code against
+Here are some tools to help you automatically check Ruby code against
 this guide.
 
 ### RuboCop
