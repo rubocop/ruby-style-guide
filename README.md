@@ -3373,12 +3373,15 @@ resource cleanup when possible.
   ```
 
 * <a name="non-capturing-regexp"></a>
-  Use non-capturing groups when you don't use captured result of parentheses.
+  Use non-capturing groups when you don't use the captured result.
 <sup>[[link](#non-capturing-regexp)]</sup>
 
   ```Ruby
-  /(first|second)/   # bad
-  /(?:first|second)/ # good
+  # bad
+  /(first|second)/
+
+  # good
+  /(?:first|second)/
   ```
 
 * <a name="no-perl-regexp-last-matchers"></a>
