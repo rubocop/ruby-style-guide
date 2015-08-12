@@ -3450,8 +3450,14 @@ resource cleanup when possible.
   ```
 
 * <a name="gsub-blocks"></a>
-  For complex replacements `sub`/`gsub` can be used with block or hash.
+  For complex replacements `sub`/`gsub` can be used with a block or a hash.
 <sup>[[link](#gsub-blocks)]</sup>
+
+  ```Ruby
+  words = 'foo bar'
+  words.sub(/f/, 'f' => 'F') # => 'Foo bar'
+  words.gsub(/\w+/) { |word| word.capitalize } # => 'Foo Bar'
+  ```
 
 ## Percent Literals
 
