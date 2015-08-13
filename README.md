@@ -670,8 +670,7 @@ Translations of the guide are available in the following languages:
     Avoid the use of parallel assignment for defining variables. Parallel
     assignment is allowed when it is the return of a method call, used with
     the splat operator, or when used to swap variable assignment. Parallel
-    assignment is less readable than separate assignment. It is also slightly
-    slower than separate assignment.
+    assignment is less readable than separate assignment.
 <sup>[[link](#parallel-assignment)]</sup>
 
   ```Ruby
