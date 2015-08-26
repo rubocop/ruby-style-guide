@@ -880,31 +880,6 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-* <a name="no-and-or-or"></a>
-  The `and` and `or` keywords are banned. It's just not worth it. Always use
-  `&&` and `||` instead.
-<sup>[[link](#no-and-or-or)]</sup>
-
-  ```Ruby
-  # bad
-  # boolean expression
-  if some_condition and some_other_condition
-    do_something
-  end
-
-  # control flow
-  document.saved? or document.save!
-
-  # good
-  # boolean expression
-  if some_condition && some_other_condition
-    do_something
-  end
-
-  # control flow
-  document.saved? || document.save!
-  ```
-
 * <a name="no-multiline-ternary"></a>
   Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
 <sup>[[link](#no-multiline-ternary)]</sup>
@@ -2722,6 +2697,21 @@ no parameters.
     fail
   ensure
     return 'very bad idea'
+  end
+  ```
+
+* <a name="no-side-effects-ensure"></a>
+  Pause before introducing a side effect inside an `ensure` block. If an exception
+  is raised, the ensure block will run but then the exception will continue to bubble
+  up. If the code flow is retried the state is now mutated and could have unintended
+  consequences.
+<sup>[[link](#no-side-effects-ensure)]</sup>
+
+  ```Ruby
+  def foo
+    fail
+  ensure
+    record.update(account: nil) # now if retried account won't exist.
   end
   ```
 
