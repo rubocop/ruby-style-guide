@@ -511,7 +511,7 @@ result = 1 -
 ```
 
 ### Using the return value of `=` (an assignment) is ok
-But surround the assignment with parentheses to it clear you are not mistakenly using `=` when you meant `==`.
+But surround the assignment with parentheses to make it clear you are not mistakenly using `=` when you meant `==`.
 
 ```ruby
 # good - shows intended use of assignment
