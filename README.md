@@ -155,19 +155,21 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="single-line-classes"></a>
-  Prefer a single-line format for class definitions with no body.
+  Do not add empty lines in class definitions with no body.
 <sup>[[link](#single-line-classes)]</sup>
 
   ```Ruby
   # bad
   class FooError < StandardError
+  
   end
-
-  # okish
-  class FooError < StandardError; end
-
+  
   # good
-  FooError = Class.new(StandardError)
+  class FooError < StandardError
+  end
+  
+  # good (but not preferable)
+  class FooError < StandardError; end
   ```
 
 * <a name="no-single-line-methods"></a>
