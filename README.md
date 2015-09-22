@@ -708,6 +708,28 @@ Translations of the guide are available in the following languages:
   a = *(1..3)
   ```
 
+* <a name="trailing-underscore-variables"></a>
+  Avoid the use of unnecessary trailing underscore variables during
+  parallel assignment. Trailing underscore variables are necessary
+  when there is a splat variable defined on the left side of the assignment,
+  and the splat variable is not an underscore.
+<sup>[[link]](#trailing-underscore-variables)</sup>
+
+  ```Ruby
+  # bad
+  a, b, _ = *foo
+  a, _, _ = *foo
+  a, *_ = *foo
+
+  # good
+  *a, _ = *foo
+  *a, b, _ = *foo
+  a, = *foo
+  a, b, = *foo
+  a, _b = *foo
+  a, _b, = *foo
+  ```
+
 * <a name="no-for-loops"></a>
     Do not use `for`, unless you know exactly why. Most of the time iterators
     should be used instead. `for` is implemented in terms of `each` (so
