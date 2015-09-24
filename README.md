@@ -547,6 +547,25 @@ Translations of the guide are available in the following languages:
      'Baked beans', 'Spam', 'Spam', 'Spam', 'Spam', 'Spam']
   ```
 
+* <a name="align-long-hashes"></a>
+  Indent and align long hashes.
+<sup>[[link](#align-long-hashes)]</sup>
+
+  ```Ruby
+  # bad - too long, hard to read
+  recipe = { name: 'Certainly Citrus', abv: 7.3, hops: { flavoring: 'Citra', bittering: 'Cascade'}}
+
+  # good - one key-value pair per line, properly indented
+  recipe = {
+    name: 'Certainly Citrus',
+    abv: 7.3,
+    hops: {
+      flavoring: 'Citra',
+      bittering: 'Cascade'
+    }
+  }
+  ```
+
 * <a name="underscores-in-numerics"></a>
   Add underscores to large numeric literals to improve their readability.
 <sup>[[link](#underscores-in-numerics)]</sup>
