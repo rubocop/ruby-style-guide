@@ -968,6 +968,19 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+* <a name="no-nested-modifiers"></a>
+  Avoid nested modifier `if/unless/while/until` usage. Favor `&&/||` if
+  appropriate.
+<sup>[[link](#no-nested-modifiers)]</sup>
+
+  ```Ruby
+  # bad
+  do_something if other_condition if some_condition
+
+  # good
+  do_something if some_condition && other_condition
+  ```
+
 * <a name="unless-for-negatives"></a>
   Favor `unless` over `if` for negative conditions (or control flow `||`).
 <sup>[[link](#unless-for-negatives)]</sup>
