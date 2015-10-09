@@ -372,10 +372,9 @@ Translations of the guide are available in the following languages:
     end
   ```
 
-* <a name="empty-lines-between-methods"></a>
-  Use empty lines between method definitions and also to break up a method
-  into logical paragraphs internally.
-<sup>[[link](#empty-lines-between-methods)]</sup>
+* <a name="empty-lines-between-method-paragraphs"></a>
+  Use empty lines to break up a method into logical paragraphs internally.
+<sup>[[link](#empty-lines-between-method-paragraphs)]</sup>
 
   ```Ruby
   def some_method
@@ -385,11 +384,44 @@ Translations of the guide are available in the following languages:
 
     data.result
   end
-
-  def some_method
-    result
-  end
   ```
+
+* <a name="empty-lines-between-methods"></a>
+Use empty line/s between method definitions.
+<sup>[[link](#empty-lines-between-methods)]</sup>
+
+  * **(Option A)** Use one empty line to separate method definitions.
+  
+    ```Ruby
+    def some_method
+      data = initialize(options)
+      data.manipulate!
+     
+      puts data.result
+      puts data.value  
+    end
+    # 
+    def other_method
+      result
+    end
+    ```
+  
+  * **(Options B)** Use two empty lines to make a much more obvious logical separation between method definitions.
+   
+    ```Ruby
+    def some_method
+      data = initialize(options)
+      data.manipulate!
+    
+      puts data.result
+      puts data.value  
+    end
+    # 
+    #
+    def other_method
+      result
+    end
+    ```
 
 * <a name="no-trailing-params-comma"></a>
   Avoid comma after the last parameter in a method call, especially when the
