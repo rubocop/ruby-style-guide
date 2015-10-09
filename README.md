@@ -2262,16 +2262,14 @@ no parameters.
     def some_method
     end
 
-    # protected and private methods are grouped near the end
+    # protected and private methods are grouped near the end indented with extra level
     protected
-
-    def some_protected_method
-    end
+      def some_protected_method
+      end
 
     private
-
-    def some_private_method
-    end
+      def some_private_method
+      end
   end
   ```
 
@@ -2593,14 +2591,13 @@ no parameters.
     end
 
     private
+      def private_method
+        # ...
+      end
 
-    def private_method
-      # ...
-    end
-
-    def another_private_method
-      # ...
-    end
+      def another_private_method
+        # ...
+      end
   end
   ```
 
