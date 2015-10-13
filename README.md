@@ -284,9 +284,8 @@ Translations of the guide are available in the following languages:
     ```
 
 * <a name="indent-when-to-case"></a>
-  Indent `when` as deep as `case`. I know that many would disagree
-  with this one, but it's the style established in both "The Ruby
-  Programming Language" and "Programming Ruby".
+  Indent `when` as deep as `case`. This is the style established in both
+  "The Ruby Programming Language" and "Programming Ruby".
 <sup>[[link](#indent-when-to-case)]</sup>
 
   ```Ruby
@@ -373,7 +372,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="empty-lines-between-methods"></a>
-  Use empty lines between method definitions and also to break up a method
+  Use empty lines between method definitions and also to break up methods
   into logical paragraphs internally.
 <sup>[[link](#empty-lines-between-methods)]</sup>
 
