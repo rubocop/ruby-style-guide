@@ -914,12 +914,6 @@ Translations of the guide are available in the following languages:
   # boolean expression
   ok = got_needed_arguments and arguments_are_valid
 
-  # boolean expression
-  error = lack_needed_arguments or arguments_are_invalid
-
-  # control flow
-  document.validate and document.save
-
   # control flow
   document.save or fail(RuntimError, "Failed to save document!")
 
@@ -927,21 +921,12 @@ Translations of the guide are available in the following languages:
   # boolean expression
   ok = got_needed_arguments && arguments_are_valid
 
-  # boolean expression
-  error = lack_needed_arguments || arguments_are_invalid
-
-  # control flow
-  document.save if document.valid?  # note also more idiomatic name
-
   # control flow
   fail(RuntimeError, "Failed to save document!") unless document.save
 
   # ok
   # control flow
-  document.validate && document.save
-
-  # control flow
-  document.save || die("Failed to save document!")
+  document.save || fail(RuntimeError, "Failed to save document!")
   ```
 
 * <a name="no-multiline-ternary"></a>
