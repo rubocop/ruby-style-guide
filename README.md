@@ -905,54 +905,44 @@ Translations of the guide are available in the following languages:
 * <a name="no-and-or-or"></a>
   The `and` and `or` keywords are banned. The minimal added readability is just
   not worth the high probability of introducing subtle bugs. For boolean
-  expressions, always use `&&` and `||` instead. When doing flow control, use
+  expressions, always use `&&` and `||` instead. For flow control, use
   `if` and `unless`; `&&` and `||` are also acceptable but less clear.
 <sup>[[link](#no-and-or-or)]</sup>
 
   ```Ruby
-  # BAD:
-
-  # boolean and-expression
+  # bad
+  # boolean expression
   ok = got_needed_arguments and arguments_are_valid
-  # if got_needed_arguments is true but arguments_are_valid is false,
-  # you might expect ok to be false, but it will be true!
 
-  # boolean or-expression
+  # boolean expression
   error = lack_needed_arguments or arguments_are_invalid
-  # if lack_needed_arguments is false but arguments_are_invalid is true,
-  # you might expect error to be true, but it will be false!
 
-  # control flow checking for success
+  # control flow
   document.validate and document.save
 
-  # control flow checking for failure
-  document.save or die "Failed to save document!"
+  # control flow
+  document.save or fail(RuntimError, "Failed to save document!")
 
-  # GOOD:
-
-  # boolean and-expression
+  # good
+  # boolean expression
   ok = got_needed_arguments && arguments_are_valid
 
-  # boolean or-expression
+  # boolean expression
   error = lack_needed_arguments || arguments_are_invalid
 
-  # control flow checking for success
+  # control flow
   document.save if document.valid?  # note also more idiomatic name
 
-  # control flow checking for failure
-  die("Failed to save document!") unless document.save
+  # control flow
+  fail(RuntimeError, "Failed to save document!") unless document.save
 
-  # ALSO OK:
-
-  # control flow checking for success
+  # ok
+  # control flow
   document.validate && document.save
 
-  # control flow checking for failure
+  # control flow
   document.save || die("Failed to save document!")
   ```
-
-  See the `and != &&` and `or != ||` [slides from Dave Aronson's Ruby Gotchas
-  presentation](http://bit.ly/RubyGotchas) for further explanation.
 
 * <a name="no-multiline-ternary"></a>
   Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
