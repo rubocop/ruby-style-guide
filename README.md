@@ -2387,7 +2387,7 @@ no parameters.
 
 * <a name="solid-design"></a>
   Try to make your classes as
-  [SOLID](https://en.wikipedia.org/wiki/SOLID\(object-oriented_design\)) as
+  [SOLID](https://en.wikipedia.org/wiki/SOLID_\(object-oriented_design\)) as
   possible.
 <sup>[[link](#solid-design)]</sup>
 
