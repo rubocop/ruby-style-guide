@@ -2700,6 +2700,29 @@ no parameters.
   end
   ```
 
+* <a name="namespace-definition"></a>
+  Use explicit nesting of modules. Definitions at a namespace are only available
+  if that namespace is defined via explicit nesting.
+<sup>[[link](#namespace-definition)]</sup>
+
+  ```Ruby
+  module API
+    URL = 'http://example.com'
+  end
+
+  # bad - does not has access to the `URL` constant
+  class API::Person
+    attr_accessor :first_name, :last_name
+  end
+
+  # good - has access to the `URL` constant
+  module API
+    class Person
+      attr_accessor :first_name, :last_name
+    end
+  end
+  ```
+
 ## Exceptions
 
 * <a name="fail-method"></a>
