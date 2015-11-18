@@ -871,7 +871,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#bang-not-not)]</sup>
 
   ```Ruby
-  # bad - braces are required because of op precedence
+  # bad - parentheses are required because of op precedence
   x = (not something)
 
   # good
