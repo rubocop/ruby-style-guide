@@ -700,7 +700,7 @@ Translations of the guide are available in the following languages:
   first, second = multi_return
 
   # good - use with splat
-  first, *list = [1,2,3,4]
+  first, *list = [1, 2, 3, 4]
 
   hello_array = *"Hello"
 
