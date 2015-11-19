@@ -709,24 +709,36 @@ Translations of the guide are available in the following languages:
 
 * <a name="trailing-underscore-variables"></a>
   Avoid the use of unnecessary trailing underscore variables during
-  parallel assignment. Trailing underscore variables are necessary
-  when there is a splat variable defined on the left side of the assignment,
-  and the splat variable is not an underscore.
+  parallel assignment. Named underscore variables are to be preferred over
+  underscore variables because of the context that they provide.
+  Trailing underscore variables are necessary when there is a splat variable
+  defined on the left side of the assignment, and the splat variable is
+  not an underscore.
 <sup>[[link]](#trailing-underscore-variables)</sup>
 
   ```Ruby
   # bad
-  a, b, _ = *foo
-  a, _, _ = *foo
-  a, *_ = *foo
+  foo = 'one,two,three,four,five'
+  # Unnecessary assignment that does not provide useful information
+  first, second, _ = foo.split(',')
+  first, _, _ = foo.split(',')
+  first, *_ = foo.split(',')
+
 
   # good
-  *a, _ = *foo
-  *a, b, _ = *foo
-  a, = *foo
-  a, b, = *foo
-  a, _b = *foo
-  a, _b, = *foo
+  foo = 'one,two,three,four,five'
+  # The underscores is needed to show that you want all elements
+  # except for the last number of underscore elements
+  *beginning, _ = foo.split(',')
+  *beginning, something, _ = foo.split(',')
+
+  a, = foo.split(',')
+  a, b, = foo.split(',')
+  # Unnecessary assignment to an unused variable, but the assignment
+  # provides us with useful inforation.
+  first, _second = foo.split(',')
+  first, _second, = foo.split(',')
+  first, *_ending = foo.split(',')
   ```
 
 * <a name="no-for-loops"></a>
