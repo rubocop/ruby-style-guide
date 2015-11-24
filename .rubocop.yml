@@ -1,0 +1,31 @@
+# Rocketships!!!!
+HashSyntax:
+  EnforcedStyle: hash_rockets
+
+# Enforce spaces within Braces
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: space
+
+# Numbers without underscores, please.
+Style/NumericLiterals:
+  Enabled: false
+
+# Allow slightly longer classes
+Metrics/ClassLength:
+  CountComments: false
+  Max: 150
+
+# Allow sightly longer lines
+Metrics/LineLength:
+  Max: 120
+
+# Allow slightly longer methods
+Metrics/MethodLength:
+  Max: 50
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+  SupportedStyles:
+    - space
+    - no_space
