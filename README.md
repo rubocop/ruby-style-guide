@@ -227,21 +227,20 @@ Translations of the guide are available in the following languages:
   ```
 
   `{` and `}` deserve a bit of clarification, since they are used
-  for block and hash literals, as well as string interpolation.
-  For hash literals two styles are considered acceptable.
+  for block and hash literals, as well as embedded expressions in
+  strings.
 
   ```Ruby
-  # good - space after { and before }
+  # bad - space after { and before }
   { one: 1, two: 2 }
 
   # good - no space after { and before }
   {one: 1, two: 2}
   ```
 
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
+  The first variant is slightly more readable. The second variant has
   the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
+  literals.
 
 * <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
@@ -1781,15 +1780,19 @@ no parameters.
   end
   ```
 
-* <a name="no-non-nil-checks"></a>
-  Don't do explicit non-`nil` checks unless you're dealing with boolean
-  values.
-<sup>[[link](#no-non-nil-checks)]</sup>
+* Never use `unless` with `else`. `if not` is ok in multi-line bodies. Rewrite these with the positive case first.
 
     ```ruby
     # bad
     do_something if !something.nil?
     do_something if something != nil
+
+    # ok
+    if not success?
+      puts 'failure'
+    else
+      puts 'success'
+    end
 
     # good
     do_something if something
@@ -3808,6 +3811,8 @@ this guide.
 checker based on this style guide. RuboCop already covers a
 significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
 and has good Emacs integration.
+
+Bulletproof's standard [.rubocop.yml](https://github.com/bulletproofnetworks/ruby-style-guide/blob/master/.gitattributes) is available in this repo.
 
 ### RubyMine
 
