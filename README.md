@@ -3644,7 +3644,7 @@ checker based on this style guide. RuboCop already covers a
 significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
 and has good Emacs integration.
 
-Bulletproof's standard [.rubocop.yml](https://github.com/bulletproofnetworks/ruby-style-guide/blob/master/.gitattributes) is available in this repo.
+Bulletproof's standard [.rubocop.yml](https://github.com/bulletproofnetworks/ruby-style-guide/blob/master/.rubocop.yml) is available in this repo.
 
 ### RubyMine
 
