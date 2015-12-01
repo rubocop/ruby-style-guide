@@ -3223,9 +3223,9 @@ resource cleanup when possible.
   email_with_name = format('%s <%s>', user.name, user.email)
   ```
 
-* <a name="string-interpolation"></a>
+* <a name="pad-string-interpolation"></a>
   With interpolated expressions, there should be no padded-spacing inside the braces.
-<sup>[[link](#string-interpolation)]</sup>
+<sup>[[link](#pad-string-interpolation)]</sup>
 
   ```Ruby
   # bad
