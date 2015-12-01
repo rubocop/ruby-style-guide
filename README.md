@@ -1701,8 +1701,8 @@ no parameters.
 
 * <a name="array-join"></a>
   Favor the use of `Array#join` over the fairly cryptic `Array#*` with
-<sup>[[link](#array-join)]</sup>
   a string argument.
+<sup>[[link](#array-join)]</sup>
 
   ```Ruby
   # bad
@@ -3599,13 +3599,15 @@ resource cleanup when possible.
 
 * <a name="block-class-eval"></a>
   The block form of `class_eval` is preferable to the string-interpolated
-  form.  - when you use the string-interpolated form, always supply `__FILE__`
-  and `__LINE__`, so that your backtraces make sense:
+  form.
 <sup>[[link](#block-class-eval)]</sup>
 
-  ```ruby
-  class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
-  ```
+  - when you use the string-interpolated form, always supply `__FILE__`
+  and `__LINE__`, so that your backtraces make sense:
+
+    ```ruby
+    class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
+    ```
 
   - `define_method` is preferable to `class_eval{ def ... }`
 
