@@ -6,9 +6,9 @@ HashSyntax:
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: space
 
-# Numbers without underscores, please.
+# Numbers with underscores, please.
 Style/NumericLiterals:
-  Enabled: false
+  Enabled: true
 
 # Allow slightly longer classes
 Metrics/ClassLength:
