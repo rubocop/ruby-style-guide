@@ -21,7 +21,7 @@ Metrics/LineLength:
 
 # Allow slightly longer methods
 Metrics/MethodLength:
-  Max: 50
+  Max: 15
 
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
