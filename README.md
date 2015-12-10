@@ -1378,8 +1378,8 @@ condition](#safe-assignment-in-condition).
   x = x * y
   x = x**y
   x = x / y
-  x = x || y
-  x = x && y
+  x || x = y
+  x && x = y
 
   # good
   x += y
