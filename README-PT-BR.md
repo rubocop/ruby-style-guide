@@ -109,7 +109,7 @@ puts 'bar'
 puts 'foo', 'bar' # isto aplica-se ao puts em particular
 ```
 
-* Preferir um formato de linha única para as definições de classe sem corpo.
+* Prefira um formato de linha único para as definições de classe sem corpo.
 
 ```Ruby
 # ruim
@@ -484,7 +484,7 @@ outra linha de comentário
 
 ## Sintaxe
 
-* Use `::` apenas a referência constantes (isso inclui as classes e
+* Use `::` apenas para referências constantes (isso inclui as classes e
 módulos) e construtores (como `Array()` ou `Nokogiri::HTML()`).
 Nunca use `::` para invocação de método regular.
 
@@ -525,7 +525,7 @@ def algum_metodo_com_argumentos(arg1, arg2)
 end
 ```
 
-* Nunca use `for`, à menos que você sabe exatamente por que. A maioria dos iteradores de vezes devem ser usado em vez disso. `for` é implementado em termos de `each` (assim você está adicionando um nível de indireção), mas com uma reviravolta - `for` não introduz um novo escopo (ao contrário de `each`) e as variáveis definidas em seu bloco serão visíveis fora dela.
+* Nunca use `for`, à menos que você saiba exatamente o porquê. A maioria dos iteradores de vezes devem ser usado em vez disso. `for` é implementado em termos de `each` (assim você está adicionando um nível de indireção), mas com uma reviravolta - `for` não introduz um novo escopo (ao contrário de `each`) e as variáveis definidas em seu bloco serão visíveis fora dela.
 
 ```Ruby
 arr = [1, 2, 3]
@@ -847,7 +847,7 @@ Usuario.set({nome: 'John', idade: 45, permissoes: {leitura: true}})
 Usuario.set(nome: 'John', idade: 45, permissoes: {leitura: true})
 ```
 
-* Omitir ambos as chaves e parênteses exteriores para métodos que são
+* Omitir ambas as chaves e parênteses exteriores para métodos que são
 parte de uma DSL interna.
 
 ```Ruby
@@ -876,7 +876,7 @@ fork
 'teste'.upcase
 ```
 
-* Prefira `{...}` sobre `do..end` para blocos de linha única. Evitar o uso de `{...}` para a linha multi blocos (encadeamento de várias linhas é sempre feio). Use sempre `do..end` para "fluxo de controle" e "definições de métodos" (por exemplo, em Rakefiles e certos DSLs). Evite o `do..end` quando encadeando.
+* Prefira `{...}` ao invés de `do..end` para blocos de linha única. Evite o uso de `{...}` para a linha multi blocos (encadeamento de várias linhas é sempre feio). Use sempre `do..end` para "fluxo de controle" e "definições de métodos" (por exemplo, em Rakefiles e certos DSLs). Evite o `do..end` quando encadeando.
 
 ```Ruby
 nomes = ['Bozhidar', 'Steve', 'Sarah']
