@@ -2714,46 +2714,44 @@ no parameters.
 
 ## Exceptions
 
-* <a name="fail-method"></a>
-  Signal exceptions using the `fail` method. Use `raise` only when catching an
-  exception and re-raising it (because here you're not failing, but explicitly
-  and purposefully raising an exception).
-<sup>[[link](#fail-method)]</sup>
+* <a name="prefer-raise"></a>
+  Prefer `raise` over `fail` for exceptions.
+  <sup>[[link](#prefer-raise-over-fail)]</sup>
 
   ```Ruby
-  begin
-    fail 'Oops'
-  rescue => error
-    raise if error.message != 'Oops'
-  end
+  # bad
+  fail SomeException, 'message'
+
+  # good
+  raise SomeException, 'message'
   ```
 
 * <a name="no-explicit-runtimeerror"></a>
   Don't specify `RuntimeError` explicitly in the two argument version of
-  `fail/raise`.
+  `raise`.
 <sup>[[link](#no-explicit-runtimeerror)]</sup>
 
   ```Ruby
   # bad
-  fail RuntimeError, 'message'
+  raise RuntimeError, 'message'
 
   # good - signals a RuntimeError by default
-  fail 'message'
+  raise 'message'
   ```
 
 * <a name="exception-class-messages"></a>
   Prefer supplying an exception class and a message as two separate arguments
-  to `fail/raise`, instead of an exception instance.
+  to `raise`, instead of an exception instance.
 <sup>[[link](#exception-class-messages)]</sup>
 
   ```Ruby
   # bad
-  fail SomeException.new('message')
-  # Note that there is no way to do `fail SomeException.new('message'), backtrace`.
+  raise SomeException.new('message')
+  # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
 
   # good
-  fail SomeException, 'message'
-  # Consistent with `fail SomeException, 'message', backtrace`.
+  raise SomeException, 'message'
+  # Consistent with `raise SomeException, 'message', backtrace`.
   ```
 
 * <a name="no-return-ensure"></a>
@@ -2765,7 +2763,7 @@ no parameters.
 
   ```Ruby
   def foo
-    fail
+    raise
   ensure
     return 'very bad idea'
   end
