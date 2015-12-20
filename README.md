@@ -2714,7 +2714,7 @@ no parameters.
 
 ## Exceptions
 
-* <a name="prefer-raise"></a>
+* <a name="prefer-raise-over-fail"></a>
   Prefer `raise` over `fail` for exceptions.
   <sup>[[link](#prefer-raise-over-fail)]</sup>
 
