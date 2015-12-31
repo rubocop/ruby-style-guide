@@ -3112,6 +3112,23 @@ resource cleanup when possible.
   hash.value?(value)
   ```
 
+* <a name="hash-each"></a>
+  Use `Hash#each_key` instead of `Hash#key.each` and `Hash#each_value`
+  instead of `Hash#values.each`.
+<sup>[[link](#hash-each)]</sup>
+
+  ```Ruby
+  # bad
+  hash.keys.each { |k| p k }
+  hash.values.each { |v| p v }
+  hash.each { |k, _v| p k }
+  hash.each { |_k, v| p v }
+
+  # good
+  hash.each_key { |k| p k }
+  hash.each_value { |v| p v }
+  ```
+
 * <a name="hash-fetch"></a>
   Use `Hash#fetch` when dealing with hash keys that should be present.
 <sup>[[link](#hash-fetch)]</sup>
