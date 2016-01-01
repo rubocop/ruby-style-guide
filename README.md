@@ -3394,6 +3394,36 @@ resource cleanup when possible.
   # => "def test\n  some_method\n  other_method\nend\n"
   ```
 
+* <a name="squiggly-heredocs"></a>
+  Use Ruby 2.3's squiggly heredocs for nicely indented multiline strings.
+<sup>[[link](#squiggly-heredocs)]</sup>
+
+  ```Ruby
+  # bad - using Powerpack String#strip_margin
+  code = <<-END.strip_margin('|')
+    |def test
+    |  some_method
+    |  other_method
+    |end
+  END
+
+  # also bad
+  code = <<-END
+  def test
+    some_method
+    other_method
+  end
+  END
+
+  # good
+  code = <<~END
+    def test
+      some_method
+      other_method
+    end
+  END
+  ```
+
 ## Regular Expressions
 
 > Some people, when confronted with a problem, think
