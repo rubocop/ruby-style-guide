@@ -2287,7 +2287,7 @@ no parameters.
   ```
 
 * <a name="file-classes"></a>
-  Don't nest multi line classes within classes. Try to have such nested
+  Don't nest multi-line classes within classes. Try to have such nested
   classes each in their own file in a folder named like the containing class.
 <sup>[[link](#file-classes)]</sup>
 
