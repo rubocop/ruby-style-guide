@@ -3113,7 +3113,7 @@ resource cleanup when possible.
   ```
 
 * <a name="hash-each"></a>
-  Use `Hash#each_key` instead of `Hash#key.each` and `Hash#each_value`
+  Use `Hash#each_key` instead of `Hash#keys.each` and `Hash#each_value`
   instead of `Hash#values.each`.
 <sup>[[link](#hash-each)]</sup>
 
