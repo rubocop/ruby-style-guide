@@ -10,6 +10,10 @@ Style/SpaceInsideHashLiteralBraces:
 Style/NumericLiterals:
   Enabled: true
 
+# Allow more complex if statements ( if { if { if {} } })
+Metrics/AbcSize:
+  Max: 30
+
 # Allow slightly longer classes
 Metrics/ClassLength:
   CountComments: false
