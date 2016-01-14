@@ -1298,7 +1298,7 @@ condition](#safe-assignment-in-condition).
 
 * <a name="no-self-unless-required"></a>
   Avoid `self` where not required. (It is only required when calling a self
-  write accessor.)
+  write accessor, overloadable operators or Kernel#class.)
 <sup>[[link](#no-self-unless-required)]</sup>
 
   ```Ruby
