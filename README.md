@@ -3627,7 +3627,7 @@ resource cleanup when possible.
 <sup>[[link](#percent-s)]</sup>
 
 * <a name="percent-literal-braces"></a>
-  Prefer `()` as delimiters for all `%` literals, except `%r` and Array 
+  Prefer `()` as delimiters for all `%` literals, except `%r` and array 
   literals. Since parentheses often appear inside regular expressions in many 
   scenarios a less common character like `{` might be a better choice for a 
   delimiter, depending on the regexp's content. When creating array literals it
