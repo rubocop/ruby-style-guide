@@ -3630,7 +3630,7 @@ resource cleanup when possible.
   Prefer `()` as delimiters for all `%` literals, except `%r` and Array 
   literals. Since parentheses often appear inside regular expressions in many 
   scenarios a less common character like `{` might be a better choice for a 
-  delimiter, depending on the regexp's content. When creating Array literals it
+  delimiter, depending on the regexp's content. When creating array literals it
   is more expressive to use `[]`.
 <sup>[[link](#percent-literal-braces)]</sup>
 
