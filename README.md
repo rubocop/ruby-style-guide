@@ -735,7 +735,7 @@ Translations of the guide are available in the following languages:
   a, = foo.split(',')
   a, b, = foo.split(',')
   # Unnecessary assignment to an unused variable, but the assignment
-  # provides us with useful inforation.
+  # provides us with useful information.
   first, _second = foo.split(',')
   first, _second, = foo.split(',')
   first, *_ending = foo.split(',')
