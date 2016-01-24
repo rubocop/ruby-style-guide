@@ -558,9 +558,8 @@ Translations of the guide are available in the following languages:
   num = 1_000_000
   ```
 
-* <a name="rdoc-conventions"></a>
-    Use RDoc and its conventions for API documentation.  Don't put an
-    empty line between the comment block and the `def`.
+* <a name="documentation-conventions"></a>
+    When writing API documentation follow the conventions of your documentation format (RDoc, Yard etc.) and project guidelines. Don't put an empty line between the comment block and the `def`.
 <sup>[[link](#rdoc-conventions)]</sup>
 
 * <a name="80-character-limits"></a>
