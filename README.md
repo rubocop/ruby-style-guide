@@ -1119,6 +1119,10 @@ condition](#safe-assignment-in-condition).
     end
     ```
 
+  :warning: Switching from e.g. `while` to `loop` changes the
+  scope of local variables. Variables defined in a `loop` go
+  out of scope after each iteration.
+
 * <a name="loop-with-break"></a>
   Use `Kernel#loop` with `break` rather than `begin/end/until` or
   `begin/end/while` for post-loop tests.
