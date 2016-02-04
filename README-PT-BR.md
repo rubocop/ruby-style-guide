@@ -281,7 +281,7 @@ resultado = if condicao
             else
               calc_outro_algo
             end
-  
+
 
 # bom (e um pouco mais largamente eficiente)
 tipo =
@@ -609,7 +609,7 @@ o operador ternário em vez disso.
 resultado = if alguma_condicao : alguma_coisa else outra_coisa end
 
 # bom
-resultado = alguma_condicao ? alguma_coisa : outra_coisa end
+resultado = alguma_condicao ? alguma_coisa : outra_coisa
 ```
 
 * Nunca use `if x; ...`. Use o operador ternário.
