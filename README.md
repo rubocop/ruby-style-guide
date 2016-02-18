@@ -1703,6 +1703,7 @@ no parameters.
   sprintf('%{first} %{second}', first: 20, second: 10)
   # => '20 10'
 
+  # bad
   format('%d %d', 20, 10)
   # => '20 10'
 
