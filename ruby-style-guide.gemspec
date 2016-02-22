@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'ruby-style-guide'
-  spec.version       = 0.1
+  spec.version       = 0.2
   spec.authors       = ['Manuel Socarras']
   spec.email         = ['manuel.socarras@bulletproof.net']
   spec.summary       = %q{Ruby style guide for Bulletproof Developers}
