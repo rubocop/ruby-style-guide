@@ -8,5 +8,5 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/bulletproofnetworks/ruby-style-guide"
   spec.license       = "Copyright Bulletproof 2016"
 
-  spec.files         = Dir.glob("./*")
+  spec.files         = ['.rubocop.yml']
 end
