@@ -965,31 +965,30 @@ Translations of the guide are available in the following languages:
   it is `false` the operand in the  right is not evaluated and saves execution time. 
   Similarly if left operand around `||` operator is evaluated to be `true` then the 
   operand at right side is skipped. So best 
-  practice is to keep the expensive expression in the right.
+  practice is to keep the expensive expressions in the right side.
 <sup>[[link](#keep-expensive-operations-in-right-of-operators)]</sup>
-```ruby
-# bad
-if some_expensive_expression && simple_expression
-  do_something
-end
 
-# good
-if simple_expression && some_expensive_expression
-  do_something
-end
+  ```ruby
+  # bad
+  if some_expensive_expression && simple_expression
+    do_something
+  end
 
+  # good
+  if simple_expression && some_expensive_expression
+    do_something
+  end
+ 
+  # bad
+  if some_expensive_expression || simple_expression
+    do_something
+  end
 
-# bad
-if some_expensive_expression || simple_expression
-  do_something
-end
-
-# good
-if simple_expression || some_expensive_expression
-  do_something
-end
-```
-
+  # good
+  if simple_expression || some_expensive_expression
+    do_something
+  end
+  ```
 
 * <a name="no-multiline-if-modifiers"></a>
   Avoid modifier `if/unless` usage at the end of a non-trivial multi-line
