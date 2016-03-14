@@ -229,9 +229,10 @@ Translations of the guide are available in the following languages:
   `{` and `}` deserve a bit of clarification, since they are used
   for block and hash literals, as well as string interpolation.
   For hash literals two styles are considered acceptable.
+  However, we decided to stick to the second option - with no spaces after `{` and before `}`.
 
   ```Ruby
-  # good - space after { and before }
+  # bad - space after { and before }
   { one: 1, two: 2 }
 
   # good - no space after { and before }
@@ -243,7 +244,7 @@ Translations of the guide are available in the following languages:
   the advantage of adding visual difference between block and hash
   literals. Whichever one you pick - apply it consistently.
 
-* <a name="no-spaces-braces"></a>
+j <a name="no-spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
 <sup>[[link](#no-spaces-braces)]</sup>
 
@@ -449,27 +450,10 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style. There are two
-    popular styles in the Ruby community, both of which are considered
-    good - leading `.` (Option A) and trailing `.` (Option B).
-<sup>[[link](#consistent-multi-line-chains)]</sup>
-
-  * **(Option A)** When continuing a chained method invocation on
-    another line keep the `.` on the second line.
-
-    ```Ruby
-    # bad - need to consult first line to understand second line
-    one.two.three.
-      four
-
-    # good - it's immediately clear what's going on the second line
-    one.two.three
-      .four
-    ```
-
-  * **(Option B)** When continuing a chained method invocation on another line,
+    When continuing a chained method invocation on another line,
     include the `.` on the first line to indicate that the
     expression continues.
+<sup>[[link](#consistent-multi-line-chains)]</sup>
 
     ```Ruby
     # bad - need to read ahead to the second line to know that the chain continues
@@ -480,9 +464,6 @@ Translations of the guide are available in the following languages:
     one.two.three.
       four
     ```
-
-  A discussion on the merits of both alternative styles can be found
-  [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
 
 * <a name="no-double-indent"></a>
     Align the parameters of a method call if they span more than one
@@ -1170,10 +1151,10 @@ condition](#safe-assignment-in-condition).
 
   ```Ruby
   # bad
-  user.set({ name: 'John', age: 45, permissions: { read: true } })
+  user.set({name: 'John', age: 45, permissions: {read: true}})
 
   # good
-  user.set(name: 'John', age: 45, permissions: { read: true })
+  user.set(name: 'John', age: 45, permissions: {read: true})
   ```
 
 * <a name="no-dsl-decorating"></a>
@@ -1184,10 +1165,10 @@ condition](#safe-assignment-in-condition).
   ```Ruby
   class Person < ActiveRecord::Base
     # bad
-    validates(:name, { presence: true, length: { within: 1..10 } })
+    validates(:name, {presence: true, length: {within: 1..10}})
 
     # good
-    validates :name, presence: true, length: { within: 1..10 }
+    validates :name, presence: true, length: {within: 1..10}
   end
   ```
 
@@ -1744,22 +1725,6 @@ no parameters.
   Array(paths).each { |path| do_something(path) }
   ```
 
-* <a name="ranges-or-between"></a>
-  Use ranges or `Comparable#between?` instead of complex comparison logic when
-  possible.
-<sup>[[link](#ranges-or-between)]</sup>
-
-  ```Ruby
-  # bad
-  do_something if x >= 1000 && x <= 2000
-
-  # good
-  do_something if (1000..2000).include?(x)
-
-  # good
-  do_something if x.between?(1000, 2000)
-  ```
-
 * <a name="predicate-methods"></a>
   Favor the use of predicate methods to explicit comparisons with `==`.
   Numeric comparisons are OK.
@@ -1859,23 +1824,6 @@ no parameters.
     update_with_bar(thing[:foo])
     return re_compute(thing) unless thing[:foo][:bar]
     partial_compute(thing)
-  end
-  ```
-
-  Prefer `next` in loops instead of conditional blocks.
-
-  ```Ruby
-  # bad
-  [0, 1, 2, 3].each do |item|
-    if item > 1
-      puts item
-    end
-  end
-
-  # good
-  [0, 1, 2, 3].each do |item|
-    next unless item > 1
-    puts item
   end
   ```
 
@@ -2225,12 +2173,6 @@ no parameters.
   Use `HACK` to note code smells where questionable coding practices were used
   and should be refactored away.
 <sup>[[link](#hack)]</sup>
-
-* <a name="review"></a>
-  Use `REVIEW` to note anything that should be looked at to confirm it is
-  working as intended. For example: `REVIEW: Are we sure this is how the client
-  does X currently?`
-<sup>[[link](#review)]</sup>
 
 * <a name="document-annotations"></a>
   Use other custom annotation keywords if it feels appropriate, but be sure to
@@ -3013,12 +2955,11 @@ resource cleanup when possible.
   ```
 
 * <a name="no-trailing-array-commas"></a>
-  Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
+  Avoid comma after the last item of an `Array` or `Hash` literal, unless the items are on separate lines.
 <sup>[[link](#no-trailing-array-commas)]</sup>
 
   ```Ruby
-  # bad - easier to move/add/remove items, but still not preferred
+  # good - easier to move/add/remove items
   VALUES = [
              1001,
              2020,
@@ -3062,7 +3003,7 @@ resource cleanup when possible.
   hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
   # good
-  hash = { one: 1, two: 2, three: 3 }
+  hash = {one: 1, two: 2, three: 3}
   ```
 
 * <a name="no-mutable-keys"></a>
@@ -3078,7 +3019,7 @@ resource cleanup when possible.
   hash = { :one => 1, :two => 2, :three => 3 }
 
   # good
-  hash = { one: 1, two: 2, three: 3 }
+  hash = {one: 1, two: 2, three: 3}
   ```
 
 * <a name="no-mixed-hash-syntaces"></a>
@@ -3092,7 +3033,7 @@ resource cleanup when possible.
   { a: 1, 'b' => 2 }
 
   # good
-  { :a => 1, 'b' => 2 }
+  {:a => 1, 'b' => 2}
   ```
 
 * <a name="hash-key"></a>
@@ -3134,7 +3075,7 @@ resource cleanup when possible.
 <sup>[[link](#hash-fetch)]</sup>
 
   ```Ruby
-  heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+  heroes = {batman: 'Bruce Wayne', superman: 'Clark Kent'}
   # bad - if we make a mistake we might not spot it right away
   heroes[:batman] # => 'Bruce Wayne'
   heroes[:supermann] # => nil
@@ -3149,7 +3090,7 @@ resource cleanup when possible.
 <sup>[[link](#hash-fetch-defaults)]</sup>
 
   ```Ruby
-  batman = { name: 'Bruce Wayne', is_evil: false }
+  batman = {name: 'Bruce Wayne', is_evil: false}
 
   # bad - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
@@ -3164,7 +3105,7 @@ resource cleanup when possible.
   <sup>[[link](#use-hash-blocks)]</sup>
 
   ```Ruby
-  batman = { name: 'Bruce Wayne' }
+  batman = {name: 'Bruce Wayne'}
 
   # bad - if we use the default value, we eager evaluate it
   # so it can slow the program down if done multiple times
@@ -3187,10 +3128,6 @@ resource cleanup when possible.
   # good
   email, username = data.values_at('email', 'nickname')
   ```
-
-* <a name="ordered-hashes"></a>
-  Rely on the fact that as of Ruby 1.9 hashes are ordered.
-<sup>[[link](#ordered-hashes)]</sup>
 
 * <a name="no-modifying-collections"></a>
   Do not modify a collection while traversing it.
@@ -3798,6 +3735,7 @@ resource cleanup when possible.
 * <a name="short-methods"></a>
   Avoid methods longer than 10 LOC (lines of code). Ideally, most methods will
   be shorter than 5 LOC. Empty lines do not contribute to the relevant LOC.
+  Lines longer than 30 LOC are reported as error by RuboCop.
 <sup>[[link](#short-methods)]</sup>
 
 * <a name="too-many-params"></a>
