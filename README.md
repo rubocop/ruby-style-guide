@@ -41,6 +41,7 @@ style guide.
 
 ## Table of Contents
 
+* [Design and Sturcture Principles](#design-and-sturcture-principles)
 * [Source Code Layout](#source-code-layout)
 * [Syntax](#syntax)
 * [Naming](#naming)
@@ -55,6 +56,18 @@ style guide.
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
 * [Tools](#tools)
+
+## Design and Sturcture Principles
+1.  Boy-scout rule - always leave the code behind in a better state than you found it. _See [Opportunistic Refactoring](http://martinfowler.com/bliki/OpportunisticRefactoring.html)_
+1. Classes should be no longer than one hundred lines of code. _See smell [Single Responsibility Principle](http://c2.com/cgi/wiki?SingleResponsibilityPrinciple)_
+1. Methods should be no longer than 5 to 7 lines of code. _See [Sandi Metz Rules for Developers](https://robots.thoughtbot.com/sandi-metz-rules-for-developers)_
+1. Classes over Hashes. Prefer Structured interfaces over dynamic interfaces. _See smell [Primitive Obsession](http://c2.com/cgi/wiki?PrimitiveObsession)_
+1. New Code should include near 100% tests coverage and cover all use cases.
+1. Prefer exhaustively testing code with as few collaberators as possible. Prefer contracts over integration tests. Intergration tests involving the entire stack should only cover the golden path and not be exhaustive. _See [J.B. Rainsberger - Integrated Tests Are A Scam](https://vimeo.com/80533536)_
+1. Prefer keyword args for public interfaces over ordered args.
+
+
+If you must break any of these rules you have the burden of proof to prove to your code reviewer or pair why breaking the rule is justified.
 
 ## Source Code Layout
 
@@ -525,8 +538,8 @@ style guide.
     empty line between the comment block and the `def`.
 <sup>[[link](#rdoc-conventions)]</sup>
 
-* <a name="80-character-limits"></a>
-  Limit lines to 80 characters.
+* <a name="120-character-limits"></a>
+  Limit lines to 120 characters.
 <sup>[[link](#80-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
@@ -823,12 +836,11 @@ style guide.
   end
 
   # good
-  result =
-    if condition
-      x
-    else
-      y
-    end
+  result = if condition
+		      x
+		    else
+		      y
+		    end
   ```
 
 * <a name="one-line-cases"></a>
@@ -2975,8 +2987,8 @@ resource cleanup when possible.
   ```
 
 * <a name="no-trailing-array-commas"></a>
-  Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
+  Avoid comma after the last item of an `Array` or `Hash` literal, _especially
+  when the items are not on separate lines_.
 <sup>[[link](#no-trailing-array-commas)]</sup>
 
   ```Ruby
