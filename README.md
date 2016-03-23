@@ -66,6 +66,7 @@ style guide.
 1. Prefer exhaustively testing code with as few collaberators as possible. Prefer contracts over integration tests. Intergration tests involving the entire stack should only cover the golden path and not be exhaustive. _See [J.B. Rainsberger - Integrated Tests Are A Scam](https://vimeo.com/80533536)_
 1. Prefer keyword args for public interfaces over ordered args.
 
+[Complete list of Code Smells](https://sourcemaking.com/refactoring/smells)
 
 If you must break any of these rules you have the burden of proof to prove to your code reviewer or pair why breaking the rule is justified.
 
