@@ -3817,3 +3817,12 @@ resource cleanup when possible.
 * <a name="common-sense"></a>
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
+
+-[Bozhidar](https://twitter.com/bbatsov)		
+ -		
+ -[PEP-8]: https://www.python.org/dev/peps/pep-0008/		
+ -[rails-style-guide]: https://github.com/bbatsov/rails-style-guide		
+ -[pickaxe]: https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0		
+ -[trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177		
+ -[transmuter]: https://github.com/kalbasit/transmuter		
+ -[RuboCop]: https://github.com/bbatsov/rubocop
