@@ -559,7 +559,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="rdoc-conventions"></a>
-    Use RDoc and its conventions for API documentation.  Don't put an
+    Use [Rdoc][rdoc] and its conventions for API documentation.  Don't put an
     empty line between the comment block and the `def`.
 <sup>[[link](#rdoc-conventions)]</sup>
 
@@ -1148,20 +1148,38 @@ condition](#safe-assignment-in-condition).
 
   ```Ruby
   class Person
+    # bad
+    attr_reader(:name, :age)
+    # good
     attr_reader :name, :age
 
-    # omitted
+    # body omitted
   end
 
+  # bad
+  temperance = Person.new 'Temperance', 30
+  # good
   temperance = Person.new('Temperance', 30)
-  temperance.name
 
+  # bad
+  puts(temperance.age)
+  # good
   puts temperance.age
 
+  # bad
+  x = Math.sin y
+  # good
   x = Math.sin(y)
+
+  # bad
+  array.delete e
+  # good
   array.delete(e)
 
-  bowling.score.should == 0
+  # bad
+  expect(bowling.score).to eq 0
+  # good
+  expect(bowling.score).to eq(0)
   ```
 
 * <a name="no-braces-opts-hash"></a>
@@ -1363,20 +1381,20 @@ condition](#safe-assignment-in-condition).
   # bad (+ a warning)
   if v = array.grep(/foo/)
     do_something(v)
-    ...
+    # some code
   end
 
   # good (MRI would still complain, but RuboCop won't)
   if (v = array.grep(/foo/))
     do_something(v)
-    ...
+    # some code
   end
 
   # good
   v = array.grep(/foo/)
   if v
     do_something(v)
-    ...
+    # some code
   end
   ```
 
@@ -1652,7 +1670,7 @@ no parameters.
 
   def something(x)
     unused_var, used_var = something_else(x)
-    # ...
+    # some code
   end
 
   # good
@@ -1660,7 +1678,7 @@ no parameters.
 
   def something(x)
     _unused_var, used_var = something_else(x)
-    # ...
+    # some code
   end
 
   # good
@@ -1668,7 +1686,7 @@ no parameters.
 
   def something(x)
     _, used_var = something_else(x)
-    # ...
+    # some code
   end
   ```
 
@@ -1968,18 +1986,18 @@ no parameters.
   someVar = 5
 
   def someMethod
-    ...
+    # some code
   end
 
   def SomeMethod
-   ...
+   # some code
   end
 
   # good
   :some_symbol
 
   def some_method
-    ...
+    # some code
   end
   ```
 
@@ -1991,32 +2009,32 @@ no parameters.
   ```Ruby
   # bad
   class Someclass
-    ...
+    # some code
   end
 
   class Some_Class
-    ...
+    # some code
   end
 
   class SomeXml
-    ...
+    # some code
   end
 
   class XmlSomething
-    ...
+    # some code
   end
 
   # good
   class SomeClass
-    ...
+    # some code
   end
 
   class SomeXML
-    ...
+    # some code
   end
 
   class XMLSomething
-    ...
+    # some code
   end
   ```
 
@@ -2342,6 +2360,7 @@ no parameters.
     end
 
     def self.some_other_method
+      # body omitted
     end
   end
 
@@ -2354,6 +2373,7 @@ no parameters.
     end
 
     def some_other_method
+      # body omitted
     end
   end
   ```
@@ -2460,7 +2480,7 @@ no parameters.
 <sup>[[link](#attr)]</sup>
 
   ```Ruby
-  # bad - creates a single attribute accessor (deprecated in 1.9)
+  # bad - creates a single attribute accessor (deprecated in Ruby 1.9)
   attr :something, true
   attr :one, :two, :three # behaves as attr_reader
 
@@ -2600,17 +2620,17 @@ no parameters.
   ```Ruby
   class SomeClass
     def public_method
-      # ...
+      # some code
     end
 
     private
 
     def private_method
-      # ...
+      # some code
     end
 
     def another_private_method
-      # ...
+      # some code
     end
   end
   ```
@@ -2762,6 +2782,7 @@ no parameters.
 <sup>[[link](#no-return-ensure)]</sup>
 
   ```Ruby
+  # bad
   def foo
     raise
   ensure
@@ -2953,12 +2974,12 @@ resource cleanup when possible.
   ```Ruby
   # bad - you need to close the file descriptor explicitly
   f = File.open('testfile')
-    # ...
+  # some action on the file
   f.close
 
   # good - the file descriptor is closed automatically
   File.open('testfile') do |f|
-    # ...
+    # some action on the file
   end
   ```
 
@@ -3498,12 +3519,12 @@ resource cleanup when possible.
   ```Ruby
   # bad
   /(regexp)/ =~ string
-  ...
+  # some code
   process Regexp.last_match(1)
 
   # good
   /(?<meaningful_var>regexp)/ =~ string
-  ...
+  # some code
   process meaningful_var
   ```
 
@@ -3743,15 +3764,15 @@ resource cleanup when possible.
     private
 
     def reset_token
-      ...
+      # some code
     end
 
     def create_token
-      ...
+      # some code
     end
 
     def activate!
-      ...
+      # some code
     end
   end
 
@@ -3922,3 +3943,4 @@ Cheers,<br>
 [trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
 [transmuter]: https://github.com/kalbasit/transmuter
 [RuboCop]: https://github.com/bbatsov/rubocop
+[rdoc]: http://rdoc.sourceforge.net/doc/
