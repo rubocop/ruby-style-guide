@@ -1990,7 +1990,7 @@ no parameters.
   end
 
   def SomeMethod
-   # some code
+    # some code
   end
 
   # good
@@ -2984,7 +2984,7 @@ resource cleanup when possible.
   ```
 
 * <a name="standard-exceptions"></a>
-  Favor the use of exceptions for the standard library over introducing new
+  Favor the use of exceptions from the standard library over introducing new
   exception classes.
 <sup>[[link](#standard-exceptions)]</sup>
 
