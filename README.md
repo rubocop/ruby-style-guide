@@ -3242,21 +3242,7 @@ resource cleanup when possible.
   styles in the Ruby community, both of which are considered good - single
   quotes by default (Option A) and double quotes by default (Option B).
 <sup>[[link](#consistent-string-literals)]</sup>
-
-  * **(Option A)** Prefer single-quoted strings when you don't need
-    string interpolation or special symbols such as `\t`, `\n`, `'`,
-    etc.
-
-    ```Ruby
-    # bad
-    name = "Bozhidar"
-
-    # good
-    name = 'Bozhidar'
-    ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
+Prefer double-quotes unless your string literal contains `"` or escape characters you want to suppress.
 
     ```Ruby
     # bad
