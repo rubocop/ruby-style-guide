@@ -59,7 +59,7 @@ from this guide). In the event of any conflicts, such
 project-specific guides take precedence for that project.
 
 You can generate a PDF or an HTML copy of this guide using
-[Transmuter][].
+[Pandoc][].
 
 [RuboCop][] is a code analyzer, based on this
 style guide.
@@ -3941,6 +3941,6 @@ Cheers,<br>
 [rails-style-guide]: https://github.com/bbatsov/rails-style-guide
 [pickaxe]: https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0
 [trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
-[transmuter]: https://github.com/kalbasit/transmuter
+[Pandoc]: http://pandoc.org/
 [RuboCop]: https://github.com/bbatsov/rubocop
 [rdoc]: http://rdoc.sourceforge.net/doc/
