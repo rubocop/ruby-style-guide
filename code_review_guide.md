@@ -1,7 +1,3 @@
-*Sources:*
-+ https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
-+ http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
-
 #Definition:
 
 * Code review is the process in which code written by a developer is inspected by another person to look for defects and improvements. In other words, developers work on their code mostly in isolation and call for a review when they are ready.
@@ -43,5 +39,10 @@
 
 
 *Some ideas for using/updating this guide:*
-* Link code reviews/PRs as examples for style guide
-* Severity ratings on comments (Blocking, non-blocking, trivial, etc
++ Link code reviews/PRs as examples for style guide
++ Severity ratings on comments (Blocking, non-blocking, trivial, etc
+
+*Sources:*
++ https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
++ http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
+
