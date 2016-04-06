@@ -1,26 +1,26 @@
-#Sources
-#https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
-#http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
+*Sources:*
+https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
+http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
 
-*Definition:*
+#Definition:
 
-Code review is the process in which code written by a developer is inspected by another person to look for defects and improvements. In other words, developers work on their code mostly in isolation and call for a review when they are ready.
+1. Code review is the process in which code written by a developer is inspected by another person to look for defects and improvements. In other words, developers work on their code mostly in isolation and call for a review when they are ready.
 
-*Goals of Code Review:*
+#Goals of Code Review:
 
-Simplify Code
-Make sure acceptance criteria are met
-Keep code maintanable
-Maintain code style
-Keep good test coverage
+1. Simplify Code
+1. Make sure acceptance criteria are met
+1. Keep code maintanable
+1. Maintain code style
+1. Keep good test coverage
 
-*Roles*
+#Roles
 
-*Management:*
+#Management:
 
 Don't use code reviews as a means to produce developer performance metrics (ie Code Review grades).  They should only be viewed through the lens of work towards the best code possible being delivered.
 
-*Reviewers:*
+#Reviewers:
 
 Remain polite.
 Prefer to comment as an observer, "I did not see what was going on here." vs "This doesn't make sense."
@@ -32,7 +32,7 @@ The goal is not to prove yourself a superior programmer.
 Avoid "Why" questions, using "why" can seem accusatory.
 Don't think you need to follow a "script", reviews should be a conversation.
 
-*Developers:*
+#Developers:
 
 Making sure to follow our style guide will make it easier to review your code.
 Remember, the target of the review is the code not you.  Try not to become defensive, everyone makes mistakes (EVERYONE).
