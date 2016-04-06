@@ -25,7 +25,7 @@
 * Avoid philosophical debates when possible.  Stick to code issues that are in line with the stated Goals above.
 * For style problems, word your thoughts as questions about why the style guide was not followed, the writer could have a good reason. ie, "Did you mean to leave out the parantheses?"
 * The goal is not to prove yourself a superior programmer.
-* Avoid "Why" questions, using "why" can seem accusatory.
+* Avoid using "why" in questions, it can read as accusatory.
 * Don't think you need to follow a "script", reviews should be a conversation.
 
 ##Developers:
@@ -40,9 +40,8 @@
 
 *Some ideas for using/updating this guide:*
 + Link code reviews/PRs as examples for style guide
-+ Severity ratings on comments (Blocking, non-blocking, trivial, etc
++ Severity ratings on comments (Blocking, non-blocking, trivial, etc)
 
 *Sources:*
 + https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
 + http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
-
