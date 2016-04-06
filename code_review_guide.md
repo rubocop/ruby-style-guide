@@ -1,6 +1,6 @@
 #Definition:
 
-* Code review is the process in which code written by a developer is inspected by another person to look for defects and improvements. In other words, developers work on their code mostly in isolation and call for a review when they are ready.
+* Code review is the process in which code written by one or more developers is inspected by another developer to look for defects and improvements.
 
 #Goals of Code Review:
 
