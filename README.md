@@ -1,31 +1,6 @@
-# Prelude
-
-> Role models are important. <br>
-> -- Officer Alex J. Murphy / RoboCop
-
-One thing has always bothered me as a Ruby developer - Python developers have a
-great programming style reference
-([PEP-8][]) and we never got an official
-guide, documenting Ruby coding style and best practices. And I do believe that
-style matters. I also believe that a great hacker community, such as Ruby has,
-should be quite capable of producing this coveted document.
-
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was doing
-might be interesting to members of the Ruby community in general and that the
-world had little need for another internal company guideline. But the world
-could certainly benefit from a community-driven and community-sanctioned set of
-practices, idioms and style prescriptions for Ruby programming.
-
-Since the inception of the guide I've received a lot of feedback from members of
-the exceptional Ruby community around the world. Thanks for all the suggestions
-and the support! Together we can make a resource beneficial to each and every
-Ruby developer out there.
-
-By the way, if you're into Rails you might want to check out the complementary
-[Ruby on Rails Style Guide][rails-style-guide].
-
 # The Ruby Style Guide
+
+This guide originally based off [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide)
 
 This Ruby style guide recommends best practices so that real-world Ruby
 programmers can write code that can be maintained by other real-world Ruby
@@ -64,21 +39,9 @@ You can generate a PDF or an HTML copy of this guide using
 [RuboCop][] is a code analyzer, based on this
 style guide.
 
-Translations of the guide are available in the following languages:
-
-* [Chinese Simplified](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinese Traditional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
-* [French](https://github.com/gauthier-delacroix/ruby-style-guide/blob/master/README-frFR.md)
-* [German](https://github.com/arbox/de-ruby-style-guide/blob/master/README-deDE.md)
-* [Japanese](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
-* [Korean](https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md)
-* [Portuguese](https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md)
-* [Russian](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
-* [Spanish](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
-* [Vietnamese](https://github.com/scrum2b/ruby-style-guide/blob/master/README-viVN.md)
-
 ## Table of Contents
 
+* [Design and Sturcture Principles](#design-and-sturcture-principles)
 * [Source Code Layout](#source-code-layout)
 * [Syntax](#syntax)
 * [Naming](#naming)
@@ -93,6 +56,19 @@ Translations of the guide are available in the following languages:
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
 * [Tools](#tools)
+
+## Design and Sturcture Principles
+1.  Boy-scout rule - always leave the code behind in a better state than you found it. _See [Opportunistic Refactoring](http://martinfowler.com/bliki/OpportunisticRefactoring.html)_
+1. Classes should be no longer than one hundred lines of code. _See smell [Single Responsibility Principle](http://c2.com/cgi/wiki?SingleResponsibilityPrinciple)_
+1. Methods should be no longer than 5 to 7 lines of code. _See [Sandi Metz Rules for Developers](https://robots.thoughtbot.com/sandi-metz-rules-for-developers)_
+1. Classes over Hashes. Prefer Structured interfaces over dynamic interfaces. _See smell [Primitive Obsession](http://c2.com/cgi/wiki?PrimitiveObsession)_
+1. New Code should include near 100% tests coverage and cover all use cases.
+1. Prefer exhaustively testing code with as few collaberators as possible. Prefer contracts over integration tests. Intergration tests involving the entire stack should only cover the golden path and not be exhaustive. _See [J.B. Rainsberger - Integrated Tests Are A Scam](https://vimeo.com/80533536)_
+1. Prefer keyword args for public interfaces over ordered args.
+
+[Complete list of Code Smells](https://sourcemaking.com/refactoring/smells)
+
+If you must break any of these rules you have the burden of proof to prove to your code reviewer or pair why breaking the rule is justified.
 
 ## Source Code Layout
 
@@ -563,8 +539,8 @@ Translations of the guide are available in the following languages:
     empty line between the comment block and the `def`.
 <sup>[[link](#rdoc-conventions)]</sup>
 
-* <a name="80-character-limits"></a>
-  Limit lines to 80 characters.
+* <a name="120-character-limits"></a>
+  Limit lines to 120 characters.
 <sup>[[link](#80-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
@@ -861,12 +837,11 @@ Translations of the guide are available in the following languages:
   end
 
   # good
-  result =
-    if condition
-      x
-    else
-      y
-    end
+  result = if condition
+		      x
+		    else
+		      y
+		    end
   ```
 
 * <a name="one-line-cases"></a>
@@ -3034,8 +3009,8 @@ resource cleanup when possible.
   ```
 
 * <a name="no-trailing-array-commas"></a>
-  Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
+  Avoid comma after the last item of an `Array` or `Hash` literal, _especially
+  when the items are not on separate lines_.
 <sup>[[link](#no-trailing-array-commas)]</sup>
 
   ```Ruby
@@ -3288,21 +3263,7 @@ resource cleanup when possible.
   styles in the Ruby community, both of which are considered good - single
   quotes by default (Option A) and double quotes by default (Option B).
 <sup>[[link](#consistent-string-literals)]</sup>
-
-  * **(Option A)** Prefer single-quoted strings when you don't need
-    string interpolation or special symbols such as `\t`, `\n`, `'`,
-    etc.
-
-    ```Ruby
-    # bad
-    name = "Bozhidar"
-
-    # good
-    name = 'Bozhidar'
-    ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
+Prefer double-quotes unless your string literal contains `"` or escape characters you want to suppress.
 
     ```Ruby
     # bad
@@ -3877,64 +3838,6 @@ resource cleanup when possible.
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
 
-## Tools
-
-Here are some tools to help you automatically check Ruby code against
-this guide.
-
-### RuboCop
-
-[RuboCop][] is a Ruby code style
-checker based on this style guide. RuboCop already covers a
-significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
-and has good Emacs integration.
-
-### RubyMine
-
-[RubyMine](http://www.jetbrains.com/ruby/)'s code inspections are
-[partially based](http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections)
-on this guide.
-
-# Contributing
-
-The guide is still a work in progress - some rules are lacking examples, some
-rules don't have examples that illustrate them clearly enough. Improving such rules
-is a great (and simple way) to help the Ruby community!
-
-In due time these issues will (hopefully) be addressed - just keep them in mind
-for now.
-
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Ruby coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Ruby
-community.
-
-Feel free to open tickets or send pull requests with improvements. Thanks in
-advance for your help!
-
-You can also support the project (and RuboCop) with financial
-contributions via [Gratipay](https://gratipay.com/~bbatsov/).
-
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/~bbatsov/)
-
-## How to Contribute?
-
-It's easy, just follow the [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
-
-# License
-
-![Creative Commons License](http://i.creativecommons.org/l/by/3.0/88x31.png)
-This work is licensed under a [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/deed.en_US)
-
-# Spread the Word
-
-A community-driven style guide is of little use to a community that
-doesn't know about its existence. Tweet about the guide, share it with
-your friends and colleagues. Every comment, suggestion or opinion we
-get makes the guide just a little bit better. And we want to have the
-best possible guide, don't we?
-
-Cheers,<br>
 [Bozhidar](https://twitter.com/bbatsov)
 
 [PEP-8]: https://www.python.org/dev/peps/pep-0008/
