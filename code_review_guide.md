@@ -22,29 +22,26 @@ http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
 
 ##Reviewers:
 
-*Remain polite.
-*Prefer to comment as an observer, "I did not see what was going on here." vs "This doesn't make sense."
-*Comment about the code not the author.
-*Praise good decisions alongside critiquing others.
-*Avoid philosophical debates when possible.  Stick to code issues that are in line with the stated Goals above.
-*For style problems, word your thoughts as questions about why the style guide was not followed, the writer could have a good reason. ie, "Did you mean to leave out the parantheses?"
-*The goal is not to prove yourself a superior programmer.
-*Avoid "Why" questions, using "why" can seem accusatory.
-*Don't think you need to follow a "script", reviews should be a conversation.
+* Remain polite.
+* Prefer to comment as an observer, "I did not see what was going on here." vs "This doesn't make sense."
+* Comment about the code not the author.
+* Praise good decisions alongside critiquing others.
+* Avoid philosophical debates when possible.  Stick to code issues that are in line with the stated Goals above.
+* For style problems, word your thoughts as questions about why the style guide was not followed, the writer could have a good reason. ie, "Did you mean to leave out the parantheses?"
+* The goal is not to prove yourself a superior programmer.
+* Avoid "Why" questions, using "why" can seem accusatory.
+* Don't think you need to follow a "script", reviews should be a conversation.
 
 ##Developers:
 
-*Remain polite.
-*Making sure to follow our style guide will make it easier to review your code.
-*Remember, the target of the review is the code not you.  Try not to become defensive, everyone makes mistakes (EVERYONE).
-*Taking pride in your work is natural.  Defend your work if you think critiques are missing something, but remain flexible.
-*It is okay to ask questions of the reviewer if you are not clear on what they are saying.
-*Saying thanks is nice.
+* Remain polite.
+* Making sure to follow our style guide will make it easier to review your code.
+* Remember, the target of the review is the code not you.  Try not to become defensive, everyone makes mistakes (EVERYONE).
+* Taking pride in your work is natural.  Defend your work if you think critiques are missing something, but remain flexible.
+* It is okay to ask questions of the reviewer if you are not clear on what they are saying.
+* Saying thanks is nice.
 
 
-IDEAS:
-Link code reviews/PRs as examples for style guide
-Severity ratings on comments (Blocking, non-blocking, trivial, etc)
-With continuos integration:
-  keep PRs as small as possible, break stories down if needed
-  use feature flags to turn off incomplete features
+Some ideas for using/updating this guide:
+* Link code reviews/PRs as examples for style guide
+* Severity ratings on comments (Blocking, non-blocking, trivial, etc
