@@ -36,7 +36,7 @@ http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
 
 * Remain polite.
 * Making sure to follow our style guide will make it easier to review your code.
-* Remember, the target of the review is the code not you.  Try not to become defensive, everyone makes mistakes (EVERYONE).
+* Remember, the target of the review is the code not you.
 * Taking pride in your work is natural.  Defend your work if you think critiques are missing something, but remain flexible.
 * It is okay to ask questions of the reviewer if you are not clear on what they are saying.
 * Saying thanks is nice.
