@@ -1,6 +1,6 @@
 *Sources:*
-https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
-http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
++ https://10kloc.wordpress.com/2016/04/03/effective-code-reviews/
++ http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
 
 #Definition:
 
@@ -42,6 +42,6 @@ http://www.codeproject.com/Articles/524235/Codeplusreviewplusguidelines
 * Saying thanks is nice.
 
 
-Some ideas for using/updating this guide:
+*Some ideas for using/updating this guide:*
 * Link code reviews/PRs as examples for style guide
 * Severity ratings on comments (Blocking, non-blocking, trivial, etc
