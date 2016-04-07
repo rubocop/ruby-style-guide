@@ -9,6 +9,7 @@
 * Keep code maintanable
 * Maintain code style
 * Keep good test coverage
+* Ensure code is commented, so a new person can understand the logic
 
 #Roles
 
@@ -20,7 +21,7 @@
 
 * Remain polite.
 * Prefer to comment as an observer, "I did not see what was going on here." vs "This doesn't make sense."
-* Comment about the code not the author.
+* Comment about the code, not the author.
 * Praise good decisions alongside critiquing others.
 * Avoid philosophical debates when possible.  Stick to code issues that are in line with the stated Goals above.
 * For style problems, word your thoughts as questions about why the style guide was not followed, the writer could have a good reason. ie, "Did you mean to leave out the parantheses?"
@@ -31,8 +32,8 @@
 ##Developers:
 
 * Remain polite.
-* Making sure to follow our style guide will make it easier to review your code.
-* Remember, the target of the review is the code not you.
+* Following our style guide will make it easier to review your code.
+* Remember, the target of the review is the code, not you.
 * Taking pride in your work is natural.  Defend your work if you think critiques are missing something, but remain flexible.
 * It is okay to ask questions of the reviewer if you are not clear on what they are saying.
 * Saying thanks is nice.
