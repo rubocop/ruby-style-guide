@@ -123,7 +123,7 @@ class FooError < StandardError; end
 FooError = Class.new(StandardError)
 ```
 
-Evite o métodos de linha única. Embora sejam um tanto populares no
+Evite os métodos de linha única. Embora sejam um tanto populares no
 mundo selvagem, existem algumas peculiaridades sobre a sintaxe de definição que torna seu uso indesejável. De qualquer forma - não deveria haver mais do que uma expressão em um método de linha única.
 
 ```Ruby
