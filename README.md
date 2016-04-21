@@ -212,7 +212,6 @@ Translations of the guide are available in the following languages:
   ```Ruby
   sum = 1 + 2
   a, b = 1, 2
-  [1, 2, 3].each { |e| puts e }
   class FooError < StandardError; end
   ```
 
@@ -228,16 +227,17 @@ Translations of the guide are available in the following languages:
 
 * <a name="spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
+  Use spaces around `{` and before `}`.
 <sup>[[link](#spaces-braces)]</sup>
 
   ```Ruby
   # bad
   some( arg ).other
-  [ 1, 2, 3 ].size
+  [ 1, 2, 3 ].each{|e| puts e}
 
   # good
   some(arg).other
-  [1, 2, 3].size
+  [1, 2, 3].each { |e| puts e }
   ```
 
   `{` and `}` deserve a bit of clarification, since they are used
