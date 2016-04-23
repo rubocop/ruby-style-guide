@@ -727,7 +727,7 @@ Translations of the guide are available in the following languages:
 
   # good
   foo = 'one,two,three,four,five'
-  # The underscores is needed to show that you want all elements
+  # The underscores are needed to show that you want all elements
   # except for the last number of underscore elements
   *beginning, _ = foo.split(',')
   *beginning, something, _ = foo.split(',')
