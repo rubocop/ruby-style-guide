@@ -1,6 +1,6 @@
 # Git Strategy
 1. Start a new feature branch off of the latest master
-  - Nameing convention is to start the branch name with the feature's JIRA ID (without II)
+  - Naming convention is to start the branch name with the feature's JIRA ID (without II)
   - e.g. for JIRA II-1234: `git checkout -b 1234-feature-name`
 1. Do work on your branch, rebasing onto master as necessary
   - Make clean commits of logical chunks of work.
