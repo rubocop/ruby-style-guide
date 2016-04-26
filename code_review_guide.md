@@ -9,7 +9,7 @@
 * Keep code maintanable
 * Maintain code style
 * Keep good test coverage
-* Ensure code is commented, so a new person can understand the logic
+* Ensure code is documented (should be undestandable by a person new to the codebase)
 
 #Roles
 
