@@ -3614,7 +3614,7 @@ Prefer double-quotes unless your string literal contains `"` or escape character
   ```ruby
   #bad
   
-  [:account_number, :current_balance, :high_credit,: past_due].each do |method|
+  [:account_number, :current_balance, :high_credit, :past_due].each do |method|
     define_method(method) do
       credit_liability.fetch(method, nil)
     end
