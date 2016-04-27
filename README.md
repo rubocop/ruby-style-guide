@@ -1241,7 +1241,7 @@ condition](#safe-assignment-in-condition).
 
 * <a name="single-line-blocks"></a>
   Prefer `{...}` over `do...end` for single-line blocks.  Avoid using `{...}`
-  for multi-line blocks (multiline chaining is always ugly). Always use
+  for multi-line blocks (multi-line chaining is always ugly). Always use
   `do...end` for "control flow" and "method definitions" (e.g. in Rakefiles and
   certain DSLs).  Avoid `do...end` when chaining.
 <sup>[[link](#single-line-blocks)]</sup>
@@ -1266,7 +1266,7 @@ condition](#safe-assignment-in-condition).
   names.select { |name| name.start_with?('S') }.map(&:upcase)
   ```
 
-  Some will argue that multiline chaining would look OK with the use of {...},
+  Some will argue that multi-line chaining would look OK with the use of {...},
   but they should ask themselves - is this code really readable and can the
   blocks' contents be extracted into nifty methods?
 
@@ -3471,7 +3471,7 @@ resource cleanup when possible.
   ```
 
 * <a name="squiggly-heredocs"></a>
-  Use Ruby 2.3's squiggly heredocs for nicely indented multiline strings.
+  Use Ruby 2.3's squiggly heredocs for nicely indented multi-line strings.
 <sup>[[link](#squiggly-heredocs)]</sup>
 
   ```Ruby
