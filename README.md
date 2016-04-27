@@ -2070,6 +2070,44 @@ no parameters.
   boolean, shouldn't end in a question mark.
 <sup>[[link](#bool-methods-qmark)]</sup>
 
+* <a name="bool-methods-prefix"></a>
+  Avoid prefixing predicate methods with the auxiliary verbs such as `is`,
+  `does`, or `can`.  These words are redundant and inconsistent with the style of
+  boolean methods in the Ruby core library, such as `empty?` and `include?`.
+<sup>[[link](#bool-methods-prefix)]</sup>
+
+  ```Ruby
+  # bad
+  class Person
+    def is_tall?
+      true
+    end
+
+    def can_play_basketball?
+      false
+    end
+
+    def does_like_candy?
+      true
+    end
+  end
+
+  # good
+  class Person
+    def tall?
+      true
+    end
+
+    def basketball_player?
+      false
+    end
+
+    def likes_candy?
+      true
+    end
+  end
+  ```
+
 * <a name="dangerous-method-bang"></a>
   The names of potentially *dangerous* methods (i.e. methods that modify
   `self` or the arguments, `exit!` (doesn't run the finalizers like `exit`
