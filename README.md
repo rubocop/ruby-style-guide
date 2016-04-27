@@ -204,15 +204,14 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="spaces-operators"></a>
-  Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`. Whitespace might be (mostly) irrelevant to the Ruby
-  interpreter, but its proper use is the key to writing easily readable code.
+  Use spaces around operators, after commas, colons and semicolons.
+  Whitespace might be (mostly) irrelevant to the Ruby interpreter,
+  but its proper use is the key to writing easily readable code.
 <sup>[[link](#spaces-operators)]</sup>
 
   ```Ruby
   sum = 1 + 2
   a, b = 1, 2
-  [1, 2, 3].each { |e| puts e }
   class FooError < StandardError; end
   ```
 
@@ -226,9 +225,29 @@ Translations of the guide are available in the following languages:
   e = M * c**2
   ```
 
+* <a name="spaces-braces"></a>
+  No spaces after `(`, `[` or before `]`, `)`.
+  Use spaces around `{` and before `}`.
+<sup>[[link](#spaces-braces)]</sup>
+
+  ```Ruby
+  # bad
+  some( arg ).other
+  [ 1, 2, 3 ].each{|e| puts e}
+
+  # good
+  some(arg).other
+  [1, 2, 3].each { |e| puts e }
+  ```
+
   `{` and `}` deserve a bit of clarification, since they are used
   for block and hash literals, as well as string interpolation.
+
   For hash literals two styles are considered acceptable.
+  The first variant is slightly more readable (and arguably more
+  popular in the Ruby community in general). The second variant has
+  the advantage of adding visual difference between block and hash
+  literals. Whichever one you pick - apply it consistently.
 
   ```Ruby
   # good - space after { and before }
@@ -238,23 +257,14 @@ Translations of the guide are available in the following languages:
   {one: 1, two: 2}
   ```
 
-  The first variant is slightly more readable (and arguably more
-  popular in the Ruby community in general). The second variant has
-  the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
-
-* <a name="no-spaces-braces"></a>
-  No spaces after `(`, `[` or before `]`, `)`.
-<sup>[[link](#no-spaces-braces)]</sup>
+  With interpolated expressions, there should be no padded-spacing inside the braces.
 
   ```Ruby
   # bad
-  some( arg ).other
-  [ 1, 2, 3 ].size
+  "From: #{ user.first_name }, #{ user.last_name }"
 
   # good
-  some(arg).other
-  [1, 2, 3].size
+  "From: #{user.first_name}, #{user.last_name}"
   ```
 
 * <a name="no-space-bang"></a>
