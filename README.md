@@ -2073,7 +2073,7 @@ no parameters.
 * <a name="bool-methods-prefix"></a>
   Avoid prefixing predicate methods with the auxiliary verbs such as `is`,
   `does`, or `can`.  These words are redundant and inconsistent with the style of
-  boolean methods in the Ruby core lib, such as `empty?` and `include?`.
+  boolean methods in the Ruby core library, such as `empty?` and `include?`.
 <sup>[[link](#bool-methods-prefix)]</sup>
 
   ```Ruby
@@ -2083,9 +2083,26 @@ no parameters.
       true
     end
 
+    def can_play_basketball?
+      false
+    end
+
+    def does_like_candy?
+      true
+    end
+  end
+
   # good
   class Person
     def tall?
+      true
+    end
+
+    def basketball_player?
+      false
+    end
+
+    def likes_candy?
       true
     end
   end
