@@ -87,6 +87,7 @@ Translations of the guide are available in the following languages:
 * [Classes & Modules](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
+* [Numbers](#numbers)
 * [Strings](#strings)
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
@@ -1512,7 +1513,7 @@ condition](#safe-assignment-in-condition).
 
   # good
   'ruby' == some_str
-  1.0.eql? x # eql? makes sense here if want to differentiate between Fixnum and Float 1
+  1.0.eql? x # eql? makes sense here if want to differentiate between Integer and Float 1
   ```
 
 * <a name="no-cryptic-perlisms"></a>
@@ -3299,6 +3300,23 @@ resource cleanup when possible.
       @awesome_things
     end
   end
+  ```
+## Numbers
+
+* <a name="integer-type-checking"></a>
+  Use `Integer` check type of an integer number. Since `Fixnum` is platform-dependent, checking against it will
+  return different results on 32-bit and 64-bit machines.
+<sup>[[link](#integer-type-checking)]</sup>
+
+  ```Ruby
+  timestamp = Time.now.to_i
+  
+  # bad
+  timestamp.is_a? Fixnum
+  timestamp.is_a? Bignum
+  
+  # good
+  timestamp.is_a? Integer
   ```
 
 ## Strings
