@@ -1758,7 +1758,9 @@ no parameters.
 * <a name="splat-arrays"></a>
   Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing
   with a variable you want to treat as an Array, but you're not certain it's an
-  array.
+  array. (This approach would not work if a variable is either a hash or
+  an array of hashes, as Array() would convert the hash to array before 
+  wrapping it into a new array, and leave array of hashes as is.)
 <sup>[[link](#splat-arrays)]</sup>
 
   ```Ruby
