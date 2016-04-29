@@ -13,5 +13,8 @@
 1. After acceptance:
   - Rebase feature branch onto latest master
   - Push feature branch to origin so tests run
-  - If tests pass, merge feature branch into master via a no-fast-foward merge commit (`git merge feature-branch-name --no-ff`). Note: the purpose of no-fast-forward is for ease of reverting features
-  
+  - If tests pass, merge feature branch into master via a no-fast-foward merge commit
+    - Note: the purpose of no-fast-forward is for ease of reverting features
+    - This is what github's UI does this automatically so that is one way to go
+    - or `git merge 1234-feature-name --no-ff` from the command line
+
