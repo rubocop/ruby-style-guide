@@ -1755,18 +1755,18 @@ no parameters.
   # => 'one, two, three'
   ```
 
-* <a name="splat-arrays"></a>
-  Use `[*var]` or `Array()` instead of explicit `Array` check, when dealing
+* <a name="array-coercion"></a>
+  Use `Array()` instead of explicit `Array` check or `[*var]`, when dealing
   with a variable you want to treat as an Array, but you're not certain it's an
   array.
-<sup>[[link](#splat-arrays)]</sup>
+<sup>[[link](#array-coercion)]</sup>
 
   ```Ruby
   # bad
   paths = [paths] unless paths.is_a? Array
   paths.each { |path| do_something(path) }
 
-  # good
+  # bad (always creates a new Array instance)
   [*paths].each { |path| do_something(path) }
 
   # good (and a bit more readable)
