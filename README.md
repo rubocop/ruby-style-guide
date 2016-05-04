@@ -3610,6 +3610,39 @@ Prefer double-quotes unless your string literal contains `"` or escape character
   Avoid needless metaprogramming.
 <sup>[[link](#no-needless-metaprogramming)]</sup>
 
+  When possible prefer non metaprogramming abstractions to DRY up code because it's more readable and searchable.
+  ```ruby
+  #bad
+  
+  [:account_number, :current_balance, :high_credit, :past_due].each do |method|
+    define_method(method) do
+      credit_liability.fetch(method, nil)
+    end
+  end
+  
+  #good
+  
+  def account_number
+    fetch(__method__, nil)
+  end
+
+  def current_balance
+    fetch(__method_) { 0 }
+  end
+
+  def high_credit
+    fetch(__method__, nil)
+  end
+
+  def past_due
+    fetch(__method__, nil)
+  end
+
+  def fetch(*args, &block)
+    credit_liability.fetch(*args, &block)
+  end
+  ```
+
 * <a name="no-monkey-patching"></a>
   Do not mess around in core classes when writing libraries.  (Do not
   monkey-patch them.)
