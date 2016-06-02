@@ -569,19 +569,26 @@ Translations of the guide are available in the following languages:
   num = 1_000_000
   ```
 
-* <a name="octal-literals"></a>
-  Use `0o` for octal literals instead of `0` or `0O`.
-<sup>[[link](#octal-literals)]</sup>
+* <a name="numeric-literal-prefixes"></a>
+  Prefer smallcase letters for numeric literal prefixes.
+  `0o` for octal, `0x` for hexadecimal and `0b` for binary.
+  Do not use `0d` prefix for decimal literals.
+<sup>[[link](#numeric-literal-prefixes)]</sup>
 
   ```Ruby
   # bad
   num = 01234
-
-  # bad - hard to differentiate zero and big-O
   num = 0O1234
+  num = 0X12AB
+  num = 0B10101
+  num = 0D1234
+  num = 0d1234
 
   # good - easier to separate digits from the prefix
   num = 0o1234
+  num = 0x12AB
+  num = 0b10101
+  num = 1234
   ```
 
 * <a name="rdoc-conventions"></a>
