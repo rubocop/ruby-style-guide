@@ -569,6 +569,21 @@ Translations of the guide are available in the following languages:
   num = 1_000_000
   ```
 
+* <a name="octal-literals"></a>
+  Use `0o` for octal literals instead of `0` or `0O`.
+<sup>[[link](#octal-literals)]</sup>
+
+  ```Ruby
+  # bad
+  num = 01234
+
+  # bad - hard to differentiate zero and big-O
+  num = 0O1234
+
+  # good - easier to separate digits from the prefix
+  num = 0o1234
+  ```
+
 * <a name="rdoc-conventions"></a>
     Use [Rdoc][rdoc] and its conventions for API documentation.  Don't put an
     empty line between the comment block and the `def`.
