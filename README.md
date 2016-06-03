@@ -986,25 +986,6 @@ Translations of the guide are available in the following languages:
   some_condition && do_something
   ```
 
-* <a name="no-multiline-if-modifiers"></a>
-  Avoid modifier `if/unless` usage at the end of a non-trivial multi-line
-  block.
-<sup>[[link](#no-multiline-if-modifiers)]</sup>
-
-  ```Ruby
-  # bad
-  10.times do
-    # multi-line body omitted
-  end if some_condition
-
-  # good
-  if some_condition
-    10.times do
-      # multi-line body omitted
-    end
-  end
-  ```
-
 * <a name="no-nested-modifiers"></a>
   Avoid nested modifier `if/unless/while/until` usage. Favor `&&/||` if
   appropriate.
