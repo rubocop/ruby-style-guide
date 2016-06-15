@@ -2546,6 +2546,37 @@ no parameters.
   end
   ```
 
+* <a name="accessor_mutator_method_names"></a>
+  For accessors and mutators, avoid prefixing method names with
+  `get_` and `set_`.
+  It is a Ruby convention to use attribute names for accessors (readers) and
+  `attr_name=` for mutators (writers).
+<sup>[[link](#accessor_mutator_method_names)]</sup>
+
+  ```Ruby
+  # bad
+  class Person
+    def get_name
+      "#{@first_name} #{@last_name}"
+    end
+
+    def set_name(name)
+      @first_name, @last_name = name.split(' ')
+    end
+  end
+
+  # good
+  class Person
+    def name
+      "#{@first_name} #{@last_name}"
+    end
+
+    def name=(name)
+      @first_name, @last_name = name.split(' ')
+    end
+  end
+  ```
+
 * <a name="attr"></a>
   Avoid the use of `attr`. Use `attr_reader` and `attr_accessor` instead.
 <sup>[[link](#attr)]</sup>
