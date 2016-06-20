@@ -595,7 +595,7 @@ result = hash.map { |_, v| v + 1 }
 
 ### Use `snake_case` for methods and variables.
 
-### Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML uppercase.)
+### Use `CamelCase` for classes and modules. Keep acronyms like HTTP, RFC, XML uppercase when possible. (Upper case words cause problems for rails routes.)
 
 ### Use `SCREAMING_SNAKE_CASE` for other constants.
 
