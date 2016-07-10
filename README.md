@@ -3,12 +3,11 @@
 > Role models are important. <br>
 > -- Officer Alex J. Murphy / RoboCop
 
-One thing has always bothered me as a Ruby developer - Python developers have a
-great programming style reference
-([PEP-8][]) and we never got an official
-guide, documenting Ruby coding style and best practices. And I do believe that
-style matters. I also believe that a great hacker community, such as Ruby has,
-should be quite capable of producing this coveted document.
+One thing has always bothered me as a Ruby developer&mdash;Python developers
+have a great programming style reference ([PEP-8][]) and we never got an
+official guide, documenting Ruby coding style and best practices. And I do
+believe that style matters. I also believe that a great hacker community, such
+as Ruby has, should be quite capable of producing this coveted document.
 
 This guide started its life as our internal company Ruby coding guidelines
 (written by yours truly). At some point I decided that the work I was doing
@@ -29,15 +28,15 @@ By the way, if you're into Rails you might want to check out the complementary
 
 This Ruby style guide recommends best practices so that real-world Ruby
 programmers can write code that can be maintained by other real-world Ruby
-programmers. A style guide that reflects real-world usage gets used, and a style
-guide that holds to an ideal that has been rejected by the people it is supposed
-to help risks not getting used at all &ndash; no matter how good it is.
+programmers. A style guide that reflects real-world usage gets used, while a
+style guide that holds to an ideal that has been rejected by the people it is
+supposed to help risks not getting used at all&mdash;no matter how good it is.
 
 The guide is separated into several sections of related rules. I've tried to add
 the rationale behind the rules (if it's omitted I've assumed it's pretty
 obvious).
 
-I didn't come up with all the rules out of nowhere - they are mostly
+I didn't come up with all the rules out of nowhere&mdash;they are mostly
 based on my extensive career as a professional software engineer,
 feedback and suggestions from members of the Ruby community and
 various highly regarded Ruby programming resources, such as
@@ -136,8 +135,8 @@ Translations of the guide are available in the following languages:
     ```
 
 * <a name="no-semicolon"></a>
-  Don't use `;` to separate statements and expressions. As a corollary - use one
-  expression per line.
+  Don't use `;` to separate statements and expressions. As a corollary&mdash;use
+  one expression per line.
 <sup>[[link](#no-semicolon)]</sup>
 
   ```Ruby
@@ -174,8 +173,8 @@ Translations of the guide are available in the following languages:
 * <a name="no-single-line-methods"></a>
   Avoid single-line methods. Although they are somewhat popular in the wild,
   there are a few peculiarities about their definition syntax that make their
-  use undesirable. At any rate - there should be no more than one expression in
-  a single-line method.
+  use undesirable. At any rate&mdash;there should be no more than one expression
+  in a single-line method.
 <sup>[[link](#no-single-line-methods)]</sup>
 
   ```Ruby
@@ -248,7 +247,7 @@ Translations of the guide are available in the following languages:
   The first variant is slightly more readable (and arguably more
   popular in the Ruby community in general). The second variant has
   the advantage of adding visual difference between block and hash
-  literals. Whichever one you pick - apply it consistently.
+  literals. Whichever one you pick&mdash;apply it consistently.
 
   ```Ruby
   # good - space after { and before }
@@ -460,9 +459,9 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="consistent-multi-line-chains"></a>
-    Adopt a consistent multi-line method chaining style. There are two
-    popular styles in the Ruby community, both of which are considered
-    good - leading `.` (Option A) and trailing `.` (Option B).
+    Adopt a consistent multi-line method chaining style. There are two popular
+    styles in the Ruby community, both of which are considered
+    good&mdash;leading `.` (Option A) and trailing `.` (Option B).
 <sup>[[link](#consistent-multi-line-chains)]</sup>
 
   * **(Option A)** When continuing a chained method invocation on
@@ -776,10 +775,10 @@ Translations of the guide are available in the following languages:
 
 * <a name="no-for-loops"></a>
     Do not use `for`, unless you know exactly why. Most of the time iterators
-    should be used instead. `for` is implemented in terms of `each` (so
-    you're adding a level of indirection), but with a twist - `for`
-    doesn't introduce a new scope (unlike `each`) and variables defined
-    in its block will be visible outside it.
+    should be used instead. `for` is implemented in terms of `each` (so you're
+    adding a level of indirection), but with a twist&mdash;`for` doesn't
+    introduce a new scope (unlike `each`) and variables defined in its block
+    will be visible outside it.
 <sup>[[link](#no-for-loops)]</sup>
 
   ```Ruby
@@ -801,7 +800,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-then"></a>
-  Do not use `then` for multi-line `if/unless`.
+  Do not use `then` for multi-line `if`/`unless`.
 <sup>[[link](#no-then)]</sup>
 
   ```Ruby
@@ -972,12 +971,12 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-multiline-ternary"></a>
-  Avoid multi-line `?:` (the ternary operator); use `if/unless` instead.
+  Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
 <sup>[[link](#no-multiline-ternary)]</sup>
 
 * <a name="if-as-a-modifier"></a>
-  Favor modifier `if/unless` usage when you have a single-line body. Another
-  good alternative is the usage of control flow `&&/||`.
+  Favor modifier `if`/`unless` usage when you have a single-line body. Another
+  good alternative is the usage of control flow `&&`/`||`.
 <sup>[[link](#if-as-a-modifier)]</sup>
 
   ```Ruby
@@ -994,7 +993,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-multiline-if-modifiers"></a>
-  Avoid modifier `if/unless` usage at the end of a non-trivial multi-line
+  Avoid modifier `if`/`unless` usage at the end of a non-trivial multi-line
   block.
 <sup>[[link](#no-multiline-if-modifiers)]</sup>
 
@@ -1013,7 +1012,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-nested-modifiers"></a>
-  Avoid nested modifier `if/unless/while/until` usage. Favor `&&/||` if
+  Avoid nested modifier `if`/`unless`/`while`/`until` usage. Favor `&&`/`||` if
   appropriate.
 <sup>[[link](#no-nested-modifiers)]</sup>
 
@@ -1064,7 +1063,8 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-parens-if"></a>
-  Don't use parentheses around the condition of an `if/unless/while/until`.
+  Don't use parentheses around the condition of an
+  `if`/`unless`/`while`/`until`.
 <sup>[[link](#no-parens-if)]</sup>
 
   ```Ruby
@@ -1300,7 +1300,7 @@ condition](#safe-assignment-in-condition).
   ```
 
   Some will argue that multi-line chaining would look OK with the use of {...},
-  but they should ask themselves - is this code really readable and can the
+  but they should ask themselves&mdash;is this code really readable and can the
   blocks' contents be extracted into nifty methods?
 
 * <a name="block-argument"></a>
@@ -2250,12 +2250,12 @@ no parameters.
   comment at all.
 <sup>[[link](#comment-upkeep)]</sup>
 
-> Good code is like a good joke - it needs no explanation. <br>
-> -- Russ Olsen
+> Good code is like a good joke: it needs no explanation. <br>
+> &mdash; old programmers maxim, through [Russ Olsen](http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/)
 
 * <a name="refactor-dont-comment"></a>
   Avoid writing comments to explain bad code. Refactor the code to make it
-  self-explanatory. (Do or do not - there is no try. --Yoda)
+  self-explanatory. ("Do or do not&mdash;there is no try." Yoda)
 <sup>[[link](#refactor-dont-comment)]</sup>
 
 ### Comment Annotations
@@ -3357,8 +3357,9 @@ resource cleanup when possible.
 ## Numbers
 
 * <a name="integer-type-checking"></a>
-  Use `Integer` check type of an integer number. Since `Fixnum` is platform-dependent, checking against it will
-  return different results on 32-bit and 64-bit machines.
+  Use `Integer` check type of an integer number. Since `Fixnum` is
+  platform-dependent, checking against it will return different results on
+  32-bit and 64-bit machines.
 <sup>[[link](#integer-type-checking)]</sup>
 
   ```Ruby
@@ -3392,7 +3393,7 @@ resource cleanup when possible.
 
 * <a name="consistent-string-literals"></a>
   Adopt a consistent string literal quoting style. There are two popular
-  styles in the Ruby community, both of which are considered good - single
+  styles in the Ruby community, both of which are considered good&mdash;single
   quotes by default (Option A) and double quotes by default (Option B).
 <sup>[[link](#consistent-string-literals)]</sup>
 
@@ -3423,8 +3424,8 @@ resource cleanup when possible.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
-  redundant - `?x` would interpreted as `'x'` (a string with a single character
-  in it).
+  redundant&mdash;`?x` would interpreted as `'x'` (a string with a single
+  character in it).
 <sup>[[link](#no-character-literals)]</sup>
 
   ```Ruby
@@ -4004,12 +4005,12 @@ on this guide.
 
 # Contributing
 
-The guide is still a work in progress - some rules are lacking examples, some
-rules don't have examples that illustrate them clearly enough. Improving such rules
-is a great (and simple way) to help the Ruby community!
+The guide is still a work in progress&mdash;some rules are lacking examples,
+some rules don't have examples that illustrate them clearly enough. Improving
+such rules is a great (and simple way) to help the Ruby community!
 
-In due time these issues will (hopefully) be addressed - just keep them in mind
-for now.
+In due time these issues will (hopefully) be addressed&mdash;just keep them in
+mind for now.
 
 Nothing written in this guide is set in stone. It's my desire to work
 together with everyone interested in Ruby coding style, so that we could
