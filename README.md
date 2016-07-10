@@ -88,6 +88,7 @@ Translations of the guide are available in the following languages:
 * [Collections](#collections)
 * [Numbers](#numbers)
 * [Strings](#strings)
+* [Date & Time](#date--time)
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
@@ -3570,6 +3571,35 @@ resource cleanup when possible.
   END
   ```
 
+## Date & Time
+
+* <a name="time-now"></a>
+  Prefer `Time.now` over `Time.new` when retrieving the current system time.
+<sup>[[link](#time-now)]</sup>
+
+* <a name="no-datetime"></a>
+  Don't use `DateTime` unless you need to account for historical calendar
+  reform -- and if you do, explicitly specify the `start` argument to
+  clearly state your intentions.
+<sup>[[link](#no-datetime)]</sup>
+
+  ```Ruby
+  # bad - uses DateTime for current time
+  DateTime.now
+  
+  # good - uses Time for current time
+  Time.now
+  
+  # bad - uses DateTime for modern date
+  DateTime.iso8601('2016-06-29')
+  
+  # good - uses Date for modern date
+  Date.iso8601('2016-06-29')
+  
+  # good - uses DateTime with start argument for historical date
+  DateTime.iso8601('1751-04-23', Date::ENGLAND)
+  ```
+
 ## Regular Expressions
 
 > Some people, when confronted with a problem, think
@@ -3960,10 +3990,6 @@ resource cleanup when possible.
   Use `OptionParser` for parsing complex command line options and `ruby -s`
   for trivial command line options.
 <sup>[[link](#optionparser)]</sup>
-
-* <a name="time-now"></a>
-  Prefer `Time.now` over `Time.new` when retrieving the current system time.
-<sup>[[link](#time-now)]</sup>
 
 * <a name="functional-code"></a>
   Code in a functional way, avoiding mutation when that makes sense.
