@@ -1176,7 +1176,8 @@ condition](#safe-assignment-in-condition).
 * <a name="no-dsl-parens"></a>
   Omit parentheses around parameters for methods that are part of an internal
   DSL (e.g. Rake, Rails, RSpec), methods that have "keyword" status in Ruby
-  (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses
+  (e.g. `attr_reader`, `attr_writer`, `alias_method`) and methods that have
+  implicit receiver on a main object level (e.g. `puts`, `defined?`). Use parentheses
   around the arguments of all other method invocations.
 <sup>[[link](#no-dsl-parens)]</sup>
 
@@ -1196,9 +1197,9 @@ condition](#safe-assignment-in-condition).
   temperance = Person.new('Temperance', 30)
 
   # bad
-  puts(temperance.age)
+  puts(temperance.age) if defined?(variable)
   # good
-  puts temperance.age
+  puts temperance.age if defined? variable
 
   # bad
   x = Math.sin y
