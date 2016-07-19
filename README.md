@@ -123,7 +123,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="crlf"></a>
-  Use Unix-style line endings. (*BSD/Solaris/Linux/OS X users are covered by
+  Use Unix-style line endings. (\*BSD/Solaris/Linux/OS X users are covered by
   default, Windows users have to be extra careful.)
 <sup>[[link](#crlf)]</sup>
 
@@ -672,6 +672,74 @@ Translations of the guide are available in the following languages:
    end
    ```
 
+* <a name="method-invocation-parens"></a>
+  Use parentheses around the arguments of method invocations,
+  especially if the first argument begins with an open parenthesis `(`,
+  as in `f((3 + 2) + 1)`.
+<sup>[[link](#method-invocation-parens)]</sup>
+
+  ```Ruby
+  # bad
+  x = Math.sin y
+  # good
+  x = Math.sin(y)
+
+  # bad
+  array.delete e
+  # good
+  array.delete(e)
+
+  # bad
+  temperance = Person.new 'Temperance', 30
+  # good
+  temperance = Person.new('Temperance', 30)
+  ```
+
+  Only omit parentheses for
+
+  * Method calls with no arguments:
+
+    ```Ruby
+    # bad
+    Kernel.exit!()
+    2.even?()
+    fork()
+    'test'.upcase()
+
+    # good
+    Kernel.exit!
+    2.even?
+    fork
+    'test'.upcase
+    ```
+
+  * Methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
+
+    ```Ruby
+    # bad
+    expect(bowling.score).to eq 0
+    # good
+    expect(bowling.score).to eq(0)
+    ```
+
+  * Methods that have "keyword" status in Ruby:
+
+    ```Ruby
+    class Person
+      # bad
+      attr_reader(:name, :age)
+      # good
+      attr_reader :name, :age
+
+      # body omitted
+    end
+
+    # bad
+    puts(temperance.age)
+    # good
+    puts temperance.age
+    ```
+
 * <a name="optional-arguments"></a>
     Define optional arguments at the end of the list of arguments.
     Ruby has some unexpected results when calling methods that have
@@ -1174,49 +1242,6 @@ condition](#safe-assignment-in-condition).
   end
   ```
 
-* <a name="no-dsl-parens"></a>
-  Omit parentheses around parameters for methods that are part of an internal
-  DSL (e.g. Rake, Rails, RSpec), methods that have "keyword" status in Ruby
-  (e.g. `attr_reader`, `puts`) and attribute access methods. Use parentheses
-  around the arguments of all other method invocations.
-<sup>[[link](#no-dsl-parens)]</sup>
-
-  ```Ruby
-  class Person
-    # bad
-    attr_reader(:name, :age)
-    # good
-    attr_reader :name, :age
-
-    # body omitted
-  end
-
-  # bad
-  temperance = Person.new 'Temperance', 30
-  # good
-  temperance = Person.new('Temperance', 30)
-
-  # bad
-  puts(temperance.age)
-  # good
-  puts temperance.age
-
-  # bad
-  x = Math.sin y
-  # good
-  x = Math.sin(y)
-
-  # bad
-  array.delete e
-  # good
-  array.delete(e)
-
-  # bad
-  expect(bowling.score).to eq 0
-  # good
-  expect(bowling.score).to eq(0)
-  ```
-
 * <a name="no-braces-opts-hash"></a>
   Omit the outer braces around an implicit options hash.
 <sup>[[link](#no-braces-opts-hash)]</sup>
@@ -1242,24 +1267,6 @@ condition](#safe-assignment-in-condition).
     # good
     validates :name, presence: true, length: { within: 1..10 }
   end
-  ```
-
-* <a name="no-args-no-parens"></a>
-  Omit parentheses for method calls with no arguments.
-<sup>[[link](#no-args-no-parens)]</sup>
-
-  ```Ruby
-  # bad
-  Kernel.exit!()
-  2.even?()
-  fork()
-  'test'.upcase()
-
-  # good
-  Kernel.exit!
-  2.even?
-  fork
-  'test'.upcase
   ```
 
 * <a name="single-action-blocks"></a>
@@ -1566,11 +1573,6 @@ condition](#safe-assignment-in-condition).
   # good
   f(3 + 2) + 1
   ```
-
-* <a name="parens-as-args"></a>
-  If the first argument to a method begins with an open parenthesis, always
-  use parentheses in the method invocation. For example, write `f((3 + 2) + 1)`.
-<sup>[[link](#parens-as-args)]</sup>
 
 * <a name="always-warn-at-runtime"></a>
   Always run the Ruby interpreter with the `-w` option so it will warn you if
