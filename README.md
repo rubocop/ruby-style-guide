@@ -927,6 +927,11 @@ Translations of the guide are available in the following languages:
   Avoid the use of `!!`.
 <sup>[[link](#no-bang-bang)]</sup>
 
+  `!!` converts a value to boolean, but you don't need this explicit 
+  conversion in the condition of a control expression; using it only
+  obscures your intention. If you want to do a `nil` check, use `nil?`
+  instead.
+
   ```Ruby
   # bad
   x = 'test'
@@ -934,10 +939,6 @@ Translations of the guide are available in the following languages:
   if !!x
     # body omitted
   end
-
-  x = false
-  # double negation is useless on booleans
-  !!x # => false
 
   # good
   x = 'test'
