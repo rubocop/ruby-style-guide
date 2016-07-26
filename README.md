@@ -3377,6 +3377,19 @@ resource cleanup when possible.
   timestamp.is_a? Integer
   ```
 
+  * <a name="random-numbers"></a>
+    Prefer to use ranges when generating random numbers instead of integers with offsets,
+    since it clearly states your intentions. Imagine simulating a role of a dice:
+  <sup>[[link](#random-numbers)]</sup>
+
+    ```Ruby
+    # bad
+    rand(6) + 1
+
+    # good
+    rand(1..6)
+    ```
+
 ## Strings
 
 * <a name="string-interpolation"></a>
