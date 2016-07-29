@@ -1133,8 +1133,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-parens-around-condition"></a>
-  Don't use parentheses around the condition of an
-  `if`/`unless`/`while`/`until`.
+  Don't use parentheses around the condition of a control expression.
 <sup>[[link](#no-parens-around-condition)]</sup>
 
   ```Ruby
