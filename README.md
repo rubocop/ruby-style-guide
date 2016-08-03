@@ -717,9 +717,9 @@ Translations of the guide are available in the following languages:
 
     ```Ruby
     # bad
-    expect(bowling.score).to eq 0
+    validates(:name, presence: true)
     # good
-    expect(bowling.score).to eq(0)
+    validates :name, presence: true
     ```
 
   * Methods that have "keyword" status in Ruby:
