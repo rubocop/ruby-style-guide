@@ -995,7 +995,7 @@ Translations of the guide are available in the following languages:
   Avoid the use of `!!`.
 <sup>[[link](#no-bang-bang)]</sup>
 
-  `!!` converts a value to boolean, but you don't need this explicit 
+  `!!` converts a value to boolean, but you don't need this explicit
   conversion in the condition of a control expression; using it only
   obscures your intention. If you want to do a `nil` check, use `nil?`
   instead.
@@ -3224,9 +3224,7 @@ resource cleanup when possible.
 
 * <a name="hash-key"></a>
   Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
-  `Hash#has_value?`. As noted
-  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765) by
-  Matz, the longer forms are considered deprecated.
+  `Hash#has_value?`.
 <sup>[[link](#hash-key)]</sup>
 
   ```Ruby
@@ -3589,16 +3587,16 @@ resource cleanup when possible.
   ```Ruby
   # bad - uses DateTime for current time
   DateTime.now
-  
+
   # good - uses Time for current time
   Time.now
-  
+
   # bad - uses DateTime for modern date
   DateTime.iso8601('2016-06-29')
-  
+
   # good - uses Date for modern date
   Date.iso8601('2016-06-29')
-  
+
   # good - uses DateTime with start argument for historical date
   DateTime.iso8601('1751-04-23', Date::ENGLAND)
   ```
