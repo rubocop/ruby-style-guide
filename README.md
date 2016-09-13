@@ -409,10 +409,10 @@ Translations of the guide are available in the following languages:
   ```Ruby
   # bad - easier to move/add/remove parameters, but still not preferred
   some_method(
-               size,
-               count,
-               color,
-             )
+    size,
+    count,
+    color,
+  )
 
   # bad
   some_method(size, count, color, )
