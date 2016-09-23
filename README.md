@@ -2832,6 +2832,35 @@ no parameters.
   end
   ```
 
+* <a name="class-and-self"></a>
+  When class (or module) methods call other such methods, omit the use of a
+  leading `self` or own name followed by a `.` when calling other such methods.
+  This is often seen in "service classes" or other similar concepts where a
+  class is treated as though it were a function. This convention tends to reduce
+  repetitive boilerpate in such classes.
+  <sup>[[link](#class-and-self)]</sup>
+
+  ```Ruby
+  class TestClass
+    # bad -- more work when class renamed/method moved
+    def self.call(param1, param2)
+      TestClass.new(param1).call(param2)
+    end
+
+    # bad -- more verbose than necessary
+    def self.call(param1, param2)
+      self.new(param1).call(param2)
+    end
+
+    # good
+    def self.call(param1, param2)
+      new(param1).call(param2)
+    end
+
+    # ...other methods...
+  end
+  ```
+
 ## Exceptions
 
 * <a name="prefer-raise-over-fail"></a>
