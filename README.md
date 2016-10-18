@@ -2197,11 +2197,6 @@ no parameters.
   end
   ```
 
-* <a name="reduce-blocks"></a>
-  When using `reduce` with short blocks, name the arguments `|a, e|`
-  (accumulator, element).
-<sup>[[link](#reduce-blocks)]</sup>
-
 * <a name="other-arg"></a>
   When defining binary operators, name the parameter `other`(`<<` and `[]` are
   exceptions to the rule, since their semantics are different).
