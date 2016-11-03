@@ -1311,6 +1311,30 @@ condition](#safe-assignment-in-condition).
   but they should ask themselves&mdash;is this code really readable and can the
   blocks' contents be extracted into nifty methods?
 
+* <a name="avoid-end-chaining"></a>
+  Avoid chaining method invocations directly on the `end` of a block expression.
+  Consider extracting the expression into a helper method, or just store its
+  result in a variable for later use.
+<sup>[[link](#if-end-chaining)]</sup>
+
+  ```Ruby
+  # bad
+  if target.is_a?(Role)
+    target
+  else
+    target.role
+  end.destroy
+  
+  # good
+  target_role =
+    if target.is_a?(Role)
+      target
+    else
+      target.role
+    end
+  target_role.destroy
+  ```
+
 * <a name="block-argument"></a>
   Consider using explicit block argument to avoid writing block literal that
   just passes its arguments to another block. Beware of the performance impact,
