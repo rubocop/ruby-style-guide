@@ -3134,12 +3134,23 @@ resource cleanup when possible.
   ```
 
 * <a name="no-trailing-array-commas"></a>
-  Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
+  Use of comma after the last item of an `Array` or `Hash` literal is 
+  acceptable when you are dealing with items on multiple lines, as
+  it prevents source controls versioning (e.g. Git) to point to multiple
+  lines when you introduce a change.
+  
+  Avoid comma after the last item when the items are not on separate lines.
 <sup>[[link](#no-trailing-array-commas)]</sup>
 
   ```Ruby
-  # bad - easier to move/add/remove items, but still not preferred
+  # good - it's clean
+  VALUES = [
+             1001,
+             2020,
+             3333
+           ]
+           
+  # good - if you introduce new item, only one line is marked as changed is Git
   VALUES = [
              1001,
              2020,
