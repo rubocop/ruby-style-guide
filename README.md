@@ -3854,21 +3854,49 @@ resource cleanup when possible.
 <sup>[[link](#percent-s)]</sup>
 
 * <a name="percent-literal-braces"></a>
-  Prefer `()` as delimiters for all `%` literals, except `%r`. Since parentheses
-  often appear inside regular expressions in many scenarios a less common
-  character like `{` might be a better choice for a delimiter, depending on the
-  regexp's content.
-<sup>[[link](#percent-literal-braces)]</sup>
+  Prefer brackets as delimiter for all `%` literals, because their usage does 
+  not need to be escaped.
 
   ```Ruby
   # bad
-  %w[one two three]
-  %q{"Test's king!", John said.}
+  %-"#{language} \-is\- awesome!"-
+  %!"#{language} (is) awesome\!"!
 
   # good
-  %w(one two three)
-  %q("Test's king!", John said.)
+  %("#{language} -is- awesome!")
+  %("#{language} (is) awesome!")
   ```
+
+  Use meaningful brackets as delimiters, like `[]` for Arrays
+
+  ```Ruby
+  # bad
+  %w(one two three)
+  %i<one two three>
+
+  # good
+  %w[one two three]
+  %i[one two three]
+  ```
+
+  and `()` for Strings and shell commands
+
+  ```Ruby
+  # bad
+  %q<<p class='quote'>"What did you say?"</p>>
+  %{<tr><td class="name">#{name}</td>}
+  %x[echo `date`]
+
+  # good
+  %q(<p class='quote'>"What did you say?"</p>)
+  %(<tr><td class="name">#{name}</td>)
+  %x(echo `date`)
+  ```
+  
+  except `%r`. Since parentheses often appear inside regular expressions in 
+  many scenarios a less common character like `{` might be a better choice for a 
+  delimiter, depending on the regexp's content.
+<sup>[[link](#percent-literal-braces)]</sup>
 
 ## Metaprogramming
 
