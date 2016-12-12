@@ -2366,7 +2366,7 @@ no parameters.
     include AnotherModule
 
     # inner classes
-    CustomErrorKlass = Class.new(StandardError)
+    CustomError = Class.new(StandardError)
 
     # constants are next
     SOME_CONSTANT = 20
