@@ -1016,28 +1016,30 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-and-or-or"></a>
-  The `and` and `or` keywords are banned. It's just not worth it. Always use
-  `&&` and `||` instead.
+  The `and` and `or` keywords are banned. The minimal added readability is just
+  not worth the high probability of introducing subtle bugs. For boolean
+  expressions, always use `&&` and `||` instead. For flow control, use
+  `if` and `unless`; `&&` and `||` are also acceptable but less clear.
 <sup>[[link](#no-and-or-or)]</sup>
 
   ```Ruby
   # bad
   # boolean expression
-  if some_condition and some_other_condition
-    do_something
-  end
+  ok = got_needed_arguments and arguments_are_valid
 
   # control flow
-  document.saved? or document.save!
+  document.save or fail(RuntimError, "Failed to save document!")
 
   # good
   # boolean expression
-  if some_condition && some_other_condition
-    do_something
-  end
+  ok = got_needed_arguments && arguments_are_valid
 
   # control flow
-  document.saved? || document.save!
+  fail(RuntimeError, "Failed to save document!") unless document.save
+
+  # ok
+  # control flow
+  document.save || fail(RuntimeError, "Failed to save document!")
   ```
 
 * <a name="no-multiline-ternary"></a>
