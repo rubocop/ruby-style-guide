@@ -1010,7 +1010,7 @@ Translations of the guide are available in the following languages:
 
   # good
   x = 'test'
-  unless x.nil?
+  if x
     # body omitted
   end
   ```
