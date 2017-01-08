@@ -2355,6 +2355,72 @@ no parameters.
   document them in your project's `README` or similar.
 <sup>[[link](#document-annotations)]</sup>
 
+### Magic Comments
+
+* <a name="magic-comments-first"></a>
+  Place magic comments above all code and documentation. Magic comments should only go below shebangs if they are needed in your source file.
+<sup>[[link](#magic-comments-first)]</sup>
+
+  ```Ruby
+  # good
+  # frozen_string_literal: true
+  # Some documentation about Person
+  class Person
+  end
+
+  # bad
+  # Some documentation about Person
+  # frozen_string_literal: true
+  class Person
+  end
+  ```
+
+  ```Ruby
+  # good
+  #!/usr/bin/env ruby
+  # frozen_string_literal: true
+  App.parse(ARGV)
+
+  # bad
+  # frozen_string_literal: true
+  #!/usr/bin/env ruby
+  App.parse(ARGV)
+  ```
+
+* <a name="one-magic-comment-per-line"></a>
+  Use one magic comment per line if you need multiple.
+<sup>[[link](#one-magic-comment-per-line)]</sup>
+
+  ```Ruby
+  # good
+  # frozen_string_literal: true
+  # encoding: ascii-8bit
+
+  # bad
+  # -*- frozen_string_literal: true; encoding: ascii-8bit -*-
+  ```
+
+* <a name="separate-magic-comments-from-code"></a>
+  Separate magic comments from code and documentation with a blank line.
+<sup>[[link](#separate-magic-comments-from-code)]</sup>
+
+  ```Ruby
+  # good
+  # frozen_string_literal: true
+
+  # Some documentation for Person
+  class Person
+    # Some code
+  end
+
+  # bad
+  # frozen_string_literal: true
+  # Some documentation for Person
+  class Person
+    # Some code
+  end
+  ```
+
 ## Classes & Modules
 
 * <a name="consistent-classes"></a>
