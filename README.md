@@ -1290,7 +1290,7 @@ condition](#safe-assignment-in-condition).
 <sup>[[link](#single-line-blocks)]</sup>
 
   ```Ruby
-  names = %w(Bozhidar Steve Sarah)
+  names = %w[Bozhidar Steve Sarah]
 
   # bad
   names.each do |name|
@@ -1774,11 +1774,11 @@ no parameters.
 
   ```Ruby
   # bad
-  %w(one two three) * ', '
+  %w[one two three] * ', '
   # => 'one, two, three'
 
   # good
-  %w(one two three).join(', ')
+  %w[one two three].join(', ')
   # => 'one, two, three'
   ```
 
@@ -3176,7 +3176,7 @@ resource cleanup when possible.
   STATES = ['draft', 'open', 'closed']
 
   # good
-  STATES = %w(draft open closed)
+  STATES = %w[draft open closed]
   ```
 
 * <a name="percent-i"></a>
@@ -3190,7 +3190,7 @@ resource cleanup when possible.
   STATES = [:draft, :open, :closed]
 
   # good
-  STATES = %i(draft open closed)
+  STATES = %i[draft open closed]
   ```
 
 * <a name="no-trailing-array-commas"></a>
@@ -3854,20 +3854,39 @@ resource cleanup when possible.
 <sup>[[link](#percent-s)]</sup>
 
 * <a name="percent-literal-braces"></a>
-  Prefer `()` as delimiters for all `%` literals, except `%r`. Since parentheses
-  often appear inside regular expressions in many scenarios a less common
-  character like `{` might be a better choice for a delimiter, depending on the
-  regexp's content.
-<sup>[[link](#percent-literal-braces)]</sup>
+  Use the braces that are the most appropriate for the various kinds of percent 
+  literals.
+  <sup>[[link](#percent-literal-braces)]</sup>
+  - `()` for string literals(`%q`, `%Q`).
+  - `[]` for array literals(`%w`, `%i`, `%W`, `%I`) as it is aligned with 
+  the standard array literals.
+  - `{}` for regexp literals(`%r`) since parentheses often appear inside regular 
+  expressions. That's why a less common character with `{` is usually the best 
+  delimiter for `%r` literals.
+  - `()` for all other literals (e.g. `%s`, `%x`)
 
   ```Ruby
   # bad
-  %w[one two three]
   %q{"Test's king!", John said.}
 
   # good
-  %w(one two three)
   %q("Test's king!", John said.)
+
+  # bad
+  %w(one two three)
+  %i(one two three)
+
+  # good
+  %w[one two three]
+  %i[one two three]
+  
+  # bad
+  %r((\w+)-(\d+))
+  %r{\w{1,2}\d{2,5}}
+
+  # good
+  %r{(\w+)-(\d+)}
+  %r|\w{1,2}\d{2,5}|
   ```
 
 ## Metaprogramming
