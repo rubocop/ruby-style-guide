@@ -3868,7 +3868,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-q"></a>
-  Avoid %() or the equivlant %q() unless you have a string with both `'` and 
+  Avoid %() or the equivlant %q() unless you have a string with both `'` and
   `"` in it. Regular string literals are more readable and should be preferred
   unless a lot of characters would have to be escaped in them.
 <sup>[[link](#percent-q)]</sup>
@@ -3920,14 +3920,14 @@ resource cleanup when possible.
 <sup>[[link](#percent-s)]</sup>
 
 * <a name="percent-literal-braces"></a>
-  Use the braces that are the most appropriate for the various kinds of percent 
+  Use the braces that are the most appropriate for the various kinds of percent
   literals.
   <sup>[[link](#percent-literal-braces)]</sup>
   - `()` for string literals(`%q`, `%Q`).
-  - `[]` for array literals(`%w`, `%i`, `%W`, `%I`) as it is aligned with 
+  - `[]` for array literals(`%w`, `%i`, `%W`, `%I`) as it is aligned with
   the standard array literals.
-  - `{}` for regexp literals(`%r`) since parentheses often appear inside regular 
-  expressions. That's why a less common character with `{` is usually the best 
+  - `{}` for regexp literals(`%r`) since parentheses often appear inside regular
+  expressions. That's why a less common character with `{` is usually the best
   delimiter for `%r` literals.
   - `()` for all other literals (e.g. `%s`, `%x`)
 
@@ -3945,7 +3945,7 @@ resource cleanup when possible.
   # good
   %w[one two three]
   %i[one two three]
-  
+
   # bad
   %r((\w+)-(\d+))
   %r{\w{1,2}\d{2,5}}
