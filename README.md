@@ -2470,6 +2470,24 @@ no parameters.
   end
   ```
 
+* <a name="mixin-grouping"></a>
+  Split multiple mixins into separate statements.
+<sup>[[link](#mixin-grouping)]</sup>
+
+  ```Ruby
+  # bad
+  class Person
+    include Foo, Bar
+  end
+  
+  # good
+  class Person
+    # multiple mixins go in separate statements
+    include Foo
+    include Bar
+  end
+  ```
+
 * <a name="file-classes"></a>
   Don't nest multi-line classes within classes. Try to have such nested
   classes each in their own file in a folder named like the containing class.
