@@ -1133,6 +1133,21 @@ Translations of the guide are available in the following languages:
     puts 'failure'
   end
   ```
+* <a name="no-multiple-conditions-with-unless"></a>
+  Do not use `unless` with multiple conditions.
+<sup>[[link](#no-multiple-conditions-with-unless)]</sup>
+
+  ```Ruby
+  # bad
+  unless foo? || baz?
+    do_something
+  end
+
+  # good
+  if !foo? && !baz?
+    do_something
+  end
+  ```
 
 * <a name="no-parens-around-condition"></a>
   Don't use parentheses around the condition of a control expression.
