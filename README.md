@@ -976,7 +976,7 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#one-line-cases)]</sup>
 
 * <a name="no-when-semicolons"></a>
-  Do not use `when x; ...`. See the previous rule.
+  Do not use `when x: ...`. See the previous rule.
 <sup>[[link](#no-when-semicolons)]</sup>
 
 * <a name="bang-not-not"></a>
