@@ -401,6 +401,88 @@ Translations of the guide are available in the following languages:
   end
   ```
 
+* <a name="two-or-more-empty-lines"></a>
+  Don't use several empty lines in a row.
+<sup>[[link](#two-or-more-empty-lines)]</sup>
+
+  ```Ruby
+  # bad - It has two empty lines.
+  some_method
+
+
+  some_method
+
+  # good
+  some_method
+
+  some_method
+  ```
+
+* <a name="empty-lines-around-access-modifier"></a>
+  Use empty lines around access modifiers.
+<sup>[[link](#empty-lines-around-access-modifier)]</sup>
+
+  ```Ruby
+  # bad
+  class Foo
+    attr_reader :foo
+    def foo
+      # do something...
+    end
+  end
+
+  # good
+  class Foo
+    attr_reader :foo
+
+    def foo
+      # do something...
+    end
+  end
+  ```
+
+* <a name="empty-lines-around-bodies"></a>
+  Don't use empty lines around method, class, module, block bodies.
+<sup>[[link](#empty-lines-around-bodies)]</sup>
+
+  ```Ruby
+  # bad
+  class Foo
+
+    def foo
+
+      begin
+
+        do_something do
+
+          something
+
+        end
+
+      rescue
+
+        something
+
+      end
+
+    end
+
+  end
+
+  # good
+  class Foo
+    def foo
+      begin
+        do_something do
+          something
+        end
+      rescue
+        something
+      end
+    end
+  end
+  ```
+
 * <a name="no-trailing-params-comma"></a>
   Avoid comma after the last parameter in a method call, especially when the
   parameters are not on separate lines.
