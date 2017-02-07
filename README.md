@@ -419,7 +419,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="empty-lines-around-access-modifier"></a>
-  Use empty lines around access modifier.
+  Use empty lines around access modifiers.
 <sup>[[link](#empty-lines-around-access-modifier)]</sup>
 
   ```Ruby
@@ -442,7 +442,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="empty-lines-around-bodies"></a>
-  Use empty lines around method, class, module, block bodies.
+  Don't use empty lines around method, class, module, block bodies.
 <sup>[[link](#empty-lines-around-bodies)]</sup>
 
   ```Ruby
