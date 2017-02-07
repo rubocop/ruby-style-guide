@@ -1028,7 +1028,7 @@ Translations of the guide are available in the following languages:
   ok = got_needed_arguments and arguments_are_valid
 
   # control flow
-  document.save or fail(RuntimError, "Failed to save document!")
+  document.save or fail(RuntimeError, "Failed to save document!")
 
   # good
   # boolean expression
@@ -2479,7 +2479,7 @@ no parameters.
   class Person
     include Foo, Bar
   end
-  
+
   # good
   class Person
     # multiple mixins go in separate statements
