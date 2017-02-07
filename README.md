@@ -83,6 +83,7 @@ Translations of the guide are available in the following languages:
 * [Naming](#naming)
 * [Comments](#comments)
   * [Comment Annotations](#comment-annotations)
+  * [Magic Comments](#magic-comments)
 * [Classes & Modules](#classes--modules)
 * [Exceptions](#exceptions)
 * [Collections](#collections)
