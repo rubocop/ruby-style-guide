@@ -3034,7 +3034,7 @@ no parameters.
   leading `self` or own name followed by a `.` when calling other such methods.
   This is often seen in "service classes" or other similar concepts where a
   class is treated as though it were a function. This convention tends to reduce
-  repetitive boilerpate in such classes.
+  repetitive boilerplate in such classes.
   <sup>[[link](#class-and-self)]</sup>
 
   ```Ruby
@@ -3968,7 +3968,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-q"></a>
-  Avoid %() or the equivlant %q() unless you have a string with both `'` and
+  Avoid %() or the equivalent %q() unless you have a string with both `'` and
   `"` in it. Regular string literals are more readable and should be preferred
   unless a lot of characters would have to be escaped in them.
 <sup>[[link](#percent-q)]</sup>
