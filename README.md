@@ -778,7 +778,7 @@ Translations of the guide are available in the following languages:
   temperance = Person.new('Temperance', 30)
   ```
 
-  Must omit parentheses for
+  Always omit parentheses for
 
   * Method calls with no arguments:
 
@@ -820,7 +820,7 @@ Translations of the guide are available in the following languages:
 
   Can omit parentheses for
 
-  * Methods that have "keyword" status in Ruby, but not declarative:
+  * Methods that have "keyword" status in Ruby, but are not declarative:
 
     ```Ruby
     # good
