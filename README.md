@@ -2104,13 +2104,16 @@ no parameters.
   :SomeSymbol
   :someSymbol
 
+ # bad
   someVar = 5
   var_10  = 10
 
+  #bad
   def someMethod
     # some code
   end
 
+  #bad
   def SomeMethod
     # some code
   end
@@ -2118,9 +2121,11 @@ no parameters.
   # good
   :some_symbol
 
+  # good
   some_var = 5
   var10    = 10
 
+  # good
   def some_method
     # some code
   end
