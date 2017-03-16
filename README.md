@@ -2151,10 +2151,10 @@ no parameters.
   ```
 
 
-* <a name="camelcase-classes"></a>
-  Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
+* <a name="pascalcase-classes"></a>
+  Use `PascalCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
   uppercase.)
-<sup>[[link](#camelcase-classes)]</sup>
+<sup>[[link](#pascalcase-classes)]</sup>
 
   ```Ruby
   # bad
@@ -2199,7 +2199,7 @@ no parameters.
 
 * <a name="one-class-per-file"></a>
   Aim to have just a single class/module per source file. Name the file name
-  as the class/module, but replacing CamelCase with snake_case.
+  as the class/module, but replacing PascalCase with snake_case.
 <sup>[[link](#one-class-per-file)]</sup>
 
 * <a name="screaming-snake-case"></a>
