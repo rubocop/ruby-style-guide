@@ -1075,7 +1075,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-bang-bang"></a>
-  Avoid the use of `!!`.
+  Avoid the use of `!!` in conditionals.
 <sup>[[link](#no-bang-bang)]</sup>
 
   `!!` converts a value to boolean, but you don't need this explicit
@@ -1097,6 +1097,33 @@ Translations of the guide are available in the following languages:
     # body omitted
   end
   ```
+
+  In contrast, use of this "bang bang" trick outside conditionals may
+  be acceptable in order to minimise the risk of accidental
+  side-effects from unnecessary leakage of values outside their
+  intended scope.  For example:
+
+  ```Ruby
+  def buggy_cleanup_method(foobar, foobaz)
+    ...
+    if foobar
+      foobar.delete!  # BUG: this should say foobaz.delete!
+    end
+    ...
+  end
+
+  # bad
+  # accidentally calls obj1.delete! causing silent failure
+  buggy_cleanup_method(obj1, obj2)
+
+  # good
+  # will raise NoMethodError: undefined method `delete!' for true:TrueClass
+  buggy_cleanup_method(!!obj1, obj2)
+  ```
+
+  or sensitive information such as a password could be accidentally
+  leaked by a method which only needs to know whether the password is
+  set, not what its actual value is.
 
 * <a name="no-and-or-or"></a>
   The `and` and `or` keywords are banned. The minimal added readability is just
