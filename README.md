@@ -898,12 +898,6 @@ email_with_name = user.name + ' <' + user.email + '>'
 email_with_name = "#{user.name} <#{user.email}>"
 ```
 
-### Consider padding string interpolation code with space. It more clearly sets the code apart from the string.
-
-```ruby
-"#{ user.last_name }, #{ user.first_name }"
-```
-
 ### `String#<<` performs better by mutating the string in place.
 `String#+`, avoids mutation (which is good in a functional way) but therefore runs slower since it creates a new string object.
 
