@@ -1839,16 +1839,28 @@ no parameters.
   # => '20 10'
 
   # good
-  sprintf('%{first} %{second}', first: 20, second: 10)
+  sprintf('%<first>d %<second>d', first: 20, second: 10)
   # => '20 10'
 
   format('%d %d', 20, 10)
   # => '20 10'
 
   # good
-  format('%{first} %{second}', first: 20, second: 10)
+  format('%<first>d %<second>d', first: 20, second: 10)
   # => '20 10'
   ```
+
+* <a name="named-format-tokens"></a>
+  When using named format string tokens, favor `%<name>s` over `%{name}` because it encodes information about the type of the value.
+
+  ```Ruby
+  # bad
+  format('Hello, %{name}', name: 'John')
+
+  # good
+  format('Hello, %<name>s', name: 'John')
+  ```
+<sup>[[link](#named-format-tokens)</sup>
 
 * <a name="array-join"></a>
   Favor the use of `Array#join` over the fairly cryptic `Array#*` with
