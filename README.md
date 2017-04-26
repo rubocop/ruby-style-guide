@@ -1018,19 +1018,6 @@ Translations of the guide are available in the following languages:
   end
   ```
 
-* <a name="no-semicolon-ifs"></a>
-  Do not use `if x; ...`. Use the ternary
-  operator instead.
-<sup>[[link](#no-semicolon-ifs)]</sup>
-
-  ```Ruby
-  # bad
-  result = if some_condition; something else something_else end
-
-  # good
-  result = some_condition ? something : something_else
-  ```
-
 * <a name="use-if-case-returns"></a>
   Leverage the fact that `if` and `case` are expressions which return a
   result.
