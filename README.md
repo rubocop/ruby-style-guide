@@ -3341,7 +3341,9 @@ resource cleanup when possible.
 
   # good
   arr = []
+  arr = Array.new(10)
   hash = {}
+  hash = Hash.new(0)
   ```
 
 * <a name="percent-w"></a>
