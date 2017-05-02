@@ -4279,6 +4279,11 @@ resource cleanup when possible.
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
 
+
+* Avoid writing methods that are over 10 lines long! 
+* Short Methods are much more readable. 
+
+
 ## Tools
 
 Here are some tools to help you automatically check Ruby code against
