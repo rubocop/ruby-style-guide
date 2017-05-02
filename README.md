@@ -840,7 +840,7 @@ Translations of the guide are available in the following languages:
   some_method('w', 'x', 'y', 'z') # => 'w, x, y, z'
 
   # good
-  def some_method(c, d, a = 1, b = 2)
+  def some_method(a, b, c = 1, d = 2)
     puts "#{a}, #{b}, #{c}, #{d}"
   end
 
