@@ -554,11 +554,11 @@ Translations of the guide are available in the following languages:
     ```ruby
     # bad - need to consult first line to understand second line
     one.two.three.
-      four
+        four
 
     # good - it's immediately clear what's going on the second line
     one.two.three
-      .four
+        .four
     ```
 
   * **(Option B)** When continuing a chained method invocation on another line,
@@ -568,11 +568,11 @@ Translations of the guide are available in the following languages:
     ```ruby
     # bad - need to read ahead to the second line to know that the chain continues
     one.two.three
-      .four
+        .four
 
     # good - it's immediately clear that the expression continues beyond the first line
     one.two.three.
-      four
+        four
     ```
 
   A discussion on the merits of both alternative styles can be found
