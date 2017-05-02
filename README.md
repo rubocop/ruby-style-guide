@@ -305,9 +305,9 @@ Translations of the guide are available in the following languages:
   case
     when song.name == 'Misty'
       puts 'Not again!'
-    when song.duration > 120
+    when 120 < song.duration
       puts 'Too long!'
-    when Time.now.hour > 21
+    when 21 < Time.now.hour
       puts "It's too late"
     else
       song.play
@@ -317,9 +317,9 @@ Translations of the guide are available in the following languages:
   case
   when song.name == 'Misty'
     puts 'Not again!'
-  when song.duration > 120
+  when 120 < song.duration
     puts 'Too long!'
-  when Time.now.hour > 21
+  when 21 < Time.now.hour
     puts "It's too late"
   else
     song.play
@@ -1223,12 +1223,12 @@ Translations of the guide are available in the following languages:
 
   ```ruby
   # bad
-  if (x > 10)
+  if (10 < x)
     # body omitted
   end
 
   # good
-  if x > 10
+  if 10 < x
     # body omitted
   end
   ```
@@ -1242,20 +1242,20 @@ condition](#safe-assignment-in-condition).
 
   ```ruby
   # bad
-  while x > 5 do
+  while 5 < x do
     # body omitted
   end
 
-  until x > 5 do
+  until 5 < x do
     # body omitted
   end
 
   # good
-  while x > 5
+  while 5 < x
     # body omitted
   end
 
-  until x > 5
+  until 5 < x
     # body omitted
   end
   ```
@@ -1448,7 +1448,7 @@ condition](#safe-assignment-in-condition).
   ```ruby
   # bad
   def ready?
-    if self.last_reviewed_at > self.last_updated_at
+    if self.last_updated_at < self.last_reviewed_at
       self.worker.update(self.content, self.options)
       self.status = :in_progress
     end
@@ -1457,7 +1457,7 @@ condition](#safe-assignment-in-condition).
 
   # good
   def ready?
-    if last_reviewed_at > last_updated_at
+    if last_updated_at < last_reviewed_at
       worker.update(content, options)
       self.status = :in_progress
     end
@@ -1902,7 +1902,7 @@ no parameters.
 
   ```ruby
   # bad
-  do_something if x >= 1000 && x <= 2000
+  do_something if 1000 <= x && x <= 2000
 
   # good
   do_something if (1000..2000).include?(x)
@@ -1910,6 +1910,18 @@ no parameters.
   # good
   do_something if x.between?(1000, 2000)
   ```
+
+* <a name="greater-than"></a>
+    Do not use `>`. Instead arrange conditionals numerically for better overview.
+  <sup>[[link](#greater-than)]</sup>
+
+    ```Ruby
+    # bad
+    do_something if x > 5 && x < 10
+
+    # good
+    do_something if 5 < x && x < 10
+    ```
 
 * <a name="predicate-methods"></a>
   Favor the use of predicate methods to explicit comparisons with `==`.
@@ -2018,14 +2030,14 @@ no parameters.
   ```ruby
   # bad
   [0, 1, 2, 3].each do |item|
-    if item > 1
+    if 1 < item
       puts item
     end
   end
 
   # good
   [0, 1, 2, 3].each do |item|
-    next unless item > 1
+    next unless 1 < item
     puts item
   end
   ```
