@@ -3601,11 +3601,11 @@ resource cleanup when possible.
 
   ```ruby
   timestamp = Time.now.to_i
-
+  
   # bad
   timestamp.is_a? Fixnum
   timestamp.is_a? Bignum
-
+  
   # good
   timestamp.is_a? Integer
   ```
@@ -3639,6 +3639,18 @@ resource cleanup when possible.
 
   # good
   email_with_name = format('%s <%s>', user.name, user.email)
+  ```
+
+* <a name="pad-string-interpolation"></a>
+  With interpolated expressions, there should be no padded-spacing inside the braces.
+<sup>[[link](#pad-string-interpolation)]</sup>
+
+  ```Ruby
+  # bad
+  "From: #{ user.first_name }, #{ user.last_name }"
+
+  # good
+  "From: #{user.first_name}, #{user.last_name}"
   ```
 
 * <a name="consistent-string-literals"></a>
