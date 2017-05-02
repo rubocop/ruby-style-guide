@@ -1927,6 +1927,9 @@ no parameters.
   if x == nil
   end
 
+  if x == 0
+  end
+
   # good
   if x.even?
   end
@@ -1938,9 +1941,6 @@ no parameters.
   end
 
   if x.zero?
-  end
-
-  if x == 0
   end
   ```
 
