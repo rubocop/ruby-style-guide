@@ -94,6 +94,7 @@ Translations of the guide are available in the following languages:
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
 * [Misc](#misc)
+* [Other Ruby Style Guides](#other-ruby-style-guides)
 * [Tools](#tools)
 
 ## Source Code Layout
@@ -4278,6 +4279,18 @@ resource cleanup when possible.
 * <a name="common-sense"></a>
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
+
+## Other Ruby Style Guides
+
+* [Airbnb](https://github.com/airbnb/ruby)
+* [COOKPAD](https://github.com/cookpad/styleguide/blob/master/ruby.en.md)
+* [davetron5000](http://davidbryantcopeland.com/ruby-style/)
+* [GitHub](https://github.com/styleguide/ruby)
+* [Ian Macdonald](http://www.caliban.org/ruby/rubyguide.shtml)
+* [The Praxis Program](http://praxis.scholarslab.org/tutorials/ruby-style-guide/)
+* [Thoughtbot](https://github.com/thoughtbot/guides/blob/master/style/samples/ruby.rb)
+* [Scholarslab](http://praxis.scholarslab.org/tutorials/ruby-style-guide/)
+* [Xavier Shay](http://xaviershay.github.io/writing/docs/ruby_style_guide.html)
 
 ## Tools
 
