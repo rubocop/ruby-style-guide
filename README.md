@@ -1561,6 +1561,26 @@ condition](#safe-assignment-in-condition).
   name ||= 'Bozhidar'
   ```
 
+* <a name="no-double-pipe-for-block"></a>
+  Do not use `||=` to initialize a variable when the initialization code spans multiple lines.
+<sup>[[link](#no-double-pipe-for-block)]</sup>
+
+  ```Ruby
+  # bad
+  name ||= do
+    stuff
+    more.stuff
+  end
+
+  # good
+  return @name if !name.nil
+
+  @name = do
+     stuff
+     more.stuff
+  end
+  ```
+
 * <a name="no-double-pipes-for-bools"></a>
   Don't use `||=` to initialize boolean variables. (Consider what would happen
   if the current value happened to be `false`.)
