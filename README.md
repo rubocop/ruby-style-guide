@@ -2152,7 +2152,7 @@ no parameters.
 
 
 * <a name="pascalcase-classes"></a>
-  Use `PascalCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
+  Use `UpperCamelCase` (PascalCase) for classes and modules.  (Keep acronyms like HTTP, RFC, XML
   uppercase.)
 <sup>[[link](#pascalcase-classes)]</sup>
 
