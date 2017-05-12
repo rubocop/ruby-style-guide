@@ -266,7 +266,7 @@ Style/IdenticalConditionalBranches:
   Enabled: false
 
 # Checks the indentation of the first line of the right-hand-side of a
-# multi-line assignment. 
+# multi-line assignment.
 Style/IndentAssignment:
   Enabled: false
 
@@ -307,7 +307,7 @@ Style/LineEndConcatenation:
   Enabled: false
 
 # Do not use parentheses for method calls with no arguments.
-Style/MethodCallParentheses:
+Style/MethodCallWithoutArgsParentheses:
   Enabled: false
 
 # Checks if the method definitions have or don't have parentheses.
