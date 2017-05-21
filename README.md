@@ -778,7 +778,7 @@ Translations of the guide are available in the following languages:
   temperance = Person.new('Temperance', 30)
   ```
 
-  Only omit parentheses for
+  Always omit parentheses for
 
   * Method calls with no arguments:
 
@@ -816,13 +816,20 @@ Translations of the guide are available in the following languages:
 
       # body omitted
     end
-
-    # bad
-    puts(temperance.age)
-    # good
-    puts temperance.age
     ```
 
+  Can omit parentheses for
+
+  * Methods that have "keyword" status in Ruby, but are not declarative:
+
+    ```Ruby
+    # good
+    puts(temperance.age)
+    system('ls')
+    # also good
+    puts temperance.age
+    system 'ls'
+    ```
 * <a name="optional-arguments"></a>
     Define optional arguments at the end of the list of arguments.
     Ruby has some unexpected results when calling methods that have
