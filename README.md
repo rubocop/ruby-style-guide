@@ -1859,6 +1859,7 @@ no parameters.
 
 * <a name="named-format-tokens"></a>
   When using named format string tokens, favor `%<name>s` over `%{name}` because it encodes information about the type of the value.
+<sup>[[link]](#named-format-tokens)</sup>
 
   ```ruby
   # bad
@@ -1867,7 +1868,6 @@ no parameters.
   # good
   format('Hello, %<name>s', name: 'John')
   ```
-<sup>[[link](#named-format-tokens)</sup>
 
 * <a name="array-join"></a>
   Favor the use of `Array#join` over the fairly cryptic `Array#*` with
