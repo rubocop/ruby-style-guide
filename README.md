@@ -2806,6 +2806,28 @@ no parameters.
   attr_reader :one, :two, :three
   ```
 
+* <a name="direct-attrs"></a>
+  Use attributes directly instead of call accessors methods.
+<sup>[[link](#direct-attrs)]</sup>
+
+  ```Ruby
+  class Robot
+    attr_reader :name
+
+    # some methods omitted
+
+    # bad
+    def hello
+      "Hello, my name is #{name}."
+    end
+
+    # good
+    def hi
+      "Hi, my name is #{@name}."
+    end
+  end
+  ```
+
 * <a name="struct-new"></a>
   Consider using `Struct.new`, which defines the trivial accessors,
   constructor and comparison operators for you.
