@@ -3803,28 +3803,57 @@ resource cleanup when possible.
 
   ```ruby
   # bad - using Powerpack String#strip_margin
-  code = <<-END.strip_margin('|')
+  code = <<-RUBY.strip_margin('|')
     |def test
     |  some_method
     |  other_method
     |end
-  END
+  RUBY
 
   # also bad
-  code = <<-END
+  code = <<-RUBY
   def test
     some_method
     other_method
   end
-  END
+  RUBY
 
   # good
-  code = <<~END
+  code = <<~RUBY
     def test
       some_method
       other_method
     end
+  RUBY
+  ```
+
+* <a name="heredoc-delimiters"></a>
+  Use descriptive delimiters for heredocs. Delimiters add valuable information
+  about the heredoc content, and as an added bonus some editors can highlight
+  code within heredocs if the correct delimiter is used.
+<sup>[[link](#heredoc-delimiters)]</sup>
+
+  ```ruby
+  # bad
+  code = <<~END
+    def foo
+      bar
+    end
   END
+
+  # good
+  code = <<~RUBY
+    def foo
+      bar
+    end
+  RUBY
+
+  # good
+  code = <<~SUMMARY
+    An imposing black structure provides a connection between the past and
+    the future in this enigmatic adaptation of a short story by revered
+    sci-fi author Arthur C. Clarke.
+  SUMMARY
   ```
 
 ## Date & Time
