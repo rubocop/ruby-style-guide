@@ -2614,6 +2614,42 @@ no parameters.
   end
   ```
 
+* <a name="namespace-definition"></a>
+  Define (and reopen) namespaced classes and modules using explicit nesting.
+  Using the scope resolution operator can lead to surprising constant lookups
+  due to Ruby's [lexical scoping](https://cirw.in/blog/constant-lookup.html),
+  which depends on the module nesting at the point of definition.
+  <sup>[[link](#namespace-definition)]</sup>
+
+  ```Ruby
+  module Utilities
+    class Queue
+    end
+  end
+
+  # bad
+  class Utilities::Store
+    Module.nesting # => [Utilities::Store]
+
+    def initialize
+      # Refers to the top level ::Queue class because Utilities isn't in the
+      # current nesting chain.
+      @queue = Queue.new
+    end
+  end
+
+  # good
+  module Utilities
+    class WaitingList
+      Module.nesting # => [Utilities::WaitingList, Utilities]
+
+      def initialize
+        @queue = Queue.new # Refers to Utilities::Queue
+      end
+    end
+  end
+  ```
+
 * <a name="modules-vs-classes"></a>
   Prefer modules to classes with only class methods. Classes should be used
   only when it makes sense to create instances out of them.
@@ -3058,7 +3094,7 @@ no parameters.
     # ...other methods...
   end
   ```
-
+  
 ## Exceptions
 
 * <a name="prefer-raise-over-fail"></a>
