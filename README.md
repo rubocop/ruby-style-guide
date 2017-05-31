@@ -92,6 +92,7 @@ Translations of the guide are available in the following languages:
 * [Regular Expressions](#regular-expressions)
 * [Percent Literals](#percent-literals)
 * [Metaprogramming](#metaprogramming)
+* [Specs](#specs)
 * [Misc](#misc)
 * [Tools](#tools)
 
@@ -4313,6 +4314,56 @@ resource cleanup when possible.
 * <a name="common-sense"></a>
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
+
+## Specs
+
+* Add a newline for each `describe`, `context`, and `it` block.
+
+  ```Ruby
+  describe Controller
+    let(:staff) { FactoryGirl.create :staff }
+    let(:user) { FactoryGirl.create :user }
+
+    describe "#show" do
+      context "as a staff" do
+        it "should work" do
+        ...
+        end
+
+        it "should work" do
+        ...
+        end
+      end
+    end
+
+    context "as a user" do
+    ...
+    end
+  end
+  ```
+* Add a newline before setup and assertion in `it` blocks.
+  ```Ruby
+  # bad
+  it "should work" do
+    user = FactoryGirl.create :user
+    expect(user).to be_persisted?
+  end
+
+  # good
+  it "should work" do
+    user = FactoryGirl.create :user
+
+    expect(user).to be_persisted?
+  end
+  ```
+* Avoid negative assertions
+  ```Ruby
+  # bad
+  expect(response).not_to be_success
+
+  # good
+  expect(response).to be_unauthorized
+  ```
 
 ## Tools
 
