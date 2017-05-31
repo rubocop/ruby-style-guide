@@ -1784,6 +1784,22 @@ no parameters.
   l.call(1)
   ```
 
+* <a name="proc-immediate-invoke"></a>
+  Prefer newline/inline immediate invocation of procs.
+<sup>[[link](#proc-immediate-invoke)]</sup>
+
+  ```Ruby
+  # newline - preferable or not?
+  l = -> { something }
+  l.call
+
+  # inline - preferable or not?
+  (l = -> { something }).call
+
+  # inline - preferable or not?
+  l = (-> { something }).tap(&:call)
+  ```
+
 * <a name="underscore-unused-vars"></a>
   Prefix with `_` unused block parameters and local variables. It's also
   acceptable to use just `_` (although it's a bit less descriptive). This
