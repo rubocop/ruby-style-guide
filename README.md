@@ -4306,6 +4306,18 @@ resource cleanup when possible.
   Avoid more than three levels of block nesting.
 <sup>[[link](#three-is-the-number-thou-shalt-count)]</sup>
 
+* <a name="default-rake-task-for-tests-and-linters"></a>
+  Setup default `rake` task to run all tests and linters used in your project.
+<sup>[[link](#default-rake-task-for-tests-and-linters)]</sup>
+
+  ```Bash
+  # bad
+  rspec && cucumber && rubocop
+
+  # good
+  rake
+  ```
+
 * <a name="be-consistent"></a>
   Be consistent. In an ideal world, be consistent with these guidelines.
 <sup>[[link](#be-consistent)]</sup>
