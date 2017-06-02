@@ -216,7 +216,7 @@ Translations of the guide are available in the following languages:
   class FooError < StandardError; end
   ```
 
-  The only exception, regarding operators, is the exponent operator:
+  There are a few exceptions. One is the exponent operator:
 
   ```ruby
   # bad
@@ -224,6 +224,16 @@ Translations of the guide are available in the following languages:
 
   # good
   e = M * c**2
+  ```
+
+  Another exception is the slash in rational literals:
+
+  ```ruby
+  # bad
+  o_scale = 1 / 48r
+
+  # good
+  o_scale = 1/48r
   ```
 
 * <a name="spaces-braces"></a>
