@@ -2046,6 +2046,34 @@ no parameters.
   end
   ```
 
+  * <a name="no-multiline-guards"></a>
+    Avoid use of guard clauses on multiline statements.
+  <sup>[[link](#no-multiline-guards)]</sup>
+
+    Prefer an if or unless expression when handling statements covering multiple lines.
+
+    ```Ruby
+    # bad
+    def compute_thing(thing)
+      {
+        result: easy_answer
+      } if trivial_to_compute?(thing)
+
+      compute(thing)
+    end
+
+    # good
+    def compute_thing(thing)
+      if trivial_to_compute?(thing)
+        {
+          result: easy_answer
+        }
+      end
+
+      compute(thing)
+    end
+    ```
+
 * <a name="map-find-select-reduce-size"></a>
   Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`,
   `reduce` over `inject` and `size` over `length`. This is not a hard
