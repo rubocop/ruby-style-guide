@@ -1,11 +1,12 @@
 # Prelúdio
 
-> Modelos são importantes. <br/>
-> --Oficial Alex Murphy de J. / RoboCop
+> *Modelos são importantes.* <br/>
+>
+> -- Oficial Alex Murphy de J. / RoboCop
 
-Uma coisa que sempre me incomodou como um desenvolvedor Ruby - desenvolvedores Python tem uma ótima referência de estilo de programação ([PEP-8] (http://www.python.org/dev/peps/pep-0008/)) e nós nunca tivemos um guia oficial, documentando um estilo de codificação em Ruby e as melhores práticas. E eu acredito que o estilo importe. Eu também acredito que uma grande comunidade hacker, tal como Ruby tem, deve ser capaz de produzir este documento tão cobiçado.
+Uma coisa que sempre me incomodou como um desenvolvedor Ruby - desenvolvedores Python tem uma ótima referência de estilo de programação ( [PEP-8](http://www.python.org/dev/peps/pep-0008/) ) e nós nunca tivemos um guia oficial, documentando um estilo de codificação em Ruby e as melhores práticas. E eu acredito que o estilo importe. Eu também acredito que uma grande comunidade hacker, tal como Ruby tem, deve ser capaz de produzir este documento tão cobiçado.
 
-Este guia começou sua vida com as diretrizes internas de codificação em Ruby (escrito por mim mesmo). Em um dado momento eu decidi que o trabalho que estava fazendo poderia ser interessante para os membros da comunidade Ruby em geral e que o mundo não tinha necessidade para outra diretriz interna de uma empresa. Mas o mundo certamente poderia se beneficiar de um conjunto de práticas, expressões idiomáticas e prescrições de estilo de programação Ruby orientado e sancionado pela Comunidade.
+Este guia começou sua vida com as diretrizes internas de codificação em Ruby ( Escrito por mim mesmo ). Em um dado momento eu decidi que o trabalho que estava fazendo poderia ser interessante para os membros da comunidade Ruby em geral e que o mundo não tinha necessidade para outra diretriz interna de uma empresa. Mas o mundo certamente poderia se beneficiar de um conjunto de práticas, expressões idiomáticas e prescrições de estilo de programação Ruby orientado e sancionado pela Comunidade.
 
 Desde a criação do guia, eu recebi um monte de feedback de
 membros da excepcional comunidade Ruby mundo a fora. Obrigado por
@@ -20,27 +21,27 @@ complementar [Ruby on Rails 3 & 4 Style Guide](https://github.com/bbatsov/rails-
 Este guia de estilo Ruby recomenda as melhores práticas para que programadores reais de Ruby possam escrever códigos que possam ser mantidos por outros programadores reais de Ruby. Um guia de estilo que reflete o uso que o mundo real está acostumado e um
 guia de estilo que se prende a um ideal que foi rejeitado pelo povo supõe-se que o melhor é não usá-lo para nada – não importa o quão bom seja.
 
-O guia é separado em várias seções de regras relacionadas. Tentei adicionar a lógica por trás das regras (se estiver omitido, eu assumi que é bastante óbvio).
+O guia é separado em várias seções de regras relacionadas. Tentei adicionar a lógica por trás das regras ( Se estiver omitido, eu assumi que é bastante óbvio ).
 
 Eu não vim com todas as regras do nada - são na maioria
 com base na minha extensa carreira como profissional de engenharia de software, comentários e sugestões dos membros da comunidade Ruby e
 vários recursos de programação Ruby altamente recomendados, tais como
 ["Programming Ruby 1.9"](http://pragprog.com/book/ruby4/programming-ruby-1-9-2-0) e ["The Ruby Programming Language"](http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177).
 
-Há algumas áreas em que não há nenhum consenso na Comunidade Ruby em relação um determinado estilo (como estilo de declaração de cadeia de caracteres literais, espaçamento dentro de hashes literais, posição do ponto no método de encadeamento multi-linha, etc.). Em tais situações, todos os estilos populares são reconhecidos e cabe a você escolher um e aplicá-lo de forma consistente.
+Há algumas áreas em que não há nenhum consenso na Comunidade Ruby em relação a um determinado estilo ( Como estilo de declaração de cadeia de caracteres literais, espaçamento dentro de hashes literais, posição do ponto no método de encadeamento multi-linha, etc. ). Em tais situações, todos os estilos populares são reconhecidos e cabe a você escolher um e aplicá-lo de forma consistente.
 
 O guia ainda é um trabalho em andamento - algumas regras possuem exemplos escassos, algumas regras não tem exemplos que as ilustrem claramente. No devido tempo, estas questões serão abordadas - apenas mantenha-los em mente por while.
 
 Você pode gerar um PDF ou uma cópia HTML deste guia usando
 [Transmuter](https://github.com/TechnoGate/transmuter).
 
-[RuboCop](https://github.com/bbatsov/rubocop) é um analisador de código,
+[Rubo Cop](https://github.com/bbatsov/rubocop) é um analisador de código,
 baseado neste guia de estilo.
 
 Traduções do guia estão disponíveis nos seguintes idiomas:
 
-* [Chinês simplificado](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md)
-* [Chinês tradicional](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md)
+* [Chinês](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md) ( Simplificado )
+* [Chinês](https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md) ( Tradicional )
 * [Francês](https://github.com/porecreat/ruby-style-guide/blob/master/README-frFR.md)
 * [Japonês](https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md)
 * [Espanhol](https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md)
@@ -52,7 +53,7 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 * [Sintaxe](#syntax)
 * [Nomenclatura](#naming)
 * [Comentários](#comments)
-  * [Anotações em Comentário](#comment-annotations)
+ * [Anotações em Comentário](#comment-annotations)
 * [Classes](#classes--modules)
 * [Exceções](#exceptions)
 * [Coleções](#collections)
@@ -62,6 +63,8 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 * [Meta-programação](#metaprogramming)
 * [Miscelânea](#misc)
 * [Ferramentas](#tools)
+
+<a href='source-code-layout'>
 
 ## Layout do código fonte
 
