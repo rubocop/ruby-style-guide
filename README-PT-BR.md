@@ -53,7 +53,7 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 * [Sintaxe](#syntax)
 * [Nomenclatura](#naming)
 * [Comentários](#comments)
- * [Anotações em Comentário](#comment-annotations)
+  * [Anotações em Comentário](#comment-annotations)
 * [Classes](#classes--modules)
 * [Exceções](#exceptions)
 * [Coleções](#collections)
@@ -64,23 +64,23 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 * [Miscelânea](#misc)
 * [Ferramentas](#tools)
 
-<a href='source-code-layout'>
+<a href='source-code-layout'></a>
 
 ## Layout do código fonte
 
 > Quase todo mundo está convencido que todos os estilos, exceto os seus são > feios e ilegíveis. Deixe de lado o "exceto seus próprios" e eles estarão provavelmente certo... <br/>
-> -- Jerry Coffin (sobre recuo)
+> -- Jerry Coffin ( Sobre recuo)
 
 * Use `UTF-8` como a codificação do arquivo de fonte.
 * Use dois **espaços** por nível de recuo (conhecido como soft tabs). Nada de hard tabs.
 
   ```Ruby
-  # ruim - quatro espaços
+  # Ruim - quatro espaços
   def algum_metodo
       fazer_algo
   end
 
-  # bom
+  # Bom
   def algum_metodo
     fazer_algo
   end
@@ -484,6 +484,7 @@ outra linha de comentário
 # linha de comentário
 # outra linha de comentário
 ```
+<a href='syntax'></a>
 
 ## Sintaxe
 
