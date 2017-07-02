@@ -49,8 +49,8 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 
 ## Tabela de conteúdos
 
-* [Layout do código fonte](#source-code-layout)
-* [Sintaxe](#syntax)
+* <a href='#source-code-layout'>Layout do código fonte</a>
+* <a href='#syntax'>Sintaxe</a>
 * [Nomenclatura](#naming)
 * [Comentários](#comments)
   * [Anotações em Comentário](#comment-annotations)
@@ -64,7 +64,7 @@ Traduções do guia estão disponíveis nos seguintes idiomas:
 * [Miscelânea](#misc)
 * [Ferramentas](#tools)
 
-<a href='source-code-layout'></a>
+<a name='source-code-layout'></a>
 
 ## Layout do código fonte
 
@@ -484,7 +484,7 @@ outra linha de comentário
 # linha de comentário
 # outra linha de comentário
 ```
-<a href='syntax'></a>
+<a name='syntax'></a>
 
 ## Sintaxe
 
