@@ -2498,32 +2498,39 @@ no parameters.
 ### Magic Comments
 
 * <a name="magic-comments-first"></a>
-  Place magic comments above all code and documentation. Magic comments should only go below shebangs if they are needed in your source file.
-<sup>[[link](#magic-comments-first)]</sup>
+  Place magic comments above all code and documentation in a file (except shebangs, which are discussed next).
 
   ```ruby
   # good
   # frozen_string_literal: true
+
   # Some documentation about Person
   class Person
   end
 
   # bad
   # Some documentation about Person
+
   # frozen_string_literal: true
   class Person
   end
   ```
 
+* <a name="below-shebang"></a>
+  Place magic comments below shebangs when they are present in a file.
+<sup>[[link](#below-shebang)]</sup>
+
   ```ruby
   # good
   #!/usr/bin/env ruby
   # frozen_string_literal: true
+
   App.parse(ARGV)
 
   # bad
   # frozen_string_literal: true
   #!/usr/bin/env ruby
+
   App.parse(ARGV)
   ```
 
