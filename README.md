@@ -886,6 +886,9 @@ is a hybrid of `Array`'s intuitive inter-operation facilities and
 
 ### Never modify a collection while traversing it.
 
+### Don't use the `%w()` syntax for defining arrays
+Define them as `['a', 'b']` or `'a b'.split(' ')` 
+
 ## Strings
 
 ### Prefer string interpolation instead of string concatenation:
