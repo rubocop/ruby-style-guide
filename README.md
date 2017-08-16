@@ -3122,7 +3122,7 @@ no parameters.
     # ...other methods...
   end
   ```
-  
+
 ## Exceptions
 
 * <a name="prefer-raise-over-fail"></a>
@@ -3716,10 +3716,10 @@ resource cleanup when possible.
 
     ```ruby
     # bad
-    name = 'Bozhidar'
+    name = 'De\'Andre'
 
     # good
-    name = "Bozhidar"
+    name = "De'Andre"
     ```
 
   The string literals in this guide are aligned with the first style.
