@@ -3122,7 +3122,7 @@ no parameters.
     # ...other methods...
   end
   ```
-  
+
 ## Exceptions
 
 * <a name="prefer-raise-over-fail"></a>
@@ -3707,8 +3707,12 @@ resource cleanup when possible.
     # bad
     name = "Bozhidar"
 
+    name = 'De\'Andre'
+
     # good
     name = 'Bozhidar'
+
+    name = "De'Andre"
     ```
 
   * **(Option B)** Prefer double-quotes unless your string literal
@@ -3718,8 +3722,12 @@ resource cleanup when possible.
     # bad
     name = 'Bozhidar'
 
+    sarcasm = "I \"like\" it."
+
     # good
     name = "Bozhidar"
+
+    sarcasm = 'I "like" it.'
     ```
 
   The string literals in this guide are aligned with the first style.
