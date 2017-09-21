@@ -172,36 +172,29 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-single-line-methods"></a>
-  Avoid single-line methods. Although they are somewhat popular in the wild,
-  there are a few peculiarities about their definition syntax that make their
-  use undesirable. At any rate&mdash;there should be no more than one expression
-  in a single-line method.
+  Avoid single-line methods.
 <sup>[[link](#no-single-line-methods)]</sup>
 
   ```ruby
   # bad
   def too_much; something; something_else; end
 
-  # okish - notice that the first ; is required
+  # bad
+  def no_op; end
+
+  # bad
   def no_braces_method; body end
 
-  # okish - notice that the second ; is optional
+  # bad
   def no_braces_method; body; end
 
-  # okish - valid syntax, but no ; makes it kind of hard to read
+  # bad
   def some_method() body end
 
   # good
   def some_method
     body
   end
-  ```
-
-  One exception to the rule are empty-body methods.
-
-  ```ruby
-  # good
-  def no_op; end
   ```
 
 * <a name="spaces-operators"></a>
@@ -494,7 +487,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-trailing-params-comma"></a>
-  Avoid comma after the last parameter in a method call, especially when the
+  Avoid comma after the last parameter in a method call, except when the
   parameters are not on separate lines.
 <sup>[[link](#no-trailing-params-comma)]</sup>
 
@@ -511,6 +504,13 @@ Translations of the guide are available in the following languages:
 
   # good
   some_method(size, count, color)
+
+  # good - adding a parameter will not add a diff to the 'color' line
+  some_method(
+    size,
+    count,
+    color,
+  )
   ```
 
 * <a name="spaces-around-equals"></a>
@@ -688,9 +688,22 @@ Translations of the guide are available in the following languages:
     empty line between the comment block and the `def`.
 <sup>[[link](#rdoc-conventions)]</sup>
 
-* <a name="80-character-limits"></a>
-  Limit lines to 80 characters.
-<sup>[[link](#80-character-limits)]</sup>
+* <a name="120-character-limits"></a>
+  Limit lines to 120 characters. When splitting long lines that include
+lists of items, e.g. parameter lists, put each item on a new line.
+
+  ```ruby
+  # bad - hard to visually parse
+  some_method("this is one long parameter", another_long_parameter,
+    a_third_parameter)
+
+  # good
+  some_method(
+   "this is one long parameter",
+    another_long_parameter,
+    a_third_parameter)
+  ```
+<sup>[[link](#120-character-limits)]</sup>
 
 * <a name="no-trailing-whitespace"></a>
   Avoid trailing whitespace.
@@ -785,6 +798,13 @@ Translations of the guide are available in the following languages:
   temperance = Person.new 'Temperance', 30
   # good
   temperance = Person.new('Temperance', 30)
+
+  # bad
+  puts temperance.age
+  system 'ls'
+  # good - highlights the fact that this is an action method (i.e. non-declarative)
+  puts(temperance.age)
+  system('ls')
   ```
 
   Always omit parentheses for
@@ -805,7 +825,7 @@ Translations of the guide are available in the following languages:
     'test'.upcase
     ```
 
-  * Methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
+  * Declarative methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
 
     ```ruby
     # bad
@@ -814,7 +834,7 @@ Translations of the guide are available in the following languages:
     validates :name, presence: true
     ```
 
-  * Methods that have "keyword" status in Ruby:
+  * Declarative methods that have "keyword" status in Ruby:
 
     ```ruby
     class Person
@@ -827,18 +847,6 @@ Translations of the guide are available in the following languages:
     end
     ```
 
-  Can omit parentheses for
-
-  * Methods that have "keyword" status in Ruby, but are not declarative:
-
-    ```Ruby
-    # good
-    puts(temperance.age)
-    system('ls')
-    # also good
-    puts temperance.age
-    system 'ls'
-    ```
 * <a name="optional-arguments"></a>
     Define optional arguments at the end of the list of arguments.
     Ruby has some unexpected results when calling methods that have
@@ -942,11 +950,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-for-loops"></a>
-    Do not use `for`, unless you know exactly why. Most of the time iterators
-    should be used instead. `for` is implemented in terms of `each` (so you're
-    adding a level of indirection), but with a twist&mdash;`for` doesn't
-    introduce a new scope (unlike `each`) and variables defined in its block
-    will be visible outside it.
+    Do not use `for`.
 <sup>[[link](#no-for-loops)]</sup>
 
   ```ruby
@@ -1142,7 +1146,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="no-multiline-ternary"></a>
-  Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
+  Line-split `?:` (the ternary operator) when it's clearer to do so.
 <sup>[[link](#no-multiline-ternary)]</sup>
 
 * <a name="if-as-a-modifier"></a>
@@ -1196,7 +1200,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="unless-for-negatives"></a>
-  Favor `unless` over `if` for negative conditions (or control flow `||`).
+  Favor `unless` over `if` for negative conditions (or control flow `||`), unless the test clause is complicated or for less-than or greater-than comparisons
 <sup>[[link](#unless-for-negatives)]</sup>
 
   ```ruby
@@ -1205,6 +1209,18 @@ Translations of the guide are available in the following languages:
 
   # bad
   do_something if not some_condition
+
+  # bad
+  do_something unless some_condition && !some_other_condition
+
+  # good
+  do_something if !some_condition || some_other_condition
+
+  # bad
+  do_something unless a < 0
+
+  # good
+  do_something if a >= 0
 
   # good
   do_something unless some_condition
@@ -1324,7 +1340,8 @@ condition](#safe-assignment-in-condition).
 
 * <a name="loop-with-break"></a>
   Use `Kernel#loop` with `break` rather than `begin/end/until` or
-  `begin/end/while` for post-loop tests.
+  `begin/end/while` for post-loop tests, but try not to use
+  `Kernel#loop` either.
 <sup>[[link](#loop-with-break)]</sup>
 
   ```ruby
@@ -1334,12 +1351,15 @@ condition](#safe-assignment-in-condition).
     val += 1
   end while val < 0
 
-  # good
+  # less bad
   loop do
     puts val
     val += 1
-    break unless val < 0
+    break if val >= 0
   end
+
+  # good
+  (initial_val..-1).each{|val| puts val}
   ```
 
 * <a name="no-braces-opts-hash"></a>
@@ -2154,31 +2174,6 @@ no parameters.
   end
   ```
 
-* <a name="snake-case-symbols-methods-vars-with-numbers"></a>
-  Do not separate numbers from letters on symbols, methods and variables.
-<sup>[[link](#snake-case-symbols-methods-vars-with-numbers)]</sup>
-
-  ```ruby
-  # bad
-  :some_sym_1
-
-  some_var_1 = 1
-
-  def some_method_1
-    # some code
-  end
-
-  # good
-  :some_sym1
-
-  some_var1 = 1
-
-  def some_method1
-    # some code
-  end
-  ```
-
-
 * <a name="camelcase-classes"></a>
   Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
   uppercase.)
@@ -2600,7 +2595,7 @@ no parameters.
   ```
 
 * <a name="file-classes"></a>
-  Don't nest multi-line classes within classes. Try to have such nested
+  Don't nest large classes within classes. Try to have such nested
   classes each in their own file in a folder named like the containing class.
 <sup>[[link](#file-classes)]</sup>
 
@@ -2810,7 +2805,10 @@ no parameters.
   For accessors and mutators, avoid prefixing method names with
   `get_` and `set_`.
   It is a Ruby convention to use attribute names for accessors (readers) and
-  `attr_name=` for mutators (writers).
+  `attr_name=` for mutators (writers). This does not apply to slow or
+otherwise resource-intensive methods, in which case `get_` and `set_`
+prefixes help highlight the fact that the method is not a simple
+attribute that can be set/get willy-nilly.
 <sup>[[link](#accessor_mutator_method_names)]</sup>
 
   ```ruby
@@ -2823,6 +2821,10 @@ no parameters.
     def set_name(name)
       @first_name, @last_name = name.split(' ')
     end
+
+    def some_attribute=(value)
+      @some_attribute = very_expensive_operation(value)
+    end
   end
 
   # good
@@ -2833,6 +2835,10 @@ no parameters.
 
     def name=(name)
       @first_name, @last_name = name.split(' ')
+    end
+
+    def set_some_attribute(value)
+      @some_attribute = very_expensive_operation(value)
     end
   end
   ```
@@ -3032,7 +3038,8 @@ no parameters.
   Prefer `alias` when aliasing methods in lexical class scope as the
   resolution of `self` in this context is also lexical, and it communicates
   clearly to the user that the indirection of your alias will not be altered
-  at runtime or by any subclass unless made explicit.
+  at runtime or by any subclass unless made explicit. Since the usage is
+so subtle, though, try to avoid using `alias` at all.
 <sup>[[link](#alias-method-lexically)]</sup>
 
   ```ruby
@@ -3126,15 +3133,31 @@ no parameters.
 ## Exceptions
 
 * <a name="prefer-raise-over-fail"></a>
-  Prefer `raise` over `fail` for exceptions.
+  Use `raise` over `fail` to re-throw exceptions.
   <sup>[[link](#prefer-raise-over-fail)]</sup>
 
   ```ruby
   # bad
-  fail SomeException, 'message'
+  rescue => exception
+    fail
+  end
 
   # good
+  rescue => exception
+    raise
+  end
+  ```
+
+* <a name="prefer-fail-over-raise"></a>
+  Use `fail` over `raise` to signal new exceptions.
+  <sup>[[link](#prefer-fail-over-raise)]</sup>
+
+  ```ruby
+  # bad
   raise SomeException, 'message'
+
+  # good
+  fail SomeException, 'message'
   ```
 
 * <a name="no-explicit-runtimeerror"></a>
@@ -3426,24 +3449,32 @@ resource cleanup when possible.
   STATES = %i[draft open closed]
   ```
 
-* <a name="no-trailing-array-commas"></a>
-  Avoid comma after the last item of an `Array` or `Hash` literal, especially
-  when the items are not on separate lines.
-<sup>[[link](#no-trailing-array-commas)]</sup>
+* <a name="yes-trailing-array-commas"></a>
+  Use a comma after the last item of an `Array` or `Hash` literal if the values
+  are on separate lines. Avoid a trailing comma in a single line `Array` or
+  `Hash`.
+<sup>[[link](#yes-trailing-array-commas)]</sup>
 
   ```ruby
-  # bad - easier to move/add/remove items, but still not preferred
+  # bad
+  VALUES = [1001, 2020, 3333, ]
+
+  VALUES = { one: 1001, two: 2020, }
+
+  # good
+  VALUES = [1001, 2020, 3333]
+
+  VALUES = { one: 1001, two: 2020 }
+
   VALUES = [
              1001,
              2020,
              3333,
            ]
-
-  # bad
-  VALUES = [1001, 2020, 3333, ]
-
-  # good
-  VALUES = [1001, 2020, 3333]
+  VALUES = {
+    one: 1001,
+    two: 2020,
+  }
   ```
 
 * <a name="no-gappy-arrays"></a>
@@ -3694,43 +3725,35 @@ resource cleanup when possible.
   ```
 
 * <a name="consistent-string-literals"></a>
-  Adopt a consistent string literal quoting style. There are two popular
-  styles in the Ruby community, both of which are considered good&mdash;single
-  quotes by default (Option A) and double quotes by default (Option B).
+  Prefer double quotes when
+    * writing natural language (since it might contain apostrophes)
+    * writing string that have interpolation
+  Prefer single quotes when you're using constant-like values.
 <sup>[[link](#consistent-string-literals)]</sup>
 
-  * **(Option A)** Prefer single-quoted strings when you don't need
+  * Prefer single-quoted strings when you don't need
     string interpolation or special symbols such as `\t`, `\n`, `'`,
     etc.
 
     ```ruby
     # bad
-    name = "Bozhidar"
+    context 'some precondition for the object\'s test' do
+      let(:variable1){ 'some_constant_like_string' }
+      let(:variable2){ "some_other_string#{value}" }
+    end
 
-    name = 'De\'Andre'
-
-    # good
-    name = 'Bozhidar'
-
-    name = "De'Andre"
-    ```
-
-  * **(Option B)** Prefer double-quotes unless your string literal
-    contains `"` or escape characters you want to suppress.
-
-    ```ruby
     # bad
-    name = 'Bozhidar'
-
-    sarcasm = "I \"like\" it."
+    context "some precondition for the object's test" do
+      let(:variable1){ "some_constant_like_string" }
+      let(:variable2){ "some_other_string#{value}" }
+    end
 
     # good
-    name = "Bozhidar"
-
-    sarcasm = 'I "like" it.'
+    context "some precondition for the object's test" do
+      let(:variable1){ 'some_constant_like_string' }
+      let(:variable2){ "some_other_string#{value}" }
+    end
     ```
-
-  The string literals in this guide are aligned with the first style.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
@@ -3912,7 +3935,7 @@ resource cleanup when possible.
 ## Date & Time
 
 * <a name="time-now"></a>
-  Prefer `Time.now` over `Time.new` when retrieving the current system time.
+  Prefer `Time.utc` over `Time.now` or `Time.new`.
 <sup>[[link](#time-now)]</sup>
 
 * <a name="no-datetime"></a>
@@ -3925,8 +3948,11 @@ resource cleanup when possible.
   # bad - uses DateTime for current time
   DateTime.now
 
-  # good - uses Time for current time
+  # bad - uses Time.now for current time
   Time.now
+
+  # better - uses Time.utc for current time
+  Time.utc
 
   # bad - uses DateTime for modern date
   DateTime.iso8601('2016-06-29')
