@@ -4101,7 +4101,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-q"></a>
-  Avoid %() or the equivalent %q() unless you have a string with both `'` and
+  Avoid `%()` or the equivalent `%q()` unless you have a string with both `'` and
   `"` in it. Regular string literals are more readable and should be preferred
   unless a lot of characters would have to be escaped in them.
 <sup>[[link](#percent-q)]</sup>
@@ -4120,7 +4120,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-r"></a>
-  Use `%r` only for regular expressions matching *at least* one '/'
+  Use `%r` only for regular expressions matching *at least* one `'/'`
   character.
 <sup>[[link](#percent-r)]</sup>
 
