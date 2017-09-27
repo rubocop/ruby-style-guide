@@ -4072,7 +4072,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-q"></a>
-  Avoid %() or the equivalent %q() unless you have a string with both `'` and
+  Avoid `%()` or the equivalent `%q()` unless you have a string with both `'` and
   `"` in it. Regular string literals are more readable and should be preferred
   unless a lot of characters would have to be escaped in them.
 <sup>[[link](#percent-q)]</sup>
@@ -4091,7 +4091,7 @@ resource cleanup when possible.
   ```
 
 * <a name="percent-r"></a>
-  Use `%r` only for regular expressions matching *at least* one '/'
+  Use `%r` only for regular expressions matching *at least* one `'/'`
   character.
 <sup>[[link](#percent-r)]</sup>
 
@@ -4197,12 +4197,12 @@ resource cleanup when possible.
       class_eval <<-EOT, __FILE__, __LINE__ + 1
         def #{unsafe_method}(*params, &block)       # def capitalize(*params, &block)
           to_str.#{unsafe_method}(*params, &block)  #   to_str.capitalize(*params, &block)
-        end                                       # end
+        end                                         # end
 
         def #{unsafe_method}!(*params)              # def capitalize!(*params)
-          @dirty = true                           #   @dirty = true
-          super                                   #   super
-        end                                       # end
+          @dirty = true                             #   @dirty = true
+          super                                     #   super
+        end                                         # end
       EOT
     end
   end
