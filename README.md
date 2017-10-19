@@ -236,6 +236,17 @@ Translations of the guide are available in the following languages:
   o_scale = 1/48r
   ```
 
+  Another exception is the safe navigation operator:
+  ```ruby
+  # bad
+  foo &. bar
+  foo &.bar
+  foo&. bar
+
+  # good
+  foo&.bar
+  ```
+
 * <a name="spaces-braces"></a>
   No spaces after `(`, `[` or before `]`, `)`.
   Use spaces around `{` and before `}`.
