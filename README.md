@@ -61,7 +61,7 @@ some(arg).other
 collection = []
 ```
 
-### Indent `when` as deep as `case`. I know that many would disagree
+### Indent `when` as deep as `case`. I know that many would disagree.
   with this one, but it's the style established in both the "The Ruby
   Programming Language" and "Programming Ruby".
 
@@ -346,8 +346,8 @@ x = Math.sin(y)
 array.delete(e)
 ```
 
-### Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
-`{...}` for multi-line blocks (multiline chaining is always
+### Prefer `{...}` over `do...end` for single-line blocks.  
+Avoid using `{...}` for multi-line blocks (multiline chaining is always
 ugly). Always use `do...end` for "control flow" and "method
 definitions" (e.g. in Rakefiles and certain DSLs).  Avoid `do...end`
 when chaining.
@@ -453,7 +453,7 @@ def ready?
 end
 ```
 
-### As a corollary, avoid shadowing methods with local variables unless they are both equivalent
+### As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
 
 ```ruby
 class Foo
@@ -510,7 +510,7 @@ result = 1 -
          2
 ```
 
-### Using the return value of `=` (an assignment) is ok
+### Using the return value of `=` (an assignment) is OK.
 But surround the assignment with parentheses to make it clear you are not mistakenly using `=` when you meant `==`.
 
 ```ruby
