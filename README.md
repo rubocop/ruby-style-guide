@@ -2469,7 +2469,7 @@ no parameters.
 ### Magic Comments
 
 * <a name="magic-comments-first"></a>
-  Place magic comments above all code and documentation. Magic comments should only go below shebangs if they are needed in your source file.
+  Place magic comments above all code and documentation, but below the shebang.
 <sup>[[link](#magic-comments-first)]</sup>
 
   ```ruby
