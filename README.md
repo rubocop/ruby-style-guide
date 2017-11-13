@@ -839,6 +839,30 @@ Translations of the guide are available in the following languages:
     puts temperance.age
     system 'ls'
     ```
+
+  Can use parentheses for
+
+  * Methods that have same name as local variables:
+
+    ```ruby
+    class FooBar
+      def foo
+        bar = :via_variable
+        p bar # => :via_variable
+        # okish
+        p bar() # => :via_method
+      end
+
+      private
+
+      def bar
+        :via_method
+      end
+    end
+
+    FooBar.new.foo
+    ```
+
 * <a name="optional-arguments"></a>
     Define optional arguments at the end of the list of arguments.
     Ruby has some unexpected results when calling methods that have
