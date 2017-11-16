@@ -251,19 +251,6 @@ format(page) unless page.already_formatted?
 send_notification(users) if users.any?
 ```
 
-### Favor `unless` over `if` for negative conditions (or use control flow `or`).
-
-```ruby
-# bad
-do_something if !some_condition
-
-# good
-do_something unless some_condition
-
-# another good option
-some_condition or do_something
-```
-
 ### Never use `unless` with `else`. Rewrite these with the positive case first.
 
 ```ruby
