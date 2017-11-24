@@ -748,6 +748,24 @@ Translations of the guide are available in the following languages:
   SomeModule::SomeClass()
   ```
 
+* <a name="colon-method-definition"></a>
+    Do not use `::` to define class methods.
+<sup>[[link](#colon-method-definition)]</sup>
+
+  ```ruby
+  # bad
+  class Foo
+    def self::some_method
+    end
+  end
+
+  # good
+  class Foo
+    def self.some_method
+    end
+  end
+  ```
+
 * <a name="method-parens"></a>
     Use `def` with parentheses when there are parameters. Omit the
     parentheses when the method doesn't accept any parameters.
