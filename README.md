@@ -720,9 +720,9 @@ Translations of the guide are available in the following languages:
 ## Syntax
 
 * <a name="double-colons"></a>
-    Use `::` only to reference constants(this includes classes and
+    Use `::` only to reference constants (this includes classes and
     modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-    Do not use `::` for regular method invocation.
+     * Do not use `::` for regular method invocation.
 <sup>[[link](#double-colons)]</sup>
 
   ```ruby
