@@ -4226,12 +4226,12 @@ resource cleanup when possible.
       class_eval <<-EOT, __FILE__, __LINE__ + 1
         def #{unsafe_method}(*params, &block)       # def capitalize(*params, &block)
           to_str.#{unsafe_method}(*params, &block)  #   to_str.capitalize(*params, &block)
-        end                                       # end
+        end                                         # end
 
         def #{unsafe_method}!(*params)              # def capitalize!(*params)
-          @dirty = true                           #   @dirty = true
-          super                                   #   super
-        end                                       # end
+          @dirty = true                             #   @dirty = true
+          super                                     #   super
+        end                                         # end
       EOT
     end
   end
