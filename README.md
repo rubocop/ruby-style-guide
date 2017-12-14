@@ -1570,7 +1570,7 @@ condition](#safe-assignment-in-condition).
   ```
 
 * <a name="self-assignment"></a>
-  Use shorthand self assignment operators whenever applicable.
+  Use shorthand self assignment operators whenever applicable, except `&&=`.
 <sup>[[link](#self-assignment)]</sup>
 
   ```ruby
@@ -1588,7 +1588,7 @@ condition](#safe-assignment-in-condition).
   x **= y
   x /= y
   x ||= y
-  x &&= y
+  x = x && y
   ```
 
 * <a name="double-pipe-for-uninit"></a>
@@ -1640,7 +1640,7 @@ condition](#safe-assignment-in-condition).
   # good
   something = something && something.downcase
 
-  # better
+  # but don't do this
   something &&= something.downcase
   ```
 
