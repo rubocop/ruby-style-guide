@@ -1156,18 +1156,18 @@ Translations of the guide are available in the following languages:
   ok = got_needed_arguments and arguments_are_valid
 
   # control flow
-  document.save or fail(RuntimeError, "Failed to save document!")
+  document.save or raise("Failed to save document!")
 
   # good
   # boolean expression
   ok = got_needed_arguments && arguments_are_valid
 
   # control flow
-  fail(RuntimeError, "Failed to save document!") unless document.save
+  raise("Failed to save document!") unless document.save
 
   # ok
   # control flow
-  document.save || fail(RuntimeError, "Failed to save document!")
+  document.save || raise("Failed to save document!")
   ```
 
 * <a name="no-multiline-ternary"></a>
