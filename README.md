@@ -1046,15 +1046,44 @@ Translations of the guide are available in the following languages:
   result = some_condition ? something : something_else
   ```
 
+* <a name="else-case-enforcement"></a>
+  Use multiple chained ternary operators in place 
+  of long `if/elsif/else` blocks. This pattern ensures
+  that the final `else` case cannot accidentally be 
+  left unconsidered.
+<sup>[[link](#else-case-enforcement)]</sup>
+
+  ```ruby
+  # bad
+  if some_condition
+    # some thing
+  elsif another_condition
+    # another thing
+  elsif a_different_condition
+    # a different thing
+  else
+    # the default thing
+  end
+  
+  # good
+  some_condition ? # some thing
+    : another_condition ? # another thing
+    : a_different_condition ? # a different thing
+    : # the default thing
+  ```
+
 * <a name="no-nested-ternary"></a>
-  Use one expression per branch in a ternary operator. This
-  also means that ternary operators must not be nested. Prefer
+  While the above allows for concise case handling, still try
+  to avoid writing nested ternaries, where further conditions
+  need to be satisfied in the positive case. Prefer
   `if/else` constructs in these cases.
 <sup>[[link](#no-nested-ternary)]</sup>
 
   ```ruby
   # bad
-  some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
+  some_condition ? (
+    nested_condition ? nested_something : nested_something_else
+  ) : something_else
 
   # good
   if some_condition
