@@ -1,0 +1,115 @@
+# Examples of how to specifically exclude certain things
+AllCops:
+  TargetRubyVersion: 2.1.9
+  Exclude:
+    - '**/*.yml'
+    - '**/*.sql'
+    - 'config/**/*'
+    - 'vendor/bundle/**/*'
+    - 'vendor/gems/**/*'
+    - 'node_modules/**/*'
+    - 'db/migrate/**/*.rb'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+# Configure cops for styles that we do not adhere to or are not agreed upon
+# Default settings and options can be viewed here: https://raw.githubusercontent.com/bbatsov/rubocop/master/config/default.yml
+# Please add new configurations in alphabetical order
+
+Layout/AccessModifierIndentation:
+  IndentationWidth: 2
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  Enabled: false
+
+Layout/IndentHeredoc:
+  EnforcedStyle: unindent
+
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*_test.rb'
+    # Autobahn - RSpec relies on large blocks
+    - 'tests/**/*_spec.rb'
+    - 'spec/**/*_spec.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*_test.rb'
+
+Metrics/LineLength:
+  Max: 150
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Mapping of methods to prefer, alternate => preferred
+Style/CollectionMethods:
+  Enabled: true
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    detect: 'find'
+    find_all: 'select'
+    length: 'size'
+
+Style/CommentedKeyword:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/PreferredHashMethods:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  EnforcedStyleForEmptyBraces: space
+
+Style/SignalException:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false

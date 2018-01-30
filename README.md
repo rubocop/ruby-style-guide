@@ -1,6 +1,11 @@
 # Prelude
 Invoca Ruby Style Guide initially forked from https://github.com/bbatsov/ruby-style-guide.
 
+The contents of this styleguide are to be enforced by (rubocop)[https://github.com/bbatsov/rubocop]
+and automated in the code review process by (HoundCI)[https://houndci.com/]
+
+Any adjustments to this styleguide should be captured in the `.rubocop.yml` config.
+
 ## Table of Contents
 
 * [Source Code Layout](#source-code-layout)

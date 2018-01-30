@@ -1,0 +1,11 @@
+ruby:
+  config_file: .rubocop.yml
+
+# We use jshint in grunt commands, so ignore it here
+jshint:
+  enabled: false
+
+scss:
+  config_file: .scss-lint.yml
+
+fail_on_violations: true
