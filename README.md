@@ -869,6 +869,7 @@ Translations of the guide are available in the following languages:
     puts temperance.age
     system 'ls'
     ```
+
 * <a name="optional-arguments"></a>
     Define optional arguments at the end of the list of arguments.
     Ruby has some unexpected results when calling methods that have
