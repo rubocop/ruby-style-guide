@@ -1990,6 +1990,22 @@ no parameters.
   if x == 0
   end
   ```
+* <a name="use-strict-conversions"></a>
+  When converting types, use the strictest conversion possible, so that you
+don't accidentally use bad data. Eg, if you expect a string to contain only
+digits, `num_string.to_i` may give you `0` and mask the fact that `num_string`
+was unexpectedly `"foo"`.
+<sup>[[link](#use-strict-conversions)]</sup>
+
+  ```Ruby
+  # bad
+  x.to_f
+  x.to_i
+
+  # good
+  Float(x)
+  Integer(x, 10) # always specify base
+  ```
 
 * <a name="no-non-nil-checks"></a>
   Don't do explicit non-`nil` checks unless you're dealing with boolean
