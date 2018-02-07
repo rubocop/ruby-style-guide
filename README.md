@@ -494,13 +494,11 @@ Translations of the guide are available in the following languages:
   # good
   class Foo
     def foo
-      begin
-        do_something do
-          something
-        end
-      rescue
+      do_something do
         something
       end
+    rescue
+      something
     end
   end
   ```
