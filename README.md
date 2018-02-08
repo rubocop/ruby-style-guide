@@ -2503,17 +2503,17 @@ no parameters.
   Place magic comments above all code and documentation in a file (except shebangs, which are discussed next).
 
   ```ruby
-  # good
-  # frozen_string_literal: true
-
-  # Some documentation about Person
-  class Person
-  end
-
   # bad
   # Some documentation about Person
 
   # frozen_string_literal: true
+  class Person
+  end
+
+  # good
+  # frozen_string_literal: true
+
+  # Some documentation about Person
   class Person
   end
   ```
@@ -2523,15 +2523,15 @@ no parameters.
 <sup>[[link](#below-shebang)]</sup>
 
   ```ruby
-  # good
-  #!/usr/bin/env ruby
-  # frozen_string_literal: true
-
-  App.parse(ARGV)
-
   # bad
   # frozen_string_literal: true
   #!/usr/bin/env ruby
+
+  App.parse(ARGV)
+
+  # good
+  #!/usr/bin/env ruby
+  # frozen_string_literal: true
 
   App.parse(ARGV)
   ```
@@ -2541,12 +2541,12 @@ no parameters.
 <sup>[[link](#one-magic-comment-per-line)]</sup>
 
   ```ruby
+  # bad
+  # -*- frozen_string_literal: true; encoding: ascii-8bit -*-
+
   # good
   # frozen_string_literal: true
   # encoding: ascii-8bit
-
-  # bad
-  # -*- frozen_string_literal: true; encoding: ascii-8bit -*-
   ```
 
 * <a name="separate-magic-comments-from-code"></a>
@@ -2554,16 +2554,16 @@ no parameters.
 <sup>[[link](#separate-magic-comments-from-code)]</sup>
 
   ```ruby
-  # good
+  # bad
   # frozen_string_literal: true
-
   # Some documentation for Person
   class Person
     # Some code
   end
 
-  # bad
+  # good
   # frozen_string_literal: true
+
   # Some documentation for Person
   class Person
     # Some code
