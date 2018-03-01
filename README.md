@@ -2100,6 +2100,12 @@ no parameters.
   # good
   some_hash.size
   ```
+NOTE: There are also differences between `#count`, `#length`, and `#size` on ActiveRecord::Relation.
+`#count` will always perform a count query, `#length` will load up the records, and call `#length` on
+the resulting array, and `#size` will do the smart thing based on whether or not we've loaded.
+TLDR: use `#size`, unless you're calling it immediately before you need to load the real records,
+ in which case use `#length`. Never use `#count`, since `#size` will skip the query if it can.
+<sup>[[link](http://batsov.com/articles/2014/02/17/the-elements-of-style-in-ruby-number-13-length-vs-size-vs-count/#comment-1248998887)]</sup>
 
 * <a name="flat-map"></a>
   Use `flat_map` instead of `map` + `flatten`.  This does not apply for arrays
@@ -4405,6 +4411,77 @@ resource cleanup when possible.
 * <a name="common-sense"></a>
   Use common sense.
 <sup>[[link](#common-sense)]</sup>
+
+## Sema4 Specific Styles
+
+### AASM
+
+* <a name="aasm-event-declaration"></a>
+  When defining AASM events, include only the AASM event name in the block declaration.
+  Callbacks and transitions belong in the body.
+
+  ```ruby
+  # bad
+  event :update_order_status_to_in_progress, success: :log_aasm_state_update do
+    # body omitted
+  end
+
+  # good
+  event :update_order_status_to_in_progress do
+    success { log_aasm_state_update }
+    # body omitted
+  end
+  ```
+<sup>[[link](#aasm-event-declaration)]</sup>
+
+* <a name="aasm-transitions"></a>
+  Arrays of AASM states an event can transition from/to should be written
+  as an array of symbols, with one state per line. This allows a programmer
+  to determine the number of states an event can transition from/to at a glance.
+
+  ```ruby
+  # bad
+  event :ecs_results_admin_release do
+    transitions from: %i[ecs_gc_consult_optional ecs_gc_consult_declined ecs_gc_consult_missed ecs_analysis_completed],
+                to: :sema4_released
+  end
+
+  # good
+  event :ecs_results_admin_release do
+    transitions from: %i[ecs_gc_consult_optional
+                         ecs_gc_consult_declined
+                         ecs_gc_consult_missed
+                         ecs_analysis_completed],
+                to: :sema4_released
+  end
+  ```
+<sup>[[link](#aasm-transitions)]</sup>
+
+### Banned Methods
+
+* <a name="destroy_all"></a>
+  Beware `#destroy_all`!
+<sup>[[link](#destroy_all)]</sup>
+
+* <a name="html_safe"></a>
+  Avoid using `html_safe` and `raw` unless absolutely necessary, and never with
+  user-provided data. These methods will not escape dangerous HTML symbols such
+  as `\<`, `\>`, `"`, `'`, or `;`.
+  Despite what the name might imply, `#html_safe` DOES NOT MAKE HTML SAFE.
+  This method is the programmer indicating that the string provided to `html_safe`
+  is safe to render.
+
+  ```ruby
+  first_name = "<script>alert('XSS is fun!');</script>" # Imagine this is user-submitted data
+
+  # bad
+  "Welcome, #{first_name}".html_safe
+
+  # bad
+  raw "Welcome, #{first_name}"
+  ```
+  [[Further reading](https://product.reverb.com/stay-safe-while-using-html-safe-in-rails-9e368836fac1)]
+<sup>[[link](#html_safe)]</sup>
 
 ## Tools
 
