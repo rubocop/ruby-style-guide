@@ -2131,6 +2131,39 @@ no parameters.
   # good
   array.reverse_each { ... }
   ```
+* <a name="multi-line-boolean"></a>
+
+<sup>[[link](#multi-line-boolean)]</sup>
+  Use a helper method for comparing more than two booleans. Align multi-line boolean statements by the operator.
+  ```ruby
+  # bad
+  if some_boolean_three? && some_boolean_four? && some_boolean_five?
+    ...
+    ...
+  end
+
+  # good
+  if boolean_conditions_met?
+    ...
+    ...
+  end
+
+  def boolean_conditions_met?
+    some_boolean_one?  &&
+    some_boolean_four? &&
+    some_boolean_five?
+  end
+  ```
+
+  If only two booleans, compare them on the same line.
+  ```ruby
+  # good
+  if some_boolean_one? || some_boolean_two?
+    ...
+    ...
+  end
+  ```
+
 
 ## Naming
 
