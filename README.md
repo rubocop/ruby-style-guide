@@ -2100,11 +2100,11 @@ no parameters.
   # good
   some_hash.size
   ```
-NOTE: There are also differences between `#count`, `#length`, and `#size` on ActiveRecord::Relation.
-`#count` will always perform a count query, `#length` will load up the records, and call `#length` on
-the resulting array, and `#size` will do the smart thing based on whether or not we've loaded.
-TLDR: use `#size`, unless you're calling it immediately before you need to load the real records,
- in which case use `#length`. Never use `#count`, since `#size` will skip the query if it can.
+  NOTE: There are also differences between `#count`, `#length`, and `#size` on ActiveRecord::Relation.
+  `#count` will always perform a count query, `#length` will load up the records, and call `#length` on
+  the resulting array, and `#size` will do the smart thing based on whether or not we've loaded.
+  TLDR: use `#size`, unless you're calling it immediately before you need to load the real records,
+  in which case use `#length`. Never use `#count`, since `#size` will skip the query if it can.
 <sup>[[link](http://batsov.com/articles/2014/02/17/the-elements-of-style-in-ruby-number-13-length-vs-size-vs-count/#comment-1248998887)]</sup>
 
 * <a name="flat-map"></a>
@@ -4469,7 +4469,7 @@ resource cleanup when possible.
   as `\<`, `\>`, `"`, `'`, or `;`.
   Despite what the name might imply, `#html_safe` DOES NOT MAKE HTML SAFE.
   This method is the programmer indicating that the string provided to `html_safe`
-  is safe to render.
+  is safe to render. [[Further reading](https://product.reverb.com/stay-safe-while-using-html-safe-in-rails-9e368836fac1)]
 
   ```ruby
   first_name = "<script>alert('XSS is fun!');</script>" # Imagine this is user-submitted data
@@ -4480,7 +4480,6 @@ resource cleanup when possible.
   # bad
   raw "Welcome, #{first_name}"
   ```
-  [[Further reading](https://product.reverb.com/stay-safe-while-using-html-safe-in-rails-9e368836fac1)]
 <sup>[[link](#html_safe)]</sup>
 
 ## Tools
