@@ -4419,6 +4419,7 @@ resource cleanup when possible.
 * <a name="aasm-event-declaration"></a>
   When defining AASM events, include only the AASM event name in the block declaration.
   Callbacks and transitions belong in the body.
+<sup>[[link](#aasm-event-declaration)]</sup>
 
   ```ruby
   # bad
@@ -4432,12 +4433,12 @@ resource cleanup when possible.
     # body omitted
   end
   ```
-<sup>[[link](#aasm-event-declaration)]</sup>
 
 * <a name="aasm-transitions"></a>
   Arrays of AASM states an event can transition from/to should be written
   as an array of symbols, with one state per line. This allows a programmer
   to determine the number of states an event can transition from/to at a glance.
+<sup>[[link](#aasm-transitions)]</sup>
 
   ```ruby
   # bad
@@ -4455,7 +4456,6 @@ resource cleanup when possible.
                 to: :sema4_released
   end
   ```
-<sup>[[link](#aasm-transitions)]</sup>
 
 ### Banned Methods
 
@@ -4470,6 +4470,7 @@ resource cleanup when possible.
   Despite what the name might imply, `#html_safe` DOES NOT MAKE HTML SAFE.
   This method is the programmer indicating that the string provided to `html_safe`
   is safe to render. [[Further reading](https://product.reverb.com/stay-safe-while-using-html-safe-in-rails-9e368836fac1)]
+<sup>[[link](#html_safe)]</sup>
 
   ```ruby
   first_name = "<script>alert('XSS is fun!');</script>" # Imagine this is user-submitted data
@@ -4480,7 +4481,6 @@ resource cleanup when possible.
   # bad
   raw "Welcome, #{first_name}"
   ```
-<sup>[[link](#html_safe)]</sup>
 
 ## Tools
 
