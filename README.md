@@ -3604,7 +3604,7 @@ resource cleanup when possible.
   # bad - if we just use || operator with falsy value we won't get the expected result
   batman[:is_evil] || true # => true
 
-  # good - fetch work correctly with falsy values
+  # good - fetch works correctly with falsy values
   batman.fetch(:is_evil, true) # => false
   ```
 
@@ -3684,7 +3684,7 @@ resource cleanup when possible.
 ## Numbers
 
 * <a name="integer-type-checking"></a>
-  Use `Integer` check type of an integer number. Since `Fixnum` is
+  Use `Integer` to check type of an integer number. Since `Fixnum` is
   platform-dependent, checking against it will return different results on
   32-bit and 64-bit machines.
 <sup>[[link](#integer-type-checking)]</sup>
@@ -3700,18 +3700,18 @@ resource cleanup when possible.
   timestamp.is_a? Integer
   ```
 
-  * <a name="random-numbers"></a>
-    Prefer to use ranges when generating random numbers instead of integers with offsets,
-    since it clearly states your intentions. Imagine simulating a role of a dice:
-  <sup>[[link](#random-numbers)]</sup>
+* <a name="random-numbers"></a>
+  Prefer to use ranges when generating random numbers instead of integers with offsets,
+  since it clearly states your intentions. Imagine simulating a roll of a dice:
+<sup>[[link](#random-numbers)]</sup>
 
-    ```ruby
-    # bad
-    rand(6) + 1
+  ```ruby
+  # bad
+  rand(6) + 1
 
-    # good
-    rand(1..6)
-    ```
+  # good
+  rand(1..6)
+  ```
 
 ## Strings
 
@@ -3856,7 +3856,7 @@ resource cleanup when possible.
   ```
 
 * <a name="dont-abuse-gsub"></a>
-  Don't use `String#gsub` in scenarios in which you can use a faster more specialized alternative.
+  Don't use `String#gsub` in scenarios in which you can use a faster and more specialized alternative.
 <sup>[[link](#dont-abuse-gsub)]</sup>
 
     ```ruby
@@ -3955,7 +3955,7 @@ resource cleanup when possible.
 
 * <a name="no-datetime"></a>
   Don't use `DateTime` unless you need to account for historical calendar
-  reform -- and if you do, explicitly specify the `start` argument to
+  reform—and if you do, explicitly specify the `start` argument to
   clearly state your intentions.
 <sup>[[link](#no-datetime)]</sup>
 
@@ -4255,7 +4255,7 @@ resource cleanup when possible.
 <sup>[[link](#no-method-missing)]</sup>
 
   - Be sure to [also define `respond_to_missing?`](http://blog.marc-andre.ca/2010/11/methodmissing-politely.html)
-  - Only catch methods with a well-defined prefix, such as `find_by_*` -- make your code as assertive as possible.
+  - Only catch methods with a well-defined prefix, such as `find_by_*`—make your code as assertive as possible.
   - Call `super` at the end of your statement
   - Delegate to assertive, non-magical methods:
 
@@ -4286,7 +4286,7 @@ resource cleanup when possible.
 <sup>[[link](#prefer-public-send)]</sup>
 
   ```ruby
-  # We have  an ActiveModel Organization that includes concern Activatable
+  # We have an ActiveModel Organization that includes concern Activatable
   module Activatable
     extend ActiveSupport::Concern
 
