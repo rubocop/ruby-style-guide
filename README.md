@@ -647,18 +647,18 @@ Translations of the guide are available in the following languages:
   ```ruby
   # bad - single indent
   menu_item = %w[Spam Spam Spam Spam Spam Spam Spam Spam
-    Baked beans Spam Spam Spam Spam Spam]
+    Baked\ beans Spam Spam Spam Spam Spam]
 
   # good
   menu_item = %w[
     Spam Spam Spam Spam Spam Spam Spam Spam
-    Baked beans Spam Spam Spam Spam Spam
+    Baked\ beans Spam Spam Spam Spam Spam
   ]
 
   # good
   menu_item =
     %w[Spam Spam Spam Spam Spam Spam Spam Spam
-     Baked beans Spam Spam Spam Spam Spam]
+     Baked\ beans Spam Spam Spam Spam Spam]
   ```
 
 * <a name="underscores-in-numerics"></a>
