@@ -597,7 +597,7 @@ Translations of the guide are available in the following languages:
     ```
 
   A discussion on the merits of both alternative styles can be found
-  [here](https://github.com/bbatsov/ruby-style-guide/pull/176).
+  [here](https://github.com/rubocop-hq/ruby-style-guide/pull/176).
 
 * <a name="no-double-indent"></a>
     Align the parameters of a method call if they span more than one
@@ -4442,13 +4442,11 @@ Feel free to open tickets or send pull requests with improvements. Thanks in
 advance for your help!
 
 You can also support the project (and RuboCop) with financial
-contributions via [Gratipay](https://gratipay.com/~bbatsov/).
-
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/~bbatsov/)
+contributions via [Patreon](https://www.patreon.com/bbatsov).
 
 ## How to Contribute?
 
-It's easy, just follow the [contribution guidelines](https://github.com/bbatsov/ruby-style-guide/blob/master/CONTRIBUTING.md).
+It's easy, just follow the [contribution guidelines](https://github.com/rubocop-hq/ruby-style-guide/blob/master/CONTRIBUTING.md).
 
 # License
 
@@ -4467,9 +4465,9 @@ Cheers,<br>
 [Bozhidar](https://twitter.com/bbatsov)
 
 [PEP-8]: https://www.python.org/dev/peps/pep-0008/
-[rails-style-guide]: https://github.com/bbatsov/rails-style-guide
+[rails-style-guide]: https://github.com/rubocop-hq/rails-style-guide
 [pickaxe]: https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0
 [trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
 [Pandoc]: http://pandoc.org/
-[RuboCop]: https://github.com/bbatsov/rubocop
+[RuboCop]: https://github.com/rubocop-hq/rubocop
 [rdoc]: http://rdoc.sourceforge.net/doc/
