@@ -4390,6 +4390,15 @@ resource cleanup when possible.
   Code in a functional way, avoiding mutation when that makes sense.
 <sup>[[link](#functional-code)]</sup>
 
+  ```ruby
+  a = []; [1, 2, 3].each { |i| a << i * 2 }   # bad
+  a = [1, 2, 3].map { |i| i * 2 }             # good
+
+  a = {}; [1, 2, 3].each { |i| a[i] = i * 17 }                # bad
+  a = [1, 2, 3].reduce({}) { |h, i| h[i] = i * 17; h }        # good
+  a = [1, 2, 3].each_with_object({}) { |i, h| h[i] = i * 17 } # good
+  ```
+
 * <a name="no-param-mutations"></a>
   Do not mutate parameters unless that is the purpose of the method.
 <sup>[[link](#no-param-mutations)]</sup>
