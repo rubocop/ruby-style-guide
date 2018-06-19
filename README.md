@@ -695,10 +695,10 @@ Translations of the guide are available in the following languages:
   num = 1234
   ```
 
-* <a name="rdoc-conventions"></a>
-    Use [Rdoc][rdoc] and its conventions for API documentation.  Don't put an
+* <a name="api-documentation"></a>
+    Use [YARD][yard] and its conventions for API documentation.  Don't put an
     empty line between the comment block and the `def`.
-<sup>[[link](#rdoc-conventions)]</sup>
+<sup>[[link](#api-documentation)]</sup>
 
 * <a name="80-character-limits"></a>
   Limit lines to 80 characters.
@@ -4479,4 +4479,4 @@ Cheers,<br>
 [trpl]: http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177
 [Pandoc]: http://pandoc.org/
 [RuboCop]: https://github.com/rubocop-hq/rubocop
-[rdoc]: http://rdoc.sourceforge.net/doc/
+[yard]: https://yardoc.org/
