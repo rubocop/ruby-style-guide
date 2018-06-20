@@ -696,8 +696,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="api-documentation"></a>
-    Use [YARD][yard] and its conventions for API documentation.  Don't put an
-    empty line between the comment block and the `def`.
+    Use [YARD][yard] and its conventions for API documentation.
 <sup>[[link](#api-documentation)]</sup>
 
 * <a name="80-character-limits"></a>
