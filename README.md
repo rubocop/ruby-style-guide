@@ -320,7 +320,7 @@ Translations of the guide are available in the following languages:
   Indent `when` as deep as `case`. This is the style established in both
   "The Ruby Programming Language" and "Programming Ruby". Historically it
   is derived from the fact that `case` and `switch` statements are not blocks,
-  hence should not be indented, and the `when` and `else` keywords are labels 
+  hence should not be indented, and the `when` and `else` keywords are labels
   (compiled in the C language, they are litterally labels for `JMP` calls).
 <sup>[[link](#indent-when-to-case)]</sup>
 
@@ -677,7 +677,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="numeric-literal-prefixes"></a>
-  Prefer smallcase letters for numeric literal prefixes.
+  Prefer lowercase letters for numeric literal prefixes.
   `0o` for octal, `0x` for hexadecimal and `0b` for binary.
   Do not use `0d` prefix for decimal literals.
 <sup>[[link](#numeric-literal-prefixes)]</sup>
@@ -3774,7 +3774,7 @@ resource cleanup when possible.
 
 * <a name="no-character-literals"></a>
   Don't use the character literal syntax `?x`. Since Ruby 1.9 it's basically
-  redundant&mdash;`?x` would interpreted as `'x'` (a string with a single
+  redundant&mdash;`?x` would be interpreted as `'x'` (a string with a single
   character in it).
 <sup>[[link](#no-character-literals)]</sup>
 
@@ -4146,7 +4146,7 @@ resource cleanup when possible.
 
 * <a name="percent-x"></a>
   Avoid the use of `%x` unless you're going to invoke a command with
-  backquotes in it(which is rather unlikely).
+  backquotes in it (which is rather unlikely).
 <sup>[[link](#percent-x)]</sup>
 
   ```ruby
