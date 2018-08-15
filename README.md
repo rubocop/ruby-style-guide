@@ -624,14 +624,6 @@ Translations of the guide are available in the following languages:
         body: source.text)
   end
 
-  # good
-  def send_mail(source)
-    Mailer.deliver(to: 'bob@example.com',
-                   from: 'us@example.com',
-                   subject: 'Important message',
-                   body: source.text)
-  end
-
   # good (normal indent)
   def send_mail(source)
     Mailer.deliver(
@@ -641,6 +633,40 @@ Translations of the guide are available in the following languages:
       body: source.text
     )
   end
+  ```
+
+* <a name="no-hanging-indent"></a>
+    Use a new line for the argument list of a method at the end of a chain
+    if they are indented more than one level from the first method.
+<sup>[[link](#no-hanging-indent)]</sup>
+
+  ```ruby
+  # bad (hanging indent)
+  some_method.with.a_longer.chain(:parameter_1,
+                                  :parameter_2,
+                                  :parameter_3,
+                                  :parameter_4)
+
+  # good (newline indent)
+  some_method.with.a_longer.chain(
+    :parameter_1,
+    :parameter_2,
+    :parameter_3,
+    :parameter_4
+  )
+
+  # good (multiple methods with newline indent)
+  very_long_kumquats =
+    some_method
+      .with
+      .a_much_much_much_much_much
+      .longer
+      .chain(
+        :parameter_1,
+        :parameter_2,
+        :parameter_3,
+        :parameter_4
+      )
   ```
 
 * <a name="align-multiline-arrays"></a>
