@@ -2166,7 +2166,6 @@ no parameters.
   :someSymbol
 
   someVar = 5
-  var_10  = 10
 
   def someMethod
     # some code
@@ -2180,7 +2179,6 @@ no parameters.
   :some_symbol
 
   some_var = 5
-  var10    = 10
 
   def some_method
     # some code
@@ -2196,6 +2194,8 @@ no parameters.
   :some_sym_1
 
   some_var_1 = 1
+  
+  var_10  = 10
 
   def some_method_1
     # some code
@@ -2205,6 +2205,8 @@ no parameters.
   :some_sym1
 
   some_var1 = 1
+  
+  var10    = 10
 
   def some_method1
     # some code
