@@ -1663,7 +1663,7 @@ condition](#safe-assignment-in-condition).
   # good
   something.is_a?(Array)
   (1..100).include?(7)
-  some_string =~ /something/
+  some_string.match?(/something/)
   ```
 
 * <a name="eql"></a>
