@@ -321,7 +321,7 @@ Translations of the guide are available in the following languages:
   "The Ruby Programming Language" and "Programming Ruby". Historically it
   is derived from the fact that `case` and `switch` statements are not blocks,
   hence should not be indented, and the `when` and `else` keywords are labels
-  (compiled in the C language, they are litterally labels for `JMP` calls).
+  (compiled in the C language, they are literally labels for `JMP` calls).
 <sup>[[link](#indent-when-to-case)]</sup>
 
   ```ruby
