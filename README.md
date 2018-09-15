@@ -894,7 +894,7 @@ Translations of the guide are available in the following languages:
   some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
   ```
 
-* <a name="keyword_arguments"></a>
+* <a name="boolean-keyword-arguments"></a>
   Use keyword arguments or options hash when passing boolean argument to a method.
 
   ```Ruby
