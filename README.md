@@ -2194,7 +2194,7 @@ no parameters.
   :some_sym_1
 
   some_var_1 = 1
-  
+
   var_10  = 10
 
   def some_method_1
@@ -2205,7 +2205,7 @@ no parameters.
   :some_sym1
 
   some_var1 = 1
-  
+
   var10    = 10
 
   def some_method1
@@ -2375,12 +2375,48 @@ no parameters.
   ```
 
 * <a name="other-arg"></a>
-  When defining binary operators, name the parameter `other`(`<<` and `[]` are
-  exceptions to the rule, since their semantics are different).
+  When defining binary operators and operator-alike methods, name the parameter
+  `other` for operators with "symmetrical" semantics of operands. Symmetrical
+  semantics means both sides of the operator are typically of same or coercible
+  types.
 <sup>[[link](#other-arg)]</sup>
 
+  * operators and operator-alike methods with symmetrical semantics (the
+    parameter should be named `other`): `+`, `-`, `*`, `/`, `%`, `**`, `==`,
+    `>`, `<`, `|`, `&`, `^`, `eql?`, `equal?`;
+  * operators with non-symmetrical semantics (the parameter should **not** be
+    named `other`): `<<`, `[]` (collection/item relations between operands),
+    `===` (pattern/matchable relations);
+
+  Note that the rule should be followed **only** if both sides of the operator
+  have the same semantics. Prominent exception in Ruby core is, for example,
+   `Array#*(int)`.
+
   ```ruby
+  # good
   def +(other)
+    # body omitted
+  end
+
+  # bad
+  def <<(other)
+    @internal << other
+  end
+
+  # good
+  def <<(item)
+    @internal << item
+  end
+
+  # bad
+  # Returns some string multiplied `other` times
+  def *(other)
+    # body omitted
+  end
+
+  # good
+  # Returns some string multiplied `num` times
+  def *(num)
     # body omitted
   end
   ```
