@@ -53,10 +53,6 @@ This style guide evolves over time as additional conventions are
 identified and past conventions are rendered obsolete by changes in
 Ruby itself.
 
-Many projects have their own coding style guidelines (often derived
-from this guide). In the event of any conflicts, such
-project-specific guides take precedence for that project.
-
 You can generate a PDF or an HTML copy of this guide using
 [Pandoc][].
 
