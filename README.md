@@ -60,7 +60,7 @@ project-specific guides take precedence for that project.
 You can generate a PDF or an HTML copy of this guide using
 [Pandoc][].
 
-[RuboCop][] is a code analyzer, based on this
+[RuboCop][] is a code code analyzer (linter) and formatter, based on this
 style guide.
 
 Translations of the guide are available in the following languages:
@@ -2194,7 +2194,7 @@ no parameters.
   :some_sym_1
 
   some_var_1 = 1
-  
+
   var_10  = 10
 
   def some_method_1
@@ -2205,7 +2205,7 @@ no parameters.
   :some_sym1
 
   some_var1 = 1
-  
+
   var10    = 10
 
   def some_method1
