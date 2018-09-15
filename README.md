@@ -894,6 +894,30 @@ Translations of the guide are available in the following languages:
   some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
   ```
 
+* <a name="keyword_arguments"></a>
+  Use keyword arguments or options hash when passing boolean argument to a method.
+
+  ```Ruby
+  # bad
+  def some_method(bar = false)
+    puts bar
+  end
+
+  # good (ruby <= 1.9.x)
+  def some_method(options = {})
+    bar = options.fetch(:bar, false)
+    puts bar
+  end
+
+  # good (ruby >= 2.0)
+  def some_method(bar: false)
+    puts bar
+  end
+
+  some_method            # => false
+  some_method(bar: true) # => true
+  ```
+
 * <a name="parallel-assignment"></a>
     Avoid the use of parallel assignment for defining variables. Parallel
     assignment is allowed when it is the return of a method call, used with
