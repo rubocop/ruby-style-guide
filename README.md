@@ -895,7 +895,7 @@ Translations of the guide are available in the following languages:
   ```
 
 * <a name="boolean-keyword-arguments"></a>
-  Use keyword arguments or options hash when passing boolean argument to a method.
+  Use keyword arguments when passing boolean argument to a method.
 
   ```Ruby
   # bad
@@ -903,19 +903,35 @@ Translations of the guide are available in the following languages:
     puts bar
   end
 
-  # good (ruby <= 1.9.x)
+  # bad - common hack before keyword args were introduced
   def some_method(options = {})
     bar = options.fetch(:bar, false)
     puts bar
   end
 
-  # good (ruby >= 2.0)
+  # good
   def some_method(bar: false)
     puts bar
   end
 
   some_method            # => false
   some_method(bar: true) # => true
+  ```
+
+* <a name="keyword-arguments-vs-option-hashes"></a>
+  Use keyword arguments instead of option hashes.
+
+  ```Ruby
+  # bad
+  def some_method(options = {})
+    bar = options.fetch(:bar, false)
+    puts bar
+  end
+
+  # good
+  def some_method(bar: false)
+    puts bar
+  end
   ```
 
 * <a name="parallel-assignment"></a>
