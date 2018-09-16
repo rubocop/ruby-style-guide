@@ -896,6 +896,7 @@ Translations of the guide are available in the following languages:
 
 * <a name="boolean-keyword-arguments"></a>
   Use keyword arguments when passing boolean argument to a method.
+<sup>[[link](#boolean-keyword-arguments)]</sup>
 
   ```Ruby
   # bad
@@ -920,6 +921,7 @@ Translations of the guide are available in the following languages:
 
 * <a name="keyword-arguments-vs-option-hashes"></a>
   Use keyword arguments instead of option hashes.
+<sup>[[link](#keyword-arguments-vs-option-hashes)]</sup>
 
   ```Ruby
   # bad
