@@ -918,6 +918,21 @@ Translations of the guide are available in the following languages:
   some_method            # => false
   some_method(bar: true) # => true
   ```
+* <a name="keyword-arguments-vs-optional-arguments"></a>
+  Prefer keyword arguments over optional arguments.
+<sup>[[link](#keyword-arguments-vs-optional-arguments)]</sup>
+
+  ```Ruby
+  # bad
+  def some_method(a, b = 5, c = 1)
+    # body omitted
+  end
+
+  # good
+  def some_method(a, b: 5, c: 1)
+    # body omitted
+  end
+  ```
 
 * <a name="keyword-arguments-vs-option-hashes"></a>
   Use keyword arguments instead of option hashes.
