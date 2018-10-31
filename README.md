@@ -162,10 +162,10 @@ Translations of the guide are available in the following languages:
     end
 
     # okish
-    class FooError < StandardError; end
+    FooError = Class.new(StandardError)
 
     # good
-    FooError = Class.new(StandardError)
+    class FooError < StandardError; end
     ```
 
   * <a name="no-single-line-methods"></a>
@@ -2330,50 +2330,6 @@ condition](#safe-assignment-in-condition).
     SOME_CONST = 5
     ```
 
-  * <a name="bool-methods-qmark"></a>
-    The names of predicate methods (methods that return a boolean value) should
-    end in a question mark.  (i.e. `Array#empty?`). Methods that don't return a
-    boolean, shouldn't end in a question mark.
-    <sup>[[link](#bool-methods-qmark)]</sup>
-
-  * <a name="bool-methods-prefix"></a>
-    Avoid prefixing predicate methods with the auxiliary verbs such as `is`,
-    `does`, or `can`.  These words are redundant and inconsistent with the style of
-    boolean methods in the Ruby core library, such as `empty?` and `include?`.
-    <sup>[[link](#bool-methods-prefix)]</sup>
-
-    ```ruby
-    # bad
-    class Person
-      def is_tall?
-        true
-      end
-
-      def can_play_basketball?
-        false
-      end
-
-      def does_like_candy?
-        true
-      end
-    end
-
-    # good
-    class Person
-      def tall?
-        true
-      end
-
-      def basketball_player?
-        false
-      end
-
-      def likes_candy?
-        true
-      end
-    end
-    ```
-
   * <a name="dangerous-method-bang"></a>
     The names of potentially *dangerous* methods (i.e. methods that modify
     `self` or the arguments, `exit!` (doesn't run the finalizers like `exit`
@@ -3282,18 +3238,17 @@ condition](#safe-assignment-in-condition).
     ```
 
   * <a name="exception-class-messages"></a>
-    Prefer supplying an exception class and a message as two separate arguments
-    to `raise`, instead of an exception instance.
+    Prefer supplying an exception to `raise`
     <sup>[[link](#exception-class-messages)]</sup>
 
     ```ruby
     # bad
-    raise SomeException.new('message')
-    # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
-
-    # good
     raise SomeException, 'message'
     # Consistent with `raise SomeException, 'message', backtrace`.
+
+    # good
+    raise SomeException.new('message')
+    # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
     ```
 
   * <a name="no-return-ensure"></a>

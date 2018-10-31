@@ -1,0 +1,58 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/schema.rb
+    - node_modules/**/*
+    - vendor/**/*
+    - .git/**/*
+    - Rakefile
+    - db/migrate/*
+  StyleGuideBaseURL: https://github.com/Interfolio/ruby-style-guide
+
+#################
+#   Overrides   #
+#################
+
+# Prefer compact style over exploded.
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#styleraiseargs
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+# Prefer double quotes.
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#stylestringliterals
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Prefer brackets to %i
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#stylesymbolarray
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# Prefer brackets to %w
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#stylewordarray
+Style/WordArray:
+  EnforcedStyle: brackets
+
+#################
+# Disabled cops #
+#################
+
+# Auxiliary verbs can be useful
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_naming.md#namingpredicatename
+Naming/PredicateName:
+  Enabled: false
+
+# Lean towards readable code over meaningless required code comments
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#styledocumentation
+Style/Documentation:
+  Enabled: false
+
+# Lean towards readable code over meaningless required code comments
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#styledocumentationmethod
+Style/DocumentationMethod:
+  Enabled: false
+
+# Quieting noise for now
+# https://github.com/rubocop-hq/rubocop/blob/master/manual/cops_style.md#stylefrozenstringliteralcomment
+Style/FrozenStringLiteralComment:
+  Enabled: false
