@@ -56,7 +56,7 @@ Ruby itself.
 You can generate a PDF or an HTML copy of this guide using
 [Pandoc][].
 
-[RuboCop][] is a code code analyzer (linter) and formatter, based on this
+[RuboCop][] is a static code analyzer (linter) and formatter, based on this
 style guide.
 
 Translations of the guide are available in the following languages:
