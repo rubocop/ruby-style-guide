@@ -4515,10 +4515,9 @@ this guide.
 
 ### RuboCop
 
-[RuboCop][] is a Ruby code style
-checker based on this style guide. RuboCop already covers a
-significant portion of the Guide, supports both MRI 1.9 and MRI 2.0
-and has good Emacs integration.
+[RuboCop][] is a Ruby static code analyzer and formatter, based on this
+style guide. RuboCop already covers a significant portion of the
+Guide and plugins for most popular Ruby editors and IDEs.
 
 ### RubyMine
 
