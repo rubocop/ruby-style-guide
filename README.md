@@ -3018,19 +3018,6 @@ condition](#safe-assignment-in-condition).
     Person = Struct.new(:first_name, :last_name)
     ```
 
-  * <a name="factory-methods"></a>
-    Consider adding factory methods to provide additional sensible ways to
-    create instances of a particular class.
-    <sup>[[link](#factory-methods)]</sup>
-
-    ```ruby
-    class Person
-      def self.create(options_hash)
-        # body omitted
-      end
-    end
-    ```
-
   * <a name="duck-typing"></a>
     Prefer [duck-typing](https://en.wikipedia.org/wiki/Duck_typing) over
     inheritance.
@@ -3251,6 +3238,39 @@ condition](#safe-assignment-in-condition).
       end
 
       # ...other methods...
+    end
+    ```
+
+### Constructors
+
+  * <a name="factory-methods"></a>
+    Consider adding factory methods to provide additional sensible ways to
+    create instances of a particular class.
+    <sup>[[link](#factory-methods)]</sup>
+
+    ```ruby
+    class Person
+      def self.create(options_hash)
+        # body omitted
+      end
+    end
+    ```
+
+  * <a name="disjunctive-assignment-in-constructor"></a>
+    In constructors, avoid unnecessary disjunctive assignment (`||=`) of
+    instance variables. Prefer plain assignment. In ruby, instance variables
+    (beginning with an `@`) are nil until assigned a value, so in most cases the
+    disjunction is unnecessary.
+
+    ```ruby
+    # bad
+    def initialize
+      @x ||= 1
+    end
+
+    # good
+    def initialize
+      @x = 1
     end
     ```
 
