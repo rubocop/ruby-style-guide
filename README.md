@@ -2268,8 +2268,9 @@ condition](#safe-assignment-in-condition).
 
 
   * <a name="camelcase-classes"></a>
-    Use `CamelCase` for classes and modules.  (Keep acronyms like HTTP, RFC, XML
-    uppercase.)
+    Use `CamelCase` for classes and modules. Keep acronyms like HTTP, RFC, XML
+    uppercase. (If you're using ActiveSupport autoloading, you may want to add an
+    [acronym inflection](https://api.rubyonrails.org/classes/ActiveSupport/Inflector/Inflections.html#method-i-acronym).)
     <sup>[[link](#camelcase-classes)]</sup>
 
     ```ruby
