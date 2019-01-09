@@ -657,7 +657,7 @@ Translations of the guide are available in the following languages:
     # good
     menu_item =
       %w[Spam Spam Spam Spam Spam Spam Spam Spam
-       Baked beans Spam Spam Spam Spam Spam]
+         Baked beans Spam Spam Spam Spam Spam]
     ```
 
   * <a name="underscores-in-numerics"></a>
