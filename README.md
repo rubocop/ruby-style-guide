@@ -853,7 +853,7 @@ Translations of the guide are available in the following languages:
 
           # body omitted
         end
-      ```
+        ```
 
     Can omit parentheses for
 
