@@ -30,6 +30,9 @@ Layout/ExtraSpacing:
 Layout/IndentHeredoc:
   EnforcedStyle: unindent
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
 Layout/SpaceBeforeFirstArg:
   Enabled: false
 
