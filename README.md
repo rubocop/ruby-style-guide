@@ -3437,8 +3437,8 @@ condition](#safe-assignment-in-condition).
     # good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
     def foo
       read_file
-    rescue Errno::ENOENT => ex
-      handle_error(ex)
+    rescue Errno::ENOENT => e
+      handle_error(e)
     end
     ```
 
