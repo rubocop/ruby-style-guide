@@ -4085,6 +4085,25 @@ condition](#safe-assignment-in-condition).
     SUMMARY
     ```
 
+  * <a name="heredoc-method-calls"></a>
+    Place method calls with heredoc receivers on the first line of the heredoc
+    definition. The bad form has significant potential for error if a new line
+    is added or removed.
+    <sup>[[link](#heredoc-method-calls)]</sup>
+
+    ```ruby
+    # bad
+    query = <<~SQL
+      select foo from bar
+    SQL
+    .strip_indent
+
+    # good
+    query = <<~SQL.strip_indent
+      select foo from bar
+    SQL
+    ```
+
 ## Date & Time
 
   * <a name="time-now"></a>
