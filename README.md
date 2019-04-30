@@ -4104,6 +4104,25 @@ condition](#safe-assignment-in-condition).
     SQL
     ```
 
+  * <a name="heredoc-argument-closing-parentheses"></a>
+    Place the closing parenthesis for method calls with heredoc arguments on
+    the first line of the heredoc definition. The bad form has potential for
+    error if the new line before the closing parenthesis is removed.
+    <sup>[[link](#heredoc-argument-closing-parentheses)]</sup>
+
+    ```ruby
+    # bad
+    foo(<<~SQL
+      select foo from bar
+    SQL
+    )
+
+    # good
+    foo(<<~SQL)
+      select foo from bar
+    SQL
+    ```
+
 ## Date & Time
 
   * <a name="time-now"></a>
