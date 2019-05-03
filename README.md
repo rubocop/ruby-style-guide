@@ -11,16 +11,15 @@ programmers. A style guide that reflects real-world usage gets used, while a
 style guide that holds to an ideal that has been rejected by the people it is
 supposed to help risks not getting used at all&mdash;no matter how good it is.
 
-The guide is separated into several sections of related rules. I've tried to add
-the rationale behind the rules (if it's omitted I've assumed it's pretty
-obvious).
+The guide is separated into several sections of related rules. We've
+tried to add the rationale behind the rules (if it's omitted we've
+assumed it's pretty obvious).
 
-I didn't come up with all the rules out of nowhere&mdash;they are mostly
-based on my extensive career as a professional software engineer,
-feedback and suggestions from members of the Ruby community and
-various highly regarded Ruby programming resources, such as
-["Programming Ruby"][pickaxe] and
-["The Ruby Programming Language"][trpl].
+We didn't come up with all the rules out of nowhere&mdash;they are
+mostly based on the professional experience of the editors, feedback and
+suggestions from members of the Ruby community and various highly
+regarded Ruby programming resources, such as ["Programming
+Ruby"][pickaxe] and ["The Ruby Programming Language"][trpl].
 
 There are some areas in which there is no clear consensus in the Ruby community
 regarding a particular style (like string literal quoting, spacing inside hash
@@ -4592,20 +4591,27 @@ on this guide.
 
 ## History
 
-One thing has always bothered me as a Ruby developer&mdash;Python developers
-have a great programming style reference ([PEP-8][]) and we never got an
-official guide, documenting Ruby coding style and best practices. And I do
-believe that style matters. I also believe that a great hacker community, such
-as Ruby has, should be quite capable of producing this coveted document.
+This guide started its life as an internal company Ruby coding
+guidelines (written by [Bozhidar
+Batsov](https://github.com/bbatsov)). Bozhidar had always been bothered
+as a Ruby developer about one thing &mdash;Python developers had a great programming
+style reference ([PEP-8][]) and Rubyists never got an official guide,
+documenting Ruby coding style and best practices. Bozhidar firmly believed
+that style matters. He also believed that a great hacker community, such
+as Ruby has, should be quite capable of producing this coveted
+document. The rest is history...
 
-This guide started its life as our internal company Ruby coding guidelines
-(written by yours truly). At some point I decided that the work I was doing
-might be interesting to members of the Ruby community in general and that the
-world had little need for another internal company guideline. But the world
-could certainly benefit from a community-driven and community-sanctioned set of
-practices, idioms and style prescriptions for Ruby programming.
+At some point Bozhidar decided that the
+work he was doing might be interesting to members of the Ruby community
+in general and that the world had little need for another internal
+company guideline. But the world could certainly benefit from a
+community-driven and community-sanctioned set of practices, idioms and
+style prescriptions for Ruby programming.
 
-Since the inception of the guide I've received a lot of feedback from members of
+Bozhidar served as the guide's only editor for a few years, before a team of editors
+was formed once the project transitioned to RuboCop HQ.
+
+Since the inception of the guide we've received a lot of feedback from members of
 the exceptional Ruby community around the world. Thanks for all the suggestions
 and the support! Together we can make a resource beneficial to each and every
 Ruby developer out there.
@@ -4644,9 +4650,6 @@ doesn't know about its existence. Tweet about the guide, share it with
 your friends and colleagues. Every comment, suggestion or opinion we
 get makes the guide just a little bit better. And we want to have the
 best possible guide, don't we?
-
-Cheers,<br>
-[Bozhidar](https://twitter.com/bbatsov)
 
 [PEP-8]: https://www.python.org/dev/peps/pep-0008/
 [rails-style-guide]: https://github.com/rubocop-hq/rails-style-guide
