@@ -308,8 +308,10 @@ Translations of the guide are available in the following languages:
         puts 'Not again!'
       when song.duration > 120
         puts 'Too long!'
-      when Time.now.hour > 21
-        puts "It's too late"
+      when :minus_op, :minus_minus_op
+        stack.pop - stack.pop
+      when :int_literal, :some_complicate_explicit_name, :contains_musicians_with_arms, :str_interpolated
+        token.value
       else
         song.play
     end
@@ -324,6 +326,25 @@ Translations of the guide are available in the following languages:
       puts "It's too late"
     else
       song.play
+    end
+    ```
+
+    Put multiple when conditions on separate lines,
+    particularly where the conditions form long, complicated lines.
+    The 'bad' example also has an issue with code diffs, causing the entire line to
+    diff when only one of the conditions is changed or updated.
+
+
+    ```
+    # better (for multi-condition)
+    case
+    when :minus_op, :minus_minus_op
+      stack.pop - stack.pop
+    when :int_literal,
+         :some_complicate_explicit_name,
+         :contains_musicians_with_arms,
+         :str_interpolated
+      token.value
     end
     ```
 
