@@ -1071,8 +1071,9 @@ Translations of the guide are available in the following languages:
     ```
 
   * <a name="ternary-operator"></a>
-    Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
-    It's more common and obviously more concise.
+    Favor the ternary operator(`?:`) over `if/then/else/end` constructs
+    for simple expressions. It's more common and obviously more
+    concise.
     <sup>[[link](#ternary-operator)]</sup>
 
     ```ruby
@@ -1115,8 +1116,10 @@ Translations of the guide are available in the following languages:
     ```
 
   * <a name="use-if-case-returns"></a>
-    Leverage the fact that `if` and `case` are expressions which return a
-    result.
+    When assigning a value that depends on a conditional, when
+    the value expressions are too long to use a ternary expression,
+    leverage the fact that `if` and `case` are expressions which
+    return a result.
     <sup>[[link](#use-if-case-returns)]</sup>
 
     ```ruby
@@ -1128,11 +1131,13 @@ Translations of the guide are available in the following languages:
     end
 
     # good
+    result = condition ? x : y
+ 
     result =
       if condition
-        x
+        complex.expression()
       else
-        y
+        too.long(to: fit.in(a, ternary))
       end
     ```
 
