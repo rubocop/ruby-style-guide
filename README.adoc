@@ -290,7 +290,7 @@ No space inside range literals.
 'a'...'z'
 ----
 
-=== Indent when to case [[indent-when-to-case]]
+=== Indent `when` to `case` [[indent-when-to-case]]
 
 Indent `when` as deep as `case`.
 This is the style established in both "The Ruby Programming Language" and "Programming Ruby".
@@ -1134,7 +1134,7 @@ result = if some_condition; something else something_else end
 result = some_condition ? something : something_else
 ----
 
-=== Use if case returns [[use-if-case-returns]]
+=== Use `if`/`case` returns [[use-if-case-returns]]
 
 Leverage the fact that `if` and `case` are expressions which return a result.
 
@@ -1161,7 +1161,7 @@ result =
 Use `when x then ...` for one-line cases.
 The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
-=== No when semicolons [[no-when-semicolons]]
+=== No `when` semicolons [[no-when-semicolons]]
 
 Do not use `when x; ...`. See the previous rule.
 
@@ -1285,7 +1285,7 @@ do_something if other_condition if some_condition
 do_something if some_condition && other_condition
 ----
 
-=== Unless for negatives [[unless-for-negatives]]
+=== `unless` for negatives [[unless-for-negatives]]
 
 Favor `unless` over `if` for negative conditions (or control flow `||`).
 
@@ -1304,7 +1304,7 @@ do_something unless some_condition
 some_condition || do_something
 ----
 
-=== No else with unless [[no-else-with-unless]]
+=== No `else` with `unless` [[no-else-with-unless]]
 
 Do not use `unless` with `else`.
 Rewrite these with the positive case first.
@@ -1400,7 +1400,7 @@ do_something until some_condition
 
 === Infinite loop [[infinite-loop]]
 
-Use `Kernel#loop` instead of `while/until` when you need an infinite loop.
+Use `Kernel#loop` instead of `while`/`until` when you need an infinite loop.
 
 [source,ruby]
 ----
@@ -1419,7 +1419,7 @@ loop do
 end
 ----
 
-=== Loop with break [[loop-with-break]]
+=== `loop` with `break` [[loop-with-break]]
 
 Use `Kernel#loop` with `break` rather than `begin/end/until` or `begin/end/while` for post-loop tests.
 
@@ -1555,7 +1555,7 @@ def some_method(some_arr)
 end
 ----
 
-=== No self unless required [[no-self-unless-required]]
+=== No `self` unless required [[no-self-unless-required]]
 
 Avoid `self` where not required.
 (It is only required when calling a `self` write accessor, methods named after reserved words, or overloadable operators.)
@@ -2066,7 +2066,7 @@ if x == 0
 end
 ----
 
-=== No non nil checks [[no-non-nil-checks]]
+=== No non-`nil` checks [[no-non-nil-checks]]
 
 Don't do explicit non-`nil` checks unless you're dealing with boolean values.
 
@@ -2154,7 +2154,7 @@ end
 end
 ----
 
-=== `map` `find` `select` `reduce` `size` [[map-find-select-reduce-size]]
+=== `map`/`find`/`select`/`reduce`/`size` [[map-find-select-reduce-size]]
 
 Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`, `reduce` over `inject` and `size` over `length`.
 This is not a hard requirement; if the use of the alias enhances readability, it's ok to use it.
@@ -2271,7 +2271,7 @@ Do not separate numbers from letters on symbols, methods and variables.
 
 some_var_1 = 1
 
-var_10  = 10
+var_10 = 10
 
 def some_method_1
   # some code
@@ -2282,14 +2282,14 @@ end
 
 some_var1 = 1
 
-var10    = 10
+var10 = 10
 
 def some_method1
   # some code
 end
 ----
 
-=== Camelcase classes [[camelcase-classes]]
+=== CamelCase classes [[camelcase-classes]]
 
 Use `CamelCase` for classes and modules.
 (Keep acronyms like HTTP, RFC, XML uppercase).
@@ -2622,7 +2622,6 @@ Use `OPTIMIZE` to note slow or inefficient code that may cause performance probl
 Use `HACK` to note code smells where questionable coding practices were used and should be refactored away.
 
 === `REVIEW` [[review]]
-
 
 Use `REVIEW` to note anything that should be looked at to confirm it is working as intended.
 For example: `REVIEW: Are we sure this is how the client does X currently?`
@@ -3358,7 +3357,7 @@ raise SomeException, 'message'
 # Consistent with `raise SomeException, 'message', backtrace`.
 ----
 
-=== No return ensure [[no-return-ensure]]
+=== No `return` from `ensure` [[no-return-ensure]]
 
 Do not return from an `ensure` block.
 If you explicitly return from a method inside an `ensure` block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
@@ -3654,7 +3653,7 @@ arr = []
 arr[100] = 1 # now you have an array with lots of nils
 ----
 
-=== First and last [[first-and-last]]
+=== `first` and `last` [[first-and-last]]
 
 When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.
 
