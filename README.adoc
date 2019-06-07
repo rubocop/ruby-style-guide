@@ -682,7 +682,8 @@ num = 1234
 
 Use https://yardoc.org/[YARD] and its conventions for API documentation.
 
-=== 80 character limits [[80-character-limits]]
+[#80-character-limits]
+=== 80 character limits
 
 Limit lines to 80 characters.
 
