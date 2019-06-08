@@ -2574,15 +2574,44 @@ Refactor the code to make it self-explanatory.
 
 == Comment Annotations
 
-=== Annotate above [[annotate-above]]
+=== Annotations Placement [[annotate-above]]
 
 Annotations should usually be written on the line immediately above the relevant code.
 
-=== Annotate keywords [[annotate-keywords]]
+[source,ruby]
+----
+# bad
+def bar
+  baz(:quux) # FIXME: This has crashed occasionally since v3.2.1.
+end
+
+# good
+def bar
+  # FIXME: This has crashed occasionally since v3.2.1.
+  baz(:quux)
+end
+----
+
+=== Annotations Keyword Format [[annotate-keywords]]
 
 The annotation keyword is followed by a colon and a space, then a note describing the problem.
 
-=== Indent annotations [[indent-annotations]]
+[source,ruby]
+----
+# bad
+def bar
+  # FIXME This has crashed occasionally since v3.2.1.
+  baz(:quux)
+end
+
+# good
+def bar
+  # FIXME: This has crashed occasionally since v3.2.1.
+  baz(:quux)
+end
+----
+
+=== Multi-line Annotations Indentation [[indent-annotations]]
 
 If multiple lines are required to describe the problem, subsequent lines should be indented three spaces after the `#` (one general plus two for indentation purpose).
 
@@ -2595,7 +2624,7 @@ def bar
 end
 ----
 
-=== Rare EOL annotations [[rare-eol-annotations]]
+=== Inline Annotations [[rare-eol-annotations]]
 
 In cases where the problem is so obvious that any documentation would be redundant, annotations may be left at the end of the offending line with no note.
 This usage should be the exception and not the rule.
