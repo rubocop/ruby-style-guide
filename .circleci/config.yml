@@ -7,13 +7,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install AsciiDoctor
-          command: gem install asciidoctor
+          name: Install AsciiDoctor & Rouge
+          command: |
+            gem install asciidoctor
+            gem install rouge
       - run:
           name: Build Site
           command: asciidoctor -a toc="left" -a toclevels=2 README.adoc -o _build/html/index.html
       - persist_to_workspace:
-          root: docs/_build
+          root: _build
           paths: html
   docs-deploy:
     docker:
@@ -21,10 +23,10 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: docs/_build
+          at: _build
       - run:
           name: Disable jekyll builds
-          command: touch docs/_build/html/.nojekyll
+          command: touch _build/html/.nojekyll
       - run:
           name: Install and configure dependencies
           command: |
@@ -36,7 +38,7 @@ jobs:
             - "ea:f9:10:fa:c9:1c:7d:cd:f9:21:37:bf:a8:ee:b9:c9"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[skip ci] Update site" --dist docs/_build/html
+          command: gh-pages --dotfiles --message "[skip ci] Update site" --dist _build/html
 
 workflows:
   version: 2
