@@ -8,6 +8,7 @@
 ifndef::backend-pdf[]
 :toc-title: pass:[<h2>Table of Contents</h2>]
 endif::[]
+:source-highlighter: rouge
 
 [quote]
 ____

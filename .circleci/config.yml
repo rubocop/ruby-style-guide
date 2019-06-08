@@ -1,0 +1,51 @@
+version: 2
+
+jobs:
+  docs-build:
+    docker:
+      - image: ruby:2.6
+    steps:
+      - checkout
+      - run:
+          name: Install AsciiDoctor
+          command: gem install asciidoctor
+      - run:
+          name: Build Site
+          command: asciidoctor -a toc="left" -a toclevels=2 README.adoc -o _build/html/index.html
+      - persist_to_workspace:
+          root: docs/_build
+          paths: html
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/_build
+      - run:
+          name: Disable jekyll builds
+          command: touch docs/_build/html/.nojekyll
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@rubystyle.guide"
+            git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:f9:10:fa:c9:1c:7d:cd:f9:21:37:bf:a8:ee:b9:c9"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Update site" --dist docs/_build/html
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - docs-build
+      - docs-deploy:
+          requires:
+            - docs-build
+          filters:
+            branches:
+              only: master
