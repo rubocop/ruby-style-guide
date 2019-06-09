@@ -72,7 +72,7 @@ probably right...
 -- Jerry Coffin (on indentation)
 ____
 
-=== UTF-8 [[utf-8]]
+=== Source Encoding [[utf-8]]
 
 Use `UTF-8` as the source file encoding.
 
@@ -93,7 +93,7 @@ def some_method
 end
 ----
 
-=== CRLF [[crlf]]
+=== Line Endings [[crlf]]
 
 Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.]
 
@@ -300,8 +300,6 @@ No space inside range literals.
 === Indent `when` to `case` [[indent-when-to-case]]
 
 Indent `when` as deep as `case`.
-This is the style established in both "The Ruby Programming Language" and "Programming Ruby".
-Historically it is derived from the fact that `case` and `switch` statements are not blocks, hence should not be indented, and the `when` and `else` keywords are labels (compiled in the C language, they are literally labels for `JMP` calls).
 
 [source,ruby]
 ----
@@ -329,6 +327,12 @@ else
   song.play
 end
 ----
+
+.A Bit of History
+****
+This is the style established in both "The Ruby Programming Language" and "Programming Ruby".
+Historically it is derived from the fact that `case` and `switch` statements are not blocks, hence should not be indented, and the `when` and `else` keywords are labels (compiled in the C language, they are literally labels for `JMP` calls).
+****
 
 === Indent Conditional Assignment [[indent-conditional-assignment]]
 
@@ -759,7 +763,7 @@ class Foo
 end
 ----
 
-=== Method Parens [[method-parens]]
+=== Method Definition Parentheses [[method-parens]]
 
 Use `def` with parentheses when there are parameters.
 Omit the parentheses when the method doesn't accept any parameters.
@@ -787,7 +791,7 @@ def some_method_with_parameters(param1, param2)
 end
 ----
 
-=== Method Invocation Parenthesis [[method-invocation-parens]]
+=== Method Invocation Parentheses [[method-invocation-parens]]
 
 Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis `(`, as in `f((3 + 2) + 1)`.
 
