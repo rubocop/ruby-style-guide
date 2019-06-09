@@ -41,9 +41,7 @@ asciidoctor-pdf -a allow-uri-read README.adoc
 asciidoctor
 ----
 
-https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
-
-By the way, if you're into Rails you might want to check out the complementary https://github.com/rubocop-hq/rails-style-guide[Ruby on Rails Style Guide].
+TIP: https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
 
 Translations of the guide are available in the following languages:
 
@@ -57,6 +55,11 @@ Translations of the guide are available in the following languages:
 * https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md[Russian]
 * https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md[Spanish]
 * https://github.com/CQBinh/ruby-style-guide/blob/master/README-viVN.md[Vietnamese]
+
+[TIP]
+====
+If you're into Rails or RSpec you might want to check out the complementary https://github.com/rubocop-hq/rails-style-guide[Ruby on Rails Style Guide] and https://github.com/rubocop-hq/rspec-style-guide[RSpec Style Guide].
+====
 
 == Source Code Layout
 
@@ -92,14 +95,17 @@ end
 
 === CRLF [[crlf]]
 
-Use Unix-style line endings. (*BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.)
+Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.]
 
+[TIP]
+====
 If you're using Git you might want to add the following configuration setting to protect your project from Windows line endings creeping in:
 
 [source,bash]
 ----
 $ git config --global core.autocrlf true
 ----
+====
 
 === No Semicolon [[no-semicolon]]
 
