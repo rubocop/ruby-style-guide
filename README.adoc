@@ -3938,6 +3938,8 @@ email_with_name = format('%s <%s>', user.name, user.email)
 Adopt a consistent string literal quoting style.
 There are two popular styles in the Ruby community, both of which are considered good - single quotes by default and double quotes by default.
 
+NOTE: The string literals in this guide are using single quotes by default.
+
 ==== Single Quote [[consistent-string-literals-single-quote]]
 
 Prefer single-quoted strings when you don't need string interpolation or special symbols such as `\t`, `\n`, `'`, etc.
@@ -3957,7 +3959,7 @@ name = "De'Andre"
 
 ==== Double Quote [[consistent-string-literals-double-quote]]
 
-
+Prefer double-quotes unless your string literal contains " or escape characters you want to suppress.
 
 [source,ruby]
 ----
@@ -3971,8 +3973,6 @@ name = "Bozhidar"
 
 sarcasm = 'I "like" it.'
 ----
-
-The string literals in this guide are aligned with the first style.
 
 === No Character Literals [[no-character-literals]]
 
