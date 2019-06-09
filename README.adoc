@@ -73,7 +73,7 @@ ____
 
 Use `UTF-8` as the source file encoding.
 
-=== Spaces indentation [[spaces-indentation]]
+=== Spaces Indentation [[spaces-indentation]]
 
 Use two *spaces* per indentation level (aka soft tabs). No hard tabs.
 
@@ -101,7 +101,7 @@ If you're using Git you might want to add the following configuration setting to
 $ git config --global core.autocrlf true
 ----
 
-=== No semicolon [[no-semicolon]]
+=== No Semicolon [[no-semicolon]]
 
 Don't use `;` to separate statements and expressions.
 As a corollary - use one expression per line.
@@ -122,7 +122,7 @@ puts 'bar'
 puts 'foo', 'bar' # this applies to puts in particular
 ----
 
-=== Single line classes [[single-line-classes]]
+=== Single-line Classes [[single-line-classes]]
 
 Prefer a single-line format for class definitions with no body.
 
@@ -139,7 +139,7 @@ class FooError < StandardError; end
 FooError = Class.new(StandardError)
 ----
 
-=== No single line methods [[no-single-line-methods]]
+=== No Single-line Methods [[no-single-line-methods]]
 
 Avoid single-line methods.
 Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
@@ -173,7 +173,7 @@ One exception to the rule are empty-body methods.
 def no_op; end
 ----
 
-=== Spaces operators [[spaces-operators]]
+=== Spaces and Operators [[spaces-operators]]
 
 Use spaces around operators, after commas, colons and semicolons.
 Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper use is the key to writing easily readable code.
@@ -220,7 +220,7 @@ foo&. bar
 foo&.bar
 ----
 
-=== Spaces braces [[spaces-braces]]
+=== Spaces and Braces [[spaces-braces]]
 
 No spaces after `(`, `[` or before `]`, `)`.
 Use spaces around `{` and before `}`.
@@ -263,7 +263,7 @@ With interpolated expressions, there should be no padded-spacing inside the brac
 "From: #{user.first_name}, #{user.last_name}"
 ----
 
-=== No space bang [[no-space-bang]]
+=== No Space after Bang [[no-space-bang]]
 
 No space after `!`.
 
@@ -276,7 +276,7 @@ No space after `!`.
 !something
 ----
 
-=== No space inside range literals [[no-space-inside-range-literals]]
+=== No Space inside Range Literals [[no-space-inside-range-literals]]
 
 No space inside range literals.
 
@@ -324,7 +324,7 @@ else
 end
 ----
 
-=== Indent conditional assignment [[indent-conditional-assignment]]
+=== Indent Conditional Assignment [[indent-conditional-assignment]]
 
 When assigning the result of a conditional expression to a variable, preserve the usual alignment of its branches.
 
@@ -381,7 +381,7 @@ result =
   end
 ----
 
-=== Empty lines between methods [[empty-lines-between-methods]]
+=== Empty Lines between Methods [[empty-lines-between-methods]]
 
 Use empty lines between method definitions and also to break up methods into logical paragraphs internally.
 
@@ -400,7 +400,7 @@ def some_method
 end
 ----
 
-=== Two or more empty lines [[two-or-more-empty-lines]]
+=== Two or More Empty Lines [[two-or-more-empty-lines]]
 
 Don't use several empty lines in a row.
 
@@ -418,7 +418,7 @@ some_method
 some_method
 ----
 
-=== Empty lines around access modifier [[empty-lines-around-access-modifier]]
+=== Empty Lines around Access Modifier [[empty-lines-around-access-modifier]]
 
 Use empty lines around access modifiers.
 
@@ -442,7 +442,7 @@ class Foo
 end
 ----
 
-=== Empty lines around bodies [[empty-lines-around-bodies]]
+=== Empty Lines around Bodies [[empty-lines-around-bodies]]
 
 Don't use empty lines around method, class, module, block bodies.
 
@@ -485,7 +485,7 @@ class Foo
 end
 ----
 
-=== No trailing params comma [[no-trailing-params-comma]]
+=== No Trailing Params Comma [[no-trailing-params-comma]]
 
 Avoid comma after the last parameter in a method call, especially when the parameters are not on separate lines.
 
@@ -505,7 +505,7 @@ some_method(size, count, color, )
 some_method(size, count, color)
 ----
 
-=== Spaces around equals [[spaces-around-equals]]
+=== Spaces around Equals [[spaces-around-equals]]
 
 Use spaces around the `=` operator when assigning default values to method parameters:
 
@@ -525,7 +525,7 @@ end
 While several Ruby books suggest the first style, the second is much more
 prominent in practice (and arguably a bit more readable).
 
-=== No trailing backslash [[no-trailing-backslash]]
+=== No Trailing Backslash [[no-trailing-backslash]]
 
 Avoid line continuation `\` where not required.
 In practice, avoid using line continuations for anything but string concatenation.
@@ -544,7 +544,7 @@ long_string = 'First part of the long string' \
               ' and second part of the long string'
 ----
 
-=== Consistent multi line chains [[consistent-multi-line-chains]]
+=== Consistent Multi-line Chains [[consistent-multi-line-chains]]
 
 Adopt a consistent multi-line method chaining style.
 There are two popular styles in the Ruby community, both of which are considered good - leading `.`  and trailing `.`.
@@ -581,7 +581,7 @@ one.two.three.
 
 A discussion on the merits of both alternative styles can be found https://github.com/rubocop-hq/ruby-style-guide/pull/176[here].
 
-=== No double indent [[no-double-indent]]
+=== No Double Indent [[no-double-indent]]
 
 Align the parameters of a method call if they span more than one line.
 When aligning parameters is not appropriate due to line-length constraints, single indent for the lines after the first is also acceptable.
@@ -621,7 +621,7 @@ def send_mail(source)
 end
 ----
 
-=== Align multiline arrays [[align-multiline-arrays]]
+=== Align Multi-line Arrays [[align-multiline-arrays]]
 
 Align the elements of array literals spanning multiple lines.
 
@@ -643,7 +643,7 @@ menu_item =
      Baked beans Spam Spam Spam Spam Spam]
 ----
 
-=== Underscores in numerics [[underscores-in-numerics]]
+=== Underscores in Numerics [[underscores-in-numerics]]
 
 Add underscores to large numeric literals to improve their readability.
 
@@ -656,7 +656,7 @@ num = 1000000
 num = 1_000_000
 ----
 
-=== Numeric literal prefixes [[numeric-literal-prefixes]]
+=== Numeric Literal Prefixes [[numeric-literal-prefixes]]
 
 Prefer lowercase letters for numeric literal prefixes.
 `0o` for octal, `0x` for hexadecimal and `0b` for binary.
@@ -679,16 +679,16 @@ num = 0b10101
 num = 1234
 ----
 
-=== API documentation [[api-documentation]]
+=== API Documentation [[api-documentation]]
 
 Use https://yardoc.org/[YARD] and its conventions for API documentation.
 
 [#80-character-limits]
-=== 80 character limits
+=== 80 Character Limits
 
 Limit lines to 80 characters.
 
-=== No trailing whitespace [[no-trailing-whitespace]]
+=== No Trailing Whitespace [[no-trailing-whitespace]]
 
 Avoid trailing whitespace.
 
@@ -696,7 +696,7 @@ Avoid trailing whitespace.
 
 End each file with a newline.
 
-=== No block comments [[no-block-comments]]
+=== No Block Comments [[no-block-comments]]
 
 Don't use block comments.
 They cannot be preceded by whitespace and are not as easy to spot as regular comments.
@@ -716,7 +716,7 @@ another comment line
 
 == Syntax
 
-=== Double colons [[double-colons]]
+=== Double Colons [[double-colons]]
 
 Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
 Do not use `::` for regular method invocation.
@@ -734,7 +734,7 @@ SomeModule::SomeClass::SOME_CONST
 SomeModule::SomeClass()
 ----
 
-=== Colon method definition [[colon-method-definition]]
+=== Colon Method Definition [[colon-method-definition]]
 
 Do not use `::` to define class methods.
 
@@ -753,7 +753,7 @@ class Foo
 end
 ----
 
-=== Method parens [[method-parens]]
+=== Method Parens [[method-parens]]
 
 Use `def` with parentheses when there are parameters.
 Omit the parentheses when the method doesn't accept any parameters.
@@ -781,7 +781,7 @@ def some_method_with_parameters(param1, param2)
 end
 ----
 
-=== Method invocation parenthesis [[method-invocation-parens]]
+=== Method Invocation Parenthesis [[method-invocation-parens]]
 
 Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis `(`, as in `f((3 + 2) + 1)`.
 
@@ -803,7 +803,7 @@ temperance = Person.new 'Temperance', 30
 temperance = Person.new('Temperance', 30)
 ----
 
-==== Method calls with no arguments [[method-invocation-parens-no-args]]
+==== Method Calls with No Arguments [[method-invocation-parens-no-args]]
 
 Always omit parentheses for method calls with no arguments.
 
@@ -822,7 +822,7 @@ fork
 'test'.upcase
 ----
 
-==== Methods that are part of an internal DSL (e.g., Rake, Rails, RSpec) [[method-invocation-parens-internal-dsl]]
+==== Methods That are Part of an Internal DSL [[method-invocation-parens-internal-dsl]]
 
 Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
 
@@ -834,7 +834,7 @@ validates(:name, presence: true)
 validates :name, presence: true
 ----
 
-==== Methods that have "keyword" status in Ruby [[method-invocation-parens-keyword]]
+==== Methods That Have "keyword" Status in Ruby [[method-invocation-parens-keyword]]
 
 Always omit parentheses for methods that have "keyword" status in Ruby.
 
@@ -850,7 +850,7 @@ class Person
 end
 ----
 
-==== Non-declarative methods that have "keyword" status in Ruby [[method-invocation-parens-non-declarative-keyword]]
+==== Non-declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]]
 
 Can omit parentheses for methods that have "keyword" status in Ruby, but are not declarative:
 
@@ -864,7 +864,7 @@ puts temperance.age
 system 'ls'
 ----
 
-=== Optional arguments [[optional-arguments]]
+=== Optional Arguments [[optional-arguments]]
 
 Define optional arguments at the end of the list of arguments.
 Ruby has some unexpected results when calling methods that have optional arguments at the front of the list.
@@ -890,7 +890,7 @@ some_method('w', 'x', 'y') # => 'y, 2, w, x'
 some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
 ----
 
-=== Boolean keyword arguments [[boolean-keyword-arguments]]
+=== Boolean Keyword Arguments [[boolean-keyword-arguments]]
 
 Use keyword arguments when passing boolean argument to a method.
 
@@ -916,7 +916,7 @@ some_method            # => false
 some_method(bar: true) # => true
 ----
 
-=== Keyword arguments vs optional arguments [[keyword-arguments-vs-optional-arguments]]
+=== Keyword Arguments vs Optional Arguments [[keyword-arguments-vs-optional-arguments]]
 
 Prefer keyword arguments over optional arguments.
 
@@ -933,7 +933,7 @@ def some_method(a, b: 5, c: 1)
 end
 ----
 
-=== Keyword arguments vs option hashes [[keyword-arguments-vs-option-hashes]]
+=== Keyword Arguments vs Option Hashes [[keyword-arguments-vs-option-hashes]]
 
 Use keyword arguments instead of option hashes.
 
@@ -951,7 +951,7 @@ def some_method(bar: false)
 end
 ----
 
-=== Parallel assignment [[parallel-assignment]]
+=== Parallel Assignment [[parallel-assignment]]
 
 Avoid the use of parallel assignment for defining variables.
 Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
@@ -993,7 +993,7 @@ hello_array = *'Hello' # => ["Hello"]
 a = *(1..3) # => [1, 2, 3]
 ----
 
-=== Trailing underscore variables [[trailing-underscore-variables]]
+=== Trailing Underscore Variables [[trailing-underscore-variables]]
 
 Avoid the use of unnecessary trailing underscore variables during
 parallel assignment. Named underscore variables are to be preferred over
@@ -1028,7 +1028,7 @@ first, _second, = foo.split(',')
 first, *_ending = foo.split(',')
 ----
 
-=== No `for` loops [[no-for-loops]]
+=== No `for` Loops [[no-for-loops]]
 
 Do not use `for`, unless you know exactly why.
 Most of the time iterators should be used instead.
@@ -1070,7 +1070,7 @@ if some_condition
 end
 ----
 
-=== Same line condition [[same-line-condition]]
+=== Same Line Condition [[same-line-condition]]
 
 Always put the condition on the same line as the `if`/`unless` in a multi-line conditional.
 
@@ -1090,7 +1090,7 @@ if some_condition
 end
 ----
 
-=== Ternary operator [[ternary-operator]]
+=== Ternary Operator [[ternary-operator]]
 
 Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
 It's more common and obviously more concise.
@@ -1104,7 +1104,7 @@ result = if some_condition then something else something_else end
 result = some_condition ? something : something_else
 ----
 
-=== No nested ternary [[no-nested-ternary]]
+=== No Nested Ternary [[no-nested-ternary]]
 
 Use one expression per branch in a ternary operator.
 This also means that ternary operators must not be nested.
@@ -1123,7 +1123,7 @@ else
 end
 ----
 
-=== No semicolon `if`s [[no-semicolon-ifs]]
+=== No Semicolon `if`s [[no-semicolon-ifs]]
 
 Do not use `if x; ...`. Use the ternary operator instead.
 
@@ -1136,7 +1136,7 @@ result = if some_condition; something else something_else end
 result = some_condition ? something : something_else
 ----
 
-=== Use `if`/`case` returns [[use-if-case-returns]]
+=== Use `if`/`case` Returns [[use-if-case-returns]]
 
 Leverage the fact that `if` and `case` are expressions which return a result.
 
@@ -1158,16 +1158,16 @@ result =
   end
 ----
 
-=== One line cases [[one-line-cases]]
+=== One-line Cases [[one-line-cases]]
 
 Use `when x then ...` for one-line cases.
 The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
-=== No `when` semicolons [[no-when-semicolons]]
+=== No `when` Semicolons [[no-when-semicolons]]
 
 Do not use `when x; ...`. See the previous rule.
 
-=== Bang not not [[bang-not-not]]
+=== Bang Not Not [[bang-not-not]]
 
 Use `!` instead of `not`.
 
@@ -1180,7 +1180,7 @@ x = (not something)
 x = !something
 ----
 
-=== No bang bang [[no-bang-bang]]
+=== No Bang Bang [[no-bang-bang]]
 
 Avoid the use of `!!`.
 
@@ -1231,11 +1231,11 @@ raise("Failed to save document!") unless document.save
 document.save || raise("Failed to save document!")
 ----
 
-=== No multiline ternary [[no-multiline-ternary]]
+=== No Multi-line Ternary [[no-multiline-ternary]]
 
 Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
 
-=== `if` as a modifier [[if-as-a-modifier]]
+=== `if` as a Modifier [[if-as-a-modifier]]
 
 Favor modifier `if`/`unless` usage when you have a single-line body.
 Another good alternative is the usage of control flow `&&`/`||`.
@@ -1254,7 +1254,7 @@ do_something if some_condition
 some_condition && do_something
 ----
 
-=== No multi-line `if` modifiers [[no-multiline-if-modifiers]]
+=== No Multi-line `if` Modifiers [[no-multiline-if-modifiers]]
 
 Avoid modifier `if`/`unless` usage at the end of a non-trivial multi-line block.
 
@@ -1273,7 +1273,7 @@ if some_condition
 end
 ----
 
-=== No nested modifiers [[no-nested-modifiers]]
+=== No Nested Modifiers [[no-nested-modifiers]]
 
 Avoid nested modifier `if`/`unless`/`while`/`until` usage.
 Favor `&&`/`||` if appropriate.
@@ -1287,7 +1287,7 @@ do_something if other_condition if some_condition
 do_something if some_condition && other_condition
 ----
 
-=== `unless` for negatives [[unless-for-negatives]]
+=== `unless` for Negatives [[unless-for-negatives]]
 
 Favor `unless` over `if` for negative conditions (or control flow `||`).
 
@@ -1328,7 +1328,7 @@ else
 end
 ----
 
-=== No parentheses around condition [[no-parens-around-condition]]
+=== No Parentheses around Condition [[no-parens-around-condition]]
 
 Don't use parentheses around the condition of a control expression.
 
@@ -1347,7 +1347,7 @@ end
 
 Note that there is an exception to this rule, namely <<safe-assignment-in-condition,safe assignment in condition>>.
 
-=== No multi-line `while do` [[no-multiline-while-do]]
+=== No Multi-line `while do` [[no-multiline-while-do]]
 
 Do not use `while/until condition do` for multi-line `while/until`.
 
@@ -1372,7 +1372,7 @@ until x > 5
 end
 ----
 
-=== `while` as a modifier [[while-as-a-modifier]]
+=== `while` as a Modifier [[while-as-a-modifier]]
 
 Favor modifier `while/until` usage when you have a single-line body.
 
@@ -1387,7 +1387,7 @@ end
 do_something while some_condition
 ----
 
-=== `until` for negatives [[until-for-negatives]]
+=== `until` for Negatives [[until-for-negatives]]
 
 Favor `until` over `while` for negative conditions.
 
@@ -1400,7 +1400,7 @@ do_something while !some_condition
 do_something until some_condition
 ----
 
-=== Infinite loop [[infinite-loop]]
+=== Infinite Loop [[infinite-loop]]
 
 Use `Kernel#loop` instead of `while`/`until` when you need an infinite loop.
 
@@ -1441,7 +1441,7 @@ loop do
 end
 ----
 
-=== No braces options hash [[no-braces-opts-hash]]
+=== No Braces Options Hash [[no-braces-opts-hash]]
 
 Omit the outer braces around an implicit options hash.
 
@@ -1454,7 +1454,7 @@ user.set({ name: 'John', age: 45, permissions: { read: true } })
 user.set(name: 'John', age: 45, permissions: { read: true })
 ----
 
-=== No DSL decorating [[no-dsl-decorating]]
+=== No DSL Decorating [[no-dsl-decorating]]
 
 Omit both the outer braces and parentheses for methods that are part of an internal DSL.
 
@@ -1469,7 +1469,7 @@ class Person < ActiveRecord::Base
 end
 ----
 
-=== Single-action blocks [[single-action-blocks]]
+=== Single-action Blocks [[single-action-blocks]]
 
 Use the Proc invocation shorthand when the invoked method is the only operation of a block.
 
@@ -1482,7 +1482,7 @@ names.map { |name| name.upcase }
 names.map(&:upcase)
 ----
 
-=== Single line blocks [[single-line-blocks]]
+=== Single-line Blocks [[single-line-blocks]]
 
 Prefer `{...}` over `do...end` for single-line blocks.
 Avoid using `{...}` for multi-line blocks (multi-line chaining is always ugly).
@@ -1512,7 +1512,7 @@ names.select { |name| name.start_with?('S') }.map(&:upcase)
 
 Some will argue that multi-line chaining would look OK with the use of {...}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?
 
-=== Block argument [[block-argument]]
+=== Block Argument [[block-argument]]
 
 Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
 Beware of the performance impact, though, as the block gets converted to a Proc.
@@ -1540,7 +1540,7 @@ with_tmp_dir do |dir|
 end
 ----
 
-=== No explicit `return` [[no-explicit-return]]
+=== No Explicit `return` [[no-explicit-return]]
 
 Avoid `return` where not required for flow of control.
 
@@ -1557,7 +1557,7 @@ def some_method(some_arr)
 end
 ----
 
-=== No `self` unless required [[no-self-unless-required]]
+=== No `self` unless Required [[no-self-unless-required]]
 
 Avoid `self` where not required.
 (It is only required when calling a `self` write accessor, methods named after reserved words, or overloadable operators.)
@@ -1583,7 +1583,7 @@ def ready?
 end
 ----
 
-=== No shadowing [[no-shadowing]]
+=== No Shadowing [[no-shadowing]]
 
 As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
 
@@ -1614,7 +1614,7 @@ class Foo
 end
 ----
 
-=== Safe assignment in condition [[safe-assignment-in-condition]]
+=== Safe Assignment in Condition [[safe-assignment-in-condition]]
 
 Don't use the return value of `=` (an assignment) in conditional expressions unless the assignment is wrapped in parentheses.
 This is a fairly popular idiom among Rubyists that's sometimes referred to as _safe assignment in condition_.
@@ -1641,7 +1641,7 @@ if v
 end
 ----
 
-=== Self assignment [[self-assignment]]
+=== Self-assignment [[self-assignment]]
 
 Use shorthand self assignment operators whenever applicable.
 
@@ -1664,7 +1664,7 @@ x ||= y
 x &&= y
 ----
 
-=== Double pipe for uninit [[double-pipe-for-uninit]]
+=== Double Pipe for Uninit [[double-pipe-for-uninit]]
 
 Use `||=` to initialize variables only if they're not already initialized.
 
@@ -1680,7 +1680,7 @@ name = 'Bozhidar' unless name
 name ||= 'Bozhidar'
 ----
 
-=== No double pipes for booleans [[no-double-pipes-for-bools]]
+=== No Double Pipes for Booleans [[no-double-pipes-for-bools]]
 
 Don't use `||=` to initialize boolean variables.
 (Consider what would happen if the current value happened to be `false`.)
@@ -1694,7 +1694,7 @@ enabled ||= true
 enabled = true if enabled.nil?
 ----
 
-=== Double ampersand preprocess [[double-amper-preprocess]]
+=== Double Ampersand Preprocess [[double-amper-preprocess]]
 
 Use `&&=` to preprocess variables that may or may not exist.
 Using `&&=` will change the value only if it exists, removing the need to check its existence with `if`.
@@ -1719,7 +1719,7 @@ something = something && something.downcase
 something &&= something.downcase
 ----
 
-=== No case equality [[no-case-equality]]
+=== No Case Equality [[no-case-equality]]
 
 Avoid explicit use of the case equality operator `===`.
 As its name implies it is meant to be used implicitly by `case` expressions and outside of them it yields some pretty confusing code.
@@ -1752,7 +1752,7 @@ The stricter comparison semantics provided by `eql?` are rarely needed in practi
 1.0.eql? x # eql? makes sense here if want to differentiate between Integer and Float 1
 ----
 
-=== No cryptic perlisms [[no-cryptic-perlisms]]
+=== No Cryptic Perlisms [[no-cryptic-perlisms]]
 
 Avoid using Perl-style special variables (like `$:`, `$;`, etc).
 They are quite cryptic and their use in anything but one-liner scripts is discouraged.
@@ -1768,7 +1768,7 @@ require 'English'
 $LOAD_PATH.unshift File.dirname(__FILE__)
 ----
 
-=== Parenthesis no spaces [[parens-no-spaces]]
+=== Parenthesis no Spaces [[parens-no-spaces]]
 
 Do not put a space between a method name and the opening parenthesis.
 
@@ -1781,11 +1781,11 @@ f (3 + 2) + 1
 f(3 + 2) + 1
 ----
 
-=== Always warn at runtime [[always-warn-at-runtime]]
+=== Always Warn at Runtime [[always-warn-at-runtime]]
 
 Always run the Ruby interpreter with the `-w` option so it will warn you if you forget either of the rules above!
 
-=== No nested methods [[no-nested-methods]]
+=== No Nested Methods [[no-nested-methods]]
 
 Do not use nested method definitions, use lambda instead.
 Nested method definitions actually produce methods in the same scope (e.g. class) as the outer method.
@@ -1818,9 +1818,9 @@ def foo(x)
 end
 ----
 
-=== Lambda multi-line [[lambda-multi-line]]
+=== Lambda Multi-line [[lambda-multi-line]]
 
-Use the new lambda literal syntax for single line body blocks.
+Use the new lambda literal syntax for single-line body blocks.
 Use the `lambda` method for multi-line blocks.
 
 [source,ruby]
@@ -1845,7 +1845,7 @@ l = lambda do |a, b|
 end
 ----
 
-=== Stabby lambda with arguments [[stabby-lambda-with-args]]
+=== Stabby Lambda with Arguments [[stabby-lambda-with-args]]
 
 Don't omit the parameter parentheses when defining a stabby lambda with parameters.
 
@@ -1858,7 +1858,7 @@ l = ->x, y { something(x, y) }
 l = ->(x, y) { something(x, y) }
 ----
 
-=== Stabby lambda without arguments [[stabby-lambda-no-args]]
+=== Stabby Lambda without Arguments [[stabby-lambda-no-args]]
 
 Omit the parameter parentheses when defining a stabby lambda with no parameters.
 
@@ -1884,7 +1884,7 @@ p = Proc.new { |n| puts n }
 p = proc { |n| puts n }
 ----
 
-=== Proc call [[proc-call]]
+=== Proc Call [[proc-call]]
 
 Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
 
@@ -1903,7 +1903,7 @@ l = ->(v) { puts v }
 l.call(1)
 ----
 
-=== Underscore unused vars [[underscore-unused-vars]]
+=== Underscore Unused Vars [[underscore-unused-vars]]
 
 Prefix with `_` unused block parameters and local variables.
 It's also acceptable to use just `_` (although it's a bit less descriptive).
@@ -1936,7 +1936,7 @@ def something(x)
 end
 ----
 
-=== Global stdout [[global-stdout]]
+=== Global `stdout` [[global-stdout]]
 
 Use `$stdout/$stderr/$stdin` instead of `STDOUT/STDERR/STDIN`.
 `STDOUT/STDERR/STDIN` are constants, and while you can actually reassign (possibly to redirect some stream) constants in Ruby, you'll get an interpreter warning if you do so.
@@ -1972,7 +1972,7 @@ format('%<first>d %<second>d', first: 20, second: 10)
 # => '20 10'
 ----
 
-=== Named format tokens [[named-format-tokens]]
+=== Named Format Tokens [[named-format-tokens]]
 
 When using named format string tokens, favor `%<name>s` over `%{name}` because it encodes information about the type of the value.
 
@@ -2000,7 +2000,7 @@ Favor the use of `Array#join` over the fairly cryptic `Array#*` with a string ar
 # => 'one, two, three'
 ----
 
-=== Array coercion [[array-coercion]]
+=== Array Coercion [[array-coercion]]
 
 Use `Array()` instead of explicit `Array` check or `[*var]`, when dealing with a variable you want to treat as an Array, but you're not certain it's an array.
 
@@ -2019,8 +2019,7 @@ Array(paths).each { |path| do_something(path) }
 
 === Ranges or `between` [[ranges-or-between]]
 
-Use ranges or `Comparable#between?` instead of complex comparison logic when
-possible.
+Use ranges or `Comparable#between?` instead of complex comparison logic when possible.
 
 [source,ruby]
 ----
@@ -2034,7 +2033,7 @@ do_something if (1000..2000).include?(x)
 do_something if x.between?(1000, 2000)
 ----
 
-=== Predicate methods [[predicate-methods]]
+=== Predicate Methods [[predicate-methods]]
 
 Favor the use of predicate methods to explicit comparisons with `==`.
 Numeric comparisons are OK.
@@ -2068,7 +2067,7 @@ if x == 0
 end
 ----
 
-=== No non-`nil` checks [[no-non-nil-checks]]
+=== No non-`nil` Checks [[no-non-nil-checks]]
 
 Don't do explicit non-`nil` checks unless you're dealing with boolean values.
 
@@ -2087,11 +2086,11 @@ def value_set?
 end
 ----
 
-=== No `BEGIN` blocks [[no-BEGIN-blocks]]
+=== No `BEGIN` Blocks [[no-BEGIN-blocks]]
 
 Avoid the use of `BEGIN` blocks.
 
-=== No `END` blocks [[no-END-blocks]]
+=== No `END` Blocks [[no-END-blocks]]
 
 Do not use `END` blocks. Use `Kernel#at_exit` instead.
 
@@ -2104,11 +2103,11 @@ END { puts 'Goodbye!' }
 at_exit { puts 'Goodbye!' }
 ----
 
-=== No flip flops [[no-flip-flops]]
+=== No Flip-flops [[no-flip-flops]]
 
 Avoid the use of flip-flops.
 
-=== No nested conditionals [[no-nested-conditionals]]
+=== No Nested Conditionals [[no-nested-conditionals]]
 
 Avoid use of nested conditionals for flow of control.
 
@@ -2215,7 +2214,7 @@ The only real difficulties in programming are cache invalidation and naming thin
 -- Phil Karlton
 ____
 
-=== English identifiers [[english-identifiers]]
+=== English Identifiers [[english-identifiers]]
 
 Name identifiers in English.
 
@@ -2231,7 +2230,7 @@ zaplata = 1_000
 salary = 1_000
 ----
 
-=== Snake case symbols methods vars [[snake-case-symbols-methods-vars]]
+=== Snake Case Symbols Methods Vars [[snake-case-symbols-methods-vars]]
 
 Use `snake_case` for symbols, methods and variables.
 
@@ -2262,7 +2261,7 @@ def some_method
 end
 ----
 
-=== Snake case symbols methods vars with numbers [[snake-case-symbols-methods-vars-with-numbers]]
+=== Snake Case Symbols Methods Vars with Numbers [[snake-case-symbols-methods-vars-with-numbers]]
 
 Do not separate numbers from letters on symbols, methods and variables.
 
@@ -2291,7 +2290,7 @@ def some_method1
 end
 ----
 
-=== CamelCase classes [[camelcase-classes]]
+=== CamelCase Classes [[camelcase-classes]]
 
 Use `CamelCase` for classes and modules.
 (Keep acronyms like HTTP, RFC, XML uppercase).
@@ -2329,20 +2328,20 @@ class XMLSomething
 end
 ----
 
-=== Snake case files [[snake-case-files]]
+=== Snake Case Files [[snake-case-files]]
 
 Use `snake_case` for naming files, e.g. `hello_world.rb`.
 
-=== Snake case directories [[snake-case-dirs]]
+=== Snake Case Directories [[snake-case-dirs]]
 
 Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
 
-=== One class per file [[one-class-per-file]]
+=== One Class per File [[one-class-per-file]]
 
 Aim to have just a single class/module per source file.
 Name the file name as the class/module, but replacing `CamelCase` with `snake_case`.
 
-=== Screaming snake case [[screaming-snake-case]]
+=== Screaming Snake Case [[screaming-snake-case]]
 
 Use `SCREAMING_SNAKE_CASE` for other constants.
 
@@ -2355,12 +2354,12 @@ SomeConst = 5
 SOME_CONST = 5
 ----
 
-=== Boolean methods question mark [[bool-methods-qmark]]
+=== Boolean Methods Question Mark [[bool-methods-qmark]]
 
 The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. `Array#empty?`).
 Methods that don't return a boolean, shouldn't end in a question mark.
 
-=== Boolean methods prefix [[bool-methods-prefix]]
+=== Boolean Methods Prefix [[bool-methods-prefix]]
 
 Avoid prefixing predicate methods with the auxiliary verbs such as `is`, `does`, or `can`.
 These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as `empty?` and `include?`.
@@ -2398,7 +2397,7 @@ class Person
 end
 ----
 
-=== Dangerous method bang [[dangerous-method-bang]]
+=== Dangerous Method Bang [[dangerous-method-bang]]
 
 The names of potentially _dangerous_ methods (i.e. methods that modify `self` or the arguments, `exit!` (doesn't run the finalizers like `exit` does), etc) should end with an exclamation mark if there exists a safe version of that _dangerous_ method.
 
@@ -2426,7 +2425,7 @@ class Person
 end
 ----
 
-=== Safe because unsafe [[safe-because-unsafe]]
+=== Safe Because Unsafe [[safe-because-unsafe]]
 
 Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.
 
@@ -2502,11 +2501,11 @@ Improve the code and then document it to make it even clearer.
 -- Steve McConnell
 ____
 
-=== No comments [[no-comments]]
+=== No Comments [[no-comments]]
 
 Write self-documenting code and ignore the rest of this section. Seriously!
 
-=== Rationale comments [[rationale-comments]]
+=== Rationale Comments [[rationale-comments]]
 
 If the _how_ can be made self-documenting, but not the _why_ (e.g. the code works around non-obvious library behavior, or implements an algorithm from an academic paper), add a comment explaining the rationale behind the code.
 
@@ -2531,20 +2530,20 @@ def compute_dependency_graph
 end
 ----
 
-=== English comments [[english-comments]]
+=== English Comments [[english-comments]]
 
 Write comments in English.
 
-=== Hash space [[hash-space]]
+=== Hash Space [[hash-space]]
 
 Use one space between the leading `#` character of the comment and the text of the comment.
 
-=== English syntax [[english-syntax]]
+=== English Syntax [[english-syntax]]
 
 Comments longer than a word are capitalized and use punctuation.
 Use https://en.wikipedia.org/wiki/Sentence_spacing[one space] after periods.
 
-=== No superfluous comments [[no-superfluous-comments]]
+=== No Superfluous Comments [[no-superfluous-comments]]
 
 Avoid superfluous comments.
 
@@ -2554,7 +2553,7 @@ Avoid superfluous comments.
 counter += 1 # Increments counter by one.
 ----
 
-=== Comment upkeep [[comment-upkeep]]
+=== Comment Upkeep [[comment-upkeep]]
 
 Keep existing comments up-to-date.
 An outdated comment is worse than no comment at all.
@@ -2566,7 +2565,7 @@ Good code is like a good joke: it needs no explanation.
 -- old programmers maxim, through http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[Russ Olsen]
 ____
 
-=== Refactor, don't comment [[refactor-dont-comment]]
+=== Refactor, Don't Comment [[refactor-dont-comment]]
 
 Avoid writing comments to explain bad code.
 Refactor the code to make it self-explanatory.
@@ -2657,13 +2656,13 @@ Use `HACK` to note code smells where questionable coding practices were used and
 Use `REVIEW` to note anything that should be looked at to confirm it is working as intended.
 For example: `REVIEW: Are we sure this is how the client does X currently?`
 
-=== Document annotations [[document-annotations]]
+=== Document Annotations [[document-annotations]]
 
 Use other custom annotation keywords if it feels appropriate, but be sure to document them in your project's `README` or similar.
 
 == Magic Comments
 
-=== Magic comments first [[magic-comments-first]]
+=== Magic Comments First [[magic-comments-first]]
 
 Place magic comments above all code and documentation in a file (except shebangs, which are discussed next).
 
@@ -2684,7 +2683,7 @@ class Person
 end
 ----
 
-=== Below shebang [[below-shebang]]
+=== Below Shebang [[below-shebang]]
 
 Place magic comments below shebangs when they are present in a file.
 
@@ -2703,7 +2702,7 @@ App.parse(ARGV)
 App.parse(ARGV)
 ----
 
-=== One magic comment per line [[one-magic-comment-per-line]]
+=== One Magic Comment per Line [[one-magic-comment-per-line]]
 
 Use one magic comment per line if you need multiple.
 
@@ -2717,7 +2716,7 @@ Use one magic comment per line if you need multiple.
 # encoding: ascii-8bit
 ----
 
-=== Separate magic comments from code [[separate-magic-comments-from-code]]
+=== Separate Magic Comments from Code [[separate-magic-comments-from-code]]
 
 Separate magic comments from code and documentation with a blank line.
 
@@ -2741,7 +2740,7 @@ end
 
 == Classes & Modules
 
-=== Consistent classes [[consistent-classes]]
+=== Consistent Classes [[consistent-classes]]
 
 Use a consistent structure in your class definitions.
 
@@ -2789,7 +2788,7 @@ class Person
 end
 ----
 
-=== Mixin grouping [[mixin-grouping]]
+=== Mixin Grouping [[mixin-grouping]]
 
 Split multiple mixins into separate statements.
 
@@ -2808,7 +2807,7 @@ class Person
 end
 ----
 
-=== File classes [[file-classes]]
+=== File Classes [[file-classes]]
 
 Don't nest multi-line classes within classes.
 Try to have such nested classes each in their own file in a folder named like the containing class.
@@ -2852,7 +2851,7 @@ class Foo
 end
 ----
 
-=== Namespace definition [[namespace-definition]]
+=== Namespace Definition [[namespace-definition]]
 
 Define (and reopen) namespaced classes and modules using explicit nesting.
 Using the scope resolution operator can lead to surprising constant lookups due to Ruby's https://cirw.in/blog/constant-lookup.html[lexical scoping], which depends on the module nesting at the point of definition.
@@ -2887,7 +2886,7 @@ module Utilities
 end
 ----
 
-=== Modules vs classes [[modules-vs-classes]]
+=== Modules vs Classes [[modules-vs-classes]]
 
 Prefer modules to classes with only class methods.
 Classes should be used only when it makes sense to create instances out of them.
@@ -2919,7 +2918,7 @@ module SomeModule
 end
 ----
 
-=== Module function [[module-function]]
+=== `module_function` [[module-function]]
 
 Favor the use of `module_function` over `extend self` when you want to turn a module's instance methods into class methods.
 
@@ -2980,7 +2979,7 @@ class Person
 end
 ----
 
-=== `attr` family [[attr_family]]
+=== `attr` Family [[attr_family]]
 
 Use the `attr` family of functions to define trivial accessors or mutators.
 
@@ -3013,7 +3012,7 @@ class Person
 end
 ----
 
-=== Accessor/mutator method names [[accessor_mutator_method_names]]
+=== Accessor/Mutator Method Names [[accessor_mutator_method_names]]
 
 For accessors and mutators, avoid prefixing method names with `get_` and `set_`.
 It is a Ruby convention to use attribute names for accessors (readers) and `attr_name=` for mutators (writers).
@@ -3080,7 +3079,7 @@ Person = Struct.new(:first_name, :last_name) do
 end
 ----
 
-=== No extend `Struct.new` [[no-extend-struct-new]]
+=== No Extend `Struct.new` [[no-extend-struct-new]]
 
 Don't extend an instance initialized by `Struct.new`.
 Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
@@ -3095,7 +3094,7 @@ end
 Person = Struct.new(:first_name, :last_name)
 ----
 
-=== Duck typing [[duck-typing]]
+=== Duck Typing [[duck-typing]]
 
 Prefer https://en.wikipedia.org/wiki/Duck_typing[duck-typing] over inheritance.
 
@@ -3136,7 +3135,7 @@ class Dog
 end
 ----
 
-=== No class vars [[no-class-vars]]
+=== No Class Vars [[no-class-vars]]
 
 Avoid the usage of class (`@@`) variables due to their "nasty" behavior in inheritance.
 
@@ -3191,7 +3190,7 @@ class SomeClass
 end
 ----
 
-=== `def self` class methods [[def-self-class-methods]]
+=== `def self` Class Methods [[def-self-class-methods]]
 
 Use `def self.method` to define class methods.
 This makes the code easier to refactor since the class name is not repeated.
@@ -3223,7 +3222,7 @@ class TestClass
 end
 ----
 
-=== Alias method lexically [[alias-method-lexically]]
+=== Alias Method Lexically [[alias-method-lexically]]
 
 Prefer `alias` when aliasing methods in lexical class scope as the resolution of `self` in this context is also lexical, and it communicates clearly to the user that the indirection of your alias will not be altered at runtime or by any subclass unless made explicit.
 
@@ -3313,7 +3312,7 @@ end
 
 == Classes: Constructors
 
-=== Factory methods [[factory-methods]]
+=== Factory Methods [[factory-methods]]
 
 Consider adding factory methods to provide additional sensible ways to create instances of a particular class.
 
@@ -3326,7 +3325,7 @@ class Person
 end
 ----
 
-=== Disjunctive assignment in constructor [[disjunctive-assignment-in-constructor]]
+=== Disjunctive Assignment in Constructor [[disjunctive-assignment-in-constructor]]
 
 In constructors, avoid unnecessary disjunctive assignment (`||=`) of instance variables.
 Prefer plain assignment.
@@ -3360,7 +3359,7 @@ fail SomeException, 'message'
 raise SomeException, 'message'
 ----
 
-=== No explicit `RuntimeError` [[no-explicit-runtimeerror]]
+=== No Explicit `RuntimeError` [[no-explicit-runtimeerror]]
 
 Don't specify `RuntimeError` explicitly in the two argument version of `raise`.
 
@@ -3373,7 +3372,7 @@ raise RuntimeError, 'message'
 raise 'message'
 ----
 
-=== Exception class messages [[exception-class-messages]]
+=== Exception Class Messages [[exception-class-messages]]
 
 Prefer supplying an exception class and a message as two separate arguments to `raise`, instead of an exception instance.
 
@@ -3427,7 +3426,7 @@ rescue
 end
 ----
 
-=== Contingency methods [[contingency-methods]]
+=== Contingency Methods [[contingency-methods]]
 
 Mitigate the proliferation of `begin` blocks by using _contingency methods_ (a term coined by Avdi Grimm).
 
@@ -3458,7 +3457,7 @@ with_io_error_handling { something_that_might_fail }
 with_io_error_handling { something_else_that_might_fail }
 ----
 
-=== Don't hide exceptions [[dont-hide-exceptions]]
+=== Don't Hide Exceptions [[dont-hide-exceptions]]
 
 Don't suppress exceptions.
 
@@ -3475,7 +3474,7 @@ end
 do_something rescue nil
 ----
 
-=== No `rescue` modifiers [[no-rescue-modifiers]]
+=== No `rescue` Modifiers [[no-rescue-modifiers]]
 
 Avoid using `rescue` in its modifier form.
 
@@ -3492,7 +3491,7 @@ rescue Errno::ENOENT => e
 end
 ----
 
-=== No exceptional flows [[no-exceptional-flows]]
+=== No Exceptional Flows [[no-exceptional-flows]]
 
 Don't use exceptions for flow of control.
 
@@ -3513,7 +3512,7 @@ else
 end
 ----
 
-=== No blind rescues [[no-blind-rescues]]
+=== No Blind Rescues [[no-blind-rescues]]
 
 Avoid rescuing the `Exception` class.
 This will trap signals and calls to `exit`, requiring you to `kill -9` the process.
@@ -3545,7 +3544,7 @@ rescue StandardError => e
 end
 ----
 
-=== Exception ordering [[exception-ordering]]
+=== Exception Ordering [[exception-ordering]]
 
 Put more specific exceptions higher up the rescue chain, otherwise they'll never be rescued from.
 
@@ -3570,7 +3569,7 @@ rescue StandardError => e
 end
 ----
 
-=== Release resources [[release-resources]]
+=== Release Resources [[release-resources]]
 
 Release external resources obtained by your program in an `ensure` block.
 
@@ -3586,7 +3585,7 @@ ensure
 end
 ----
 
-=== Auto release resources [[auto-release-resources]]
+=== Auto Release Resources [[auto-release-resources]]
 
 Use versions of resource obtaining methods that do automatic resource cleanup when possible.
 
@@ -3603,13 +3602,13 @@ File.open('testfile') do |f|
 end
 ----
 
-=== Standard exceptions [[standard-exceptions]]
+=== Standard Exceptions [[standard-exceptions]]
 
 Favor the use of exceptions from the standard library over introducing new exception classes.
 
 == Collections
 
-=== Literal array and hash [[literal-array-hash]]
+=== Literal Array and Hash [[literal-array-hash]]
 
 Prefer literal array and hash creation notation (unless you need to pass parameters to their constructors, that is).
 
@@ -3654,7 +3653,7 @@ STATES = [:draft, :open, :closed]
 STATES = %i[draft open closed]
 ----
 
-=== No trailing array commas [[no-trailing-array-commas]]
+=== No Trailing Array Commas [[no-trailing-array-commas]]
 
 Avoid comma after the last item of an `Array` or `Hash` literal, especially when the items are not on separate lines.
 
@@ -3674,7 +3673,7 @@ VALUES = [1001, 2020, 3333, ]
 VALUES = [1001, 2020, 3333]
 ----
 
-=== No gappy arrays [[no-gappy-arrays]]
+=== No Gappy Arrays [[no-gappy-arrays]]
 
 Avoid the creation of huge gaps in arrays.
 
@@ -3688,13 +3687,13 @@ arr[100] = 1 # now you have an array with lots of nils
 
 When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.
 
-=== Set vs array [[set-vs-array]]
+=== Set vs Array [[set-vs-array]]
 
 Use `Set` instead of `Array` when dealing with unique elements.
 `Set` implements a collection of unordered values with no duplicates.
 This is a hybrid of ``Array``'s intuitive inter-operation facilities and ``Hash``'s fast lookup.
 
-=== Symbols as keys [[symbols-as-keys]]
+=== Symbols as Keys [[symbols-as-keys]]
 
 Prefer symbols instead of strings as hash keys.
 
@@ -3707,11 +3706,11 @@ hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 hash = { one: 1, two: 2, three: 3 }
 ----
 
-=== No mutable keys [[no-mutable-keys]]
+=== No Mutable Keys [[no-mutable-keys]]
 
 Avoid the use of mutable objects as hash keys.
 
-=== Hash literals [[hash-literals]]
+=== Hash Literals [[hash-literals]]
 
 Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
 
@@ -3724,7 +3723,7 @@ hash = { :one => 1, :two => 2, :three => 3 }
 hash = { one: 1, two: 2, three: 3 }
 ----
 
-=== No mixed hash syntaces [[no-mixed-hash-syntaces]]
+=== No Mixed Hash Syntaces [[no-mixed-hash-syntaces]]
 
 Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
 When you've got keys that are not symbols stick to the hash rockets syntax.
@@ -3800,7 +3799,7 @@ batman[:is_evil] || true # => true
 batman.fetch(:is_evil, true) # => false
 ----
 
-=== Use hash blocks [[use-hash-blocks]]
+=== Use Hash Blocks [[use-hash-blocks]]
 
 Prefer the use of the block instead of the default value in `Hash#fetch` if the code that has to be evaluated may have side effects or be expensive.
 
@@ -3830,15 +3829,15 @@ username = data['nickname']
 email, username = data.values_at('email', 'nickname')
 ----
 
-=== Ordered hashes [[ordered-hashes]]
+=== Ordered Hashes [[ordered-hashes]]
 
 Rely on the fact that as of Ruby 1.9 hashes are ordered.
 
-=== No modifying collections [[no-modifying-collections]]
+=== No Modifying Collections [[no-modifying-collections]]
 
 Do not modify a collection while traversing it.
 
-=== Accessing elements directly [[accessing-elements-directly]]
+=== Accessing Elements Directly [[accessing-elements-directly]]
 
 When accessing elements of a collection, avoid direct access via `[n]` by using an alternate form of the reader method if it is supplied.
 This guards you from calling `[]` on `nil`.
@@ -3852,7 +3851,7 @@ Regexp.last_match[1]
 Regexp.last_match(1)
 ----
 
-=== Provide alternate accessor to collections [[provide-alternate-accessor-to-collections]]
+=== Provide Alternate Accessor to Collections [[provide-alternate-accessor-to-collections]]
 
 When providing an accessor for a collection, provide an alternate form to save users from checking for `nil` before accessing an element in the collection.
 
@@ -3875,7 +3874,7 @@ end
 
 == Numbers
 
-=== Integer type checking [[integer-type-checking]]
+=== Integer Type Checking [[integer-type-checking]]
 
 Use `Integer` to check type of an integer number.
 Since `Fixnum` is platform-dependent, checking against it will return different results on 32-bit and 64-bit machines.
@@ -3892,7 +3891,7 @@ timestamp.is_a? Bignum
 timestamp.is_a? Integer
 ----
 
-=== Random numbers [[random-numbers]]
+=== Random Numbers [[random-numbers]]
 
 Prefer to use ranges when generating random numbers instead of integers with offsets, since it clearly states your intentions.
 Imagine simulating a roll of a dice:
@@ -3908,7 +3907,7 @@ rand(1..6)
 
 == Strings
 
-=== String interpolation [[string-interpolation]]
+=== String Interpolation [[string-interpolation]]
 
 Prefer string interpolation and string formatting instead of string concatenation:
 
@@ -3924,12 +3923,12 @@ email_with_name = "#{user.name} <#{user.email}>"
 email_with_name = format('%s <%s>', user.name, user.email)
 ----
 
-=== Consistent string literals [[consistent-string-literals]]
+=== Consistent String Literals [[consistent-string-literals]]
 
 Adopt a consistent string literal quoting style.
 There are two popular styles in the Ruby community, both of which are considered good - single quotes by default and double quotes by default.
 
-==== Single quote [[consistent-string-literals-single-quote]]
+==== Single Quote [[consistent-string-literals-single-quote]]
 
 Prefer single-quoted strings when you don't need string interpolation or special symbols such as `\t`, `\n`, `'`, etc.
 
@@ -3946,9 +3945,9 @@ name = 'Bozhidar'
 name = "De'Andre"
 ----
 
-==== Double quote [[consistent-string-literals-double-quote]]
+==== Double Quote [[consistent-string-literals-double-quote]]
 
-Prefer double-quotes unless your string literal contains `"` or escape characters you want to suppress.
+
 
 [source,ruby]
 ----
@@ -3965,7 +3964,7 @@ sarcasm = 'I "like" it.'
 
 The string literals in this guide are aligned with the first style.
 
-=== No character literals [[no-character-literals]]
+=== No Character Literals [[no-character-literals]]
 
 Don't use the character literal syntax `?x`.
 Since Ruby 1.9 it's basically redundant - `?x` would be interpreted as `'x'` (a string with a single character in it).
@@ -3979,7 +3978,7 @@ char = ?c
 char = 'c'
 ----
 
-=== Curlies interpolate [[curlies-interpolate]]
+=== Curlies Interpolate [[curlies-interpolate]]
 
 Don't leave out `{}` around instance and global variables being interpolated into a string.
 
@@ -4026,7 +4025,7 @@ message = "This is the #{result.to_s}."
 message = "This is the #{result}."
 ----
 
-=== String concatenation [[concat-strings]]
+=== String Concatenation [[concat-strings]]
 
 Avoid using `String#+` when you need to construct large data chunks.
 Instead, use `String#<<`.
@@ -4051,7 +4050,7 @@ paragraphs.each do |paragraph|
 end
 ----
 
-=== Don't abuse `gsub` [[dont-abuse-gsub]]
+=== Don't Abuse `gsub` [[dont-abuse-gsub]]
 
 Don't use `String#gsub` in scenarios in which you can use a faster and more specialized alternative.
 
@@ -4085,7 +4084,7 @@ END
 # => "def test\n  some_method\n  other_method\nend\n"
 ----
 
-=== Squiggly heredocs [[squiggly-heredocs]]
+=== Squiggly Heredocs [[squiggly-heredocs]]
 
 Use Ruby 2.3's squiggly heredocs for nicely indented multi-line strings.
 
@@ -4116,7 +4115,7 @@ code = <<~RUBY
 RUBY
 ----
 
-=== Heredoc delimiters [[heredoc-delimiters]]
+=== Heredoc Delimiters [[heredoc-delimiters]]
 
 Use descriptive delimiters for heredocs.
 Delimiters add valuable information about the heredoc content, and as an added bonus some editors can highlight code within heredocs if the correct delimiter is used.
@@ -4145,7 +4144,7 @@ code = <<~SUMMARY
 SUMMARY
 ----
 
-=== Heredoc method calls [[heredoc-method-calls]]
+=== Heredoc Method Calls [[heredoc-method-calls]]
 
 Place method calls with heredoc receivers on the first line of the heredoc definition.
 The bad form has significant potential for error if a new line is added or removed.
@@ -4164,7 +4163,7 @@ query = <<~SQL.strip_indent
 SQL
 ----
 
-=== Heredoc argument closing parentheses [[heredoc-argument-closing-parentheses]]
+=== Heredoc Argument Closing Parentheses [[heredoc-argument-closing-parentheses]]
 
 Place the closing parenthesis for method calls with heredoc arguments on the first line of the heredoc definition.
 The bad form has potential for error if the new line before the closing parenthesis is removed.
@@ -4221,11 +4220,11 @@ Some people, when confronted with a problem, think
 -- Jamie Zawinski
 ____
 
-=== No regexp for plaintext [[no-regexp-for-plaintext]]
+=== No Regexp for Plaintext [[no-regexp-for-plaintext]]
 
 Don't use regular expressions if you just need plain text search in string: `string['text']`
 
-=== Regexp string index [[regexp-string-index]]
+=== Regexp String Index [[regexp-string-index]]
 
 For simple constructions you can use regexp directly through string index.
 
@@ -4236,7 +4235,7 @@ first_group = string[/text(grp)/, 1] # get content of captured group
 string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
 ----
 
-=== Non capturing regexp [[non-capturing-regexp]]
+=== Non Capturing Regexp [[non-capturing-regexp]]
 
 Use non-capturing groups when you don't use the captured result.
 
@@ -4249,7 +4248,7 @@ Use non-capturing groups when you don't use the captured result.
 /(?:first|second)/
 ----
 
-=== No Perl regexp last matchers [[no-perl-regexp-last-matchers]]
+=== No Perl Regexp Last Matchers [[no-perl-regexp-last-matchers]]
 
 Don't use the cryptic Perl-legacy variables denoting last regexp group matches (`$1`, `$2`, etc).
 Use `Regexp.last_match(n)` instead.
@@ -4266,7 +4265,7 @@ process $1
 process Regexp.last_match(1)
 ----
 
-=== No numbered regexes [[no-numbered-regexes]]
+=== No Numbered Regexes [[no-numbered-regexes]]
 
 Avoid using numbered groups as it can be hard to track what they contain.
 Named groups can be used instead.
@@ -4284,11 +4283,11 @@ process Regexp.last_match(1)
 process meaningful_var
 ----
 
-=== Limit escapes [[limit-escapes]]
+=== Limit Escapes [[limit-escapes]]
 
 Character classes have only a few special characters you should care about: `^`, `-`, `\`, `]`, so don't escape `.` or brackets in `[]`.
 
-=== Caret and dollar regexp [[caret-and-dollar-regexp]]
+=== Caret and Dollar Regexp [[caret-and-dollar-regexp]]
 
 Be careful with `^` and `$` as they match start/end of line, not string endings.
 If you want to match the whole string use: `\A` and `\z` (not to be confused with `\Z` which is the equivalent of `/\n?\z/`).
@@ -4300,7 +4299,7 @@ string[/^username$/]   # matches
 string[/\Ausername\z/] # doesn't match
 ----
 
-=== Comment regexes [[comment-regexes]]
+=== Comment Regexes [[comment-regexes]]
 
 Use `x` modifier for complex regexps.
 This makes them more readable and you can add some useful comments. Just be careful as spaces are ignored.
@@ -4316,7 +4315,7 @@ regexp = /
 /x
 ----
 
-=== `gsub` blocks [[gsub-blocks]]
+=== `gsub` Blocks [[gsub-blocks]]
 
 For complex replacements `sub`/`gsub` can be used with a block or a hash.
 
@@ -4404,7 +4403,7 @@ echo = %x(echo `date`)
 Avoid the use of `%s`.
 It seems that the community has decided `:"some string"` is the preferred way to create a symbol with spaces in it.
 
-=== Percent literal braces [[percent-literal-braces]]
+=== Percent Literal Braces [[percent-literal-braces]]
 
 Use the braces that are the most appropriate for the various kinds of percent literals.
 
@@ -4440,11 +4439,11 @@ Use the braces that are the most appropriate for the various kinds of percent li
 
 == Metaprogramming
 
-=== No needless metaprogramming [[no-needless-metaprogramming]]
+=== No Needless Metaprogramming [[no-needless-metaprogramming]]
 
 Avoid needless metaprogramming.
 
-=== No monkey patching [[no-monkey-patching]]
+=== No Monkey Patching [[no-monkey-patching]]
 
 Do not mess around in core classes when writing libraries (do not monkey-patch them).
 
@@ -4452,7 +4451,7 @@ Do not mess around in core classes when writing libraries (do not monkey-patch t
 
 The block form of `class_eval` is preferable to the string-interpolated form.
 
-==== Supply location [[class-eval-supply-location]]
+==== Supply Location [[class-eval-supply-location]]
 
 When you use the string-interpolated form, always supply `__FILE__` and `__LINE__`, so that your backtraces make sense:
 
@@ -4465,7 +4464,7 @@ class_eval 'def use_relative_model_naming?; true; end', __FILE__, __LINE__
 
 `define_method` is preferable to `class_eval { def ... }`
 
-=== `eval` comment docs [[eval-comment-docs]]
+=== `eval` Comment Docs [[eval-comment-docs]]
 
 When using `class_eval` (or other `eval`) with string interpolation, add a comment block showing its appearance if interpolated (a practice used in Rails code):
 
@@ -4583,30 +4582,30 @@ u2.__send__ ...
 
 == Misc
 
-=== Always warn [[always-warn]]
+=== Always Warn [[always-warn]]
 
 Write `ruby -w` safe code.
 
-=== No optional hash params [[no-optional-hash-params]]
+=== No Optional Hash Params [[no-optional-hash-params]]
 
 Avoid hashes as optional parameters.
 Does the method do too much? (Object initializers are exceptions for this rule).
 
-=== Short methods [[short-methods]]
+=== Short Methods [[short-methods]]
 
 Avoid methods longer than 10 LOC (lines of code).
 Ideally, most methods will be shorter than 5 LOC.
 Empty lines do not contribute to the relevant LOC.
 
-=== Too many params [[too-many-params]]
+=== Too Many Params [[too-many-params]]
 
 Avoid parameter lists longer than three or four parameters.
 
-=== Private global methods [[private-global-methods]]
+=== Private Global Methods [[private-global-methods]]
 
 If you really need "global" methods, add them to Kernel and make them private.
 
-=== Instance vars [[instance-vars]]
+=== Instance Vars [[instance-vars]]
 
 Use module instance variables instead of global variables.
 
@@ -4629,7 +4628,7 @@ Foo.bar = 1
 
 Use `OptionParser` for parsing complex command line options and `ruby -s` for trivial command line options.
 
-=== Functional code [[functional-code]]
+=== Functional Code [[functional-code]]
 
 Code in a functional way, avoiding mutation when that makes sense.
 
@@ -4643,20 +4642,20 @@ a = [1, 2, 3].reduce({}) { |h, i| h[i] = i * 17; h }        # good
 a = [1, 2, 3].each_with_object({}) { |i, h| h[i] = i * 17 } # good
 ----
 
-=== No param mutations [[no-param-mutations]]
+=== No Param Mutations [[no-param-mutations]]
 
 Do not mutate parameters unless that is the purpose of the method.
 
-=== Three is the number thou shalt count [[three-is-the-number-thou-shalt-count]]
+=== Three is the Number Thou Shalt Count [[three-is-the-number-thou-shalt-count]]
 
 Avoid more than three levels of block nesting.
 
-=== Be consistent [[be-consistent]]
+=== Be Consistent [[be-consistent]]
 
 Be consistent.
 In an ideal world, be consistent with these guidelines.
 
-=== Common sense [[common-sense]]
+=== Common Sense [[common-sense]]
 
 Use common sense.
 
