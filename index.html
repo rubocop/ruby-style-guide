@@ -819,11 +819,17 @@ asciidoctor-pdf <span class="nt">-a</span> allow-uri-read README.adoc
 asciidoctor</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p><a href="https://github.com/rubocop-hq/rubocop">RuboCop</a> is a static code analyzer (linter) and formatter, based on this style guide.</p>
-</div>
-<div class="paragraph">
-<p>By the way, if you&#8217;re into Rails you might want to check out the complementary <a href="https://github.com/rubocop-hq/rails-style-guide">Ruby on Rails Style Guide</a>.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<a href="https://github.com/rubocop-hq/rubocop">RuboCop</a> is a static code analyzer (linter) and formatter, based on this style guide.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Translations of the guide are available in the following languages:</p>
@@ -861,6 +867,20 @@ asciidoctor</code></pre>
 <p><a href="https://github.com/CQBinh/ruby-style-guide/blob/master/README-viVN.md">Vietnamese</a></p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you&#8217;re into Rails or RSpec you might want to check out the complementary <a href="https://github.com/rubocop-hq/rails-style-guide">Ruby on Rails Style Guide</a> and <a href="https://github.com/rubocop-hq/rspec-style-guide">RSpec Style Guide</a>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -907,8 +927,15 @@ probably right&#8230;&#8203;</p>
 <div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">CRLF</a></h3>
 <div class="paragraph">
-<p>Use Unix-style line endings. (*BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.)</p>
+<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>If you&#8217;re using Git you might want to add the following configuration setting to protect your project from Windows line endings creeping in:</p>
 </div>
@@ -916,6 +943,10 @@ probably right&#8230;&#8203;</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>git config <span class="nt">--global</span> core.autocrlf <span class="nb">true</span></code></pre>
 </div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -6202,9 +6233,15 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 </div>
 </div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. *BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-09 18:23:33 UTC
+Last updated 2019-06-09 19:02:51 UTC
 </div>
 </div>
 <style>
