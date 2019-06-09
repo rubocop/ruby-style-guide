@@ -5256,6 +5256,18 @@ Imagine simulating a roll of a dice:</p>
 <p>Adopt a consistent string literal quoting style.
 There are two popular styles in the Ruby community, both of which are considered good - single quotes by default and double quotes by default.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The string literals in this guide are using single quotes by default.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
 <h4 id="consistent-string-literals-single-quote"><a class="anchor" href="#consistent-string-literals-single-quote"></a><a class="link" href="#consistent-string-literals-single-quote">Single Quote</a></h4>
 <div class="paragraph">
@@ -5277,6 +5289,9 @@ There are two popular styles in the Ruby community, both of which are considered
 </div>
 <div class="sect3">
 <h4 id="consistent-string-literals-double-quote"><a class="anchor" href="#consistent-string-literals-double-quote"></a><a class="link" href="#consistent-string-literals-double-quote">Double Quote</a></h4>
+<div class="paragraph">
+<p>Prefer double-quotes unless your string literal contains " or escape characters you want to suppress.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
@@ -5289,9 +5304,6 @@ There are two popular styles in the Ruby community, both of which are considered
 
 <span class="n">sarcasm</span> <span class="o">=</span> <span class="s1">'I "like" it.'</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The string literals in this guide are aligned with the first style.</p>
 </div>
 </div>
 </div>
@@ -6248,7 +6260,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-09 19:19:05 UTC
+Last updated 2019-06-09 19:37:56 UTC
 </div>
 </div>
 <style>
