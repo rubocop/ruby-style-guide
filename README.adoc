@@ -1177,7 +1177,7 @@ The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
 Do not use `when x; ...`. See the previous rule.
 
-=== Bang Not Not [[bang-not-not]]
+=== `!` vs `not` [[bang-not-not]]
 
 Use `!` instead of `not`.
 
@@ -1190,7 +1190,7 @@ x = (not something)
 x = !something
 ----
 
-=== No Bang Bang [[no-bang-bang]]
+=== Double Negation [[no-bang-bang]]
 
 Avoid the use of `!!`.
 
