@@ -444,9 +444,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#source-code-layout">Source Code Layout</a>
 <ul class="sectlevel2">
-<li><a href="#utf-8">UTF-8</a></li>
+<li><a href="#utf-8">Source Encoding</a></li>
 <li><a href="#spaces-indentation">Spaces Indentation</a></li>
-<li><a href="#crlf">CRLF</a></li>
+<li><a href="#crlf">Line Endings</a></li>
 <li><a href="#no-semicolon">No Semicolon</a></li>
 <li><a href="#single-line-classes">Single-line Classes</a></li>
 <li><a href="#no-single-line-methods">No Single-line Methods</a></li>
@@ -479,8 +479,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
-<li><a href="#method-parens">Method Parens</a></li>
-<li><a href="#method-invocation-parens">Method Invocation Parenthesis</a></li>
+<li><a href="#method-parens">Method Definition Parentheses</a></li>
+<li><a href="#method-invocation-parens">Method Invocation Parentheses</a></li>
 <li><a href="#optional-arguments">Optional Arguments</a></li>
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
@@ -900,7 +900,7 @@ probably right&#8230;&#8203;</p>
 </blockquote>
 </div>
 <div class="sect2">
-<h3 id="utf-8"><a class="anchor" href="#utf-8"></a><a class="link" href="#utf-8">UTF-8</a></h3>
+<h3 id="utf-8"><a class="anchor" href="#utf-8"></a><a class="link" href="#utf-8">Source Encoding</a></h3>
 <div class="paragraph">
 <p>Use <code>UTF-8</code> as the source file encoding.</p>
 </div>
@@ -925,7 +925,7 @@ probably right&#8230;&#8203;</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">CRLF</a></h3>
+<h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
 <p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
 </div>
@@ -1163,9 +1163,7 @@ Whichever one you pick - apply it consistently.</p>
 <div class="sect2">
 <h3 id="indent-when-to-case"><a class="anchor" href="#indent-when-to-case"></a><a class="link" href="#indent-when-to-case">Indent <code>when</code> to <code>case</code></a></h3>
 <div class="paragraph">
-<p>Indent <code>when</code> as deep as <code>case</code>.
-This is the style established in both "The Ruby Programming Language" and "Programming Ruby".
-Historically it is derived from the fact that <code>case</code> and <code>switch</code> statements are not blocks, hence should not be indented, and the <code>when</code> and <code>else</code> keywords are labels (compiled in the C language, they are literally labels for <code>JMP</code> calls).</p>
+<p>Indent <code>when</code> as deep as <code>case</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1192,6 +1190,15 @@ Historically it is derived from the fact that <code>case</code> and <code>switch
 <span class="k">else</span>
   <span class="n">song</span><span class="p">.</span><span class="nf">play</span>
 <span class="k">end</span></code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">A Bit of History</div>
+<div class="paragraph">
+<p>This is the style established in both "The Ruby Programming Language" and "Programming Ruby".
+Historically it is derived from the fact that <code>case</code> and <code>switch</code> statements are not blocks, hence should not be indented, and the <code>when</code> and <code>else</code> keywords are labels (compiled in the C language, they are literally labels for <code>JMP</code> calls).</p>
+</div>
 </div>
 </div>
 </div>
@@ -1673,7 +1680,7 @@ Do not use <code>::</code> for regular method invocation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="method-parens"><a class="anchor" href="#method-parens"></a><a class="link" href="#method-parens">Method Parens</a></h3>
+<h3 id="method-parens"><a class="anchor" href="#method-parens"></a><a class="link" href="#method-parens">Method Definition Parentheses</a></h3>
 <div class="paragraph">
 <p>Use <code>def</code> with parentheses when there are parameters.
 Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
@@ -1703,7 +1710,7 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="method-invocation-parens"><a class="anchor" href="#method-invocation-parens"></a><a class="link" href="#method-invocation-parens">Method Invocation Parenthesis</a></h3>
+<h3 id="method-invocation-parens"><a class="anchor" href="#method-invocation-parens"></a><a class="link" href="#method-invocation-parens">Method Invocation Parentheses</a></h3>
 <div class="paragraph">
 <p>Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis <code>(</code>, as in <code>f((3 + 2) + 1)</code>.</p>
 </div>
@@ -6241,7 +6248,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-09 19:02:51 UTC
+Last updated 2019-06-09 19:19:05 UTC
 </div>
 </div>
 <style>
