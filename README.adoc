@@ -724,6 +724,21 @@ another comment line
 # another comment line
 ----
 
+.From Perl's POD to RD
+****
+This is not a really a block comment syntax, but more of
+an attempt to emulate Perl's https://perldoc.perl.org/perlpod.html[POD] documentation system.
+
+There's an https://github.com/uwabami/rdtool[rdtool] for Ruby that's pretty similar to POD.
+Basically `rdtool` scans a file for `=begin` and `=end{=begin...=end@{=begin` pairs, and
+extracts the text between them all. This text is assumed to be documentation in
+https://github.com/uwabami/rdtool/blob/master/doc/rd-draft.rd[RD format].
+You can read more about it
+https://ruby-doc.com/docs/ProgrammingRuby/html/rdtool.html[here].
+
+RD predated the rise of RDoc and YARD and was effectively obsoleted by them.
+****
+
 == Syntax
 
 === Double Colons [[double-colons]]
