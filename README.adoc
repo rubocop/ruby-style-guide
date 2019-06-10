@@ -736,7 +736,7 @@ https://github.com/uwabami/rdtool/blob/master/doc/rd-draft.rd[RD format].
 You can read more about it
 https://ruby-doc.com/docs/ProgrammingRuby/html/rdtool.html[here].
 
-RD predated the rise of RDoc and YARD and was effectively obsoleted by them.
+RD predated the rise of RDoc and YARD and was effectively obsoleted by them.footnote:[According to this https://en.wikipedia.org/wiki/Ruby_Document_format[Wikipedia article] the format used to be popular until the early 2000s when it was superseded by RDoc.]
 ****
 
 == Syntax
