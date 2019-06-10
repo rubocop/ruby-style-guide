@@ -1632,6 +1632,26 @@ another comment line
 <span class="c1"># another comment line</span></code></pre>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">From Perl&#8217;s POD to RD</div>
+<div class="paragraph">
+<p>This is not a really a block comment syntax, but more of
+an attempt to emulate Perl&#8217;s <a href="https://perldoc.perl.org/perlpod.html">POD</a> documentation system.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s an <a href="https://github.com/uwabami/rdtool">rdtool</a> for Ruby that&#8217;s pretty similar to POD.
+Basically <code>rdtool</code> scans a file for <code>=begin</code> and <code>=end{=begin&#8230;&#8203;=end@{=begin</code> pairs, and
+extracts the text between them all. This text is assumed to be documentation in
+<a href="https://github.com/uwabami/rdtool/blob/master/doc/rd-draft.rd">RD format</a>.
+You can read more about it
+<a href="https://ruby-doc.com/docs/ProgrammingRuby/html/rdtool.html">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>RD predated the rise of RDoc and YARD and was effectively obsoleted by them.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -6260,7 +6280,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-09 20:40:47 UTC
+Last updated 2019-06-10 09:05:27 UTC
 </div>
 </div>
 <style>
