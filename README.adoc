@@ -41,7 +41,15 @@ asciidoctor-pdf -a allow-uri-read README.adoc
 asciidoctor
 ----
 
-TIP: https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
+[TIP]
+====
+Install the `rouge` gem to get nice syntax highlighting in the generated document.
+
+[source,shell]
+----
+gem install rouge
+----
+====
 
 Translations of the guide are available in the following languages:
 
@@ -61,6 +69,8 @@ Translations of the guide are available in the following languages:
 If you're into Rails or RSpec you might want to check out the complementary https://github.com/rubocop-hq/rails-style-guide[Ruby on Rails Style Guide] and https://github.com/rubocop-hq/rspec-style-guide[RSpec Style Guide].
 ====
 
+TIP: https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
+
 == Source Code Layout
 
 [quote]
@@ -75,6 +85,8 @@ ____
 === Source Encoding [[utf-8]]
 
 Use `UTF-8` as the source file encoding.
+
+TIP: UFT-8 has been the default source file encoding since Ruby 2.0.
 
 === Spaces Indentation [[spaces-indentation]]
 
