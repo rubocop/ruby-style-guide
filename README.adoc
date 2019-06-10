@@ -2583,14 +2583,14 @@ counter += 1 # Increments counter by one.
 Keep existing comments up-to-date.
 An outdated comment is worse than no comment at all.
 
+=== Refactor, Don't Comment [[refactor-dont-comment]]
+
 [quote]
 ____
 Good code is like a good joke: it needs no explanation.
 
 -- old programmers maxim, through http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[Russ Olsen]
 ____
-
-=== Refactor, Don't Comment [[refactor-dont-comment]]
 
 Avoid writing comments to explain bad code.
 Refactor the code to make it self-explanatory.
