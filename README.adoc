@@ -88,9 +88,13 @@ Use `UTF-8` as the source file encoding.
 
 TIP: UFT-8 has been the default source file encoding since Ruby 2.0.
 
-=== Spaces Indentation [[spaces-indentation]]
+=== Tabs or Spaces? [[tabs-or-spaces]]
 
-Use two *spaces* per indentation level (aka soft tabs). No hard tabs.
+Use only spaces for indentation. No hard tabs.
+
+=== Indentation [[spaces-indentation]]
+
+Use two *spaces* per indentation level (aka soft tabs).
 
 [source,ruby]
 ----
