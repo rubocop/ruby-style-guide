@@ -132,25 +132,33 @@ $ git config --global core.autocrlf true
 ----
 ====
 
-=== Newline EOF [[newline-eof]]
+=== Should I Terminate Files with a Newline? [[newline-eof]]
 
 End each file with a newline.
 
-=== No Semicolon [[no-semicolon]]
+=== Should I Terminate Expressions with `;`? [[no-semicolon]]
 
-Don't use `;` to separate statements and expressions.
-As a corollary - use one expression per line.
+Don't use `;` to terminate statements and expressions.
 
 [source,ruby]
 ----
 # bad
 puts 'foobar'; # superfluous semicolon
 
+# good
+puts 'foobar'
+----
+
+=== One Expression Per Line [[one-expression-per-line]]
+
+Use one expression per line.
+
+[source,ruby]
+----
+# bad
 puts 'foo'; puts 'bar' # two expressions on the same line
 
 # good
-puts 'foobar'
-
 puts 'foo'
 puts 'bar'
 
