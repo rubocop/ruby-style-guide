@@ -4673,6 +4673,23 @@ Foo.bar = 1
 
 Use `OptionParser` for parsing complex command line options and `ruby -s` for trivial command line options.
 
+=== No Param Mutations [[no-param-mutations]]
+
+Do not mutate parameters unless that is the purpose of the method.
+
+=== Three is the Number Thou Shalt Count [[three-is-the-number-thou-shalt-count]]
+
+Avoid more than three levels of block nesting.
+
+== Existential
+
+[quote]
+----
+Rules are made to be broken. Know the standards, but do not treat them as absolutes.
+
+-- The Pragmatic Developer
+----
+
 === Functional Code [[functional-code]]
 
 Code in a functional way, avoiding mutation when that makes sense.
@@ -4686,14 +4703,6 @@ a = {}; [1, 2, 3].each { |i| a[i] = i * 17 }                # bad
 a = [1, 2, 3].reduce({}) { |h, i| h[i] = i * 17; h }        # good
 a = [1, 2, 3].each_with_object({}) { |i, h| h[i] = i * 17 } # good
 ----
-
-=== No Param Mutations [[no-param-mutations]]
-
-Do not mutate parameters unless that is the purpose of the method.
-
-=== Three is the Number Thou Shalt Count [[three-is-the-number-thou-shalt-count]]
-
-Avoid more than three levels of block nesting.
 
 === Be Consistent [[be-consistent]]
 
