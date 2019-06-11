@@ -772,9 +772,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#private-global-methods">Private Global Methods</a></li>
 <li><a href="#instance-vars">Instance Vars</a></li>
 <li><a href="#optionparser"><code>OptionParser</code></a></li>
-<li><a href="#functional-code">Functional Code</a></li>
 <li><a href="#no-param-mutations">No Param Mutations</a></li>
 <li><a href="#three-is-the-number-thou-shalt-count">Three is the Number Thou Shalt Count</a></li>
+</ul>
+</li>
+<li><a href="#existential">Existential</a>
+<ul class="sectlevel2">
+<li><a href="#functional-code">Functional Code</a></li>
 <li><a href="#be-consistent">Be Consistent</a></li>
 <li><a href="#common-sense">Common Sense</a></li>
 </ul>
@@ -6210,6 +6214,30 @@ Empty lines do not contribute to the relevant LOC.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="no-param-mutations"><a class="anchor" href="#no-param-mutations"></a><a class="link" href="#no-param-mutations">No Param Mutations</a></h3>
+<div class="paragraph">
+<p>Do not mutate parameters unless that is the purpose of the method.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="three-is-the-number-thou-shalt-count"><a class="anchor" href="#three-is-the-number-thou-shalt-count"></a><a class="link" href="#three-is-the-number-thou-shalt-count">Three is the Number Thou Shalt Count</a></h3>
+<div class="paragraph">
+<p>Avoid more than three levels of block nesting.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="existential"><a class="anchor" href="#existential"></a><a class="link" href="#existential">Existential</a></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre>Rules are made to be broken. Know the standards, but do not treat them as absolutes.
+
+-- The Pragmatic Developer</pre>
+</div>
+</div>
+<div class="sect2">
 <h3 id="functional-code"><a class="anchor" href="#functional-code"></a><a class="link" href="#functional-code">Functional Code</a></h3>
 <div class="paragraph">
 <p>Code in a functional way, avoiding mutation when that makes sense.</p>
@@ -6223,18 +6251,6 @@ Empty lines do not contribute to the relevant LOC.</p>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">reduce</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">17</span><span class="p">;</span> <span class="n">h</span> <span class="p">}</span>        <span class="c1"># good</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">each_with_object</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="p">,</span> <span class="n">h</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">17</span> <span class="p">}</span> <span class="c1"># good</span></code></pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-param-mutations"><a class="anchor" href="#no-param-mutations"></a><a class="link" href="#no-param-mutations">No Param Mutations</a></h3>
-<div class="paragraph">
-<p>Do not mutate parameters unless that is the purpose of the method.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="three-is-the-number-thou-shalt-count"><a class="anchor" href="#three-is-the-number-thou-shalt-count"></a><a class="link" href="#three-is-the-number-thou-shalt-count">Three is the Number Thou Shalt Count</a></h3>
-<div class="paragraph">
-<p>Avoid more than three levels of block nesting.</p>
 </div>
 </div>
 <div class="sect2">
@@ -6375,7 +6391,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-11 12:13:09 UTC
+Last updated 2019-06-11 16:42:59 UTC
 </div>
 </div>
 <style>
