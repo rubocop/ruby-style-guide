@@ -1052,243 +1052,6 @@ def *(num)
 end
 ----
 
-== Methods
-
-=== Double Colons [[double-colons]]
-
-Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-Do not use `::` for regular method invocation.
-
-[source,ruby]
-----
-# bad
-SomeClass::some_method
-some_object::some_method
-
-# good
-SomeClass.some_method
-some_object.some_method
-SomeModule::SomeClass::SOME_CONST
-SomeModule::SomeClass()
-----
-
-=== Colon Method Definition [[colon-method-definition]]
-
-Do not use `::` to define class methods.
-
-[source,ruby]
-----
-# bad
-class Foo
-  def self::some_method
-  end
-end
-
-# good
-class Foo
-  def self.some_method
-  end
-end
-----
-
-=== Method Definition Parentheses [[method-parens]]
-
-Use `def` with parentheses when there are parameters.
-Omit the parentheses when the method doesn't accept any parameters.
-
-[source,ruby]
-----
-# bad
-def some_method()
-  # body omitted
-end
-
-# good
-def some_method
-  # body omitted
-end
-
-# bad
-def some_method_with_parameters param1, param2
-  # body omitted
-end
-
-# good
-def some_method_with_parameters(param1, param2)
-  # body omitted
-end
-----
-
-=== Method Invocation Parentheses [[method-invocation-parens]]
-
-Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis `(`, as in `f((3 + 2) + 1)`.
-
-[source,ruby]
-----
-# bad
-x = Math.sin y
-# good
-x = Math.sin(y)
-
-# bad
-array.delete e
-# good
-array.delete(e)
-
-# bad
-temperance = Person.new 'Temperance', 30
-# good
-temperance = Person.new('Temperance', 30)
-----
-
-==== Method Calls with No Arguments [[method-invocation-parens-no-args]]
-
-Always omit parentheses for method calls with no arguments.
-
-[source,ruby]
-----
-# bad
-Kernel.exit!()
-2.even?()
-fork()
-'test'.upcase()
-
-# good
-Kernel.exit!
-2.even?
-fork
-'test'.upcase
-----
-
-==== Methods That are Part of an Internal DSL [[method-invocation-parens-internal-dsl]]
-
-Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
-
-[source,ruby]
-----
-# bad
-validates(:name, presence: true)
-# good
-validates :name, presence: true
-----
-
-==== Methods That Have "keyword" Status in Ruby [[method-invocation-parens-keyword]]
-
-Always omit parentheses for methods that have "keyword" status in Ruby.
-
-[source,ruby]
-----
-class Person
-  # bad
-  attr_reader(:name, :age)
-  # good
-  attr_reader :name, :age
-
-  # body omitted
-end
-----
-
-==== Non-declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]]
-
-Can omit parentheses for methods that have "keyword" status in Ruby, but are not declarative:
-
-[source,Ruby]
-----
-# good
-puts(temperance.age)
-system('ls')
-# also good
-puts temperance.age
-system 'ls'
-----
-
-=== Optional Arguments [[optional-arguments]]
-
-Define optional arguments at the end of the list of arguments.
-Ruby has some unexpected results when calling methods that have optional arguments at the front of the list.
-
-[source,ruby]
-----
-# bad
-def some_method(a = 1, b = 2, c, d)
-  puts "#{a}, #{b}, #{c}, #{d}"
-end
-
-some_method('w', 'x') # => '1, 2, w, x'
-some_method('w', 'x', 'y') # => 'w, 2, x, y'
-some_method('w', 'x', 'y', 'z') # => 'w, x, y, z'
-
-# good
-def some_method(c, d, a = 1, b = 2)
-  puts "#{a}, #{b}, #{c}, #{d}"
-end
-
-some_method('w', 'x') # => '1, 2, w, x'
-some_method('w', 'x', 'y') # => 'y, 2, w, x'
-some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
-----
-
-=== Boolean Keyword Arguments [[boolean-keyword-arguments]]
-
-Use keyword arguments when passing boolean argument to a method.
-
-[source,Ruby]
-----
-# bad
-def some_method(bar = false)
-  puts bar
-end
-
-# bad - common hack before keyword args were introduced
-def some_method(options = {})
-  bar = options.fetch(:bar, false)
-  puts bar
-end
-
-# good
-def some_method(bar: false)
-  puts bar
-end
-
-some_method            # => false
-some_method(bar: true) # => true
-----
-
-=== Keyword Arguments vs Optional Arguments [[keyword-arguments-vs-optional-arguments]]
-
-Prefer keyword arguments over optional arguments.
-
-[source,Ruby]
-----
-# bad
-def some_method(a, b = 5, c = 1)
-  # body omitted
-end
-
-# good
-def some_method(a, b: 5, c: 1)
-  # body omitted
-end
-----
-
-=== Keyword Arguments vs Option Hashes [[keyword-arguments-vs-option-hashes]]
-
-Use keyword arguments instead of option hashes.
-
-[source,Ruby]
-----
-# bad
-def some_method(options = {})
-  bar = options.fetch(:bar, false)
-  puts bar
-end
-
-# good
-def some_method(bar: false)
-  puts bar
-end
-----
-
 == Flow of Control
 
 === No `for` Loops [[no-for-loops]]
@@ -2251,252 +2014,240 @@ l = ->(v) { puts v }
 l.call(1)
 ----
 
+== Methods
 
-== Comments
+=== Double Colons [[double-colons]]
 
-[quote]
-____
-Good code is its own best documentation.
-As you're about to add a comment, ask yourself, "How can I improve the code so that this comment isn't needed?".
-Improve the code and then document it to make it even clearer.
-
--- Steve McConnell
-____
-
-=== No Comments [[no-comments]]
-
-Write self-documenting code and ignore the rest of this section. Seriously!
-
-=== Rationale Comments [[rationale-comments]]
-
-If the _how_ can be made self-documenting, but not the _why_ (e.g. the code works around non-obvious library behavior, or implements an algorithm from an academic paper), add a comment explaining the rationale behind the code.
+Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
+Do not use `::` for regular method invocation.
 
 [source,ruby]
 ----
 # bad
+SomeClass::some_method
+some_object::some_method
 
-x = BuggyClass.something.dup
+# good
+SomeClass.some_method
+some_object.some_method
+SomeModule::SomeClass::SOME_CONST
+SomeModule::SomeClass()
+----
 
-def compute_dependency_graph
-  ...30 lines of recursive graph merging...
+=== Colon Method Definition [[colon-method-definition]]
+
+Do not use `::` to define class methods.
+
+[source,ruby]
+----
+# bad
+class Foo
+  def self::some_method
+  end
 end
 
 # good
-
-# BuggyClass returns an internal object, so we have to dup it to modify it.
-x = BuggyClass.something.dup
-
-# This is algorithm 6.4(a) from Worf & Yar's _Amazing Graph Algorithms_ (2243).
-def compute_dependency_graph
-  ...30 lines of recursive graph merging...
+class Foo
+  def self.some_method
+  end
 end
 ----
 
-=== English Comments [[english-comments]]
+=== Method Definition Parentheses [[method-parens]]
 
-Write comments in English.
-
-=== Hash Space [[hash-space]]
-
-Use one space between the leading `#` character of the comment and the text of the comment.
-
-=== English Syntax [[english-syntax]]
-
-Comments longer than a word are capitalized and use punctuation.
-Use https://en.wikipedia.org/wiki/Sentence_spacing[one space] after periods.
-
-=== No Superfluous Comments [[no-superfluous-comments]]
-
-Avoid superfluous comments.
+Use `def` with parentheses when there are parameters.
+Omit the parentheses when the method doesn't accept any parameters.
 
 [source,ruby]
 ----
 # bad
-counter += 1 # Increments counter by one.
-----
-
-=== Comment Upkeep [[comment-upkeep]]
-
-Keep existing comments up-to-date.
-An outdated comment is worse than no comment at all.
-
-=== Refactor, Don't Comment [[refactor-dont-comment]]
-
-[quote]
-____
-Good code is like a good joke: it needs no explanation.
-
--- old programmers maxim, through http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[Russ Olsen]
-____
-
-Avoid writing comments to explain bad code.
-Refactor the code to make it self-explanatory.
-("Do or do not - there is no try." Yoda)
-
-== Comment Annotations
-
-=== Annotations Placement [[annotate-above]]
-
-Annotations should usually be written on the line immediately above the relevant code.
-
-[source,ruby]
-----
-# bad
-def bar
-  baz(:quux) # FIXME: This has crashed occasionally since v3.2.1.
+def some_method()
+  # body omitted
 end
 
 # good
-def bar
-  # FIXME: This has crashed occasionally since v3.2.1.
-  baz(:quux)
+def some_method
+  # body omitted
 end
-----
 
-=== Annotations Keyword Format [[annotate-keywords]]
-
-The annotation keyword is followed by a colon and a space, then a note describing the problem.
-
-[source,ruby]
-----
 # bad
-def bar
-  # FIXME This has crashed occasionally since v3.2.1.
-  baz(:quux)
+def some_method_with_parameters param1, param2
+  # body omitted
 end
 
 # good
-def bar
-  # FIXME: This has crashed occasionally since v3.2.1.
-  baz(:quux)
+def some_method_with_parameters(param1, param2)
+  # body omitted
 end
 ----
 
-=== Multi-line Annotations Indentation [[indent-annotations]]
+=== Method Invocation Parentheses [[method-invocation-parens]]
 
-If multiple lines are required to describe the problem, subsequent lines should be indented three spaces after the `#` (one general plus two for indentation purpose).
-
-[source,ruby]
-----
-def bar
-  # FIXME: This has crashed occasionally since v3.2.1. It may
-  #   be related to the BarBazUtil upgrade.
-  baz(:quux)
-end
-----
-
-=== Inline Annotations [[rare-eol-annotations]]
-
-In cases where the problem is so obvious that any documentation would be redundant, annotations may be left at the end of the offending line with no note.
-This usage should be the exception and not the rule.
-
-[source,ruby]
-----
-def bar
-  sleep 100 # OPTIMIZE
-end
-----
-
-=== `TODO` [[todo]]
-
-Use `TODO` to note missing features or functionality that should be added at a later date.
-
-=== `FIXME` [[fixme]]
-
-Use `FIXME` to note broken code that needs to be fixed.
-
-=== `OPTIMIZE` [[optimize]]
-
-Use `OPTIMIZE` to note slow or inefficient code that may cause performance problems.
-
-=== `HACK` [[hack]]
-
-Use `HACK` to note code smells where questionable coding practices were used and should be refactored away.
-
-=== `REVIEW` [[review]]
-
-Use `REVIEW` to note anything that should be looked at to confirm it is working as intended.
-For example: `REVIEW: Are we sure this is how the client does X currently?`
-
-=== Document Annotations [[document-annotations]]
-
-Use other custom annotation keywords if it feels appropriate, but be sure to document them in your project's `README` or similar.
-
-== Magic Comments
-
-=== Magic Comments First [[magic-comments-first]]
-
-Place magic comments above all code and documentation in a file (except shebangs, which are discussed next).
+Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis `(`, as in `f((3 + 2) + 1)`.
 
 [source,ruby]
 ----
 # bad
-# Some documentation about Person
+x = Math.sin y
+# good
+x = Math.sin(y)
 
-# frozen_string_literal: true
+# bad
+array.delete e
+# good
+array.delete(e)
+
+# bad
+temperance = Person.new 'Temperance', 30
+# good
+temperance = Person.new('Temperance', 30)
+----
+
+==== Method Calls with No Arguments [[method-invocation-parens-no-args]]
+
+Always omit parentheses for method calls with no arguments.
+
+[source,ruby]
+----
+# bad
+Kernel.exit!()
+2.even?()
+fork()
+'test'.upcase()
+
+# good
+Kernel.exit!
+2.even?
+fork
+'test'.upcase
+----
+
+==== Methods That are Part of an Internal DSL [[method-invocation-parens-internal-dsl]]
+
+Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
+
+[source,ruby]
+----
+# bad
+validates(:name, presence: true)
+# good
+validates :name, presence: true
+----
+
+==== Methods That Have "keyword" Status in Ruby [[method-invocation-parens-keyword]]
+
+Always omit parentheses for methods that have "keyword" status in Ruby.
+
+[source,ruby]
+----
 class Person
-end
+  # bad
+  attr_reader(:name, :age)
+  # good
+  attr_reader :name, :age
 
-# good
-# frozen_string_literal: true
-
-# Some documentation about Person
-class Person
+  # body omitted
 end
 ----
 
-=== Below Shebang [[below-shebang]]
+==== Non-declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]]
 
-Place magic comments below shebangs when they are present in a file.
+Can omit parentheses for methods that have "keyword" status in Ruby, but are not declarative:
+
+[source,Ruby]
+----
+# good
+puts(temperance.age)
+system('ls')
+# also good
+puts temperance.age
+system 'ls'
+----
+
+=== Optional Arguments [[optional-arguments]]
+
+Define optional arguments at the end of the list of arguments.
+Ruby has some unexpected results when calling methods that have optional arguments at the front of the list.
 
 [source,ruby]
 ----
 # bad
-# frozen_string_literal: true
-#!/usr/bin/env ruby
+def some_method(a = 1, b = 2, c, d)
+  puts "#{a}, #{b}, #{c}, #{d}"
+end
 
-App.parse(ARGV)
-
-# good
-#!/usr/bin/env ruby
-# frozen_string_literal: true
-
-App.parse(ARGV)
-----
-
-=== One Magic Comment per Line [[one-magic-comment-per-line]]
-
-Use one magic comment per line if you need multiple.
-
-[source,ruby]
-----
-# bad
-# -*- frozen_string_literal: true; encoding: ascii-8bit -*-
+some_method('w', 'x') # => '1, 2, w, x'
+some_method('w', 'x', 'y') # => 'w, 2, x, y'
+some_method('w', 'x', 'y', 'z') # => 'w, x, y, z'
 
 # good
-# frozen_string_literal: true
-# encoding: ascii-8bit
+def some_method(c, d, a = 1, b = 2)
+  puts "#{a}, #{b}, #{c}, #{d}"
+end
+
+some_method('w', 'x') # => '1, 2, w, x'
+some_method('w', 'x', 'y') # => 'y, 2, w, x'
+some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
 ----
 
-=== Separate Magic Comments from Code [[separate-magic-comments-from-code]]
+=== Boolean Keyword Arguments [[boolean-keyword-arguments]]
 
-Separate magic comments from code and documentation with a blank line.
+Use keyword arguments when passing boolean argument to a method.
 
-[source,ruby]
+[source,Ruby]
 ----
 # bad
-# frozen_string_literal: true
-# Some documentation for Person
-class Person
-  # Some code
+def some_method(bar = false)
+  puts bar
+end
+
+# bad - common hack before keyword args were introduced
+def some_method(options = {})
+  bar = options.fetch(:bar, false)
+  puts bar
 end
 
 # good
-# frozen_string_literal: true
+def some_method(bar: false)
+  puts bar
+end
 
-# Some documentation for Person
-class Person
-  # Some code
+some_method            # => false
+some_method(bar: true) # => true
+----
+
+=== Keyword Arguments vs Optional Arguments [[keyword-arguments-vs-optional-arguments]]
+
+Prefer keyword arguments over optional arguments.
+
+[source,Ruby]
+----
+# bad
+def some_method(a, b = 5, c = 1)
+  # body omitted
+end
+
+# good
+def some_method(a, b: 5, c: 1)
+  # body omitted
+end
+----
+
+=== Keyword Arguments vs Option Hashes [[keyword-arguments-vs-option-hashes]]
+
+Use keyword arguments instead of option hashes.
+
+[source,Ruby]
+----
+# bad
+def some_method(options = {})
+  bar = options.fetch(:bar, false)
+  puts bar
+end
+
+# good
+def some_method(bar: false)
+  puts bar
 end
 ----
 
@@ -3103,6 +2854,254 @@ end
 # good
 def initialize
   @x = 1
+end
+----
+
+== Comments
+
+[quote]
+____
+Good code is its own best documentation.
+As you're about to add a comment, ask yourself, "How can I improve the code so that this comment isn't needed?".
+Improve the code and then document it to make it even clearer.
+
+-- Steve McConnell
+____
+
+=== No Comments [[no-comments]]
+
+Write self-documenting code and ignore the rest of this section. Seriously!
+
+=== Rationale Comments [[rationale-comments]]
+
+If the _how_ can be made self-documenting, but not the _why_ (e.g. the code works around non-obvious library behavior, or implements an algorithm from an academic paper), add a comment explaining the rationale behind the code.
+
+[source,ruby]
+----
+# bad
+
+x = BuggyClass.something.dup
+
+def compute_dependency_graph
+  ...30 lines of recursive graph merging...
+end
+
+# good
+
+# BuggyClass returns an internal object, so we have to dup it to modify it.
+x = BuggyClass.something.dup
+
+# This is algorithm 6.4(a) from Worf & Yar's _Amazing Graph Algorithms_ (2243).
+def compute_dependency_graph
+  ...30 lines of recursive graph merging...
+end
+----
+
+=== English Comments [[english-comments]]
+
+Write comments in English.
+
+=== Hash Space [[hash-space]]
+
+Use one space between the leading `#` character of the comment and the text of the comment.
+
+=== English Syntax [[english-syntax]]
+
+Comments longer than a word are capitalized and use punctuation.
+Use https://en.wikipedia.org/wiki/Sentence_spacing[one space] after periods.
+
+=== No Superfluous Comments [[no-superfluous-comments]]
+
+Avoid superfluous comments.
+
+[source,ruby]
+----
+# bad
+counter += 1 # Increments counter by one.
+----
+
+=== Comment Upkeep [[comment-upkeep]]
+
+Keep existing comments up-to-date.
+An outdated comment is worse than no comment at all.
+
+=== Refactor, Don't Comment [[refactor-dont-comment]]
+
+[quote]
+____
+Good code is like a good joke: it needs no explanation.
+
+-- old programmers maxim, through http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[Russ Olsen]
+____
+
+Avoid writing comments to explain bad code.
+Refactor the code to make it self-explanatory.
+("Do or do not - there is no try." Yoda)
+
+== Comment Annotations
+
+=== Annotations Placement [[annotate-above]]
+
+Annotations should usually be written on the line immediately above the relevant code.
+
+[source,ruby]
+----
+# bad
+def bar
+  baz(:quux) # FIXME: This has crashed occasionally since v3.2.1.
+end
+
+# good
+def bar
+  # FIXME: This has crashed occasionally since v3.2.1.
+  baz(:quux)
+end
+----
+
+=== Annotations Keyword Format [[annotate-keywords]]
+
+The annotation keyword is followed by a colon and a space, then a note describing the problem.
+
+[source,ruby]
+----
+# bad
+def bar
+  # FIXME This has crashed occasionally since v3.2.1.
+  baz(:quux)
+end
+
+# good
+def bar
+  # FIXME: This has crashed occasionally since v3.2.1.
+  baz(:quux)
+end
+----
+
+=== Multi-line Annotations Indentation [[indent-annotations]]
+
+If multiple lines are required to describe the problem, subsequent lines should be indented three spaces after the `#` (one general plus two for indentation purpose).
+
+[source,ruby]
+----
+def bar
+  # FIXME: This has crashed occasionally since v3.2.1. It may
+  #   be related to the BarBazUtil upgrade.
+  baz(:quux)
+end
+----
+
+=== Inline Annotations [[rare-eol-annotations]]
+
+In cases where the problem is so obvious that any documentation would be redundant, annotations may be left at the end of the offending line with no note.
+This usage should be the exception and not the rule.
+
+[source,ruby]
+----
+def bar
+  sleep 100 # OPTIMIZE
+end
+----
+
+=== `TODO` [[todo]]
+
+Use `TODO` to note missing features or functionality that should be added at a later date.
+
+=== `FIXME` [[fixme]]
+
+Use `FIXME` to note broken code that needs to be fixed.
+
+=== `OPTIMIZE` [[optimize]]
+
+Use `OPTIMIZE` to note slow or inefficient code that may cause performance problems.
+
+=== `HACK` [[hack]]
+
+Use `HACK` to note code smells where questionable coding practices were used and should be refactored away.
+
+=== `REVIEW` [[review]]
+
+Use `REVIEW` to note anything that should be looked at to confirm it is working as intended.
+For example: `REVIEW: Are we sure this is how the client does X currently?`
+
+=== Document Annotations [[document-annotations]]
+
+Use other custom annotation keywords if it feels appropriate, but be sure to document them in your project's `README` or similar.
+
+== Magic Comments
+
+=== Magic Comments First [[magic-comments-first]]
+
+Place magic comments above all code and documentation in a file (except shebangs, which are discussed next).
+
+[source,ruby]
+----
+# bad
+# Some documentation about Person
+
+# frozen_string_literal: true
+class Person
+end
+
+# good
+# frozen_string_literal: true
+
+# Some documentation about Person
+class Person
+end
+----
+
+=== Below Shebang [[below-shebang]]
+
+Place magic comments below shebangs when they are present in a file.
+
+[source,ruby]
+----
+# bad
+# frozen_string_literal: true
+#!/usr/bin/env ruby
+
+App.parse(ARGV)
+
+# good
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+App.parse(ARGV)
+----
+
+=== One Magic Comment per Line [[one-magic-comment-per-line]]
+
+Use one magic comment per line if you need multiple.
+
+[source,ruby]
+----
+# bad
+# -*- frozen_string_literal: true; encoding: ascii-8bit -*-
+
+# good
+# frozen_string_literal: true
+# encoding: ascii-8bit
+----
+
+=== Separate Magic Comments from Code [[separate-magic-comments-from-code]]
+
+Separate magic comments from code and documentation with a blank line.
+
+[source,ruby]
+----
+# bad
+# frozen_string_literal: true
+# Some documentation for Person
+class Person
+  # Some code
+end
+
+# good
+# frozen_string_literal: true
+
+# Some documentation for Person
+class Person
+  # Some code
 end
 ----
 
