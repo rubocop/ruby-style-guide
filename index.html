@@ -471,8 +471,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#consistent-multi-line-chains">Consistent Multi-line Chains</a></li>
 <li><a href="#no-double-indent">No Double Indent</a></li>
 <li><a href="#align-multiline-arrays">Align Multi-line Arrays</a></li>
-<li><a href="#underscores-in-numerics">Underscores in Numerics</a></li>
-<li><a href="#numeric-literal-prefixes">Numeric Literal Prefixes</a></li>
 </ul>
 </li>
 <li><a href="#syntax">Syntax</a>
@@ -683,6 +681,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#numbers">Numbers</a>
 <ul class="sectlevel2">
+<li><a href="#underscores-in-numerics">Underscores in Numerics</a></li>
+<li><a href="#numeric-literal-prefixes">Numeric Literal Prefixes</a></li>
 <li><a href="#integer-type-checking">Integer Type Checking</a></li>
 <li><a href="#random-numbers">Random Numbers</a></li>
 </ul>
@@ -696,7 +696,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-to-s">No <code>to_s</code></a></li>
 <li><a href="#concat-strings">String Concatenation</a></li>
 <li><a href="#dont-abuse-gsub">Don&#8217;t Abuse <code>gsub</code></a></li>
-<li><a href="#heredocs">Heredocs</a></li>
+</ul>
+</li>
+<li><a href="#heredocs">Heredocs</a>
+<ul class="sectlevel2">
 <li><a href="#squiggly-heredocs">Squiggly Heredocs</a></li>
 <li><a href="#heredoc-delimiters">Heredoc Delimiters</a></li>
 <li><a href="#heredoc-method-calls">Heredoc Method Calls</a></li>
@@ -1630,46 +1633,6 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 <span class="n">menu_item</span> <span class="o">=</span>
   <span class="sx">%w[Spam Spam Spam Spam Spam Spam Spam Spam
      Baked beans Spam Spam Spam Spam Spam]</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="underscores-in-numerics"><a class="anchor" href="#underscores-in-numerics"></a><a class="link" href="#underscores-in-numerics">Underscores in Numerics</a></h3>
-<div class="paragraph">
-<p>Add underscores to large numeric literals to improve their readability.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - how many 0s are there?</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">1000000</span>
-
-<span class="c1"># good - much easier to parse for the human brain</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">1_000_000</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="numeric-literal-prefixes"><a class="anchor" href="#numeric-literal-prefixes"></a><a class="link" href="#numeric-literal-prefixes">Numeric Literal Prefixes</a></h3>
-<div class="paragraph">
-<p>Prefer lowercase letters for numeric literal prefixes.
-<code>0o</code> for octal, <code>0x</code> for hexadecimal and <code>0b</code> for binary.
-Do not use <code>0d</code> prefix for decimal literals.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mo">01234</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">O1234</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">X12AB</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">B10101</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">D1234</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="n">d1234</span>
-
-<span class="c1"># good - easier to separate digits from the prefix</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o1234</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mh">0x12AB</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mb">0b10101</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">1234</span></code></pre>
 </div>
 </div>
 </div>
@@ -5233,6 +5196,46 @@ This guards you from calling <code>[]</code> on <code>nil</code>.</p>
 <h2 id="numbers"><a class="anchor" href="#numbers"></a><a class="link" href="#numbers">Numbers</a></h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="underscores-in-numerics"><a class="anchor" href="#underscores-in-numerics"></a><a class="link" href="#underscores-in-numerics">Underscores in Numerics</a></h3>
+<div class="paragraph">
+<p>Add underscores to large numeric literals to improve their readability.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - how many 0s are there?</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">1000000</span>
+
+<span class="c1"># good - much easier to parse for the human brain</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">1_000_000</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="numeric-literal-prefixes"><a class="anchor" href="#numeric-literal-prefixes"></a><a class="link" href="#numeric-literal-prefixes">Numeric Literal Prefixes</a></h3>
+<div class="paragraph">
+<p>Prefer lowercase letters for numeric literal prefixes.
+<code>0o</code> for octal, <code>0x</code> for hexadecimal and <code>0b</code> for binary.
+Do not use <code>0d</code> prefix for decimal literals.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mo">01234</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">O1234</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">X12AB</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">B10101</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="no">D1234</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="n">d1234</span>
+
+<span class="c1"># good - easier to separate digits from the prefix</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="n">o1234</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mh">0x12AB</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mb">0b10101</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">1234</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="integer-type-checking"><a class="anchor" href="#integer-type-checking"></a><a class="link" href="#integer-type-checking">Integer Type Checking</a></h3>
 <div class="paragraph">
 <p>Use <code>Integer</code> to check type of an integer number.
@@ -5461,24 +5464,11 @@ Concatenation mutates the string instance in-place and is always faster than <co
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="heredocs"><a class="anchor" href="#heredocs"></a><a class="link" href="#heredocs">Heredocs</a></h3>
-<div class="paragraph">
-<p>When using heredocs for multi-line strings keep in mind the fact that they preserve leading whitespace.
-It&#8217;s a good practice to employ some margin based on which to trim the excessive whitespace.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="n">code</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="no">END</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^\s+\|/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="sh">
-  |def test
-  |  some_method
-  |  other_method
-  |end
-</span><span class="no">END</span>
-<span class="c1"># =&gt; "def test\n  some_method\n  other_method\nend\n"</span></code></pre>
 </div>
 </div>
-</div>
+<div class="sect1">
+<h2 id="heredocs"><a class="anchor" href="#heredocs"></a><a class="link" href="#heredocs">Heredocs</a></h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="squiggly-heredocs"><a class="anchor" href="#squiggly-heredocs"></a><a class="link" href="#squiggly-heredocs">Squiggly Heredocs</a></h3>
 <div class="paragraph">
@@ -6354,7 +6344,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-11 10:21:08 UTC
+Last updated 2019-06-11 11:10:03 UTC
 </div>
 </div>
 <style>
