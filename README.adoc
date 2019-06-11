@@ -109,6 +109,15 @@ def some_method
 end
 ----
 
+[#80-character-limits]
+=== Maximum Line Length
+
+Limit lines to 80 characters.
+
+=== No Trailing Whitespace [[no-trailing-whitespace]]
+
+Avoid trailing whitespace.
+
 === Line Endings [[crlf]]
 
 Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.]
@@ -122,6 +131,10 @@ If you're using Git you might want to add the following configuration setting to
 $ git config --global core.autocrlf true
 ----
 ====
+
+=== Newline EOF [[newline-eof]]
+
+End each file with a newline.
 
 === No Semicolon [[no-semicolon]]
 
@@ -708,19 +721,6 @@ num = 1234
 === API Documentation [[api-documentation]]
 
 Use https://yardoc.org/[YARD] and its conventions for API documentation.
-
-[#80-character-limits]
-=== 80 Character Limits
-
-Limit lines to 80 characters.
-
-=== No Trailing Whitespace [[no-trailing-whitespace]]
-
-Avoid trailing whitespace.
-
-=== Newline EOF [[newline-eof]]
-
-End each file with a newline.
 
 === No Block Comments [[no-block-comments]]
 
