@@ -671,6 +671,47 @@ def send_mail(source)
 end
 ----
 
+=== No Braces Options Hash [[no-braces-opts-hash]]
+
+Omit the outer braces around an implicit options hash.
+
+[source,ruby]
+----
+# bad
+user.set({ name: 'John', age: 45, permissions: { read: true } })
+
+# good
+user.set(name: 'John', age: 45, permissions: { read: true })
+----
+
+=== No DSL Decorating [[no-dsl-decorating]]
+
+Omit both the outer braces and parentheses for methods that are part of an internal DSL.
+
+[source,ruby]
+----
+class Person < ActiveRecord::Base
+  # bad
+  validates(:name, { presence: true, length: { within: 1..10 } })
+
+  # good
+  validates :name, presence: true, length: { within: 1..10 }
+end
+----
+
+=== Parenthesis no Spaces [[parens-no-spaces]]
+
+Do not put a space between a method name and the opening parenthesis.
+
+[source,ruby]
+----
+# bad
+f (3 + 2) + 1
+
+# good
+f(3 + 2) + 1
+----
+
 === Align Multi-line Arrays [[align-multiline-arrays]]
 
 Align the elements of array literals spanning multiple lines.
@@ -936,6 +977,39 @@ class Array
 end
 ----
 
+=== Underscore Unused Vars [[underscore-unused-vars]]
+
+Prefix with `+_+` unused block parameters and local variables.
+It's also acceptable to use just `+_+` (although it's a bit less descriptive).
+This convention is recognized by the Ruby interpreter and tools like RuboCop and will suppress their unused variable warnings.
+
+[source,ruby]
+----
+# bad
+result = hash.map { |k, v| v + 1 }
+
+def something(x)
+  unused_var, used_var = something_else(x)
+  # some code
+end
+
+# good
+result = hash.map { |_k, v| v + 1 }
+
+def something(x)
+  _unused_var, used_var = something_else(x)
+  # some code
+end
+
+# good
+result = hash.map { |_, v| v + 1 }
+
+def something(x)
+  _, used_var = something_else(x)
+  # some code
+end
+----
+
 === `other` arg [[other-arg]]
 
 When defining binary operators and operator-alike methods, name the parameter `other` for operators with "symmetrical" semantics of operands.
@@ -978,7 +1052,7 @@ def *(num)
 end
 ----
 
-== Syntax
+== Methods
 
 === Double Colons [[double-colons]]
 
@@ -1215,82 +1289,7 @@ def some_method(bar: false)
 end
 ----
 
-=== Parallel Assignment [[parallel-assignment]]
-
-Avoid the use of parallel assignment for defining variables.
-Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
-Parallel assignment is less readable than separate assignment.
-
-[source,ruby]
-----
-# bad
-a, b, c, d = 'foo', 'bar', 'baz', 'foobar'
-
-# good
-a = 'foo'
-b = 'bar'
-c = 'baz'
-d = 'foobar'
-
-# good - swapping variable assignment
-# Swapping variable assignment is a special case because it will allow you to
-# swap the values that are assigned to each variable.
-a = 'foo'
-b = 'bar'
-
-a, b = b, a
-puts a # => 'bar'
-puts b # => 'foo'
-
-# good - method return
-def multi_return
-  [1, 2]
-end
-
-first, second = multi_return
-
-# good - use with splat
-first, *list = [1, 2, 3, 4] # first => 1, list => [2, 3, 4]
-
-hello_array = *'Hello' # => ["Hello"]
-
-a = *(1..3) # => [1, 2, 3]
-----
-
-=== Trailing Underscore Variables [[trailing-underscore-variables]]
-
-Avoid the use of unnecessary trailing underscore variables during
-parallel assignment. Named underscore variables are to be preferred over
-underscore variables because of the context that they provide.
-Trailing underscore variables are necessary when there is a splat variable
-defined on the left side of the assignment, and the splat variable is
-not an underscore.
-^<<trailing-underscore-variables,[link]>>^
-
-[source,ruby]
-----
-# bad
-foo = 'one,two,three,four,five'
-# Unnecessary assignment that does not provide useful information
-first, second, _ = foo.split(',')
-first, _, _ = foo.split(',')
-first, *_ = foo.split(',')
-
-# good
-foo = 'one,two,three,four,five'
-# The underscores are needed to show that you want all elements
-# except for the last number of underscore elements
-*beginning, _ = foo.split(',')
-*beginning, something, _ = foo.split(',')
-
-a, = foo.split(',')
-a, b, = foo.split(',')
-# Unnecessary assignment to an unused variable, but the assignment
-# provides us with useful information.
-first, _second = foo.split(',')
-first, _second, = foo.split(',')
-first, *_ending = foo.split(',')
-----
+== Flow of Control
 
 === No `for` Loops [[no-for-loops]]
 
@@ -1705,105 +1704,6 @@ loop do
 end
 ----
 
-=== No Braces Options Hash [[no-braces-opts-hash]]
-
-Omit the outer braces around an implicit options hash.
-
-[source,ruby]
-----
-# bad
-user.set({ name: 'John', age: 45, permissions: { read: true } })
-
-# good
-user.set(name: 'John', age: 45, permissions: { read: true })
-----
-
-=== No DSL Decorating [[no-dsl-decorating]]
-
-Omit both the outer braces and parentheses for methods that are part of an internal DSL.
-
-[source,ruby]
-----
-class Person < ActiveRecord::Base
-  # bad
-  validates(:name, { presence: true, length: { within: 1..10 } })
-
-  # good
-  validates :name, presence: true, length: { within: 1..10 }
-end
-----
-
-=== Single-action Blocks [[single-action-blocks]]
-
-Use the Proc invocation shorthand when the invoked method is the only operation of a block.
-
-[source,ruby]
-----
-# bad
-names.map { |name| name.upcase }
-
-# good
-names.map(&:upcase)
-----
-
-=== Single-line Blocks [[single-line-blocks]]
-
-Prefer `{...}` over `do...end` for single-line blocks.
-Avoid using `{...}` for multi-line blocks (multi-line chaining is always ugly).
-Always use `do...end` for "control flow" and "method definitions" (e.g. in Rakefiles and certain DSLs).
-Avoid `do...end` when chaining.
-
-[source,ruby]
-----
-names = %w[Bozhidar Filipp Sarah]
-
-# bad
-names.each do |name|
-  puts name
-end
-
-# good
-names.each { |name| puts name }
-
-# bad
-names.select do |name|
-  name.start_with?('S')
-end.map { |name| name.upcase }
-
-# good
-names.select { |name| name.start_with?('S') }.map(&:upcase)
-----
-
-Some will argue that multi-line chaining would look OK with the use of {...}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?
-
-=== Block Argument [[block-argument]]
-
-Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
-Beware of the performance impact, though, as the block gets converted to a Proc.
-
-[source,ruby]
-----
-require 'tempfile'
-
-# bad
-def with_tmp_dir
-  Dir.mktmpdir do |tmp_dir|
-    Dir.chdir(tmp_dir) { |dir| yield dir }  # block just passes arguments
-  end
-end
-
-# good
-def with_tmp_dir(&block)
-  Dir.mktmpdir do |tmp_dir|
-    Dir.chdir(tmp_dir, &block)
-  end
-end
-
-with_tmp_dir do |dir|
-  puts "dir is accessible as a parameter and pwd is set: #{dir}"
-end
-----
-
 === No Explicit `return` [[no-explicit-return]]
 
 Avoid `return` where not required for flow of control.
@@ -1903,6 +1803,149 @@ if v
   do_something(v)
   # some code
 end
+----
+
+=== No `BEGIN` Blocks [[no-BEGIN-blocks]]
+
+Avoid the use of `BEGIN` blocks.
+
+=== No `END` Blocks [[no-END-blocks]]
+
+Do not use `END` blocks. Use `Kernel#at_exit` instead.
+
+[source,ruby]
+----
+# bad
+END { puts 'Goodbye!' }
+
+# good
+at_exit { puts 'Goodbye!' }
+----
+
+=== No Nested Conditionals [[no-nested-conditionals]]
+
+Avoid use of nested conditionals for flow of control.
+
+Prefer a guard clause when you can assert invalid data.
+A guard clause is a conditional statement at the top of a function that bails out as soon as it can.
+
+[source,ruby]
+----
+# bad
+def compute_thing(thing)
+  if thing[:foo]
+    update_with_bar(thing[:foo])
+    if thing[:foo][:bar]
+      partial_compute(thing)
+    else
+      re_compute(thing)
+    end
+  end
+end
+
+# good
+def compute_thing(thing)
+  return unless thing[:foo]
+  update_with_bar(thing[:foo])
+  return re_compute(thing) unless thing[:foo][:bar]
+  partial_compute(thing)
+end
+----
+
+Prefer `next` in loops instead of conditional blocks.
+
+[source,ruby]
+----
+# bad
+[0, 1, 2, 3].each do |item|
+  if item > 1
+    puts item
+  end
+end
+
+# good
+[0, 1, 2, 3].each do |item|
+  next unless item > 1
+  puts item
+end
+----
+
+== Assignment & Comparison
+
+=== Parallel Assignment [[parallel-assignment]]
+
+Avoid the use of parallel assignment for defining variables.
+Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
+Parallel assignment is less readable than separate assignment.
+
+[source,ruby]
+----
+# bad
+a, b, c, d = 'foo', 'bar', 'baz', 'foobar'
+
+# good
+a = 'foo'
+b = 'bar'
+c = 'baz'
+d = 'foobar'
+
+# good - swapping variable assignment
+# Swapping variable assignment is a special case because it will allow you to
+# swap the values that are assigned to each variable.
+a = 'foo'
+b = 'bar'
+
+a, b = b, a
+puts a # => 'bar'
+puts b # => 'foo'
+
+# good - method return
+def multi_return
+  [1, 2]
+end
+
+first, second = multi_return
+
+# good - use with splat
+first, *list = [1, 2, 3, 4] # first => 1, list => [2, 3, 4]
+
+hello_array = *'Hello' # => ["Hello"]
+
+a = *(1..3) # => [1, 2, 3]
+----
+
+=== Trailing Underscore Variables [[trailing-underscore-variables]]
+
+Avoid the use of unnecessary trailing underscore variables during
+parallel assignment. Named underscore variables are to be preferred over
+underscore variables because of the context that they provide.
+Trailing underscore variables are necessary when there is a splat variable
+defined on the left side of the assignment, and the splat variable is
+not an underscore.
+
+[source,ruby]
+----
+# bad
+foo = 'one,two,three,four,five'
+# Unnecessary assignment that does not provide useful information
+first, second, _ = foo.split(',')
+first, _, _ = foo.split(',')
+first, *_ = foo.split(',')
+
+# good
+foo = 'one,two,three,four,five'
+# The underscores are needed to show that you want all elements
+# except for the last number of underscore elements
+*beginning, _ = foo.split(',')
+*beginning, something, _ = foo.split(',')
+
+a, = foo.split(',')
+a, b, = foo.split(',')
+# Unnecessary assignment to an unused variable, but the assignment
+# provides us with useful information.
+first, _second = foo.split(',')
+first, _second, = foo.split(',')
+first, *_ending = foo.split(',')
 ----
 
 === Self-assignment [[self-assignment]]
@@ -2016,38 +2059,79 @@ The stricter comparison semantics provided by `eql?` are rarely needed in practi
 1.0.eql? x # eql? makes sense here if want to differentiate between Integer and Float 1
 ----
 
-=== No Cryptic Perlisms [[no-cryptic-perlisms]]
+== Blocks, Procs & Lambdas
 
-Avoid using Perl-style special variables (like `$:`, `$;`, etc).
-They are quite cryptic and their use in anything but one-liner scripts is discouraged.
-Use the human-friendly aliases provided by the `English` library.
+=== Single-action Blocks [[single-action-blocks]]
 
-[source,ruby]
-----
-# bad
-$:.unshift File.dirname(__FILE__)
-
-# good
-require 'English'
-$LOAD_PATH.unshift File.dirname(__FILE__)
-----
-
-=== Parenthesis no Spaces [[parens-no-spaces]]
-
-Do not put a space between a method name and the opening parenthesis.
+Use the Proc invocation shorthand when the invoked method is the only operation of a block.
 
 [source,ruby]
 ----
 # bad
-f (3 + 2) + 1
+names.map { |name| name.upcase }
 
 # good
-f(3 + 2) + 1
+names.map(&:upcase)
 ----
 
-=== Always Warn at Runtime [[always-warn-at-runtime]]
+=== Single-line Blocks [[single-line-blocks]]
 
-Always run the Ruby interpreter with the `-w` option so it will warn you if you forget either of the rules above!
+Prefer `{...}` over `do...end` for single-line blocks.
+Avoid using `{...}` for multi-line blocks (multi-line chaining is always ugly).
+Always use `do...end` for "control flow" and "method definitions" (e.g. in Rakefiles and certain DSLs).
+Avoid `do...end` when chaining.
+
+[source,ruby]
+----
+names = %w[Bozhidar Filipp Sarah]
+
+# bad
+names.each do |name|
+  puts name
+end
+
+# good
+names.each { |name| puts name }
+
+# bad
+names.select do |name|
+  name.start_with?('S')
+end.map { |name| name.upcase }
+
+# good
+names.select { |name| name.start_with?('S') }.map(&:upcase)
+----
+
+Some will argue that multi-line chaining would look OK with the use of {...}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?
+
+=== Block Argument [[block-argument]]
+
+Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
+Beware of the performance impact, though, as the block gets converted to a Proc.
+
+[source,ruby]
+----
+require 'tempfile'
+
+# bad
+def with_tmp_dir
+  Dir.mktmpdir do |tmp_dir|
+    Dir.chdir(tmp_dir) { |dir| yield dir }  # block just passes arguments
+  end
+end
+
+# good
+def with_tmp_dir(&block)
+  Dir.mktmpdir do |tmp_dir|
+    Dir.chdir(tmp_dir, &block)
+  end
+end
+
+with_tmp_dir do |dir|
+  puts "dir is accessible as a parameter and pwd is set: #{dir}"
+end
+----
+
 
 === No Nested Methods [[no-nested-methods]]
 
@@ -2167,309 +2251,6 @@ l = ->(v) { puts v }
 l.call(1)
 ----
 
-=== Underscore Unused Vars [[underscore-unused-vars]]
-
-Prefix with `+_+` unused block parameters and local variables.
-It's also acceptable to use just `+_+` (although it's a bit less descriptive).
-This convention is recognized by the Ruby interpreter and tools like RuboCop and will suppress their unused variable warnings.
-
-[source,ruby]
-----
-# bad
-result = hash.map { |k, v| v + 1 }
-
-def something(x)
-  unused_var, used_var = something_else(x)
-  # some code
-end
-
-# good
-result = hash.map { |_k, v| v + 1 }
-
-def something(x)
-  _unused_var, used_var = something_else(x)
-  # some code
-end
-
-# good
-result = hash.map { |_, v| v + 1 }
-
-def something(x)
-  _, used_var = something_else(x)
-  # some code
-end
-----
-
-=== Global `stdout` [[global-stdout]]
-
-Use `$stdout/$stderr/$stdin` instead of `STDOUT/STDERR/STDIN`.
-`STDOUT/STDERR/STDIN` are constants, and while you can actually reassign (possibly to redirect some stream) constants in Ruby, you'll get an interpreter warning if you do so.
-
-=== Warn [[warn]]
-
-Use `warn` instead of `$stderr.puts`.
-Apart from being more concise and clear, `warn` allows you to suppress warnings if you need to (by setting the warn level to 0 via `-W0`).
-
-=== `sprintf` [[sprintf]]
-
-Favor the use of `sprintf` and its alias `format` over the fairly cryptic `String#%` method.
-
-[source,ruby]
-----
-# bad
-'%d %d' % [20, 10]
-# => '20 10'
-
-# good
-sprintf('%d %d', 20, 10)
-# => '20 10'
-
-# good
-sprintf('%<first>d %<second>d', first: 20, second: 10)
-# => '20 10'
-
-format('%d %d', 20, 10)
-# => '20 10'
-
-# good
-format('%<first>d %<second>d', first: 20, second: 10)
-# => '20 10'
-----
-
-=== Named Format Tokens [[named-format-tokens]]
-
-When using named format string tokens, favor `%<name>s` over `%{name}` because it encodes information about the type of the value.
-
-[source,ruby]
-----
-# bad
-format('Hello, %{name}', name: 'John')
-
-# good
-format('Hello, %<name>s', name: 'John')
-----
-
-=== `Array#join` [[array-join]]
-
-Favor the use of `Array#join` over the fairly cryptic `Array#*` with a string argument.
-
-[source,ruby]
-----
-# bad
-%w[one two three] * ', '
-# => 'one, two, three'
-
-# good
-%w[one two three].join(', ')
-# => 'one, two, three'
-----
-
-=== Array Coercion [[array-coercion]]
-
-Use `Array()` instead of explicit `Array` check or `[*var]`, when dealing with a variable you want to treat as an Array, but you're not certain it's an array.
-
-[source,ruby]
-----
-# bad
-paths = [paths] unless paths.is_a? Array
-paths.each { |path| do_something(path) }
-
-# bad (always creates a new Array instance)
-[*paths].each { |path| do_something(path) }
-
-# good (and a bit more readable)
-Array(paths).each { |path| do_something(path) }
-----
-
-=== Ranges or `between` [[ranges-or-between]]
-
-Use ranges or `Comparable#between?` instead of complex comparison logic when possible.
-
-[source,ruby]
-----
-# bad
-do_something if x >= 1000 && x <= 2000
-
-# good
-do_something if (1000..2000).include?(x)
-
-# good
-do_something if x.between?(1000, 2000)
-----
-
-=== Predicate Methods [[predicate-methods]]
-
-Favor the use of predicate methods to explicit comparisons with `==`.
-Numeric comparisons are OK.
-
-[source,ruby]
-----
-# bad
-if x % 2 == 0
-end
-
-if x % 2 == 1
-end
-
-if x == nil
-end
-
-# good
-if x.even?
-end
-
-if x.odd?
-end
-
-if x.nil?
-end
-
-if x.zero?
-end
-
-if x == 0
-end
-----
-
-=== No non-`nil` Checks [[no-non-nil-checks]]
-
-Don't do explicit non-`nil` checks unless you're dealing with boolean values.
-
-[source,ruby]
-----
-# bad
-do_something if !something.nil?
-do_something if something != nil
-
-# good
-do_something if something
-
-# good - dealing with a boolean
-def value_set?
-  !@some_boolean.nil?
-end
-----
-
-=== No `BEGIN` Blocks [[no-BEGIN-blocks]]
-
-Avoid the use of `BEGIN` blocks.
-
-=== No `END` Blocks [[no-END-blocks]]
-
-Do not use `END` blocks. Use `Kernel#at_exit` instead.
-
-[source,ruby]
-----
-# bad
-END { puts 'Goodbye!' }
-
-# good
-at_exit { puts 'Goodbye!' }
-----
-
-=== No Flip-flops [[no-flip-flops]]
-
-Avoid the use of flip-flops.
-
-NOTE: They are deprecated as of Ruby 2.6.
-
-=== No Nested Conditionals [[no-nested-conditionals]]
-
-Avoid use of nested conditionals for flow of control.
-
-Prefer a guard clause when you can assert invalid data.
-A guard clause is a conditional statement at the top of a function that bails out as soon as it can.
-
-[source,ruby]
-----
-# bad
-def compute_thing(thing)
-  if thing[:foo]
-    update_with_bar(thing[:foo])
-    if thing[:foo][:bar]
-      partial_compute(thing)
-    else
-      re_compute(thing)
-    end
-  end
-end
-
-# good
-def compute_thing(thing)
-  return unless thing[:foo]
-  update_with_bar(thing[:foo])
-  return re_compute(thing) unless thing[:foo][:bar]
-  partial_compute(thing)
-end
-----
-
-Prefer `next` in loops instead of conditional blocks.
-
-[source,ruby]
-----
-# bad
-[0, 1, 2, 3].each do |item|
-  if item > 1
-    puts item
-  end
-end
-
-# good
-[0, 1, 2, 3].each do |item|
-  next unless item > 1
-  puts item
-end
-----
-
-=== `map`/`find`/`select`/`reduce`/`size` [[map-find-select-reduce-size]]
-
-Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`, `reduce` over `inject` and `size` over `length`.
-This is not a hard requirement; if the use of the alias enhances readability, it's ok to use it.
-The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
-The reason the use of `select` is encouraged over `find_all` is that it goes together nicely with `reject` and its name is pretty self-explanatory.
-
-=== `count` vs `size` [[count-vs-size]]
-
-Don't use `count` as a substitute for `size`.
-For `Enumerable` objects other than `Array` it will iterate the entire collection in order to determine its size.
-
-[source,ruby]
-----
-# bad
-some_hash.count
-
-# good
-some_hash.size
-----
-
-=== `flat_map` [[flat-map]]
-
-Use `flat_map` instead of `map` + `flatten`.
-This does not apply for arrays with a depth greater than 2, i.e. if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
-`flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
-
-[source,ruby]
-----
-# bad
-all_songs = users.map(&:songs).flatten.uniq
-
-# good
-all_songs = users.flat_map(&:songs).uniq
-----
-
-=== `reverse_each` [[reverse-each]]
-
-Prefer `reverse_each` to `reverse.each` because some classes that `include Enumerable` will provide an efficient implementation.
-Even in the worst case where a class does not provide a specialized implementation, the general implementation inherited from `Enumerable` will be at least as efficient as using `reverse.each`.
-
-[source,ruby]
-----
-# bad
-array.reverse.each { ... }
-
-# good
-array.reverse_each { ... }
-----
 
 == Comments
 
@@ -3853,6 +3634,56 @@ def awesome_things(index = nil)
 end
 ----
 
+=== `map`/`find`/`select`/`reduce`/`size` [[map-find-select-reduce-size]]
+
+Prefer `map` over `collect`, `find` over `detect`, `select` over `find_all`, `reduce` over `inject` and `size` over `length`.
+This is not a hard requirement; if the use of the alias enhances readability, it's ok to use it.
+The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
+The reason the use of `select` is encouraged over `find_all` is that it goes together nicely with `reject` and its name is pretty self-explanatory.
+
+=== `count` vs `size` [[count-vs-size]]
+
+Don't use `count` as a substitute for `size`.
+For `Enumerable` objects other than `Array` it will iterate the entire collection in order to determine its size.
+
+[source,ruby]
+----
+# bad
+some_hash.count
+
+# good
+some_hash.size
+----
+
+=== `flat_map` [[flat-map]]
+
+Use `flat_map` instead of `map` + `flatten`.
+This does not apply for arrays with a depth greater than 2, i.e. if `users.first.songs == ['a', ['b','c']]`, then use `map + flatten` rather than `flat_map`.
+`flat_map` flattens the array by 1, whereas `flatten` flattens it all the way.
+
+[source,ruby]
+----
+# bad
+all_songs = users.map(&:songs).flatten.uniq
+
+# good
+all_songs = users.flat_map(&:songs).uniq
+----
+
+=== `reverse_each` [[reverse-each]]
+
+Prefer `reverse_each` to `reverse.each` because some classes that `include Enumerable` will provide an efficient implementation.
+Even in the worst case where a class does not provide a specialized implementation, the general implementation inherited from `Enumerable` will be at least as efficient as using `reverse.each`.
+
+[source,ruby]
+----
+# bad
+array.reverse.each { ... }
+
+# good
+array.reverse_each { ... }
+----
+
 == Numbers
 
 === Underscores in Numerics [[underscores-in-numerics]]
@@ -4084,6 +3915,46 @@ str.gsub('-', '_')
 url.sub('http://', 'https://')
 str.tr('-', '_')
 ----
+
+=== `sprintf` [[sprintf]]
+
+Favor the use of `sprintf` and its alias `format` over the fairly cryptic `String#%` method.
+
+[source,ruby]
+----
+# bad
+'%d %d' % [20, 10]
+# => '20 10'
+
+# good
+sprintf('%d %d', 20, 10)
+# => '20 10'
+
+# good
+sprintf('%<first>d %<second>d', first: 20, second: 10)
+# => '20 10'
+
+format('%d %d', 20, 10)
+# => '20 10'
+
+# good
+format('%<first>d %<second>d', first: 20, second: 10)
+# => '20 10'
+----
+
+=== Named Format Tokens [[named-format-tokens]]
+
+When using named format string tokens, favor `%<name>s` over `%{name}` because it encodes information about the type of the value.
+
+[source,ruby]
+----
+# bad
+format('Hello, %{name}', name: 'John')
+
+# good
+format('Hello, %<name>s', name: 'John')
+----
+
 
 == Heredocs
 
@@ -4623,6 +4494,139 @@ RD predated the rise of RDoc and YARD and was effectively obsoleted by them.foot
 ****
 
 == Misc
+
+=== No Flip-flops [[no-flip-flops]]
+
+Avoid the use of flip-flops.
+
+NOTE: They are deprecated as of Ruby 2.6.
+
+=== No non-`nil` Checks [[no-non-nil-checks]]
+
+Don't do explicit non-`nil` checks unless you're dealing with boolean values.
+
+[source,ruby]
+----
+# bad
+do_something if !something.nil?
+do_something if something != nil
+
+# good
+do_something if something
+
+# good - dealing with a boolean
+def value_set?
+  !@some_boolean.nil?
+end
+----
+
+=== Global `stdout` [[global-stdout]]
+
+Use `$stdout/$stderr/$stdin` instead of `STDOUT/STDERR/STDIN`.
+`STDOUT/STDERR/STDIN` are constants, and while you can actually reassign (possibly to redirect some stream) constants in Ruby, you'll get an interpreter warning if you do so.
+
+=== Warn [[warn]]
+
+Use `warn` instead of `$stderr.puts`.
+Apart from being more concise and clear, `warn` allows you to suppress warnings if you need to (by setting the warn level to 0 via `-W0`).
+
+=== `Array#join` [[array-join]]
+
+Favor the use of `Array#join` over the fairly cryptic `Array#*` with a string argument.
+
+[source,ruby]
+----
+# bad
+%w[one two three] * ', '
+# => 'one, two, three'
+
+# good
+%w[one two three].join(', ')
+# => 'one, two, three'
+----
+
+=== Array Coercion [[array-coercion]]
+
+Use `Array()` instead of explicit `Array` check or `[*var]`, when dealing with a variable you want to treat as an Array, but you're not certain it's an array.
+
+[source,ruby]
+----
+# bad
+paths = [paths] unless paths.is_a? Array
+paths.each { |path| do_something(path) }
+
+# bad (always creates a new Array instance)
+[*paths].each { |path| do_something(path) }
+
+# good (and a bit more readable)
+Array(paths).each { |path| do_something(path) }
+----
+
+=== Ranges or `between` [[ranges-or-between]]
+
+Use ranges or `Comparable#between?` instead of complex comparison logic when possible.
+
+[source,ruby]
+----
+# bad
+do_something if x >= 1000 && x <= 2000
+
+# good
+do_something if (1000..2000).include?(x)
+
+# good
+do_something if x.between?(1000, 2000)
+----
+
+=== Predicate Methods [[predicate-methods]]
+
+Favor the use of predicate methods to explicit comparisons with `==`.
+Numeric comparisons are OK.
+
+[source,ruby]
+----
+# bad
+if x % 2 == 0
+end
+
+if x % 2 == 1
+end
+
+if x == nil
+end
+
+# good
+if x.even?
+end
+
+if x.odd?
+end
+
+if x.nil?
+end
+
+if x.zero?
+end
+
+if x == 0
+end
+----
+
+=== No Cryptic Perlisms [[no-cryptic-perlisms]]
+
+Avoid using Perl-style special variables (like `$:`, `$;`, etc).
+They are quite cryptic and their use in anything but one-liner scripts is discouraged.
+Use the human-friendly aliases provided by the `English` library.
+
+[source,ruby]
+----
+# bad
+$:.unshift File.dirname(__FILE__)
+
+# good
+require 'English'
+$LOAD_PATH.unshift File.dirname(__FILE__)
+----
 
 === Always Warn [[always-warn]]
 
