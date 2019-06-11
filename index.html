@@ -470,10 +470,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-trailing-backslash">No Trailing Backslash</a></li>
 <li><a href="#consistent-multi-line-chains">Consistent Multi-line Chains</a></li>
 <li><a href="#no-double-indent">No Double Indent</a></li>
+<li><a href="#no-braces-opts-hash">No Braces Options Hash</a></li>
+<li><a href="#no-dsl-decorating">No DSL Decorating</a></li>
+<li><a href="#parens-no-spaces">Parenthesis no Spaces</a></li>
 <li><a href="#align-multiline-arrays">Align Multi-line Arrays</a></li>
 </ul>
 </li>
-<li><a href="#syntax">Syntax</a>
+<li><a href="#naming-conventions">Naming Conventions</a>
+<ul class="sectlevel2">
+<li><a href="#english-identifiers">English Identifiers</a></li>
+<li><a href="#snake-case-symbols-methods-vars">Snake Case Symbols Methods Vars</a></li>
+<li><a href="#snake-case-symbols-methods-vars-with-numbers">Snake Case Symbols Methods Vars with Numbers</a></li>
+<li><a href="#camelcase-classes">CamelCase Classes</a></li>
+<li><a href="#snake-case-files">Snake Case Files</a></li>
+<li><a href="#snake-case-dirs">Snake Case Directories</a></li>
+<li><a href="#one-class-per-file">One Class per File</a></li>
+<li><a href="#screaming-snake-case">Screaming Snake Case</a></li>
+<li><a href="#bool-methods-qmark">Boolean Methods Question Mark</a></li>
+<li><a href="#bool-methods-prefix">Boolean Methods Prefix</a></li>
+<li><a href="#dangerous-method-bang">Dangerous Method Bang</a></li>
+<li><a href="#safe-because-unsafe">Safe Because Unsafe</a></li>
+<li><a href="#underscore-unused-vars">Underscore Unused Vars</a></li>
+<li><a href="#other-arg"><code>other</code> arg</a></li>
+</ul>
+</li>
+<li><a href="#methods">Methods</a>
 <ul class="sectlevel2">
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
@@ -483,8 +504,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
 <li><a href="#keyword-arguments-vs-option-hashes">Keyword Arguments vs Option Hashes</a></li>
-<li><a href="#parallel-assignment">Parallel Assignment</a></li>
-<li><a href="#trailing-underscore-variables">Trailing Underscore Variables</a></li>
+</ul>
+</li>
+<li><a href="#flow-of-control">Flow of Control</a>
+<ul class="sectlevel2">
 <li><a href="#no-for-loops">No <code>for</code> Loops</a></li>
 <li><a href="#no-then">No <code>then</code></a></li>
 <li><a href="#same-line-condition">Same Line Condition</a></li>
@@ -509,65 +532,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#until-for-negatives"><code>until</code> for Negatives</a></li>
 <li><a href="#infinite-loop">Infinite Loop</a></li>
 <li><a href="#loop-with-break"><code>loop</code> with <code>break</code></a></li>
-<li><a href="#no-braces-opts-hash">No Braces Options Hash</a></li>
-<li><a href="#no-dsl-decorating">No DSL Decorating</a></li>
-<li><a href="#single-action-blocks">Single-action Blocks</a></li>
-<li><a href="#single-line-blocks">Single-line Blocks</a></li>
-<li><a href="#block-argument">Block Argument</a></li>
 <li><a href="#no-explicit-return">No Explicit <code>return</code></a></li>
 <li><a href="#no-self-unless-required">No <code>self</code> unless Required</a></li>
 <li><a href="#no-shadowing">No Shadowing</a></li>
 <li><a href="#safe-assignment-in-condition">Safe Assignment in Condition</a></li>
+<li><a href="#no-BEGIN-blocks">No <code>BEGIN</code> Blocks</a></li>
+<li><a href="#no-END-blocks">No <code>END</code> Blocks</a></li>
+<li><a href="#no-nested-conditionals">No Nested Conditionals</a></li>
+</ul>
+</li>
+<li><a href="#assignment-comparison">Assignment &amp; Comparison</a>
+<ul class="sectlevel2">
+<li><a href="#parallel-assignment">Parallel Assignment</a></li>
+<li><a href="#trailing-underscore-variables">Trailing Underscore Variables</a></li>
 <li><a href="#self-assignment">Self-assignment</a></li>
 <li><a href="#double-pipe-for-uninit">Double Pipe for Uninit</a></li>
 <li><a href="#no-double-pipes-for-bools">No Double Pipes for Booleans</a></li>
 <li><a href="#double-amper-preprocess">Double Ampersand Preprocess</a></li>
 <li><a href="#no-case-equality">No Case Equality</a></li>
 <li><a href="#eql"><code>eql</code></a></li>
-<li><a href="#no-cryptic-perlisms">No Cryptic Perlisms</a></li>
-<li><a href="#parens-no-spaces">Parenthesis no Spaces</a></li>
-<li><a href="#always-warn-at-runtime">Always Warn at Runtime</a></li>
+</ul>
+</li>
+<li><a href="#blocks-procs-lambdas">Blocks, Procs &amp; Lambdas</a>
+<ul class="sectlevel2">
+<li><a href="#single-action-blocks">Single-action Blocks</a></li>
+<li><a href="#single-line-blocks">Single-line Blocks</a></li>
+<li><a href="#block-argument">Block Argument</a></li>
 <li><a href="#no-nested-methods">No Nested Methods</a></li>
 <li><a href="#lambda-multi-line">Lambda Multi-line</a></li>
 <li><a href="#stabby-lambda-with-args">Stabby Lambda with Arguments</a></li>
 <li><a href="#stabby-lambda-no-args">Stabby Lambda without Arguments</a></li>
 <li><a href="#proc"><code>proc</code></a></li>
 <li><a href="#proc-call">Proc Call</a></li>
-<li><a href="#underscore-unused-vars">Underscore Unused Vars</a></li>
-<li><a href="#global-stdout">Global <code>stdout</code></a></li>
-<li><a href="#warn">Warn</a></li>
-<li><a href="#sprintf"><code>sprintf</code></a></li>
-<li><a href="#named-format-tokens">Named Format Tokens</a></li>
-<li><a href="#array-join"><code>Array#join</code></a></li>
-<li><a href="#array-coercion">Array Coercion</a></li>
-<li><a href="#ranges-or-between">Ranges or <code>between</code></a></li>
-<li><a href="#predicate-methods">Predicate Methods</a></li>
-<li><a href="#no-non-nil-checks">No non-<code>nil</code> Checks</a></li>
-<li><a href="#no-BEGIN-blocks">No <code>BEGIN</code> Blocks</a></li>
-<li><a href="#no-END-blocks">No <code>END</code> Blocks</a></li>
-<li><a href="#no-flip-flops">No Flip-flops</a></li>
-<li><a href="#no-nested-conditionals">No Nested Conditionals</a></li>
-<li><a href="#map-find-select-reduce-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>size</code></a></li>
-<li><a href="#count-vs-size"><code>count</code> vs <code>size</code></a></li>
-<li><a href="#flat-map"><code>flat_map</code></a></li>
-<li><a href="#reverse-each"><code>reverse_each</code></a></li>
-</ul>
-</li>
-<li><a href="#naming">Naming</a>
-<ul class="sectlevel2">
-<li><a href="#english-identifiers">English Identifiers</a></li>
-<li><a href="#snake-case-symbols-methods-vars">Snake Case Symbols Methods Vars</a></li>
-<li><a href="#snake-case-symbols-methods-vars-with-numbers">Snake Case Symbols Methods Vars with Numbers</a></li>
-<li><a href="#camelcase-classes">CamelCase Classes</a></li>
-<li><a href="#snake-case-files">Snake Case Files</a></li>
-<li><a href="#snake-case-dirs">Snake Case Directories</a></li>
-<li><a href="#one-class-per-file">One Class per File</a></li>
-<li><a href="#screaming-snake-case">Screaming Snake Case</a></li>
-<li><a href="#bool-methods-qmark">Boolean Methods Question Mark</a></li>
-<li><a href="#bool-methods-prefix">Boolean Methods Prefix</a></li>
-<li><a href="#dangerous-method-bang">Dangerous Method Bang</a></li>
-<li><a href="#safe-because-unsafe">Safe Because Unsafe</a></li>
-<li><a href="#other-arg"><code>other</code> arg</a></li>
 </ul>
 </li>
 <li><a href="#comments">Comments</a>
@@ -677,6 +673,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-modifying-collections">No Modifying Collections</a></li>
 <li><a href="#accessing-elements-directly">Accessing Elements Directly</a></li>
 <li><a href="#provide-alternate-accessor-to-collections">Provide Alternate Accessor to Collections</a></li>
+<li><a href="#map-find-select-reduce-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>size</code></a></li>
+<li><a href="#count-vs-size"><code>count</code> vs <code>size</code></a></li>
+<li><a href="#flat-map"><code>flat_map</code></a></li>
+<li><a href="#reverse-each"><code>reverse_each</code></a></li>
 </ul>
 </li>
 <li><a href="#numbers">Numbers</a>
@@ -696,6 +696,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-to-s">No <code>to_s</code></a></li>
 <li><a href="#concat-strings">String Concatenation</a></li>
 <li><a href="#dont-abuse-gsub">Don&#8217;t Abuse <code>gsub</code></a></li>
+<li><a href="#sprintf"><code>sprintf</code></a></li>
+<li><a href="#named-format-tokens">Named Format Tokens</a></li>
 </ul>
 </li>
 <li><a href="#heredocs">Heredocs</a>
@@ -754,6 +756,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#misc">Misc</a>
 <ul class="sectlevel2">
+<li><a href="#no-flip-flops">No Flip-flops</a></li>
+<li><a href="#no-non-nil-checks">No non-<code>nil</code> Checks</a></li>
+<li><a href="#global-stdout">Global <code>stdout</code></a></li>
+<li><a href="#warn">Warn</a></li>
+<li><a href="#array-join"><code>Array#join</code></a></li>
+<li><a href="#array-coercion">Array Coercion</a></li>
+<li><a href="#ranges-or-between">Ranges or <code>between</code></a></li>
+<li><a href="#predicate-methods">Predicate Methods</a></li>
+<li><a href="#no-cryptic-perlisms">No Cryptic Perlisms</a></li>
 <li><a href="#always-warn">Always Warn</a></li>
 <li><a href="#no-optional-hash-params">No Optional Hash Params</a></li>
 <li><a href="#short-methods">Short Methods</a></li>
@@ -1613,6 +1624,53 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 </div>
 </div>
 <div class="sect2">
+<h3 id="no-braces-opts-hash"><a class="anchor" href="#no-braces-opts-hash"></a><a class="link" href="#no-braces-opts-hash">No Braces Options Hash</a></h3>
+<div class="paragraph">
+<p>Omit the outer braces around an implicit options hash.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">set</span><span class="p">({</span> <span class="ss">name: </span><span class="s1">'John'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">45</span><span class="p">,</span> <span class="ss">permissions: </span><span class="p">{</span> <span class="ss">read: </span><span class="kp">true</span> <span class="p">}</span> <span class="p">})</span>
+
+<span class="c1"># good</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="ss">name: </span><span class="s1">'John'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">45</span><span class="p">,</span> <span class="ss">permissions: </span><span class="p">{</span> <span class="ss">read: </span><span class="kp">true</span> <span class="p">})</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-dsl-decorating"><a class="anchor" href="#no-dsl-decorating"></a><a class="link" href="#no-dsl-decorating">No DSL Decorating</a></h3>
+<div class="paragraph">
+<p>Omit both the outer braces and parentheses for methods that are part of an internal DSL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># bad</span>
+  <span class="n">validates</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="p">{</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span> <span class="p">})</span>
+
+  <span class="c1"># good</span>
+  <span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="parens-no-spaces"><a class="anchor" href="#parens-no-spaces"></a><a class="link" href="#parens-no-spaces">Parenthesis no Spaces</a></h3>
+<div class="paragraph">
+<p>Do not put a space between a method name and the opening parenthesis.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">f</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># good</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="align-multiline-arrays"><a class="anchor" href="#align-multiline-arrays"></a><a class="link" href="#align-multiline-arrays">Align Multi-line Arrays</a></h3>
 <div class="paragraph">
 <p>Align the elements of array literals spanning multiple lines.</p>
@@ -1639,7 +1697,362 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 </div>
 </div>
 <div class="sect1">
-<h2 id="syntax"><a class="anchor" href="#syntax"></a><a class="link" href="#syntax">Syntax</a></h2>
+<h2 id="naming-conventions"><a class="anchor" href="#naming-conventions"></a><a class="link" href="#naming-conventions">Naming Conventions</a></h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The only real difficulties in programming are cache invalidation and naming things.</p>
+</div>
+<div class="paragraph">
+<p>&#8201;&#8212;&#8201;Phil Karlton</p>
+</div>
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="english-identifiers"><a class="anchor" href="#english-identifiers"></a><a class="link" href="#english-identifiers">English Identifiers</a></h3>
+<div class="paragraph">
+<p>Name identifiers in English.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - identifier using non-ascii characters</span>
+<span class="err">заплата</span> <span class="o">=</span> <span class="mi">1_000</span>
+
+<span class="c1"># bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)</span>
+<span class="n">zaplata</span> <span class="o">=</span> <span class="mi">1_000</span>
+
+<span class="c1"># good</span>
+<span class="n">salary</span> <span class="o">=</span> <span class="mi">1_000</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="snake-case-symbols-methods-vars"><a class="anchor" href="#snake-case-symbols-methods-vars"></a><a class="link" href="#snake-case-symbols-methods-vars">Snake Case Symbols Methods Vars</a></h3>
+<div class="paragraph">
+<p>Use <code>snake_case</code> for symbols, methods and variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="ss">:'some symbol'</span>
+<span class="ss">:SomeSymbol</span>
+<span class="ss">:someSymbol</span>
+
+<span class="n">someVar</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">someMethod</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">SomeMethod</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="ss">:some_symbol</span>
+
+<span class="n">some_var</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">some_method</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="snake-case-symbols-methods-vars-with-numbers"><a class="anchor" href="#snake-case-symbols-methods-vars-with-numbers"></a><a class="link" href="#snake-case-symbols-methods-vars-with-numbers">Snake Case Symbols Methods Vars with Numbers</a></h3>
+<div class="paragraph">
+<p>Do not separate numbers from letters on symbols, methods and variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="ss">:some_sym_1</span>
+
+<span class="n">some_var_1</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">var_10</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span> <span class="nf">some_method_1</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="ss">:some_sym1</span>
+
+<span class="n">some_var1</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">var10</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span> <span class="nf">some_method1</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="camelcase-classes"><a class="anchor" href="#camelcase-classes"></a><a class="link" href="#camelcase-classes">CamelCase Classes</a></h3>
+<div class="paragraph">
+<p>Use <code>CamelCase</code> for classes and modules.
+(Keep acronyms like HTTP, RFC, XML uppercase).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">Someclass</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Some_Class</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">SomeXml</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">XmlSomething</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">SomeClass</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">SomeXML</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">XMLSomething</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="snake-case-files"><a class="anchor" href="#snake-case-files"></a><a class="link" href="#snake-case-files">Snake Case Files</a></h3>
+<div class="paragraph">
+<p>Use <code>snake_case</code> for naming files, e.g. <code>hello_world.rb</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="snake-case-dirs"><a class="anchor" href="#snake-case-dirs"></a><a class="link" href="#snake-case-dirs">Snake Case Directories</a></h3>
+<div class="paragraph">
+<p>Use <code>snake_case</code> for naming directories, e.g. <code>lib/hello_world/hello_world.rb</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="one-class-per-file"><a class="anchor" href="#one-class-per-file"></a><a class="link" href="#one-class-per-file">One Class per File</a></h3>
+<div class="paragraph">
+<p>Aim to have just a single class/module per source file.
+Name the file name as the class/module, but replacing <code>CamelCase</code> with <code>snake_case</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="screaming-snake-case"><a class="anchor" href="#screaming-snake-case"></a><a class="link" href="#screaming-snake-case">Screaming Snake Case</a></h3>
+<div class="paragraph">
+<p>Use <code>SCREAMING_SNAKE_CASE</code> for other constants.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">SomeConst</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># good</span>
+<span class="no">SOME_CONST</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bool-methods-qmark"><a class="anchor" href="#bool-methods-qmark"></a><a class="link" href="#bool-methods-qmark">Boolean Methods Question Mark</a></h3>
+<div class="paragraph">
+<p>The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. <code>Array#empty?</code>).
+Methods that don&#8217;t return a boolean, shouldn&#8217;t end in a question mark.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bool-methods-prefix"><a class="anchor" href="#bool-methods-prefix"></a><a class="link" href="#bool-methods-prefix">Boolean Methods Prefix</a></h3>
+<div class="paragraph">
+<p>Avoid prefixing predicate methods with the auxiliary verbs such as <code>is</code>, <code>does</code>, or <code>can</code>.
+These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as <code>empty?</code> and <code>include?</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">is_tall?</span>
+    <span class="kp">true</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">can_play_basketball?</span>
+    <span class="kp">false</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">does_like_candy?</span>
+    <span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">tall?</span>
+    <span class="kp">true</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">basketball_player?</span>
+    <span class="kp">false</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">likes_candy?</span>
+    <span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dangerous-method-bang"><a class="anchor" href="#dangerous-method-bang"></a><a class="link" href="#dangerous-method-bang">Dangerous Method Bang</a></h3>
+<div class="paragraph">
+<p>The names of potentially <em>dangerous</em> methods (i.e. methods that modify <code>self</code> or the arguments, <code>exit!</code> (doesn&#8217;t run the finalizers like <code>exit</code> does), etc) should end with an exclamation mark if there exists a safe version of that <em>dangerous</em> method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - there is no matching 'safe' method</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">update!</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">update</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">update!</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">update</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="safe-because-unsafe"><a class="anchor" href="#safe-because-unsafe"></a><a class="link" href="#safe-because-unsafe">Safe Because Unsafe</a></h3>
+<div class="paragraph">
+<p>Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">flatten_once!</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
+      <span class="p">[</span><span class="o">*</span><span class="n">e</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="n">f</span> <span class="p">}</span>
+    <span class="k">end</span>
+
+    <span class="n">replace</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">flatten_once</span>
+    <span class="nb">dup</span><span class="p">.</span><span class="nf">flatten_once!</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="underscore-unused-vars"><a class="anchor" href="#underscore-unused-vars"></a><a class="link" href="#underscore-unused-vars">Underscore Unused Vars</a></h3>
+<div class="paragraph">
+<p>Prefix with <code>_</code> unused block parameters and local variables.
+It&#8217;s also acceptable to use just <code>_</code> (although it&#8217;s a bit less descriptive).
+This convention is recognized by the Ruby interpreter and tools like RuboCop and will suppress their unused variable warnings.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">unused_var</span><span class="p">,</span> <span class="n">used_var</span> <span class="o">=</span> <span class="n">something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">_k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">_unused_var</span><span class="p">,</span> <span class="n">used_var</span> <span class="o">=</span> <span class="n">something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">_</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">used_var</span> <span class="o">=</span> <span class="n">something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="c1"># some code</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-arg"><a class="anchor" href="#other-arg"></a><a class="link" href="#other-arg"><code>other</code> arg</a></h3>
+<div class="paragraph">
+<p>When defining binary operators and operator-alike methods, name the parameter <code>other</code> for operators with "symmetrical" semantics of operands.
+Symmetrical semantics means both sides of the operator are typically of same or coercible types.</p>
+</div>
+<div class="paragraph">
+<p>Operators and operator-alike methods with symmetrical semantics (the parameter should be named <code>other</code>): <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>eql?</code>, <code>equal?</code>.</p>
+</div>
+<div class="paragraph">
+<p>Operators with non-symmetrical semantics (the parameter should <strong>not</strong> be named <code>other</code>): <code>&lt;&lt;</code>, <code>[]</code> (collection/item relations between operands), <code>===</code> (pattern/matchable relations).</p>
+</div>
+<div class="paragraph">
+<p>Note that the rule should be followed <strong>only</strong> if both sides of the operator have the same semantics.
+Prominent exception in Ruby core is, for example, <code>Array#*(int)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">+</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+  <span class="vi">@internal</span> <span class="o">&lt;&lt;</span> <span class="n">other</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+  <span class="vi">@internal</span> <span class="o">&lt;&lt;</span> <span class="n">item</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="c1"># Returns some string multiplied `other` times</span>
+<span class="k">def</span> <span class="nf">*</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="c1"># Returns some string multiplied `num` times</span>
+<span class="k">def</span> <span class="nf">*</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="methods"><a class="anchor" href="#methods"></a><a class="link" href="#methods">Methods</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="double-colons"><a class="anchor" href="#double-colons"></a><a class="link" href="#double-colons">Double Colons</a></h3>
@@ -1900,87 +2313,11 @@ end</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="parallel-assignment"><a class="anchor" href="#parallel-assignment"></a><a class="link" href="#parallel-assignment">Parallel Assignment</a></h3>
-<div class="paragraph">
-<p>Avoid the use of parallel assignment for defining variables.
-Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
-Parallel assignment is less readable than separate assignment.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'foobar'</span>
-
-<span class="c1"># good</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">'foo'</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s1">'bar'</span>
-<span class="n">c</span> <span class="o">=</span> <span class="s1">'baz'</span>
-<span class="n">d</span> <span class="o">=</span> <span class="s1">'foobar'</span>
-
-<span class="c1"># good - swapping variable assignment</span>
-<span class="c1"># Swapping variable assignment is a special case because it will allow you to</span>
-<span class="c1"># swap the values that are assigned to each variable.</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">'foo'</span>
-<span class="n">b</span> <span class="o">=</span> <span class="s1">'bar'</span>
-
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
-<span class="nb">puts</span> <span class="n">a</span> <span class="c1"># =&gt; 'bar'</span>
-<span class="nb">puts</span> <span class="n">b</span> <span class="c1"># =&gt; 'foo'</span>
-
-<span class="c1"># good - method return</span>
-<span class="k">def</span> <span class="nf">multi_return</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="k">end</span>
-
-<span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">multi_return</span>
-
-<span class="c1"># good - use with splat</span>
-<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="c1"># first =&gt; 1, list =&gt; [2, 3, 4]</span>
-
-<span class="n">hello_array</span> <span class="o">=</span> <span class="o">*</span><span class="s1">'Hello'</span> <span class="c1"># =&gt; ["Hello"]</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; [1, 2, 3]</span></code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="trailing-underscore-variables"><a class="anchor" href="#trailing-underscore-variables"></a><a class="link" href="#trailing-underscore-variables">Trailing Underscore Variables</a></h3>
-<div class="paragraph">
-<p>Avoid the use of unnecessary trailing underscore variables during
-parallel assignment. Named underscore variables are to be preferred over
-underscore variables because of the context that they provide.
-Trailing underscore variables are necessary when there is a splat variable
-defined on the left side of the assignment, and the splat variable is
-not an underscore.
-<sup><a href="#trailing-underscore-variables">[link]</a></sup></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="s1">'one,two,three,four,five'</span>
-<span class="c1"># Unnecessary assignment that does not provide useful information</span>
-<span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">first</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-
-<span class="c1"># good</span>
-<span class="n">foo</span> <span class="o">=</span> <span class="s1">'one,two,three,four,five'</span>
-<span class="c1"># The underscores are needed to show that you want all elements</span>
-<span class="c1"># except for the last number of underscore elements</span>
-<span class="o">*</span><span class="n">beginning</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="o">*</span><span class="n">beginning</span><span class="p">,</span> <span class="n">something</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-
-<span class="n">a</span><span class="p">,</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="c1"># Unnecessary assignment to an unused variable, but the assignment</span>
-<span class="c1"># provides us with useful information.</span>
-<span class="n">first</span><span class="p">,</span> <span class="n">_second</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">first</span><span class="p">,</span> <span class="n">_second</span><span class="p">,</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">_ending</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
+<div class="sect1">
+<h2 id="flow-of-control"><a class="anchor" href="#flow-of-control"></a><a class="link" href="#flow-of-control">Flow of Control</a></h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="no-for-loops"><a class="anchor" href="#no-for-loops"></a><a class="link" href="#no-for-loops">No <code>for</code> Loops</a></h3>
 <div class="paragraph">
@@ -2445,116 +2782,6 @@ Rewrite these with the positive case first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-braces-opts-hash"><a class="anchor" href="#no-braces-opts-hash"></a><a class="link" href="#no-braces-opts-hash">No Braces Options Hash</a></h3>
-<div class="paragraph">
-<p>Omit the outer braces around an implicit options hash.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">user</span><span class="p">.</span><span class="nf">set</span><span class="p">({</span> <span class="ss">name: </span><span class="s1">'John'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">45</span><span class="p">,</span> <span class="ss">permissions: </span><span class="p">{</span> <span class="ss">read: </span><span class="kp">true</span> <span class="p">}</span> <span class="p">})</span>
-
-<span class="c1"># good</span>
-<span class="n">user</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="ss">name: </span><span class="s1">'John'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">45</span><span class="p">,</span> <span class="ss">permissions: </span><span class="p">{</span> <span class="ss">read: </span><span class="kp">true</span> <span class="p">})</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-dsl-decorating"><a class="anchor" href="#no-dsl-decorating"></a><a class="link" href="#no-dsl-decorating">No DSL Decorating</a></h3>
-<div class="paragraph">
-<p>Omit both the outer braces and parentheses for methods that are part of an internal DSL.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-  <span class="c1"># bad</span>
-  <span class="n">validates</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="p">{</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span> <span class="p">})</span>
-
-  <span class="c1"># good</span>
-  <span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="single-action-blocks"><a class="anchor" href="#single-action-blocks"></a><a class="link" href="#single-action-blocks">Single-action Blocks</a></h3>
-<div class="paragraph">
-<p>Use the Proc invocation shorthand when the invoked method is the only operation of a block.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">names</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">name</span><span class="p">.</span><span class="nf">upcase</span> <span class="p">}</span>
-
-<span class="c1"># good</span>
-<span class="n">names</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:upcase</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="single-line-blocks"><a class="anchor" href="#single-line-blocks"></a><a class="link" href="#single-line-blocks">Single-line Blocks</a></h3>
-<div class="paragraph">
-<p>Prefer <code>{&#8230;&#8203;}</code> over <code>do&#8230;&#8203;end</code> for single-line blocks.
-Avoid using <code>{&#8230;&#8203;}</code> for multi-line blocks (multi-line chaining is always ugly).
-Always use <code>do&#8230;&#8203;end</code> for "control flow" and "method definitions" (e.g. in Rakefiles and certain DSLs).
-Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="n">names</span> <span class="o">=</span> <span class="sx">%w[Bozhidar Filipp Sarah]</span>
-
-<span class="c1"># bad</span>
-<span class="n">names</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
-  <span class="nb">puts</span> <span class="nb">name</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="n">names</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">puts</span> <span class="nb">name</span> <span class="p">}</span>
-
-<span class="c1"># bad</span>
-<span class="n">names</span><span class="p">.</span><span class="nf">select</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
-  <span class="nb">name</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'S'</span><span class="p">)</span>
-<span class="k">end</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">name</span><span class="p">.</span><span class="nf">upcase</span> <span class="p">}</span>
-
-<span class="c1"># good</span>
-<span class="n">names</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">name</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'S'</span><span class="p">)</span> <span class="p">}.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:upcase</span><span class="p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Some will argue that multi-line chaining would look OK with the use of {&#8230;&#8203;}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="block-argument"><a class="anchor" href="#block-argument"></a><a class="link" href="#block-argument">Block Argument</a></h3>
-<div class="paragraph">
-<p>Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
-Beware of the performance impact, though, as the block gets converted to a Proc.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="nb">require</span> <span class="s1">'tempfile'</span>
-
-<span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">with_tmp_dir</span>
-  <span class="no">Dir</span><span class="p">.</span><span class="nf">mktmpdir</span> <span class="k">do</span> <span class="o">|</span><span class="n">tmp_dir</span><span class="o">|</span>
-    <span class="no">Dir</span><span class="p">.</span><span class="nf">chdir</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="k">yield</span> <span class="n">dir</span> <span class="p">}</span>  <span class="c1"># block just passes arguments</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">with_tmp_dir</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-  <span class="no">Dir</span><span class="p">.</span><span class="nf">mktmpdir</span> <span class="k">do</span> <span class="o">|</span><span class="n">tmp_dir</span><span class="o">|</span>
-    <span class="no">Dir</span><span class="p">.</span><span class="nf">chdir</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">with_tmp_dir</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>
-  <span class="nb">puts</span> <span class="s2">"dir is accessible as a parameter and pwd is set: </span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="no-explicit-return"><a class="anchor" href="#no-explicit-return"></a><a class="link" href="#no-explicit-return">No Explicit <code>return</code></a></h3>
 <div class="paragraph">
 <p>Avoid <code>return</code> where not required for flow of control.</p>
@@ -2660,6 +2887,164 @@ This is a fairly popular idiom among Rubyists that&#8217;s sometimes referred to
   <span class="n">do_something</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
   <span class="c1"># some code</span>
 <span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-BEGIN-blocks"><a class="anchor" href="#no-BEGIN-blocks"></a><a class="link" href="#no-BEGIN-blocks">No <code>BEGIN</code> Blocks</a></h3>
+<div class="paragraph">
+<p>Avoid the use of <code>BEGIN</code> blocks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-END-blocks"><a class="anchor" href="#no-END-blocks"></a><a class="link" href="#no-END-blocks">No <code>END</code> Blocks</a></h3>
+<div class="paragraph">
+<p>Do not use <code>END</code> blocks. Use <code>Kernel#at_exit</code> instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">END</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">'Goodbye!'</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="nb">at_exit</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">'Goodbye!'</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-nested-conditionals"><a class="anchor" href="#no-nested-conditionals"></a><a class="link" href="#no-nested-conditionals">No Nested Conditionals</a></h3>
+<div class="paragraph">
+<p>Avoid use of nested conditionals for flow of control.</p>
+</div>
+<div class="paragraph">
+<p>Prefer a guard clause when you can assert invalid data.
+A guard clause is a conditional statement at the top of a function that bails out as soon as it can.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">compute_thing</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
+    <span class="n">update_with_bar</span><span class="p">(</span><span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">][</span><span class="ss">:bar</span><span class="p">]</span>
+      <span class="n">partial_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+    <span class="k">else</span>
+      <span class="n">re_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">compute_thing</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">unless</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
+  <span class="n">update_with_bar</span><span class="p">(</span><span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">re_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span> <span class="k">unless</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">][</span><span class="ss">:bar</span><span class="p">]</span>
+  <span class="n">partial_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Prefer <code>next</code> in loops instead of conditional blocks.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+  <span class="k">if</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="mi">1</span>
+    <span class="nb">puts</span> <span class="n">item</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">unless</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="mi">1</span>
+  <span class="nb">puts</span> <span class="n">item</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assignment-comparison"><a class="anchor" href="#assignment-comparison"></a><a class="link" href="#assignment-comparison">Assignment &amp; Comparison</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="parallel-assignment"><a class="anchor" href="#parallel-assignment"></a><a class="link" href="#parallel-assignment">Parallel Assignment</a></h3>
+<div class="paragraph">
+<p>Avoid the use of parallel assignment for defining variables.
+Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
+Parallel assignment is less readable than separate assignment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'foobar'</span>
+
+<span class="c1"># good</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'foo'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">'bar'</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">'baz'</span>
+<span class="n">d</span> <span class="o">=</span> <span class="s1">'foobar'</span>
+
+<span class="c1"># good - swapping variable assignment</span>
+<span class="c1"># Swapping variable assignment is a special case because it will allow you to</span>
+<span class="c1"># swap the values that are assigned to each variable.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'foo'</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s1">'bar'</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="nb">puts</span> <span class="n">a</span> <span class="c1"># =&gt; 'bar'</span>
+<span class="nb">puts</span> <span class="n">b</span> <span class="c1"># =&gt; 'foo'</span>
+
+<span class="c1"># good - method return</span>
+<span class="k">def</span> <span class="nf">multi_return</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">multi_return</span>
+
+<span class="c1"># good - use with splat</span>
+<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="c1"># first =&gt; 1, list =&gt; [2, 3, 4]</span>
+
+<span class="n">hello_array</span> <span class="o">=</span> <span class="o">*</span><span class="s1">'Hello'</span> <span class="c1"># =&gt; ["Hello"]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; [1, 2, 3]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="trailing-underscore-variables"><a class="anchor" href="#trailing-underscore-variables"></a><a class="link" href="#trailing-underscore-variables">Trailing Underscore Variables</a></h3>
+<div class="paragraph">
+<p>Avoid the use of unnecessary trailing underscore variables during
+parallel assignment. Named underscore variables are to be preferred over
+underscore variables because of the context that they provide.
+Trailing underscore variables are necessary when there is a splat variable
+defined on the left side of the assignment, and the splat variable is
+not an underscore.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="s1">'one,two,three,four,five'</span>
+<span class="c1"># Unnecessary assignment that does not provide useful information</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+
+<span class="c1"># good</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="s1">'one,two,three,four,five'</span>
+<span class="c1"># The underscores are needed to show that you want all elements</span>
+<span class="c1"># except for the last number of underscore elements</span>
+<span class="o">*</span><span class="n">beginning</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="o">*</span><span class="n">beginning</span><span class="p">,</span> <span class="n">something</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="c1"># Unnecessary assignment to an unused variable, but the assignment</span>
+<span class="c1"># provides us with useful information.</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">_second</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">_second</span><span class="p">,</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">_ending</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -2786,43 +3171,87 @@ The stricter comparison semantics provided by <code>eql?</code> are rarely neede
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="blocks-procs-lambdas"><a class="anchor" href="#blocks-procs-lambdas"></a><a class="link" href="#blocks-procs-lambdas">Blocks, Procs &amp; Lambdas</a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="no-cryptic-perlisms"><a class="anchor" href="#no-cryptic-perlisms"></a><a class="link" href="#no-cryptic-perlisms">No Cryptic Perlisms</a></h3>
+<h3 id="single-action-blocks"><a class="anchor" href="#single-action-blocks"></a><a class="link" href="#single-action-blocks">Single-action Blocks</a></h3>
 <div class="paragraph">
-<p>Avoid using Perl-style special variables (like <code>$:</code>, <code>$;</code>, etc).
-They are quite cryptic and their use in anything but one-liner scripts is discouraged.
-Use the human-friendly aliases provided by the <code>English</code> library.</p>
+<p>Use the Proc invocation shorthand when the invoked method is the only operation of a block.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="vg">$:</span><span class="p">.</span><span class="nf">unshift</span> <span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="kp">__FILE__</span><span class="p">)</span>
+<span class="n">names</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">name</span><span class="p">.</span><span class="nf">upcase</span> <span class="p">}</span>
 
 <span class="c1"># good</span>
-<span class="nb">require</span> <span class="s1">'English'</span>
-<span class="vg">$LOAD_PATH</span><span class="p">.</span><span class="nf">unshift</span> <span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="kp">__FILE__</span><span class="p">)</span></code></pre>
+<span class="n">names</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:upcase</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="parens-no-spaces"><a class="anchor" href="#parens-no-spaces"></a><a class="link" href="#parens-no-spaces">Parenthesis no Spaces</a></h3>
+<h3 id="single-line-blocks"><a class="anchor" href="#single-line-blocks"></a><a class="link" href="#single-line-blocks">Single-line Blocks</a></h3>
 <div class="paragraph">
-<p>Do not put a space between a method name and the opening parenthesis.</p>
+<p>Prefer <code>{&#8230;&#8203;}</code> over <code>do&#8230;&#8203;end</code> for single-line blocks.
+Avoid using <code>{&#8230;&#8203;}</code> for multi-line blocks (multi-line chaining is always ugly).
+Always use <code>do&#8230;&#8203;end</code> for "control flow" and "method definitions" (e.g. in Rakefiles and certain DSLs).
+Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">f</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="n">names</span> <span class="o">=</span> <span class="sx">%w[Bozhidar Filipp Sarah]</span>
+
+<span class="c1"># bad</span>
+<span class="n">names</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="nb">name</span>
+<span class="k">end</span>
 
 <span class="c1"># good</span>
-<span class="n">f</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></code></pre>
+<span class="n">names</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">puts</span> <span class="nb">name</span> <span class="p">}</span>
+
+<span class="c1"># bad</span>
+<span class="n">names</span><span class="p">.</span><span class="nf">select</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+  <span class="nb">name</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'S'</span><span class="p">)</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">name</span><span class="p">.</span><span class="nf">upcase</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="n">names</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span> <span class="nb">name</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'S'</span><span class="p">)</span> <span class="p">}.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:upcase</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Some will argue that multi-line chaining would look OK with the use of {&#8230;&#8203;}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="always-warn-at-runtime"><a class="anchor" href="#always-warn-at-runtime"></a><a class="link" href="#always-warn-at-runtime">Always Warn at Runtime</a></h3>
+<h3 id="block-argument"><a class="anchor" href="#block-argument"></a><a class="link" href="#block-argument">Block Argument</a></h3>
 <div class="paragraph">
-<p>Always run the Ruby interpreter with the <code>-w</code> option so it will warn you if you forget either of the rules above!</p>
+<p>Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
+Beware of the performance impact, though, as the block gets converted to a Proc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="nb">require</span> <span class="s1">'tempfile'</span>
+
+<span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">with_tmp_dir</span>
+  <span class="no">Dir</span><span class="p">.</span><span class="nf">mktmpdir</span> <span class="k">do</span> <span class="o">|</span><span class="n">tmp_dir</span><span class="o">|</span>
+    <span class="no">Dir</span><span class="p">.</span><span class="nf">chdir</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span> <span class="k">yield</span> <span class="n">dir</span> <span class="p">}</span>  <span class="c1"># block just passes arguments</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">with_tmp_dir</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="no">Dir</span><span class="p">.</span><span class="nf">mktmpdir</span> <span class="k">do</span> <span class="o">|</span><span class="n">tmp_dir</span><span class="o">|</span>
+    <span class="no">Dir</span><span class="p">.</span><span class="nf">chdir</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">with_tmp_dir</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>
+  <span class="nb">puts</span> <span class="s2">"dir is accessible as a parameter and pwd is set: </span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2952,678 +3381,6 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 <span class="c1"># good</span>
 <span class="n">l</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="n">v</span> <span class="p">}</span>
 <span class="n">l</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="underscore-unused-vars"><a class="anchor" href="#underscore-unused-vars"></a><a class="link" href="#underscore-unused-vars">Underscore Unused Vars</a></h3>
-<div class="paragraph">
-<p>Prefix with <code>_</code> unused block parameters and local variables.
-It&#8217;s also acceptable to use just <code>_</code> (although it&#8217;s a bit less descriptive).
-This convention is recognized by the Ruby interpreter and tools like RuboCop and will suppress their unused variable warnings.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="n">unused_var</span><span class="p">,</span> <span class="n">used_var</span> <span class="o">=</span> <span class="n">something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">_k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="n">_unused_var</span><span class="p">,</span> <span class="n">used_var</span> <span class="o">=</span> <span class="n">something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="n">result</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">_</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
-
-<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="n">_</span><span class="p">,</span> <span class="n">used_var</span> <span class="o">=</span> <span class="n">something_else</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="global-stdout"><a class="anchor" href="#global-stdout"></a><a class="link" href="#global-stdout">Global <code>stdout</code></a></h3>
-<div class="paragraph">
-<p>Use <code>$stdout/$stderr/$stdin</code> instead of <code>STDOUT/STDERR/STDIN</code>.
-<code>STDOUT/STDERR/STDIN</code> are constants, and while you can actually reassign (possibly to redirect some stream) constants in Ruby, you&#8217;ll get an interpreter warning if you do so.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="warn"><a class="anchor" href="#warn"></a><a class="link" href="#warn">Warn</a></h3>
-<div class="paragraph">
-<p>Use <code>warn</code> instead of <code>$stderr.puts</code>.
-Apart from being more concise and clear, <code>warn</code> allows you to suppress warnings if you need to (by setting the warn level to 0 via <code>-W0</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sprintf"><a class="anchor" href="#sprintf"></a><a class="link" href="#sprintf"><code>sprintf</code></a></h3>
-<div class="paragraph">
-<p>Favor the use of <code>sprintf</code> and its alias <code>format</code> over the fairly cryptic <code>String#%</code> method.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="s1">'%d %d'</span> <span class="o">%</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-<span class="c1"># =&gt; '20 10'</span>
-
-<span class="c1"># good</span>
-<span class="nb">sprintf</span><span class="p">(</span><span class="s1">'%d %d'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="c1"># =&gt; '20 10'</span>
-
-<span class="c1"># good</span>
-<span class="nb">sprintf</span><span class="p">(</span><span class="s1">'%&lt;first&gt;d %&lt;second&gt;d'</span><span class="p">,</span> <span class="ss">first: </span><span class="mi">20</span><span class="p">,</span> <span class="ss">second: </span><span class="mi">10</span><span class="p">)</span>
-<span class="c1"># =&gt; '20 10'</span>
-
-<span class="nb">format</span><span class="p">(</span><span class="s1">'%d %d'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="c1"># =&gt; '20 10'</span>
-
-<span class="c1"># good</span>
-<span class="nb">format</span><span class="p">(</span><span class="s1">'%&lt;first&gt;d %&lt;second&gt;d'</span><span class="p">,</span> <span class="ss">first: </span><span class="mi">20</span><span class="p">,</span> <span class="ss">second: </span><span class="mi">10</span><span class="p">)</span>
-<span class="c1"># =&gt; '20 10'</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="named-format-tokens"><a class="anchor" href="#named-format-tokens"></a><a class="link" href="#named-format-tokens">Named Format Tokens</a></h3>
-<div class="paragraph">
-<p>When using named format string tokens, favor <code>%&lt;name&gt;s</code> over <code>%{name}</code> because it encodes information about the type of the value.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="nb">format</span><span class="p">(</span><span class="s1">'Hello, %{name}'</span><span class="p">,</span> <span class="ss">name: </span><span class="s1">'John'</span><span class="p">)</span>
-
-<span class="c1"># good</span>
-<span class="nb">format</span><span class="p">(</span><span class="s1">'Hello, %&lt;name&gt;s'</span><span class="p">,</span> <span class="ss">name: </span><span class="s1">'John'</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="array-join"><a class="anchor" href="#array-join"></a><a class="link" href="#array-join"><code>Array#join</code></a></h3>
-<div class="paragraph">
-<p>Favor the use of <code>Array#join</code> over the fairly cryptic <code>Array#*</code> with a string argument.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="sx">%w[one two three]</span> <span class="o">*</span> <span class="s1">', '</span>
-<span class="c1"># =&gt; 'one, two, three'</span>
-
-<span class="c1"># good</span>
-<span class="sx">%w[one two three]</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span>
-<span class="c1"># =&gt; 'one, two, three'</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="array-coercion"><a class="anchor" href="#array-coercion"></a><a class="link" href="#array-coercion">Array Coercion</a></h3>
-<div class="paragraph">
-<p>Use <code>Array()</code> instead of explicit <code>Array</code> check or <code>[*var]</code>, when dealing with a variable you want to treat as an Array, but you&#8217;re not certain it&#8217;s an array.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">paths</span><span class="p">]</span> <span class="k">unless</span> <span class="n">paths</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Array</span>
-<span class="n">paths</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
-
-<span class="c1"># bad (always creates a new Array instance)</span>
-<span class="p">[</span><span class="o">*</span><span class="n">paths</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
-
-<span class="c1"># good (and a bit more readable)</span>
-<span class="no">Array</span><span class="p">(</span><span class="n">paths</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="ranges-or-between"><a class="anchor" href="#ranges-or-between"></a><a class="link" href="#ranges-or-between">Ranges or <code>between</code></a></h3>
-<div class="paragraph">
-<p>Use ranges or <code>Comparable#between?</code> instead of complex comparison logic when possible.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">do_something</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">2000</span>
-
-<span class="c1"># good</span>
-<span class="n">do_something</span> <span class="k">if</span> <span class="p">(</span><span class="mi">1000</span><span class="o">..</span><span class="mi">2000</span><span class="p">).</span><span class="nf">include?</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="c1"># good</span>
-<span class="n">do_something</span> <span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">between?</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="predicate-methods"><a class="anchor" href="#predicate-methods"></a><a class="link" href="#predicate-methods">Predicate Methods</a></h3>
-<div class="paragraph">
-<p>Favor the use of predicate methods to explicit comparisons with <code>==</code>.
-Numeric comparisons are OK.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
-<span class="k">end</span>
-
-<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
-<span class="k">end</span>
-
-<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="kp">nil</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">even?</span>
-<span class="k">end</span>
-
-<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">odd?</span>
-<span class="k">end</span>
-
-<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">nil?</span>
-<span class="k">end</span>
-
-<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">zero?</span>
-<span class="k">end</span>
-
-<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-non-nil-checks"><a class="anchor" href="#no-non-nil-checks"></a><a class="link" href="#no-non-nil-checks">No non-<code>nil</code> Checks</a></h3>
-<div class="paragraph">
-<p>Don&#8217;t do explicit non-<code>nil</code> checks unless you&#8217;re dealing with boolean values.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">do_something</span> <span class="k">if</span> <span class="o">!</span><span class="n">something</span><span class="p">.</span><span class="nf">nil?</span>
-<span class="n">do_something</span> <span class="k">if</span> <span class="n">something</span> <span class="o">!=</span> <span class="kp">nil</span>
-
-<span class="c1"># good</span>
-<span class="n">do_something</span> <span class="k">if</span> <span class="n">something</span>
-
-<span class="c1"># good - dealing with a boolean</span>
-<span class="k">def</span> <span class="nf">value_set?</span>
-  <span class="o">!</span><span class="vi">@some_boolean</span><span class="p">.</span><span class="nf">nil?</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-BEGIN-blocks"><a class="anchor" href="#no-BEGIN-blocks"></a><a class="link" href="#no-BEGIN-blocks">No <code>BEGIN</code> Blocks</a></h3>
-<div class="paragraph">
-<p>Avoid the use of <code>BEGIN</code> blocks.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-END-blocks"><a class="anchor" href="#no-END-blocks"></a><a class="link" href="#no-END-blocks">No <code>END</code> Blocks</a></h3>
-<div class="paragraph">
-<p>Do not use <code>END</code> blocks. Use <code>Kernel#at_exit</code> instead.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">END</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">'Goodbye!'</span> <span class="p">}</span>
-
-<span class="c1"># good</span>
-<span class="nb">at_exit</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">'Goodbye!'</span> <span class="p">}</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-flip-flops"><a class="anchor" href="#no-flip-flops"></a><a class="link" href="#no-flip-flops">No Flip-flops</a></h3>
-<div class="paragraph">
-<p>Avoid the use of flip-flops.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-They are deprecated as of Ruby 2.6.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-nested-conditionals"><a class="anchor" href="#no-nested-conditionals"></a><a class="link" href="#no-nested-conditionals">No Nested Conditionals</a></h3>
-<div class="paragraph">
-<p>Avoid use of nested conditionals for flow of control.</p>
-</div>
-<div class="paragraph">
-<p>Prefer a guard clause when you can assert invalid data.
-A guard clause is a conditional statement at the top of a function that bails out as soon as it can.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">compute_thing</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
-    <span class="n">update_with_bar</span><span class="p">(</span><span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">][</span><span class="ss">:bar</span><span class="p">]</span>
-      <span class="n">partial_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
-    <span class="k">else</span>
-      <span class="n">re_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">compute_thing</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
-  <span class="k">return</span> <span class="k">unless</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span>
-  <span class="n">update_with_bar</span><span class="p">(</span><span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">])</span>
-  <span class="k">return</span> <span class="n">re_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span> <span class="k">unless</span> <span class="n">thing</span><span class="p">[</span><span class="ss">:foo</span><span class="p">][</span><span class="ss">:bar</span><span class="p">]</span>
-  <span class="n">partial_compute</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Prefer <code>next</code> in loops instead of conditional blocks.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
-  <span class="k">if</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="mi">1</span>
-    <span class="nb">puts</span> <span class="n">item</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
-  <span class="k">next</span> <span class="k">unless</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="mi">1</span>
-  <span class="nb">puts</span> <span class="n">item</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="map-find-select-reduce-size"><a class="anchor" href="#map-find-select-reduce-size"></a><a class="link" href="#map-find-select-reduce-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>size</code></a></h3>
-<div class="paragraph">
-<p>Prefer <code>map</code> over <code>collect</code>, <code>find</code> over <code>detect</code>, <code>select</code> over <code>find_all</code>, <code>reduce</code> over <code>inject</code> and <code>size</code> over <code>length</code>.
-This is not a hard requirement; if the use of the alias enhances readability, it&#8217;s ok to use it.
-The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
-The reason the use of <code>select</code> is encouraged over <code>find_all</code> is that it goes together nicely with <code>reject</code> and its name is pretty self-explanatory.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="count-vs-size"><a class="anchor" href="#count-vs-size"></a><a class="link" href="#count-vs-size"><code>count</code> vs <code>size</code></a></h3>
-<div class="paragraph">
-<p>Don&#8217;t use <code>count</code> as a substitute for <code>size</code>.
-For <code>Enumerable</code> objects other than <code>Array</code> it will iterate the entire collection in order to determine its size.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">some_hash</span><span class="p">.</span><span class="nf">count</span>
-
-<span class="c1"># good</span>
-<span class="n">some_hash</span><span class="p">.</span><span class="nf">size</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="flat-map"><a class="anchor" href="#flat-map"></a><a class="link" href="#flat-map"><code>flat_map</code></a></h3>
-<div class="paragraph">
-<p>Use <code>flat_map</code> instead of <code>map</code> + <code>flatten</code>.
-This does not apply for arrays with a depth greater than 2, i.e. if <code>users.first.songs == ['a', ['b','c']]</code>, then use <code>map + flatten</code> rather than <code>flat_map</code>.
-<code>flat_map</code> flattens the array by 1, whereas <code>flatten</code> flattens it all the way.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">all_songs</span> <span class="o">=</span> <span class="n">users</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:songs</span><span class="p">).</span><span class="nf">flatten</span><span class="p">.</span><span class="nf">uniq</span>
-
-<span class="c1"># good</span>
-<span class="n">all_songs</span> <span class="o">=</span> <span class="n">users</span><span class="p">.</span><span class="nf">flat_map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:songs</span><span class="p">).</span><span class="nf">uniq</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="reverse-each"><a class="anchor" href="#reverse-each"></a><a class="link" href="#reverse-each"><code>reverse_each</code></a></h3>
-<div class="paragraph">
-<p>Prefer <code>reverse_each</code> to <code>reverse.each</code> because some classes that <code>include Enumerable</code> will provide an efficient implementation.
-Even in the worst case where a class does not provide a specialized implementation, the general implementation inherited from <code>Enumerable</code> will be at least as efficient as using <code>reverse.each</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">array</span><span class="p">.</span><span class="nf">reverse</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
-
-<span class="c1"># good</span>
-<span class="n">array</span><span class="p">.</span><span class="nf">reverse_each</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="naming"><a class="anchor" href="#naming"></a><a class="link" href="#naming">Naming</a></h2>
-<div class="sectionbody">
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>The only real difficulties in programming are cache invalidation and naming things.</p>
-</div>
-<div class="paragraph">
-<p>&#8201;&#8212;&#8201;Phil Karlton</p>
-</div>
-</blockquote>
-</div>
-<div class="sect2">
-<h3 id="english-identifiers"><a class="anchor" href="#english-identifiers"></a><a class="link" href="#english-identifiers">English Identifiers</a></h3>
-<div class="paragraph">
-<p>Name identifiers in English.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - identifier using non-ascii characters</span>
-<span class="err">заплата</span> <span class="o">=</span> <span class="mi">1_000</span>
-
-<span class="c1"># bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)</span>
-<span class="n">zaplata</span> <span class="o">=</span> <span class="mi">1_000</span>
-
-<span class="c1"># good</span>
-<span class="n">salary</span> <span class="o">=</span> <span class="mi">1_000</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="snake-case-symbols-methods-vars"><a class="anchor" href="#snake-case-symbols-methods-vars"></a><a class="link" href="#snake-case-symbols-methods-vars">Snake Case Symbols Methods Vars</a></h3>
-<div class="paragraph">
-<p>Use <code>snake_case</code> for symbols, methods and variables.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="ss">:'some symbol'</span>
-<span class="ss">:SomeSymbol</span>
-<span class="ss">:someSymbol</span>
-
-<span class="n">someVar</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">def</span> <span class="nf">someMethod</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="k">def</span> <span class="nf">SomeMethod</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="ss">:some_symbol</span>
-
-<span class="n">some_var</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">def</span> <span class="nf">some_method</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="snake-case-symbols-methods-vars-with-numbers"><a class="anchor" href="#snake-case-symbols-methods-vars-with-numbers"></a><a class="link" href="#snake-case-symbols-methods-vars-with-numbers">Snake Case Symbols Methods Vars with Numbers</a></h3>
-<div class="paragraph">
-<p>Do not separate numbers from letters on symbols, methods and variables.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="ss">:some_sym_1</span>
-
-<span class="n">some_var_1</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">var_10</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="k">def</span> <span class="nf">some_method_1</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="ss">:some_sym1</span>
-
-<span class="n">some_var1</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">var10</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="k">def</span> <span class="nf">some_method1</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="camelcase-classes"><a class="anchor" href="#camelcase-classes"></a><a class="link" href="#camelcase-classes">CamelCase Classes</a></h3>
-<div class="paragraph">
-<p>Use <code>CamelCase</code> for classes and modules.
-(Keep acronyms like HTTP, RFC, XML uppercase).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">class</span> <span class="nc">Someclass</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">Some_Class</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">SomeXml</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">XmlSomething</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">class</span> <span class="nc">SomeClass</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">SomeXML</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span>
-
-<span class="k">class</span> <span class="nc">XMLSomething</span>
-  <span class="c1"># some code</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="snake-case-files"><a class="anchor" href="#snake-case-files"></a><a class="link" href="#snake-case-files">Snake Case Files</a></h3>
-<div class="paragraph">
-<p>Use <code>snake_case</code> for naming files, e.g. <code>hello_world.rb</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="snake-case-dirs"><a class="anchor" href="#snake-case-dirs"></a><a class="link" href="#snake-case-dirs">Snake Case Directories</a></h3>
-<div class="paragraph">
-<p>Use <code>snake_case</code> for naming directories, e.g. <code>lib/hello_world/hello_world.rb</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="one-class-per-file"><a class="anchor" href="#one-class-per-file"></a><a class="link" href="#one-class-per-file">One Class per File</a></h3>
-<div class="paragraph">
-<p>Aim to have just a single class/module per source file.
-Name the file name as the class/module, but replacing <code>CamelCase</code> with <code>snake_case</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="screaming-snake-case"><a class="anchor" href="#screaming-snake-case"></a><a class="link" href="#screaming-snake-case">Screaming Snake Case</a></h3>
-<div class="paragraph">
-<p>Use <code>SCREAMING_SNAKE_CASE</code> for other constants.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="no">SomeConst</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="c1"># good</span>
-<span class="no">SOME_CONST</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="bool-methods-qmark"><a class="anchor" href="#bool-methods-qmark"></a><a class="link" href="#bool-methods-qmark">Boolean Methods Question Mark</a></h3>
-<div class="paragraph">
-<p>The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. <code>Array#empty?</code>).
-Methods that don&#8217;t return a boolean, shouldn&#8217;t end in a question mark.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="bool-methods-prefix"><a class="anchor" href="#bool-methods-prefix"></a><a class="link" href="#bool-methods-prefix">Boolean Methods Prefix</a></h3>
-<div class="paragraph">
-<p>Avoid prefixing predicate methods with the auxiliary verbs such as <code>is</code>, <code>does</code>, or <code>can</code>.
-These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as <code>empty?</code> and <code>include?</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="k">def</span> <span class="nf">is_tall?</span>
-    <span class="kp">true</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">can_play_basketball?</span>
-    <span class="kp">false</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">does_like_candy?</span>
-    <span class="kp">true</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="k">def</span> <span class="nf">tall?</span>
-    <span class="kp">true</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">basketball_player?</span>
-    <span class="kp">false</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">likes_candy?</span>
-    <span class="kp">true</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="dangerous-method-bang"><a class="anchor" href="#dangerous-method-bang"></a><a class="link" href="#dangerous-method-bang">Dangerous Method Bang</a></h3>
-<div class="paragraph">
-<p>The names of potentially <em>dangerous</em> methods (i.e. methods that modify <code>self</code> or the arguments, <code>exit!</code> (doesn&#8217;t run the finalizers like <code>exit</code> does), etc) should end with an exclamation mark if there exists a safe version of that <em>dangerous</em> method.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - there is no matching 'safe' method</span>
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="k">def</span> <span class="nf">update!</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="k">def</span> <span class="nf">update</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="k">def</span> <span class="nf">update!</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">update</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="safe-because-unsafe"><a class="anchor" href="#safe-because-unsafe"></a><a class="link" href="#safe-because-unsafe">Safe Because Unsafe</a></h3>
-<div class="paragraph">
-<p>Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Array</span>
-  <span class="k">def</span> <span class="nf">flatten_once!</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
-      <span class="p">[</span><span class="o">*</span><span class="n">e</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="n">f</span> <span class="p">}</span>
-    <span class="k">end</span>
-
-    <span class="n">replace</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">flatten_once</span>
-    <span class="nb">dup</span><span class="p">.</span><span class="nf">flatten_once!</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="other-arg"><a class="anchor" href="#other-arg"></a><a class="link" href="#other-arg"><code>other</code> arg</a></h3>
-<div class="paragraph">
-<p>When defining binary operators and operator-alike methods, name the parameter <code>other</code> for operators with "symmetrical" semantics of operands.
-Symmetrical semantics means both sides of the operator are typically of same or coercible types.</p>
-</div>
-<div class="paragraph">
-<p>Operators and operator-alike methods with symmetrical semantics (the parameter should be named <code>other</code>): <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>eql?</code>, <code>equal?</code>.</p>
-</div>
-<div class="paragraph">
-<p>Operators with non-symmetrical semantics (the parameter should <strong>not</strong> be named <code>other</code>): <code>&lt;&lt;</code>, <code>[]</code> (collection/item relations between operands), <code>===</code> (pattern/matchable relations).</p>
-</div>
-<div class="paragraph">
-<p>Note that the rule should be followed <strong>only</strong> if both sides of the operator have the same semantics.
-Prominent exception in Ruby core is, for example, <code>Array#*(int)</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">+</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-  <span class="c1"># body omitted</span>
-<span class="k">end</span>
-
-<span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-  <span class="vi">@internal</span> <span class="o">&lt;&lt;</span> <span class="n">other</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">&lt;&lt;</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-  <span class="vi">@internal</span> <span class="o">&lt;&lt;</span> <span class="n">item</span>
-<span class="k">end</span>
-
-<span class="c1"># bad</span>
-<span class="c1"># Returns some string multiplied `other` times</span>
-<span class="k">def</span> <span class="nf">*</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-  <span class="c1"># body omitted</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="c1"># Returns some string multiplied `num` times</span>
-<span class="k">def</span> <span class="nf">*</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-  <span class="c1"># body omitted</span>
-<span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -5202,6 +4959,64 @@ This guards you from calling <code>[]</code> on <code>nil</code>.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="map-find-select-reduce-size"><a class="anchor" href="#map-find-select-reduce-size"></a><a class="link" href="#map-find-select-reduce-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>size</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>map</code> over <code>collect</code>, <code>find</code> over <code>detect</code>, <code>select</code> over <code>find_all</code>, <code>reduce</code> over <code>inject</code> and <code>size</code> over <code>length</code>.
+This is not a hard requirement; if the use of the alias enhances readability, it&#8217;s ok to use it.
+The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
+The reason the use of <code>select</code> is encouraged over <code>find_all</code> is that it goes together nicely with <code>reject</code> and its name is pretty self-explanatory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="count-vs-size"><a class="anchor" href="#count-vs-size"></a><a class="link" href="#count-vs-size"><code>count</code> vs <code>size</code></a></h3>
+<div class="paragraph">
+<p>Don&#8217;t use <code>count</code> as a substitute for <code>size</code>.
+For <code>Enumerable</code> objects other than <code>Array</code> it will iterate the entire collection in order to determine its size.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">some_hash</span><span class="p">.</span><span class="nf">count</span>
+
+<span class="c1"># good</span>
+<span class="n">some_hash</span><span class="p">.</span><span class="nf">size</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="flat-map"><a class="anchor" href="#flat-map"></a><a class="link" href="#flat-map"><code>flat_map</code></a></h3>
+<div class="paragraph">
+<p>Use <code>flat_map</code> instead of <code>map</code> + <code>flatten</code>.
+This does not apply for arrays with a depth greater than 2, i.e. if <code>users.first.songs == ['a', ['b','c']]</code>, then use <code>map + flatten</code> rather than <code>flat_map</code>.
+<code>flat_map</code> flattens the array by 1, whereas <code>flatten</code> flattens it all the way.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">all_songs</span> <span class="o">=</span> <span class="n">users</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:songs</span><span class="p">).</span><span class="nf">flatten</span><span class="p">.</span><span class="nf">uniq</span>
+
+<span class="c1"># good</span>
+<span class="n">all_songs</span> <span class="o">=</span> <span class="n">users</span><span class="p">.</span><span class="nf">flat_map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:songs</span><span class="p">).</span><span class="nf">uniq</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reverse-each"><a class="anchor" href="#reverse-each"></a><a class="link" href="#reverse-each"><code>reverse_each</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>reverse_each</code> to <code>reverse.each</code> because some classes that <code>include Enumerable</code> will provide an efficient implementation.
+Even in the worst case where a class does not provide a specialized implementation, the general implementation inherited from <code>Enumerable</code> will be at least as efficient as using <code>reverse.each</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">reverse</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">reverse_each</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -5473,6 +5288,49 @@ Concatenation mutates the string instance in-place and is always faster than <co
 <span class="c1"># good</span>
 <span class="n">url</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="s1">'http://'</span><span class="p">,</span> <span class="s1">'https://'</span><span class="p">)</span>
 <span class="n">str</span><span class="p">.</span><span class="nf">tr</span><span class="p">(</span><span class="s1">'-'</span><span class="p">,</span> <span class="s1">'_'</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sprintf"><a class="anchor" href="#sprintf"></a><a class="link" href="#sprintf"><code>sprintf</code></a></h3>
+<div class="paragraph">
+<p>Favor the use of <code>sprintf</code> and its alias <code>format</code> over the fairly cryptic <code>String#%</code> method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="s1">'%d %d'</span> <span class="o">%</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="c1"># =&gt; '20 10'</span>
+
+<span class="c1"># good</span>
+<span class="nb">sprintf</span><span class="p">(</span><span class="s1">'%d %d'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># =&gt; '20 10'</span>
+
+<span class="c1"># good</span>
+<span class="nb">sprintf</span><span class="p">(</span><span class="s1">'%&lt;first&gt;d %&lt;second&gt;d'</span><span class="p">,</span> <span class="ss">first: </span><span class="mi">20</span><span class="p">,</span> <span class="ss">second: </span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># =&gt; '20 10'</span>
+
+<span class="nb">format</span><span class="p">(</span><span class="s1">'%d %d'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># =&gt; '20 10'</span>
+
+<span class="c1"># good</span>
+<span class="nb">format</span><span class="p">(</span><span class="s1">'%&lt;first&gt;d %&lt;second&gt;d'</span><span class="p">,</span> <span class="ss">first: </span><span class="mi">20</span><span class="p">,</span> <span class="ss">second: </span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># =&gt; '20 10'</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="named-format-tokens"><a class="anchor" href="#named-format-tokens"></a><a class="link" href="#named-format-tokens">Named Format Tokens</a></h3>
+<div class="paragraph">
+<p>When using named format string tokens, favor <code>%&lt;name&gt;s</code> over <code>%{name}</code> because it encodes information about the type of the value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="nb">format</span><span class="p">(</span><span class="s1">'Hello, %{name}'</span><span class="p">,</span> <span class="ss">name: </span><span class="s1">'John'</span><span class="p">)</span>
+
+<span class="c1"># good</span>
+<span class="nb">format</span><span class="p">(</span><span class="s1">'Hello, %&lt;name&gt;s'</span><span class="p">,</span> <span class="ss">name: </span><span class="s1">'John'</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -6131,6 +5989,167 @@ You can read more about it
 <h2 id="misc"><a class="anchor" href="#misc"></a><a class="link" href="#misc">Misc</a></h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="no-flip-flops"><a class="anchor" href="#no-flip-flops"></a><a class="link" href="#no-flip-flops">No Flip-flops</a></h3>
+<div class="paragraph">
+<p>Avoid the use of flip-flops.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+They are deprecated as of Ruby 2.6.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-non-nil-checks"><a class="anchor" href="#no-non-nil-checks"></a><a class="link" href="#no-non-nil-checks">No non-<code>nil</code> Checks</a></h3>
+<div class="paragraph">
+<p>Don&#8217;t do explicit non-<code>nil</code> checks unless you&#8217;re dealing with boolean values.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">do_something</span> <span class="k">if</span> <span class="o">!</span><span class="n">something</span><span class="p">.</span><span class="nf">nil?</span>
+<span class="n">do_something</span> <span class="k">if</span> <span class="n">something</span> <span class="o">!=</span> <span class="kp">nil</span>
+
+<span class="c1"># good</span>
+<span class="n">do_something</span> <span class="k">if</span> <span class="n">something</span>
+
+<span class="c1"># good - dealing with a boolean</span>
+<span class="k">def</span> <span class="nf">value_set?</span>
+  <span class="o">!</span><span class="vi">@some_boolean</span><span class="p">.</span><span class="nf">nil?</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="global-stdout"><a class="anchor" href="#global-stdout"></a><a class="link" href="#global-stdout">Global <code>stdout</code></a></h3>
+<div class="paragraph">
+<p>Use <code>$stdout/$stderr/$stdin</code> instead of <code>STDOUT/STDERR/STDIN</code>.
+<code>STDOUT/STDERR/STDIN</code> are constants, and while you can actually reassign (possibly to redirect some stream) constants in Ruby, you&#8217;ll get an interpreter warning if you do so.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="warn"><a class="anchor" href="#warn"></a><a class="link" href="#warn">Warn</a></h3>
+<div class="paragraph">
+<p>Use <code>warn</code> instead of <code>$stderr.puts</code>.
+Apart from being more concise and clear, <code>warn</code> allows you to suppress warnings if you need to (by setting the warn level to 0 via <code>-W0</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="array-join"><a class="anchor" href="#array-join"></a><a class="link" href="#array-join"><code>Array#join</code></a></h3>
+<div class="paragraph">
+<p>Favor the use of <code>Array#join</code> over the fairly cryptic <code>Array#*</code> with a string argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="sx">%w[one two three]</span> <span class="o">*</span> <span class="s1">', '</span>
+<span class="c1"># =&gt; 'one, two, three'</span>
+
+<span class="c1"># good</span>
+<span class="sx">%w[one two three]</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">)</span>
+<span class="c1"># =&gt; 'one, two, three'</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="array-coercion"><a class="anchor" href="#array-coercion"></a><a class="link" href="#array-coercion">Array Coercion</a></h3>
+<div class="paragraph">
+<p>Use <code>Array()</code> instead of explicit <code>Array</code> check or <code>[*var]</code>, when dealing with a variable you want to treat as an Array, but you&#8217;re not certain it&#8217;s an array.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">paths</span><span class="p">]</span> <span class="k">unless</span> <span class="n">paths</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Array</span>
+<span class="n">paths</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1"># bad (always creates a new Array instance)</span>
+<span class="p">[</span><span class="o">*</span><span class="n">paths</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="c1"># good (and a bit more readable)</span>
+<span class="no">Array</span><span class="p">(</span><span class="n">paths</span><span class="p">).</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ranges-or-between"><a class="anchor" href="#ranges-or-between"></a><a class="link" href="#ranges-or-between">Ranges or <code>between</code></a></h3>
+<div class="paragraph">
+<p>Use ranges or <code>Comparable#between?</code> instead of complex comparison logic when possible.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">do_something</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">2000</span>
+
+<span class="c1"># good</span>
+<span class="n">do_something</span> <span class="k">if</span> <span class="p">(</span><span class="mi">1000</span><span class="o">..</span><span class="mi">2000</span><span class="p">).</span><span class="nf">include?</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># good</span>
+<span class="n">do_something</span> <span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">between?</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="predicate-methods"><a class="anchor" href="#predicate-methods"></a><a class="link" href="#predicate-methods">Predicate Methods</a></h3>
+<div class="paragraph">
+<p>Favor the use of predicate methods to explicit comparisons with <code>==</code>.
+Numeric comparisons are OK.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="kp">nil</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">even?</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">odd?</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">nil?</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span><span class="p">.</span><span class="nf">zero?</span>
+<span class="k">end</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-cryptic-perlisms"><a class="anchor" href="#no-cryptic-perlisms"></a><a class="link" href="#no-cryptic-perlisms">No Cryptic Perlisms</a></h3>
+<div class="paragraph">
+<p>Avoid using Perl-style special variables (like <code>$:</code>, <code>$;</code>, etc).
+They are quite cryptic and their use in anything but one-liner scripts is discouraged.
+Use the human-friendly aliases provided by the <code>English</code> library.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="vg">$:</span><span class="p">.</span><span class="nf">unshift</span> <span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="kp">__FILE__</span><span class="p">)</span>
+
+<span class="c1"># good</span>
+<span class="nb">require</span> <span class="s1">'English'</span>
+<span class="vg">$LOAD_PATH</span><span class="p">.</span><span class="nf">unshift</span> <span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="kp">__FILE__</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="always-warn"><a class="anchor" href="#always-warn"></a><a class="link" href="#always-warn">Always Warn</a></h3>
 <div class="paragraph">
 <p>Write <code>ruby -w</code> safe code.</p>
@@ -6356,7 +6375,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-11 11:12:33 UTC
+Last updated 2019-06-11 11:49:44 UTC
 </div>
 </div>
 <style>
