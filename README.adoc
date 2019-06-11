@@ -693,6 +693,291 @@ menu_item =
      Baked beans Spam Spam Spam Spam Spam]
 ----
 
+== Naming Conventions
+
+[quote]
+____
+The only real difficulties in programming are cache invalidation and naming things.
+
+-- Phil Karlton
+____
+
+=== English Identifiers [[english-identifiers]]
+
+Name identifiers in English.
+
+[source,ruby]
+----
+# bad - identifier using non-ascii characters
+заплата = 1_000
+
+# bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
+zaplata = 1_000
+
+# good
+salary = 1_000
+----
+
+=== Snake Case Symbols Methods Vars [[snake-case-symbols-methods-vars]]
+
+Use `snake_case` for symbols, methods and variables.
+
+[source,ruby]
+----
+# bad
+:'some symbol'
+:SomeSymbol
+:someSymbol
+
+someVar = 5
+
+def someMethod
+  # some code
+end
+
+def SomeMethod
+  # some code
+end
+
+# good
+:some_symbol
+
+some_var = 5
+
+def some_method
+  # some code
+end
+----
+
+=== Snake Case Symbols Methods Vars with Numbers [[snake-case-symbols-methods-vars-with-numbers]]
+
+Do not separate numbers from letters on symbols, methods and variables.
+
+[source,ruby]
+----
+# bad
+:some_sym_1
+
+some_var_1 = 1
+
+var_10 = 10
+
+def some_method_1
+  # some code
+end
+
+# good
+:some_sym1
+
+some_var1 = 1
+
+var10 = 10
+
+def some_method1
+  # some code
+end
+----
+
+=== CamelCase Classes [[camelcase-classes]]
+
+Use `CamelCase` for classes and modules.
+(Keep acronyms like HTTP, RFC, XML uppercase).
+
+[source,ruby]
+----
+# bad
+class Someclass
+  # some code
+end
+
+class Some_Class
+  # some code
+end
+
+class SomeXml
+  # some code
+end
+
+class XmlSomething
+  # some code
+end
+
+# good
+class SomeClass
+  # some code
+end
+
+class SomeXML
+  # some code
+end
+
+class XMLSomething
+  # some code
+end
+----
+
+=== Snake Case Files [[snake-case-files]]
+
+Use `snake_case` for naming files, e.g. `hello_world.rb`.
+
+=== Snake Case Directories [[snake-case-dirs]]
+
+Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
+
+=== One Class per File [[one-class-per-file]]
+
+Aim to have just a single class/module per source file.
+Name the file name as the class/module, but replacing `CamelCase` with `snake_case`.
+
+=== Screaming Snake Case [[screaming-snake-case]]
+
+Use `SCREAMING_SNAKE_CASE` for other constants.
+
+[source,ruby]
+----
+# bad
+SomeConst = 5
+
+# good
+SOME_CONST = 5
+----
+
+=== Boolean Methods Question Mark [[bool-methods-qmark]]
+
+The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. `Array#empty?`).
+Methods that don't return a boolean, shouldn't end in a question mark.
+
+=== Boolean Methods Prefix [[bool-methods-prefix]]
+
+Avoid prefixing predicate methods with the auxiliary verbs such as `is`, `does`, or `can`.
+These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as `empty?` and `include?`.
+
+[source,ruby]
+----
+# bad
+class Person
+  def is_tall?
+    true
+  end
+
+  def can_play_basketball?
+    false
+  end
+
+  def does_like_candy?
+    true
+  end
+end
+
+# good
+class Person
+  def tall?
+    true
+  end
+
+  def basketball_player?
+    false
+  end
+
+  def likes_candy?
+    true
+  end
+end
+----
+
+=== Dangerous Method Bang [[dangerous-method-bang]]
+
+The names of potentially _dangerous_ methods (i.e. methods that modify `self` or the arguments, `exit!` (doesn't run the finalizers like `exit` does), etc) should end with an exclamation mark if there exists a safe version of that _dangerous_ method.
+
+[source,ruby]
+----
+# bad - there is no matching 'safe' method
+class Person
+  def update!
+  end
+end
+
+# good
+class Person
+  def update
+  end
+end
+
+# good
+class Person
+  def update!
+  end
+
+  def update
+  end
+end
+----
+
+=== Safe Because Unsafe [[safe-because-unsafe]]
+
+Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.
+
+[source,ruby]
+----
+class Array
+  def flatten_once!
+    res = []
+
+    each do |e|
+      [*e].each { |f| res << f }
+    end
+
+    replace(res)
+  end
+
+  def flatten_once
+    dup.flatten_once!
+  end
+end
+----
+
+=== `other` arg [[other-arg]]
+
+When defining binary operators and operator-alike methods, name the parameter `other` for operators with "symmetrical" semantics of operands.
+Symmetrical semantics means both sides of the operator are typically of same or coercible types.
+
+Operators and operator-alike methods with symmetrical semantics (the parameter should be named `other`): `+`, `-`, `+*+`, `/`, `%`, `**`, `==`, `>`, `<`, `|`, `&`, `^`, `eql?`, `equal?`.
+
+Operators with non-symmetrical semantics (the parameter should *not* be named `other`): `<<`, `[]` (collection/item relations between operands), `===` (pattern/matchable relations).
+
+Note that the rule should be followed *only* if both sides of the operator have the same semantics.
+Prominent exception in Ruby core is, for example, `Array#*(int)`.
+
+[source,ruby]
+----
+# good
+def +(other)
+  # body omitted
+end
+
+# bad
+def <<(other)
+  @internal << other
+end
+
+# good
+def <<(item)
+  @internal << item
+end
+
+# bad
+# Returns some string multiplied `other` times
+def *(other)
+  # body omitted
+end
+
+# good
+# Returns some string multiplied `num` times
+def *(num)
+  # body omitted
+end
+----
+
 == Syntax
 
 === Double Colons [[double-colons]]
@@ -2184,291 +2469,6 @@ array.reverse.each { ... }
 
 # good
 array.reverse_each { ... }
-----
-
-== Naming
-
-[quote]
-____
-The only real difficulties in programming are cache invalidation and naming things.
-
--- Phil Karlton
-____
-
-=== English Identifiers [[english-identifiers]]
-
-Name identifiers in English.
-
-[source,ruby]
-----
-# bad - identifier using non-ascii characters
-заплата = 1_000
-
-# bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
-zaplata = 1_000
-
-# good
-salary = 1_000
-----
-
-=== Snake Case Symbols Methods Vars [[snake-case-symbols-methods-vars]]
-
-Use `snake_case` for symbols, methods and variables.
-
-[source,ruby]
-----
-# bad
-:'some symbol'
-:SomeSymbol
-:someSymbol
-
-someVar = 5
-
-def someMethod
-  # some code
-end
-
-def SomeMethod
-  # some code
-end
-
-# good
-:some_symbol
-
-some_var = 5
-
-def some_method
-  # some code
-end
-----
-
-=== Snake Case Symbols Methods Vars with Numbers [[snake-case-symbols-methods-vars-with-numbers]]
-
-Do not separate numbers from letters on symbols, methods and variables.
-
-[source,ruby]
-----
-# bad
-:some_sym_1
-
-some_var_1 = 1
-
-var_10 = 10
-
-def some_method_1
-  # some code
-end
-
-# good
-:some_sym1
-
-some_var1 = 1
-
-var10 = 10
-
-def some_method1
-  # some code
-end
-----
-
-=== CamelCase Classes [[camelcase-classes]]
-
-Use `CamelCase` for classes and modules.
-(Keep acronyms like HTTP, RFC, XML uppercase).
-
-[source,ruby]
-----
-# bad
-class Someclass
-  # some code
-end
-
-class Some_Class
-  # some code
-end
-
-class SomeXml
-  # some code
-end
-
-class XmlSomething
-  # some code
-end
-
-# good
-class SomeClass
-  # some code
-end
-
-class SomeXML
-  # some code
-end
-
-class XMLSomething
-  # some code
-end
-----
-
-=== Snake Case Files [[snake-case-files]]
-
-Use `snake_case` for naming files, e.g. `hello_world.rb`.
-
-=== Snake Case Directories [[snake-case-dirs]]
-
-Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
-
-=== One Class per File [[one-class-per-file]]
-
-Aim to have just a single class/module per source file.
-Name the file name as the class/module, but replacing `CamelCase` with `snake_case`.
-
-=== Screaming Snake Case [[screaming-snake-case]]
-
-Use `SCREAMING_SNAKE_CASE` for other constants.
-
-[source,ruby]
-----
-# bad
-SomeConst = 5
-
-# good
-SOME_CONST = 5
-----
-
-=== Boolean Methods Question Mark [[bool-methods-qmark]]
-
-The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. `Array#empty?`).
-Methods that don't return a boolean, shouldn't end in a question mark.
-
-=== Boolean Methods Prefix [[bool-methods-prefix]]
-
-Avoid prefixing predicate methods with the auxiliary verbs such as `is`, `does`, or `can`.
-These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as `empty?` and `include?`.
-
-[source,ruby]
-----
-# bad
-class Person
-  def is_tall?
-    true
-  end
-
-  def can_play_basketball?
-    false
-  end
-
-  def does_like_candy?
-    true
-  end
-end
-
-# good
-class Person
-  def tall?
-    true
-  end
-
-  def basketball_player?
-    false
-  end
-
-  def likes_candy?
-    true
-  end
-end
-----
-
-=== Dangerous Method Bang [[dangerous-method-bang]]
-
-The names of potentially _dangerous_ methods (i.e. methods that modify `self` or the arguments, `exit!` (doesn't run the finalizers like `exit` does), etc) should end with an exclamation mark if there exists a safe version of that _dangerous_ method.
-
-[source,ruby]
-----
-# bad - there is no matching 'safe' method
-class Person
-  def update!
-  end
-end
-
-# good
-class Person
-  def update
-  end
-end
-
-# good
-class Person
-  def update!
-  end
-
-  def update
-  end
-end
-----
-
-=== Safe Because Unsafe [[safe-because-unsafe]]
-
-Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.
-
-[source,ruby]
-----
-class Array
-  def flatten_once!
-    res = []
-
-    each do |e|
-      [*e].each { |f| res << f }
-    end
-
-    replace(res)
-  end
-
-  def flatten_once
-    dup.flatten_once!
-  end
-end
-----
-
-=== `other` arg [[other-arg]]
-
-When defining binary operators and operator-alike methods, name the parameter `other` for operators with "symmetrical" semantics of operands.
-Symmetrical semantics means both sides of the operator are typically of same or coercible types.
-
-Operators and operator-alike methods with symmetrical semantics (the parameter should be named `other`): `+`, `-`, `+*+`, `/`, `%`, `**`, `==`, `>`, `<`, `|`, `&`, `^`, `eql?`, `equal?`.
-
-Operators with non-symmetrical semantics (the parameter should *not* be named `other`): `<<`, `[]` (collection/item relations between operands), `===` (pattern/matchable relations).
-
-Note that the rule should be followed *only* if both sides of the operator have the same semantics.
-Prominent exception in Ruby core is, for example, `Array#*(int)`.
-
-[source,ruby]
-----
-# good
-def +(other)
-  # body omitted
-end
-
-# bad
-def <<(other)
-  @internal << other
-end
-
-# good
-def <<(item)
-  @internal << item
-end
-
-# bad
-# Returns some string multiplied `other` times
-def *(other)
-  # body omitted
-end
-
-# good
-# Returns some string multiplied `num` times
-def *(num)
-  # body omitted
-end
 ----
 
 == Comments
