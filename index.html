@@ -447,8 +447,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#utf-8">Source Encoding</a></li>
 <li><a href="#tabs-or-spaces">Tabs or Spaces?</a></li>
 <li><a href="#spaces-indentation">Indentation</a></li>
+<li><a href="#80-character-limits">Maximum Line Length</a></li>
+<li><a href="#no-trailing-whitespace">No Trailing Whitespace</a></li>
 <li><a href="#crlf">Line Endings</a></li>
-<li><a href="#no-semicolon">No Semicolon</a></li>
+<li><a href="#newline-eof">Should I Terminate Files with a Newline?</a></li>
+<li><a href="#no-semicolon">Should I Terminate Expressions with <code>;</code>?</a></li>
+<li><a href="#one-expression-per-line">One Expression Per Line</a></li>
 <li><a href="#single-line-classes">Single-line Classes</a></li>
 <li><a href="#no-single-line-methods">No Single-line Methods</a></li>
 <li><a href="#spaces-operators">Spaces and Operators</a></li>
@@ -470,9 +474,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#underscores-in-numerics">Underscores in Numerics</a></li>
 <li><a href="#numeric-literal-prefixes">Numeric Literal Prefixes</a></li>
 <li><a href="#api-documentation">API Documentation</a></li>
-<li><a href="#80-character-limits">80 Character Limits</a></li>
-<li><a href="#no-trailing-whitespace">No Trailing Whitespace</a></li>
-<li><a href="#newline-eof">Newline EOF</a></li>
 <li><a href="#no-block-comments">No Block Comments</a></li>
 </ul>
 </li>
@@ -963,6 +964,18 @@ UFT-8 has been the default source file encoding since Ruby 2.0.
 </div>
 </div>
 <div class="sect2">
+<h3 id="80-character-limits"><a class="anchor" href="#80-character-limits"></a><a class="link" href="#80-character-limits">Maximum Line Length</a></h3>
+<div class="paragraph">
+<p>Limit lines to 80 characters.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-trailing-whitespace"><a class="anchor" href="#no-trailing-whitespace"></a><a class="link" href="#no-trailing-whitespace">No Trailing Whitespace</a></h3>
+<div class="paragraph">
+<p>Avoid trailing whitespace.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
 <p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
@@ -988,21 +1001,37 @@ UFT-8 has been the default source file encoding since Ruby 2.0.
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-semicolon"><a class="anchor" href="#no-semicolon"></a><a class="link" href="#no-semicolon">No Semicolon</a></h3>
+<h3 id="newline-eof"><a class="anchor" href="#newline-eof"></a><a class="link" href="#newline-eof">Should I Terminate Files with a Newline?</a></h3>
 <div class="paragraph">
-<p>Don&#8217;t use <code>;</code> to separate statements and expressions.
-As a corollary - use one expression per line.</p>
+<p>End each file with a newline.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-semicolon"><a class="anchor" href="#no-semicolon"></a><a class="link" href="#no-semicolon">Should I Terminate Expressions with <code>;</code>?</a></h3>
+<div class="paragraph">
+<p>Don&#8217;t use <code>;</code> to terminate statements and expressions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
 <span class="nb">puts</span> <span class="s1">'foobar'</span><span class="p">;</span> <span class="c1"># superfluous semicolon</span>
 
+<span class="c1"># good</span>
+<span class="nb">puts</span> <span class="s1">'foobar'</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="one-expression-per-line"><a class="anchor" href="#one-expression-per-line"></a><a class="link" href="#one-expression-per-line">One Expression Per Line</a></h3>
+<div class="paragraph">
+<p>Use one expression per line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
 <span class="nb">puts</span> <span class="s1">'foo'</span><span class="p">;</span> <span class="nb">puts</span> <span class="s1">'bar'</span> <span class="c1"># two expressions on the same line</span>
 
 <span class="c1"># good</span>
-<span class="nb">puts</span> <span class="s1">'foobar'</span>
-
 <span class="nb">puts</span> <span class="s1">'foo'</span>
 <span class="nb">puts</span> <span class="s1">'bar'</span>
 
@@ -1021,12 +1050,25 @@ As a corollary - use one expression per line.</p>
 <span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span>
 <span class="k">end</span>
 
-<span class="c1"># okish</span>
+<span class="c1"># good</span>
 <span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span><span class="p">;</span> <span class="k">end</span>
 
-<span class="c1"># good</span>
+<span class="c1"># okish</span>
 <span class="no">FooError</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">StandardError</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Many editors/tools will fail to understand properly the usage of <code>Class.new</code>,
+so in general it&#8217;s better to stick to the alternative one-line style.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1631,24 +1673,6 @@ Do not use <code>0d</code> prefix for decimal literals.</p>
 <h3 id="api-documentation"><a class="anchor" href="#api-documentation"></a><a class="link" href="#api-documentation">API Documentation</a></h3>
 <div class="paragraph">
 <p>Use <a href="https://yardoc.org/">YARD</a> and its conventions for API documentation.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="80-character-limits"><a class="anchor" href="#80-character-limits"></a><a class="link" href="#80-character-limits">80 Character Limits</a></h3>
-<div class="paragraph">
-<p>Limit lines to 80 characters.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-trailing-whitespace"><a class="anchor" href="#no-trailing-whitespace"></a><a class="link" href="#no-trailing-whitespace">No Trailing Whitespace</a></h3>
-<div class="paragraph">
-<p>Avoid trailing whitespace.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="newline-eof"><a class="anchor" href="#newline-eof"></a><a class="link" href="#newline-eof">Newline EOF</a></h3>
-<div class="paragraph">
-<p>End each file with a newline.</p>
 </div>
 </div>
 <div class="sect2">
@@ -6321,7 +6345,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-11 09:26:09 UTC
+Last updated 2019-06-11 10:10:13 UTC
 </div>
 </div>
 <style>
