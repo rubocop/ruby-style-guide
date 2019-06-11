@@ -1633,6 +1633,268 @@ end
 end
 ----
 
+== Exceptions
+
+=== Prefer `raise` over `fail` [[prefer-raise-over-fail]]
+
+Prefer `raise` over `fail` for exceptions.
+
+[source,ruby]
+----
+# bad
+fail SomeException, 'message'
+
+# good
+raise SomeException, 'message'
+----
+
+=== No Explicit `RuntimeError` [[no-explicit-runtimeerror]]
+
+Don't specify `RuntimeError` explicitly in the two argument version of `raise`.
+
+[source,ruby]
+----
+# bad
+raise RuntimeError, 'message'
+
+# good - signals a RuntimeError by default
+raise 'message'
+----
+
+=== Exception Class Messages [[exception-class-messages]]
+
+Prefer supplying an exception class and a message as two separate arguments to `raise`, instead of an exception instance.
+
+[source,ruby]
+----
+# bad
+raise SomeException.new('message')
+# Note that there is no way to do `raise SomeException.new('message'), backtrace`.
+
+# good
+raise SomeException, 'message'
+# Consistent with `raise SomeException, 'message', backtrace`.
+----
+
+=== No `return` from `ensure` [[no-return-ensure]]
+
+Do not return from an `ensure` block.
+If you explicitly return from a method inside an `ensure` block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
+In effect, the exception will be silently thrown away.
+
+[source,ruby]
+----
+# bad
+def foo
+  raise
+ensure
+  return 'very bad idea'
+end
+----
+
+=== Implicit `begin` [[begin-implicit]]
+
+Use _implicit begin blocks_ where possible.
+
+[source,ruby]
+----
+# bad
+def foo
+  begin
+    # main logic goes here
+  rescue
+    # failure handling goes here
+  end
+end
+
+# good
+def foo
+  # main logic goes here
+rescue
+  # failure handling goes here
+end
+----
+
+=== Contingency Methods [[contingency-methods]]
+
+Mitigate the proliferation of `begin` blocks by using _contingency methods_ (a term coined by Avdi Grimm).
+
+[source,ruby]
+----
+# bad
+begin
+  something_that_might_fail
+rescue IOError
+  # handle IOError
+end
+
+begin
+  something_else_that_might_fail
+rescue IOError
+  # handle IOError
+end
+
+# good
+def with_io_error_handling
+   yield
+rescue IOError
+  # handle IOError
+end
+
+with_io_error_handling { something_that_might_fail }
+
+with_io_error_handling { something_else_that_might_fail }
+----
+
+=== Don't Hide Exceptions [[dont-hide-exceptions]]
+
+Don't suppress exceptions.
+
+[source,ruby]
+----
+# bad
+begin
+  # an exception occurs here
+rescue SomeError
+  # the rescue clause does absolutely nothing
+end
+
+# bad
+do_something rescue nil
+----
+
+=== No `rescue` Modifiers [[no-rescue-modifiers]]
+
+Avoid using `rescue` in its modifier form.
+
+[source,ruby]
+----
+# bad - this catches exceptions of StandardError class and its descendant classes
+read_file rescue handle_error($!)
+
+# good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
+def foo
+  read_file
+rescue Errno::ENOENT => e
+  handle_error(e)
+end
+----
+
+=== No Exceptional Flows [[no-exceptional-flows]]
+
+Don't use exceptions for flow of control.
+
+[source,ruby]
+----
+# bad
+begin
+  n / d
+rescue ZeroDivisionError
+  puts 'Cannot divide by 0!'
+end
+
+# good
+if d.zero?
+  puts 'Cannot divide by 0!'
+else
+  n / d
+end
+----
+
+=== No Blind Rescues [[no-blind-rescues]]
+
+Avoid rescuing the `Exception` class.
+This will trap signals and calls to `exit`, requiring you to `kill -9` the process.
+
+[source,ruby]
+----
+# bad
+begin
+  # calls to exit and kill signals will be caught (except kill -9)
+  exit
+rescue Exception
+  puts "you didn't really want to exit, right?"
+  # exception handling
+end
+
+# good
+begin
+  # a blind rescue rescues from StandardError, not Exception as many
+  # programmers assume.
+rescue => e
+  # exception handling
+end
+
+# also good
+begin
+  # an exception occurs here
+rescue StandardError => e
+  # exception handling
+end
+----
+
+=== Exception Ordering [[exception-ordering]]
+
+Put more specific exceptions higher up the rescue chain, otherwise they'll never be rescued from.
+
+[source,ruby]
+----
+# bad
+begin
+  # some code
+rescue StandardError => e
+  # some handling
+rescue IOError => e
+  # some handling that will never be executed
+end
+
+# good
+begin
+  # some code
+rescue IOError => e
+  # some handling
+rescue StandardError => e
+  # some handling
+end
+----
+
+=== Release Resources [[release-resources]]
+
+Release external resources obtained by your program in an `ensure` block.
+
+[source,ruby]
+----
+f = File.open('testfile')
+begin
+  # .. process
+rescue
+  # .. handle error
+ensure
+  f.close if f
+end
+----
+
+=== Auto Release Resources [[auto-release-resources]]
+
+Use versions of resource obtaining methods that do automatic resource cleanup when possible.
+
+[source,ruby]
+----
+# bad - you need to close the file descriptor explicitly
+f = File.open('testfile')
+# some action on the file
+f.close
+
+# good - the file descriptor is closed automatically
+File.open('testfile') do |f|
+  # some action on the file
+end
+----
+
+=== Standard Exceptions [[standard-exceptions]]
+
+Favor the use of exceptions from the standard library over introducing new exception classes.
+
 == Assignment & Comparison
 
 === Parallel Assignment [[parallel-assignment]]
@@ -3104,268 +3366,6 @@ class Person
   # Some code
 end
 ----
-
-== Exceptions
-
-=== Prefer `raise` over `fail` [[prefer-raise-over-fail]]
-
-Prefer `raise` over `fail` for exceptions.
-
-[source,ruby]
-----
-# bad
-fail SomeException, 'message'
-
-# good
-raise SomeException, 'message'
-----
-
-=== No Explicit `RuntimeError` [[no-explicit-runtimeerror]]
-
-Don't specify `RuntimeError` explicitly in the two argument version of `raise`.
-
-[source,ruby]
-----
-# bad
-raise RuntimeError, 'message'
-
-# good - signals a RuntimeError by default
-raise 'message'
-----
-
-=== Exception Class Messages [[exception-class-messages]]
-
-Prefer supplying an exception class and a message as two separate arguments to `raise`, instead of an exception instance.
-
-[source,ruby]
-----
-# bad
-raise SomeException.new('message')
-# Note that there is no way to do `raise SomeException.new('message'), backtrace`.
-
-# good
-raise SomeException, 'message'
-# Consistent with `raise SomeException, 'message', backtrace`.
-----
-
-=== No `return` from `ensure` [[no-return-ensure]]
-
-Do not return from an `ensure` block.
-If you explicitly return from a method inside an `ensure` block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
-In effect, the exception will be silently thrown away.
-
-[source,ruby]
-----
-# bad
-def foo
-  raise
-ensure
-  return 'very bad idea'
-end
-----
-
-=== Implicit `begin` [[begin-implicit]]
-
-Use _implicit begin blocks_ where possible.
-
-[source,ruby]
-----
-# bad
-def foo
-  begin
-    # main logic goes here
-  rescue
-    # failure handling goes here
-  end
-end
-
-# good
-def foo
-  # main logic goes here
-rescue
-  # failure handling goes here
-end
-----
-
-=== Contingency Methods [[contingency-methods]]
-
-Mitigate the proliferation of `begin` blocks by using _contingency methods_ (a term coined by Avdi Grimm).
-
-[source,ruby]
-----
-# bad
-begin
-  something_that_might_fail
-rescue IOError
-  # handle IOError
-end
-
-begin
-  something_else_that_might_fail
-rescue IOError
-  # handle IOError
-end
-
-# good
-def with_io_error_handling
-   yield
-rescue IOError
-  # handle IOError
-end
-
-with_io_error_handling { something_that_might_fail }
-
-with_io_error_handling { something_else_that_might_fail }
-----
-
-=== Don't Hide Exceptions [[dont-hide-exceptions]]
-
-Don't suppress exceptions.
-
-[source,ruby]
-----
-# bad
-begin
-  # an exception occurs here
-rescue SomeError
-  # the rescue clause does absolutely nothing
-end
-
-# bad
-do_something rescue nil
-----
-
-=== No `rescue` Modifiers [[no-rescue-modifiers]]
-
-Avoid using `rescue` in its modifier form.
-
-[source,ruby]
-----
-# bad - this catches exceptions of StandardError class and its descendant classes
-read_file rescue handle_error($!)
-
-# good - this catches only the exceptions of Errno::ENOENT class and its descendant classes
-def foo
-  read_file
-rescue Errno::ENOENT => e
-  handle_error(e)
-end
-----
-
-=== No Exceptional Flows [[no-exceptional-flows]]
-
-Don't use exceptions for flow of control.
-
-[source,ruby]
-----
-# bad
-begin
-  n / d
-rescue ZeroDivisionError
-  puts 'Cannot divide by 0!'
-end
-
-# good
-if d.zero?
-  puts 'Cannot divide by 0!'
-else
-  n / d
-end
-----
-
-=== No Blind Rescues [[no-blind-rescues]]
-
-Avoid rescuing the `Exception` class.
-This will trap signals and calls to `exit`, requiring you to `kill -9` the process.
-
-[source,ruby]
-----
-# bad
-begin
-  # calls to exit and kill signals will be caught (except kill -9)
-  exit
-rescue Exception
-  puts "you didn't really want to exit, right?"
-  # exception handling
-end
-
-# good
-begin
-  # a blind rescue rescues from StandardError, not Exception as many
-  # programmers assume.
-rescue => e
-  # exception handling
-end
-
-# also good
-begin
-  # an exception occurs here
-rescue StandardError => e
-  # exception handling
-end
-----
-
-=== Exception Ordering [[exception-ordering]]
-
-Put more specific exceptions higher up the rescue chain, otherwise they'll never be rescued from.
-
-[source,ruby]
-----
-# bad
-begin
-  # some code
-rescue StandardError => e
-  # some handling
-rescue IOError => e
-  # some handling that will never be executed
-end
-
-# good
-begin
-  # some code
-rescue IOError => e
-  # some handling
-rescue StandardError => e
-  # some handling
-end
-----
-
-=== Release Resources [[release-resources]]
-
-Release external resources obtained by your program in an `ensure` block.
-
-[source,ruby]
-----
-f = File.open('testfile')
-begin
-  # .. process
-rescue
-  # .. handle error
-ensure
-  f.close if f
-end
-----
-
-=== Auto Release Resources [[auto-release-resources]]
-
-Use versions of resource obtaining methods that do automatic resource cleanup when possible.
-
-[source,ruby]
-----
-# bad - you need to close the file descriptor explicitly
-f = File.open('testfile')
-# some action on the file
-f.close
-
-# good - the file descriptor is closed automatically
-File.open('testfile') do |f|
-  # some action on the file
-end
-----
-
-=== Standard Exceptions [[standard-exceptions]]
-
-Favor the use of exceptions from the standard library over introducing new exception classes.
 
 == Collections
 
