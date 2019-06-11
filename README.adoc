@@ -2086,6 +2086,8 @@ at_exit { puts 'Goodbye!' }
 
 Avoid the use of flip-flops.
 
+NOTE: They are deprecated as of Ruby 2.6.
+
 === No Nested Conditionals [[no-nested-conditionals]]
 
 Avoid use of nested conditionals for flow of control.
