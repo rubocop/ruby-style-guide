@@ -693,42 +693,6 @@ menu_item =
      Baked beans Spam Spam Spam Spam Spam]
 ----
 
-=== Underscores in Numerics [[underscores-in-numerics]]
-
-Add underscores to large numeric literals to improve their readability.
-
-[source,ruby]
-----
-# bad - how many 0s are there?
-num = 1000000
-
-# good - much easier to parse for the human brain
-num = 1_000_000
-----
-
-=== Numeric Literal Prefixes [[numeric-literal-prefixes]]
-
-Prefer lowercase letters for numeric literal prefixes.
-`0o` for octal, `0x` for hexadecimal and `0b` for binary.
-Do not use `0d` prefix for decimal literals.
-
-[source,ruby]
-----
-# bad
-num = 01234
-num = 0O1234
-num = 0X12AB
-num = 0B10101
-num = 0D1234
-num = 0d1234
-
-# good - easier to separate digits from the prefix
-num = 0o1234
-num = 0x12AB
-num = 0b10101
-num = 1234
-----
-
 == Syntax
 
 === Double Colons [[double-colons]]
@@ -3888,6 +3852,42 @@ end
 ----
 
 == Numbers
+
+=== Underscores in Numerics [[underscores-in-numerics]]
+
+Add underscores to large numeric literals to improve their readability.
+
+[source,ruby]
+----
+# bad - how many 0s are there?
+num = 1000000
+
+# good - much easier to parse for the human brain
+num = 1_000_000
+----
+
+=== Numeric Literal Prefixes [[numeric-literal-prefixes]]
+
+Prefer lowercase letters for numeric literal prefixes.
+`0o` for octal, `0x` for hexadecimal and `0b` for binary.
+Do not use `0d` prefix for decimal literals.
+
+[source,ruby]
+----
+# bad
+num = 01234
+num = 0O1234
+num = 0X12AB
+num = 0B10101
+num = 0D1234
+num = 0d1234
+
+# good - easier to separate digits from the prefix
+num = 0o1234
+num = 0x12AB
+num = 0b10101
+num = 1234
+----
 
 === Integer Type Checking [[integer-type-checking]]
 
