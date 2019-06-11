@@ -529,6 +529,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-nested-conditionals">No Nested Conditionals</a></li>
 </ul>
 </li>
+<li><a href="#exceptions">Exceptions</a>
+<ul class="sectlevel2">
+<li><a href="#prefer-raise-over-fail">Prefer <code>raise</code> over <code>fail</code></a></li>
+<li><a href="#no-explicit-runtimeerror">No Explicit <code>RuntimeError</code></a></li>
+<li><a href="#exception-class-messages">Exception Class Messages</a></li>
+<li><a href="#no-return-ensure">No <code>return</code> from <code>ensure</code></a></li>
+<li><a href="#begin-implicit">Implicit <code>begin</code></a></li>
+<li><a href="#contingency-methods">Contingency Methods</a></li>
+<li><a href="#dont-hide-exceptions">Don&#8217;t Hide Exceptions</a></li>
+<li><a href="#no-rescue-modifiers">No <code>rescue</code> Modifiers</a></li>
+<li><a href="#no-exceptional-flows">No Exceptional Flows</a></li>
+<li><a href="#no-blind-rescues">No Blind Rescues</a></li>
+<li><a href="#exception-ordering">Exception Ordering</a></li>
+<li><a href="#release-resources">Release Resources</a></li>
+<li><a href="#auto-release-resources">Auto Release Resources</a></li>
+<li><a href="#standard-exceptions">Standard Exceptions</a></li>
+</ul>
+</li>
 <li><a href="#assignment-comparison">Assignment &amp; Comparison</a>
 <ul class="sectlevel2">
 <li><a href="#parallel-assignment">Parallel Assignment</a></li>
@@ -630,24 +648,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#below-shebang">Below Shebang</a></li>
 <li><a href="#one-magic-comment-per-line">One Magic Comment per Line</a></li>
 <li><a href="#separate-magic-comments-from-code">Separate Magic Comments from Code</a></li>
-</ul>
-</li>
-<li><a href="#exceptions">Exceptions</a>
-<ul class="sectlevel2">
-<li><a href="#prefer-raise-over-fail">Prefer <code>raise</code> over <code>fail</code></a></li>
-<li><a href="#no-explicit-runtimeerror">No Explicit <code>RuntimeError</code></a></li>
-<li><a href="#exception-class-messages">Exception Class Messages</a></li>
-<li><a href="#no-return-ensure">No <code>return</code> from <code>ensure</code></a></li>
-<li><a href="#begin-implicit">Implicit <code>begin</code></a></li>
-<li><a href="#contingency-methods">Contingency Methods</a></li>
-<li><a href="#dont-hide-exceptions">Don&#8217;t Hide Exceptions</a></li>
-<li><a href="#no-rescue-modifiers">No <code>rescue</code> Modifiers</a></li>
-<li><a href="#no-exceptional-flows">No Exceptional Flows</a></li>
-<li><a href="#no-blind-rescues">No Blind Rescues</a></li>
-<li><a href="#exception-ordering">Exception Ordering</a></li>
-<li><a href="#release-resources">Release Resources</a></li>
-<li><a href="#auto-release-resources">Auto Release Resources</a></li>
-<li><a href="#standard-exceptions">Standard Exceptions</a></li>
 </ul>
 </li>
 <li><a href="#collections">Collections</a>
@@ -2702,6 +2702,299 @@ A guard clause is a conditional statement at the top of a function that bails ou
 </div>
 </div>
 <div class="sect1">
+<h2 id="exceptions"><a class="anchor" href="#exceptions"></a><a class="link" href="#exceptions">Exceptions</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="prefer-raise-over-fail"><a class="anchor" href="#prefer-raise-over-fail"></a><a class="link" href="#prefer-raise-over-fail">Prefer <code>raise</code> over <code>fail</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>raise</code> over <code>fail</code> for exceptions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="nb">fail</span> <span class="no">SomeException</span><span class="p">,</span> <span class="s1">'message'</span>
+
+<span class="c1"># good</span>
+<span class="k">raise</span> <span class="no">SomeException</span><span class="p">,</span> <span class="s1">'message'</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-explicit-runtimeerror"><a class="anchor" href="#no-explicit-runtimeerror"></a><a class="link" href="#no-explicit-runtimeerror">No Explicit <code>RuntimeError</code></a></h3>
+<div class="paragraph">
+<p>Don&#8217;t specify <code>RuntimeError</code> explicitly in the two argument version of <code>raise</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">raise</span> <span class="no">RuntimeError</span><span class="p">,</span> <span class="s1">'message'</span>
+
+<span class="c1"># good - signals a RuntimeError by default</span>
+<span class="k">raise</span> <span class="s1">'message'</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exception-class-messages"><a class="anchor" href="#exception-class-messages"></a><a class="link" href="#exception-class-messages">Exception Class Messages</a></h3>
+<div class="paragraph">
+<p>Prefer supplying an exception class and a message as two separate arguments to <code>raise</code>, instead of an exception instance.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">raise</span> <span class="no">SomeException</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'message'</span><span class="p">)</span>
+<span class="c1"># Note that there is no way to do `raise SomeException.new('message'), backtrace`.</span>
+
+<span class="c1"># good</span>
+<span class="k">raise</span> <span class="no">SomeException</span><span class="p">,</span> <span class="s1">'message'</span>
+<span class="c1"># Consistent with `raise SomeException, 'message', backtrace`.</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-return-ensure"><a class="anchor" href="#no-return-ensure"></a><a class="link" href="#no-return-ensure">No <code>return</code> from <code>ensure</code></a></h3>
+<div class="paragraph">
+<p>Do not return from an <code>ensure</code> block.
+If you explicitly return from a method inside an <code>ensure</code> block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
+In effect, the exception will be silently thrown away.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">foo</span>
+  <span class="k">raise</span>
+<span class="k">ensure</span>
+  <span class="k">return</span> <span class="s1">'very bad idea'</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="begin-implicit"><a class="anchor" href="#begin-implicit"></a><a class="link" href="#begin-implicit">Implicit <code>begin</code></a></h3>
+<div class="paragraph">
+<p>Use <em>implicit begin blocks</em> where possible.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">foo</span>
+  <span class="k">begin</span>
+    <span class="c1"># main logic goes here</span>
+  <span class="k">rescue</span>
+    <span class="c1"># failure handling goes here</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">foo</span>
+  <span class="c1"># main logic goes here</span>
+<span class="k">rescue</span>
+  <span class="c1"># failure handling goes here</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contingency-methods"><a class="anchor" href="#contingency-methods"></a><a class="link" href="#contingency-methods">Contingency Methods</a></h3>
+<div class="paragraph">
+<p>Mitigate the proliferation of <code>begin</code> blocks by using <em>contingency methods</em> (a term coined by Avdi Grimm).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">begin</span>
+  <span class="n">something_that_might_fail</span>
+<span class="k">rescue</span> <span class="no">IOError</span>
+  <span class="c1"># handle IOError</span>
+<span class="k">end</span>
+
+<span class="k">begin</span>
+  <span class="n">something_else_that_might_fail</span>
+<span class="k">rescue</span> <span class="no">IOError</span>
+  <span class="c1"># handle IOError</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">with_io_error_handling</span>
+   <span class="k">yield</span>
+<span class="k">rescue</span> <span class="no">IOError</span>
+  <span class="c1"># handle IOError</span>
+<span class="k">end</span>
+
+<span class="n">with_io_error_handling</span> <span class="p">{</span> <span class="n">something_that_might_fail</span> <span class="p">}</span>
+
+<span class="n">with_io_error_handling</span> <span class="p">{</span> <span class="n">something_else_that_might_fail</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-hide-exceptions"><a class="anchor" href="#dont-hide-exceptions"></a><a class="link" href="#dont-hide-exceptions">Don&#8217;t Hide Exceptions</a></h3>
+<div class="paragraph">
+<p>Don&#8217;t suppress exceptions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">begin</span>
+  <span class="c1"># an exception occurs here</span>
+<span class="k">rescue</span> <span class="no">SomeError</span>
+  <span class="c1"># the rescue clause does absolutely nothing</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="n">do_something</span> <span class="k">rescue</span> <span class="kp">nil</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-rescue-modifiers"><a class="anchor" href="#no-rescue-modifiers"></a><a class="link" href="#no-rescue-modifiers">No <code>rescue</code> Modifiers</a></h3>
+<div class="paragraph">
+<p>Avoid using <code>rescue</code> in its modifier form.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - this catches exceptions of StandardError class and its descendant classes</span>
+<span class="n">read_file</span> <span class="k">rescue</span> <span class="n">handle_error</span><span class="p">(</span><span class="vg">$!</span><span class="p">)</span>
+
+<span class="c1"># good - this catches only the exceptions of Errno::ENOENT class and its descendant classes</span>
+<span class="k">def</span> <span class="nf">foo</span>
+  <span class="n">read_file</span>
+<span class="k">rescue</span> <span class="no">Errno</span><span class="o">::</span><span class="no">ENOENT</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-exceptional-flows"><a class="anchor" href="#no-exceptional-flows"></a><a class="link" href="#no-exceptional-flows">No Exceptional Flows</a></h3>
+<div class="paragraph">
+<p>Don&#8217;t use exceptions for flow of control.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">begin</span>
+  <span class="n">n</span> <span class="o">/</span> <span class="n">d</span>
+<span class="k">rescue</span> <span class="no">ZeroDivisionError</span>
+  <span class="nb">puts</span> <span class="s1">'Cannot divide by 0!'</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">if</span> <span class="n">d</span><span class="p">.</span><span class="nf">zero?</span>
+  <span class="nb">puts</span> <span class="s1">'Cannot divide by 0!'</span>
+<span class="k">else</span>
+  <span class="n">n</span> <span class="o">/</span> <span class="n">d</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-blind-rescues"><a class="anchor" href="#no-blind-rescues"></a><a class="link" href="#no-blind-rescues">No Blind Rescues</a></h3>
+<div class="paragraph">
+<p>Avoid rescuing the <code>Exception</code> class.
+This will trap signals and calls to <code>exit</code>, requiring you to <code>kill -9</code> the process.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">begin</span>
+  <span class="c1"># calls to exit and kill signals will be caught (except kill -9)</span>
+  <span class="nb">exit</span>
+<span class="k">rescue</span> <span class="no">Exception</span>
+  <span class="nb">puts</span> <span class="s2">"you didn't really want to exit, right?"</span>
+  <span class="c1"># exception handling</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">begin</span>
+  <span class="c1"># a blind rescue rescues from StandardError, not Exception as many</span>
+  <span class="c1"># programmers assume.</span>
+<span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># exception handling</span>
+<span class="k">end</span>
+
+<span class="c1"># also good</span>
+<span class="k">begin</span>
+  <span class="c1"># an exception occurs here</span>
+<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># exception handling</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exception-ordering"><a class="anchor" href="#exception-ordering"></a><a class="link" href="#exception-ordering">Exception Ordering</a></h3>
+<div class="paragraph">
+<p>Put more specific exceptions higher up the rescue chain, otherwise they&#8217;ll never be rescued from.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">begin</span>
+  <span class="c1"># some code</span>
+<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># some handling</span>
+<span class="k">rescue</span> <span class="no">IOError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># some handling that will never be executed</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">begin</span>
+  <span class="c1"># some code</span>
+<span class="k">rescue</span> <span class="no">IOError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># some handling</span>
+<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># some handling</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="release-resources"><a class="anchor" href="#release-resources"></a><a class="link" href="#release-resources">Release Resources</a></h3>
+<div class="paragraph">
+<p>Release external resources obtained by your program in an <code>ensure</code> block.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'testfile'</span><span class="p">)</span>
+<span class="k">begin</span>
+  <span class="c1"># .. process</span>
+<span class="k">rescue</span>
+  <span class="c1"># .. handle error</span>
+<span class="k">ensure</span>
+  <span class="n">f</span><span class="p">.</span><span class="nf">close</span> <span class="k">if</span> <span class="n">f</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-release-resources"><a class="anchor" href="#auto-release-resources"></a><a class="link" href="#auto-release-resources">Auto Release Resources</a></h3>
+<div class="paragraph">
+<p>Use versions of resource obtaining methods that do automatic resource cleanup when possible.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - you need to close the file descriptor explicitly</span>
+<span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'testfile'</span><span class="p">)</span>
+<span class="c1"># some action on the file</span>
+<span class="n">f</span><span class="p">.</span><span class="nf">close</span>
+
+<span class="c1"># good - the file descriptor is closed automatically</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'testfile'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+  <span class="c1"># some action on the file</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="standard-exceptions"><a class="anchor" href="#standard-exceptions"></a><a class="link" href="#standard-exceptions">Standard Exceptions</a></h3>
+<div class="paragraph">
+<p>Favor the use of exceptions from the standard library over introducing new exception classes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="assignment-comparison"><a class="anchor" href="#assignment-comparison"></a><a class="link" href="#assignment-comparison">Assignment &amp; Comparison</a></h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -4353,299 +4646,6 @@ For example: <code>REVIEW: Are we sure this is how the client does X currently?<
   <span class="c1"># Some code</span>
 <span class="k">end</span></code></pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="exceptions"><a class="anchor" href="#exceptions"></a><a class="link" href="#exceptions">Exceptions</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="prefer-raise-over-fail"><a class="anchor" href="#prefer-raise-over-fail"></a><a class="link" href="#prefer-raise-over-fail">Prefer <code>raise</code> over <code>fail</code></a></h3>
-<div class="paragraph">
-<p>Prefer <code>raise</code> over <code>fail</code> for exceptions.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="nb">fail</span> <span class="no">SomeException</span><span class="p">,</span> <span class="s1">'message'</span>
-
-<span class="c1"># good</span>
-<span class="k">raise</span> <span class="no">SomeException</span><span class="p">,</span> <span class="s1">'message'</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-explicit-runtimeerror"><a class="anchor" href="#no-explicit-runtimeerror"></a><a class="link" href="#no-explicit-runtimeerror">No Explicit <code>RuntimeError</code></a></h3>
-<div class="paragraph">
-<p>Don&#8217;t specify <code>RuntimeError</code> explicitly in the two argument version of <code>raise</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">raise</span> <span class="no">RuntimeError</span><span class="p">,</span> <span class="s1">'message'</span>
-
-<span class="c1"># good - signals a RuntimeError by default</span>
-<span class="k">raise</span> <span class="s1">'message'</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exception-class-messages"><a class="anchor" href="#exception-class-messages"></a><a class="link" href="#exception-class-messages">Exception Class Messages</a></h3>
-<div class="paragraph">
-<p>Prefer supplying an exception class and a message as two separate arguments to <code>raise</code>, instead of an exception instance.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">raise</span> <span class="no">SomeException</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'message'</span><span class="p">)</span>
-<span class="c1"># Note that there is no way to do `raise SomeException.new('message'), backtrace`.</span>
-
-<span class="c1"># good</span>
-<span class="k">raise</span> <span class="no">SomeException</span><span class="p">,</span> <span class="s1">'message'</span>
-<span class="c1"># Consistent with `raise SomeException, 'message', backtrace`.</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-return-ensure"><a class="anchor" href="#no-return-ensure"></a><a class="link" href="#no-return-ensure">No <code>return</code> from <code>ensure</code></a></h3>
-<div class="paragraph">
-<p>Do not return from an <code>ensure</code> block.
-If you explicitly return from a method inside an <code>ensure</code> block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
-In effect, the exception will be silently thrown away.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">foo</span>
-  <span class="k">raise</span>
-<span class="k">ensure</span>
-  <span class="k">return</span> <span class="s1">'very bad idea'</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="begin-implicit"><a class="anchor" href="#begin-implicit"></a><a class="link" href="#begin-implicit">Implicit <code>begin</code></a></h3>
-<div class="paragraph">
-<p>Use <em>implicit begin blocks</em> where possible.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">foo</span>
-  <span class="k">begin</span>
-    <span class="c1"># main logic goes here</span>
-  <span class="k">rescue</span>
-    <span class="c1"># failure handling goes here</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">foo</span>
-  <span class="c1"># main logic goes here</span>
-<span class="k">rescue</span>
-  <span class="c1"># failure handling goes here</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="contingency-methods"><a class="anchor" href="#contingency-methods"></a><a class="link" href="#contingency-methods">Contingency Methods</a></h3>
-<div class="paragraph">
-<p>Mitigate the proliferation of <code>begin</code> blocks by using <em>contingency methods</em> (a term coined by Avdi Grimm).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">begin</span>
-  <span class="n">something_that_might_fail</span>
-<span class="k">rescue</span> <span class="no">IOError</span>
-  <span class="c1"># handle IOError</span>
-<span class="k">end</span>
-
-<span class="k">begin</span>
-  <span class="n">something_else_that_might_fail</span>
-<span class="k">rescue</span> <span class="no">IOError</span>
-  <span class="c1"># handle IOError</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">with_io_error_handling</span>
-   <span class="k">yield</span>
-<span class="k">rescue</span> <span class="no">IOError</span>
-  <span class="c1"># handle IOError</span>
-<span class="k">end</span>
-
-<span class="n">with_io_error_handling</span> <span class="p">{</span> <span class="n">something_that_might_fail</span> <span class="p">}</span>
-
-<span class="n">with_io_error_handling</span> <span class="p">{</span> <span class="n">something_else_that_might_fail</span> <span class="p">}</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="dont-hide-exceptions"><a class="anchor" href="#dont-hide-exceptions"></a><a class="link" href="#dont-hide-exceptions">Don&#8217;t Hide Exceptions</a></h3>
-<div class="paragraph">
-<p>Don&#8217;t suppress exceptions.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">begin</span>
-  <span class="c1"># an exception occurs here</span>
-<span class="k">rescue</span> <span class="no">SomeError</span>
-  <span class="c1"># the rescue clause does absolutely nothing</span>
-<span class="k">end</span>
-
-<span class="c1"># bad</span>
-<span class="n">do_something</span> <span class="k">rescue</span> <span class="kp">nil</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-rescue-modifiers"><a class="anchor" href="#no-rescue-modifiers"></a><a class="link" href="#no-rescue-modifiers">No <code>rescue</code> Modifiers</a></h3>
-<div class="paragraph">
-<p>Avoid using <code>rescue</code> in its modifier form.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - this catches exceptions of StandardError class and its descendant classes</span>
-<span class="n">read_file</span> <span class="k">rescue</span> <span class="n">handle_error</span><span class="p">(</span><span class="vg">$!</span><span class="p">)</span>
-
-<span class="c1"># good - this catches only the exceptions of Errno::ENOENT class and its descendant classes</span>
-<span class="k">def</span> <span class="nf">foo</span>
-  <span class="n">read_file</span>
-<span class="k">rescue</span> <span class="no">Errno</span><span class="o">::</span><span class="no">ENOENT</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-exceptional-flows"><a class="anchor" href="#no-exceptional-flows"></a><a class="link" href="#no-exceptional-flows">No Exceptional Flows</a></h3>
-<div class="paragraph">
-<p>Don&#8217;t use exceptions for flow of control.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">begin</span>
-  <span class="n">n</span> <span class="o">/</span> <span class="n">d</span>
-<span class="k">rescue</span> <span class="no">ZeroDivisionError</span>
-  <span class="nb">puts</span> <span class="s1">'Cannot divide by 0!'</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">if</span> <span class="n">d</span><span class="p">.</span><span class="nf">zero?</span>
-  <span class="nb">puts</span> <span class="s1">'Cannot divide by 0!'</span>
-<span class="k">else</span>
-  <span class="n">n</span> <span class="o">/</span> <span class="n">d</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-blind-rescues"><a class="anchor" href="#no-blind-rescues"></a><a class="link" href="#no-blind-rescues">No Blind Rescues</a></h3>
-<div class="paragraph">
-<p>Avoid rescuing the <code>Exception</code> class.
-This will trap signals and calls to <code>exit</code>, requiring you to <code>kill -9</code> the process.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">begin</span>
-  <span class="c1"># calls to exit and kill signals will be caught (except kill -9)</span>
-  <span class="nb">exit</span>
-<span class="k">rescue</span> <span class="no">Exception</span>
-  <span class="nb">puts</span> <span class="s2">"you didn't really want to exit, right?"</span>
-  <span class="c1"># exception handling</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">begin</span>
-  <span class="c1"># a blind rescue rescues from StandardError, not Exception as many</span>
-  <span class="c1"># programmers assume.</span>
-<span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="c1"># exception handling</span>
-<span class="k">end</span>
-
-<span class="c1"># also good</span>
-<span class="k">begin</span>
-  <span class="c1"># an exception occurs here</span>
-<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="c1"># exception handling</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exception-ordering"><a class="anchor" href="#exception-ordering"></a><a class="link" href="#exception-ordering">Exception Ordering</a></h3>
-<div class="paragraph">
-<p>Put more specific exceptions higher up the rescue chain, otherwise they&#8217;ll never be rescued from.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">begin</span>
-  <span class="c1"># some code</span>
-<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="c1"># some handling</span>
-<span class="k">rescue</span> <span class="no">IOError</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="c1"># some handling that will never be executed</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">begin</span>
-  <span class="c1"># some code</span>
-<span class="k">rescue</span> <span class="no">IOError</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="c1"># some handling</span>
-<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
-  <span class="c1"># some handling</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="release-resources"><a class="anchor" href="#release-resources"></a><a class="link" href="#release-resources">Release Resources</a></h3>
-<div class="paragraph">
-<p>Release external resources obtained by your program in an <code>ensure</code> block.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'testfile'</span><span class="p">)</span>
-<span class="k">begin</span>
-  <span class="c1"># .. process</span>
-<span class="k">rescue</span>
-  <span class="c1"># .. handle error</span>
-<span class="k">ensure</span>
-  <span class="n">f</span><span class="p">.</span><span class="nf">close</span> <span class="k">if</span> <span class="n">f</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="auto-release-resources"><a class="anchor" href="#auto-release-resources"></a><a class="link" href="#auto-release-resources">Auto Release Resources</a></h3>
-<div class="paragraph">
-<p>Use versions of resource obtaining methods that do automatic resource cleanup when possible.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - you need to close the file descriptor explicitly</span>
-<span class="n">f</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'testfile'</span><span class="p">)</span>
-<span class="c1"># some action on the file</span>
-<span class="n">f</span><span class="p">.</span><span class="nf">close</span>
-
-<span class="c1"># good - the file descriptor is closed automatically</span>
-<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'testfile'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-  <span class="c1"># some action on the file</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="standard-exceptions"><a class="anchor" href="#standard-exceptions"></a><a class="link" href="#standard-exceptions">Standard Exceptions</a></h3>
-<div class="paragraph">
-<p>Favor the use of exceptions from the standard library over introducing new exception classes.</p>
 </div>
 </div>
 </div>
@@ -6375,7 +6375,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-11 12:10:54 UTC
+Last updated 2019-06-11 12:13:09 UTC
 </div>
 </div>
 <style>
