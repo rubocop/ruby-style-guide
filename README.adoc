@@ -175,12 +175,15 @@ Prefer a single-line format for class definitions with no body.
 class FooError < StandardError
 end
 
-# okish
+# good
 class FooError < StandardError; end
 
-# good
+# okish
 FooError = Class.new(StandardError)
 ----
+
+NOTE: Many editors/tools will fail to understand properly the usage of `Class.new`,
+so in general it's better to stick to the alternative one-line style.
 
 === No Single-line Methods [[no-single-line-methods]]
 
