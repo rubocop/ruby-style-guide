@@ -3598,6 +3598,33 @@ system 'ls'</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="super-parens"><a class="anchor" href="#super-parens"></a><a class="link" href="#super-parens">"super" method usage</a></h4>
+<div class="paragraph">
+<p>Always use parentheses when calling <code>super</code> with arguments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">super</span> <span class="nb">name</span><span class="p">,</span> <span class="n">age</span>
+
+<span class="c1"># good</span>
+<span class="k">super</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+When calling <code>super</code> without arguments, <code>super</code> and <code>super()</code> mean different things. Decide what is appropriate for your usage.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="optional-arguments"><a class="anchor" href="#optional-arguments"></a><a class="link" href="#optional-arguments">Optional Arguments</a></h3>
@@ -6423,7 +6450,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-12 19:29:41 UTC
+Last updated 2019-06-12 19:31:22 UTC
 </div>
 </div>
 <style>
