@@ -4785,7 +4785,7 @@ It's easy, just follow the contribution guidelines below:
 
 == License
 
-image:http://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License] This work is licensed under a http://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
+image:https://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License] This work is licensed under a http://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
 
 == Spread the Word
 
