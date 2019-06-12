@@ -10,7 +10,7 @@ jobs:
           name: Install AsciiDoctor & Rouge
           command: |
             gem install asciidoctor
-            gem install rouge
+            gem install rouge -v 3.3.0
       - run:
           name: Build Site
           command: asciidoctor -a toc="left" -a toclevels=2 README.adoc -o _build/html/index.html
