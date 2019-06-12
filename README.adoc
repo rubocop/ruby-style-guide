@@ -3768,6 +3768,20 @@ rand(6) + 1
 rand(1..6)
 ----
 
+=== Float Division [[float-division]]
+
+When performing float-division on two integers, either use `fdiv` or convert the left-side integer (receiver) to float.
+
+[source,ruby]
+----
+# bad
+a / b.to_f
+
+# good
+a.fdiv(b)
+a.to_f / b
+----
+
 == Strings
 
 === String Interpolation [[string-interpolation]]
