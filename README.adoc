@@ -2442,6 +2442,21 @@ puts temperance.age
 system 'ls'
 ----
 
+==== "super" method usage [[super-parens]]
+
+Always use parentheses when calling `super` with arguments:
+
+[source,ruby]
+----
+# bad
+super name, age
+
+# good
+super(name, age)
+----
+
+IMPORTANT: When calling `super` without arguments, `super` and `super()` mean different things. Decide what is appropriate for your usage.
+
 === Optional Arguments [[optional-arguments]]
 
 Define optional arguments at the end of the list of arguments.
