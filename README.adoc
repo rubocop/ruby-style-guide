@@ -2442,7 +2442,7 @@ puts temperance.age
 system 'ls'
 ----
 
-==== "super" method usage [[super-parens]]
+==== Using `super` with Arguments  [[super-with-args]]
 
 Always use parentheses when calling `super` with arguments:
 
