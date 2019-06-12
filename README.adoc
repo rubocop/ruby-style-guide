@@ -4700,11 +4700,11 @@ Avoid more than three levels of block nesting.
 == Existential
 
 [quote]
-----
+____
 Rules are made to be broken. Know the standards, but do not treat them as absolutes.
 
 -- The Pragmatic Developer
-----
+____
 
 === Functional Code [[functional-code]]
 
