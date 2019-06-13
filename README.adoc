@@ -4663,7 +4663,6 @@ end
 
 Avoid using Perl-style special variables (like `$:`, `$;`, etc).
 They are quite cryptic and their use in anything but one-liner scripts is discouraged.
-Use the human-friendly aliases provided by the `English` library.
 
 [source,ruby]
 ----
@@ -4671,8 +4670,19 @@ Use the human-friendly aliases provided by the `English` library.
 $:.unshift File.dirname(__FILE__)
 
 # good
-require 'English'
 $LOAD_PATH.unshift File.dirname(__FILE__)
+----
+
+Use the human-friendly aliases provided by the `English` library if required.
+
+[source,ruby]
+----
+# bad
+print $', $$
+
+# good
+require 'English'
+print $POSTMATCH, $PID
 ----
 
 === Always Warn [[always-warn]]
