@@ -3791,6 +3791,7 @@ When performing float-division on two integers, either use `fdiv` or convert the
 ----
 # bad
 a / b.to_f
+a.to_f / b.to_f
 
 # good
 a.fdiv(b)
