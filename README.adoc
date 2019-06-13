@@ -219,60 +219,6 @@ puts 'bar'
 puts 'foo', 'bar' # this applies to puts in particular
 ----
 
-=== Single-line Classes [[single-line-classes]]
-
-Prefer a single-line format for class definitions with no body.
-
-[source,ruby]
-----
-# bad
-class FooError < StandardError
-end
-
-# good
-class FooError < StandardError; end
-
-# okish
-FooError = Class.new(StandardError)
-----
-
-NOTE: Many editors/tools will fail to understand properly the usage of `Class.new`,
-so in general it's better to stick to the alternative one-line style.
-
-=== No Single-line Methods [[no-single-line-methods]]
-
-Avoid single-line methods.
-Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
-At any rate - there should be no more than one expression in a single-line method.
-
-[source,ruby]
-----
-# bad
-def too_much; something; something_else; end
-
-# okish - notice that the first ; is required
-def no_braces_method; body end
-
-# okish - notice that the second ; is optional
-def no_braces_method; body; end
-
-# okish - valid syntax, but no ; makes it kind of hard to read
-def some_method() body end
-
-# good
-def some_method
-  body
-end
-----
-
-One exception to the rule are empty-body methods.
-
-[source,ruby]
-----
-# good
-def no_op; end
-----
-
 === Spaces and Operators [[spaces-operators]]
 
 Use spaces around operators, after commas, colons and semicolons.
@@ -2350,6 +2296,40 @@ Avoid methods longer than 10 LOC (lines of code).
 Ideally, most methods will be shorter than 5 LOC.
 Empty lines do not contribute to the relevant LOC.
 
+=== No Single-line Methods [[no-single-line-methods]]
+
+Avoid single-line methods.
+Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
+At any rate - there should be no more than one expression in a single-line method.
+
+[source,ruby]
+----
+# bad
+def too_much; something; something_else; end
+
+# okish - notice that the first ; is required
+def no_braces_method; body end
+
+# okish - notice that the second ; is optional
+def no_braces_method; body; end
+
+# okish - valid syntax, but no ; makes it kind of hard to read
+def some_method() body end
+
+# good
+def some_method
+  body
+end
+----
+
+One exception to the rule are empty-body methods.
+
+[source,ruby]
+----
+# good
+def no_op; end
+----
+
 === Double Colons [[double-colons]]
 
 Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
@@ -2677,6 +2657,26 @@ class Person
   include Bar
 end
 ----
+
+=== Single-line Classes [[single-line-classes]]
+
+Prefer a single-line format for class definitions with no body.
+
+[source,ruby]
+----
+# bad
+class FooError < StandardError
+end
+
+# good
+class FooError < StandardError; end
+
+# okish
+FooError = Class.new(StandardError)
+----
+
+NOTE: Many editors/tools will fail to understand properly the usage of `Class.new`,
+so in general it's better to stick to the alternative one-line style.
 
 === File Classes [[file-classes]]
 
