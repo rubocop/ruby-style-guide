@@ -459,8 +459,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#newline-eof">Should I Terminate Files with a Newline?</a></li>
 <li><a href="#no-semicolon">Should I Terminate Expressions with <code>;</code>?</a></li>
 <li><a href="#one-expression-per-line">One Expression Per Line</a></li>
-<li><a href="#single-line-classes">Single-line Classes</a></li>
-<li><a href="#no-single-line-methods">No Single-line Methods</a></li>
 <li><a href="#spaces-operators">Spaces and Operators</a></li>
 <li><a href="#spaces-braces">Spaces and Braces</a></li>
 <li><a href="#no-space-bang">No Space after Bang</a></li>
@@ -581,6 +579,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#methods">Methods</a>
 <ul class="sectlevel2">
 <li><a href="#short-methods">Short Methods</a></li>
+<li><a href="#no-single-line-methods">No Single-line Methods</a></li>
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
 <li><a href="#method-parens">Method Definition Parentheses</a></li>
@@ -597,6 +596,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#consistent-classes">Consistent Classes</a></li>
 <li><a href="#mixin-grouping">Mixin Grouping</a></li>
+<li><a href="#single-line-classes">Single-line Classes</a></li>
 <li><a href="#file-classes">File Classes</a></li>
 <li><a href="#namespace-definition">Namespace Definition</a></li>
 <li><a href="#modules-vs-classes">Modules vs Classes</a></li>
@@ -1134,75 +1134,6 @@ UFT-8 has been the default source file encoding since Ruby 2.0.
 <span class="nb">puts</span> <span class="s1">'bar'</span>
 
 <span class="nb">puts</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span> <span class="c1"># this applies to puts in particular</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="single-line-classes"><a class="anchor" href="#single-line-classes"></a><a class="link" href="#single-line-classes">Single-line Classes</a></h3>
-<div class="paragraph">
-<p>Prefer a single-line format for class definitions with no body.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span>
-<span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span><span class="p">;</span> <span class="k">end</span>
-
-<span class="c1"># okish</span>
-<span class="no">FooError</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">StandardError</span><span class="p">)</span></code></pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-Many editors/tools will fail to understand properly the usage of <code>Class.new</code>,
-so in general it&#8217;s better to stick to the alternative one-line style.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="no-single-line-methods"><a class="anchor" href="#no-single-line-methods"></a><a class="link" href="#no-single-line-methods">No Single-line Methods</a></h3>
-<div class="paragraph">
-<p>Avoid single-line methods.
-Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
-At any rate - there should be no more than one expression in a single-line method.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">too_much</span><span class="p">;</span> <span class="n">something</span><span class="p">;</span> <span class="n">something_else</span><span class="p">;</span> <span class="k">end</span>
-
-<span class="c1"># okish - notice that the first ; is required</span>
-<span class="k">def</span> <span class="nf">no_braces_method</span><span class="p">;</span> <span class="n">body</span> <span class="k">end</span>
-
-<span class="c1"># okish - notice that the second ; is optional</span>
-<span class="k">def</span> <span class="nf">no_braces_method</span><span class="p">;</span> <span class="n">body</span><span class="p">;</span> <span class="k">end</span>
-
-<span class="c1"># okish - valid syntax, but no ; makes it kind of hard to read</span>
-<span class="k">def</span> <span class="nf">some_method</span><span class="p">()</span> <span class="n">body</span> <span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">some_method</span>
-  <span class="n">body</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>One exception to the rule are empty-body methods.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
-<span class="k">def</span> <span class="nf">no_op</span><span class="p">;</span> <span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -3519,6 +3450,43 @@ Empty lines do not contribute to the relevant LOC.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="no-single-line-methods"><a class="anchor" href="#no-single-line-methods"></a><a class="link" href="#no-single-line-methods">No Single-line Methods</a></h3>
+<div class="paragraph">
+<p>Avoid single-line methods.
+Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
+At any rate - there should be no more than one expression in a single-line method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">too_much</span><span class="p">;</span> <span class="n">something</span><span class="p">;</span> <span class="n">something_else</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="c1"># okish - notice that the first ; is required</span>
+<span class="k">def</span> <span class="nf">no_braces_method</span><span class="p">;</span> <span class="n">body</span> <span class="k">end</span>
+
+<span class="c1"># okish - notice that the second ; is optional</span>
+<span class="k">def</span> <span class="nf">no_braces_method</span><span class="p">;</span> <span class="n">body</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="c1"># okish - valid syntax, but no ; makes it kind of hard to read</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">()</span> <span class="n">body</span> <span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span>
+  <span class="n">body</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One exception to the rule are empty-body methods.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">no_op</span><span class="p">;</span> <span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="double-colons"><a class="anchor" href="#double-colons"></a><a class="link" href="#double-colons">Double Colons</a></h3>
 <div class="paragraph">
 <p>Use <code>::</code> only to reference constants (this includes classes and modules) and constructors (like <code>Array()</code> or <code>Nokogiri::HTML()</code>).
@@ -3890,6 +3858,38 @@ Ruby has some unexpected results when calling methods that have optional argumen
   <span class="kp">include</span> <span class="no">Bar</span>
 <span class="k">end</span></code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="single-line-classes"><a class="anchor" href="#single-line-classes"></a><a class="link" href="#single-line-classes">Single-line Classes</a></h3>
+<div class="paragraph">
+<p>Prefer a single-line format for class definitions with no body.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="c1"># okish</span>
+<span class="no">FooError</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">StandardError</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Many editors/tools will fail to understand properly the usage of <code>Class.new</code>,
+so in general it&#8217;s better to stick to the alternative one-line style.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -6512,7 +6512,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 15:16:59 UTC
+Last updated 2019-06-13 15:23:38 UTC
 </div>
 </div>
 <style>
