@@ -26,10 +26,10 @@ endif::[]
 This Ruby style guide recommends best practices so that real-world Ruby programmers can write code that can be maintained by other real-world Ruby programmers.
 A style guide that reflects real-world usage gets used, while a style guide that holds to an ideal that has been rejected by the people it is supposed to help risks not getting used at all - no matter how good it is.
 
-The guide is separated into several sections of related rules.
-We've tried to add the rationale behind the rules (if it's omitted we've assumed it's pretty obvious).
+The guide is separated into several sections of related guidelines.
+We've tried to add the rationale behind the guidelines (if it's omitted we've assumed it's pretty obvious).
 
-We didn't come up with all the rules out of nowhere - they are mostly based on the professional experience of the editors, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"] and http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"].
+We didn't come up with all the guidelines out of nowhere - they are mostly based on the professional experience of the editors, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"] and http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"].
 
 This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Ruby itself.
 
@@ -4833,8 +4833,8 @@ Thanks for all the suggestions and the support! Together we can make a resource 
 
 == Contributing
 
-The guide is still a work in progress - some rules are lacking examples, some rules don't have examples that illustrate them clearly enough.
-Improving such rules is a great (and simple way) to help the Ruby community!
+The guide is still a work in progress - some guidelines are lacking examples, some guidelines don't have examples that illustrate them clearly enough.
+Improving such guidelines is a great (and simple way) to help the Ruby community!
 
 In due time these issues will (hopefully) be addressed - just keep them in mind for now.
 
