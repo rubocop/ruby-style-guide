@@ -3591,12 +3591,12 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="Ruby"># good
-puts(temperance.age)
-system('ls')
-# also good
-puts temperance.age
-system 'ls'</code></pre>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
+<span class="nb">puts</span><span class="p">(</span><span class="n">temperance</span><span class="p">.</span><span class="nf">age</span><span class="p">)</span>
+<span class="nb">system</span><span class="p">(</span><span class="s1">'ls'</span><span class="p">)</span>
+<span class="c1"># also good</span>
+<span class="nb">puts</span> <span class="n">temperance</span><span class="p">.</span><span class="nf">age</span>
+<span class="nb">system</span> <span class="s1">'ls'</span></code></pre>
 </div>
 </div>
 </div>
@@ -3663,24 +3663,24 @@ Ruby has some unexpected results when calling methods that have optional argumen
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="Ruby"># bad
-def some_method(bar = false)
-  puts bar
-end
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="n">bar</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">bar</span>
+<span class="k">end</span>
 
-# bad - common hack before keyword args were introduced
-def some_method(options = {})
-  bar = options.fetch(:bar, false)
-  puts bar
-end
+<span class="c1"># bad - common hack before keyword args were introduced</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="n">bar</span> <span class="o">=</span> <span class="n">options</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:bar</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">bar</span>
+<span class="k">end</span>
 
-# good
-def some_method(bar: false)
-  puts bar
-end
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="ss">bar: </span><span class="kp">false</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">bar</span>
+<span class="k">end</span>
 
-some_method            # =&gt; false
-some_method(bar: true) # =&gt; true</code></pre>
+<span class="n">some_method</span>            <span class="c1"># =&gt; false</span>
+<span class="n">some_method</span><span class="p">(</span><span class="ss">bar: </span><span class="kp">true</span><span class="p">)</span> <span class="c1"># =&gt; true</span></code></pre>
 </div>
 </div>
 </div>
@@ -3691,15 +3691,15 @@ some_method(bar: true) # =&gt; true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="Ruby"># bad
-def some_method(a, b = 5, c = 1)
-  # body omitted
-end
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span>
 
-# good
-def some_method(a, b: 5, c: 1)
-  # body omitted
-end</code></pre>
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">5</span><span class="p">,</span> <span class="ss">c: </span><span class="mi">1</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -3710,16 +3710,16 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="Ruby"># bad
-def some_method(options = {})
-  bar = options.fetch(:bar, false)
-  puts bar
-end
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="n">bar</span> <span class="o">=</span> <span class="n">options</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:bar</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">bar</span>
+<span class="k">end</span>
 
-# good
-def some_method(bar: false)
-  puts bar
-end</code></pre>
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="ss">bar: </span><span class="kp">false</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">bar</span>
+<span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -3853,32 +3853,32 @@ Using the scope resolution operator can lead to surprising constant lookups due 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="Ruby">module Utilities
-  class Queue
-  end
-end
+<pre class="rouge highlight"><code data-lang="ruby"><span class="k">module</span> <span class="nn">Utilities</span>
+  <span class="k">class</span> <span class="nc">Queue</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-# bad
-class Utilities::Store
-  Module.nesting # =&gt; [Utilities::Store]
+<span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">Utilities</span><span class="o">::</span><span class="no">Store</span>
+  <span class="no">Module</span><span class="p">.</span><span class="nf">nesting</span> <span class="c1"># =&gt; [Utilities::Store]</span>
 
-  def initialize
-    # Refers to the top level ::Queue class because Utilities isn't in the
-    # current nesting chain.
-    @queue = Queue.new
-  end
-end
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="c1"># Refers to the top level ::Queue class because Utilities isn't in the</span>
+    <span class="c1"># current nesting chain.</span>
+    <span class="vi">@queue</span> <span class="o">=</span> <span class="no">Queue</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-# good
-module Utilities
-  class WaitingList
-    Module.nesting # =&gt; [Utilities::WaitingList, Utilities]
+<span class="c1"># good</span>
+<span class="k">module</span> <span class="nn">Utilities</span>
+  <span class="k">class</span> <span class="nc">WaitingList</span>
+    <span class="no">Module</span><span class="p">.</span><span class="nf">nesting</span> <span class="c1"># =&gt; [Utilities::WaitingList, Utilities]</span>
 
-    def initialize
-      @queue = Queue.new # Refers to Utilities::Queue
-    end
-  end
-end</code></pre>
+    <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="vi">@queue</span> <span class="o">=</span> <span class="no">Queue</span><span class="p">.</span><span class="nf">new</span> <span class="c1"># Refers to Utilities::Queue</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -6453,7 +6453,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 07:51:18 UTC
+Last updated 2019-06-13 09:00:31 UTC
 </div>
 </div>
 <style>
