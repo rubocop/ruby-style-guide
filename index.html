@@ -442,7 +442,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle"><h2>Table of Contents</h2></div>
 <ul class="sectlevel1">
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#guiding-principles">Guiding Principles</a></li>
+<li><a href="#a-note-about-consistency">A Note about Consistency</a></li>
+</ul>
+</li>
 <li><a href="#source-code-layout">Source Code Layout</a>
 <ul class="sectlevel2">
 <li><a href="#utf-8">Source Encoding</a></li>
@@ -776,13 +781,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#optionparser"><code>OptionParser</code></a></li>
 <li><a href="#no-param-mutations">No Param Mutations</a></li>
 <li><a href="#three-is-the-number-thou-shalt-count">Three is the Number Thou Shalt Count</a></li>
-</ul>
-</li>
-<li><a href="#existential">Existential</a>
-<ul class="sectlevel2">
 <li><a href="#functional-code">Functional Code</a></li>
-<li><a href="#be-consistent">Be Consistent</a></li>
-<li><a href="#common-sense">Common Sense</a></li>
 </ul>
 </li>
 <li><a href="#tools">Tools</a>
@@ -826,10 +825,6 @@ We&#8217;ve tried to add the rationale behind the rules (if it&#8217;s omitted w
 </div>
 <div class="paragraph">
 <p>We didn&#8217;t come up with all the rules out of nowhere - they are mostly based on the professional experience of the editors, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as <a href="https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0">"Programming Ruby"</a> and <a href="http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177">"The Ruby Programming Language"</a>.</p>
-</div>
-<div class="paragraph">
-<p>There are some areas in which there is no clear consensus in the Ruby community regarding a particular style (like string literal quoting, spacing inside hash literals, dot position in multi-line method chaining, etc.).
-In such scenarios all popular styles are acknowledged and it&#8217;s up to you to pick one and apply it consistently.</p>
 </div>
 <div class="paragraph">
 <p>This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Ruby itself.</p>
@@ -928,6 +923,84 @@ asciidoctor</code></pre>
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="guiding-principles"><a class="anchor" href="#guiding-principles"></a><a class="link" href="#guiding-principles">Guiding Principles</a></h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Programs must be written for people to read, and only incidentally for machines to execute.</p>
+</div>
+<div class="paragraph">
+<p>&#8201;&#8212;&#8201;Harold Abelson, Structure and Interpretation of Computer Programs</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>It&#8217;s common knowledge that code is read much more often than it is written.
+The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Ruby code.
+They are also meant to reflect real-world usage of Ruby instead of a random ideal. When we had to choose between a very established practice
+and a subjectively better alternative we&#8217;ve opted to recommend the established practice.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>There are some areas in which there is no clear consensus in the Ruby community regarding a particular style (like string literal quoting, spacing inside hash literals, dot position in multi-line method chaining, etc.).
+In such scenarios all popular styles are acknowledged and it&#8217;s up to you to pick one and apply it consistently.</p>
+</div>
+<div class="paragraph">
+<p>Ruby had existed for over 15 years by the time
+the guide was created, and the language&#8217;s flexibility and lack of common standards have contributed to the
+creations of numerous styles for just about everything. Rallying people around the cause of community standards
+took a lot of time and energy, and we still have a lot of ground to cover.</p>
+</div>
+<div class="paragraph">
+<p>Ruby is famously optimized for programmer happiness. We&#8217;d like to believe that this guide is going to help you optimize for maximum
+programmer happiness.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-note-about-consistency"><a class="anchor" href="#a-note-about-consistency"></a><a class="link" href="#a-note-about-consistency">A Note about Consistency</a></h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers and divines.</p>
+</div>
+<div class="paragraph">
+<p>&#8201;&#8212;&#8201;Ralph Waldo Emerson</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>A style guide is about consistency.
+Consistency with this style guide is important.
+Consistency within a project is more important.
+Consistency within one class or method is the most important.</p>
+</div>
+<div class="paragraph">
+<p>However, know when to be inconsistent&#8201;&#8212;&#8201;sometimes style guide recommendations just aren&#8217;t applicable. When in doubt, use your best judgment.
+Look at other examples and decide what looks best. And don&#8217;t hesitate to ask!</p>
+</div>
+<div class="paragraph">
+<p>In particular: do not break backwards compatibility just to comply with this guide!</p>
+</div>
+<div class="paragraph">
+<p>Some other good reasons to ignore a particular guideline:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this style guide.</p>
+</li>
+<li>
+<p>To be consistent with surrounding code that also breaks it (maybe for historic reasons)&#8201;&#8212;&#8201;although this is also an opportunity to clean up someone else&#8217;s mess (in true XP style).</p>
+</li>
+<li>
+<p>Because the code in question predates the introduction of the guideline and there is no other reason to be modifying that code.</p>
+</li>
+<li>
+<p>When the code needs to remain compatible with older versions of Ruby that don&#8217;t support the feature recommended by the style guide.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1003,7 +1076,7 @@ UFT-8 has been the default source file encoding since Ruby 2.0.
 <div class="sect2">
 <h3 id="crlf"><a class="anchor" href="#crlf"></a><a class="link" href="#crlf">Line Endings</a></h3>
 <div class="paragraph">
-<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
+<p>Use Unix-style line endings.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -6041,7 +6114,7 @@ You can read more about it
 <a href="https://ruby-doc.com/docs/ProgrammingRuby/html/rdtool.html">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>RD predated the rise of RDoc and YARD and was effectively obsoleted by them.<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p>
+<p>RD predated the rise of RDoc and YARD and was effectively obsoleted by them.<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup></p>
 </div>
 </div>
 </div>
@@ -6284,21 +6357,6 @@ Empty lines do not contribute to the relevant LOC.</p>
 <p>Avoid more than three levels of block nesting.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="existential"><a class="anchor" href="#existential"></a><a class="link" href="#existential">Existential</a></h2>
-<div class="sectionbody">
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Rules are made to be broken. Know the standards, but do not treat them as absolutes.</p>
-</div>
-<div class="paragraph">
-<p>&#8201;&#8212;&#8201;The Pragmatic Developer</p>
-</div>
-</blockquote>
-</div>
 <div class="sect2">
 <h3 id="functional-code"><a class="anchor" href="#functional-code"></a><a class="link" href="#functional-code">Functional Code</a></h3>
 <div class="paragraph">
@@ -6313,19 +6371,6 @@ Empty lines do not contribute to the relevant LOC.</p>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">reduce</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">17</span><span class="p">;</span> <span class="n">h</span> <span class="p">}</span>        <span class="c1"># good</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">].</span><span class="nf">each_with_object</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="p">,</span> <span class="n">h</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">17</span> <span class="p">}</span> <span class="c1"># good</span></code></pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="be-consistent"><a class="anchor" href="#be-consistent"></a><a class="link" href="#be-consistent">Be Consistent</a></h3>
-<div class="paragraph">
-<p>Be consistent.
-In an ideal world, be consistent with these guidelines.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="common-sense"><a class="anchor" href="#common-sense"></a><a class="link" href="#common-sense">Common Sense</a></h3>
-<div class="paragraph">
-<p>Use common sense.</p>
 </div>
 </div>
 </div>
@@ -6445,15 +6490,18 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. *BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.
+<a href="#_footnoteref_1">1</a>. Occasionally we might suggest to the reader to consider some alternatives, though.
 </div>
 <div class="footnote" id="_footnotedef_2">
-<a href="#_footnoteref_2">2</a>. According to this <a href="https://en.wikipedia.org/wiki/Ruby_Document_format">Wikipedia article</a> the format used to be popular until the early 2000s when it was superseded by RDoc.
+<a href="#_footnoteref_2">2</a>. *BSD/Solaris/Linux/macOS users are covered by default, Windows users have to be extra careful.
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. According to this <a href="https://en.wikipedia.org/wiki/Ruby_Document_format">Wikipedia article</a> the format used to be popular until the early 2000s when it was superseded by RDoc.
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 09:00:31 UTC
+Last updated 2019-06-13 12:35:49 UTC
 </div>
 </div>
 <style>
