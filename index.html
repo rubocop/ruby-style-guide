@@ -580,14 +580,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#methods">Methods</a>
 <ul class="sectlevel2">
+<li><a href="#short-methods">Short Methods</a></li>
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
 <li><a href="#method-parens">Method Definition Parentheses</a></li>
 <li><a href="#method-invocation-parens">Method Invocation Parentheses</a></li>
+<li><a href="#too-many-params">Too Many Params</a></li>
 <li><a href="#optional-arguments">Optional Arguments</a></li>
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
 <li><a href="#keyword-arguments-vs-option-hashes">Keyword Arguments vs Option Hashes</a></li>
+<li><a href="#private-global-methods">Private Global Methods</a></li>
 </ul>
 </li>
 <li><a href="#classes-modules">Classes &amp; Modules</a>
@@ -774,9 +777,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-cryptic-perlisms">No Cryptic Perlisms</a></li>
 <li><a href="#always-warn">Always Warn</a></li>
 <li><a href="#no-optional-hash-params">No Optional Hash Params</a></li>
-<li><a href="#short-methods">Short Methods</a></li>
-<li><a href="#too-many-params">Too Many Params</a></li>
-<li><a href="#private-global-methods">Private Global Methods</a></li>
 <li><a href="#instance-vars">Instance Vars</a></li>
 <li><a href="#optionparser"><code>OptionParser</code></a></li>
 <li><a href="#no-param-mutations">No Param Mutations</a></li>
@@ -3511,6 +3511,14 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 <h2 id="methods"><a class="anchor" href="#methods"></a><a class="link" href="#methods">Methods</a></h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="short-methods"><a class="anchor" href="#short-methods"></a><a class="link" href="#short-methods">Short Methods</a></h3>
+<div class="paragraph">
+<p>Avoid methods longer than 10 LOC (lines of code).
+Ideally, most methods will be shorter than 5 LOC.
+Empty lines do not contribute to the relevant LOC.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="double-colons"><a class="anchor" href="#double-colons"></a><a class="link" href="#double-colons">Double Colons</a></h3>
 <div class="paragraph">
 <p>Use <code>::</code> only to reference constants (this includes classes and modules) and constructors (like <code>Array()</code> or <code>Nokogiri::HTML()</code>).
@@ -3702,6 +3710,12 @@ When calling <code>super</code> without arguments, <code>super</code> and <code>
 </div>
 </div>
 <div class="sect2">
+<h3 id="too-many-params"><a class="anchor" href="#too-many-params"></a><a class="link" href="#too-many-params">Too Many Params</a></h3>
+<div class="paragraph">
+<p>Avoid parameter lists longer than three or four parameters.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="optional-arguments"><a class="anchor" href="#optional-arguments"></a><a class="link" href="#optional-arguments">Optional Arguments</a></h3>
 <div class="paragraph">
 <p>Define optional arguments at the end of the list of arguments.
@@ -3794,6 +3808,12 @@ Ruby has some unexpected results when calling methods that have optional argumen
   <span class="nb">puts</span> <span class="n">bar</span>
 <span class="k">end</span></code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="private-global-methods"><a class="anchor" href="#private-global-methods"></a><a class="link" href="#private-global-methods">Private Global Methods</a></h3>
+<div class="paragraph">
+<p>If you really need "global" methods, add them to Kernel and make them private.</p>
 </div>
 </div>
 </div>
@@ -6310,26 +6330,6 @@ Does the method do too much? (Object initializers are exceptions for this rule).
 </div>
 </div>
 <div class="sect2">
-<h3 id="short-methods"><a class="anchor" href="#short-methods"></a><a class="link" href="#short-methods">Short Methods</a></h3>
-<div class="paragraph">
-<p>Avoid methods longer than 10 LOC (lines of code).
-Ideally, most methods will be shorter than 5 LOC.
-Empty lines do not contribute to the relevant LOC.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="too-many-params"><a class="anchor" href="#too-many-params"></a><a class="link" href="#too-many-params">Too Many Params</a></h3>
-<div class="paragraph">
-<p>Avoid parameter lists longer than three or four parameters.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="private-global-methods"><a class="anchor" href="#private-global-methods"></a><a class="link" href="#private-global-methods">Private Global Methods</a></h3>
-<div class="paragraph">
-<p>If you really need "global" methods, add them to Kernel and make them private.</p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="instance-vars"><a class="anchor" href="#instance-vars"></a><a class="link" href="#instance-vars">Instance Vars</a></h3>
 <div class="paragraph">
 <p>Use module instance variables instead of global variables.</p>
@@ -6512,7 +6512,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 12:43:45 UTC
+Last updated 2019-06-13 13:04:19 UTC
 </div>
 </div>
 <style>
