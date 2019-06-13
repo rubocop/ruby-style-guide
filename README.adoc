@@ -4839,7 +4839,7 @@ Improving such guidelines is a great (and simple way) to help the Ruby community
 In due time these issues will (hopefully) be addressed - just keep them in mind for now.
 
 Nothing written in this guide is set in stone.
-It's my desire to work together with everyone interested in Ruby coding style, so that we could ultimately create a resource that will be beneficial to the entire Ruby community.
+It's our desire to work together with everyone interested in Ruby coding style, so that we could ultimately create a resource that will be beneficial to the entire Ruby community.
 
 Feel free to open tickets or send pull requests with improvements.
 Thanks in advance for your help!
