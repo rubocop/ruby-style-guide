@@ -2344,6 +2344,12 @@ l.call(1)
 
 == Methods
 
+=== Short Methods [[short-methods]]
+
+Avoid methods longer than 10 LOC (lines of code).
+Ideally, most methods will be shorter than 5 LOC.
+Empty lines do not contribute to the relevant LOC.
+
 === Double Colons [[double-colons]]
 
 Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
@@ -2507,6 +2513,11 @@ super(name, age)
 
 IMPORTANT: When calling `super` without arguments, `super` and `super()` mean different things. Decide what is appropriate for your usage.
 
+=== Too Many Params [[too-many-params]]
+
+Avoid parameter lists longer than three or four parameters.
+
+
 === Optional Arguments [[optional-arguments]]
 
 Define optional arguments at the end of the list of arguments.
@@ -2593,6 +2604,10 @@ def some_method(bar: false)
   puts bar
 end
 ----
+
+=== Private Global Methods [[private-global-methods]]
+
+If you really need "global" methods, add them to Kernel and make them private.
 
 == Classes & Modules
 
@@ -4741,20 +4756,6 @@ Write `ruby -w` safe code.
 
 Avoid hashes as optional parameters.
 Does the method do too much? (Object initializers are exceptions for this rule).
-
-=== Short Methods [[short-methods]]
-
-Avoid methods longer than 10 LOC (lines of code).
-Ideally, most methods will be shorter than 5 LOC.
-Empty lines do not contribute to the relevant LOC.
-
-=== Too Many Params [[too-many-params]]
-
-Avoid parameter lists longer than three or four parameters.
-
-=== Private Global Methods [[private-global-methods]]
-
-If you really need "global" methods, add them to Kernel and make them private.
 
 === Instance Vars [[instance-vars]]
 
