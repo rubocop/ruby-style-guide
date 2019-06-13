@@ -2434,7 +2434,7 @@ end
 
 Can omit parentheses for methods that have "keyword" status in Ruby, but are not declarative:
 
-[source,Ruby]
+[source,ruby]
 ----
 # good
 puts(temperance.age)
@@ -2489,7 +2489,7 @@ some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
 
 Use keyword arguments when passing boolean argument to a method.
 
-[source,Ruby]
+[source,ruby]
 ----
 # bad
 def some_method(bar = false)
@@ -2515,7 +2515,7 @@ some_method(bar: true) # => true
 
 Prefer keyword arguments over optional arguments.
 
-[source,Ruby]
+[source,ruby]
 ----
 # bad
 def some_method(a, b = 5, c = 1)
@@ -2532,7 +2532,7 @@ end
 
 Use keyword arguments instead of option hashes.
 
-[source,Ruby]
+[source,ruby]
 ----
 # bad
 def some_method(options = {})
@@ -2664,7 +2664,7 @@ end
 Define (and reopen) namespaced classes and modules using explicit nesting.
 Using the scope resolution operator can lead to surprising constant lookups due to Ruby's https://cirw.in/blog/constant-lookup.html[lexical scoping], which depends on the module nesting at the point of definition.
 
-[source,Ruby]
+[source,ruby]
 ----
 module Utilities
   class Queue
