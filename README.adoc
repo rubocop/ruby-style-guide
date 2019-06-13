@@ -31,9 +31,6 @@ We've tried to add the rationale behind the rules (if it's omitted we've assumed
 
 We didn't come up with all the rules out of nowhere - they are mostly based on the professional experience of the editors, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"] and http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"].
 
-There are some areas in which there is no clear consensus in the Ruby community regarding a particular style (like string literal quoting, spacing inside hash literals, dot position in multi-line method chaining, etc.).
-In such scenarios all popular styles are acknowledged and it's up to you to pick one and apply it consistently.
-
 This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Ruby itself.
 
 You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asciidoctor-pdf/[AsciiDoctor PDF], and an HTML copy https://asciidoctor.org/docs/convert-documents/#converting-a-document-to-html[with] https://asciidoctor.org/#installation[AsciiDoctor] using the following commands:
@@ -76,6 +73,57 @@ If you're into Rails or RSpec you might want to check out the complementary http
 ====
 
 TIP: https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
+
+=== Guiding Principles
+
+[quote]
+____
+Programs must be written for people to read, and only incidentally for machines to execute.
+
+-- Harold Abelson, Structure and Interpretation of Computer Programs
+____
+
+It's common knowledge that code is read much more often than it is written.
+The guidelines provided here are intended to improve the readability of code and make it consistent across the wide spectrum of Ruby code.
+They are also meant to reflect real-world usage of Ruby instead of a random ideal. When we had to choose between a very established practice
+and a subjectively better alternative we've opted to recommend the established practice.footnote:[Occasionally we might suggest to the reader to consider some alternatives, though.]
+
+There are some areas in which there is no clear consensus in the Ruby community regarding a particular style (like string literal quoting, spacing inside hash literals, dot position in multi-line method chaining, etc.).
+In such scenarios all popular styles are acknowledged and it's up to you to pick one and apply it consistently.
+
+Ruby had existed for over 15 years by the time
+the guide was created, and the language's flexibility and lack of common standards have contributed to the
+creations of numerous styles for just about everything. Rallying people around the cause of community standards
+took a lot of time and energy, and we still have a lot of ground to cover.
+
+Ruby is famously optimized for programmer happiness. We'd like to believe that this guide is going to help you optimize for maximum
+programmer happiness.
+
+=== A Note about Consistency
+
+[quote]
+____
+A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers and divines.
+
+-- Ralph Waldo Emerson
+____
+
+A style guide is about consistency.
+Consistency with this style guide is important.
+Consistency within a project is more important.
+Consistency within one class or method is the most important.
+
+However, know when to be inconsistent -- sometimes style guide recommendations just aren't applicable. When in doubt, use your best judgment.
+Look at other examples and decide what looks best. And don't hesitate to ask!
+
+In particular: do not break backwards compatibility just to comply with this guide!
+
+Some other good reasons to ignore a particular guideline:
+
+* When applying the guideline would make the code less readable, even for someone who is used to reading code that follows this style guide.
+* To be consistent with surrounding code that also breaks it (maybe for historic reasons) -- although this is also an opportunity to clean up someone else's mess (in true XP style).
+* Because the code in question predates the introduction of the guideline and there is no other reason to be modifying that code.
+* When the code needs to remain compatible with older versions of Ruby that don't support the feature recommended by the style guide.
 
 == Source Code Layout
 
@@ -4729,15 +4777,6 @@ Do not mutate parameters unless that is the purpose of the method.
 
 Avoid more than three levels of block nesting.
 
-== Existential
-
-[quote]
-____
-Rules are made to be broken. Know the standards, but do not treat them as absolutes.
-
--- The Pragmatic Developer
-____
-
 === Functional Code [[functional-code]]
 
 Code in a functional way, avoiding mutation when that makes sense.
@@ -4751,15 +4790,6 @@ a = {}; [1, 2, 3].each { |i| a[i] = i * 17 }                # bad
 a = [1, 2, 3].reduce({}) { |h, i| h[i] = i * 17; h }        # good
 a = [1, 2, 3].each_with_object({}) { |i, h| h[i] = i * 17 } # good
 ----
-
-=== Be Consistent [[be-consistent]]
-
-Be consistent.
-In an ideal world, be consistent with these guidelines.
-
-=== Common Sense [[common-sense]]
-
-Use common sense.
 
 == Tools
 
