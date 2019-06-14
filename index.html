@@ -560,7 +560,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-double-pipes-for-bools">No Double Pipes for Booleans</a></li>
 <li><a href="#double-amper-preprocess">Double Ampersand Preprocess</a></li>
 <li><a href="#no-case-equality">No Case Equality</a></li>
-<li><a href="#eql"><code>eql</code></a></li>
+<li><a href="#eql"><code>==</code> vs <code>eql?</code></a></li>
 </ul>
 </li>
 <li><a href="#blocks-procs-lambdas">Blocks, Procs &amp; Lambdas</a>
@@ -3207,7 +3207,7 @@ As its name implies it is meant to be used implicitly by <code>case</code> expre
 </div>
 </div>
 <div class="sect2">
-<h3 id="eql"><a class="anchor" href="#eql"></a><a class="link" href="#eql"><code>eql</code></a></h3>
+<h3 id="eql"><a class="anchor" href="#eql"></a><a class="link" href="#eql"><code>==</code> vs <code>eql?</code></a></h3>
 <div class="paragraph">
 <p>Do not use <code>eql?</code> when using <code>==</code> will do.
 The stricter comparison semantics provided by <code>eql?</code> are rarely needed in practice.</p>
@@ -6512,7 +6512,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 15:23:38 UTC
+Last updated 2019-06-14 06:04:11 UTC
 </div>
 </div>
 <style>
