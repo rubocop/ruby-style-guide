@@ -5212,11 +5212,11 @@ Since <code>Fixnum</code> is platform-dependent, checking against it will return
 <pre class="rouge highlight"><code data-lang="ruby"><span class="n">timestamp</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">to_i</span>
 
 <span class="c1"># bad</span>
-<span class="n">timestamp</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Fixnum</span>
-<span class="n">timestamp</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Bignum</span>
+<span class="n">timestamp</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Fixnum</span><span class="p">)</span>
+<span class="n">timestamp</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Bignum</span><span class="p">)</span>
 
 <span class="c1"># good</span>
-<span class="n">timestamp</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Integer</span></code></pre>
+<span class="n">timestamp</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Integer</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -6222,7 +6222,7 @@ Apart from being more concise and clear, <code>warn</code> allows you to suppres
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">paths</span><span class="p">]</span> <span class="k">unless</span> <span class="n">paths</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Array</span>
+<span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">paths</span><span class="p">]</span> <span class="k">unless</span> <span class="n">paths</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
 <span class="n">paths</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span> <span class="n">do_something</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">}</span>
 
 <span class="c1"># bad (always creates a new Array instance)</span>
@@ -6512,7 +6512,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-14 06:11:30 UTC
+Last updated 2019-06-14 06:24:52 UTC
 </div>
 </div>
 <style>
