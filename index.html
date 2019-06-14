@@ -2148,7 +2148,7 @@ Most of the time iterators should be used instead.
 <div class="sect2">
 <h3 id="ternary-operator"><a class="anchor" href="#ternary-operator"></a><a class="link" href="#ternary-operator">Ternary Operator</a></h3>
 <div class="paragraph">
-<p>Favor the ternary operator(<code>?:</code>) over <code>if/then/else/end</code> constructs.
+<p>Prefer the ternary operator(<code>?:</code>) over <code>if/then/else/end</code> constructs.
 It&#8217;s more common and obviously more concise.</p>
 </div>
 <div class="listingblock">
@@ -2314,7 +2314,7 @@ For flow control, use <code>if</code> and <code>unless</code>; <code>&amp;&amp;<
 <div class="sect2">
 <h3 id="if-as-a-modifier"><a class="anchor" href="#if-as-a-modifier"></a><a class="link" href="#if-as-a-modifier"><code>if</code> as a Modifier</a></h3>
 <div class="paragraph">
-<p>Favor modifier <code>if</code>/<code>unless</code> usage when you have a single-line body.
+<p>Prefer modifier <code>if</code>/<code>unless</code> usage when you have a single-line body.
 Another good alternative is the usage of control flow <code>&amp;&amp;</code>/<code>||</code>.</p>
 </div>
 <div class="listingblock">
@@ -2357,7 +2357,7 @@ Another good alternative is the usage of control flow <code>&amp;&amp;</code>/<c
 <h3 id="no-nested-modifiers"><a class="anchor" href="#no-nested-modifiers"></a><a class="link" href="#no-nested-modifiers">No Nested Modifiers</a></h3>
 <div class="paragraph">
 <p>Avoid nested modifier <code>if</code>/<code>unless</code>/<code>while</code>/<code>until</code> usage.
-Favor <code>&amp;&amp;</code>/<code>||</code> if appropriate.</p>
+Prefer <code>&amp;&amp;</code>/<code>||</code> if appropriate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2372,7 +2372,7 @@ Favor <code>&amp;&amp;</code>/<code>||</code> if appropriate.</p>
 <div class="sect2">
 <h3 id="unless-for-negatives"><a class="anchor" href="#unless-for-negatives"></a><a class="link" href="#unless-for-negatives"><code>unless</code> for Negatives</a></h3>
 <div class="paragraph">
-<p>Favor <code>unless</code> over <code>if</code> for negative conditions (or control flow <code>||</code>).</p>
+<p>Prefer <code>unless</code> over <code>if</code> for negative conditions (or control flow <code>||</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2466,7 +2466,7 @@ Rewrite these with the positive case first.</p>
 <div class="sect2">
 <h3 id="while-as-a-modifier"><a class="anchor" href="#while-as-a-modifier"></a><a class="link" href="#while-as-a-modifier"><code>while</code> as a Modifier</a></h3>
 <div class="paragraph">
-<p>Favor modifier <code>while/until</code> usage when you have a single-line body.</p>
+<p>Prefer modifier <code>while/until</code> usage when you have a single-line body.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2483,7 +2483,7 @@ Rewrite these with the positive case first.</p>
 <div class="sect2">
 <h3 id="until-for-negatives"><a class="anchor" href="#until-for-negatives"></a><a class="link" href="#until-for-negatives"><code>until</code> for Negatives</a></h3>
 <div class="paragraph">
-<p>Favor <code>until</code> over <code>while</code> for negative conditions.</p>
+<p>Prefer <code>until</code> over <code>while</code> for negative conditions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3012,7 +3012,7 @@ This will trap signals and calls to <code>exit</code>, requiring you to <code>ki
 <div class="sect2">
 <h3 id="standard-exceptions"><a class="anchor" href="#standard-exceptions"></a><a class="link" href="#standard-exceptions">Standard Exceptions</a></h3>
 <div class="paragraph">
-<p>Favor the use of exceptions from the standard library over introducing new exception classes.</p>
+<p>Prefer the use of exceptions from the standard library over introducing new exception classes.</p>
 </div>
 </div>
 </div>
@@ -4012,7 +4012,7 @@ Classes should be used only when it makes sense to create instances out of them.
 <div class="sect2">
 <h3 id="module-function"><a class="anchor" href="#module-function"></a><a class="link" href="#module-function"><code>module_function</code></a></h3>
 <div class="paragraph">
-<p>Favor the use of <code>module_function</code> over <code>extend self</code> when you want to turn a module&#8217;s instance methods into class methods.</p>
+<p>Prefer the use of <code>module_function</code> over <code>extend self</code> when you want to turn a module&#8217;s instance methods into class methods.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5450,7 +5450,7 @@ Concatenation mutates the string instance in-place and is always faster than <co
 <div class="sect2">
 <h3 id="sprintf"><a class="anchor" href="#sprintf"></a><a class="link" href="#sprintf"><code>sprintf</code></a></h3>
 <div class="paragraph">
-<p>Favor the use of <code>sprintf</code> and its alias <code>format</code> over the fairly cryptic <code>String#%</code> method.</p>
+<p>Prefer the use of <code>sprintf</code> and its alias <code>format</code> over the fairly cryptic <code>String#%</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6200,7 +6200,7 @@ Apart from being more concise and clear, <code>warn</code> allows you to suppres
 <div class="sect2">
 <h3 id="array-join"><a class="anchor" href="#array-join"></a><a class="link" href="#array-join"><code>Array#join</code></a></h3>
 <div class="paragraph">
-<p>Favor the use of <code>Array#join</code> over the fairly cryptic <code>Array#*</code> with a string argument.</p>
+<p>Prefer the use of <code>Array#join</code> over the fairly cryptic <code>Array#*</code> with a string argument.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6254,7 +6254,7 @@ Apart from being more concise and clear, <code>warn</code> allows you to suppres
 <div class="sect2">
 <h3 id="predicate-methods"><a class="anchor" href="#predicate-methods"></a><a class="link" href="#predicate-methods">Predicate Methods</a></h3>
 <div class="paragraph">
-<p>Favor the use of predicate methods to explicit comparisons with <code>==</code>.
+<p>Prefer the use of predicate methods to explicit comparisons with <code>==</code>.
 Numeric comparisons are OK.</p>
 </div>
 <div class="listingblock">
@@ -6512,7 +6512,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-14 06:04:11 UTC
+Last updated 2019-06-14 06:11:30 UTC
 </div>
 </div>
 <style>
