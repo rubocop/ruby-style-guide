@@ -2081,7 +2081,7 @@ something.is_a?(Array)
 some_string.match?(/something/)
 ----
 
-=== `eql` [[eql]]
+=== `==` vs `eql?` [[eql]]
 
 Do not use `eql?` when using `==` will do.
 The stricter comparison semantics provided by `eql?` are rarely needed in practice.
