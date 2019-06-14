@@ -3827,11 +3827,11 @@ Since `Fixnum` is platform-dependent, checking against it will return different 
 timestamp = Time.now.to_i
 
 # bad
-timestamp.is_a? Fixnum
-timestamp.is_a? Bignum
+timestamp.is_a?(Fixnum)
+timestamp.is_a?(Bignum)
 
 # good
-timestamp.is_a? Integer
+timestamp.is_a?(Integer)
 ----
 
 === Random Numbers [[random-numbers]]
@@ -4662,7 +4662,7 @@ Use `Array()` instead of explicit `Array` check or `[*var]`, when dealing with a
 [source,ruby]
 ----
 # bad
-paths = [paths] unless paths.is_a? Array
+paths = [paths] unless paths.is_a?(Array)
 paths.each { |path| do_something(path) }
 
 # bad (always creates a new Array instance)
