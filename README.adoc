@@ -1130,7 +1130,7 @@ end
 
 === Ternary Operator [[ternary-operator]]
 
-Favor the ternary operator(`?:`) over `if/then/else/end` constructs.
+Prefer the ternary operator(`?:`) over `if/then/else/end` constructs.
 It's more common and obviously more concise.
 
 [source,ruby]
@@ -1275,7 +1275,7 @@ Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
 
 === `if` as a Modifier [[if-as-a-modifier]]
 
-Favor modifier `if`/`unless` usage when you have a single-line body.
+Prefer modifier `if`/`unless` usage when you have a single-line body.
 Another good alternative is the usage of control flow `&&`/`||`.
 
 [source,ruby]
@@ -1314,7 +1314,7 @@ end
 === No Nested Modifiers [[no-nested-modifiers]]
 
 Avoid nested modifier `if`/`unless`/`while`/`until` usage.
-Favor `&&`/`||` if appropriate.
+Prefer `&&`/`||` if appropriate.
 
 [source,ruby]
 ----
@@ -1327,7 +1327,7 @@ do_something if some_condition && other_condition
 
 === `unless` for Negatives [[unless-for-negatives]]
 
-Favor `unless` over `if` for negative conditions (or control flow `||`).
+Prefer `unless` over `if` for negative conditions (or control flow `||`).
 
 [source,ruby]
 ----
@@ -1412,7 +1412,7 @@ end
 
 === `while` as a Modifier [[while-as-a-modifier]]
 
-Favor modifier `while/until` usage when you have a single-line body.
+Prefer modifier `while/until` usage when you have a single-line body.
 
 [source,ruby]
 ----
@@ -1427,7 +1427,7 @@ do_something while some_condition
 
 === `until` for Negatives [[until-for-negatives]]
 
-Favor `until` over `while` for negative conditions.
+Prefer `until` over `while` for negative conditions.
 
 [source,ruby]
 ----
@@ -1905,7 +1905,7 @@ end
 
 === Standard Exceptions [[standard-exceptions]]
 
-Favor the use of exceptions from the standard library over introducing new exception classes.
+Prefer the use of exceptions from the standard library over introducing new exception classes.
 
 == Assignment & Comparison
 
@@ -2791,7 +2791,7 @@ end
 
 === `module_function` [[module-function]]
 
-Favor the use of `module_function` over `extend self` when you want to turn a module's instance methods into class methods.
+Prefer the use of `module_function` over `extend self` when you want to turn a module's instance methods into class methods.
 
 [source,ruby]
 ----
@@ -4028,7 +4028,7 @@ str.tr('-', '_')
 
 === `sprintf` [[sprintf]]
 
-Favor the use of `sprintf` and its alias `format` over the fairly cryptic `String#%` method.
+Prefer the use of `sprintf` and its alias `format` over the fairly cryptic `String#%` method.
 
 [source,ruby]
 ----
@@ -4642,7 +4642,7 @@ Apart from being more concise and clear, `warn` allows you to suppress warnings 
 
 === `Array#join` [[array-join]]
 
-Favor the use of `Array#join` over the fairly cryptic `Array#*` with a string argument.
+Prefer the use of `Array#join` over the fairly cryptic `Array#*` with a string argument.
 
 [source,ruby]
 ----
@@ -4690,7 +4690,7 @@ do_something if x.between?(1000, 2000)
 
 === Predicate Methods [[predicate-methods]]
 
-Favor the use of predicate methods to explicit comparisons with `==`.
+Prefer the use of predicate methods to explicit comparisons with `==`.
 Numeric comparisons are OK.
 
 [source,ruby]
