@@ -4850,7 +4850,7 @@ You can also support the project (and RuboCop) with financial contributions via 
 
 It's easy, just follow the contribution guidelines below:
 
-* https://help.github.com/articles/fork-a-repo[Fork] the project on GitHub
+* https://help.github.com/articles/fork-a-repo[Fork] https://github.com/rubocop-hq/ruby-style-guide[rubocop-hq/ruby-style-guide] on GitHub
 * Make your feature addition or bug fix in a feature branch.
 * Include a http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html[good description] of your changes
 * Push your feature branch to GitHub
