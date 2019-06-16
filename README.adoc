@@ -2828,7 +2828,7 @@ When designing class hierarchies make sure that they conform to the https://en.w
 
 === SOLID design [[solid-design]]
 
-Try to make your classes as https://en.wikipedia.org/wiki/SOLID_\(object-oriented_design\)[SOLID] as possible.
+Try to make your classes as https://en.wikipedia.org/wiki/SOLID[SOLID] as possible.
 
 === Define `to_s` [[define-to-s]]
 
