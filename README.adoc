@@ -12,11 +12,9 @@ endif::[]
 
 == Introduction
 
-[quote]
+[quote, Officer Alex J. Murphy / RoboCop]
 ____
 Role models are important.
-
--- Officer Alex J. Murphy / RoboCop
 ____
 
 ifdef::env-github[]
@@ -76,11 +74,9 @@ TIP: https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (l
 
 === Guiding Principles
 
-[quote]
+[quote, Harold Abelson, Structure and Interpretation of Computer Programs]
 ____
 Programs must be written for people to read, and only incidentally for machines to execute.
-
--- Harold Abelson, Structure and Interpretation of Computer Programs
 ____
 
 It's common knowledge that code is read much more often than it is written.
@@ -101,11 +97,9 @@ programmer happiness.
 
 === A Note about Consistency
 
-[quote]
+[quote, Ralph Waldo Emerson]
 ____
 A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers and divines.
-
--- Ralph Waldo Emerson
 ____
 
 A style guide is about consistency.
@@ -127,13 +121,11 @@ Some other good reasons to ignore a particular guideline:
 
 == Source Code Layout
 
-[quote]
+[quote, Jerry Coffin (on indentation)]
 ____
 Nearly everybody is convinced that every style but their own is
 ugly and unreadable. Leave out the "but their own" and they're
 probably right...
-
--- Jerry Coffin (on indentation)
 ____
 
 === Source Encoding [[utf-8]]
@@ -736,11 +728,9 @@ menu_item =
 
 == Naming Conventions
 
-[quote]
+[quote, Phil Karlton]
 ____
 The only real difficulties in programming are cache invalidation and naming things.
-
--- Phil Karlton
 ____
 
 === English Identifiers [[english-identifiers]]
@@ -3217,13 +3207,11 @@ end
 
 == Comments
 
-[quote]
+[quote, Steve McConnell]
 ____
 Good code is its own best documentation.
 As you're about to add a comment, ask yourself, "How can I improve the code so that this comment isn't needed?".
 Improve the code and then document it to make it even clearer.
-
--- Steve McConnell
 ____
 
 === No Comments [[no-comments]]
@@ -3285,11 +3273,9 @@ An outdated comment is worse than no comment at all.
 
 === Refactor, Don't Comment [[refactor-dont-comment]]
 
-[quote]
+[quote, old programmers maxim, through http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[Russ Olsen]]
 ____
 Good code is like a good joke: it needs no explanation.
-
--- old programmers maxim, through http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[Russ Olsen]
 ____
 
 Avoid writing comments to explain bad code.
