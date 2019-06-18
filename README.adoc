@@ -4182,12 +4182,10 @@ DateTime.iso8601('1751-04-23', Date::ENGLAND)
 
 == Regular Expressions
 
-[quote]
+[quote, Jamie Zawinski]
 ____
 Some people, when confronted with a problem, think
 "I know, I'll use regular expressions." Now they have two problems.
-
--- Jamie Zawinski
 ____
 
 === No Regexp for Plaintext [[no-regexp-for-plaintext]]
