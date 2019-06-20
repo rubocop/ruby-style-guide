@@ -132,7 +132,7 @@ ____
 
 Use `UTF-8` as the source file encoding.
 
-TIP: UFT-8 has been the default source file encoding since Ruby 2.0.
+TIP: UTF-8 has been the default source file encoding since Ruby 2.0.
 
 === Tabs or Spaces? [[tabs-or-spaces]]
 
