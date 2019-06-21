@@ -31,6 +31,7 @@ We didn't come up with all the guidelines out of nowhere - they are mostly based
 
 This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Ruby itself.
 
+ifdef::env-github[]
 You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asciidoctor-pdf/[AsciiDoctor PDF], and an HTML copy https://asciidoctor.org/docs/convert-documents/#converting-a-document-to-html[with] https://asciidoctor.org/#installation[AsciiDoctor] using the following commands:
 
 [source,shell]
@@ -51,6 +52,7 @@ Install the `rouge` gem to get nice syntax highlighting in the generated documen
 gem install rouge
 ----
 ====
+endif::[]
 
 Translations of the guide are available in the following languages:
 
