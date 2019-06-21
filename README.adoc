@@ -54,19 +54,6 @@ gem install rouge
 ====
 endif::[]
 
-Translations of the guide are available in the following languages:
-
-* https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md[Chinese Simplified]
-* https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md[Chinese Traditional]
-* https://github.com/HassanTC/ruby-style-guide/blob/master/README-EgAr.md[Egyptian Arabic]
-* https://github.com/gauthier-delacroix/ruby-style-guide/blob/master/README-frFR.md[French]
-* https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md[Japanese]
-* https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md[Korean]
-* https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md[Portuguese (pt-BR)]
-* https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md[Russian]
-* https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md[Spanish]
-* https://github.com/CQBinh/ruby-style-guide/blob/master/README-viVN.md[Vietnamese]
-
 [TIP]
 ====
 If you're into Rails or RSpec you might want to check out the complementary https://github.com/rubocop-hq/rails-style-guide[Ruby on Rails Style Guide] and https://github.com/rubocop-hq/rspec-style-guide[RSpec Style Guide].
@@ -120,6 +107,25 @@ Some other good reasons to ignore a particular guideline:
 * To be consistent with surrounding code that also breaks it (maybe for historic reasons) -- although this is also an opportunity to clean up someone else's mess (in true XP style).
 * Because the code in question predates the introduction of the guideline and there is no other reason to be modifying that code.
 * When the code needs to remain compatible with older versions of Ruby that don't support the feature recommended by the style guide.
+
+=== Translations
+
+Translations of the guide are available in the following languages:
+
+* https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhCN.md[Chinese Simplified]
+* https://github.com/JuanitoFatas/ruby-style-guide/blob/master/README-zhTW.md[Chinese Traditional]
+* https://github.com/HassanTC/ruby-style-guide/blob/master/README-EgAr.md[Egyptian Arabic]
+* https://github.com/gauthier-delacroix/ruby-style-guide/blob/master/README-frFR.md[French]
+* https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md[Japanese]
+* https://github.com/dalzony/ruby-style-guide/blob/master/README-koKR.md[Korean]
+* https://github.com/rubensmabueno/ruby-style-guide/blob/master/README-PT-BR.md[Portuguese (pt-BR)]
+* https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md[Russian]
+* https://github.com/alemohamad/ruby-style-guide/blob/master/README-esLA.md[Spanish]
+* https://github.com/CQBinh/ruby-style-guide/blob/master/README-viVN.md[Vietnamese]
+
+NOTE: These translations are not maintained by our editor team, so their quality
+and level of completeness may vary. The translated versions of the guide often
+lag behind the upstream English version.
 
 == Source Code Layout
 
