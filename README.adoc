@@ -3844,17 +3844,17 @@ rand(1..6)
 
 === Float Division [[float-division]]
 
-When performing float-division on two integers, either use `fdiv` or convert the left-side integer (receiver) to float.
+When performing float-division on two integers, either use `fdiv` or convert one-side integer to float.
 
 [source,ruby]
 ----
 # bad
-a / b.to_f
 a.to_f / b.to_f
 
 # good
-a.fdiv(b)
 a.to_f / b
+a / b.to_f
+a.fdiv(b)
 ----
 
 == Strings
