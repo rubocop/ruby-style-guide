@@ -1018,7 +1018,7 @@ probably right&#8230;&#8203;</p>
 <div class="title">Tip</div>
 </td>
 <td class="content">
-UFT-8 has been the default source file encoding since Ruby 2.0.
+UTF-8 has been the default source file encoding since Ruby 2.0.
 </td>
 </tr>
 </table>
@@ -5228,17 +5228,17 @@ Imagine simulating a roll of a dice:</p>
 <div class="sect2">
 <h3 id="float-division"><a class="anchor" href="#float-division"></a><a class="link" href="#float-division">Float Division</a></h3>
 <div class="paragraph">
-<p>When performing float-division on two integers, either use <code>fdiv</code> or convert the left-side integer (receiver) to float.</p>
+<p>When performing float-division on two integers, either use <code>fdiv</code> or convert one-side integer to float.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">.</span><span class="nf">to_f</span>
 <span class="n">a</span><span class="p">.</span><span class="nf">to_f</span> <span class="o">/</span> <span class="n">b</span><span class="p">.</span><span class="nf">to_f</span>
 
 <span class="c1"># good</span>
-<span class="n">a</span><span class="p">.</span><span class="nf">fdiv</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="n">a</span><span class="p">.</span><span class="nf">to_f</span> <span class="o">/</span> <span class="n">b</span></code></pre>
+<span class="n">a</span><span class="p">.</span><span class="nf">to_f</span> <span class="o">/</span> <span class="n">b</span>
+<span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">.</span><span class="nf">to_f</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">fdiv</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -6501,7 +6501,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-21 06:50:47 UTC
+Last updated 2019-06-22 17:30:42 UTC
 </div>
 </div>
 <style>
