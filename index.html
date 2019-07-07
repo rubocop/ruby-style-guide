@@ -709,6 +709,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#dont-abuse-gsub">Don&#8217;t Abuse <code>gsub</code></a></li>
 <li><a href="#sprintf"><code>sprintf</code></a></li>
 <li><a href="#named-format-tokens">Named Format Tokens</a></li>
+<li><a href="#heredoc-long-strings">Long Strings</a></li>
 </ul>
 </li>
 <li><a href="#heredocs">Heredocs</a>
@@ -1018,7 +1019,7 @@ probably right&#8230;&#8203;</p>
 <div class="title">Tip</div>
 </td>
 <td class="content">
-UFT-8 has been the default source file encoding since Ruby 2.0.
+UTF-8 has been the default source file encoding since Ruby 2.0.
 </td>
 </tr>
 </table>
@@ -5479,6 +5480,33 @@ Concatenation mutates the string instance in-place and is always faster than <co
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="heredoc-long-strings"><a class="anchor" href="#heredoc-long-strings"></a><a class="link" href="#heredoc-long-strings">Long Strings</a></h3>
+<div class="paragraph">
+<p>Break long strings into multiple lines but don&#8217;t concatenate them with <code>+</code>.
+If you want to add newlines, use heredoc. Otherwise use <code>\</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="s2">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. "</span> <span class="o">+</span>
+<span class="s2">"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "</span> <span class="o">+</span>
+<span class="s2">"when an unknown printer took a galley of type and scrambled it to make a type specimen book."</span>
+
+<span class="c1"># good</span>
+<span class="o">&lt;&lt;~</span><span class="no">LOREM</span><span class="sh">
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+  when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+</span><span class="no">LOREM</span>
+
+<span class="c1"># good</span>
+<span class="s2">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. "</span><span class="p">\</span>
+<span class="s2">"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "</span><span class="p">\</span>
+<span class="s2">"when an unknown printer took a galley of type and scrambled it to make a type specimen book."</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -6501,7 +6529,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-22 17:30:15 UTC
+Last updated 2019-07-07 07:54:00 UTC
 </div>
 </div>
 <style>
