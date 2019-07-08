@@ -4825,7 +4825,7 @@ Here are some tools to help you automatically check Ruby code against this guide
 === RuboCop
 
 https://github.com/rubocop-hq/rubocop[RuboCop] is a Ruby static code analyzer and formatter, based on this style guide.
-RuboCop already covers a significant portion of the guide and has [plugins](http://docs.rubocop.org/en/stable/integration_with_other_tools/) for most popular Ruby editors and IDEs.
+RuboCop already covers a significant portion of the guide and has https://docs.rubocop.org/en/stable/integration_with_other_tools/[plugins] for most popular Ruby editors and IDEs.
 
 TIP: RuboCop's cops (code checks) have links to the guidelines that they are based on, as part of their metadata.
 
