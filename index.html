@@ -507,6 +507,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ternary-operator">Ternary Operator</a></li>
 <li><a href="#no-nested-ternary">No Nested Ternary</a></li>
 <li><a href="#no-semicolon-ifs">No Semicolon `if`s</a></li>
+<li><a href="#case-vs-if-else"><code>case</code> vs <code>if-else</code></a></li>
 <li><a href="#use-if-case-returns">Use <code>if</code>/<code>case</code> Returns</a></li>
 <li><a href="#one-line-cases">One-line Cases</a></li>
 <li><a href="#no-when-semicolons">No <code>when</code> Semicolons</a></li>
@@ -2183,6 +2184,34 @@ Prefer <code>if/else</code> constructs in these cases.</p>
 
 <span class="c1"># good</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">some_condition</span> <span class="p">?</span> <span class="n">something</span> <span class="p">:</span> <span class="n">something_else</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="case-vs-if-else"><a class="anchor" href="#case-vs-if-else"></a><a class="link" href="#case-vs-if-else"><code>case</code> vs <code>if-else</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>case</code> over <code>if-elsif</code> when compared value is same in each clause.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="ss">:active</span>
+  <span class="n">perform_action</span>
+<span class="k">elsif</span> <span class="n">status</span> <span class="o">==</span> <span class="ss">:inactive</span> <span class="o">||</span> <span class="n">status</span> <span class="o">==</span> <span class="ss">:hibernating</span>
+  <span class="n">check_timeout</span>
+<span class="k">else</span>
+  <span class="n">final_action</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">case</span> <span class="n">status</span>
+<span class="k">when</span> <span class="ss">:active</span>
+  <span class="n">perform_action</span>
+<span class="k">when</span> <span class="ss">:inactive</span><span class="p">,</span> <span class="ss">:hibernating</span>
+  <span class="n">check_timeout</span>
+<span class="k">else</span>
+  <span class="n">final_action</span>
+<span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -6541,7 +6570,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-07-08 06:44:40 UTC
+Last updated 2019-07-08 11:49:20 UTC
 </div>
 </div>
 <style>
