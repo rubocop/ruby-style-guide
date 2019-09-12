@@ -2548,7 +2548,7 @@ some_method('w', 'x', 'y') # => 'y, 2, w, x'
 some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
 ----
 
-=== Optional Keyword Arguments [[optional-keywordarguments]]
+=== Keyword Arguments Order [[keyword-arguments-order]]
 
 When using optional keyword arguments, put them at the end of the parameters list.
 When looking through the source, you expect required arguments at the beginning of parameters list and optional arguments at the end.
