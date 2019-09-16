@@ -1931,6 +1931,19 @@ end
 
 Prefer the use of exceptions from the standard library over introducing new exception classes.
 
+=== Do not `raise` `Exception` [[raise-exception]]
+
+Use `StandardError` over `Exception`.
+
+[source,ruby]
+----
+# bad
+raise Exception, 'Error message here'
+
+# good
+raise StandardError, 'Error message here'
+----
+
 == Assignment & Comparison
 
 === Parallel Assignment [[parallel-assignment]]
