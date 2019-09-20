@@ -2991,9 +2991,10 @@ Use a consistent structure in your class definitions.
 [source,ruby]
 ----
 class Person
-  # extend and include go first
+  # extend/include/prepend go first
   extend SomeModule
   include AnotherModule
+  prepend YetAnotherModule
 
   # inner classes
   CustomError = Class.new(StandardError)
