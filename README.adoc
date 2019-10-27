@@ -4515,7 +4515,7 @@ end
 
 === No `method_missing` [[no-method-missing]]
 
-Avoid using `method_missing` for metaprogramming because backtraces become messy, the behavior is not listed in `#methods`, and misspelled method calls might silently work, e.g. `nukes.launch_state = false`.
+Avoid using `method_missing` for metaprogramming because backtraces become messy, the behavior is not listed in `#methods`, and misspelled method calls might silently work, e.g. `nukes.luanch_state = false`.
 Consider using delegation, proxy, or `define_method` instead.
 If you must use `method_missing`:
 
