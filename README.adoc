@@ -2168,7 +2168,6 @@ Some will argue that multi-line chaining would look OK with the use of {...}, bu
 === Block Argument [[block-argument]]
 
 Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
-Beware of the performance impact, though, as the block gets converted to a Proc.
 
 [source,ruby]
 ----
