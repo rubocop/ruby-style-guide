@@ -767,6 +767,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-block-comments">RD (Block) Comments</a></li>
 </ul>
 </li>
+<li><a href="#gemfile-and-gemspec">Gemfile and Gemspec</a>
+<ul class="sectlevel2">
+<li><a href="#no-ruby-version-gemspec">No <code>RUBY_VERSION</code> in the gemspec</a></li>
+</ul>
+</li>
 <li><a href="#misc">Misc</a>
 <ul class="sectlevel2">
 <li><a href="#no-flip-flops">No Flip-flops</a></li>
@@ -6187,6 +6192,46 @@ You can read more about it
 </div>
 </div>
 <div class="sect1">
+<h2 id="gemfile-and-gemspec"><a class="anchor" href="#gemfile-and-gemspec"></a><a class="link" href="#gemfile-and-gemspec">Gemfile and Gemspec</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="no-ruby-version-gemspec"><a class="anchor" href="#no-ruby-version-gemspec"></a><a class="link" href="#no-ruby-version-gemspec">No <code>RUBY_VERSION</code> in the gemspec</a></h3>
+<div class="paragraph">
+<p>The gemspec should not contain <code>RUBY_VERSION</code> as a condition to switch dependencies.
+<code>RUBY_VERSION</code> is determined by <code>rake release</code>, so users may end up with wrong dependency.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+  <span class="k">if</span> <span class="no">RUBY_VERSION</span> <span class="o">&gt;=</span> <span class="s1">'2.5'</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s1">'gem_a'</span>
+  <span class="k">else</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s1">'gem_b'</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Fix by either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Post-install messages.</p>
+</li>
+<li>
+<p>Add both gems as dependency (if permissible).</p>
+</li>
+<li>
+<p>If development dependencies, move to Gemfile.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="misc"><a class="anchor" href="#misc"></a><a class="link" href="#misc">Misc</a></h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -6569,7 +6614,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-19 04:48:12 UTC
+Last updated 2019-12-04 17:31:23 UTC
 </div>
 </div>
 <style>
