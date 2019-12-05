@@ -1159,7 +1159,7 @@ else
 end
 ----
 
-=== No Semicolon `if`s [[no-semicolon-ifs]]
+=== No Semicolon `if` [[no-semicolon-if]]
 
 Do not use `if x; ...`. Use the ternary operator instead.
 
