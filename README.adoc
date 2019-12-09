@@ -4646,7 +4646,7 @@ RD predated the rise of RDoc and YARD and was effectively obsoleted by them.foot
 
 == Gemfile and Gemspec
 
-=== No `RUBY_VERSION` in the gemspec [[no-ruby-version-gemspec]]
+=== No `RUBY_VERSION` in the gemspec [[no-ruby-version-in-the-gemspec]]
 
 The gemspec should not contain `RUBY_VERSION` as a condition to switch dependencies.
 `RUBY_VERSION` is determined by `rake release`, so users may end up with wrong dependency.
