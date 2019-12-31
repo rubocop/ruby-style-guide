@@ -1052,6 +1052,19 @@ end
 
 == Flow of Control
 
+=== Control Flow Keywords [[control-flow-keywords]]
+
+Keywords that alter control flow, e.g. `next`, `raise`, `return`, etc. should appear at the beginning of the line.
+
+[source,ruby]
+----
+# bad
+makes_sense? ? "Great success!" : raise("Woah.")
+
+# good
+raise("Woah.") unless makes_sense?
+----
+
 === No `for` Loops [[no-for-loops]]
 
 Do not use `for`, unless you know exactly why.
