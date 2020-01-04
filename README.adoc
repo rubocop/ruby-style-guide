@@ -761,7 +761,9 @@ salary = 1_000
 
 === Snake Case Symbols Methods Vars [[snake-case-symbols-methods-vars]]
 
-Use `snake_case` for symbols, methods and variables.
+Use `snake_case` for symbols, method names and variable names.
+
+Symbols:
 
 [source,ruby]
 ----
@@ -770,8 +772,14 @@ Use `snake_case` for symbols, methods and variables.
 :SomeSymbol
 :someSymbol
 
-someVar = 5
+# good
+:some_symbol
+----
 
+Method names:
+
+[source,ruby]
+# bad
 def someMethod
   # some code
 end
@@ -781,13 +789,19 @@ def SomeMethod
 end
 
 # good
-:some_symbol
-
-some_var = 5
-
 def some_method
   # some code
 end
+----
+
+Variable names:
+
+[source,ruby]
+----
+# bad
+someVar = 5
+# good
+some_var = 5
 ----
 
 === Snake Case Symbols Methods Vars with Numbers [[snake-case-symbols-methods-vars-with-numbers]]
