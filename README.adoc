@@ -779,6 +779,7 @@ Symbols:
 Method names:
 
 [source,ruby]
+----
 # bad
 def someMethod
   # some code
@@ -806,31 +807,43 @@ some_var = 5
 
 === Snake Case Symbols Methods Vars with Numbers [[snake-case-symbols-methods-vars-with-numbers]]
 
-Do not separate numbers from letters on symbols, methods and variables.
+Do not separate numbers from letters on symbols, method names and variable names.
+
+Symbols:
 
 [source,ruby]
 ----
 # bad
 :some_sym_1
 
-some_var_1 = 1
+# good
+:some_sym1
 
-var_10 = 10
+----
 
+Method names:
+
+[source,ruby]
+----
 def some_method_1
   # some code
 end
 
 # good
-:some_sym1
-
-some_var1 = 1
-
-var10 = 10
-
 def some_method1
   # some code
 end
+----
+
+Variable names:
+
+[source,ruby]
+----
+# bad
+var_10 = 10
+
+# good
+var10 = 10
 ----
 
 === CamelCase Classes [[camelcase-classes]]
