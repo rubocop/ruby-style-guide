@@ -801,6 +801,7 @@ Variable names:
 ----
 # bad
 someVar = 5
+
 # good
 some_var = 5
 ----
