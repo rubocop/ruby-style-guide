@@ -231,7 +231,9 @@ a, b = 1, 2
 class FooError < StandardError; end
 ----
 
-There are a few exceptions. One is the exponent operator:
+There are a few exceptions:
+
+* Exponent operator:
 
 [source,ruby]
 ----
@@ -242,7 +244,7 @@ e = M * c ** 2
 e = M * c**2
 ----
 
-Another exception is the slash in rational literals:
+* Slash in rational literals:
 
 [source,ruby]
 ----
@@ -253,7 +255,7 @@ o_scale = 1 / 48r
 o_scale = 1/48r
 ----
 
-Another exception is the safe navigation operator:
+* Safe navigation operator:
 
 [source,ruby]
 ----
