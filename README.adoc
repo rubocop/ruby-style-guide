@@ -4926,6 +4926,13 @@ It's easy, just follow the contribution guidelines below:
 * Push your feature branch to GitHub
 * Send a https://help.github.com/articles/using-pull-requests[Pull Request]
 
+== Colophon
+
+This guide is written in http://asciidoc.org/[AsciiDoc] and is published as HTML using https://asciidoctor.org/[AsciiDoctor].
+The HTML version of the guide is hosted on GitHub Pages.
+
+Originally the guide was written in Markdown, but was converted to AsciiDoc in 2019.
+
 == License
 
 image:https://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License] This work is licensed under a http://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
