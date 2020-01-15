@@ -2196,7 +2196,7 @@ end
 
 === No Trailing Argument Comma [[no-trailing-argument-comma]]
 
-Avoid comma after the last argument in a block, except in cases where only a single argument is present and its removal would affect functionality.
+Avoid comma after the last argument in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).
 
 [source,ruby]
 ----
@@ -2216,7 +2216,7 @@ end
 # good
 [[1, 2, 3], [4, 5, 6]].each { |a, b, c| a + b + c }
 
-# good - removing the comma here would give a different output
+# good - this comma is meaningful for array destructuring
 [[1, 2, 3], [4, 5, 6]].map { |a,| a }
 ----
 
