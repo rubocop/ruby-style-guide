@@ -570,6 +570,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#single-action-blocks">Single-action Blocks</a></li>
 <li><a href="#single-line-blocks">Single-line Blocks</a></li>
 <li><a href="#block-argument">Block Argument</a></li>
+<li><a href="#no-trailing-argument-comma">No Trailing Argument Comma</a></li>
 <li><a href="#no-nested-methods">No Nested Methods</a></li>
 <li><a href="#lambda-multi-line">Lambda Multi-line</a></li>
 <li><a href="#stabby-lambda-with-args">Stabby Lambda with Arguments</a></li>
@@ -3342,6 +3343,34 @@ Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 <span class="n">with_tmp_dir</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>
   <span class="nb">puts</span> <span class="s2">"dir is accessible as a parameter and pwd is set: </span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="s2">"</span>
 <span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="no-trailing-argument-comma"><a class="anchor" href="#no-trailing-argument-comma"></a><a class="link" href="#no-trailing-argument-comma">No Trailing Argument Comma</a></h3>
+<div class="paragraph">
+<p>Avoid comma after the last argument in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - easier to move/add/remove parameters, but still not preferred</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span><span class="o">|</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">|</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span><span class="o">|</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">|</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="p">}</span>
+
+<span class="c1"># good - this comma is meaningful for array destructuring</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]].</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="o">|</span> <span class="n">a</span> <span class="p">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -6660,7 +6689,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-26 19:22:39 UTC
+Last updated 2020-01-26 19:24:18 UTC
 </div>
 </div>
 <style>
