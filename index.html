@@ -680,6 +680,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#hash-fetch-defaults"><code>Hash#fetch</code> defaults</a></li>
 <li><a href="#use-hash-blocks">Use Hash Blocks</a></li>
 <li><a href="#hash-values-at"><code>Hash#values_at</code></a></li>
+<li><a href="#hash-transform-methods"><code>Hash#transform_keys</code> and <code>Hash#transform_values</code></a></li>
 <li><a href="#ordered-hashes">Ordered Hashes</a></li>
 <li><a href="#no-modifying-collections">No Modifying Collections</a></li>
 <li><a href="#accessing-elements-directly">Accessing Elements Directly</a></li>
@@ -5087,6 +5088,23 @@ When you&#8217;ve got keys that are not symbols stick to the hash rockets syntax
 </div>
 </div>
 <div class="sect2">
+<h3 id="hash-transform-methods"><a class="anchor" href="#hash-transform-methods"></a><a class="link" href="#hash-transform-methods"><code>Hash#transform_keys</code> and <code>Hash#transform_values</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>transform_keys</code> or <code>transform_values</code> over <code>each_with_object</code> or <code>map</code> when transforming just the keys or just the values of a hash.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="p">{</span><span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span><span class="p">}.</span><span class="nf">each_with_object</span><span class="p">({})</span> <span class="p">{</span> <span class="o">|</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">h</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="p">}</span>
+<span class="p">{</span><span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span><span class="p">}.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">|</span> <span class="p">[</span><span class="n">k</span><span class="p">.</span><span class="nf">to_s</span><span class="p">,</span> <span class="n">v</span><span class="p">]</span> <span class="p">}.</span><span class="nf">to_h</span>
+
+<span class="c1"># good</span>
+<span class="p">{</span><span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span><span class="p">}.</span><span class="nf">transform_values</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">v</span> <span class="o">*</span> <span class="n">v</span> <span class="p">}</span>
+<span class="p">{</span><span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span><span class="p">}.</span><span class="nf">transform_keys</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="p">.</span><span class="nf">to_s</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="ordered-hashes"><a class="anchor" href="#ordered-hashes"></a><a class="link" href="#ordered-hashes">Ordered Hashes</a></h3>
 <div class="paragraph">
 <p>Rely on the fact that as of Ruby 1.9 hashes are ordered.</p>
@@ -6642,7 +6660,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-05 10:06:43 UTC
+Last updated 2020-01-26 19:22:39 UTC
 </div>
 </div>
 <style>
