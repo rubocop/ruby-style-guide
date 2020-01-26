@@ -2194,6 +2194,32 @@ with_tmp_dir do |dir|
 end
 ----
 
+=== No Trailing Argument Comma [[no-trailing-argument-comma]]
+
+Avoid comma after the last argument in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).
+
+[source,ruby]
+----
+# bad - easier to move/add/remove parameters, but still not preferred
+[[1, 2, 3], [4, 5, 6]].each do |a, b, c,|
+  a + b + c
+end
+
+# good
+[[1, 2, 3], [4, 5, 6]].each do |a, b, c|
+  a + b + c
+end
+
+# bad
+[[1, 2, 3], [4, 5, 6]].each { |a, b, c,| a + b + c }
+
+# good
+[[1, 2, 3], [4, 5, 6]].each { |a, b, c| a + b + c }
+
+# good - this comma is meaningful for array destructuring
+[[1, 2, 3], [4, 5, 6]].map { |a,| a }
+----
+
 
 === No Nested Methods [[no-nested-methods]]
 
