@@ -537,19 +537,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#exceptions">Exceptions</a>
 <ul class="sectlevel2">
-<li><a href="#prefer-raise-over-fail">Prefer <code>raise</code> over <code>fail</code></a></li>
-<li><a href="#no-explicit-runtimeerror">No Explicit <code>RuntimeError</code></a></li>
+<li><a href="#prefer-raise-over-fail"><code>raise</code> vs <code>fail</code></a></li>
+<li><a href="#no-explicit-runtimeerror">Raising Explicit <code>RuntimeError</code></a></li>
 <li><a href="#exception-class-messages">Exception Class Messages</a></li>
-<li><a href="#no-return-ensure">No <code>return</code> from <code>ensure</code></a></li>
+<li><a href="#no-return-ensure"><code>return</code> from <code>ensure</code></a></li>
 <li><a href="#begin-implicit">Implicit <code>begin</code></a></li>
 <li><a href="#contingency-methods">Contingency Methods</a></li>
-<li><a href="#dont-hide-exceptions">Don&#8217;t Hide Exceptions</a></li>
-<li><a href="#no-rescue-modifiers">No <code>rescue</code> Modifiers</a></li>
-<li><a href="#no-exceptional-flows">No Exceptional Flows</a></li>
-<li><a href="#no-blind-rescues">No Blind Rescues</a></li>
-<li><a href="#exception-ordering">Exception Ordering</a></li>
-<li><a href="#release-resources">Release Resources</a></li>
-<li><a href="#auto-release-resources">Auto Release Resources</a></li>
+<li><a href="#dont-hide-exceptions">Suppressing Exceptions</a></li>
+<li><a href="#no-rescue-modifiers">Using <code>rescue</code> as a Modifier</a></li>
+<li><a href="#no-exceptional-flows">Using Exceptions for Flow of Control</a></li>
+<li><a href="#no-blind-rescues">Blind Rescues</a></li>
+<li><a href="#exception-ordering">Exception Rescuing Ordering</a></li>
+<li><a href="#release-resources">Release External Resources</a></li>
+<li><a href="#auto-release-resources">Auto-release External Resources</a></li>
 <li><a href="#standard-exceptions">Standard Exceptions</a></li>
 </ul>
 </li>
@@ -2817,7 +2817,7 @@ A guard clause is a conditional statement at the top of a function that bails ou
 <h2 id="exceptions"><a class="anchor" href="#exceptions"></a><a class="link" href="#exceptions">Exceptions</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="prefer-raise-over-fail"><a class="anchor" href="#prefer-raise-over-fail"></a><a class="link" href="#prefer-raise-over-fail">Prefer <code>raise</code> over <code>fail</code></a></h3>
+<h3 id="prefer-raise-over-fail"><a class="anchor" href="#prefer-raise-over-fail"></a><a class="link" href="#prefer-raise-over-fail"><code>raise</code> vs <code>fail</code></a></h3>
 <div class="paragraph">
 <p>Prefer <code>raise</code> over <code>fail</code> for exceptions.</p>
 </div>
@@ -2832,7 +2832,7 @@ A guard clause is a conditional statement at the top of a function that bails ou
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-explicit-runtimeerror"><a class="anchor" href="#no-explicit-runtimeerror"></a><a class="link" href="#no-explicit-runtimeerror">No Explicit <code>RuntimeError</code></a></h3>
+<h3 id="no-explicit-runtimeerror"><a class="anchor" href="#no-explicit-runtimeerror"></a><a class="link" href="#no-explicit-runtimeerror">Raising Explicit <code>RuntimeError</code></a></h3>
 <div class="paragraph">
 <p>Don&#8217;t specify <code>RuntimeError</code> explicitly in the two argument version of <code>raise</code>.</p>
 </div>
@@ -2864,7 +2864,7 @@ A guard clause is a conditional statement at the top of a function that bails ou
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-return-ensure"><a class="anchor" href="#no-return-ensure"></a><a class="link" href="#no-return-ensure">No <code>return</code> from <code>ensure</code></a></h3>
+<h3 id="no-return-ensure"><a class="anchor" href="#no-return-ensure"></a><a class="link" href="#no-return-ensure"><code>return</code> from <code>ensure</code></a></h3>
 <div class="paragraph">
 <p>Do not return from an <code>ensure</code> block.
 If you explicitly return from a method inside an <code>ensure</code> block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
@@ -2940,7 +2940,7 @@ In effect, the exception will be silently thrown away.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dont-hide-exceptions"><a class="anchor" href="#dont-hide-exceptions"></a><a class="link" href="#dont-hide-exceptions">Don&#8217;t Hide Exceptions</a></h3>
+<h3 id="dont-hide-exceptions"><a class="anchor" href="#dont-hide-exceptions"></a><a class="link" href="#dont-hide-exceptions">Suppressing Exceptions</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t suppress exceptions.</p>
 </div>
@@ -2959,7 +2959,7 @@ In effect, the exception will be silently thrown away.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-rescue-modifiers"><a class="anchor" href="#no-rescue-modifiers"></a><a class="link" href="#no-rescue-modifiers">No <code>rescue</code> Modifiers</a></h3>
+<h3 id="no-rescue-modifiers"><a class="anchor" href="#no-rescue-modifiers"></a><a class="link" href="#no-rescue-modifiers">Using <code>rescue</code> as a Modifier</a></h3>
 <div class="paragraph">
 <p>Avoid using <code>rescue</code> in its modifier form.</p>
 </div>
@@ -2978,7 +2978,7 @@ In effect, the exception will be silently thrown away.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-exceptional-flows"><a class="anchor" href="#no-exceptional-flows"></a><a class="link" href="#no-exceptional-flows">No Exceptional Flows</a></h3>
+<h3 id="no-exceptional-flows"><a class="anchor" href="#no-exceptional-flows"></a><a class="link" href="#no-exceptional-flows">Using Exceptions for Flow of Control</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t use exceptions for flow of control.</p>
 </div>
@@ -3001,7 +3001,7 @@ In effect, the exception will be silently thrown away.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-blind-rescues"><a class="anchor" href="#no-blind-rescues"></a><a class="link" href="#no-blind-rescues">No Blind Rescues</a></h3>
+<h3 id="no-blind-rescues"><a class="anchor" href="#no-blind-rescues"></a><a class="link" href="#no-blind-rescues">Blind Rescues</a></h3>
 <div class="paragraph">
 <p>Avoid rescuing the <code>Exception</code> class.
 This will trap signals and calls to <code>exit</code>, requiring you to <code>kill -9</code> the process.</p>
@@ -3035,7 +3035,7 @@ This will trap signals and calls to <code>exit</code>, requiring you to <code>ki
 </div>
 </div>
 <div class="sect2">
-<h3 id="exception-ordering"><a class="anchor" href="#exception-ordering"></a><a class="link" href="#exception-ordering">Exception Ordering</a></h3>
+<h3 id="exception-ordering"><a class="anchor" href="#exception-ordering"></a><a class="link" href="#exception-ordering">Exception Rescuing Ordering</a></h3>
 <div class="paragraph">
 <p>Put more specific exceptions higher up the rescue chain, otherwise they&#8217;ll never be rescued from.</p>
 </div>
@@ -3062,7 +3062,7 @@ This will trap signals and calls to <code>exit</code>, requiring you to <code>ki
 </div>
 </div>
 <div class="sect2">
-<h3 id="release-resources"><a class="anchor" href="#release-resources"></a><a class="link" href="#release-resources">Release Resources</a></h3>
+<h3 id="release-resources"><a class="anchor" href="#release-resources"></a><a class="link" href="#release-resources">Release External Resources</a></h3>
 <div class="paragraph">
 <p>Release external resources obtained by your program in an <code>ensure</code> block.</p>
 </div>
@@ -3080,7 +3080,7 @@ This will trap signals and calls to <code>exit</code>, requiring you to <code>ki
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-release-resources"><a class="anchor" href="#auto-release-resources"></a><a class="link" href="#auto-release-resources">Auto Release Resources</a></h3>
+<h3 id="auto-release-resources"><a class="anchor" href="#auto-release-resources"></a><a class="link" href="#auto-release-resources">Auto-release External Resources</a></h3>
 <div class="paragraph">
 <p>Use versions of resource obtaining methods that do automatic resource cleanup when possible.</p>
 </div>
@@ -6737,7 +6737,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 10:59:47 UTC
+Last updated 2020-01-27 11:06:07 UTC
 </div>
 </div>
 <style>
