@@ -3549,11 +3549,11 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 <span class="n">l</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="n">v</span> <span class="p">}</span>
 <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># also bad - uncommon syntax</span>
+<span class="c1"># good - most compact form, but might be confusing for newcomers to Ruby</span>
 <span class="n">l</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="n">v</span> <span class="p">}</span>
 <span class="n">l</span><span class="o">.</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># good</span>
+<span class="c1"># good - a bit verbose, but crystal clear</span>
 <span class="n">l</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="nb">puts</span> <span class="n">v</span> <span class="p">}</span>
 <span class="n">l</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre>
 </div>
@@ -6744,7 +6744,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 16:42:47 UTC
+Last updated 2020-01-27 16:44:48 UTC
 </div>
 </div>
 <style>
