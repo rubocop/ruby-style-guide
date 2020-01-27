@@ -1996,7 +1996,7 @@ hello_array = *'Hello' # => ["Hello"]
 a = *(1..3) # => [1, 2, 3]
 ----
 
-=== Trailing Underscore Variables [[trailing-underscore-variables]]
+=== Dealing with Trailing Underscore Variables in Destructuring Assignment [[trailing-underscore-variables]]
 
 Avoid the use of unnecessary trailing underscore variables during
 parallel assignment. Named underscore variables are to be preferred over
@@ -2053,7 +2053,7 @@ x ||= y
 x &&= y
 ----
 
-=== Double Pipe for Uninit [[double-pipe-for-uninit]]
+=== Conditional Variable Initialization Shorthand [[double-pipe-for-uninit]]
 
 Use `||=` to initialize variables only if they're not already initialized.
 
@@ -2069,8 +2069,8 @@ name = 'Bozhidar' unless name
 name ||= 'Bozhidar'
 ----
 
-=== No Double Pipes for Booleans [[no-double-pipes-for-bools]]
-
+[WARNING]
+====
 Don't use `||=` to initialize boolean variables.
 (Consider what would happen if the current value happened to be `false`.)
 
@@ -2082,8 +2082,9 @@ enabled ||= true
 # good
 enabled = true if enabled.nil?
 ----
+====
 
-=== Double Ampersand Preprocess [[double-amper-preprocess]]
+=== Existence Check Shorthand [[double-amper-preprocess]]
 
 Use `&&=` to preprocess variables that may or may not exist.
 Using `&&=` will change the value only if it exists, removing the need to check its existence with `if`.
@@ -2108,7 +2109,7 @@ something = something && something.downcase
 something &&= something.downcase
 ----
 
-=== No Case Equality [[no-case-equality]]
+=== Explicit Use of the Case Equality Operator [[no-case-equality]]
 
 Avoid explicit use of the case equality operator `===`.
 As its name implies it is meant to be used implicitly by `case` expressions and outside of them it yields some pretty confusing code.
@@ -2143,7 +2144,7 @@ The stricter comparison semantics provided by `eql?` are rarely needed in practi
 
 == Blocks, Procs & Lambdas
 
-=== Single-action Blocks [[single-action-blocks]]
+=== Proc Application Shorthand [[single-action-blocks]]
 
 Use the Proc invocation shorthand when the invoked method is the only operation of a block.
 
@@ -2156,7 +2157,7 @@ names.map { |name| name.upcase }
 names.map(&:upcase)
 ----
 
-=== Single-line Blocks [[single-line-blocks]]
+=== Single-line Blocks Delimiters [[single-line-blocks]]
 
 Prefer `{...}` over `do...end` for single-line blocks.
 Avoid using `{...}` for multi-line blocks (multi-line chaining is always ugly).
@@ -2186,7 +2187,7 @@ names.select { |name| name.start_with?('S') }.map(&:upcase)
 
 Some will argue that multi-line chaining would look OK with the use of {...}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?
 
-=== Block Argument [[block-argument]]
+=== Explicit Block Argument [[block-argument]]
 
 Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
 
@@ -2213,9 +2214,9 @@ with_tmp_dir do |dir|
 end
 ----
 
-=== No Trailing Argument Comma [[no-trailing-argument-comma]]
+=== Trailing Comma in Block Parameters [[no-trailing-parameters-comma]]
 
-Avoid comma after the last argument in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).
+Avoid comma after the last parameter in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).
 
 [source,ruby]
 ----
@@ -2240,7 +2241,7 @@ end
 ----
 
 
-=== No Nested Methods [[no-nested-methods]]
+=== Nested Method Definitions [[no-nested-methods]]
 
 Do not use nested method definitions, use lambda instead.
 Nested method definitions actually produce methods in the same scope (e.g. class) as the outer method.
@@ -2273,7 +2274,7 @@ def foo(x)
 end
 ----
 
-=== Lambda Multi-line [[lambda-multi-line]]
+=== Multi-line Lambda Definition [[lambda-multi-line]]
 
 Use the new lambda literal syntax for single-line body blocks.
 Use the `lambda` method for multi-line blocks.
@@ -2300,7 +2301,7 @@ l = lambda do |a, b|
 end
 ----
 
-=== Stabby Lambda with Arguments [[stabby-lambda-with-args]]
+=== Stabby Lambda Definition with Parameters [[stabby-lambda-with-args]]
 
 Don't omit the parameter parentheses when defining a stabby lambda with parameters.
 
@@ -2313,7 +2314,7 @@ l = ->x, y { something(x, y) }
 l = ->(x, y) { something(x, y) }
 ----
 
-=== Stabby Lambda without Arguments [[stabby-lambda-no-args]]
+=== Stabby Lambda Definition without Parameters [[stabby-lambda-no-args]]
 
 Omit the parameter parentheses when defining a stabby lambda with no parameters.
 
@@ -2326,7 +2327,7 @@ l = ->() { something }
 l = -> { something }
 ----
 
-=== `proc` [[proc]]
+=== `proc` vs `Proc.new` [[proc]]
 
 Prefer `proc` over `Proc.new`.
 
@@ -2339,7 +2340,7 @@ p = Proc.new { |n| puts n }
 p = proc { |n| puts n }
 ----
 
-=== Proc Call [[proc-call]]
+=== Proc Invocation [[proc-call]]
 
 Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
 
