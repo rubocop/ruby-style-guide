@@ -483,20 +483,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#naming-conventions">Naming Conventions</a>
 <ul class="sectlevel2">
-<li><a href="#english-identifiers">English Identifiers</a></li>
-<li><a href="#snake-case-symbols-methods-vars">Snake Case Symbols Methods Vars</a></li>
-<li><a href="#snake-case-symbols-methods-vars-with-numbers">Snake Case Symbols Methods Vars with Numbers</a></li>
-<li><a href="#camelcase-classes">CamelCase Classes</a></li>
-<li><a href="#snake-case-files">Snake Case Files</a></li>
-<li><a href="#snake-case-dirs">Snake Case Directories</a></li>
+<li><a href="#english-identifiers">English for Identifiers</a></li>
+<li><a href="#snake-case-symbols-methods-vars">Snake Case for Symbols, Methods and Variables</a></li>
+<li><a href="#snake-case-symbols-methods-vars-with-numbers">Identifiers with a Numeric Suffix</a></li>
+<li><a href="#camelcase-classes">CamelCase for Classes</a></li>
+<li><a href="#snake-case-files">Snake Case for Files</a></li>
+<li><a href="#snake-case-dirs">Snake Case for Directories</a></li>
 <li><a href="#one-class-per-file">One Class per File</a></li>
-<li><a href="#screaming-snake-case">Screaming Snake Case</a></li>
-<li><a href="#bool-methods-qmark">Boolean Methods Question Mark</a></li>
-<li><a href="#bool-methods-prefix">Boolean Methods Prefix</a></li>
-<li><a href="#dangerous-method-bang">Dangerous Method Bang</a></li>
-<li><a href="#safe-because-unsafe">Safe Because Unsafe</a></li>
-<li><a href="#underscore-unused-vars">Underscore Unused Vars</a></li>
-<li><a href="#other-arg"><code>other</code> arg</a></li>
+<li><a href="#screaming-snake-case">Screaming Snake Case for Constants</a></li>
+<li><a href="#bool-methods-qmark">Predicate Methods Suffix</a></li>
+<li><a href="#bool-methods-prefix">Predicate Methods Prefix</a></li>
+<li><a href="#dangerous-method-bang">Dangerous Method Suffix</a></li>
+<li><a href="#safe-because-unsafe">Relationship between Safe and Dangerous Methods</a></li>
+<li><a href="#underscore-unused-vars">Unused Variables Prefix</a></li>
+<li><a href="#other-arg"><code>other</code> Parameter</a></li>
 </ul>
 </li>
 <li><a href="#flow-of-control">Flow of Control</a>
@@ -1751,7 +1751,7 @@ optional.
 </div>
 </div>
 <div class="sect2">
-<h3 id="english-identifiers"><a class="anchor" href="#english-identifiers"></a><a class="link" href="#english-identifiers">English Identifiers</a></h3>
+<h3 id="english-identifiers"><a class="anchor" href="#english-identifiers"></a><a class="link" href="#english-identifiers">English for Identifiers</a></h3>
 <div class="paragraph">
 <p>Name identifiers in English.</p>
 </div>
@@ -1769,7 +1769,7 @@ optional.
 </div>
 </div>
 <div class="sect2">
-<h3 id="snake-case-symbols-methods-vars"><a class="anchor" href="#snake-case-symbols-methods-vars"></a><a class="link" href="#snake-case-symbols-methods-vars">Snake Case Symbols Methods Vars</a></h3>
+<h3 id="snake-case-symbols-methods-vars"><a class="anchor" href="#snake-case-symbols-methods-vars"></a><a class="link" href="#snake-case-symbols-methods-vars">Snake Case for Symbols, Methods and Variables</a></h3>
 <div class="paragraph">
 <p>Use <code>snake_case</code> for symbols, methods and variables.</p>
 </div>
@@ -1802,7 +1802,7 @@ optional.
 </div>
 </div>
 <div class="sect2">
-<h3 id="snake-case-symbols-methods-vars-with-numbers"><a class="anchor" href="#snake-case-symbols-methods-vars-with-numbers"></a><a class="link" href="#snake-case-symbols-methods-vars-with-numbers">Snake Case Symbols Methods Vars with Numbers</a></h3>
+<h3 id="snake-case-symbols-methods-vars-with-numbers"><a class="anchor" href="#snake-case-symbols-methods-vars-with-numbers"></a><a class="link" href="#snake-case-symbols-methods-vars-with-numbers">Identifiers with a Numeric Suffix</a></h3>
 <div class="paragraph">
 <p>Do not separate numbers from letters on symbols, methods and variables.</p>
 </div>
@@ -1833,7 +1833,7 @@ optional.
 </div>
 </div>
 <div class="sect2">
-<h3 id="camelcase-classes"><a class="anchor" href="#camelcase-classes"></a><a class="link" href="#camelcase-classes">CamelCase Classes</a></h3>
+<h3 id="camelcase-classes"><a class="anchor" href="#camelcase-classes"></a><a class="link" href="#camelcase-classes">CamelCase for Classes</a></h3>
 <div class="paragraph">
 <p>Use <code>CamelCase</code> for classes and modules.
 (Keep acronyms like HTTP, RFC, XML uppercase).</p>
@@ -1873,13 +1873,13 @@ optional.
 </div>
 </div>
 <div class="sect2">
-<h3 id="snake-case-files"><a class="anchor" href="#snake-case-files"></a><a class="link" href="#snake-case-files">Snake Case Files</a></h3>
+<h3 id="snake-case-files"><a class="anchor" href="#snake-case-files"></a><a class="link" href="#snake-case-files">Snake Case for Files</a></h3>
 <div class="paragraph">
 <p>Use <code>snake_case</code> for naming files, e.g. <code>hello_world.rb</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="snake-case-dirs"><a class="anchor" href="#snake-case-dirs"></a><a class="link" href="#snake-case-dirs">Snake Case Directories</a></h3>
+<h3 id="snake-case-dirs"><a class="anchor" href="#snake-case-dirs"></a><a class="link" href="#snake-case-dirs">Snake Case for Directories</a></h3>
 <div class="paragraph">
 <p>Use <code>snake_case</code> for naming directories, e.g. <code>lib/hello_world/hello_world.rb</code>.</p>
 </div>
@@ -1892,9 +1892,9 @@ Name the file name as the class/module, but replacing <code>CamelCase</code> wit
 </div>
 </div>
 <div class="sect2">
-<h3 id="screaming-snake-case"><a class="anchor" href="#screaming-snake-case"></a><a class="link" href="#screaming-snake-case">Screaming Snake Case</a></h3>
+<h3 id="screaming-snake-case"><a class="anchor" href="#screaming-snake-case"></a><a class="link" href="#screaming-snake-case">Screaming Snake Case for Constants</a></h3>
 <div class="paragraph">
-<p>Use <code>SCREAMING_SNAKE_CASE</code> for other constants.</p>
+<p>Use <code>SCREAMING_SNAKE_CASE</code> for other constants (those that don&#8217;t refer to classes and modules).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1907,14 +1907,14 @@ Name the file name as the class/module, but replacing <code>CamelCase</code> wit
 </div>
 </div>
 <div class="sect2">
-<h3 id="bool-methods-qmark"><a class="anchor" href="#bool-methods-qmark"></a><a class="link" href="#bool-methods-qmark">Boolean Methods Question Mark</a></h3>
+<h3 id="bool-methods-qmark"><a class="anchor" href="#bool-methods-qmark"></a><a class="link" href="#bool-methods-qmark">Predicate Methods Suffix</a></h3>
 <div class="paragraph">
 <p>The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. <code>Array#empty?</code>).
 Methods that don&#8217;t return a boolean, shouldn&#8217;t end in a question mark.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bool-methods-prefix"><a class="anchor" href="#bool-methods-prefix"></a><a class="link" href="#bool-methods-prefix">Boolean Methods Prefix</a></h3>
+<h3 id="bool-methods-prefix"><a class="anchor" href="#bool-methods-prefix"></a><a class="link" href="#bool-methods-prefix">Predicate Methods Prefix</a></h3>
 <div class="paragraph">
 <p>Avoid prefixing predicate methods with the auxiliary verbs such as <code>is</code>, <code>does</code>, or <code>can</code>.
 These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as <code>empty?</code> and <code>include?</code>.</p>
@@ -1954,7 +1954,7 @@ These words are redundant and inconsistent with the style of boolean methods in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="dangerous-method-bang"><a class="anchor" href="#dangerous-method-bang"></a><a class="link" href="#dangerous-method-bang">Dangerous Method Bang</a></h3>
+<h3 id="dangerous-method-bang"><a class="anchor" href="#dangerous-method-bang"></a><a class="link" href="#dangerous-method-bang">Dangerous Method Suffix</a></h3>
 <div class="paragraph">
 <p>The names of potentially <em>dangerous</em> methods (i.e. methods that modify <code>self</code> or the arguments, <code>exit!</code> (doesn&#8217;t run the finalizers like <code>exit</code> does), etc) should end with an exclamation mark if there exists a safe version of that <em>dangerous</em> method.</p>
 </div>
@@ -1984,7 +1984,7 @@ These words are redundant and inconsistent with the style of boolean methods in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="safe-because-unsafe"><a class="anchor" href="#safe-because-unsafe"></a><a class="link" href="#safe-because-unsafe">Safe Because Unsafe</a></h3>
+<h3 id="safe-because-unsafe"><a class="anchor" href="#safe-because-unsafe"></a><a class="link" href="#safe-because-unsafe">Relationship between Safe and Dangerous Methods</a></h3>
 <div class="paragraph">
 <p>Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.</p>
 </div>
@@ -2009,7 +2009,7 @@ These words are redundant and inconsistent with the style of boolean methods in 
 </div>
 </div>
 <div class="sect2">
-<h3 id="underscore-unused-vars"><a class="anchor" href="#underscore-unused-vars"></a><a class="link" href="#underscore-unused-vars">Underscore Unused Vars</a></h3>
+<h3 id="underscore-unused-vars"><a class="anchor" href="#underscore-unused-vars"></a><a class="link" href="#underscore-unused-vars">Unused Variables Prefix</a></h3>
 <div class="paragraph">
 <p>Prefix with <code>_</code> unused block parameters and local variables.
 It&#8217;s also acceptable to use just <code>_</code> (although it&#8217;s a bit less descriptive).
@@ -2044,7 +2044,7 @@ This convention is recognized by the Ruby interpreter and tools like RuboCop and
 </div>
 </div>
 <div class="sect2">
-<h3 id="other-arg"><a class="anchor" href="#other-arg"></a><a class="link" href="#other-arg"><code>other</code> arg</a></h3>
+<h3 id="other-arg"><a class="anchor" href="#other-arg"></a><a class="link" href="#other-arg"><code>other</code> Parameter</a></h3>
 <div class="paragraph">
 <p>When defining binary operators and operator-alike methods, name the parameter <code>other</code> for operators with "symmetrical" semantics of operands.
 Symmetrical semantics means both sides of the operator are typically of same or coercible types.</p>
@@ -6706,7 +6706,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 07:44:07 UTC
+Last updated 2020-01-27 10:21:14 UTC
 </div>
 </div>
 <style>
