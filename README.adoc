@@ -750,7 +750,7 @@ ____
 The only real difficulties in programming are cache invalidation and naming things.
 ____
 
-=== English Identifiers [[english-identifiers]]
+=== English for Identifiers [[english-identifiers]]
 
 Name identifiers in English.
 
@@ -766,7 +766,7 @@ zaplata = 1_000
 salary = 1_000
 ----
 
-=== Snake Case Symbols Methods Vars [[snake-case-symbols-methods-vars]]
+=== Snake Case for Symbols, Methods and Variables [[snake-case-symbols-methods-vars]]
 
 Use `snake_case` for symbols, methods and variables.
 
@@ -797,7 +797,7 @@ def some_method
 end
 ----
 
-=== Snake Case Symbols Methods Vars with Numbers [[snake-case-symbols-methods-vars-with-numbers]]
+=== Identifiers with a Numeric Suffix [[snake-case-symbols-methods-vars-with-numbers]]
 
 Do not separate numbers from letters on symbols, methods and variables.
 
@@ -826,7 +826,7 @@ def some_method1
 end
 ----
 
-=== CamelCase Classes [[camelcase-classes]]
+=== CamelCase for Classes [[camelcase-classes]]
 
 Use `CamelCase` for classes and modules.
 (Keep acronyms like HTTP, RFC, XML uppercase).
@@ -864,11 +864,11 @@ class XMLSomething
 end
 ----
 
-=== Snake Case Files [[snake-case-files]]
+=== Snake Case for Files [[snake-case-files]]
 
 Use `snake_case` for naming files, e.g. `hello_world.rb`.
 
-=== Snake Case Directories [[snake-case-dirs]]
+=== Snake Case for Directories [[snake-case-dirs]]
 
 Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
 
@@ -877,9 +877,9 @@ Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
 Aim to have just a single class/module per source file.
 Name the file name as the class/module, but replacing `CamelCase` with `snake_case`.
 
-=== Screaming Snake Case [[screaming-snake-case]]
+=== Screaming Snake Case for Constants [[screaming-snake-case]]
 
-Use `SCREAMING_SNAKE_CASE` for other constants.
+Use `SCREAMING_SNAKE_CASE` for other constants (those that don't refer to classes and modules).
 
 [source,ruby]
 ----
@@ -890,12 +890,12 @@ SomeConst = 5
 SOME_CONST = 5
 ----
 
-=== Boolean Methods Question Mark [[bool-methods-qmark]]
+=== Predicate Methods Suffix [[bool-methods-qmark]]
 
 The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. `Array#empty?`).
 Methods that don't return a boolean, shouldn't end in a question mark.
 
-=== Boolean Methods Prefix [[bool-methods-prefix]]
+=== Predicate Methods Prefix [[bool-methods-prefix]]
 
 Avoid prefixing predicate methods with the auxiliary verbs such as `is`, `does`, or `can`.
 These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as `empty?` and `include?`.
@@ -933,7 +933,7 @@ class Person
 end
 ----
 
-=== Dangerous Method Bang [[dangerous-method-bang]]
+=== Dangerous Method Suffix [[dangerous-method-bang]]
 
 The names of potentially _dangerous_ methods (i.e. methods that modify `self` or the arguments, `exit!` (doesn't run the finalizers like `exit` does), etc) should end with an exclamation mark if there exists a safe version of that _dangerous_ method.
 
@@ -961,7 +961,7 @@ class Person
 end
 ----
 
-=== Safe Because Unsafe [[safe-because-unsafe]]
+=== Relationship between Safe and Dangerous Methods [[safe-because-unsafe]]
 
 Define the non-bang (safe) method in terms of the bang (dangerous) one if possible.
 
@@ -984,7 +984,7 @@ class Array
 end
 ----
 
-=== Underscore Unused Vars [[underscore-unused-vars]]
+=== Unused Variables Prefix [[underscore-unused-vars]]
 
 Prefix with `+_+` unused block parameters and local variables.
 It's also acceptable to use just `+_+` (although it's a bit less descriptive).
@@ -1017,7 +1017,7 @@ def something(x)
 end
 ----
 
-=== `other` arg [[other-arg]]
+=== `other` Parameter [[other-arg]]
 
 When defining binary operators and operator-alike methods, name the parameter `other` for operators with "symmetrical" semantics of operands.
 Symmetrical semantics means both sides of the operator are typically of same or coercible types.
