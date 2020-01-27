@@ -1912,6 +1912,17 @@ Name the file name as the class/module, but replacing <code>CamelCase</code> wit
 <p>The names of predicate methods (methods that return a boolean value) should end in a question mark  (i.e. <code>Array#empty?</code>).
 Methods that don&#8217;t return a boolean, shouldn&#8217;t end in a question mark.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">even</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">even?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="bool-methods-prefix"><a class="anchor" href="#bool-methods-prefix"></a><a class="link" href="#bool-methods-prefix">Predicate Methods Prefix</a></h3>
@@ -6706,7 +6717,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 10:21:14 UTC
+Last updated 2020-01-27 10:25:18 UTC
 </div>
 </div>
 <style>
