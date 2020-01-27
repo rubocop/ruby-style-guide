@@ -470,15 +470,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#two-or-more-empty-lines">Two or More Empty Lines</a></li>
 <li><a href="#empty-lines-around-access-modifier">Empty Lines around Access Modifier</a></li>
 <li><a href="#empty-lines-around-bodies">Empty Lines around Bodies</a></li>
-<li><a href="#no-trailing-params-comma">No Trailing Params Comma</a></li>
+<li><a href="#no-trailing-params-comma">Trailing Comma in Method Arguments</a></li>
 <li><a href="#spaces-around-equals">Spaces around Equals</a></li>
-<li><a href="#no-trailing-backslash">No Trailing Backslash</a></li>
-<li><a href="#consistent-multi-line-chains">Consistent Multi-line Chains</a></li>
-<li><a href="#no-double-indent">No Double Indent</a></li>
-<li><a href="#no-braces-opts-hash">No Braces Options Hash</a></li>
-<li><a href="#no-dsl-decorating">No DSL Decorating</a></li>
-<li><a href="#parens-no-spaces">Parenthesis no Spaces</a></li>
-<li><a href="#align-multiline-arrays">Align Multi-line Arrays</a></li>
+<li><a href="#no-trailing-backslash">Line Continuation in Expressions</a></li>
+<li><a href="#consistent-multi-line-chains">Multi-line Method Chains</a></li>
+<li><a href="#no-double-indent">Method Arguments Alignment</a></li>
+<li><a href="#no-braces-opts-hash">Implicit Options Hash</a></li>
+<li><a href="#no-dsl-decorating">DSL Method Calls</a></li>
+<li><a href="#parens-no-spaces">Space in Method Calls</a></li>
+<li><a href="#align-multiline-arrays">Multi-line Arrays Alignment</a></li>
 </ul>
 </li>
 <li><a href="#naming-conventions">Naming Conventions</a>
@@ -1496,7 +1496,7 @@ Historically it is derived from the fact that <code>case</code> and <code>switch
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-trailing-params-comma"><a class="anchor" href="#no-trailing-params-comma"></a><a class="link" href="#no-trailing-params-comma">No Trailing Params Comma</a></h3>
+<h3 id="no-trailing-params-comma"><a class="anchor" href="#no-trailing-params-comma"></a><a class="link" href="#no-trailing-params-comma">Trailing Comma in Method Arguments</a></h3>
 <div class="paragraph">
 <p>Avoid comma after the last parameter in a method call, especially when the parameters are not on separate lines.</p>
 </div>
@@ -1541,20 +1541,24 @@ prominent in practice (and arguably a bit more readable).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-trailing-backslash"><a class="anchor" href="#no-trailing-backslash"></a><a class="link" href="#no-trailing-backslash">No Trailing Backslash</a></h3>
+<h3 id="no-trailing-backslash"><a class="anchor" href="#no-trailing-backslash"></a><a class="link" href="#no-trailing-backslash">Line Continuation in Expressions</a></h3>
 <div class="paragraph">
-<p>Avoid line continuation <code>\</code> where not required.
+<p>Avoid line continuation with <code>\</code> where not required.
 In practice, avoid using line continuations for anything but string concatenation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad (\ is not needed here)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">\</span>
          <span class="mi">2</span>
 
-<span class="c1"># good (but still ugly as hell)</span>
+<span class="c1"># bad (\ is required, but still ugly as hell)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">\</span>
          <span class="o">-</span> <span class="mi">2</span>
+
+<span class="c1"># good</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span>
+         <span class="mi">2</span>
 
 <span class="n">long_string</span> <span class="o">=</span> <span class="s1">'First part of the long string'</span> <span class="p">\</span>
               <span class="s1">' and second part of the long string'</span></code></pre>
@@ -1562,7 +1566,7 @@ In practice, avoid using line continuations for anything but string concatenatio
 </div>
 </div>
 <div class="sect2">
-<h3 id="consistent-multi-line-chains"><a class="anchor" href="#consistent-multi-line-chains"></a><a class="link" href="#consistent-multi-line-chains">Consistent Multi-line Chains</a></h3>
+<h3 id="consistent-multi-line-chains"><a class="anchor" href="#consistent-multi-line-chains"></a><a class="link" href="#consistent-multi-line-chains">Multi-line Method Chains</a></h3>
 <div class="paragraph">
 <p>Adopt a consistent multi-line method chaining style.
 There are two popular styles in the Ruby community, both of which are considered good - leading <code>.</code>  and trailing <code>.</code>.</p>
@@ -1606,10 +1610,10 @@ There are two popular styles in the Ruby community, both of which are considered
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-double-indent"><a class="anchor" href="#no-double-indent"></a><a class="link" href="#no-double-indent">No Double Indent</a></h3>
+<h3 id="no-double-indent"><a class="anchor" href="#no-double-indent"></a><a class="link" href="#no-double-indent">Method Arguments Alignment</a></h3>
 <div class="paragraph">
-<p>Align the parameters of a method call if they span more than one line.
-When aligning parameters is not appropriate due to line-length constraints, single indent for the lines after the first is also acceptable.</p>
+<p>Align the arguments of a method call if they span more than one line.
+When aligning arguments is not appropriate due to line-length constraints, single indent for the lines after the first is also acceptable.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1648,7 +1652,20 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-braces-opts-hash"><a class="anchor" href="#no-braces-opts-hash"></a><a class="link" href="#no-braces-opts-hash">No Braces Options Hash</a></h3>
+<h3 id="no-braces-opts-hash"><a class="anchor" href="#no-braces-opts-hash"></a><a class="link" href="#no-braces-opts-hash">Implicit Options Hash</a></h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+As of Ruby 2.7 braces around an options hash are no longer
+optional.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Omit the outer braces around an implicit options hash.</p>
 </div>
@@ -1663,7 +1680,7 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-dsl-decorating"><a class="anchor" href="#no-dsl-decorating"></a><a class="link" href="#no-dsl-decorating">No DSL Decorating</a></h3>
+<h3 id="no-dsl-decorating"><a class="anchor" href="#no-dsl-decorating"></a><a class="link" href="#no-dsl-decorating">DSL Method Calls</a></h3>
 <div class="paragraph">
 <p>Omit both the outer braces and parentheses for methods that are part of an internal DSL.</p>
 </div>
@@ -1680,7 +1697,7 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 </div>
 </div>
 <div class="sect2">
-<h3 id="parens-no-spaces"><a class="anchor" href="#parens-no-spaces"></a><a class="link" href="#parens-no-spaces">Parenthesis no Spaces</a></h3>
+<h3 id="parens-no-spaces"><a class="anchor" href="#parens-no-spaces"></a><a class="link" href="#parens-no-spaces">Space in Method Calls</a></h3>
 <div class="paragraph">
 <p>Do not put a space between a method name and the opening parenthesis.</p>
 </div>
@@ -1695,7 +1712,7 @@ When aligning parameters is not appropriate due to line-length constraints, sing
 </div>
 </div>
 <div class="sect2">
-<h3 id="align-multiline-arrays"><a class="anchor" href="#align-multiline-arrays"></a><a class="link" href="#align-multiline-arrays">Align Multi-line Arrays</a></h3>
+<h3 id="align-multiline-arrays"><a class="anchor" href="#align-multiline-arrays"></a><a class="link" href="#align-multiline-arrays">Multi-line Arrays Alignment</a></h3>
 <div class="paragraph">
 <p>Align the elements of array literals spanning multiple lines.</p>
 </div>
@@ -6689,7 +6706,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-26 19:24:18 UTC
+Last updated 2020-01-27 07:44:07 UTC
 </div>
 </div>
 <style>
