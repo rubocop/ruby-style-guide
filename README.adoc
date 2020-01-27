@@ -1692,7 +1692,7 @@ end
 
 == Exceptions
 
-=== Prefer `raise` over `fail` [[prefer-raise-over-fail]]
+=== `raise` vs `fail` [[prefer-raise-over-fail]]
 
 Prefer `raise` over `fail` for exceptions.
 
@@ -1705,7 +1705,7 @@ fail SomeException, 'message'
 raise SomeException, 'message'
 ----
 
-=== No Explicit `RuntimeError` [[no-explicit-runtimeerror]]
+=== Raising Explicit `RuntimeError` [[no-explicit-runtimeerror]]
 
 Don't specify `RuntimeError` explicitly in the two argument version of `raise`.
 
@@ -1733,7 +1733,7 @@ raise SomeException, 'message'
 # Consistent with `raise SomeException, 'message', backtrace`.
 ----
 
-=== No `return` from `ensure` [[no-return-ensure]]
+=== `return` from `ensure` [[no-return-ensure]]
 
 Do not return from an `ensure` block.
 If you explicitly return from a method inside an `ensure` block, the return will take precedence over any exception being raised, and the method will return as if no exception had been raised at all.
@@ -1803,7 +1803,7 @@ with_io_error_handling { something_that_might_fail }
 with_io_error_handling { something_else_that_might_fail }
 ----
 
-=== Don't Hide Exceptions [[dont-hide-exceptions]]
+=== Suppressing Exceptions [[dont-hide-exceptions]]
 
 Don't suppress exceptions.
 
@@ -1820,7 +1820,7 @@ end
 do_something rescue nil
 ----
 
-=== No `rescue` Modifiers [[no-rescue-modifiers]]
+=== Using `rescue` as a Modifier [[no-rescue-modifiers]]
 
 Avoid using `rescue` in its modifier form.
 
@@ -1837,7 +1837,7 @@ rescue Errno::ENOENT => e
 end
 ----
 
-=== No Exceptional Flows [[no-exceptional-flows]]
+=== Using Exceptions for Flow of Control [[no-exceptional-flows]]
 
 Don't use exceptions for flow of control.
 
@@ -1858,7 +1858,7 @@ else
 end
 ----
 
-=== No Blind Rescues [[no-blind-rescues]]
+=== Blind Rescues [[no-blind-rescues]]
 
 Avoid rescuing the `Exception` class.
 This will trap signals and calls to `exit`, requiring you to `kill -9` the process.
@@ -1890,7 +1890,7 @@ rescue StandardError => e
 end
 ----
 
-=== Exception Ordering [[exception-ordering]]
+=== Exception Rescuing Ordering [[exception-ordering]]
 
 Put more specific exceptions higher up the rescue chain, otherwise they'll never be rescued from.
 
@@ -1915,7 +1915,7 @@ rescue StandardError => e
 end
 ----
 
-=== Release Resources [[release-resources]]
+=== Release External Resources [[release-resources]]
 
 Release external resources obtained by your program in an `ensure` block.
 
@@ -1931,7 +1931,7 @@ ensure
 end
 ----
 
-=== Auto Release Resources [[auto-release-resources]]
+=== Auto-release External Resources [[auto-release-resources]]
 
 Use versions of resource obtaining methods that do automatic resource cleanup when possible.
 
