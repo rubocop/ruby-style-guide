@@ -1072,7 +1072,7 @@ end
 
 == Flow of Control
 
-=== No `for` Loops [[no-for-loops]]
+=== `for` Loops [[no-for-loops]]
 
 Do not use `for`, unless you know exactly why.
 Most of the time iterators should be used instead.
@@ -1097,7 +1097,7 @@ arr.each { |elem| puts elem }
 elem # => NameError: undefined local variable or method `elem'
 ----
 
-=== No `then` [[no-then]]
+=== `then` in Multi-line Expression [[no-then]]
 
 Do not use `then` for multi-line `if`/`unless`/`when`.
 
@@ -1126,7 +1126,7 @@ when bar
 end
 ----
 
-=== Same Line Condition [[same-line-condition]]
+=== Condition Placement [[same-line-condition]]
 
 Always put the condition on the same line as the `if`/`unless` in a multi-line conditional.
 
@@ -1146,7 +1146,7 @@ if some_condition
 end
 ----
 
-=== Ternary Operator [[ternary-operator]]
+=== Ternary Operator vs `if` [[ternary-operator]]
 
 Prefer the ternary operator(`?:`) over `if/then/else/end` constructs.
 It's more common and obviously more concise.
@@ -1160,7 +1160,7 @@ result = if some_condition then something else something_else end
 result = some_condition ? something : something_else
 ----
 
-=== No Nested Ternary [[no-nested-ternary]]
+=== Nested Ternary Operators [[no-nested-ternary]]
 
 Use one expression per branch in a ternary operator.
 This also means that ternary operators must not be nested.
@@ -1179,7 +1179,7 @@ else
 end
 ----
 
-=== No Semicolon `if`s [[no-semicolon-ifs]]
+=== Semicolon in `if` [[no-semicolon-ifs]]
 
 Do not use `if x; ...`. Use the ternary operator instead.
 
@@ -1218,7 +1218,7 @@ else
 end
 ----
 
-=== Use `if`/`case` Returns [[use-if-case-returns]]
+=== Returning Result from `if`/`case` [[use-if-case-returns]]
 
 Leverage the fact that `if` and `case` are expressions which return a result.
 
@@ -1243,9 +1243,10 @@ result =
 === One-line Cases [[one-line-cases]]
 
 Use `when x then ...` for one-line cases.
-The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
-=== No `when` Semicolons [[no-when-semicolons]]
+NOTE: The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
+
+=== Semicolon in `when` [[no-when-semicolons]]
 
 Do not use `when x; ...`. See the previous rule.
 
@@ -1285,7 +1286,7 @@ if x
 end
 ----
 
-=== No `and` or `or` [[no-and-or-or]]
+=== `and`/`or` [[no-and-or-or]]
 
 The `and` and `or` keywords are banned.
 The minimal added readability is just not worth the high probability of introducing subtle bugs.
@@ -1313,7 +1314,7 @@ raise("Failed to save document!") unless document.save
 document.save || raise("Failed to save document!")
 ----
 
-=== No Multi-line Ternary [[no-multiline-ternary]]
+=== Multi-line Ternary Operator [[no-multiline-ternary]]
 
 Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
 
@@ -1336,7 +1337,7 @@ do_something if some_condition
 some_condition && do_something
 ----
 
-=== No Multi-line `if` Modifiers [[no-multiline-if-modifiers]]
+=== Multi-line `if` Modifiers [[no-multiline-if-modifiers]]
 
 Avoid modifier `if`/`unless` usage at the end of a non-trivial multi-line block.
 
@@ -1355,7 +1356,7 @@ if some_condition
 end
 ----
 
-=== No Nested Modifiers [[no-nested-modifiers]]
+=== Nested Modifiers [[no-nested-modifiers]]
 
 Avoid nested modifier `if`/`unless`/`while`/`until` usage.
 Prefer `&&`/`||` if appropriate.
@@ -1369,7 +1370,7 @@ do_something if other_condition if some_condition
 do_something if some_condition && other_condition
 ----
 
-=== `unless` for Negatives [[unless-for-negatives]]
+=== `if` vs `unless` [[unless-for-negatives]]
 
 Prefer `unless` over `if` for negative conditions (or control flow `||`).
 
@@ -1388,7 +1389,7 @@ do_something unless some_condition
 some_condition || do_something
 ----
 
-=== No `else` with `unless` [[no-else-with-unless]]
+=== Using `else` with `unless` [[no-else-with-unless]]
 
 Do not use `unless` with `else`.
 Rewrite these with the positive case first.
@@ -1410,7 +1411,7 @@ else
 end
 ----
 
-=== No Parentheses around Condition [[no-parens-around-condition]]
+=== Parentheses around Condition [[no-parens-around-condition]]
 
 Don't use parentheses around the condition of a control expression.
 
@@ -1427,9 +1428,9 @@ if x > 10
 end
 ----
 
-Note that there is an exception to this rule, namely <<safe-assignment-in-condition,safe assignment in condition>>.
+NOTE: There is an exception to this rule, namely <<safe-assignment-in-condition,safe assignment in condition>>.
 
-=== No Multi-line `while do` [[no-multiline-while-do]]
+=== Multi-line `while do` [[no-multiline-while-do]]
 
 Do not use `while/until condition do` for multi-line `while/until`.
 
@@ -1469,7 +1470,7 @@ end
 do_something while some_condition
 ----
 
-=== `until` for Negatives [[until-for-negatives]]
+=== `while` vs `until` [[until-for-negatives]]
 
 Prefer `until` over `while` for negative conditions.
 
@@ -1523,7 +1524,7 @@ loop do
 end
 ----
 
-=== No Explicit `return` [[no-explicit-return]]
+=== Explicit `return` [[no-explicit-return]]
 
 Avoid `return` where not required for flow of control.
 
@@ -1540,7 +1541,7 @@ def some_method(some_arr)
 end
 ----
 
-=== No `self` unless Required [[no-self-unless-required]]
+=== Explicit `self` [[no-self-unless-required]]
 
 Avoid `self` where not required.
 (It is only required when calling a `self` write accessor, methods named after reserved words, or overloadable operators.)
@@ -1566,7 +1567,7 @@ def ready?
 end
 ----
 
-=== No Shadowing [[no-shadowing]]
+=== Shadowing Methods [[no-shadowing]]
 
 As a corollary, avoid shadowing methods with local variables unless they are both equivalent.
 
@@ -1624,11 +1625,11 @@ if v
 end
 ----
 
-=== No `BEGIN` Blocks [[no-BEGIN-blocks]]
+=== `BEGIN` Blocks [[no-BEGIN-blocks]]
 
 Avoid the use of `BEGIN` blocks.
 
-=== No `END` Blocks [[no-END-blocks]]
+=== `END` Blocks [[no-END-blocks]]
 
 Do not use `END` blocks. Use `Kernel#at_exit` instead.
 
@@ -1641,7 +1642,7 @@ END { puts 'Goodbye!' }
 at_exit { puts 'Goodbye!' }
 ----
 
-=== No Nested Conditionals [[no-nested-conditionals]]
+=== Nested Conditionals [[no-nested-conditionals]]
 
 Avoid use of nested conditionals for flow of control.
 
