@@ -556,27 +556,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#assignment-comparison">Assignment &amp; Comparison</a>
 <ul class="sectlevel2">
 <li><a href="#parallel-assignment">Parallel Assignment</a></li>
-<li><a href="#trailing-underscore-variables">Trailing Underscore Variables</a></li>
+<li><a href="#trailing-underscore-variables">Dealing with Trailing Underscore Variables in Destructuring Assignment</a></li>
 <li><a href="#self-assignment">Self-assignment</a></li>
-<li><a href="#double-pipe-for-uninit">Double Pipe for Uninit</a></li>
-<li><a href="#no-double-pipes-for-bools">No Double Pipes for Booleans</a></li>
-<li><a href="#double-amper-preprocess">Double Ampersand Preprocess</a></li>
-<li><a href="#no-case-equality">No Case Equality</a></li>
+<li><a href="#double-pipe-for-uninit">Conditional Variable Initialization Shorthand</a></li>
+<li><a href="#double-amper-preprocess">Existence Check Shorthand</a></li>
+<li><a href="#no-case-equality">Explicit Use of the Case Equality Operator</a></li>
 <li><a href="#eql"><code>==</code> vs <code>eql?</code></a></li>
 </ul>
 </li>
 <li><a href="#blocks-procs-lambdas">Blocks, Procs &amp; Lambdas</a>
 <ul class="sectlevel2">
-<li><a href="#single-action-blocks">Single-action Blocks</a></li>
-<li><a href="#single-line-blocks">Single-line Blocks</a></li>
-<li><a href="#block-argument">Block Argument</a></li>
-<li><a href="#no-trailing-argument-comma">No Trailing Argument Comma</a></li>
-<li><a href="#no-nested-methods">No Nested Methods</a></li>
-<li><a href="#lambda-multi-line">Lambda Multi-line</a></li>
-<li><a href="#stabby-lambda-with-args">Stabby Lambda with Arguments</a></li>
-<li><a href="#stabby-lambda-no-args">Stabby Lambda without Arguments</a></li>
-<li><a href="#proc"><code>proc</code></a></li>
-<li><a href="#proc-call">Proc Call</a></li>
+<li><a href="#single-action-blocks">Proc Application Shorthand</a></li>
+<li><a href="#single-line-blocks">Single-line Blocks Delimiters</a></li>
+<li><a href="#block-argument">Explicit Block Argument</a></li>
+<li><a href="#no-trailing-parameters-comma">Trailing Comma in Block Parameters</a></li>
+<li><a href="#no-nested-methods">Nested Method Definitions</a></li>
+<li><a href="#lambda-multi-line">Multi-line Lambda Definition</a></li>
+<li><a href="#stabby-lambda-with-args">Stabby Lambda Definition with Parameters</a></li>
+<li><a href="#stabby-lambda-no-args">Stabby Lambda Definition without Parameters</a></li>
+<li><a href="#proc"><code>proc</code> vs <code>Proc.new</code></a></li>
+<li><a href="#proc-call">Proc Invocation</a></li>
 </ul>
 </li>
 <li><a href="#methods">Methods</a>
@@ -3154,7 +3153,7 @@ Parallel assignment is less readable than separate assignment.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="trailing-underscore-variables"><a class="anchor" href="#trailing-underscore-variables"></a><a class="link" href="#trailing-underscore-variables">Trailing Underscore Variables</a></h3>
+<h3 id="trailing-underscore-variables"><a class="anchor" href="#trailing-underscore-variables"></a><a class="link" href="#trailing-underscore-variables">Dealing with Trailing Underscore Variables in Destructuring Assignment</a></h3>
 <div class="paragraph">
 <p>Avoid the use of unnecessary trailing underscore variables during
 parallel assignment. Named underscore variables are to be preferred over
@@ -3215,7 +3214,7 @@ not an underscore.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="double-pipe-for-uninit"><a class="anchor" href="#double-pipe-for-uninit"></a><a class="link" href="#double-pipe-for-uninit">Double Pipe for Uninit</a></h3>
+<h3 id="double-pipe-for-uninit"><a class="anchor" href="#double-pipe-for-uninit"></a><a class="link" href="#double-pipe-for-uninit">Conditional Variable Initialization Shorthand</a></h3>
 <div class="paragraph">
 <p>Use <code>||=</code> to initialize variables only if they&#8217;re not already initialized.</p>
 </div>
@@ -3231,9 +3230,13 @@ not an underscore.</p>
 <span class="nb">name</span> <span class="o">||=</span> <span class="s1">'Bozhidar'</span></code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="no-double-pipes-for-bools"><a class="anchor" href="#no-double-pipes-for-bools"></a><a class="link" href="#no-double-pipes-for-bools">No Double Pipes for Booleans</a></h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Don&#8217;t use <code>||=</code> to initialize boolean variables.
 (Consider what would happen if the current value happened to be <code>false</code>.)</p>
@@ -3247,9 +3250,13 @@ not an underscore.</p>
 <span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">enabled</span><span class="p">.</span><span class="nf">nil?</span></code></pre>
 </div>
 </div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="double-amper-preprocess"><a class="anchor" href="#double-amper-preprocess"></a><a class="link" href="#double-amper-preprocess">Double Ampersand Preprocess</a></h3>
+<h3 id="double-amper-preprocess"><a class="anchor" href="#double-amper-preprocess"></a><a class="link" href="#double-amper-preprocess">Existence Check Shorthand</a></h3>
 <div class="paragraph">
 <p>Use <code>&amp;&amp;=</code> to preprocess variables that may or may not exist.
 Using <code>&amp;&amp;=</code> will change the value only if it exists, removing the need to check its existence with <code>if</code>.</p>
@@ -3276,7 +3283,7 @@ Using <code>&amp;&amp;=</code> will change the value only if it exists, removing
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-case-equality"><a class="anchor" href="#no-case-equality"></a><a class="link" href="#no-case-equality">No Case Equality</a></h3>
+<h3 id="no-case-equality"><a class="anchor" href="#no-case-equality"></a><a class="link" href="#no-case-equality">Explicit Use of the Case Equality Operator</a></h3>
 <div class="paragraph">
 <p>Avoid explicit use of the case equality operator <code>===</code>.
 As its name implies it is meant to be used implicitly by <code>case</code> expressions and outside of them it yields some pretty confusing code.</p>
@@ -3318,7 +3325,7 @@ The stricter comparison semantics provided by <code>eql?</code> are rarely neede
 <h2 id="blocks-procs-lambdas"><a class="anchor" href="#blocks-procs-lambdas"></a><a class="link" href="#blocks-procs-lambdas">Blocks, Procs &amp; Lambdas</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="single-action-blocks"><a class="anchor" href="#single-action-blocks"></a><a class="link" href="#single-action-blocks">Single-action Blocks</a></h3>
+<h3 id="single-action-blocks"><a class="anchor" href="#single-action-blocks"></a><a class="link" href="#single-action-blocks">Proc Application Shorthand</a></h3>
 <div class="paragraph">
 <p>Use the Proc invocation shorthand when the invoked method is the only operation of a block.</p>
 </div>
@@ -3333,7 +3340,7 @@ The stricter comparison semantics provided by <code>eql?</code> are rarely neede
 </div>
 </div>
 <div class="sect2">
-<h3 id="single-line-blocks"><a class="anchor" href="#single-line-blocks"></a><a class="link" href="#single-line-blocks">Single-line Blocks</a></h3>
+<h3 id="single-line-blocks"><a class="anchor" href="#single-line-blocks"></a><a class="link" href="#single-line-blocks">Single-line Blocks Delimiters</a></h3>
 <div class="paragraph">
 <p>Prefer <code>{&#8230;&#8203;}</code> over <code>do&#8230;&#8203;end</code> for single-line blocks.
 Avoid using <code>{&#8230;&#8203;}</code> for multi-line blocks (multi-line chaining is always ugly).
@@ -3366,7 +3373,7 @@ Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="block-argument"><a class="anchor" href="#block-argument"></a><a class="link" href="#block-argument">Block Argument</a></h3>
+<h3 id="block-argument"><a class="anchor" href="#block-argument"></a><a class="link" href="#block-argument">Explicit Block Argument</a></h3>
 <div class="paragraph">
 <p>Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.</p>
 </div>
@@ -3395,9 +3402,9 @@ Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-trailing-argument-comma"><a class="anchor" href="#no-trailing-argument-comma"></a><a class="link" href="#no-trailing-argument-comma">No Trailing Argument Comma</a></h3>
+<h3 id="no-trailing-parameters-comma"><a class="anchor" href="#no-trailing-parameters-comma"></a><a class="link" href="#no-trailing-parameters-comma">Trailing Comma in Block Parameters</a></h3>
 <div class="paragraph">
-<p>Avoid comma after the last argument in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).</p>
+<p>Avoid comma after the last parameter in a block, except in cases where only a single argument is present and its removal would affect functionality (for instance, array destructuring).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3423,7 +3430,7 @@ Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-nested-methods"><a class="anchor" href="#no-nested-methods"></a><a class="link" href="#no-nested-methods">No Nested Methods</a></h3>
+<h3 id="no-nested-methods"><a class="anchor" href="#no-nested-methods"></a><a class="link" href="#no-nested-methods">Nested Method Definitions</a></h3>
 <div class="paragraph">
 <p>Do not use nested method definitions, use lambda instead.
 Nested method definitions actually produce methods in the same scope (e.g. class) as the outer method.
@@ -3458,7 +3465,7 @@ Furthermore, the "nested method" will be redefined every time the method contain
 </div>
 </div>
 <div class="sect2">
-<h3 id="lambda-multi-line"><a class="anchor" href="#lambda-multi-line"></a><a class="link" href="#lambda-multi-line">Lambda Multi-line</a></h3>
+<h3 id="lambda-multi-line"><a class="anchor" href="#lambda-multi-line"></a><a class="link" href="#lambda-multi-line">Multi-line Lambda Definition</a></h3>
 <div class="paragraph">
 <p>Use the new lambda literal syntax for single-line body blocks.
 Use the <code>lambda</code> method for multi-line blocks.</p>
@@ -3487,7 +3494,7 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="stabby-lambda-with-args"><a class="anchor" href="#stabby-lambda-with-args"></a><a class="link" href="#stabby-lambda-with-args">Stabby Lambda with Arguments</a></h3>
+<h3 id="stabby-lambda-with-args"><a class="anchor" href="#stabby-lambda-with-args"></a><a class="link" href="#stabby-lambda-with-args">Stabby Lambda Definition with Parameters</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t omit the parameter parentheses when defining a stabby lambda with parameters.</p>
 </div>
@@ -3502,7 +3509,7 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="stabby-lambda-no-args"><a class="anchor" href="#stabby-lambda-no-args"></a><a class="link" href="#stabby-lambda-no-args">Stabby Lambda without Arguments</a></h3>
+<h3 id="stabby-lambda-no-args"><a class="anchor" href="#stabby-lambda-no-args"></a><a class="link" href="#stabby-lambda-no-args">Stabby Lambda Definition without Parameters</a></h3>
 <div class="paragraph">
 <p>Omit the parameter parentheses when defining a stabby lambda with no parameters.</p>
 </div>
@@ -3517,7 +3524,7 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc"><a class="anchor" href="#proc"></a><a class="link" href="#proc"><code>proc</code></a></h3>
+<h3 id="proc"><a class="anchor" href="#proc"></a><a class="link" href="#proc"><code>proc</code> vs <code>Proc.new</code></a></h3>
 <div class="paragraph">
 <p>Prefer <code>proc</code> over <code>Proc.new</code>.</p>
 </div>
@@ -3532,7 +3539,7 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-call"><a class="anchor" href="#proc-call"></a><a class="link" href="#proc-call">Proc Call</a></h3>
+<h3 id="proc-call"><a class="anchor" href="#proc-call"></a><a class="link" href="#proc-call">Proc Invocation</a></h3>
 <div class="paragraph">
 <p>Prefer <code>proc.call()</code> over <code>proc[]</code> or <code>proc.()</code> for both lambdas and procs.</p>
 </div>
@@ -6737,7 +6744,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 11:06:07 UTC
+Last updated 2020-01-27 16:42:47 UTC
 </div>
 </div>
 <style>
