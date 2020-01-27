@@ -2350,11 +2350,11 @@ Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
 l = ->(v) { puts v }
 l[1]
 
-# also bad - uncommon syntax
+# good - most compact form, but might be confusing for newcomers to Ruby
 l = ->(v) { puts v }
 l.(1)
 
-# good
+# good - a bit verbose, but crystal clear
 l = ->(v) { puts v }
 l.call(1)
 ----
