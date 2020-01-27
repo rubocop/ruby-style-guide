@@ -501,38 +501,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#flow-of-control">Flow of Control</a>
 <ul class="sectlevel2">
-<li><a href="#no-for-loops">No <code>for</code> Loops</a></li>
-<li><a href="#no-then">No <code>then</code></a></li>
-<li><a href="#same-line-condition">Same Line Condition</a></li>
-<li><a href="#ternary-operator">Ternary Operator</a></li>
-<li><a href="#no-nested-ternary">No Nested Ternary</a></li>
-<li><a href="#no-semicolon-ifs">No Semicolon `if`s</a></li>
+<li><a href="#no-for-loops"><code>for</code> Loops</a></li>
+<li><a href="#no-then"><code>then</code> in Multi-line Expression</a></li>
+<li><a href="#same-line-condition">Condition Placement</a></li>
+<li><a href="#ternary-operator">Ternary Operator vs <code>if</code></a></li>
+<li><a href="#no-nested-ternary">Nested Ternary Operators</a></li>
+<li><a href="#no-semicolon-ifs">Semicolon in <code>if</code></a></li>
 <li><a href="#case-vs-if-else"><code>case</code> vs <code>if-else</code></a></li>
-<li><a href="#use-if-case-returns">Use <code>if</code>/<code>case</code> Returns</a></li>
+<li><a href="#use-if-case-returns">Returning Result from <code>if</code>/<code>case</code></a></li>
 <li><a href="#one-line-cases">One-line Cases</a></li>
-<li><a href="#no-when-semicolons">No <code>when</code> Semicolons</a></li>
+<li><a href="#no-when-semicolons">Semicolon in <code>when</code></a></li>
 <li><a href="#bang-not-not"><code>!</code> vs <code>not</code></a></li>
 <li><a href="#no-bang-bang">Double Negation</a></li>
-<li><a href="#no-and-or-or">No <code>and</code> or <code>or</code></a></li>
-<li><a href="#no-multiline-ternary">No Multi-line Ternary</a></li>
+<li><a href="#no-and-or-or"><code>and</code>/<code>or</code></a></li>
+<li><a href="#no-multiline-ternary">Multi-line Ternary Operator</a></li>
 <li><a href="#if-as-a-modifier"><code>if</code> as a Modifier</a></li>
-<li><a href="#no-multiline-if-modifiers">No Multi-line <code>if</code> Modifiers</a></li>
-<li><a href="#no-nested-modifiers">No Nested Modifiers</a></li>
-<li><a href="#unless-for-negatives"><code>unless</code> for Negatives</a></li>
-<li><a href="#no-else-with-unless">No <code>else</code> with <code>unless</code></a></li>
-<li><a href="#no-parens-around-condition">No Parentheses around Condition</a></li>
-<li><a href="#no-multiline-while-do">No Multi-line <code>while do</code></a></li>
+<li><a href="#no-multiline-if-modifiers">Multi-line <code>if</code> Modifiers</a></li>
+<li><a href="#no-nested-modifiers">Nested Modifiers</a></li>
+<li><a href="#unless-for-negatives"><code>if</code> vs <code>unless</code></a></li>
+<li><a href="#no-else-with-unless">Using <code>else</code> with <code>unless</code></a></li>
+<li><a href="#no-parens-around-condition">Parentheses around Condition</a></li>
+<li><a href="#no-multiline-while-do">Multi-line <code>while do</code></a></li>
 <li><a href="#while-as-a-modifier"><code>while</code> as a Modifier</a></li>
-<li><a href="#until-for-negatives"><code>until</code> for Negatives</a></li>
+<li><a href="#until-for-negatives"><code>while</code> vs <code>until</code></a></li>
 <li><a href="#infinite-loop">Infinite Loop</a></li>
 <li><a href="#loop-with-break"><code>loop</code> with <code>break</code></a></li>
-<li><a href="#no-explicit-return">No Explicit <code>return</code></a></li>
-<li><a href="#no-self-unless-required">No <code>self</code> unless Required</a></li>
-<li><a href="#no-shadowing">No Shadowing</a></li>
+<li><a href="#no-explicit-return">Explicit <code>return</code></a></li>
+<li><a href="#no-self-unless-required">Explicit <code>self</code></a></li>
+<li><a href="#no-shadowing">Shadowing Methods</a></li>
 <li><a href="#safe-assignment-in-condition">Safe Assignment in Condition</a></li>
-<li><a href="#no-BEGIN-blocks">No <code>BEGIN</code> Blocks</a></li>
-<li><a href="#no-END-blocks">No <code>END</code> Blocks</a></li>
-<li><a href="#no-nested-conditionals">No Nested Conditionals</a></li>
+<li><a href="#no-BEGIN-blocks"><code>BEGIN</code> Blocks</a></li>
+<li><a href="#no-END-blocks"><code>END</code> Blocks</a></li>
+<li><a href="#no-nested-conditionals">Nested Conditionals</a></li>
 </ul>
 </li>
 <li><a href="#exceptions">Exceptions</a>
@@ -2107,7 +2107,7 @@ Prominent exception in Ruby core is, for example, <code>Array#*(int)</code>.</p>
 <h2 id="flow-of-control"><a class="anchor" href="#flow-of-control"></a><a class="link" href="#flow-of-control">Flow of Control</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="no-for-loops"><a class="anchor" href="#no-for-loops"></a><a class="link" href="#no-for-loops">No <code>for</code> Loops</a></h3>
+<h3 id="no-for-loops"><a class="anchor" href="#no-for-loops"></a><a class="link" href="#no-for-loops"><code>for</code> Loops</a></h3>
 <div class="paragraph">
 <p>Do not use <code>for</code>, unless you know exactly why.
 Most of the time iterators should be used instead.
@@ -2134,7 +2134,7 @@ Most of the time iterators should be used instead.
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-then"><a class="anchor" href="#no-then"></a><a class="link" href="#no-then">No <code>then</code></a></h3>
+<h3 id="no-then"><a class="anchor" href="#no-then"></a><a class="link" href="#no-then"><code>then</code> in Multi-line Expression</a></h3>
 <div class="paragraph">
 <p>Do not use <code>then</code> for multi-line <code>if</code>/<code>unless</code>/<code>when</code>.</p>
 </div>
@@ -2165,7 +2165,7 @@ Most of the time iterators should be used instead.
 </div>
 </div>
 <div class="sect2">
-<h3 id="same-line-condition"><a class="anchor" href="#same-line-condition"></a><a class="link" href="#same-line-condition">Same Line Condition</a></h3>
+<h3 id="same-line-condition"><a class="anchor" href="#same-line-condition"></a><a class="link" href="#same-line-condition">Condition Placement</a></h3>
 <div class="paragraph">
 <p>Always put the condition on the same line as the <code>if</code>/<code>unless</code> in a multi-line conditional.</p>
 </div>
@@ -2187,7 +2187,7 @@ Most of the time iterators should be used instead.
 </div>
 </div>
 <div class="sect2">
-<h3 id="ternary-operator"><a class="anchor" href="#ternary-operator"></a><a class="link" href="#ternary-operator">Ternary Operator</a></h3>
+<h3 id="ternary-operator"><a class="anchor" href="#ternary-operator"></a><a class="link" href="#ternary-operator">Ternary Operator vs <code>if</code></a></h3>
 <div class="paragraph">
 <p>Prefer the ternary operator(<code>?:</code>) over <code>if/then/else/end</code> constructs.
 It&#8217;s more common and obviously more concise.</p>
@@ -2203,7 +2203,7 @@ It&#8217;s more common and obviously more concise.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-nested-ternary"><a class="anchor" href="#no-nested-ternary"></a><a class="link" href="#no-nested-ternary">No Nested Ternary</a></h3>
+<h3 id="no-nested-ternary"><a class="anchor" href="#no-nested-ternary"></a><a class="link" href="#no-nested-ternary">Nested Ternary Operators</a></h3>
 <div class="paragraph">
 <p>Use one expression per branch in a ternary operator.
 This also means that ternary operators must not be nested.
@@ -2224,7 +2224,7 @@ Prefer <code>if/else</code> constructs in these cases.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-semicolon-ifs"><a class="anchor" href="#no-semicolon-ifs"></a><a class="link" href="#no-semicolon-ifs">No Semicolon `if`s</a></h3>
+<h3 id="no-semicolon-ifs"><a class="anchor" href="#no-semicolon-ifs"></a><a class="link" href="#no-semicolon-ifs">Semicolon in <code>if</code></a></h3>
 <div class="paragraph">
 <p>Do not use <code>if x; &#8230;&#8203;</code>. Use the ternary operator instead.</p>
 </div>
@@ -2267,7 +2267,7 @@ Prefer <code>if/else</code> constructs in these cases.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-if-case-returns"><a class="anchor" href="#use-if-case-returns"></a><a class="link" href="#use-if-case-returns">Use <code>if</code>/<code>case</code> Returns</a></h3>
+<h3 id="use-if-case-returns"><a class="anchor" href="#use-if-case-returns"></a><a class="link" href="#use-if-case-returns">Returning Result from <code>if</code>/<code>case</code></a></h3>
 <div class="paragraph">
 <p>Leverage the fact that <code>if</code> and <code>case</code> are expressions which return a result.</p>
 </div>
@@ -2293,12 +2293,23 @@ Prefer <code>if/else</code> constructs in these cases.</p>
 <div class="sect2">
 <h3 id="one-line-cases"><a class="anchor" href="#one-line-cases"></a><a class="link" href="#one-line-cases">One-line Cases</a></h3>
 <div class="paragraph">
-<p>Use <code>when x then &#8230;&#8203;</code> for one-line cases.
-The alternative syntax <code>when x: &#8230;&#8203;</code> has been removed as of Ruby 1.9.</p>
+<p>Use <code>when x then &#8230;&#8203;</code> for one-line cases.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The alternative syntax <code>when x: &#8230;&#8203;</code> has been removed as of Ruby 1.9.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-when-semicolons"><a class="anchor" href="#no-when-semicolons"></a><a class="link" href="#no-when-semicolons">No <code>when</code> Semicolons</a></h3>
+<h3 id="no-when-semicolons"><a class="anchor" href="#no-when-semicolons"></a><a class="link" href="#no-when-semicolons">Semicolon in <code>when</code></a></h3>
 <div class="paragraph">
 <p>Do not use <code>when x; &#8230;&#8203;</code>. See the previous rule.</p>
 </div>
@@ -2345,7 +2356,7 @@ If you want to do a <code>nil</code> check, use <code>nil?</code> instead.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-and-or-or"><a class="anchor" href="#no-and-or-or"></a><a class="link" href="#no-and-or-or">No <code>and</code> or <code>or</code></a></h3>
+<h3 id="no-and-or-or"><a class="anchor" href="#no-and-or-or"></a><a class="link" href="#no-and-or-or"><code>and</code>/<code>or</code></a></h3>
 <div class="paragraph">
 <p>The <code>and</code> and <code>or</code> keywords are banned.
 The minimal added readability is just not worth the high probability of introducing subtle bugs.
@@ -2375,7 +2386,7 @@ For flow control, use <code>if</code> and <code>unless</code>; <code>&amp;&amp;<
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-multiline-ternary"><a class="anchor" href="#no-multiline-ternary"></a><a class="link" href="#no-multiline-ternary">No Multi-line Ternary</a></h3>
+<h3 id="no-multiline-ternary"><a class="anchor" href="#no-multiline-ternary"></a><a class="link" href="#no-multiline-ternary">Multi-line Ternary Operator</a></h3>
 <div class="paragraph">
 <p>Avoid multi-line <code>?:</code> (the ternary operator); use <code>if</code>/<code>unless</code> instead.</p>
 </div>
@@ -2402,7 +2413,7 @@ Another good alternative is the usage of control flow <code>&amp;&amp;</code>/<c
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-multiline-if-modifiers"><a class="anchor" href="#no-multiline-if-modifiers"></a><a class="link" href="#no-multiline-if-modifiers">No Multi-line <code>if</code> Modifiers</a></h3>
+<h3 id="no-multiline-if-modifiers"><a class="anchor" href="#no-multiline-if-modifiers"></a><a class="link" href="#no-multiline-if-modifiers">Multi-line <code>if</code> Modifiers</a></h3>
 <div class="paragraph">
 <p>Avoid modifier <code>if</code>/<code>unless</code> usage at the end of a non-trivial multi-line block.</p>
 </div>
@@ -2423,7 +2434,7 @@ Another good alternative is the usage of control flow <code>&amp;&amp;</code>/<c
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-nested-modifiers"><a class="anchor" href="#no-nested-modifiers"></a><a class="link" href="#no-nested-modifiers">No Nested Modifiers</a></h3>
+<h3 id="no-nested-modifiers"><a class="anchor" href="#no-nested-modifiers"></a><a class="link" href="#no-nested-modifiers">Nested Modifiers</a></h3>
 <div class="paragraph">
 <p>Avoid nested modifier <code>if</code>/<code>unless</code>/<code>while</code>/<code>until</code> usage.
 Prefer <code>&amp;&amp;</code>/<code>||</code> if appropriate.</p>
@@ -2439,7 +2450,7 @@ Prefer <code>&amp;&amp;</code>/<code>||</code> if appropriate.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="unless-for-negatives"><a class="anchor" href="#unless-for-negatives"></a><a class="link" href="#unless-for-negatives"><code>unless</code> for Negatives</a></h3>
+<h3 id="unless-for-negatives"><a class="anchor" href="#unless-for-negatives"></a><a class="link" href="#unless-for-negatives"><code>if</code> vs <code>unless</code></a></h3>
 <div class="paragraph">
 <p>Prefer <code>unless</code> over <code>if</code> for negative conditions (or control flow <code>||</code>).</p>
 </div>
@@ -2460,7 +2471,7 @@ Prefer <code>&amp;&amp;</code>/<code>||</code> if appropriate.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-else-with-unless"><a class="anchor" href="#no-else-with-unless"></a><a class="link" href="#no-else-with-unless">No <code>else</code> with <code>unless</code></a></h3>
+<h3 id="no-else-with-unless"><a class="anchor" href="#no-else-with-unless"></a><a class="link" href="#no-else-with-unless">Using <code>else</code> with <code>unless</code></a></h3>
 <div class="paragraph">
 <p>Do not use <code>unless</code> with <code>else</code>.
 Rewrite these with the positive case first.</p>
@@ -2484,7 +2495,7 @@ Rewrite these with the positive case first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-parens-around-condition"><a class="anchor" href="#no-parens-around-condition"></a><a class="link" href="#no-parens-around-condition">No Parentheses around Condition</a></h3>
+<h3 id="no-parens-around-condition"><a class="anchor" href="#no-parens-around-condition"></a><a class="link" href="#no-parens-around-condition">Parentheses around Condition</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t use parentheses around the condition of a control expression.</p>
 </div>
@@ -2501,12 +2512,21 @@ Rewrite these with the positive case first.</p>
 <span class="k">end</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Note that there is an exception to this rule, namely <a href="#safe-assignment-in-condition">safe assignment in condition</a>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+There is an exception to this rule, namely <a href="#safe-assignment-in-condition">safe assignment in condition</a>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-multiline-while-do"><a class="anchor" href="#no-multiline-while-do"></a><a class="link" href="#no-multiline-while-do">No Multi-line <code>while do</code></a></h3>
+<h3 id="no-multiline-while-do"><a class="anchor" href="#no-multiline-while-do"></a><a class="link" href="#no-multiline-while-do">Multi-line <code>while do</code></a></h3>
 <div class="paragraph">
 <p>Do not use <code>while/until condition do</code> for multi-line <code>while/until</code>.</p>
 </div>
@@ -2550,7 +2570,7 @@ Rewrite these with the positive case first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="until-for-negatives"><a class="anchor" href="#until-for-negatives"></a><a class="link" href="#until-for-negatives"><code>until</code> for Negatives</a></h3>
+<h3 id="until-for-negatives"><a class="anchor" href="#until-for-negatives"></a><a class="link" href="#until-for-negatives"><code>while</code> vs <code>until</code></a></h3>
 <div class="paragraph">
 <p>Prefer <code>until</code> over <code>while</code> for negative conditions.</p>
 </div>
@@ -2610,7 +2630,7 @@ Rewrite these with the positive case first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-explicit-return"><a class="anchor" href="#no-explicit-return"></a><a class="link" href="#no-explicit-return">No Explicit <code>return</code></a></h3>
+<h3 id="no-explicit-return"><a class="anchor" href="#no-explicit-return"></a><a class="link" href="#no-explicit-return">Explicit <code>return</code></a></h3>
 <div class="paragraph">
 <p>Avoid <code>return</code> where not required for flow of control.</p>
 </div>
@@ -2629,7 +2649,7 @@ Rewrite these with the positive case first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-self-unless-required"><a class="anchor" href="#no-self-unless-required"></a><a class="link" href="#no-self-unless-required">No <code>self</code> unless Required</a></h3>
+<h3 id="no-self-unless-required"><a class="anchor" href="#no-self-unless-required"></a><a class="link" href="#no-self-unless-required">Explicit <code>self</code></a></h3>
 <div class="paragraph">
 <p>Avoid <code>self</code> where not required.
 (It is only required when calling a <code>self</code> write accessor, methods named after reserved words, or overloadable operators.)</p>
@@ -2657,7 +2677,7 @@ Rewrite these with the positive case first.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-shadowing"><a class="anchor" href="#no-shadowing"></a><a class="link" href="#no-shadowing">No Shadowing</a></h3>
+<h3 id="no-shadowing"><a class="anchor" href="#no-shadowing"></a><a class="link" href="#no-shadowing">Shadowing Methods</a></h3>
 <div class="paragraph">
 <p>As a corollary, avoid shadowing methods with local variables unless they are both equivalent.</p>
 </div>
@@ -2719,13 +2739,13 @@ This is a fairly popular idiom among Rubyists that&#8217;s sometimes referred to
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-BEGIN-blocks"><a class="anchor" href="#no-BEGIN-blocks"></a><a class="link" href="#no-BEGIN-blocks">No <code>BEGIN</code> Blocks</a></h3>
+<h3 id="no-BEGIN-blocks"><a class="anchor" href="#no-BEGIN-blocks"></a><a class="link" href="#no-BEGIN-blocks"><code>BEGIN</code> Blocks</a></h3>
 <div class="paragraph">
 <p>Avoid the use of <code>BEGIN</code> blocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-END-blocks"><a class="anchor" href="#no-END-blocks"></a><a class="link" href="#no-END-blocks">No <code>END</code> Blocks</a></h3>
+<h3 id="no-END-blocks"><a class="anchor" href="#no-END-blocks"></a><a class="link" href="#no-END-blocks"><code>END</code> Blocks</a></h3>
 <div class="paragraph">
 <p>Do not use <code>END</code> blocks. Use <code>Kernel#at_exit</code> instead.</p>
 </div>
@@ -2740,7 +2760,7 @@ This is a fairly popular idiom among Rubyists that&#8217;s sometimes referred to
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-nested-conditionals"><a class="anchor" href="#no-nested-conditionals"></a><a class="link" href="#no-nested-conditionals">No Nested Conditionals</a></h3>
+<h3 id="no-nested-conditionals"><a class="anchor" href="#no-nested-conditionals"></a><a class="link" href="#no-nested-conditionals">Nested Conditionals</a></h3>
 <div class="paragraph">
 <p>Avoid use of nested conditionals for flow of control.</p>
 </div>
@@ -6717,7 +6737,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 10:25:18 UTC
+Last updated 2020-01-27 10:59:47 UTC
 </div>
 </div>
 <style>
