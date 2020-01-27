@@ -537,7 +537,7 @@ class Foo
 end
 ----
 
-=== No Trailing Params Comma [[no-trailing-params-comma]]
+=== Trailing Comma in Method Arguments [[no-trailing-params-comma]]
 
 Avoid comma after the last parameter in a method call, especially when the parameters are not on separate lines.
 
@@ -577,26 +577,30 @@ end
 While several Ruby books suggest the first style, the second is much more
 prominent in practice (and arguably a bit more readable).
 
-=== No Trailing Backslash [[no-trailing-backslash]]
+=== Line Continuation in Expressions [[no-trailing-backslash]]
 
-Avoid line continuation `\` where not required.
+Avoid line continuation with `\` where not required.
 In practice, avoid using line continuations for anything but string concatenation.
 
 [source,ruby]
 ----
-# bad
+# bad (\ is not needed here)
 result = 1 - \
          2
 
-# good (but still ugly as hell)
+# bad (\ is required, but still ugly as hell)
 result = 1 \
          - 2
+
+# good
+result = 1 -
+         2
 
 long_string = 'First part of the long string' \
               ' and second part of the long string'
 ----
 
-=== Consistent Multi-line Chains [[consistent-multi-line-chains]]
+=== Multi-line Method Chains [[consistent-multi-line-chains]]
 
 Adopt a consistent multi-line method chaining style.
 There are two popular styles in the Ruby community, both of which are considered good - leading `.`  and trailing `.`.
@@ -633,10 +637,10 @@ one.two.three.
 
 A discussion on the merits of both alternative styles can be found https://github.com/rubocop-hq/ruby-style-guide/pull/176[here].
 
-=== No Double Indent [[no-double-indent]]
+=== Method Arguments Alignment [[no-double-indent]]
 
-Align the parameters of a method call if they span more than one line.
-When aligning parameters is not appropriate due to line-length constraints, single indent for the lines after the first is also acceptable.
+Align the arguments of a method call if they span more than one line.
+When aligning arguments is not appropriate due to line-length constraints, single indent for the lines after the first is also acceptable.
 
 [source,ruby]
 ----
@@ -673,7 +677,10 @@ def send_mail(source)
 end
 ----
 
-=== No Braces Options Hash [[no-braces-opts-hash]]
+=== Implicit Options Hash [[no-braces-opts-hash]]
+
+IMPORTANT: As of Ruby 2.7 braces around an options hash are no longer
+optional.
 
 Omit the outer braces around an implicit options hash.
 
@@ -686,7 +693,7 @@ user.set({ name: 'John', age: 45, permissions: { read: true } })
 user.set(name: 'John', age: 45, permissions: { read: true })
 ----
 
-=== No DSL Decorating [[no-dsl-decorating]]
+=== DSL Method Calls [[no-dsl-decorating]]
 
 Omit both the outer braces and parentheses for methods that are part of an internal DSL.
 
@@ -701,7 +708,7 @@ class Person < ActiveRecord::Base
 end
 ----
 
-=== Parenthesis no Spaces [[parens-no-spaces]]
+=== Space in Method Calls [[parens-no-spaces]]
 
 Do not put a space between a method name and the opening parenthesis.
 
@@ -714,7 +721,7 @@ f (3 + 2) + 1
 f(3 + 2) + 1
 ----
 
-=== Align Multi-line Arrays [[align-multiline-arrays]]
+=== Multi-line Arrays Alignment [[align-multiline-arrays]]
 
 Align the elements of array literals spanning multiple lines.
 
