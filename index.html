@@ -2668,7 +2668,7 @@ There is an exception to this rule, namely <a href="#safe-assignment-in-conditio
 <span class="k">def</span> <span class="nf">ready?</span>
   <span class="k">if</span> <span class="n">last_reviewed_at</span> <span class="o">&gt;</span> <span class="n">last_updated_at</span>
     <span class="n">worker</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="ss">:in_progress</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">status</span> <span class="o">=</span> <span class="ss">:in_progress</span>
   <span class="k">end</span>
   <span class="n">status</span> <span class="o">==</span> <span class="ss">:verified</span>
 <span class="k">end</span></code></pre>
@@ -6744,7 +6744,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-27 16:44:48 UTC
+Last updated 2020-02-15 04:19:56 UTC
 </div>
 </div>
 <style>
