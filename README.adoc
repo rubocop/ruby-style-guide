@@ -4336,6 +4336,26 @@ Use non-capturing groups when you don't use the captured result.
 /(?:first|second)/
 ----
 
+=== No mix named and numbered captures [[no-mix-named-and-numbered-captures]]
+
+Do not mix named captures and numbered captures in a Regexp literal.
+Because numbered capture is ignored if they're mixed.
+
+[source,ruby]
+----
+# bad
+/(?<foo>FOO)(BAR)/
+
+# good
+/(?<foo>FOO)(?<bar>BAR)/
+
+# good
+/(?<foo>FOO)(?:BAR)/
+
+# good
+/(FOO)(BAR)/
+----
+
 === No Perl Regexp Last Matchers [[no-perl-regexp-last-matchers]]
 
 Don't use the cryptic Perl-legacy variables denoting last regexp group matches (`$1`, `$2`, etc).
