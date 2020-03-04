@@ -4338,6 +4338,34 @@ Use non-capturing groups when you don't use the captured result.
 /(?:first|second)/
 ----
 
+=== Do not mix named and numbered captures [[do-not-mix-named-and-numbered-captures]]
+
+Do not mix named captures and numbered captures in a Regexp literal.
+Because numbered capture is ignored if they're mixed.
+
+[source,ruby]
+----
+# bad - There is no way to access `(BAR)` capturing.
+m = /(?<foo>FOO)(BAR)/.match('FOOBAR')
+p m[:foo] # => "FOO"
+p m[1]    # => "FOO"
+p m[2]    # => nil   - not "BAR"
+
+# good - Both captures are accessible with names.
+m = /(?<foo>FOO)(?<bar>BAR)/.match('FOOBAR')
+p m[:foo] # => "FOO"
+p m[:bar] # => "BAR"
+
+# good - `(?:BAR)` is non-capturing grouping.
+m = /(?<foo>FOO)(?:BAR)/.match('FOOBAR')
+p m[:foo] # => "FOO"
+
+# good - Both captures are accessible with numbers.
+m = /(FOO)(BAR)/.match('FOOBAR')
+p m[1] # => "FOO"
+p m[2] # => "BAR"
+----
+
 === No Perl Regexp Last Matchers [[no-perl-regexp-last-matchers]]
 
 Don't use the cryptic Perl-legacy variables denoting last regexp group matches (`$1`, `$2`, etc).
