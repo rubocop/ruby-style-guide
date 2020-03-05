@@ -1,4 +1,4 @@
-= The Ruby Style Guide
+= The Ruby Style Guide / Autorama version
 :idprefix:
 :idseparator: -
 :sectanchors:
