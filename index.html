@@ -685,7 +685,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-modifying-collections">No Modifying Collections</a></li>
 <li><a href="#accessing-elements-directly">Accessing Elements Directly</a></li>
 <li><a href="#provide-alternate-accessor-to-collections">Provide Alternate Accessor to Collections</a></li>
-<li><a href="#map-find-select-reduce-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>size</code></a></li>
+<li><a href="#map-find-select-reduce-include-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>include?</code>/<code>size</code></a></li>
 <li><a href="#count-vs-size"><code>count</code> vs <code>size</code></a></li>
 <li><a href="#flat-map"><code>flat_map</code></a></li>
 <li><a href="#reverse-each"><code>reverse_each</code></a></li>
@@ -5253,9 +5253,9 @@ This guards you from calling <code>[]</code> on <code>nil</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="map-find-select-reduce-size"><a class="anchor" href="#map-find-select-reduce-size"></a><a class="link" href="#map-find-select-reduce-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>size</code></a></h3>
+<h3 id="map-find-select-reduce-include-size"><a class="anchor" href="#map-find-select-reduce-include-size"></a><a class="link" href="#map-find-select-reduce-include-size"><code>map</code>/<code>find</code>/<code>select</code>/<code>reduce</code>/<code>include?</code>/<code>size</code></a></h3>
 <div class="paragraph">
-<p>Prefer <code>map</code> over <code>collect</code>, <code>find</code> over <code>detect</code>, <code>select</code> over <code>find_all</code>, <code>reduce</code> over <code>inject</code> and <code>size</code> over <code>length</code>.
+<p>Prefer <code>map</code> over <code>collect</code>, <code>find</code> over <code>detect</code>, <code>select</code> over <code>find_all</code>, <code>reduce</code> over <code>inject</code>, <code>include?</code> over <code>member?</code> and <code>size</code> over <code>length</code>.
 This is not a hard requirement; if the use of the alias enhances readability, it&#8217;s ok to use it.
 The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
 The reason the use of <code>select</code> is encouraged over <code>find_all</code> is that it goes together nicely with <code>reject</code> and its name is pretty self-explanatory.</p>
@@ -6787,7 +6787,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-04 15:14:18 UTC
+Last updated 2020-03-11 06:16:42 UTC
 </div>
 </div>
 <style>
