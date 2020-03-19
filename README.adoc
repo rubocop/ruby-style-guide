@@ -1813,12 +1813,25 @@ Don't suppress exceptions.
 ----
 # bad
 begin
-  # an exception occurs here
+  do_something # an exception occurs here
 rescue SomeError
-  # the rescue clause does absolutely nothing
 end
 
-# bad
+# good
+begin
+  do_something # an exception occurs here
+rescue SomeError
+  handle_exception
+end
+
+# good
+begin
+  do_something # an exception occurs here
+rescue SomeError
+  # Notes on why exception handling is not performed
+end
+
+# good
 do_something rescue nil
 ----
 
