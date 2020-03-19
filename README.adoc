@@ -2525,6 +2525,14 @@ validates :name, presence: true
 
 Always omit parentheses for methods that have "keyword" status in Ruby.
 
+NOTE: Unfortunately, it's not exactly clear _which_ methods have "keyword" status.
+There is agreement that declarative methods have "keyword" status.
+However, there's less agreement on which non-declarative methods, if any, have "keyword" status.
+
+===== Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-declarative-keyword]]
+
+Always omit parentheses for declarative methods (a.k.a. DSL methods or macro methods) that have "keyword" status in Ruby (e.g., various `Module` instance methods):
+
 [source,ruby]
 ----
 class Person
@@ -2537,18 +2545,26 @@ class Person
 end
 ----
 
-==== Non-declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]]
+===== Non-Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]]
 
-Can omit parentheses for methods that have "keyword" status in Ruby, but are not declarative:
+For non-declarative methods with "keyword" status (e.g., various `Kernel` instance methods), two styles are considered acceptable.
+By far the most popular style is to omit parentheses.
+Rationale: The code reads better, and method calls look more like keywords.
+A less-popular style, but still acceptable, is to include parentheses.
+Rationale: The methods have ordinary semantics, so why treat them differently, and it's easier to achieve a uniform style by not worrying about which methods have "keyword" status.
+Whichever one you pick, apply it consistently.
 
 [source,ruby]
 ----
-# good
-puts(temperance.age)
-system('ls')
-# also good
+# good (most popular)
 puts temperance.age
 system 'ls'
+exit 1
+
+# also good (less popular)
+puts(temperance.age)
+system('ls')
+exit(1)
 ----
 
 ==== Using `super` with Arguments  [[super-with-args]]
