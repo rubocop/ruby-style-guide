@@ -1155,7 +1155,13 @@ Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="n">sum</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">sum</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="k">class</span> <span class="nc">FooError</span><span class="o">&lt;</span><span class="no">StandardError</span><span class="p">;</span><span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="n">sum</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
 <span class="k">class</span> <span class="nc">FooError</span> <span class="o">&lt;</span> <span class="no">StandardError</span><span class="p">;</span> <span class="k">end</span></code></pre>
 </div>
@@ -6800,7 +6806,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-20 17:15:50 UTC
+Last updated 2020-03-26 08:53:52 UTC
 </div>
 </div>
 <style>
