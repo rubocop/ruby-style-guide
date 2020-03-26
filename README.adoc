@@ -188,7 +188,7 @@ $ git config --global core.autocrlf true
 
 === Should I Terminate Files with a Newline? [[newline-eof]]
 
-End each file with a newline. 
+End each file with a newline.
 
 TIP: This should be done by through editor configuration, not manually.
 
@@ -228,6 +228,12 @@ Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper 
 
 [source,ruby]
 ----
+# bad
+sum=1+2
+a,b=1,2
+class FooError<StandardError;end
+
+# good
 sum = 1 + 2
 a, b = 1, 2
 class FooError < StandardError; end
