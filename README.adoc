@@ -4385,6 +4385,23 @@ p m[1] # => "FOO"
 p m[2] # => "BAR"
 ----
 
+=== Refer named regexp captures by name [[refer-named-regexp-captures-by-name]]
+
+Prefer using names to refer named regexp captures instead of numbers.
+
+[source,ruby]
+----
+# bad
+m = /(?<foo>FOO)(?<bar>BAR)/.match('FOOBAR')
+p m[1] # => "FOO"
+p m[2] # => "BAR"
+
+# good
+m = /(?<foo>FOO)(?<bar>BAR)/.match('FOOBAR')
+p m[:foo] # => "FOO"
+p m[:bar] # => "BAR"
+----
+
 === No Perl Regexp Last Matchers [[no-perl-regexp-last-matchers]]
 
 Don't use the cryptic Perl-legacy variables denoting last regexp group matches (`$1`, `$2`, etc).
