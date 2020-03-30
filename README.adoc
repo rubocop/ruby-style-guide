@@ -3972,7 +3972,7 @@ When using exponential notation for numbers, prefer using the normalized scienti
 
 The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading `10e7` could think it's `10**7` when it's actually `10**8`.
 
-One could favor the alternative engineering notation, in which the exponent must always be divisible by 3 for easy conversion to the thousand / million / ... system.
+One could favor the alternative engineering notation, in which the exponent must always be a multiple of 3 for easy conversion to the thousand / million / ... system.
 
 [source,ruby]
 ----
@@ -3991,7 +3991,7 @@ One could favor the alternative engineering notation, in which the exponent must
 
 Alternative : engineering notation:
 
-[source, ruby]
+[source,ruby]
 ----
 # bad
 3.2e7
