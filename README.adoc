@@ -3970,6 +3970,10 @@ a.fdiv(b)
 
 When using exponential notation for numbers, prefer using the normalized scientific notation, which uses a mantissa between 1 (inclusive) and 10 (exclusive). Omit the exponent altogether if it is zero.
 
+The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading `10e7` could think it's `10**7` when it's actually `10**8`.
+
+One could favor the alternative engineering notation, in which the exponent must always be divisible by 3 for easy conversion to the thousand / million / ... system.
+
 [source,ruby]
 ----
 # bad
@@ -3978,11 +3982,26 @@ When using exponential notation for numbers, prefer using the normalized scienti
 11.7e5
 3.14e0
 
-#good
+# good
 1e7
 3e3
 1.17e6
 3.14
+---
+
+Alternative : engineering notation:
+
+[source, ruby]
+----
+# bad
+3.2e7
+0.1e5
+12e4
+
+# good
+1e6
+17e6
+0.98e9
 ----
 
 == Strings
