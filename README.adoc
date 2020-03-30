@@ -3966,6 +3966,25 @@ a / b.to_f
 a.fdiv(b)
 ----
 
+=== Exponential Notation [[exponential-notation]]
+
+When using exponential notation for numbers, prefer using the normalized scientific notation, which uses a mantissa between 1 (inclusive) and 10 (exclusive). Omit the exponent altogether if it is zero.
+
+[source,ruby]
+----
+# bad
+10e6
+0.3e4
+11.7e5
+3.14e0
+
+#good
+1e7
+3e3
+1.17e6
+3.14
+----
+
 == Strings
 
 === String Interpolation [[string-interpolation]]
