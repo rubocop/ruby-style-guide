@@ -3987,7 +3987,7 @@ One could favor the alternative engineering notation, in which the exponent must
 3e3
 1.17e6
 3.14
----
+----
 
 Alternative : engineering notation:
 
