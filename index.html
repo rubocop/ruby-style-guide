@@ -734,6 +734,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#regexp-string-index">Regexp String Index</a></li>
 <li><a href="#non-capturing-regexp">Non Capturing Regexp</a></li>
 <li><a href="#do-not-mix-named-and-numbered-captures">Do not mix named and numbered captures</a></li>
+<li><a href="#refer-named-regexp-captures-by-name">Refer named regexp captures by name</a></li>
 <li><a href="#no-perl-regexp-last-matchers">No Perl Regexp Last Matchers</a></li>
 <li><a href="#no-numbered-regexes">No Numbered Regexes</a></li>
 <li><a href="#limit-escapes">Limit Escapes</a></li>
@@ -5917,6 +5918,25 @@ Because numbered capture is ignored if they&#8217;re mixed.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="refer-named-regexp-captures-by-name"><a class="anchor" href="#refer-named-regexp-captures-by-name"></a><a class="link" href="#refer-named-regexp-captures-by-name">Refer named regexp captures by name</a></h3>
+<div class="paragraph">
+<p>Prefer using names to refer named regexp captures instead of numbers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">m</span> <span class="o">=</span> <span class="sr">/(?&lt;foo&gt;FOO)(?&lt;bar&gt;BAR)/</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="s1">'FOOBAR'</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># =&gt; "FOO"</span>
+<span class="nb">p</span> <span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># =&gt; "BAR"</span>
+
+<span class="c1"># good</span>
+<span class="n">m</span> <span class="o">=</span> <span class="sr">/(?&lt;foo&gt;FOO)(?&lt;bar&gt;BAR)/</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="s1">'FOOBAR'</span><span class="p">)</span>
+<span class="nb">p</span> <span class="n">m</span><span class="p">[</span><span class="ss">:foo</span><span class="p">]</span> <span class="c1"># =&gt; "FOO"</span>
+<span class="nb">p</span> <span class="n">m</span><span class="p">[</span><span class="ss">:bar</span><span class="p">]</span> <span class="c1"># =&gt; "BAR"</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="no-perl-regexp-last-matchers"><a class="anchor" href="#no-perl-regexp-last-matchers"></a><a class="link" href="#no-perl-regexp-last-matchers">No Perl Regexp Last Matchers</a></h3>
 <div class="paragraph">
 <p>Don&#8217;t use the cryptic Perl-legacy variables denoting last regexp group matches (<code>$1</code>, <code>$2</code>, etc).
@@ -6806,7 +6826,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-26 08:53:52 UTC
+Last updated 2020-03-31 11:06:40 UTC
 </div>
 </div>
 <style>
