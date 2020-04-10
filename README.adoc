@@ -2164,6 +2164,25 @@ something.kind_of?(Array)
 something.is_a?(Array)
 ----
 
+=== `is_a?` vs `instance_of?` [[is-a-vs-instance-of]]
+
+Prefer `is_a?` over `instance_of?`.
+
+While the two methods are similar, `is_a?` will consider the whole inheritance
+chain (superclasses and included modules), which is what you normally would want
+to do. `instance_of?`, on the other hand, only returns `true` if an object is an
+instance of that exact class you're checking for, not a subclass.
+
+[source,ruby]
+----
+# bad
+something.instance_of?(Array)
+
+# good
+something.is_a?(Array)
+----
+
+
 === `==` vs `eql?` [[eql]]
 
 Do not use `eql?` when using `==` will do.
