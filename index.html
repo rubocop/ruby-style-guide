@@ -561,6 +561,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#double-pipe-for-uninit">Conditional Variable Initialization Shorthand</a></li>
 <li><a href="#double-amper-preprocess">Existence Check Shorthand</a></li>
 <li><a href="#no-case-equality">Explicit Use of the Case Equality Operator</a></li>
+<li><a href="#is-a-vs-kind-of"><code>is_a?</code> vs <code>kind_of?</code></a></li>
 <li><a href="#eql"><code>==</code> vs <code>eql?</code></a></li>
 </ul>
 </li>
@@ -3347,6 +3348,21 @@ rare cases it&#8217;s OK to use <code>===</code>.
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="is-a-vs-kind-of"><a class="anchor" href="#is-a-vs-kind-of"></a><a class="link" href="#is-a-vs-kind-of"><code>is_a?</code> vs <code>kind_of?</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>is_a?</code> over <code>kind_of?</code>. The two methods are synonyms, but <code>is_a?</code> is the more commonly used name in the wild.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">something</span><span class="p">.</span><span class="nf">kind_of?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
+
+<span class="c1"># good</span>
+<span class="n">something</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -6883,7 +6899,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-10 08:06:04 UTC
+Last updated 2020-04-10 08:07:28 UTC
 </div>
 </div>
 <style>
