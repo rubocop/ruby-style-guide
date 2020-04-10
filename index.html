@@ -3335,6 +3335,19 @@ As its name implies it is meant to be used implicitly by <code>case</code> expre
 <span class="n">some_string</span><span class="p">.</span><span class="nf">match?</span><span class="p">(</span><span class="sr">/something/</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+With direct subclasses of <code>BasicObject</code>, using <code>is_a?</code> is not an option since <code>BasicObject</code> doesn&#8217;t provide that method (it&#8217;s defined in <code>Object</code>). In those
+rare cases it&#8217;s OK to use <code>===</code>.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="eql"><a class="anchor" href="#eql"></a><a class="link" href="#eql"><code>==</code> vs <code>eql?</code></a></h3>
@@ -6870,7 +6883,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-31 12:20:52 UTC
+Last updated 2020-04-10 08:06:04 UTC
 </div>
 </div>
 <style>
