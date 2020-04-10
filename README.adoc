@@ -2151,6 +2151,19 @@ some_string.match?(/something/)
 NOTE: With direct subclasses of `BasicObject`, using `is_a?` is not an option since `BasicObject` doesn't provide that method (it's defined in `Object`). In those
 rare cases it's OK to use `===`.
 
+=== `is_a?` vs `kind_of?` [[is-a-vs-kind-of]]
+
+Prefer `is_a?` over `kind_of?`. The two methods are synonyms, but `is_a?` is the more commonly used name in the wild.
+
+[source,ruby]
+----
+# bad
+something.kind_of?(Array)
+
+# good
+something.is_a?(Array)
+----
+
 === `==` vs `eql?` [[eql]]
 
 Do not use `eql?` when using `==` will do.
