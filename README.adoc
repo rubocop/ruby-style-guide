@@ -2148,6 +2148,9 @@ something.is_a?(Array)
 some_string.match?(/something/)
 ----
 
+NOTE: With direct subclasses of `BasicObject`, using `is_a?` is not an option since `BasicObject` doesn't provide that method (it's defined in `Object`). In those
+rare cases it's OK to use `===`.
+
 === `==` vs `eql?` [[eql]]
 
 Do not use `eql?` when using `==` will do.
