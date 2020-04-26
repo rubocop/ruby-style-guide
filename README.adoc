@@ -723,10 +723,10 @@ Do not put a space between a method name and the opening parenthesis.
 [source,ruby]
 ----
 # bad
-f (3 + 2) + 1
+puts (x + y)
 
 # good
-f(3 + 2) + 1
+puts(x + y)
 ----
 
 === Multi-line Arrays Alignment [[align-multiline-arrays]]
