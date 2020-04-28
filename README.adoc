@@ -891,9 +891,9 @@ def some_method1
 end
 ----
 
-=== CamelCase for Classes [[camelcase-classes]]
+=== CapitalCase for Classes [[camelcase-classes]]
 
-Use `CamelCase` for classes and modules.
+Use `CapitalCase` for classes and modules.
 (Keep acronyms like HTTP, RFC, XML uppercase).
 
 [source,ruby]
@@ -940,7 +940,7 @@ Use `snake_case` for naming directories, e.g. `lib/hello_world/hello_world.rb`.
 === One Class per File [[one-class-per-file]]
 
 Aim to have just a single class/module per source file.
-Name the file name as the class/module, but replacing `CamelCase` with `snake_case`.
+Name the file name as the class/module, but replacing `CapitalCase` with `snake_case`.
 
 === Screaming Snake Case for Constants [[screaming-snake-case]]
 
