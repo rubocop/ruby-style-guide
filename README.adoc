@@ -478,9 +478,9 @@ some_method
 some_method
 ----
 
-=== Empty Lines around Access Modifier [[empty-lines-around-access-modifier]]
+=== Empty Lines around Attribute Accessor [[empty-lines-around-attribute-accessor]]
 
-Use empty lines around access modifiers.
+Use empty lines around attribute accessor.
 
 [source,ruby]
 ----
