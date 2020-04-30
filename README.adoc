@@ -486,19 +486,18 @@ Use empty lines around access modifiers.
 ----
 # bad
 class Foo
-  attr_reader :foo
-  def foo
-    # do something...
-  end
+  def bar; end
+  private
+  def baz; end
 end
 
 # good
 class Foo
-  attr_reader :foo
+  def bar; end
 
-  def foo
-    # do something...
-  end
+  private
+
+  def baz; end
 end
 ----
 
