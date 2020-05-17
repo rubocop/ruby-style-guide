@@ -3926,6 +3926,21 @@ all_songs = users.map(&:songs).flatten.uniq
 all_songs = users.flat_map(&:songs).uniq
 ----
 
+=== `filter_map` [[filter-map]]
+
+For Ruby 2.7 or greater, use `filter_map` instead of `find_all`/`select`/`filter` + `map`.
+
+[source,ruby]
+----
+# bad
+numbers.find_all { |x| x.odd? }.map { |x| x.to_s }
+numbers.select { |x| x.odd? }.map { |x| x.to_s }
+numbers.filter { |x| x.odd? }.map { |x| x.to_s }
+
+# good
+numbers.filter_map { |x| x.to_s if x.odd? }
+----
+
 === `reverse_each` [[reverse-each]]
 
 Prefer `reverse_each` to `reverse.each` because some classes that `include Enumerable` will provide an efficient implementation.
