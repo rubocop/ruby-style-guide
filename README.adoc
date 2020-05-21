@@ -168,6 +168,37 @@ end
 
 Limit lines to 80 characters.
 
+.Why Bother with 80 characters in a World of Modern Widescreen Displays?
+****
+
+A lot of people these days feel that a maximum line length of 80 characters is just a remnant of the past
+and makes little sense today. After all - modern displays can easily fit 200+ characters on a single line.
+Still, there are some important benefits to be gained from sticking to shorter lines of code.
+
+[quote, Hal Abelson (Structure and Interpretation of Computer Programs)]
+____
+Programs must be written for people to read, and only incidentally for machines to execute.
+____
+
+First, and foremost - numerous studies have shown that humans read much faster
+vertically and very long lines of text impede the reading process.
+
+Additionally, limiting the required editor window width makes it possible to
+have several files open side-by-side, and works well when using code review
+tools that present the two versions in adjacent columns.
+
+The default wrapping in most tools disrupts the visual structure of the code,
+making it more difficult to understand. The limits are chosen to avoid wrapping
+in editors with the window width set to 80, even if the tool places a marker
+glyph in the final column when wrapping lines. Some web based tools may not
+offer dynamic line wrapping at all.
+
+Some teams strongly prefer a longer line length. For code maintained exclusively
+or primarily by a team that can reach agreement on this issue, it is okay to
+increase the line length limit up to 100 characters, or all the way up
+to 120 characters. Please, restrain the urge to go beyond 120 characters.
+****
+
 === No Trailing Whitespace [[no-trailing-whitespace]]
 
 Avoid trailing whitespace.
