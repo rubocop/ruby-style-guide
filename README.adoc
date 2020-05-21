@@ -168,6 +168,9 @@ end
 
 Limit lines to 80 characters.
 
+TIP: Most editors and IDEs have configurations options to help you with that.
+They would typically highlight lines that exceed the length limit.
+
 .Why Bother with 80 characters in a World of Modern Widescreen Displays?
 ****
 
@@ -200,6 +203,9 @@ to 120 characters. Please, restrain the urge to go beyond 120 characters.
 === No Trailing Whitespace [[no-trailing-whitespace]]
 
 Avoid trailing whitespace.
+
+TIP: Most editors and IDES have configuration options to visualize trailing whitespace and
+to remove it automatically on save.
 
 === Line Endings [[crlf]]
 
