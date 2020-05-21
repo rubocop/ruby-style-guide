@@ -1069,6 +1069,48 @@ UTF-8 has been the default source file encoding since Ruby 2.0.
 <div class="paragraph">
 <p>Limit lines to 80 characters.</p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Why Bother with 80 characters in a World of Modern Widescreen Displays?</div>
+<div class="paragraph">
+<p>A lot of people these days feel that a maximum line length of 80 characters is just a remnant of the past
+and makes little sense today. After all - modern displays can easily fit 200+ characters on a single line.
+Still, there are some important benefits to be gained from sticking to shorter lines of code.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Programs must be written for people to read, and only incidentally for machines to execute.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Hal Abelson (Structure and Interpretation of Computer Programs)
+</div>
+</div>
+<div class="paragraph">
+<p>First, and foremost - numerous studies have shown that humans read much faster
+vertically and very long lines of text impede the reading process.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, limiting the required editor window width makes it possible to
+have several files open side-by-side, and works well when using code review
+tools that present the two versions in adjacent columns.</p>
+</div>
+<div class="paragraph">
+<p>The default wrapping in most tools disrupts the visual structure of the code,
+making it more difficult to understand. The limits are chosen to avoid wrapping
+in editors with the window width set to 80, even if the tool places a marker
+glyph in the final column when wrapping lines. Some web based tools may not
+offer dynamic line wrapping at all.</p>
+</div>
+<div class="paragraph">
+<p>Some teams strongly prefer a longer line length. For code maintained exclusively
+or primarily by a team that can reach agreement on this issue, it is okay to
+increase the line length limit up to 100 characters, or all the way up
+to 120 characters. Please, restrain the urge to go beyond 120 characters.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="no-trailing-whitespace"><a class="anchor" href="#no-trailing-whitespace"></a><a class="link" href="#no-trailing-whitespace">No Trailing Whitespace</a></h3>
@@ -6947,7 +6989,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-30 20:36:36 UTC
+Last updated 2020-05-21 07:35:57 UTC
 </div>
 </div>
 <style>
