@@ -163,8 +163,7 @@ def some_method
 end
 ----
 
-[#80-character-limits]
-=== Maximum Line Length
+=== Maximum Line Length [[max-line-length]]
 
 Limit lines to 80 characters.
 
