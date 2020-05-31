@@ -3214,13 +3214,13 @@ Parent.print_class_var # => will print 'child'
 As you can see all the classes in a class hierarchy actually share one class variable.
 Class instance variables should usually be preferred over class variables.
 
-=== Visibility [[visibility]]
+=== Leverage Access Modifiers (e.g. `private` and `protected`) [[visibility]]
 
 Assign proper visibility levels to methods (`private`, `protected`) in accordance with their intended usage.
 Don't go off leaving everything `public` (which is the default).
 After all we're coding in _Ruby_ now, not in _Python_.
 
-=== Indent `public`/`private`/`protected` [[indent-public-private-protected]]
+=== Access Modifiers Indentation [[indent-public-private-protected]]
 
 Indent the `public`, `protected`, and `private` methods as much as the method definitions they apply to.
 Leave one blank line above the visibility modifier and one blank line below in order to emphasize that it applies to all methods below it.
@@ -3245,7 +3245,7 @@ class SomeClass
 end
 ----
 
-=== `def self` Class Methods [[def-self-class-methods]]
+=== Defining Class Methods [[def-self-class-methods]]
 
 Use `def self.method` to define class methods.
 This makes the code easier to refactor since the class name is not repeated.
