@@ -203,7 +203,7 @@ to 120 characters. Please, restrain the urge to go beyond 120 characters.
 
 Avoid trailing whitespace.
 
-TIP: Most editors and IDES have configuration options to visualize trailing whitespace and
+TIP: Most editors and IDEs have configuration options to visualize trailing whitespace and
 to remove it automatically on save.
 
 === Line Endings [[crlf]]
