@@ -5158,6 +5158,16 @@ Bozhidar served as the guide's only editor for a few years, before a team of edi
 Since the inception of the guide we've received a lot of feedback from members of the exceptional Ruby community around the world.
 Thanks for all the suggestions and the support! Together we can make a resource beneficial to each and every Ruby developer out there.
 
+== Sources of Inspiration
+
+Many people, books, presentations, articles and other style guides influenced the community Ruby style guide. Here are some of them:
+
+* https://en.wikipedia.org/wiki/The_Elements_of_Style[The Elements of Style]
+* https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style[The Elements of Programming Style]
+* https://www.python.org/dev/peps/pep-0008/[PEP-8]
+* https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"]
+* http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"]
+
 == Contributing
 
 The guide is still a work in progress - some guidelines are lacking examples, some guidelines don't have examples that illustrate them clearly enough.
