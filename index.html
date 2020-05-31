@@ -616,9 +616,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-extend-struct-new">No Extend <code>Struct.new</code></a></li>
 <li><a href="#duck-typing">Duck Typing</a></li>
 <li><a href="#no-class-vars">No Class Vars</a></li>
-<li><a href="#visibility">Visibility</a></li>
-<li><a href="#indent-public-private-protected">Indent <code>public</code>/<code>private</code>/<code>protected</code></a></li>
-<li><a href="#def-self-class-methods"><code>def self</code> Class Methods</a></li>
+<li><a href="#visibility">Leverage Access Modifiers (e.g. <code>private</code> and <code>protected</code>)</a></li>
+<li><a href="#indent-public-private-protected">Access Modifiers Indentation</a></li>
+<li><a href="#def-self-class-methods">Defining Class Methods</a></li>
 <li><a href="#alias-method-lexically">Alias Method Lexically</a></li>
 <li><a href="#alias-method"><code>alias_method</code></a></li>
 <li><a href="#class-and-self">Class and <code>self</code></a></li>
@@ -4570,7 +4570,7 @@ Class instance variables should usually be preferred over class variables.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="visibility"><a class="anchor" href="#visibility"></a><a class="link" href="#visibility">Visibility</a></h3>
+<h3 id="visibility"><a class="anchor" href="#visibility"></a><a class="link" href="#visibility">Leverage Access Modifiers (e.g. <code>private</code> and <code>protected</code>)</a></h3>
 <div class="paragraph">
 <p>Assign proper visibility levels to methods (<code>private</code>, <code>protected</code>) in accordance with their intended usage.
 Don&#8217;t go off leaving everything <code>public</code> (which is the default).
@@ -4578,7 +4578,7 @@ After all we&#8217;re coding in <em>Ruby</em> now, not in <em>Python</em>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="indent-public-private-protected"><a class="anchor" href="#indent-public-private-protected"></a><a class="link" href="#indent-public-private-protected">Indent <code>public</code>/<code>private</code>/<code>protected</code></a></h3>
+<h3 id="indent-public-private-protected"><a class="anchor" href="#indent-public-private-protected"></a><a class="link" href="#indent-public-private-protected">Access Modifiers Indentation</a></h3>
 <div class="paragraph">
 <p>Indent the <code>public</code>, <code>protected</code>, and <code>private</code> methods as much as the method definitions they apply to.
 Leave one blank line above the visibility modifier and one blank line below in order to emphasize that it applies to all methods below it.</p>
@@ -4605,7 +4605,7 @@ Leave one blank line above the visibility modifier and one blank line below in o
 </div>
 </div>
 <div class="sect2">
-<h3 id="def-self-class-methods"><a class="anchor" href="#def-self-class-methods"></a><a class="link" href="#def-self-class-methods"><code>def self</code> Class Methods</a></h3>
+<h3 id="def-self-class-methods"><a class="anchor" href="#def-self-class-methods"></a><a class="link" href="#def-self-class-methods">Defining Class Methods</a></h3>
 <div class="paragraph">
 <p>Use <code>def self.method</code> to define class methods.
 This makes the code easier to refactor since the class name is not repeated.</p>
@@ -7036,7 +7036,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-31 10:35:45 UTC
+Last updated 2020-05-31 10:45:30 UTC
 </div>
 </div>
 <style>
