@@ -4062,7 +4062,7 @@ a.fdiv(b)
 
 When using exponential notation for numbers, prefer using the normalized scientific notation, which uses a mantissa between 1 (inclusive) and 10 (exclusive). Omit the exponent altogether if it is zero.
 
-The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading `10e7` could think it's `10**7` when it's actually `10**8`.
+The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading `10e7` could think it's 10 to the power of 7 (one then 7 zeroes) when it's actually 10 to the power of 8 (one then 8 zeroes). If you want 10 to the power of 7, you should do `1e7`.
 
 One could favor the alternative engineering notation, in which the exponent must always be a multiple of 3 for easy conversion to the thousand / million / ... system.
 
