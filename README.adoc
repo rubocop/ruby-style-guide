@@ -3760,7 +3760,7 @@ hash = { :one => 1, :two => 2, :three => 3 }
 hash = { one: 1, two: 2, three: 3 }
 ----
 
-=== No Mixed Hash Syntaces [[no-mixed-hash-syntaces]]
+=== No Mixed Hash Syntaxes [[no-mixed-hash-syntaxes]]
 
 Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
 When you've got keys that are not symbols stick to the hash rockets syntax.
