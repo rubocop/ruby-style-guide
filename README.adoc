@@ -2844,23 +2844,26 @@ end
 
 === Single-line Classes [[single-line-classes]]
 
-Prefer a single-line format for class definitions with no body.
+Prefer a two-line format for class definitions with no body. It is easiest to read, understand, and modify.
 
 [source,ruby]
 ----
 # bad
-class FooError < StandardError
-end
-
-# good
-class FooError < StandardError; end
+FooError = Class.new(StandardError)
 
 # okish
-FooError = Class.new(StandardError)
+class FooError < StandardError; end
+
+# ok
+class FooError < StandardError
+end
 ----
 
-NOTE: Many editors/tools will fail to understand properly the usage of `Class.new`,
-so in general it's better to stick to the alternative one-line style.
+NOTE: Many editors/tools will fail to understand properly the usage of `Class.new`.
+Someone trying to locate the class definition might try a grep "class FooError".
+A final difference is that the name of your class is not available to the `inherited`
+callback of the base class with the `Class.new` form.
+In general it's better to stick to the basic two-line style.
 
 === File Classes [[file-classes]]
 
