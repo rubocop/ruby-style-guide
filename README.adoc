@@ -1330,10 +1330,11 @@ x = !something
 
 === Double Negation [[no-bang-bang]]
 
-Avoid the use of `!!`.
+Avoid unnecessary uses of `!!`
 
 `!!` converts a value to boolean, but you don't need this explicit conversion in the condition of a control expression; using it only obscures your intention.
-If you want to do a `nil` check, use `nil?` instead.
+
+Consider using it only when there is a valid reason to restrict the result `true` or `false`. Examples include outputing to a particular format or API like JSON, or as the return value of a `predicate?` method. In these cases, also consider doing a nil check instead: `!something.nil?`.
 
 [source,ruby]
 ----
@@ -1348,6 +1349,16 @@ end
 x = 'test'
 if x
   # body omitted
+end
+
+# good
+def named?
+  !name.nil?
+end
+
+# good
+def banned?
+  !!banned_until&.future?
 end
 ----
 
