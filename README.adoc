@@ -3763,6 +3763,19 @@ hash = { :one => 1, :two => 2, :three => 3 }
 hash = { one: 1, two: 2, three: 3 }
 ----
 
+=== Hash Literal as Last Array Item [[hash-literal-as-last-array-item]]
+
+Wrap hash literal in braces if it is a last array item.
+
+[source,ruby]
+----
+# bad
+[1, 2, one: 1, two: 2]
+
+# good
+[1, 2, { one: 1, two: 2 }]
+----
+
 === No Mixed Hash Syntaxes [[no-mixed-hash-syntaxes]]
 
 Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash literal.
