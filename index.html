@@ -790,6 +790,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ranges-or-between">Ranges or <code>between</code></a></li>
 <li><a href="#predicate-methods">Predicate Methods</a></li>
 <li><a href="#no-cryptic-perlisms">No Cryptic Perlisms</a></li>
+<li><a href="#use-require_relative-whenever-possible">Use <code>require_relative</code> whenever possible</a></li>
 <li><a href="#always-warn">Always Warn</a></li>
 <li><a href="#no-optional-hash-params">No Optional Hash Params</a></li>
 <li><a href="#instance-vars">Instance Vars</a></li>
@@ -6790,6 +6791,29 @@ They are quite cryptic and their use in anything but one-liner scripts is discou
 </div>
 </div>
 <div class="sect2">
+<h3 id="use-require_relative-whenever-possible"><a class="anchor" href="#use-require_relative-whenever-possible"></a><a class="link" href="#use-require_relative-whenever-possible">Use <code>require_relative</code> whenever possible</a></h3>
+<div class="paragraph">
+<p>For all your internal dependencies, you should use <code>require_relative</code>.
+Use of <code>require</code> should be reserved for external dependencies</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="nb">require</span> <span class="s1">'set'</span>
+<span class="nb">require</span> <span class="s1">'my_gem/spec/helper'</span>
+<span class="nb">require</span> <span class="s1">'my_gem/lib/something'</span>
+
+<span class="c1"># good</span>
+<span class="nb">require</span> <span class="s1">'set'</span>
+<span class="nb">require_relative</span> <span class="s1">'helper'</span>
+<span class="nb">require_relative</span> <span class="s1">'../lib/something'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This way is more expressive (making clear which dependency is internal or not) and more efficient (as <code>require_relative</code> doesn&#8217;t have to try all of <code>$LOAD_PATH</code> contrary to <code>require</code>).</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="always-warn"><a class="anchor" href="#always-warn"></a><a class="link" href="#always-warn">Always Warn</a></h3>
 <div class="paragraph">
 <p>Write <code>ruby -w</code> safe code.</p>
@@ -7036,7 +7060,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-04 03:13:52 UTC
+Last updated 2020-07-08 21:52:26 UTC
 </div>
 </div>
 <style>
