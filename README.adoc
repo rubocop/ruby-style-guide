@@ -5073,6 +5073,26 @@ require 'English'
 print $POSTMATCH, $PID
 ----
 
+=== Use `require_relative` whenever possible
+
+For all your internal dependencies, you should use `require_relative`.
+Use of `require` should be reserved for external dependencies
+
+[source,ruby]
+----
+# bad
+require 'set'
+require 'my_gem/spec/helper'
+require 'my_gem/lib/something'
+
+# good
+require 'set'
+require_relative 'helper'
+require_relative '../lib/something'
+----
+
+This way is more expressive (making clear which dependency is internal or not) and more efficient (as `require_relative` doesn't have to try all of `$LOAD_PATH` contrary to `require`).
+
 === Always Warn [[always-warn]]
 
 Write `ruby -w` safe code.
