@@ -5127,6 +5127,29 @@ a = [1, 2, 3].reduce({}) { |h, i| h[i] = i * 17; h }        # good
 a = [1, 2, 3].each_with_object({}) { |i, h| h[i] = i * 17 } # good
 ----
 
+=== No explicit `.rb` to `require` [[no-explicit-rb-to-require]]
+
+Omit the `.rb` extension for filename passed to `require` and `require_relative`.
+
+NOTE: If the extension is omitted, Ruby tries adding '.rb', '.so', and so on to the name
+until found. If the file named cannot be found, a `LoadError` will be raised.
+There is an edge case where `foo.so` file is loaded instead of a `LoadError`
+if `foo.so` file exists when `require 'foo.rb'` will be changed to `require 'foo'`,
+but that seems harmless.
+
+[source,ruby]
+----
+# bad
+require 'foo.rb'
+require_relative '../foo.rb'
+
+# good
+require 'foo'
+require 'foo.so'
+require_relative '../foo'
+require_relative '../foo.so'
+----
+
 == Tools
 
 Here are some tools to help you automatically check Ruby code against this guide.
