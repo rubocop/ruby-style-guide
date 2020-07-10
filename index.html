@@ -3931,6 +3931,25 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 <div class="paragraph">
 <p>Always omit parentheses for methods that have "keyword" status in Ruby.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Unfortunately, it&#8217;s not exactly clear <em>which</em> methods have "keyword" status.
+There is agreement that declarative methods have "keyword" status.
+However, there&#8217;s less agreement on which non-declarative methods, if any, have "keyword" status.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="method-invocation-parens-declarative-keyword"><a class="anchor" href="#method-invocation-parens-declarative-keyword"></a><a class="link" href="#method-invocation-parens-declarative-keyword">Declarative Methods That Have "keyword" Status in Ruby</a></h5>
+<div class="paragraph">
+<p>Always omit parentheses for declarative methods (a.k.a. DSL methods or macro methods) that have "keyword" status in Ruby (e.g., various <code>Module</code> instance methods):</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
@@ -3944,19 +3963,28 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="method-invocation-parens-non-declarative-keyword"><a class="anchor" href="#method-invocation-parens-non-declarative-keyword"></a><a class="link" href="#method-invocation-parens-non-declarative-keyword">Non-declarative Methods That Have "keyword" Status in Ruby</a></h4>
+<div class="sect4">
+<h5 id="method-invocation-parens-non-declarative-keyword"><a class="anchor" href="#method-invocation-parens-non-declarative-keyword"></a><a class="link" href="#method-invocation-parens-non-declarative-keyword">Non-Declarative Methods That Have "keyword" Status in Ruby</a></h5>
 <div class="paragraph">
-<p>Can omit parentheses for methods that have "keyword" status in Ruby, but are not declarative:</p>
+<p>For non-declarative methods with "keyword" status (e.g., various <code>Kernel</code> instance methods), two styles are considered acceptable.
+By far the most popular style is to omit parentheses.
+Rationale: The code reads better, and method calls look more like keywords.
+A less-popular style, but still acceptable, is to include parentheses.
+Rationale: The methods have ordinary semantics, so why treat them differently, and it&#8217;s easier to achieve a uniform style by not worrying about which methods have "keyword" status.
+Whichever one you pick, apply it consistently.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good (most popular)</span>
+<span class="nb">puts</span> <span class="n">temperance</span><span class="p">.</span><span class="nf">age</span>
+<span class="nb">system</span> <span class="s1">'ls'</span>
+<span class="nb">exit</span> <span class="mi">1</span>
+
+<span class="c1"># also good (less popular)</span>
 <span class="nb">puts</span><span class="p">(</span><span class="n">temperance</span><span class="p">.</span><span class="nf">age</span><span class="p">)</span>
 <span class="nb">system</span><span class="p">(</span><span class="s1">'ls'</span><span class="p">)</span>
-<span class="c1"># also good</span>
-<span class="nb">puts</span> <span class="n">temperance</span><span class="p">.</span><span class="nf">age</span>
-<span class="nb">system</span> <span class="s1">'ls'</span></code></pre>
+<span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -7127,7 +7155,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-09 12:38:59 UTC
+Last updated 2020-07-10 05:48:18 UTC
 </div>
 </div>
 <style>
