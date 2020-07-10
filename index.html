@@ -5634,7 +5634,14 @@ Imagine simulating a roll of a dice:</p>
 <p>When using exponential notation for numbers, prefer using the normalized scientific notation, which uses a mantissa between 1 (inclusive) and 10 (exclusive). Omit the exponent altogether if it is zero.</p>
 </div>
 <div class="paragraph">
-<p>The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading <code>10e7</code> could think it&#8217;s <code>10<strong>7</code> when it&#8217;s actually <code>10</strong>8</code>.</p>
+<p>The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading <code>10e7</code> could think it&#8217;s 10 to the power of 7 (one then 7 zeroes) when it&#8217;s actually 10 to the power of 8 (one then 8 zeroes). If you want 10 to the power of 7, you should do <code>1e7</code>.</p>
+</div>
+<div class="paragraph">
+<p>| power notation | exponential notation | output   |
+|----------------|----------------------|----------|
+| 10 <strong> 7        | 1e7                  | 10000000 |
+| 10 </strong> 6        | 1e6                  | 1000000  |
+| 10 ** 7        | 10e6                 | 10000000 |</p>
 </div>
 <div class="paragraph">
 <p>One could favor the alternative engineering notation, in which the exponent must always be a multiple of 3 for easy conversion to the thousand / million / &#8230;&#8203; system.</p>
@@ -7155,7 +7162,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-10 05:48:18 UTC
+Last updated 2020-07-10 05:48:27 UTC
 </div>
 </div>
 <style>
