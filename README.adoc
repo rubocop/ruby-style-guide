@@ -4149,7 +4149,7 @@ Alternative : engineering notation:
 
 === String Interpolation [[string-interpolation]]
 
-Prefer string interpolation and string formatting instead of string concatenation:
+Prefer string interpolation and string formatting to string concatenation:
 
 [source,ruby]
 ----
