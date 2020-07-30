@@ -5037,6 +5037,15 @@ NOTE: The only valid use-case for the stream constants is obtaining references t
 Use `warn` instead of `$stderr.puts`.
 Apart from being more concise and clear, `warn` allows you to suppress warnings if you need to (by setting the warn level to 0 via `-W0`).
 
+[source,ruby]
+----
+# bad
+$stderr.puts 'This is a warning!'
+
+# good
+warn 'This is a warning!'
+----
+
 === `Array#join` [[array-join]]
 
 Prefer the use of `Array#join` over the fairly cryptic `Array#*` with a string argument.
