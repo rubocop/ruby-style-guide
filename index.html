@@ -784,7 +784,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#no-flip-flops">No Flip-flops</a></li>
 <li><a href="#no-non-nil-checks">No non-<code>nil</code> Checks</a></li>
-<li><a href="#global-stdout">Global <code>stdout</code></a></li>
+<li><a href="#global-stdout">Global Input/Output Streams</a></li>
 <li><a href="#warn">Warn</a></li>
 <li><a href="#array-join"><code>Array#join</code></a></li>
 <li><a href="#array-coercion">Array Coercion</a></li>
@@ -6725,10 +6725,43 @@ They are deprecated as of Ruby 2.6.
 </div>
 </div>
 <div class="sect2">
-<h3 id="global-stdout"><a class="anchor" href="#global-stdout"></a><a class="link" href="#global-stdout">Global <code>stdout</code></a></h3>
+<h3 id="global-stdout"><a class="anchor" href="#global-stdout"></a><a class="link" href="#global-stdout">Global Input/Output Streams</a></h3>
 <div class="paragraph">
 <p>Use <code>$stdout/$stderr/$stdin</code> instead of <code>STDOUT/STDERR/STDIN</code>.
 <code>STDOUT/STDERR/STDIN</code> are constants, and while you can actually reassign (possibly to redirect some stream) constants in Ruby, you&#8217;ll get an interpreter warning if you do so.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">STDOUT</span><span class="p">.</span><span class="nf">puts</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">out: </span><span class="no">STDOUT</span><span class="p">,</span> <span class="ss">key: </span><span class="n">value</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">m</span><span class="p">(</span><span class="n">out</span> <span class="o">=</span> <span class="no">STDOUT</span><span class="p">)</span>
+  <span class="n">out</span><span class="p">.</span><span class="nf">puts</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="vg">$stdout</span><span class="p">.</span><span class="nf">puts</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">out: </span><span class="vg">$stdout</span><span class="p">,</span> <span class="ss">key: </span><span class="n">value</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">m</span><span class="p">(</span><span class="n">out</span> <span class="o">=</span> <span class="vg">$stdout</span><span class="p">)</span>
+  <span class="n">out</span><span class="p">.</span><span class="nf">puts</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The only valid use-case for the stream constants is obtaining references to the original streams (assuming you&#8217;ve redirected some of the global vars).
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -7162,7 +7195,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-23 11:49:12 UTC
+Last updated 2020-07-30 19:44:26 UTC
 </div>
 </div>
 <style>
