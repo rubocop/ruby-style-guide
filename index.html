@@ -6770,6 +6770,15 @@ The only valid use-case for the stream constants is obtaining references to the 
 <p>Use <code>warn</code> instead of <code>$stderr.puts</code>.
 Apart from being more concise and clear, <code>warn</code> allows you to suppress warnings if you need to (by setting the warn level to 0 via <code>-W0</code>).</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="vg">$stderr</span><span class="p">.</span><span class="nf">puts</span> <span class="s1">'This is a warning!'</span>
+
+<span class="c1"># good</span>
+<span class="nb">warn</span> <span class="s1">'This is a warning!'</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="array-join"><a class="anchor" href="#array-join"></a><a class="link" href="#array-join"><code>Array#join</code></a></h3>
@@ -7195,7 +7204,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-30 19:44:26 UTC
+Last updated 2020-07-30 19:44:41 UTC
 </div>
 </div>
 <style>
