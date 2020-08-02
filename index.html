@@ -702,6 +702,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#integer-type-checking">Integer Type Checking</a></li>
 <li><a href="#random-numbers">Random Numbers</a></li>
 <li><a href="#float-division">Float Division</a></li>
+<li><a href="#float-comparison">Float Comparison</a></li>
 <li><a href="#exponential-notation">Exponential Notation</a></li>
 </ul>
 </li>
@@ -5629,6 +5630,38 @@ Imagine simulating a roll of a dice:</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="float-comparison"><a class="anchor" href="#float-comparison"></a><a class="link" href="#float-comparison">Float Comparison</a></h3>
+<div class="paragraph">
+<p>Avoid (in)equality comparisons of floats as they are unreliable.</p>
+</div>
+<div class="paragraph">
+<p>Floating point values are inherently inaccurate, and comparing them for exact equality is almost never the desired semantics. Comparison via the <code>==/!=</code> operators checks floating-point value representation to be exactly the same, which is very unlikely if you perform any arithmetic operations involving precision loss.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">x</span> <span class="o">==</span> <span class="mf">0.1</span>
+<span class="n">x</span> <span class="o">!=</span> <span class="mf">0.1</span>
+
+<span class="c1"># good - using BigDecimal</span>
+<span class="n">x</span><span class="p">.</span><span class="nf">to_d</span> <span class="o">==</span> <span class="mf">0.1</span><span class="p">.</span><span class="nf">to_d</span>
+
+<span class="c1"># good - not an actual float comparison</span>
+<span class="n">x</span> <span class="o">==</span> <span class="no">Float</span><span class="o">::</span><span class="no">INFINITY</span>
+
+<span class="c1"># good</span>
+<span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">).</span><span class="nf">abs</span> <span class="o">&lt;</span> <span class="no">Float</span><span class="o">::</span><span class="no">EPSILON</span>
+
+<span class="c1"># good</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0001</span>
+<span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">).</span><span class="nf">abs</span> <span class="o">&lt;</span> <span class="n">tolerance</span>
+
+<span class="c1"># Or some other epsilon based type of comparison:</span>
+<span class="c1"># https://www.embeddeduse.com/2019/08/26/qt-compare-two-floats/</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="exponential-notation"><a class="anchor" href="#exponential-notation"></a><a class="link" href="#exponential-notation">Exponential Notation</a></h3>
 <div class="paragraph">
 <p>When using exponential notation for numbers, prefer using the normalized scientific notation, which uses a mantissa between 1 (inclusive) and 10 (exclusive). Omit the exponent altogether if it is zero.</p>
@@ -7204,7 +7237,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-30 19:44:41 UTC
+Last updated 2020-08-02 04:24:04 UTC
 </div>
 </div>
 <style>
