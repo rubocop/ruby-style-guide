@@ -672,7 +672,7 @@ There are two popular styles in the Ruby community, both of which are considered
 
 ==== Leading `.` [[leading-dot-in-multi-line-chains]]
 
-When continuing a chained method invocation on another line keep the `.` on the second line.
+When continuing a chained method invocation on another line, keep the `.` on the second line.
 
 [source,ruby]
 ----
