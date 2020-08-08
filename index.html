@@ -561,6 +561,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#self-assignment">Self-assignment</a></li>
 <li><a href="#double-pipe-for-uninit">Conditional Variable Initialization Shorthand</a></li>
 <li><a href="#double-amper-preprocess">Existence Check Shorthand</a></li>
+<li><a href="#identity-comparison">Identity Comparison</a></li>
 <li><a href="#no-case-equality">Explicit Use of the Case Equality Operator</a></li>
 <li><a href="#is-a-vs-kind-of"><code>is_a?</code> vs <code>kind_of?</code></a></li>
 <li><a href="#is-a-vs-instance-of"><code>is_a?</code> vs <code>instance_of?</code></a></li>
@@ -3419,6 +3420,21 @@ Using <code>&amp;&amp;=</code> will change the value only if it exists, removing
 
 <span class="c1"># better</span>
 <span class="n">something</span> <span class="o">&amp;&amp;=</span> <span class="n">something</span><span class="p">.</span><span class="nf">downcase</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="identity-comparison"><a class="anchor" href="#identity-comparison"></a><a class="link" href="#identity-comparison">Identity Comparison</a></h3>
+<div class="paragraph">
+<p>Prefer <code>equal?</code> over <code>==</code> when comparing <code>object_id</code>. <code>Object#equal?</code> is provided to compare objects for identity, and in contrast <code>Object#==</code> is provided for the purpose of doing value comparison.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">object_id</span> <span class="o">==</span> <span class="n">bar</span><span class="p">.</span><span class="nf">object_id</span>
+
+<span class="c1"># good</span>
+<span class="n">foo</span><span class="p">.</span><span class="nf">equal?</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -7237,7 +7253,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-05 20:24:00 UTC
+Last updated 2020-08-08 08:18:23 UTC
 </div>
 </div>
 <style>
