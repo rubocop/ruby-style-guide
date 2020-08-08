@@ -2198,6 +2198,19 @@ something = something && something.downcase
 something &&= something.downcase
 ----
 
+=== Identity Comparison [[identity-comparison]]
+
+Prefer `equal?` over `==` when comparing `object_id`. `Object#equal?` is provided to compare objects for identity, and in contrast `Object#==` is provided for the purpose of doing value comparison.
+
+[source,ruby]
+----
+# bad
+foo.object_id == bar.object_id
+
+# good
+foo.equal?(bar)
+----
+
 === Explicit Use of the Case Equality Operator [[no-case-equality]]
 
 Avoid explicit use of the case equality operator `===`.
