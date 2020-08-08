@@ -3437,6 +3437,25 @@ Using <code>&amp;&amp;=</code> will change the value only if it exists, removing
 <span class="n">foo</span><span class="p">.</span><span class="nf">equal?</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Similarly, prefer using <code>Hash#compare_by_identity</code> than using <code>object_id</code> for keys:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">hash</span><span class="p">[</span><span class="n">foo</span><span class="p">.</span><span class="nf">object_id</span><span class="p">]</span> <span class="o">=</span> <span class="ss">:bar</span>
+<span class="k">if</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">key?</span><span class="p">(</span><span class="n">baz</span><span class="p">.</span><span class="nf">object_id</span><span class="p">)</span> <span class="c1"># ...</span>
+
+<span class="c1"># good</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{}.</span><span class="nf">compare_by_identity</span>
+<span class="nb">hash</span><span class="p">[</span><span class="n">foo</span><span class="p">]</span> <span class="o">=</span> <span class="ss">:bar</span>
+<span class="k">if</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">key?</span><span class="p">(</span><span class="n">baz</span><span class="p">)</span> <span class="c1"># ...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that <code>Set</code> also has <code>Set#compare_by_identity</code> available.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="no-case-equality"><a class="anchor" href="#no-case-equality"></a><a class="link" href="#no-case-equality">Explicit Use of the Case Equality Operator</a></h3>
@@ -7253,7 +7272,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-08 08:18:23 UTC
+Last updated 2020-08-08 15:04:17 UTC
 </div>
 </div>
 <style>
