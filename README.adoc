@@ -2211,6 +2211,23 @@ foo.object_id == bar.object_id
 foo.equal?(bar)
 ----
 
+Similarly, prefer using `Hash#compare_by_identity` than using `object_id` for keys:
+
+[source,ruby]
+----
+# bad
+hash = {}
+hash[foo.object_id] = :bar
+if hash.key?(baz.object_id) # ...
+
+# good
+hash = {}.compare_by_identity
+hash[foo] = :bar
+if hash.key?(baz) # ...
+----
+
+Note that `Set` also has `Set#compare_by_identity` available.
+
 === Explicit Use of the Case Equality Operator [[no-case-equality]]
 
 Avoid explicit use of the case equality operator `===`.
