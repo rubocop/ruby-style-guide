@@ -4702,10 +4702,35 @@ string[/^username$/]   # matches
 string[/\Ausername\z/] # doesn't match
 ----
 
+=== Multi-line Regular Expressions [[comment-regexes]]
+
+Use `x` (free-spacing) modifier for multi-line regexps.
+
+NOTE: That's known as http://www.regular-expressions.info/freespacing.html[free-spacing mode]. In this mode leading and trailing whitespace is ignored.
+
+[source,ruby]
+----
+# bad
+regex = /start\
+\s\
+(group)\
+(?:alt1|alt2)\
+end/
+
+# good
+regexp = /
+  start
+  \s
+  (group)
+  (?:alt1|alt2)
+  end
+/x
+----
+
 === Comment Complex Regular Expressions [[comment-regexes]]
 
 Use `x` modifier for complex regexps.
-This makes them more readable and you can add some useful comments. Just be careful as spaces are ignored.
+This makes them more readable and you can add some useful comments.
 
 [source,ruby]
 ----
