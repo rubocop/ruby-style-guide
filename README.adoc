@@ -4582,7 +4582,7 @@ foo ~= /example/
 foo['example']
 ----
 
-=== Regexp String Index [[regexp-string-index]]
+=== Using Regular Expressions as String Indexes [[regexp-string-index]]
 
 For simple constructions you can use regexp directly through string index.
 
@@ -4593,7 +4593,7 @@ first_group = string[/text(grp)/, 1] # get content of captured group
 string[/text (grp)/, 1] = 'replace'  # string => 'text replace'
 ----
 
-=== Non Capturing Regexp [[non-capturing-regexp]]
+=== Prefer Non-capturing Groups [[non-capturing-regexp]]
 
 Use non-capturing groups when you don't use the captured result.
 
@@ -4651,7 +4651,7 @@ p m[:foo] # => "FOO"
 p m[:bar] # => "BAR"
 ----
 
-=== No Perl Regexp Last Matchers [[no-perl-regexp-last-matchers]]
+=== Avoid Perl-style Last Regular Expression Group Matchers [[no-perl-regexp-last-matchers]]
 
 Don't use the cryptic Perl-legacy variables denoting last regexp group matches (`$1`, `$2`, etc).
 Use `Regexp.last_match(n)` instead.
@@ -4668,7 +4668,7 @@ process $1
 process Regexp.last_match(1)
 ----
 
-=== No Numbered Regexes [[no-numbered-regexes]]
+=== Avoid Numbered Groups [[no-numbered-regexes]]
 
 Avoid using numbered groups as it can be hard to track what they contain.
 Named groups can be used instead.
@@ -4702,7 +4702,7 @@ string[/^username$/]   # matches
 string[/\Ausername\z/] # doesn't match
 ----
 
-=== Comment Regexes [[comment-regexes]]
+=== Comment Complex Regular Expressions [[comment-regexes]]
 
 Use `x` modifier for complex regexps.
 This makes them more readable and you can add some useful comments. Just be careful as spaces are ignored.
@@ -4718,7 +4718,7 @@ regexp = /
 /x
 ----
 
-=== `gsub` Blocks [[gsub-blocks]]
+=== Use `gsub` with a Block or a Hash for Complex Replacements [[gsub-blocks]]
 
 For complex replacements `sub`/`gsub` can be used with a block or a hash.
 
