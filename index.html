@@ -737,7 +737,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#regular-expressions">Regular Expressions</a>
 <ul class="sectlevel2">
-<li><a href="#no-regexp-for-plaintext">No Regexp for Plaintext</a></li>
+<li><a href="#no-regexp-for-plaintext">Plain Text Search</a></li>
 <li><a href="#regexp-string-index">Regexp String Index</a></li>
 <li><a href="#non-capturing-regexp">Non Capturing Regexp</a></li>
 <li><a href="#do-not-mix-named-and-numbered-captures">Do not mix named and numbered captures</a></li>
@@ -6173,9 +6173,20 @@ The bad form has potential for error if the new line before the closing parenthe
 </div>
 </div>
 <div class="sect2">
-<h3 id="no-regexp-for-plaintext"><a class="anchor" href="#no-regexp-for-plaintext"></a><a class="link" href="#no-regexp-for-plaintext">No Regexp for Plaintext</a></h3>
+<h3 id="no-regexp-for-plaintext"><a class="anchor" href="#no-regexp-for-plaintext"></a><a class="link" href="#no-regexp-for-plaintext">Plain Text Search</a></h3>
 <div class="paragraph">
-<p>Don&#8217;t use regular expressions if you just need plain text search in string: <code>string['text']</code></p>
+<p>Don&#8217;t use regular expressions if you just need plain text search in string.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="n">foo</span> <span class="o">=</span> <span class="s1">'I am an example string'</span>
+
+<span class="c1"># bad - using a regular expression is an overkill here</span>
+<span class="n">foo</span> <span class="o">~=</span> <span class="sr">/example/</span>
+
+<span class="c1"># good</span>
+<span class="n">foo</span><span class="p">[</span><span class="s1">'example'</span><span class="p">]</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -7272,7 +7283,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-08 15:04:17 UTC
+Last updated 2020-08-25 15:33:17 UTC
 </div>
 </div>
 <style>
