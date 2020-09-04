@@ -4702,7 +4702,7 @@ string[/^username$/]   # matches
 string[/\Ausername\z/] # doesn't match
 ----
 
-=== Multi-line Regular Expressions [[comment-regexes]]
+=== Multi-line Regular Expressions [[multi-line-regexes]]
 
 Use `x` (free-spacing) modifier for multi-line regexps.
 
