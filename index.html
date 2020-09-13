@@ -623,6 +623,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#alias-method-lexically">Alias Method Lexically</a></li>
 <li><a href="#alias-method"><code>alias_method</code></a></li>
 <li><a href="#class-and-self">Class and <code>self</code></a></li>
+<li><a href="#no-constant-definition-in-block">Defining Constants within a Block</a></li>
 </ul>
 </li>
 <li><a href="#classes-constructors">Classes: Constructors</a>
@@ -4818,6 +4819,30 @@ This convention tends to reduce repetitive boilerplate in such classes.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="no-constant-definition-in-block"><a class="anchor" href="#no-constant-definition-in-block"></a><a class="link" href="#no-constant-definition-in-block">Defining Constants within a Block</a></h3>
+<div class="paragraph">
+<p>Do not define constants within a block, since the block&#8217;s scope does not isolate or namespace the constant in any way.</p>
+</div>
+<div class="paragraph">
+<p>Define the constant outside of the block instead, or use a variable or method if defining the constant in the outer scope would be problematic.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - FILES_TO_LINT is now defined globally</span>
+<span class="n">task</span> <span class="ss">:lint</span> <span class="k">do</span>
+  <span class="no">FILES_TO_LINT</span> <span class="o">=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'lib/*.rb'</span><span class="p">]</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+
+<span class="c1"># good - files_to_lint is only defined inside the block</span>
+<span class="n">task</span> <span class="ss">:lint</span> <span class="k">do</span>
+  <span class="n">files_to_lint</span> <span class="o">=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'lib/*.rb'</span><span class="p">]</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -7321,7 +7346,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-04 16:56:48 UTC
+Last updated 2020-09-13 05:19:47 UTC
 </div>
 </div>
 <style>
