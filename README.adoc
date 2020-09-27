@@ -165,15 +165,15 @@ end
 
 === Maximum Line Length [[max-line-length]]
 
-Limit lines to 80 characters.
+Limit lines to 120 characters.
 
 TIP: Most editors and IDEs have configurations options to help you with that.
 They would typically highlight lines that exceed the length limit.
 
-.Why Bother with 80 characters in a World of Modern Widescreen Displays?
+.Why Bother with 120 characters in a World of Modern Widescreen Displays?
 ****
 
-A lot of people these days feel that a maximum line length of 80 characters is
+A lot of people these days feel that a maximum line length of 120 characters is
 just a remnant of the past and makes little sense today. After all - modern
 displays can easily fit 200+ characters on a single line.  Still, there are some
 important benefits to be gained from sticking to shorter lines of code.
@@ -189,14 +189,14 @@ tools that present the two versions in adjacent columns.
 
 The default wrapping in most tools disrupts the visual structure of the code,
 making it more difficult to understand. The limits are chosen to avoid wrapping
-in editors with the window width set to 80, even if the tool places a marker
+in editors with the window width set to 120, even if the tool places a marker
 glyph in the final column when wrapping lines. Some web based tools may not
 offer dynamic line wrapping at all.
 
 Some teams strongly prefer a longer line length. For code maintained exclusively
 or primarily by a team that can reach agreement on this issue, it is okay to
-increase the line length limit up to 100 characters, or all the way up
-to 120 characters. Please, restrain the urge to go beyond 120 characters.
+increase the line length limit but please restrain the urge to go beyond 120
+characters.
 ****
 
 === No Trailing Whitespace [[no-trailing-whitespace]]
