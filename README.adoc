@@ -2280,6 +2280,21 @@ something.instance_of?(Array)
 something.is_a?(Array)
 ----
 
+=== `instance_of?` vs class comparison [[instance-of-vs-class-comparison]]
+
+Use `Object#instance_of?` instead of class comparison for equality.
+
+[source,ruby]
+----
+# bad
+var.class == Date
+var.class.equal?(Date)
+var.class.eql?(Date)
+var.class.name == 'Date'
+
+# good
+var.instance_of?(Date)
+----
 
 === `==` vs `eql?` [[eql]]
 
