@@ -2841,6 +2841,36 @@ def some_method(bar: false)
 end
 ----
 
+=== Arguments Forwarding [[arguments-forwarding]]
+
+Use Ruby 2.7's arguments forwarding.
+
+[source,ruby]
+----
+# bad
+def some_method(*args, &block)
+  other_method(*args, &block)
+end
+
+# bad
+def some_method(*args, **kwargs, &block)
+  other_method(*args, **kwargs, &block)
+end
+
+# bad
+# Please note that it can cause unexpected incompatible behavior
+# because `...` forwards block also.
+# https://github.com/rubocop-hq/rubocop/issues/7549
+def some_method(*args)
+  other_method(*args)
+end
+
+# good
+def some_method(...)
+  other_method(...)
+end
+----
+
 === Private Global Methods [[private-global-methods]]
 
 If you really need "global" methods, add them to Kernel and make them private.
