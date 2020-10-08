@@ -596,6 +596,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
 <li><a href="#keyword-arguments-vs-option-hashes">Keyword Arguments vs Option Hashes</a></li>
+<li><a href="#arguments-forwarding">Arguments Forwarding</a></li>
 <li><a href="#private-global-methods">Private Global Methods</a></li>
 </ul>
 </li>
@@ -4175,6 +4176,38 @@ Ruby has some unexpected results when calling methods that have optional argumen
 </div>
 </div>
 <div class="sect2">
+<h3 id="arguments-forwarding"><a class="anchor" href="#arguments-forwarding"></a><a class="link" href="#arguments-forwarding">Arguments Forwarding</a></h3>
+<div class="paragraph">
+<p>Use Ruby 2.7&#8217;s arguments forwarding.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">other_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">other_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="c1"># Please note that it can cause unexpected incompatible behavior</span>
+<span class="c1"># because `...` forwards block also.</span>
+<span class="c1"># https://github.com/rubocop-hq/rubocop/issues/7549</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="n">other_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+  <span class="n">other_method</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="private-global-methods"><a class="anchor" href="#private-global-methods"></a><a class="link" href="#private-global-methods">Private Global Methods</a></h3>
 <div class="paragraph">
 <p>If you really need "global" methods, add them to Kernel and make them private.</p>
@@ -7365,7 +7398,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-08 11:28:11 UTC
+Last updated 2020-10-08 13:09:57 UTC
 </div>
 </div>
 <style>
