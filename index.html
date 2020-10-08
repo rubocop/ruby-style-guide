@@ -565,6 +565,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#no-case-equality">Explicit Use of the Case Equality Operator</a></li>
 <li><a href="#is-a-vs-kind-of"><code>is_a?</code> vs <code>kind_of?</code></a></li>
 <li><a href="#is-a-vs-instance-of"><code>is_a?</code> vs <code>instance_of?</code></a></li>
+<li><a href="#instance-of-vs-class-comparison"><code>instance_of?</code> vs class comparison</a></li>
 <li><a href="#eql"><code>==</code> vs <code>eql?</code></a></li>
 </ul>
 </li>
@@ -3525,6 +3526,24 @@ instance of that exact class you&#8217;re checking for, not a subclass.</p>
 
 <span class="c1"># good</span>
 <span class="n">something</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="instance-of-vs-class-comparison"><a class="anchor" href="#instance-of-vs-class-comparison"></a><a class="link" href="#instance-of-vs-class-comparison"><code>instance_of?</code> vs class comparison</a></h3>
+<div class="paragraph">
+<p>Use <code>Object#instance_of?</code> instead of class comparison for equality.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">var</span><span class="p">.</span><span class="nf">class</span> <span class="o">==</span> <span class="no">Date</span>
+<span class="n">var</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">equal?</span><span class="p">(</span><span class="no">Date</span><span class="p">)</span>
+<span class="n">var</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">eql?</span><span class="p">(</span><span class="no">Date</span><span class="p">)</span>
+<span class="n">var</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s1">'Date'</span>
+
+<span class="c1"># good</span>
+<span class="n">var</span><span class="p">.</span><span class="nf">instance_of?</span><span class="p">(</span><span class="no">Date</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -7346,7 +7365,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-13 05:19:47 UTC
+Last updated 2020-10-08 11:28:11 UTC
 </div>
 </div>
 <style>
