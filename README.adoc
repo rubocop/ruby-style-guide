@@ -2085,6 +2085,21 @@ hello_array = *'Hello' # => ["Hello"]
 a = *(1..3) # => [1, 2, 3]
 ----
 
+=== Values Swapping [[values-swapping]]
+
+Use parallel assignment when swapping 2 values.
+
+[source,ruby]
+----
+# bad
+tmp = x
+x = y
+y = tmp
+
+# good
+x, y = y, x
+----
+
 === Dealing with Trailing Underscore Variables in Destructuring Assignment [[trailing-underscore-variables]]
 
 Avoid the use of unnecessary trailing underscore variables during
