@@ -3586,11 +3586,6 @@ Avoid superfluous comments.
 counter += 1 # Increments counter by one.
 ----
 
-=== Comment Upkeep [[comment-upkeep]]
-
-Keep existing comments up-to-date.
-An outdated comment is worse than no comment at all.
-
 === Refactor, Don't Comment [[refactor-dont-comment]]
 
 [quote, old programmers maxim, 'http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[through Russ Olsen]']
