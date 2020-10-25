@@ -1334,7 +1334,7 @@ Avoid unnecessary uses of `!!`
 
 `!!` converts a value to boolean, but you don't need this explicit conversion in the condition of a control expression; using it only obscures your intention.
 
-Consider using it only when there is a valid reason to restrict the result `true` or `false`. Examples include outputing to a particular format or API like JSON, or as the return value of a `predicate?` method. In these cases, also consider doing a nil check instead: `!something.nil?`.
+Consider using it only when there is a valid reason to restrict the result `true` or `false`. Examples include outputting to a particular format or API like JSON, or as the return value of a `predicate?` method. In these cases, also consider doing a nil check instead: `!something.nil?`.
 
 [source,ruby]
 ----
