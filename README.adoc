@@ -3239,7 +3239,7 @@ Person = Struct.new(:first_name, :last_name) do
 end
 ----
 
-=== No Extend `Struct.new` [[no-extend-struct-new]]
+=== Don't Extend `Struct.new` [[no-extend-struct-new]]
 
 Don't extend an instance initialized by `Struct.new`.
 Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
