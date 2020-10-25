@@ -557,6 +557,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#assignment-comparison">Assignment &amp; Comparison</a>
 <ul class="sectlevel2">
 <li><a href="#parallel-assignment">Parallel Assignment</a></li>
+<li><a href="#values-swapping">Values Swapping</a></li>
 <li><a href="#trailing-underscore-variables">Dealing with Trailing Underscore Variables in Destructuring Assignment</a></li>
 <li><a href="#self-assignment">Self-assignment</a></li>
 <li><a href="#double-pipe-for-uninit">Conditional Variable Initialization Shorthand</a></li>
@@ -3294,6 +3295,23 @@ Parallel assignment is less readable than separate assignment.</p>
 <span class="n">hello_array</span> <span class="o">=</span> <span class="o">*</span><span class="s1">'Hello'</span> <span class="c1"># =&gt; ["Hello"]</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># =&gt; [1, 2, 3]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="values-swapping"><a class="anchor" href="#values-swapping"></a><a class="link" href="#values-swapping">Values Swapping</a></h3>
+<div class="paragraph">
+<p>Use parallel assignment when swapping 2 values.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span>
+
+<span class="c1"># good</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span></code></pre>
 </div>
 </div>
 </div>
@@ -7397,7 +7415,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-10-25 13:35:00 UTC
+Last updated 2020-10-25 13:35:36 UTC
 </div>
 </div>
 <style>
