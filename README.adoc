@@ -3323,7 +3323,6 @@ Class instance variables should usually be preferred over class variables.
 
 Assign proper visibility levels to methods (`private`, `protected`) in accordance with their intended usage.
 Don't go off leaving everything `public` (which is the default).
-After all we're coding in _Ruby_ now, not in _Python_.
 
 === Access Modifiers Indentation [[indent-public-private-protected]]
 
