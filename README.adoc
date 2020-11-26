@@ -1368,12 +1368,16 @@ The `and` and `or` keywords are banned.
 The minimal added readability is just not worth the high probability of introducing subtle bugs.
 For boolean expressions, always use `&&` and `||` instead.
 For flow control, use `if` and `unless`; `&&` and `||` are also acceptable but less clear.
+Please note that the `and` and `or` operators have lower precedence than the `=` operator, whereas the `&&` and `||` operators have higher precedence than the `=` operator, based on order of operations.
 
 [source,ruby]
 ----
 # bad
 # boolean expression
 ok = got_needed_arguments and arguments_are_valid
+
+foo = true and false # results in foo being equal to true. Equivalent to ( foo = true ) and false
+bar = false or true  # results in bar being equal to false. Equivalent to ( bar = false ) or true
 
 # control flow
 document.save or raise("Failed to save document!")
