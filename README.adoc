@@ -1372,17 +1372,11 @@ The minimal added readability is just not worth the high probability of introduc
 For boolean expressions, always use `&&` and `||` instead.
 For flow control, use `if` and `unless`; `&&` and `||` are also acceptable but less clear.
 
-Please note that the `and` and `or` operators have lower precedence than the `=` operator, whereas the `&&` and `||` operators have higher precedence than the `=` operator, based on order of operations.
-
-Also `&&` has higher precedence than `||`, where as `and` and `or` have the same one.
 [source,ruby]
 ----
 # bad
 # boolean expression
 ok = got_needed_arguments and arguments_are_valid
-
-foo = true and false # results in foo being equal to true. Equivalent to ( foo = true ) and false
-bar = false or true  # results in bar being equal to false. Equivalent to ( bar = false ) or true
 
 # control flow
 document.save or raise("Failed to save document!")
@@ -1398,6 +1392,30 @@ raise("Failed to save document!") unless document.save
 # control flow
 document.save || raise("Failed to save document!")
 ----
+
+.Why Ban `and` and `or`?
+****
+The main reason is very simple - they add a lot of cognitive overhead, as they don't behave like similarly named operators in other languages.
+
+First of all, `and` and `or` operators have lower precedence than the `=` operator, whereas the `&&` and `||` operators have higher precedence than the `=` operator, based on order of operations.
+
+[source,ruby]
+----
+foo = true and false # results in foo being equal to true. Equivalent to ( foo = true ) and false
+bar = false or true  # results in bar being equal to false. Equivalent to ( bar = false ) or true
+----
+
+Also `&&` has higher precedence than `||`, where as `and` and `or` have the same one. Funny enough, even though `and` and `or`
+were inspired by Perl, they don't have different precedence in Perl.
+
+[source,ruby]
+----
+foo = true or true and false # => false (it's effectively (true or true) and false)
+foz = true || true && false # => true (it's effectively true || (true && false)
+bar = false or true and false # => false (it's effectively (false or true) and false)
+baz = false || true && false # => false (it's effectively false || (true && false))
+----
+****
 
 === Multi-line Ternary Operator [[no-multiline-ternary]]
 
