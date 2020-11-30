@@ -891,7 +891,7 @@ def some_method1
 end
 ----
 
-=== CapitalCase for Classes [[camelcase-classes]]
+=== CapitalCase for Classes and Modules [[camelcase-classes]]
 
 NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
 and `PascalCase`.
