@@ -1368,8 +1368,10 @@ The `and` and `or` keywords are banned.
 The minimal added readability is just not worth the high probability of introducing subtle bugs.
 For boolean expressions, always use `&&` and `||` instead.
 For flow control, use `if` and `unless`; `&&` and `||` are also acceptable but less clear.
+
 Please note that the `and` and `or` operators have lower precedence than the `=` operator, whereas the `&&` and `||` operators have higher precedence than the `=` operator, based on order of operations.
 
+Also `&&` has higher precedence than `||`, where as `and` and `or` have the same one.
 [source,ruby]
 ----
 # bad
