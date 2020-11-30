@@ -27,7 +27,7 @@ A style guide that reflects real-world usage gets used, while a style guide that
 The guide is separated into several sections of related guidelines.
 We've tried to add the rationale behind the guidelines (if it's omitted we've assumed it's pretty obvious).
 
-We didn't come up with all the guidelines out of nowhere - they are mostly based on the professional experience of the editors, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"] and http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"].
+We didn't come up with all the guidelines out of nowhere - they are mostly based on the professional experience of the editors, feedback and suggestions from members of the Ruby community and various highly regarded Ruby programming resources, such as https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"] and https://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"].
 
 This style guide evolves over time as additional conventions are identified and past conventions are rendered obsolete by changes in Ruby itself.
 
@@ -3634,7 +3634,7 @@ An outdated comment is worse than no comment at all.
 
 === Refactor, Don't Comment [[refactor-dont-comment]]
 
-[quote, old programmers maxim, 'http://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[through Russ Olsen]']
+[quote, old programmers maxim, 'https://eloquentruby.com/blog/2011/03/07/good-code-and-good-jokes/[through Russ Olsen]']
 ____
 Good code is like a good joke: it needs no explanation.
 ____
@@ -4813,7 +4813,7 @@ string[/\Ausername\z/] # doesn't match
 
 Use `x` (free-spacing) modifier for multi-line regexps.
 
-NOTE: That's known as http://www.regular-expressions.info/freespacing.html[free-spacing mode]. In this mode leading and trailing whitespace is ignored.
+NOTE: That's known as https://www.regular-expressions.info/freespacing.html[free-spacing mode]. In this mode leading and trailing whitespace is ignored.
 
 [source,ruby]
 ----
@@ -5028,7 +5028,7 @@ Avoid using `method_missing` for metaprogramming because backtraces become messy
 Consider using delegation, proxy, or `define_method` instead.
 If you must use `method_missing`:
 
- * Be sure to http://blog.marc-andre.ca/2010/11/15/methodmissing-politely/[also define `respond_to_missing?`]
+ * Be sure to https://blog.marc-andre.ca/2010/11/15/methodmissing-politely/[also define `respond_to_missing?`]
  * Only catch methods with a well-defined prefix, such as `find_by_*`--make your code as assertive as possible.
  * Call `super` at the end of your statement
  * Delegate to assertive, non-magical methods:
@@ -5466,11 +5466,11 @@ TIP: RuboCop's cops (code checks) have links to the guidelines that they are bas
 
 === RubyMine
 
-http://www.jetbrains.com/ruby/[RubyMine]'s code inspections are http://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections[partially based] on this guide.
+https://www.jetbrains.com/ruby/[RubyMine]'s code inspections are https://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections[partially based] on this guide.
 
 == History
 
-This guide started its life as an internal company Ruby coding guidelines (written by https://github.com/bbatsov[Bozhidar Batsov]).
+This guide started its life in 2011 as an internal company Ruby coding guidelines (written by https://github.com/bbatsov[Bozhidar Batsov]).
 Bozhidar had always been bothered as a Ruby developer about one thing  - Python developers had a great programming style reference (https://www.python.org/dev/peps/pep-0008/[PEP-8]) and Rubyists never got an official guide, documenting Ruby coding style and best practices.
 Bozhidar firmly believed that style matters.
 He also believed that a great hacker community, such as Ruby has, should be quite capable of producing this coveted document.
@@ -5492,7 +5492,7 @@ Many people, books, presentations, articles and other style guides influenced th
 * https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style[The Elements of Programming Style]
 * https://www.python.org/dev/peps/pep-0008/[PEP-8]
 * https://pragprog.com/book/ruby4/programming-ruby-1-9-2-0["Programming Ruby"]
-* http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"]
+* https://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177["The Ruby Programming Language"]
 
 == Contributing
 
@@ -5515,20 +5515,20 @@ It's easy, just follow the contribution guidelines below:
 
 * https://help.github.com/articles/fork-a-repo[Fork] https://github.com/rubocop-hq/ruby-style-guide[rubocop-hq/ruby-style-guide] on GitHub
 * Make your feature addition or bug fix in a feature branch.
-* Include a http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html[good description] of your changes
+* Include a https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html[good description] of your changes
 * Push your feature branch to GitHub
 * Send a https://help.github.com/articles/using-pull-requests[Pull Request]
 
 == Colophon
 
-This guide is written in http://asciidoc.org/[AsciiDoc] and is published as HTML using https://asciidoctor.org/[AsciiDoctor].
+This guide is written in https://asciidoc.org/[AsciiDoc] and is published as HTML using https://asciidoctor.org/[AsciiDoctor].
 The HTML version of the guide is hosted on GitHub Pages.
 
 Originally the guide was written in Markdown, but was converted to AsciiDoc in 2019.
 
 == License
 
-image:https://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License] This work is licensed under a http://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
+image:https://i.creativecommons.org/l/by/3.0/88x31.png[Creative Commons License] This work is licensed under a https://creativecommons.org/licenses/by/3.0/deed.en_US[Creative Commons Attribution 3.0 Unported License]
 
 == Spread the Word
 
