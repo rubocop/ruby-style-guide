@@ -893,6 +893,9 @@ end
 
 === CapitalCase for Classes [[camelcase-classes]]
 
+NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
+and `PascalCase`.
+
 Use `CapitalCase` for classes and modules.
 (Keep acronyms like HTTP, RFC, XML uppercase).
 
