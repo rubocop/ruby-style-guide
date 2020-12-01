@@ -5507,7 +5507,12 @@ It's our desire to work together with everyone interested in Ruby coding style, 
 Feel free to open tickets or send pull requests with improvements.
 Thanks in advance for your help!
 
-You can also support the project (and RuboCop) with financial contributions via https://www.patreon.com/bbatsov[Patreon].
+You can also support the project (and RuboCop) with financial contributions via one of the following platforms:
+
+* https://github.com/sponsors/bbatsov[GitHub Sponsors]
+* https://ko-fi.com/bbatsov[ko-fi]
+* https://www.patreon.com/bbatsov[Patreon]
+* https://www.paypal.me/bbatsov[PayPal]
 
 === How to Contribute?
 
