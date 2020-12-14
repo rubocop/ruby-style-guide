@@ -786,6 +786,19 @@ puts (x + y)
 puts(x + y)
 ----
 
+=== Space in Brackets Access
+
+Do not put a space between a receiver name and the opening brackets.
+
+[source,ruby]
+----
+# bad
+collection [index_or_key]
+
+# good
+collection[index_or_key]
+----
+
 === Multi-line Arrays Alignment [[align-multiline-arrays]]
 
 Align the elements of array literals spanning multiple lines.
