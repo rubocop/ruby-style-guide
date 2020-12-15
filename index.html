@@ -692,6 +692,7 @@ pre.rouge {
 <li><a href="#no-braces-opts-hash">Implicit Options Hash</a></li>
 <li><a href="#no-dsl-decorating">DSL Method Calls</a></li>
 <li><a href="#parens-no-spaces">Space in Method Calls</a></li>
+<li><a href="#space-in-brackets-access">Space in Brackets Access</a></li>
 <li><a href="#align-multiline-arrays">Multi-line Arrays Alignment</a></li>
 </ul>
 </li>
@@ -2041,6 +2042,21 @@ optional.
 
 <span class="c1"># good</span>
 <span class="nb">puts</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="space-in-brackets-access"><a class="anchor" href="#space-in-brackets-access"></a><a class="link" href="#space-in-brackets-access">Space in Brackets Access</a></h3>
+<div class="paragraph">
+<p>Do not put a space between a receiver name and the opening brackets.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">collection</span> <span class="p">[</span><span class="n">index_or_key</span><span class="p">]</span>
+
+<span class="c1"># good</span>
+<span class="n">collection</span><span class="p">[</span><span class="n">index_or_key</span><span class="p">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -7686,7 +7702,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-01 10:27:19 UTC
+Last updated 2020-12-15 08:14:40 UTC
 </div>
 </div>
 </body>
