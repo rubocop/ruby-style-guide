@@ -1909,7 +1909,7 @@ end
 
 # good
 def with_io_error_handling
-   yield
+  yield
 rescue IOError
   # handle IOError
 end
