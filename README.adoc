@@ -2625,6 +2625,31 @@ One exception to the rule are empty-body methods.
 def no_op; end
 ----
 
+=== Endless Methods
+
+Only use Ruby 3.0's endless method definitions with a single line body. Methods with multiple statements should be defined as normal methods.
+
+If single-line methods are to be used, prefer endless methods.
+
+[source,ruby]
+----
+# bad
+def fib(x) = if x < 2
+  x
+else
+  fib(x - 1) + fib(x - 2)
+end
+
+# good
+def the_answer = 42
+def get_x = @x
+def square(x) = x * x
+
+# Not (so) good: has side effect
+def set_x(x) = (@x = x)
+def print_foo = puts("foo")
+----
+
 === Double Colons [[double-colons]]
 
 Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
