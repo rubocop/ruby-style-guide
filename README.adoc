@@ -2597,6 +2597,9 @@ Avoid single-line methods.
 Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
 At any rate - there should be no more than one expression in a single-line method.
 
+NOTE: Ruby 3 introduced an alternative syntax for single-line method definitions, that's discussed in the next section
+of the guide.
+
 [source,ruby]
 ----
 # bad
@@ -2627,9 +2630,14 @@ def no_op; end
 
 === Endless Methods
 
-Only use Ruby 3.0's endless method definitions with a single line body. Methods with multiple statements should be defined as normal methods.
+Only use Ruby 3.0's endless method definitions with a single line
+body.  Ideally, such method definitions should be both simple (a
+single expression) and free of side effects.
 
-If single-line methods are to be used, prefer endless methods.
+NOTE: It's important to understand that this guideline doesn't
+contradict the previous one. We still caution against the use of
+single-line method definitions, but if such methods are to be used,
+prefer endless methods.
 
 [source,ruby]
 ----
