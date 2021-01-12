@@ -4115,6 +4115,19 @@ Empty lines do not contribute to the relevant LOC.</p>
 Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable.
 At any rate - there should be no more than one expression in a single-line method.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Ruby 3 introduced an alternative syntax for single-line method definitions, that&#8217;s discussed in the next section
+of the guide.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
@@ -4148,10 +4161,24 @@ At any rate - there should be no more than one expression in a single-line metho
 <div class="sect2">
 <h3 id="endless-methods"><a class="anchor" href="#endless-methods"></a><a class="link" href="#endless-methods">Endless Methods</a></h3>
 <div class="paragraph">
-<p>Only use Ruby 3.0&#8217;s endless method definitions with a single line body. Methods with multiple statements should be defined as normal methods.</p>
+<p>Only use Ruby 3.0&#8217;s endless method definitions with a single line
+body.  Ideally, such method definitions should be both simple (a
+single expression) and free of side effects.</p>
 </div>
-<div class="paragraph">
-<p>If single-line methods are to be used, prefer endless methods.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It&#8217;s important to understand that this guideline doesn&#8217;t
+contradict the previous one. We still caution against the use of
+single-line method definitions, but if such methods are to be used,
+prefer endless methods.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7731,7 +7758,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-11 20:13:08 UTC
+Last updated 2021-01-12 11:58:33 UTC
 </div>
 </div>
 </body>
