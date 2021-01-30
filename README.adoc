@@ -4019,6 +4019,25 @@ When you've got keys that are not symbols stick to the hash rockets syntax.
 { :a => 1, 'b' => 2 }
 ----
 
+=== Avoid Hash[] constructor [[avoid-hash-constructor]]
+
+`Hash::[]` was pre-Ruby 2.1 way of constructing hashes from arrays of key-value pairs,
+or from a flat list of keys and values. It has an obscure semantic and looks cryptic in code.
+Since Ruby 2.1, `Enumerable#to_h` can be used to construct a hash from a list of key-value pairs,
+and it should be preferred. Instead of `Hash[]` with a list of literal keys and values,
+just a hash literal should be preferred.
+
+[source,ruby]
+----
+# bad
+Hash[ary]
+Hash[a, b, c, d]
+
+# good
+ary.to_h
+{a => b, c => d}
+----
+
 === `Hash#key?` [[hash-key]]
 
 Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of `Hash#has_value?`.
