@@ -5499,6 +5499,24 @@ require_relative '../foo'
 require_relative '../foo.so'
 ----
 
+=== Avoid `tap`
+
+The method `tap` can be helpful for debugging purposes but should not be left in production code.
+[source,ruby]
+----
+# bad
+Config.new(hash, path).tap do |config|
+  config.check if check
+end
+
+# good
+config = Config.new(hash, path)
+config.check if check
+config
+----
+
+This is simpler and more efficient.
+
 == Tools
 
 Here are some tools to help you automatically check Ruby code against this guide.
