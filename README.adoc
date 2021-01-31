@@ -4321,6 +4321,7 @@ The goal is to avoid confusion between powers of ten and exponential notation, a
 
 |===
 | power notation | exponential notation | output
+
 | 10 ** 7        | 1e7                  | 10000000
 | 10 ** 6        | 1e6                  | 1000000
 | 10 ** 7        | 10e6                 | 10000000
