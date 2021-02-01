@@ -6127,13 +6127,37 @@ Imagine simulating a roll of a dice:</p>
 <div class="paragraph">
 <p>The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading <code>10e7</code> could think it&#8217;s 10 to the power of 7 (one then 7 zeroes) when it&#8217;s actually 10 to the power of 8 (one then 8 zeroes). If you want 10 to the power of 7, you should do <code>1e7</code>.</p>
 </div>
-<div class="paragraph">
-<p>| power notation | exponential notation | output   |
-|----------------|----------------------|----------|
-| 10 <strong> 7        | 1e7                  | 10000000 |
-| 10 </strong> 6        | 1e6                  | 1000000  |
-| 10 ** 7        | 10e6                 | 10000000 |</p>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">power notation</th>
+<th class="tableblock halign-left valign-top">exponential notation</th>
+<th class="tableblock halign-left valign-top">output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 ** 7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 ** 6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 ** 7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10e6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000000</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>One could favor the alternative engineering notation, in which the exponent must always be a multiple of 3 for easy conversion to the thousand / million / &#8230;&#8203; system.</p>
 </div>
@@ -7781,7 +7805,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-01 12:20:38 UTC
+Last updated 2021-02-01 12:22:03 UTC
 </div>
 </div>
 </body>
