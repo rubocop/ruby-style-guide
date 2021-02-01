@@ -1022,6 +1022,7 @@ pre.rouge {
 <li><a href="#three-is-the-number-thou-shalt-count">Three is the Number Thou Shalt Count</a></li>
 <li><a href="#functional-code">Functional Code</a></li>
 <li><a href="#no-explicit-rb-to-require">No explicit <code>.rb</code> to <code>require</code></a></li>
+<li><a href="#avoid-tap">Avoid <code>tap</code></a></li>
 </ul>
 </li>
 <li><a href="#tools">Tools</a>
@@ -7563,6 +7564,28 @@ but that seems harmless.
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="avoid-tap"><a class="anchor" href="#avoid-tap"></a><a class="link" href="#avoid-tap">Avoid <code>tap</code></a></h3>
+<div class="paragraph">
+<p>The method <code>tap</code> can be helpful for debugging purposes but should not be left in production code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">Config</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">path</span><span class="p">).</span><span class="nf">tap</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">check</span> <span class="k">if</span> <span class="n">check</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="n">config</span> <span class="o">=</span> <span class="no">Config</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">check</span> <span class="k">if</span> <span class="n">check</span>
+<span class="n">config</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is simpler and more efficient.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -7758,7 +7781,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-12 11:58:33 UTC
+Last updated 2021-02-01 12:20:38 UTC
 </div>
 </div>
 </body>
