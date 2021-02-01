@@ -4319,11 +4319,13 @@ When using exponential notation for numbers, prefer using the normalized scienti
 
 The goal is to avoid confusion between powers of ten and exponential notation, as one quickly reading `10e7` could think it's 10 to the power of 7 (one then 7 zeroes) when it's actually 10 to the power of 8 (one then 8 zeroes). If you want 10 to the power of 7, you should do `1e7`.
 
-| power notation | exponential notation | output   |
-|----------------|----------------------|----------|
-| 10 ** 7        | 1e7                  | 10000000 |
-| 10 ** 6        | 1e6                  | 1000000  |
-| 10 ** 7        | 10e6                 | 10000000 |
+|===
+| power notation | exponential notation | output
+
+| 10 ** 7        | 1e7                  | 10000000
+| 10 ** 6        | 1e6                  | 1000000
+| 10 ** 7        | 10e6                 | 10000000
+|===
 
 One could favor the alternative engineering notation, in which the exponent must always be a multiple of 3 for easy conversion to the thousand / million / ... system.
 
