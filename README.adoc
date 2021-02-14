@@ -4731,7 +4731,7 @@ Don't use regular expressions if you just need plain text search in string.
 foo = 'I am an example string'
 
 # bad - using a regular expression is an overkill here
-foo ~= /example/
+foo =~ /example/
 
 # good
 foo['example']
