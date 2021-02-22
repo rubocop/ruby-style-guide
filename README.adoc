@@ -584,6 +584,8 @@ class Foo
 
     end
 
+    true
+
   end
 
 end
