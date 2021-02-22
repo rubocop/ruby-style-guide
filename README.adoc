@@ -1527,6 +1527,34 @@ else
 end
 ----
 
+=== `unless` with Multiple Conditions
+
+Do not use `unless` with multiple conditions.
+
+[source,ruby]
+----
+# bad
+unless sweet?(fruit) && !fruit.green?
+  yield fruit # skip yielding sweet non-green fruits
+end
+
+# bad
+return unless node.ternary? && !infinite_loop? && offense?(node)
+
+# good - non-inversed
+if !sweet?(fruit) || fruit.green?
+  yield fruit # yield non-sweet or green fruits
+end
+
+# good - all separate
+return unless node.ternary?
+return if infinite_loop?
+return unless offense?(node)
+
+# good - explicit intent
+return unless offensive_ternary?(node)
+----
+
 === Parentheses around Condition [[no-parens-around-condition]]
 
 Don't use parentheses around the condition of a control expression.
