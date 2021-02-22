@@ -672,7 +672,7 @@ There are two popular styles in the Ruby community, both of which are considered
 
 ==== Leading `.` [[leading-dot-in-multi-line-chains]]
 
-When continuing a chained method invocation on another line, keep the `.` on the second line.
+When continuing a chained method call on another line, keep the `.` on the second line.
 
 [source,ruby]
 ----
@@ -687,7 +687,7 @@ one.two.three
 
 ==== Trailing `.` [[trailing-dot-in-multi-line-chains]]
 
-When continuing a chained method invocation on another line, include the `.` on the first line to indicate that the expression continues.
+When continuing a chained method call on another line, include the `.` on the first line to indicate that the expression continues.
 
 [source,ruby]
 ----
@@ -2370,7 +2370,7 @@ The stricter comparison semantics provided by `eql?` are rarely needed in practi
 
 === Proc Application Shorthand [[single-action-blocks]]
 
-Use the Proc invocation shorthand when the invoked method is the only operation of a block.
+Use the Proc call shorthand when the called method is the only operation of a block.
 
 [source,ruby]
 ----
@@ -2469,7 +2469,7 @@ end
 
 Do not use nested method definitions, use lambda instead.
 Nested method definitions actually produce methods in the same scope (e.g. class) as the outer method.
-Furthermore, the "nested method" will be redefined every time the method containing its definition is invoked.
+Furthermore, the "nested method" will be redefined every time the method containing its definition is called.
 
 [source,ruby]
 ----
@@ -2564,7 +2564,7 @@ p = Proc.new { |n| puts n }
 p = proc { |n| puts n }
 ----
 
-=== Proc Invocation [[proc-call]]
+=== Proc Call [[proc-call]]
 
 Prefer `proc.call()` over `proc[]` or `proc.()` for both lambdas and procs.
 
@@ -2661,7 +2661,7 @@ def print_foo = puts("foo")
 === Double Colons [[double-colons]]
 
 Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
-Do not use `::` for regular method invocation.
+Do not use `::` for regular method call.
 
 [source,ruby]
 ----
@@ -2723,9 +2723,9 @@ def some_method_with_parameters(param1, param2)
 end
 ----
 
-=== Method Invocation Parentheses [[method-invocation-parens]]
+=== Method Call Parentheses [[method-invocation-parens]][[method-call-parens]]
 
-Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis `(`, as in `f((3 + 2) + 1)`.
+Use parentheses around the arguments of method calls, especially if the first argument begins with an open parenthesis `(`, as in `f((3 + 2) + 1)`.
 
 [source,ruby]
 ----
@@ -2745,7 +2745,7 @@ temperance = Person.new 'Temperance', 30
 temperance = Person.new('Temperance', 30)
 ----
 
-==== Method Calls with No Arguments [[method-invocation-parens-no-args]]
+==== Method Call with No Arguments [[method-invocation-parens-no-args]][[method-call-parens-no-args]]
 
 Always omit parentheses for method calls with no arguments.
 
@@ -2764,7 +2764,7 @@ fork
 'test'.upcase
 ----
 
-==== Methods That are Part of an Internal DSL [[method-invocation-parens-internal-dsl]]
+==== Methods That are Part of an Internal DSL [[method-invocation-parens-internal-dsl]][[method-call-parens-internal-dsl]]
 
 Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
 
@@ -2776,7 +2776,7 @@ validates(:name, presence: true)
 validates :name, presence: true
 ----
 
-==== Methods That Have "keyword" Status in Ruby [[method-invocation-parens-keyword]]
+==== Methods That Have "keyword" Status in Ruby [[method-invocation-parens-keyword]][[method-call-parens-keyword]]
 
 Always omit parentheses for methods that have "keyword" status in Ruby.
 
@@ -2784,7 +2784,7 @@ NOTE: Unfortunately, it's not exactly clear _which_ methods have "keyword" statu
 There is agreement that declarative methods have "keyword" status.
 However, there's less agreement on which non-declarative methods, if any, have "keyword" status.
 
-===== Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-declarative-keyword]]
+===== Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-declarative-keyword]][[method-call-parens-declarative-keyword]]
 
 Always omit parentheses for declarative methods (a.k.a. DSL methods or macro methods) that have "keyword" status in Ruby (e.g., various `Module` instance methods):
 
@@ -2800,7 +2800,7 @@ class Person
 end
 ----
 
-===== Non-Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]]
+===== Non-Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]][[method-call-parens-non-declarative-keyword]]
 
 For non-declarative methods with "keyword" status (e.g., various `Kernel` instance methods), two styles are considered acceptable.
 By far the most popular style is to omit parentheses.
@@ -4468,7 +4468,7 @@ puts "$global = #{$global}"
 === No `to_s` [[no-to-s]]
 
 Don't use `Object#to_s` on interpolated objects.
-It's invoked on them automatically.
+It's called on them automatically.
 
 [source,ruby]
 ----
@@ -4969,7 +4969,7 @@ Use `%r` only for regular expressions matching _at least_ one `/` character.
 
 === `%x` [[percent-x]]
 
-Avoid the use of `%x` unless you're going to invoke a command with backquotes in it (which is rather unlikely).
+Avoid the use of `%x` unless you're going to execute a command with backquotes in it (which is rather unlikely).
 
 [source,ruby]
 ----
