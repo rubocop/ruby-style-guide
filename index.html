@@ -795,7 +795,7 @@ pre.rouge {
 <li><a href="#stabby-lambda-with-args">Stabby Lambda Definition with Parameters</a></li>
 <li><a href="#stabby-lambda-no-args">Stabby Lambda Definition without Parameters</a></li>
 <li><a href="#proc"><code>proc</code> vs <code>Proc.new</code></a></li>
-<li><a href="#proc-call">Proc Invocation</a></li>
+<li><a href="#proc-call">Proc Call</a></li>
 </ul>
 </li>
 <li><a href="#methods">Methods</a>
@@ -806,7 +806,7 @@ pre.rouge {
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
 <li><a href="#method-parens">Method Definition Parentheses</a></li>
-<li><a href="#method-invocation-parens">Method Invocation Parentheses</a></li>
+<li><a href="#method-call-parentheses">Method Call Parentheses </a></li>
 <li><a href="#too-many-params">Too Many Params</a></li>
 <li><a href="#optional-arguments">Optional Arguments</a></li>
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
@@ -1910,7 +1910,7 @@ There are two popular styles in the Ruby community, both of which are considered
 <div class="sect3">
 <h4 id="leading-dot-in-multi-line-chains"><a class="anchor" href="#leading-dot-in-multi-line-chains"></a><a class="link" href="#leading-dot-in-multi-line-chains">Leading <code>.</code></a></h4>
 <div class="paragraph">
-<p>When continuing a chained method invocation on another line, keep the <code>.</code> on the second line.</p>
+<p>When continuing a chained method call on another line, keep the <code>.</code> on the second line.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1927,7 +1927,7 @@ There are two popular styles in the Ruby community, both of which are considered
 <div class="sect3">
 <h4 id="trailing-dot-in-multi-line-chains"><a class="anchor" href="#trailing-dot-in-multi-line-chains"></a><a class="link" href="#trailing-dot-in-multi-line-chains">Trailing <code>.</code></a></h4>
 <div class="paragraph">
-<p>When continuing a chained method invocation on another line, include the <code>.</code> on the first line to indicate that the expression continues.</p>
+<p>When continuing a chained method call on another line, include the <code>.</code> on the first line to indicate that the expression continues.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3864,7 +3864,7 @@ The stricter comparison semantics provided by <code>eql?</code> are rarely neede
 <div class="sect2">
 <h3 id="single-action-blocks"><a class="anchor" href="#single-action-blocks"></a><a class="link" href="#single-action-blocks">Proc Application Shorthand</a></h3>
 <div class="paragraph">
-<p>Use the Proc invocation shorthand when the invoked method is the only operation of a block.</p>
+<p>Use the Proc call shorthand when the called method is the only operation of a block.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3971,7 +3971,7 @@ Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 <div class="paragraph">
 <p>Do not use nested method definitions, use lambda instead.
 Nested method definitions actually produce methods in the same scope (e.g. class) as the outer method.
-Furthermore, the "nested method" will be redefined every time the method containing its definition is invoked.</p>
+Furthermore, the "nested method" will be redefined every time the method containing its definition is called.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4076,7 +4076,7 @@ Use the <code>lambda</code> method for multi-line blocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proc-call"><a class="anchor" href="#proc-call"></a><a class="link" href="#proc-call">Proc Invocation</a></h3>
+<h3 id="proc-call"><a class="anchor" href="#proc-call"></a><a class="link" href="#proc-call">Proc Call</a></h3>
 <div class="paragraph">
 <p>Prefer <code>proc.call()</code> over <code>proc[]</code> or <code>proc.()</code> for both lambdas and procs.</p>
 </div>
@@ -4205,7 +4205,7 @@ prefer endless methods.
 <h3 id="double-colons"><a class="anchor" href="#double-colons"></a><a class="link" href="#double-colons">Double Colons</a></h3>
 <div class="paragraph">
 <p>Use <code>::</code> only to reference constants (this includes classes and modules) and constructors (like <code>Array()</code> or <code>Nokogiri::HTML()</code>).
-Do not use <code>::</code> for regular method invocation.</p>
+Do not use <code>::</code> for regular method call.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4273,9 +4273,9 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="method-invocation-parens"><a class="anchor" href="#method-invocation-parens"></a><a class="link" href="#method-invocation-parens">Method Invocation Parentheses</a></h3>
+<h3 id="method-call-parentheses"><a class="anchor" href="#method-call-parentheses"></a><a class="link" href="#method-call-parentheses">Method Call Parentheses <a id="method-invocation-parens"></a><a id="method-call-parens"></a></a></h3>
 <div class="paragraph">
-<p>Use parentheses around the arguments of method invocations, especially if the first argument begins with an open parenthesis <code>(</code>, as in <code>f((3 + 2) + 1)</code>.</p>
+<p>Use parentheses around the arguments of method calls, especially if the first argument begins with an open parenthesis <code>(</code>, as in <code>f((3 + 2) + 1)</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4296,7 +4296,7 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="method-invocation-parens-no-args"><a class="anchor" href="#method-invocation-parens-no-args"></a><a class="link" href="#method-invocation-parens-no-args">Method Calls with No Arguments</a></h4>
+<h4 id="method-call-with-no-arguments"><a class="anchor" href="#method-call-with-no-arguments"></a><a class="link" href="#method-call-with-no-arguments">Method Call with No Arguments <a id="method-invocation-parens-no-args"></a><a id="method-call-parens-no-args"></a></a></h4>
 <div class="paragraph">
 <p>Always omit parentheses for method calls with no arguments.</p>
 </div>
@@ -4317,7 +4317,7 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="method-invocation-parens-internal-dsl"><a class="anchor" href="#method-invocation-parens-internal-dsl"></a><a class="link" href="#method-invocation-parens-internal-dsl">Methods That are Part of an Internal DSL</a></h4>
+<h4 id="methods-that-are-part-of-an-internal-dsl"><a class="anchor" href="#methods-that-are-part-of-an-internal-dsl"></a><a class="link" href="#methods-that-are-part-of-an-internal-dsl">Methods That are Part of an Internal DSL <a id="method-invocation-parens-internal-dsl"></a><a id="method-call-parens-internal-dsl"></a></a></h4>
 <div class="paragraph">
 <p>Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):</p>
 </div>
@@ -4331,7 +4331,7 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="method-invocation-parens-keyword"><a class="anchor" href="#method-invocation-parens-keyword"></a><a class="link" href="#method-invocation-parens-keyword">Methods That Have "keyword" Status in Ruby</a></h4>
+<h4 id="methods-that-have-keyword-status-in-ruby"><a class="anchor" href="#methods-that-have-keyword-status-in-ruby"></a><a class="link" href="#methods-that-have-keyword-status-in-ruby">Methods That Have "keyword" Status in Ruby <a id="method-invocation-parens-keyword"></a><a id="method-call-parens-keyword"></a></a></h4>
 <div class="paragraph">
 <p>Always omit parentheses for methods that have "keyword" status in Ruby.</p>
 </div>
@@ -4350,7 +4350,7 @@ However, there&#8217;s less agreement on which non-declarative methods, if any, 
 </table>
 </div>
 <div class="sect4">
-<h5 id="method-invocation-parens-declarative-keyword"><a class="anchor" href="#method-invocation-parens-declarative-keyword"></a><a class="link" href="#method-invocation-parens-declarative-keyword">Declarative Methods That Have "keyword" Status in Ruby</a></h5>
+<h5 id="declarative-methods-that-have-keyword-status-in-ruby"><a class="anchor" href="#declarative-methods-that-have-keyword-status-in-ruby"></a><a class="link" href="#declarative-methods-that-have-keyword-status-in-ruby">Declarative Methods That Have "keyword" Status in Ruby <a id="method-invocation-parens-declarative-keyword"></a><a id="method-call-parens-declarative-keyword"></a></a></h5>
 <div class="paragraph">
 <p>Always omit parentheses for declarative methods (a.k.a. DSL methods or macro methods) that have "keyword" status in Ruby (e.g., various <code>Module</code> instance methods):</p>
 </div>
@@ -4368,7 +4368,7 @@ However, there&#8217;s less agreement on which non-declarative methods, if any, 
 </div>
 </div>
 <div class="sect4">
-<h5 id="method-invocation-parens-non-declarative-keyword"><a class="anchor" href="#method-invocation-parens-non-declarative-keyword"></a><a class="link" href="#method-invocation-parens-non-declarative-keyword">Non-Declarative Methods That Have "keyword" Status in Ruby</a></h5>
+<h5 id="non-declarative-methods-that-have-keyword-status-in-ruby"><a class="anchor" href="#non-declarative-methods-that-have-keyword-status-in-ruby"></a><a class="link" href="#non-declarative-methods-that-have-keyword-status-in-ruby">Non-Declarative Methods That Have "keyword" Status in Ruby <a id="method-invocation-parens-non-declarative-keyword"></a><a id="method-call-parens-non-declarative-keyword"></a></a></h5>
 <div class="paragraph">
 <p>For non-declarative methods with "keyword" status (e.g., various <code>Kernel</code> instance methods), two styles are considered acceptable.
 By far the most popular style is to omit parentheses.
@@ -6328,7 +6328,7 @@ Since Ruby 1.9 it&#8217;s basically redundant - <code>?x</code> would be interpr
 <h3 id="no-to-s"><a class="anchor" href="#no-to-s"></a><a class="link" href="#no-to-s">No <code>to_s</code></a></h3>
 <div class="paragraph">
 <p>Don&#8217;t use <code>Object#to_s</code> on interpolated objects.
-It&#8217;s invoked on them automatically.</p>
+It&#8217;s called on them automatically.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6910,7 +6910,7 @@ Regular string literals are more readable and should be preferred unless a lot o
 <div class="sect2">
 <h3 id="percent-x"><a class="anchor" href="#percent-x"></a><a class="link" href="#percent-x"><code>%x</code></a></h3>
 <div class="paragraph">
-<p>Avoid the use of <code>%x</code> unless you&#8217;re going to invoke a command with backquotes in it (which is rather unlikely).</p>
+<p>Avoid the use of <code>%x</code> unless you&#8217;re going to execute a command with backquotes in it (which is rather unlikely).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7805,7 +7805,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-14 14:36:29 UTC
+Last updated 2021-02-23 19:07:35 UTC
 </div>
 </div>
 </body>
