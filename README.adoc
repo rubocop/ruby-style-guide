@@ -538,7 +538,7 @@ end
 
 === Empty Lines around Access Modifier [[empty-lines-around-access-modifier]]
 
-Use empty lines around attribute modifier.
+Use empty lines around access modifier.
 
 [source,ruby]
 ----
