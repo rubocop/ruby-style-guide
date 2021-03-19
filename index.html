@@ -935,6 +935,7 @@ pre.rouge {
 <li><a href="#no-to-s">No <code>to_s</code></a></li>
 <li><a href="#concat-strings">String Concatenation</a></li>
 <li><a href="#dont-abuse-gsub">Don&#8217;t Abuse <code>gsub</code></a></li>
+<li><a href="#string-chars"><code>String#chars</code></a></li>
 <li><a href="#sprintf"><code>sprintf</code></a></li>
 <li><a href="#named-format-tokens">Named Format Tokens</a></li>
 <li><a href="#heredoc-long-strings">Long Strings</a></li>
@@ -6390,6 +6391,34 @@ Concatenation mutates the string instance in-place and is always faster than <co
 </div>
 </div>
 <div class="sect2">
+<h3 id="string-chars"><a class="anchor" href="#string-chars"></a><a class="link" href="#string-chars"><code>String#chars</code></a></h3>
+<div class="paragraph">
+<p>Prefer the use of <code>String#chars</code> over <code>String#split</code> with empty string or regexp literal argument.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+These cases have the same behavior since Ruby 2.0.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+
+<span class="c1"># good</span>
+<span class="n">string</span><span class="p">.</span><span class="nf">chars</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="sprintf"><a class="anchor" href="#sprintf"></a><a class="link" href="#sprintf"><code>sprintf</code></a></h3>
 <div class="paragraph">
 <p>Prefer the use of <code>sprintf</code> and its alias <code>format</code> over the fairly cryptic <code>String#%</code> method.</p>
@@ -7807,7 +7836,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-07 02:21:48 UTC
+Last updated 2021-03-19 20:18:05 UTC
 </div>
 </div>
 </body>
