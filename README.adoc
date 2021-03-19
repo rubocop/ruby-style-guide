@@ -4524,6 +4524,22 @@ url.sub('http://', 'https://')
 str.tr('-', '_')
 ----
 
+=== `String#chars` [[string-chars]]
+
+Prefer the use of `String#chars` over `String#split` with empty string or regexp literal argument.
+
+NOTE: These cases have the same behavior since Ruby 2.0.
+
+[source,ruby]
+----
+# bad
+string.split(//)
+string.split('')
+
+# good
+string.chars
+----
+
 === `sprintf` [[sprintf]]
 
 Prefer the use of `sprintf` and its alias `format` over the fairly cryptic `String#%` method.
