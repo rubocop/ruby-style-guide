@@ -2630,6 +2630,22 @@ One exception to the rule are empty-body methods.
 def no_op; end
 ----
 
+=== No Top-Level Methods [[no-top-level-methods]]
+
+Avoid top-level methods. Organize them in modules, classes or structs.
+It is fine to use them in scripts.
+
+[source,ruby]
+----
+# bad
+def some_method; end
+
+# good
+class SomeClass
+  def some_method; end
+end
+----
+
 === Endless Methods
 
 Only use Ruby 3.0's endless method definitions with a single line
