@@ -896,6 +896,7 @@ pre.rouge {
 <li><a href="#hash-literals">Hash Literals</a></li>
 <li><a href="#hash-literal-as-last-array-item">Hash Literal as Last Array Item</a></li>
 <li><a href="#no-mixed-hash-syntaxes">No Mixed Hash Syntaxes</a></li>
+<li><a href="#avoid-hash-constructor">Avoid Hash[] constructor</a></li>
 <li><a href="#hash-key"><code>Hash#key?</code></a></li>
 <li><a href="#hash-each"><code>Hash#each</code></a></li>
 <li><a href="#hash-fetch"><code>Hash#fetch</code></a></li>
@@ -5791,6 +5792,27 @@ When you&#8217;ve got keys that are not symbols stick to the hash rockets syntax
 </div>
 </div>
 <div class="sect2">
+<h3 id="avoid-hash-constructor"><a class="anchor" href="#avoid-hash-constructor"></a><a class="link" href="#avoid-hash-constructor">Avoid Hash[] constructor</a></h3>
+<div class="paragraph">
+<p><code>Hash::[]</code> was pre-Ruby 2.1 way of constructing hashes from arrays of key-value pairs,
+or from a flat list of keys and values. It has an obscure semantic and looks cryptic in code.
+Since Ruby 2.1, <code>Enumerable#to_h</code> can be used to construct a hash from a list of key-value pairs,
+and it should be preferred. Instead of <code>Hash[]</code> with a list of literal keys and values,
+just a hash literal should be preferred.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">Hash</span><span class="p">[</span><span class="n">ary</span><span class="p">]</span>
+<span class="no">Hash</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">]</span>
+
+<span class="c1"># good</span>
+<span class="n">ary</span><span class="p">.</span><span class="nf">to_h</span>
+<span class="p">{</span><span class="n">a</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=&gt;</span> <span class="n">d</span><span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="hash-key"><a class="anchor" href="#hash-key"></a><a class="link" href="#hash-key"><code>Hash#key?</code></a></h3>
 <div class="paragraph">
 <p>Use <code>Hash#key?</code> instead of <code>Hash#has_key?</code> and <code>Hash#value?</code> instead of <code>Hash#has_value?</code>.</p>
@@ -7863,7 +7885,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-07 07:34:56 UTC
+Last updated 2021-05-07 08:09:38 UTC
 </div>
 </div>
 </body>
