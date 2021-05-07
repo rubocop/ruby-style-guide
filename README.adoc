@@ -2630,10 +2630,11 @@ One exception to the rule are empty-body methods.
 def no_op; end
 ----
 
-=== No Top-Level Methods [[no-top-level-methods]]
+=== Top-Level Methods
 
-Avoid top-level methods. Organize them in modules, classes or structs.
-It is fine to use them in scripts.
+Avoid top-level method definitions. Organize them in modules, classes or structs instead.
+
+NOTE: It is fine to use top-level method definitions in scripts.
 
 [source,ruby]
 ----
