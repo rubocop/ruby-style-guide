@@ -4603,9 +4603,10 @@ Ruby has some unexpected results when calling methods that have optional argumen
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
-  <span class="c1"># extend and include go first</span>
+  <span class="c1"># extend/include/prepend go first</span>
   <span class="kp">extend</span> <span class="no">SomeModule</span>
   <span class="kp">include</span> <span class="no">AnotherModule</span>
+  <span class="n">prepend</span> <span class="no">YetAnotherModule</span>
 
   <span class="c1"># inner classes</span>
   <span class="no">CustomError</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">StandardError</span><span class="p">)</span>
@@ -7885,7 +7886,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-07 08:09:38 UTC
+Last updated 2021-05-08 08:35:26 UTC
 </div>
 </div>
 </body>
