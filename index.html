@@ -807,6 +807,7 @@ pre.rouge {
 <li><a href="#method-call-parentheses">Method Call Parentheses </a></li>
 <li><a href="#too-many-params">Too Many Params</a></li>
 <li><a href="#optional-arguments">Optional Arguments</a></li>
+<li><a href="#keyword-arguments-order">Keyword Arguments Order</a></li>
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
 <li><a href="#keyword-arguments-vs-option-hashes">Keyword Arguments vs Option Hashes</a></li>
@@ -4486,6 +4487,25 @@ Ruby has some unexpected results when calling methods that have optional argumen
 </div>
 </div>
 <div class="sect2">
+<h3 id="keyword-arguments-order"><a class="anchor" href="#keyword-arguments-order"></a><a class="link" href="#keyword-arguments-order">Keyword Arguments Order</a></h3>
+<div class="paragraph">
+<p>Put required keyword arguments before optional keyword arguments. Otherwise, it&#8217;s much harder to spot optional arguments there, if they&#8217;re hidden somewhere in the middle.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="ss">foo: </span><span class="kp">false</span><span class="p">,</span> <span class="n">bar</span><span class="p">:,</span> <span class="ss">baz: </span><span class="mi">10</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="n">foo</span><span class="p">:,</span> <span class="ss">bar: </span><span class="kp">false</span><span class="p">,</span> <span class="ss">baz: </span><span class="mi">10</span><span class="p">)</span>
+  <span class="c1"># body omitted</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="boolean-keyword-arguments"><a class="anchor" href="#boolean-keyword-arguments"></a><a class="link" href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></h3>
 <div class="paragraph">
 <p>Use keyword arguments when passing boolean argument to a method.</p>
@@ -7886,7 +7906,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-08 08:35:26 UTC
+Last updated 2021-05-25 12:15:18 UTC
 </div>
 </div>
 </body>
