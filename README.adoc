@@ -2887,6 +2887,23 @@ some_method('w', 'x', 'y') # => 'y, 2, w, x'
 some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
 ----
 
+=== Keyword Arguments Order
+
+Put required keyword arguments before optional keyword arguments. Otherwise, it's much harder to spot optional arguments there, if they're hidden somewhere in the middle.
+
+[source,ruby]
+----
+# bad
+def some_method(foo: false, bar:, baz: 10)
+  # body omitted
+end
+
+# good
+def some_method(foo:, bar: false, baz: 10)
+  # body omitted
+end
+----
+
 === Boolean Keyword Arguments [[boolean-keyword-arguments]]
 
 Use keyword arguments when passing boolean argument to a method.
