@@ -1182,7 +1182,7 @@ elem # => NameError: undefined local variable or method `elem'
 
 === `then` in Multi-line Expression [[no-then]]
 
-Do not use `then` for multi-line `if`/`unless`/`when`.
+Do not use `then` for multi-line `if`/`unless`/`when`/`in`.
 
 [source,ruby]
 ----
@@ -1197,6 +1197,12 @@ when bar then
   # body omitted
 end
 
+# bad
+case expression
+in pattern then
+  # body omitted
+end
+
 # good
 if some_condition
   # body omitted
@@ -1205,6 +1211,12 @@ end
 # good
 case foo
 when bar
+  # body omitted
+end
+
+# good
+case expression
+in pattern
   # body omitted
 end
 ----
