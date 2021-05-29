@@ -1345,6 +1345,23 @@ NOTE: The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
 Do not use `when x; ...`. See the previous rule.
 
+=== Semicolon in `in` [[no-in-pattern-semicolons]]
+
+Do not use `in pattern; ...`. Use `in pattern then ...` for one-line `in` pattern branches.
+
+[source,ruby]
+----
+# bad
+case expression
+in pattern; do_something
+end
+
+# good
+case expression
+in pattern then do_something
+end
+----
+
 === `!` vs `not` [[bang-not-not]]
 
 Use `!` instead of `not`.
