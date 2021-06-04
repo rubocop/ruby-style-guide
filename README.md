@@ -348,7 +348,10 @@ Translations of the guide are available in the following languages:
     calc_something_else
   end
 
-  # good - it's apparent what's going on
+  # bad - readable, but has three flaws:
+  # 1. is width-inefficient
+  # 2. can end up odd-space indented (depending on variable length)
+  # 3. will require changes to all statement lines if variable name is changed, polluting PRs.
   kind = case year
          when 1850..1889 then 'Blues'
          when 1890..1909 then 'Ragtime'
@@ -364,7 +367,7 @@ Translations of the guide are available in the following languages:
              calc_something_else
            end
 
-  # good (and a bit more width efficient)
+  # good
   kind =
     case year
     when 1850..1889 then 'Blues'
@@ -518,7 +521,7 @@ Translations of the guide are available in the following languages:
         body: source.text)
   end
 
-  # good
+  # bad (can be odd-spaced, will require all statement lines to change if method name changes)
   def send_mail(source)
     Mailer.deliver(to: 'bob@example.com',
                    from: 'us@example.com',
