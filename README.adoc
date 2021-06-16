@@ -224,7 +224,7 @@ $ git config --global core.autocrlf true
 
 End each file with a newline.
 
-TIP: This should be done by through editor configuration, not manually.
+TIP: This should be done via editor configuration, not manually.
 
 === Should I Terminate Expressions with `;`? [[no-semicolon]]
 
