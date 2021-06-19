@@ -5334,8 +5334,6 @@ Fix by either:
 
 Avoid the use of flip-flops.
 
-NOTE: They are deprecated as of Ruby 2.6.
-
 === No non-`nil` Checks [[no-non-nil-checks]]
 
 Don't do explicit non-`nil` checks unless you're dealing with boolean values.
