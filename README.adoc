@@ -56,10 +56,10 @@ endif::[]
 
 [TIP]
 ====
-If you're into Rails or RSpec you might want to check out the complementary https://github.com/rubocop-hq/rails-style-guide[Ruby on Rails Style Guide] and https://github.com/rubocop-hq/rspec-style-guide[RSpec Style Guide].
+If you're into Rails or RSpec you might want to check out the complementary https://github.com/rubocop/rails-style-guide[Ruby on Rails Style Guide] and https://github.com/rubocop/rspec-style-guide[RSpec Style Guide].
 ====
 
-TIP: https://github.com/rubocop-hq/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
+TIP: https://github.com/rubocop/rubocop[RuboCop] is a static code analyzer (linter) and formatter, based on this style guide.
 
 === Guiding Principles
 
@@ -702,7 +702,7 @@ one.two.three.
   four
 ----
 
-A discussion on the merits of both alternative styles can be found https://github.com/rubocop-hq/ruby-style-guide/pull/176[here].
+A discussion on the merits of both alternative styles can be found https://github.com/rubocop/ruby-style-guide/pull/176[here].
 
 === Method Arguments Alignment [[no-double-indent]]
 
@@ -3013,7 +3013,7 @@ end
 # bad
 # Please note that it can cause unexpected incompatible behavior
 # because `...` forwards block also.
-# https://github.com/rubocop-hq/rubocop/issues/7549
+# https://github.com/rubocop/rubocop/issues/7549
 def some_method(*args)
   other_method(*args)
 end
@@ -5624,7 +5624,7 @@ Here are some tools to help you automatically check Ruby code against this guide
 
 === RuboCop
 
-https://github.com/rubocop-hq/rubocop[RuboCop] is a Ruby static code analyzer and formatter, based on this style guide.
+https://github.com/rubocop/rubocop[RuboCop] is a Ruby static code analyzer and formatter, based on this style guide.
 RuboCop already covers a significant portion of the guide and has https://docs.rubocop.org/rubocop/integration_with_other_tools.html[plugins] for most popular Ruby editors and IDEs.
 
 TIP: RuboCop's cops (code checks) have links to the guidelines that they are based on, as part of their metadata.
@@ -5683,7 +5683,7 @@ You can also support the project (and RuboCop) with financial contributions via 
 
 It's easy, just follow the contribution guidelines below:
 
-* https://help.github.com/articles/fork-a-repo[Fork] https://github.com/rubocop-hq/ruby-style-guide[rubocop-hq/ruby-style-guide] on GitHub
+* https://help.github.com/articles/fork-a-repo[Fork] https://github.com/rubocop/ruby-style-guide[rubocop/ruby-style-guide] on GitHub
 * Make your feature addition or bug fix in a feature branch.
 * Include a https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html[good description] of your changes
 * Push your feature branch to GitHub
