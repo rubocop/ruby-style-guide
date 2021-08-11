@@ -836,7 +836,7 @@ Name identifiers in English.
 
 [source,ruby]
 ----
-# bad - identifier using non-ascii characters
+# bad - identifier is a Bulgarian word, using non-ascii (Cyrillic) characters
 заплата = 1_000
 
 # bad - identifier is a Bulgarian word, written with Latin letters (instead of Cyrillic)
