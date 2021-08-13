@@ -1128,7 +1128,7 @@ In such scenarios all popular styles are acknowledged and it&#8217;s up to you t
 <div class="paragraph">
 <p>Ruby had existed for over 15 years by the time
 the guide was created, and the language&#8217;s flexibility and lack of common standards have contributed to the
-creations of numerous styles for just about everything. Rallying people around the cause of community standards
+creation of numerous styles for just about everything. Rallying people around the cause of community standards
 took a lot of time and energy, and we still have a lot of ground to cover.</p>
 </div>
 <div class="paragraph">
@@ -1307,7 +1307,7 @@ UTF-8 has been the default source file encoding since Ruby 2.0.
 <div class="title">Tip</div>
 </td>
 <td class="content">
-Most editors and IDEs have configurations options to help you with that.
+Most editors and IDEs have configuration options to help you with that.
 They would typically highlight lines that exceed the length limit.
 </td>
 </tr>
@@ -2428,7 +2428,7 @@ This convention is recognized by the Ruby interpreter and tools like RuboCop wil
 <h3 id="other-arg"><a class="anchor" href="#other-arg"></a><a class="link" href="#other-arg"><code>other</code> Parameter</a></h3>
 <div class="paragraph">
 <p>When defining binary operators and operator-alike methods, name the parameter <code>other</code> for operators with "symmetrical" semantics of operands.
-Symmetrical semantics means both sides of the operator are typically of same or coercible types.</p>
+Symmetrical semantics means both sides of the operator are typically of the same or coercible types.</p>
 </div>
 <div class="paragraph">
 <p>Operators and operator-alike methods with symmetrical semantics (the parameter should be named <code>other</code>): <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>eql?</code>, <code>equal?</code>.</p>
@@ -2498,7 +2498,7 @@ Most of the time iterators should be used instead.
 <span class="c1"># good</span>
 <span class="n">arr</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">elem</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">elem</span> <span class="p">}</span>
 
-<span class="c1"># elem is not accessible outside each's block</span>
+<span class="c1"># elem is not accessible outside each block</span>
 <span class="n">elem</span> <span class="c1"># =&gt; NameError: undefined local variable or method `elem'</span></code></pre>
 </div>
 </div>
@@ -2623,7 +2623,7 @@ Prefer <code>if/else</code> constructs in these cases.</p>
 <div class="sect2">
 <h3 id="case-vs-if-else"><a class="anchor" href="#case-vs-if-else"></a><a class="link" href="#case-vs-if-else"><code>case</code> vs <code>if-else</code></a></h3>
 <div class="paragraph">
-<p>Prefer <code>case</code> over <code>if-elsif</code> when compared value is same in each clause.</p>
+<p>Prefer <code>case</code> over <code>if-elsif</code> when compared value is the same in each clause.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4271,7 +4271,7 @@ prefer endless methods.
 <h3 id="double-colons"><a class="anchor" href="#double-colons"></a><a class="link" href="#double-colons">Double Colons</a></h3>
 <div class="paragraph">
 <p>Use <code>::</code> only to reference constants (this includes classes and modules) and constructors (like <code>Array()</code> or <code>Nokogiri::HTML()</code>).
-Do not use <code>::</code> for regular method call.</p>
+Do not use <code>::</code> for regular method calls.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4542,7 +4542,7 @@ Ruby has some unexpected results when calling methods that have optional argumen
 <div class="sect2">
 <h3 id="boolean-keyword-arguments"><a class="anchor" href="#boolean-keyword-arguments"></a><a class="link" href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></h3>
 <div class="paragraph">
-<p>Use keyword arguments when passing boolean argument to a method.</p>
+<p>Use keyword arguments when passing a boolean argument to a method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5523,7 +5523,7 @@ Refactor the code to make it self-explanatory.
 <div class="sect2">
 <h3 id="indent-annotations"><a class="anchor" href="#indent-annotations"></a><a class="link" href="#indent-annotations">Multi-line Annotations Indentation</a></h3>
 <div class="paragraph">
-<p>If multiple lines are required to describe the problem, subsequent lines should be indented three spaces after the <code>#</code> (one general plus two for indentation purpose).</p>
+<p>If multiple lines are required to describe the problem, subsequent lines should be indented three spaces after the <code>#</code> (one general plus two for indentation purposes).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5849,7 +5849,7 @@ When you&#8217;ve got keys that are not symbols stick to the hash rockets syntax
 <div class="sect2">
 <h3 id="avoid-hash-constructor"><a class="anchor" href="#avoid-hash-constructor"></a><a class="link" href="#avoid-hash-constructor">Avoid Hash[] constructor</a></h3>
 <div class="paragraph">
-<p><code>Hash::[]</code> was pre-Ruby 2.1 way of constructing hashes from arrays of key-value pairs,
+<p><code>Hash::[]</code> was a pre-Ruby 2.1 way of constructing hashes from arrays of key-value pairs,
 or from a flat list of keys and values. It has an obscure semantic and looks cryptic in code.
 Since Ruby 2.1, <code>Enumerable#to_h</code> can be used to construct a hash from a list of key-value pairs,
 and it should be preferred. Instead of <code>Hash[]</code> with a list of literal keys and values,
@@ -6145,7 +6145,7 @@ Do not use <code>0d</code> prefix for decimal literals.</p>
 <div class="sect2">
 <h3 id="integer-type-checking"><a class="anchor" href="#integer-type-checking"></a><a class="link" href="#integer-type-checking">Integer Type Checking</a></h3>
 <div class="paragraph">
-<p>Use <code>Integer</code> to check type of an integer number.
+<p>Use <code>Integer</code> to check the type of an integer number.
 Since <code>Fixnum</code> is platform-dependent, checking against it will return different results on 32-bit and 64-bit machines.</p>
 </div>
 <div class="listingblock">
@@ -7321,7 +7321,7 @@ another comment line
 <div class="content">
 <div class="title">From Perl&#8217;s POD to RD</div>
 <div class="paragraph">
-<p>This is not a really a block comment syntax, but more of
+<p>This is not really a block comment syntax, but more of
 an attempt to emulate Perl&#8217;s <a href="https://perldoc.perl.org/perlpod.html">POD</a> documentation system.</p>
 </div>
 <div class="paragraph">
@@ -7928,7 +7928,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-11 05:39:30 UTC
+Last updated 2021-08-13 01:14:08 UTC
 </div>
 </div>
 </body>
