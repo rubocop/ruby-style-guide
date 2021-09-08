@@ -801,8 +801,8 @@ pre.rouge {
 <li><a href="#methods">Methods</a>
 <ul class="sectlevel2">
 <li><a href="#short-methods">Short Methods</a></li>
-<li><a href="#no-single-line-methods">No Single-line Methods</a></li>
 <li><a href="#top-level-methods">Top-Level Methods</a></li>
+<li><a href="#no-single-line-methods">No Single-line Methods</a></li>
 <li><a href="#endless-methods">Endless Methods</a></li>
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
@@ -4147,6 +4147,35 @@ Empty lines do not contribute to the relevant LOC.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="top-level-methods"><a class="anchor" href="#top-level-methods"></a><a class="link" href="#top-level-methods">Top-Level Methods</a></h3>
+<div class="paragraph">
+<p>Avoid top-level method definitions. Organize them in modules, classes or structs instead.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is fine to use top-level method definitions in scripts.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">;</span> <span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">SomeClass</span>
+  <span class="k">def</span> <span class="nf">some_method</span><span class="p">;</span> <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="no-single-line-methods"><a class="anchor" href="#no-single-line-methods"></a><a class="link" href="#no-single-line-methods">No Single-line Methods</a></h3>
 <div class="paragraph">
 <p>Avoid single-line methods.
@@ -4193,35 +4222,6 @@ of the guide.
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># good</span>
 <span class="k">def</span> <span class="nf">no_op</span><span class="p">;</span> <span class="k">end</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="top-level-methods"><a class="anchor" href="#top-level-methods"></a><a class="link" href="#top-level-methods">Top-Level Methods</a></h3>
-<div class="paragraph">
-<p>Avoid top-level method definitions. Organize them in modules, classes or structs instead.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-It is fine to use top-level method definitions in scripts.
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="k">def</span> <span class="nf">some_method</span><span class="p">;</span> <span class="k">end</span>
-
-<span class="c1"># good</span>
-<span class="k">class</span> <span class="nc">SomeClass</span>
-  <span class="k">def</span> <span class="nf">some_method</span><span class="p">;</span> <span class="k">end</span>
-<span class="k">end</span></code></pre>
 </div>
 </div>
 </div>
@@ -7928,7 +7928,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-08-13 01:14:08 UTC
+Last updated 2021-09-08 16:24:42 UTC
 </div>
 </div>
 </body>
