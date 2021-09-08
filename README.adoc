@@ -2622,6 +2622,23 @@ Avoid methods longer than 10 LOC (lines of code).
 Ideally, most methods will be shorter than 5 LOC.
 Empty lines do not contribute to the relevant LOC.
 
+=== Top-Level Methods
+
+Avoid top-level method definitions. Organize them in modules, classes or structs instead.
+
+NOTE: It is fine to use top-level method definitions in scripts.
+
+[source,ruby]
+----
+# bad
+def some_method; end
+
+# good
+class SomeClass
+  def some_method; end
+end
+----
+
 === No Single-line Methods [[no-single-line-methods]]
 
 Avoid single-line methods.
@@ -2657,23 +2674,6 @@ One exception to the rule are empty-body methods.
 ----
 # good
 def no_op; end
-----
-
-=== Top-Level Methods
-
-Avoid top-level method definitions. Organize them in modules, classes or structs instead.
-
-NOTE: It is fine to use top-level method definitions in scripts.
-
-[source,ruby]
-----
-# bad
-def some_method; end
-
-# good
-class SomeClass
-  def some_method; end
-end
 ----
 
 === Endless Methods
