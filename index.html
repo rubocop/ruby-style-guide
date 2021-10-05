@@ -1705,7 +1705,18 @@ Historically it is derived from the fact that <code>case</code> and <code>switch
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="k">def</span> <span class="nf">some_method</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">initialize</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">data</span><span class="p">.</span><span class="nf">manipulate!</span>
+  <span class="n">data</span><span class="p">.</span><span class="nf">result</span>
+<span class="k">end</span>
+<span class="k">def</span> <span class="nf">some_other_method</span>
+  <span class="n">result</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span>
   <span class="n">data</span> <span class="o">=</span> <span class="n">initialize</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
 
   <span class="n">data</span><span class="p">.</span><span class="nf">manipulate!</span>
@@ -1713,7 +1724,7 @@ Historically it is derived from the fact that <code>case</code> and <code>switch
   <span class="n">data</span><span class="p">.</span><span class="nf">result</span>
 <span class="k">end</span>
 
-<span class="k">def</span> <span class="nf">some_method</span>
+<span class="k">def</span> <span class="nf">some_other_method</span>
   <span class="n">result</span>
 <span class="k">end</span></code></pre>
 </div>
@@ -7928,7 +7939,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-09-08 16:24:42 UTC
+Last updated 2021-10-05 21:28:35 UTC
 </div>
 </div>
 </body>
