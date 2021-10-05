@@ -481,6 +481,17 @@ Use empty lines between method definitions and also to break up methods into log
 
 [source,ruby]
 ----
+# bad
+def some_method
+  data = initialize(options)
+  data.manipulate!
+  data.result
+end
+def some_other_method
+  result
+end
+
+# good
 def some_method
   data = initialize(options)
 
@@ -489,7 +500,7 @@ def some_method
   data.result
 end
 
-def some_method
+def some_other_method
   result
 end
 ----
