@@ -2086,6 +2086,72 @@ rescue StandardError => e
 end
 ----
 
+=== Reading from a file [[file-read]]
+
+Use the convenience methods `File.read` or `File.binread` when only reading a file start to finish in a single operation.
+
+[source,ruby]
+----
+## text mode
+# bad (only when reading from beginning to end - modes: 'r', 'rt', 'r+', 'r+t')
+File.open(filename).read
+File.open(filename, &:read)
+File.open(filename) { |f| f.read }
+File.open(filename) do |f|
+  f.read
+end
+File.open(filename, 'r').read
+File.open(filename, 'r', &:read)
+File.open(filename, 'r') { |f| f.read }
+File.open(filename, 'r') do |f|
+  f.read
+end
+
+# good
+File.read(filename)
+
+## binary mode
+# bad (only when reading from beginning to end - modes: 'rb', 'r+b')
+File.open(filename, 'rb').read
+File.open(filename, 'rb', &:read)
+File.open(filename, 'rb') { |f| f.read }
+File.open(filename, 'rb') do |f|
+  f.read
+end
+
+# good
+File.binread(filename)
+----
+
+=== Writing to a file [[file-write]]
+
+Use the convenience methods `File.write` or `File.binwrite` when only opening a file to create / replace its content in a single operation.
+
+[source,ruby]
+----
+## text mode
+# bad (only truncating modes: 'w', 'wt', 'w+', 'w+t')
+File.open(filename, 'w').write(content)
+File.open(filename, 'w') { |f| f.write(content) }
+File.open(filename, 'w') do |f|
+  f.write(content)
+end
+
+# good
+File.write(filename, content)
+
+## binary mode
+# bad (only truncating modes: 'wb', 'w+b')
+File.open(filename, 'wb').write(content)
+File.open(filename, 'wb') { |f| f.write(content) }
+File.open(filename, 'wb') do |f|
+  f.write(content)
+end
+
+# good
+File.binwrite(filename, content)
+----
+
 === Release External Resources [[release-resources]]
 
 Release external resources obtained by your program in an `ensure` block.
