@@ -4116,6 +4116,19 @@ hash = { :one => 1, :two => 2, :three => 3 }
 hash = { one: 1, two: 2, three: 3 }
 ----
 
+=== Hash Literal Values
+
+Use the Ruby 3.1 hash literal value syntax when your hash key and value are the same.
+
+[source,ruby]
+----
+# bad
+hash = { one: one, two: two, three: three }
+
+# good
+hash = { one:, two:, three: }
+----
+
 === Hash Literal as Last Array Item [[hash-literal-as-last-array-item]]
 
 Wrap hash literal in braces if it is a last array item.
