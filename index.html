@@ -900,6 +900,7 @@ pre.rouge {
 <li><a href="#symbols-as-keys">Symbols as Keys</a></li>
 <li><a href="#no-mutable-keys">No Mutable Keys</a></li>
 <li><a href="#hash-literals">Hash Literals</a></li>
+<li><a href="#hash-literal-values">Hash Literal Values</a></li>
 <li><a href="#hash-literal-as-last-array-item">Hash Literal as Last Array Item</a></li>
 <li><a href="#no-mixed-hash-syntaxes">No Mixed Hash Syntaxes</a></li>
 <li><a href="#avoid-hash-constructor">Avoid Hash[] constructor</a></li>
@@ -5899,6 +5900,21 @@ This is a hybrid of <code>Array</code>'s intuitive inter-operation facilities an
 </div>
 </div>
 <div class="sect2">
+<h3 id="hash-literal-values"><a class="anchor" href="#hash-literal-values"></a><a class="link" href="#hash-literal-values">Hash Literal Values</a></h3>
+<div class="paragraph">
+<p>Use the Ruby 3.1 hash literal value syntax when your hash key and value are the same.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">one: </span><span class="n">one</span><span class="p">,</span> <span class="ss">two: </span><span class="n">two</span><span class="p">,</span> <span class="ss">three: </span><span class="n">three</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="n">one</span><span class="p">:,</span> <span class="n">two</span><span class="p">:,</span> <span class="ss">three: </span><span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="hash-literal-as-last-array-item"><a class="anchor" href="#hash-literal-as-last-array-item"></a><a class="link" href="#hash-literal-as-last-array-item">Hash Literal as Last Array Item</a></h3>
 <div class="paragraph">
 <p>Wrap hash literal in braces if it is a last array item.</p>
@@ -8011,7 +8027,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-26 07:43:43 UTC
+Last updated 2021-12-20 17:37:10 UTC
 </div>
 </div>
 </body>
