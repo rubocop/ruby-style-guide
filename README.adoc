@@ -3101,6 +3101,25 @@ def some_method(...)
 end
 ----
 
+=== Block Forwarding
+
+Use Ruby 3.1's anonymous block forwarding.
+
+In most cases, block argument is given name similar to `&block` or `&proc`. Their names have no information and `&` will be sufficient for syntactic meaning.
+
+[source,ruby]
+----
+# bad
+def some_method(&block)
+  other_method(&block)
+end
+
+# good
+def some_method(&)
+  other_method(&)
+end
+----
+
 === Private Global Methods [[private-global-methods]]
 
 If you really need "global" methods, add them to Kernel and make them private.
