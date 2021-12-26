@@ -817,6 +817,7 @@ pre.rouge {
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
 <li><a href="#keyword-arguments-vs-option-hashes">Keyword Arguments vs Option Hashes</a></li>
 <li><a href="#arguments-forwarding">Arguments Forwarding</a></li>
+<li><a href="#block-forwarding">Block Forwarding</a></li>
 <li><a href="#private-global-methods">Private Global Methods</a></li>
 </ul>
 </li>
@@ -4723,6 +4724,28 @@ Ruby has some unexpected results when calling methods that have optional argumen
 </div>
 </div>
 <div class="sect2">
+<h3 id="block-forwarding"><a class="anchor" href="#block-forwarding"></a><a class="link" href="#block-forwarding">Block Forwarding</a></h3>
+<div class="paragraph">
+<p>Use Ruby 3.1&#8217;s anonymous block forwarding.</p>
+</div>
+<div class="paragraph">
+<p>In most cases, block argument is given name similar to <code>&amp;block</code> or <code>&amp;proc</code>. Their names have no information and <code>&amp;</code> will be sufficient for syntactic meaning.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">other_method</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">some_method</span><span class="p">(</span><span class="o">&amp;</span><span class="p">)</span>
+  <span class="n">other_method</span><span class="p">(</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="private-global-methods"><a class="anchor" href="#private-global-methods"></a><a class="link" href="#private-global-methods">Private Global Methods</a></h3>
 <div class="paragraph">
 <p>If you really need "global" methods, add them to Kernel and make them private.</p>
@@ -8027,7 +8050,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-20 17:37:10 UTC
+Last updated 2021-12-26 16:35:57 UTC
 </div>
 </div>
 </body>
