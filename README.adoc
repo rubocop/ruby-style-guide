@@ -40,7 +40,7 @@ You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asc
 asciidoctor-pdf -a allow-uri-read README.adoc
 
 # Generates README.html
-asciidoctor
+asciidoctor README.adoc
 ----
 
 [TIP]
