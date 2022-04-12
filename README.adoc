@@ -4394,6 +4394,19 @@ array.reverse.each { ... }
 array.reverse_each { ... }
 ----
 
+=== `Object#yield_self` vs `Object#then` [[object-yield-self-vs-object-then]]
+
+The method `Object#then` is preferred over the method `Object#yield_self`, since method name of `Object#yield_self` states the intention, not the behavior.
+
+[source,ruby]
+----
+# bad
+obj.yield_self { |x| x.do_something }
+
+# good
+obj.then { |x| x.do_something }
+----
+
 == Numbers
 
 === Underscores in Numerics [[underscores-in-numerics]]
