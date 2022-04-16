@@ -4407,6 +4407,8 @@ obj.yield_self { |x| x.do_something }
 obj.then { |x| x.do_something }
 ----
 
+NOTE: You can read more about the rationale behind this guideline https://bugs.ruby-lang.org/issues/14594[here].
+
 == Numbers
 
 === Underscores in Numerics [[underscores-in-numerics]]
