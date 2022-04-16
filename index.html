@@ -919,6 +919,7 @@ pre.rouge {
 <li><a href="#count-vs-size"><code>count</code> vs <code>size</code></a></li>
 <li><a href="#flat-map"><code>flat_map</code></a></li>
 <li><a href="#reverse-each"><code>reverse_each</code></a></li>
+<li><a href="#object-yield-self-vs-object-then"><code>Object#yield_self</code> vs <code>Object#then</code></a></li>
 </ul>
 </li>
 <li><a href="#numbers">Numbers</a>
@@ -6218,6 +6219,21 @@ Even in the worst case where a class does not provide a specialized implementati
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="object-yield-self-vs-object-then"><a class="anchor" href="#object-yield-self-vs-object-then"></a><a class="link" href="#object-yield-self-vs-object-then"><code>Object#yield_self</code> vs <code>Object#then</code></a></h3>
+<div class="paragraph">
+<p>The method <code>Object#then</code> is preferred over the method <code>Object#yield_self</code>, since method name of <code>Object#yield_self</code> states the intention, not the behavior.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">yield_self</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span><span class="p">.</span><span class="nf">do_something</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="n">obj</span><span class="p">.</span><span class="nf">then</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span><span class="p">.</span><span class="nf">do_something</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -8049,7 +8065,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-26 15:21:28 UTC
+Last updated 2022-04-16 09:43:20 UTC
 </div>
 </div>
 </body>
