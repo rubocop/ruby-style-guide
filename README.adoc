@@ -4396,7 +4396,7 @@ array.reverse_each { ... }
 
 === `Object#yield_self` vs `Object#then` [[object-yield-self-vs-object-then]]
 
-The method `Object#then` is preferred over the method `Object#yield_self`, since method name of `Object#yield_self` states the intention, not the behavior.
+The method `Object#then` is preferred over `Object#yield_self`, since the name `yield_self` states the intention, not the behavior.
 
 [source,ruby]
 ----
