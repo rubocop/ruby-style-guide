@@ -2195,6 +2195,30 @@ File.open('testfile') do |f|
 end
 ----
 
+=== Atomic File Operations [[atomic-file-operations]]
+
+When doing file operations after confirming the existence check of a file, frequent parallel file operations may cause problems that are difficult to reproduce.
+Therefore, it is preferable to use atomic file operations.
+
+[source,ruby]
+----
+# bad - race condition with another process may result in an error in `mkdir`
+unless Dir.exist?(path)
+  FileUtils.mkdir(path)
+end
+
+# good - atomic and idempotent creation
+FileUtils.mkdir_p(path)
+
+# bad - race condition with another process may result in an error in `remove`
+if File.exist?(path)
+  FileUtils.remove(path)
+end
+
+# good - atomic and idempotent removal
+FileUtils.rm_f(path)
+----
+
 === Standard Exceptions [[standard-exceptions]]
 
 Prefer the use of exceptions from the standard library over introducing new exception classes.
