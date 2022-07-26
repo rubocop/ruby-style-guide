@@ -1422,10 +1422,12 @@ end
 
 === `and`/`or` [[no-and-or-or]] [[and-or-flow]]
 
-`and` and `or` are control flow operators. They have very low precedence, and can be used as a short
-form of specifying flow sequences like "evaluate expression 1, and only if it is not successful
-(returned `nil`), evaluate expression 2". This is especially useful for raising errors or early
-return without breaking the reading flow.
+Do not use `and` and `or` in boolean context - `and` and `or` are control flow
+operators and should be used as such. They have very low precedence, and can be
+used as a short form of specifying flow sequences like "evaluate expression 1,
+and only if it is not successful (returned `nil`), evaluate expression 2". This
+is especially useful for raising errors or early return without breaking the
+reading flow.
 
 [source,ruby]
 ----
@@ -1454,8 +1456,8 @@ ok = got_needed_arguments && arguments_valid
 x = extract_arguments || raise(ArgumentError, "Not enough arguments!")
 ----
 
-But avoid several control flow operators in one expression, that becomes
-confusing:
+But avoid several control flow operators in one expression, as that quickly
+becomes confusing:
 
 [source,ruby]
 ----
@@ -1478,7 +1480,7 @@ if x
 end
 ---
 
-NOTE: Whether organizing control flow with `and` and `or` is a good idea was a controversial topic in the community for a long time. But if you do, prefer these operators over `&&`/`||`.
+NOTE: Whether organizing control flow with `and` and `or` is a good idea has been a controversial topic in the community for a long time. But if you do, prefer these operators over `&&`/`||`.
 
 === Multi-line Ternary Operator [[no-multiline-ternary]]
 
