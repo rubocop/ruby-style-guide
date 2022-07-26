@@ -818,6 +818,10 @@ pre.rouge {
 <li><a href="#good-31">good</a></li>
 <li><a href="#bad-you-need-to-close-the-file-descriptor-explicitly">bad - you need to close the file descriptor explicitly</a></li>
 <li><a href="#good-the-file-descriptor-is-closed-automatically">good - the file descriptor is closed automatically</a></li>
+<li><a href="#bad-race-condition-with-another-process-may-result-in-an-error-in-mkdir">bad - race condition with another process may result in an error in <code>mkdir</code></a></li>
+<li><a href="#good-atomic-and-idempotent-creation">good - atomic and idempotent creation</a></li>
+<li><a href="#bad-race-condition-with-another-process-may-result-in-an-error-in-remove">bad - race condition with another process may result in an error in <code>remove</code></a></li>
+<li><a href="#good-atomic-and-idempotent-removal">good - atomic and idempotent removal</a></li>
 <li><a href="#bad-28">bad</a></li>
 <li><a href="#good-32">good</a></li>
 <li><a href="#good-swapping-variable-assignment">good - swapping variable assignment</a></li>
@@ -3864,6 +3868,36 @@ f.close</p>
 <p>File.open('testfile') do |f|
   # some action on the file
 end</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>=== Atomic File Operations [[atomic-file-operations]]
+
+When doing file operations after confirming the existence check of a file, frequent parallel file operations may cause problems that are difficult to reproduce.
+Therefore, it is preferable to use atomic file operations.
+
+[source,ruby]</pre>
+</div>
+</div>
+<h1 id="bad-race-condition-with-another-process-may-result-in-an-error-in-mkdir" class="sect0"><a class="anchor" href="#bad-race-condition-with-another-process-may-result-in-an-error-in-mkdir"></a><a class="link" href="#bad-race-condition-with-another-process-may-result-in-an-error-in-mkdir">bad - race condition with another process may result in an error in <code>mkdir</code></a></h1>
+<div class="paragraph">
+<p>unless Dir.exist?(path)
+  FileUtils.mkdir(path)
+end</p>
+</div>
+<h1 id="good-atomic-and-idempotent-creation" class="sect0"><a class="anchor" href="#good-atomic-and-idempotent-creation"></a><a class="link" href="#good-atomic-and-idempotent-creation">good - atomic and idempotent creation</a></h1>
+<div class="paragraph">
+<p>FileUtils.mkdir_p(path)</p>
+</div>
+<h1 id="bad-race-condition-with-another-process-may-result-in-an-error-in-remove" class="sect0"><a class="anchor" href="#bad-race-condition-with-another-process-may-result-in-an-error-in-remove"></a><a class="link" href="#bad-race-condition-with-another-process-may-result-in-an-error-in-remove">bad - race condition with another process may result in an error in <code>remove</code></a></h1>
+<div class="paragraph">
+<p>if File.exist?(path)
+  FileUtils.remove(path)
+end</p>
+</div>
+<h1 id="good-atomic-and-idempotent-removal" class="sect0"><a class="anchor" href="#good-atomic-and-idempotent-removal"></a><a class="link" href="#good-atomic-and-idempotent-removal">good - atomic and idempotent removal</a></h1>
+<div class="paragraph">
+<p>FileUtils.rm_f(path)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8431,7 +8465,7 @@ And we want to have the best possible guide, don't we?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-26 19:44:49 UTC
+Last updated 2022-07-26 20:13:11 UTC
 </div>
 </div>
 </body>
