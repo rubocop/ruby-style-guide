@@ -2915,10 +2915,12 @@ The alternative syntax <code>when x: &#8230;&#8203;</code> has been removed as o
 <div class="sect2">
 <h3 id="and-or-flow"><a class="anchor" href="#and-or-flow"></a><a class="link" href="#and-or-flow"><code>and</code>/<code>or</code> <a id="no-and-or-or"></a></a></h3>
 <div class="paragraph">
-<p><code>and</code> and <code>or</code> are control flow operators. They have very low precedence, and can be used as a short
-form of specifying flow sequences like "evaluate expression 1, and only if it is not successful
-(returned <code>nil</code>), evaluate expression 2". This is especially useful for raising errors or early
-return without breaking the reading flow.</p>
+<p>Do not use <code>and</code> and <code>or</code> in boolean context - <code>and</code> and <code>or</code> are control flow
+operators and should be used as such. They have very low precedence, and can be
+used as a short form of specifying flow sequences like "evaluate expression 1,
+and only if it is not successful (returned <code>nil</code>), evaluate expression 2". This
+is especially useful for raising errors or early return without breaking the
+reading flow.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2948,8 +2950,8 @@ return without breaking the reading flow.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>But avoid several control flow operators in one expression, that becomes
-confusing:</p>
+<p>But avoid several control flow operators in one expression, as that quickly
+becomes confusing:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2972,7 +2974,7 @@ confusing:</p>
 <span class="k">end</span>
 <span class="o">---</span>
 
-<span class="no">NOTE</span><span class="p">:</span> <span class="no">Whether</span> <span class="n">organizing</span> <span class="n">control</span> <span class="n">flow</span> <span class="n">with</span> <span class="sb">`and`</span> <span class="n">and</span> <span class="sb">`or`</span> <span class="n">is</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span> <span class="n">was</span> <span class="n">a</span> <span class="n">controversial</span> <span class="n">topic</span> <span class="k">in</span> <span class="n">the</span> <span class="n">community</span> <span class="k">for</span> <span class="n">a</span> <span class="n">long</span> <span class="n">time</span><span class="o">.</span> <span class="no">But</span> <span class="k">if</span> <span class="n">you</span> <span class="k">do</span><span class="p">,</span> <span class="n">prefer</span> <span class="n">these</span> <span class="n">operators</span> <span class="n">over</span> <span class="sb">`&amp;&amp;`</span><span class="o">/</span><span class="sb">`||`</span><span class="p">.</span>
+<span class="no">NOTE</span><span class="p">:</span> <span class="no">Whether</span> <span class="n">organizing</span> <span class="n">control</span> <span class="n">flow</span> <span class="n">with</span> <span class="sb">`and`</span> <span class="n">and</span> <span class="sb">`or`</span> <span class="n">is</span> <span class="n">a</span> <span class="n">good</span> <span class="n">idea</span> <span class="n">has</span> <span class="n">been</span> <span class="n">a</span> <span class="n">controversial</span> <span class="n">topic</span> <span class="k">in</span> <span class="n">the</span> <span class="n">community</span> <span class="k">for</span> <span class="n">a</span> <span class="n">long</span> <span class="n">time</span><span class="o">.</span> <span class="no">But</span> <span class="k">if</span> <span class="n">you</span> <span class="k">do</span><span class="p">,</span> <span class="n">prefer</span> <span class="n">these</span> <span class="n">operators</span> <span class="n">over</span> <span class="sb">`&amp;&amp;`</span><span class="o">/</span><span class="sb">`||`</span><span class="p">.</span>
 
 <span class="nf">=</span><span class="o">==</span> <span class="no">Multi</span><span class="o">-</span><span class="n">line</span> <span class="no">Ternary</span> <span class="no">Operator</span> <span class="p">[[</span><span class="n">no</span><span class="o">-</span><span class="n">multiline</span><span class="o">-</span><span class="n">ternary</span><span class="p">]]</span>
 
@@ -8429,7 +8431,7 @@ And we want to have the best possible guide, don't we?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-26 19:40:06 UTC
+Last updated 2022-07-26 19:44:49 UTC
 </div>
 </div>
 </body>
