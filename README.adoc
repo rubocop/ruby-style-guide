@@ -1478,7 +1478,7 @@ if x
   log("extracted")
   return
 end
----
+----
 
 NOTE: Whether organizing control flow with `and` and `or` is a good idea has been a controversial topic in the community for a long time. But if you do, prefer these operators over `&&`/`||`.
 
