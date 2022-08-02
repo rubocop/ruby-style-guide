@@ -1,4 +1,4 @@
-= The Ruby Style Guide
+= Ruby Style Guide
 :idprefix:
 :idseparator: -
 :sectanchors:
