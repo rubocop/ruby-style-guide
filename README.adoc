@@ -1456,7 +1456,7 @@ ok = got_needed_arguments && arguments_valid
 x = extract_arguments || raise(ArgumentError, "Not enough arguments!")
 ----
 
-But avoid several control flow operators in one expression, as that quickly
+Avoid several control flow operators in one expression, as that quickly
 becomes confusing:
 
 [source,ruby]
@@ -1480,7 +1480,31 @@ if x
 end
 ----
 
-NOTE: Whether organizing control flow with `and` and `or` is a good idea has been a controversial topic in the community for a long time. But if you do, prefer these operators over `&&`/`||`.
+NOTE: Whether organizing control flow with `and` and `or` is a good idea has been a controversial topic in the community for a long time. But if you do, prefer these operators over `&&`/`||`. As the different operators are meant to have different semantics that makes it easier to reason whether you're dealing with a logical expression (that will get reduced to a boolean value) or with flow of control.
+
+.Why is using `and` and `or` as logical operators a bad idea?
+****
+Simply put - because they add some cognitive overhead, as they don't behave like similarly named logical operators in other languages.
+
+First of all, `and` and `or` operators have lower precedence than the `=` operator, whereas the `&&` and `||` operators have higher precedence than the `=` operator, based on order of operations.
+
+[source,ruby]
+----
+foo = true and false # results in foo being equal to true. Equivalent to (foo = true) and false
+bar = false or true  # results in bar being equal to false. Equivalent to (bar = false) or true
+----
+
+Also `&&` has higher precedence than `||`, where as `and` and `or` have the same one. Funny enough, even though `and` and `or`
+were inspired by Perl, they don't have different precedence in Perl.
+
+[source,ruby]
+----
+foo = true or true and false # => false (it's effectively (true or true) and false)
+foz = true || true && false # => true (it's effectively true || (true && false)
+bar = false or true and false # => false (it's effectively (false or true) and false)
+baz = false || true && false # => false (it's effectively false || (true && false))
+----
+****
 
 === Multi-line Ternary Operator [[no-multiline-ternary]]
 
