@@ -919,7 +919,7 @@ end
 
 === CapitalCase for Classes and Modules [[camelcase-classes]]
 
-NOTE: `CapitalCase` is also known as `UpperCamelCase, `CapitalWords`
+NOTE: `CapitalCase` is also known as `UpperCamelCase`, `CapitalWords`
 and `PascalCase`.
 
 Use `CapitalCase` for classes and modules.
