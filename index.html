@@ -6123,10 +6123,10 @@ just a hash literal should be preferred.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="n">batman</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">name: </span><span class="s1">'Bruce Wayne'</span><span class="p">,</span> <span class="ss">is_evil: </span><span class="kp">false</span> <span class="p">}</span>
 
-<span class="c1"># bad - if we just use || operator with falsy value we won't get the expected result</span>
+<span class="c1"># bad - if we just use || operator with falsey value we won't get the expected result</span>
 <span class="n">batman</span><span class="p">[</span><span class="ss">:is_evil</span><span class="p">]</span> <span class="o">||</span> <span class="kp">true</span> <span class="c1"># =&gt; true</span>
 
-<span class="c1"># good - fetch works correctly with falsy values</span>
+<span class="c1"># good - fetch works correctly with falsey values</span>
 <span class="n">batman</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:is_evil</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span> <span class="c1"># =&gt; false</span></code></pre>
 </div>
 </div>
@@ -8149,7 +8149,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-04 15:10:30 UTC
+Last updated 2022-08-23 07:53:40 UTC
 </div>
 </div>
 </body>
