@@ -4307,10 +4307,10 @@ Introduce default values for hash keys via `Hash#fetch` as opposed to using cust
 ----
 batman = { name: 'Bruce Wayne', is_evil: false }
 
-# bad - if we just use || operator with falsy value we won't get the expected result
+# bad - if we just use || operator with falsey value we won't get the expected result
 batman[:is_evil] || true # => true
 
-# good - fetch works correctly with falsy values
+# good - fetch works correctly with falsey values
 batman.fetch(:is_evil, true) # => false
 ----
 
