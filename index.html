@@ -2879,10 +2879,10 @@ were inspired by Perl, they don&#8217;t have different precedence in Perl.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="n">foo</span> <span class="o">=</span> <span class="kp">true</span> <span class="n">or</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span> <span class="c1"># =&gt; false (it's effectively (true or true) and false)</span>
-<span class="n">foz</span> <span class="o">=</span> <span class="kp">true</span> <span class="o">||</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span> <span class="c1"># =&gt; true (it's effectively true || (true &amp;&amp; false)</span>
-<span class="n">bar</span> <span class="o">=</span> <span class="kp">false</span> <span class="n">or</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span> <span class="c1"># =&gt; false (it's effectively (false or true) and false)</span>
-<span class="n">baz</span> <span class="o">=</span> <span class="kp">false</span> <span class="o">||</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span> <span class="c1"># =&gt; false (it's effectively false || (true &amp;&amp; false))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="kp">true</span> <span class="n">or</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span> <span class="c1"># =&gt; false (it's effectively (true or true) and false)</span>
+<span class="kp">true</span> <span class="o">||</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span> <span class="c1"># =&gt; true (it's effectively true || (true &amp;&amp; false)</span>
+<span class="kp">false</span> <span class="n">or</span> <span class="kp">true</span> <span class="n">and</span> <span class="kp">false</span> <span class="c1"># =&gt; false (it's effectively (false or true) and false)</span>
+<span class="kp">false</span> <span class="o">||</span> <span class="kp">true</span> <span class="o">&amp;&amp;</span> <span class="kp">false</span> <span class="c1"># =&gt; false (it's effectively false || (true &amp;&amp; false))</span></code></pre>
 </div>
 </div>
 </div>
@@ -8149,7 +8149,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-23 07:53:40 UTC
+Last updated 2022-08-24 00:49:07 UTC
 </div>
 </div>
 </body>
