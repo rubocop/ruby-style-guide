@@ -1499,10 +1499,10 @@ were inspired by Perl, they don't have different precedence in Perl.
 
 [source,ruby]
 ----
-foo = true or true and false # => false (it's effectively (true or true) and false)
-foz = true || true && false # => true (it's effectively true || (true && false)
-bar = false or true and false # => false (it's effectively (false or true) and false)
-baz = false || true && false # => false (it's effectively false || (true && false))
+true or true and false # => false (it's effectively (true or true) and false)
+true || true && false # => true (it's effectively true || (true && false)
+false or true and false # => false (it's effectively (false or true) and false)
+false || true && false # => false (it's effectively false || (true && false))
 ----
 ****
 
