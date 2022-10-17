@@ -255,6 +255,19 @@ puts 'bar'
 puts 'foo', 'bar' # this applies to puts in particular
 ----
 
+=== Operator Method Call
+
+Avoid dot where not required for operator method calls.
+
+[source,ruby]
+----
+# bad
+num.+ 42
+
+# good
+num + 42
+----
+
 === Spaces and Operators [[spaces-operators]]
 
 Use spaces around operators, after commas, colons and semicolons.
