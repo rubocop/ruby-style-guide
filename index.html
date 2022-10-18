@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <title>Ruby Style Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -84,10 +84,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -671,6 +671,7 @@ pre.rouge {
 <li><a href="#newline-eof">Should I Terminate Files with a Newline?</a></li>
 <li><a href="#no-semicolon">Should I Terminate Expressions with <code>;</code>?</a></li>
 <li><a href="#one-expression-per-line">One Expression Per Line</a></li>
+<li><a href="#operator-method-call">Operator Method Call</a></li>
 <li><a href="#spaces-operators">Spaces and Operators</a></li>
 <li><a href="#spaces-braces">Spaces and Braces</a></li>
 <li><a href="#no-space-bang">No Space after Bang</a></li>
@@ -1446,6 +1447,21 @@ This should be done via editor configuration, not manually.
 <span class="nb">puts</span> <span class="s1">'bar'</span>
 
 <span class="nb">puts</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span> <span class="c1"># this applies to puts in particular</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="operator-method-call"><a class="anchor" href="#operator-method-call"></a><a class="link" href="#operator-method-call">Operator Method Call</a></h3>
+<div class="paragraph">
+<p>Avoid dot where not required for operator method calls.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">num</span><span class="p">.</span><span class="nf">+</span> <span class="mi">42</span>
+
+<span class="c1"># good</span>
+<span class="n">num</span> <span class="o">+</span> <span class="mi">42</span></code></pre>
 </div>
 </div>
 </div>
@@ -8149,7 +8165,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-08-24 00:49:07 UTC
+Last updated 2022-10-18 04:53:37 UTC
 </div>
 </div>
 </body>
