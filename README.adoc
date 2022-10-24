@@ -3210,7 +3210,8 @@ class Person
   prepend YetAnotherModule
 
   # inner classes
-  CustomError = Class.new(StandardError)
+  class CustomError < StandardError
+  end
 
   # constants are next
   SOME_CONSTANT = 20
