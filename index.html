@@ -4858,7 +4858,8 @@ Ruby has some unexpected results when calling methods that have optional argumen
   <span class="n">prepend</span> <span class="no">YetAnotherModule</span>
 
   <span class="c1"># inner classes</span>
-  <span class="no">CustomError</span> <span class="o">=</span> <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">StandardError</span><span class="p">)</span>
+  <span class="k">class</span> <span class="nc">CustomError</span> <span class="o">&lt;</span> <span class="no">StandardError</span>
+  <span class="k">end</span>
 
   <span class="c1"># constants are next</span>
   <span class="no">SOME_CONSTANT</span> <span class="o">=</span> <span class="mi">20</span>
@@ -8165,7 +8166,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-18 04:53:37 UTC
+Last updated 2022-10-25 05:12:38 UTC
 </div>
 </div>
 </body>
