@@ -323,6 +323,29 @@ foo&. bar
 foo&.bar
 ----
 
+=== Safe navigation
+
+Avoid long chains of `&.`. Replace with `.` if they introduce unnecessary conditional logic. 
+Consider other approaches such as delegation.
+
+For condition where users are guaranteed to have an address and addresses are guaranteed to have a zip code
+
+[source, thoughtbot(https://thoughtbot.com/blog/ruby-safe-navigation#conditional-equivalence)]
+# bad
+user&.address&.zip
+
+#good 
+user && user.address.zip
+
+#good
+class User
+  def zip
+    address.zip
+  end
+end
+
+user&.zip
+
 === Spaces and Braces [[spaces-braces]]
 
 No spaces after `(`, `[` or before `]`, `)`.
