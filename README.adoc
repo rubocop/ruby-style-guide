@@ -328,7 +328,7 @@ foo&.bar
 Avoid long chains of `&.` replace with `.`, if safe navigator operator introduce unnecessary conditional logic.
 Consider other approaches such as delegation.
 
-For condition where users are guaranteed to have an address and addresses are guaranteed to have a zip code
+If users are guaranteed to have an address and addresses are guaranteed to have a zip code:
 
 [source, thoughtbot]
 ----
