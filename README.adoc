@@ -330,7 +330,7 @@ Consider other approaches such as delegation.
 
 For condition where users are guaranteed to have an address and addresses are guaranteed to have a zip code
 
-[source, thoughtbot(https://thoughtbot.com/blog/ruby-safe-navigation#conditional-equivalence)]
+[source, thoughtbot]
 # bad
 user&.address&.zip
 
