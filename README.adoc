@@ -331,6 +331,7 @@ Consider other approaches such as delegation.
 For condition where users are guaranteed to have an address and addresses are guaranteed to have a zip code
 
 [source, thoughtbot]
+----
 # bad
 user&.address&.zip
 
@@ -345,6 +346,7 @@ class User
 end
 
 user&.zip
+----
 
 === Spaces and Braces [[spaces-braces]]
 
