@@ -325,7 +325,7 @@ foo&.bar
 
 === Safe navigation
 
-Avoid long chains of `&.`. Replace with `.` if they introduce unnecessary conditional logic. 
+Avoid long chains of `&.`. Replace with `.`. if safe navigator operator introduce unnecessary conditional logic.
 Consider other approaches such as delegation.
 
 For condition where users are guaranteed to have an address and addresses are guaranteed to have a zip code
