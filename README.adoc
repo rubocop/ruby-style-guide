@@ -325,29 +325,32 @@ foo&.bar
 
 === Safe navigation
 
-Avoid long chains of `&.` replace with `.`, if safe navigator operator introduce unnecessary conditional logic.
-Consider other approaches such as delegation.
+Avoid chaining of `&.`. Replace with `.` and an explicit check.
+E.g. if users are guaranteed to have an address and addresses are guaranteed to have a zip code:
 
-If users are guaranteed to have an address and addresses are guaranteed to have a zip code:
-
-[source, thoughtbot]
+[source, ruby]
 ----
 # bad
 user&.address&.zip
 
 #good 
 user && user.address.zip
+----
+
+If such a change introduces excessive conditional logic, consider other approaches, such as delegation:
+[source, ruby]
+----
+#bad
+user && user.address && user.address.zip
 
 #good
 class User
   def zip
-    address.zip
+    address&.zip
   end
 end
-
 user&.zip
 ----
-
 === Spaces and Braces [[spaces-braces]]
 
 No spaces after `(`, `[` or before `]`, `)`.
