@@ -673,6 +673,7 @@ pre.rouge {
 <li><a href="#one-expression-per-line">One Expression Per Line</a></li>
 <li><a href="#operator-method-call">Operator Method Call</a></li>
 <li><a href="#spaces-operators">Spaces and Operators</a></li>
+<li><a href="#safe-navigation">Safe navigation</a></li>
 <li><a href="#spaces-braces">Spaces and Braces</a></li>
 <li><a href="#no-space-bang">No Space after Bang</a></li>
 <li><a href="#no-space-inside-range-literals">No Space inside Range Literals</a></li>
@@ -1535,6 +1536,39 @@ Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper 
 
 <span class="c1"># good</span>
 <span class="n">foo</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">bar</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="safe-navigation"><a class="anchor" href="#safe-navigation"></a><a class="link" href="#safe-navigation">Safe navigation</a></h3>
+<div class="paragraph">
+<p>Avoid chaining of <code>&amp;.</code>. Replace with <code>.</code> and an explicit check.
+E.g. if users are guaranteed to have an address and addresses are guaranteed to have a zip code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span>
+
+<span class="c1">#good</span>
+<span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If such a change introduces excessive conditional logic, consider other approaches, such as delegation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1">#bad</span>
+<span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span>
+
+<span class="c1">#good</span>
+<span class="k">class</span> <span class="nc">User</span>
+  <span class="k">def</span> <span class="nf">zip</span>
+    <span class="n">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span></code></pre>
 </div>
 </div>
 </div>
@@ -8166,7 +8200,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-03 17:10:25 UTC
+Last updated 2022-12-29 14:25:43 UTC
 </div>
 </div>
 </body>
