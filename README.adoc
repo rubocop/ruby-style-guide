@@ -4862,28 +4862,34 @@ sprintf('%d %d', 20, 10)
 # => '20 10'
 
 # good
-sprintf('%<first>d %<second>d', first: 20, second: 10)
+sprintf('%{first} %{second}', first: 20, second: 10)
 # => '20 10'
 
 format('%d %d', 20, 10)
 # => '20 10'
 
 # good
-format('%<first>d %<second>d', first: 20, second: 10)
+format('%{first} %{second}', first: 20, second: 10)
 # => '20 10'
 ----
 
 === Named Format Tokens [[named-format-tokens]]
 
-When using named format string tokens, favor `%<name>s` over `%{name}` because it encodes information about the type of the value.
+When using named format string tokens, favor `%{name}` over `%<name>s` or `%<name>`.
+An exception is when formatting, as the `%<name>s` style uses format style, but `%{name}` style doesn't.
 
 [source,ruby]
 ----
 # bad
-format('Hello, %{name}', name: 'John')
+format('Total: %<sum>d', sum: 123.567)
+format('Hello, %<name>', name: 'John')
+
+# ok - using format style
+format('Total: %<sum>7.2f', sum: 123.456) # => ' 123.68'
 
 # good
-format('Hello, %<name>s', name: 'John')
+format('Total: %{sum}d', sum: 123.567)
+format('Hello, %{name}', name: 'John')
 ----
 
 === Long Strings [[heredoc-long-strings]]
