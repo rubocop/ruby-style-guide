@@ -3604,6 +3604,21 @@ end
 Person = Struct.new(:first_name, :last_name)
 ----
 
+=== Don't Extend `Data.define` [[no-extend-data-define]]
+
+Don't extend an instance initialized by `Data.define`.
+Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
+
+[source,ruby]
+----
+# bad
+class Person < Data.define(:first_name, :last_name)
+end
+
+# good
+Person = Data.define(:first_name, :last_name)
+----
+
 === Duck Typing [[duck-typing]]
 
 Prefer https://en.wikipedia.org/wiki/Duck_typing[duck-typing] over inheritance.
