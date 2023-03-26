@@ -3607,7 +3607,7 @@ Person = Struct.new(:first_name, :last_name)
 === Don't Extend `Data.define` [[no-extend-data-define]]
 
 Don't extend an instance initialized by `Data.define`.
-Extending it introduces a superfluous class level and may also introduce weird errors if the file is required multiple times.
+Extending it introduces a superfluous class level.
 
 [source,ruby]
 ----
