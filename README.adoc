@@ -3615,8 +3615,14 @@ Extending it introduces a superfluous class level.
 class Person < Data.define(:first_name, :last_name)
 end
 
+Person.ancestors
+# => [Person, #<Class:0x0000000105abed88>, Data, Object, (...)]
+
 # good
 Person = Data.define(:first_name, :last_name)
+
+Person.ancestors
+# => [Person, Data, Object, (...)]
 ----
 
 === Duck Typing [[duck-typing]]
