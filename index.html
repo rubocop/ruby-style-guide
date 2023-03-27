@@ -840,6 +840,7 @@ pre.rouge {
 <li><a href="#attr"><code>attr</code></a></li>
 <li><a href="#struct-new"><code>Struct.new</code></a></li>
 <li><a href="#no-extend-struct-new">Don&#8217;t Extend <code>Struct.new</code></a></li>
+<li><a href="#no-extend-data-define">Don&#8217;t Extend <code>Data.define</code></a></li>
 <li><a href="#duck-typing">Duck Typing</a></li>
 <li><a href="#no-class-vars">No Class Vars</a></li>
 <li><a href="#visibility">Leverage Access Modifiers (e.g. <code>private</code> and <code>protected</code>)</a></li>
@@ -5298,6 +5299,29 @@ Extending it introduces a superfluous class level and may also introduce weird e
 </div>
 </div>
 <div class="sect2">
+<h3 id="no-extend-data-define"><a class="anchor" href="#no-extend-data-define"></a><a class="link" href="#no-extend-data-define">Don&#8217;t Extend <code>Data.define</code></a></h3>
+<div class="paragraph">
+<p>Don&#8217;t extend an instance initialized by <code>Data.define</code>.
+Extending it introduces a superfluous class level.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">Data</span><span class="p">.</span><span class="nf">define</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">,</span> <span class="ss">:last_name</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="no">Person</span><span class="p">.</span><span class="nf">ancestors</span>
+<span class="c1"># =&gt; [Person, #&lt;Class:0x0000000105abed88&gt;, Data, Object, (...)]</span>
+
+<span class="c1"># good</span>
+<span class="no">Person</span> <span class="o">=</span> <span class="no">Data</span><span class="p">.</span><span class="nf">define</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">,</span> <span class="ss">:last_name</span><span class="p">)</span>
+
+<span class="no">Person</span><span class="p">.</span><span class="nf">ancestors</span>
+<span class="c1"># =&gt; [Person, Data, Object, (...)]</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="duck-typing"><a class="anchor" href="#duck-typing"></a><a class="link" href="#duck-typing">Duck Typing</a></h3>
 <div class="paragraph">
 <p>Prefer <a href="https://en.wikipedia.org/wiki/Duck_typing">duck-typing</a> over inheritance.</p>
@@ -8200,7 +8224,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-12-29 14:25:43 UTC
+Last updated 2023-03-27 19:44:13 UTC
 </div>
 </div>
 </body>
