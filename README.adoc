@@ -1554,7 +1554,7 @@ Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
 === `if` as a Modifier [[if-as-a-modifier]]
 
 Prefer modifier `if`/`unless` usage when you have a single-line body.
-Another good alternative is the usage of control flow `&&`/`||`.
+Another good alternative is the usage of control flow `and`/`or`.
 
 [source,ruby]
 ----
@@ -1567,7 +1567,7 @@ end
 do_something if some_condition
 
 # another good option
-some_condition && do_something
+some_condition and do_something
 ----
 
 === Multi-line `if` Modifiers [[no-multiline-if-modifiers]]
