@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <title>Ruby Style Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -208,13 +208,10 @@ table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
-.exampleblock>.content>:first-child{margin-top:0}
-.exampleblock>.content>:last-child{margin-bottom:0}
 .sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
-.sidebarblock>:first-child{margin-top:0}
-.sidebarblock>:last-child{margin-bottom:0}
 .sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
-.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
@@ -393,7 +390,7 @@ b.conum *{color:inherit!important}
 dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
 h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
 p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content,span.alt,summary{font-size:1.0625rem}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -2498,7 +2495,7 @@ This convention is recognized by the Ruby interpreter and tools like RuboCop wil
 Symmetrical semantics means both sides of the operator are typically of the same or coercible types.</p>
 </div>
 <div class="paragraph">
-<p>Operators and operator-alike methods with symmetrical semantics (the parameter should be named <code>other</code>): <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>eql?</code>, <code>equal?</code>.</p>
+<p>Operators and operator-alike methods with symmetrical semantics (the parameter should be named <code>other</code>): <code>`, `-`, `<strong>+</code>, <code>/</code>, <code>%</code>, <code></strong>*</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>eql?</code>, <code>equal?</code>.</p>
 </div>
 <div class="paragraph">
 <p>Operators with non-symmetrical semantics (the parameter should <strong>not</strong> be named <code>other</code>): <code>&lt;&lt;</code>, <code>[]</code> (collection/item relations between operands), <code>===</code> (pattern/matchable relations).</p>
@@ -6746,9 +6743,9 @@ It&#8217;s called on them automatically.</p>
 <div class="sect2">
 <h3 id="concat-strings"><a class="anchor" href="#concat-strings"></a><a class="link" href="#concat-strings">String Concatenation</a></h3>
 <div class="paragraph">
-<p>Avoid using <code>String#+</code> when you need to construct large data chunks.
-Instead, use <code>String#&lt;&lt;</code>.
-Concatenation mutates the string instance in-place and is always faster than <code>String#+</code>, which creates a bunch of new string objects.</p>
+<p>Avoid using <code>String#` when you need to construct large data chunks.
+Instead, use `String#&lt;&lt;`.
+Concatenation mutates the string instance in-place and is always faster than `String#</code>, which creates a bunch of new string objects.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7682,7 +7679,7 @@ You can read more about it
 <div class="sect2">
 <h3 id="no-flip-flops"><a class="anchor" href="#no-flip-flops"></a><a class="link" href="#no-flip-flops">No Flip-flops</a></h3>
 <div class="paragraph">
-<p>Avoid the use of flip-flops.</p>
+<p>Avoid the use of <a href="https://en.wikipedia.org/wiki/Flip-flop_(programming)">flip-flop operators</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -8224,7 +8221,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-27 19:44:13 UTC
+Last updated 2023-07-07 18:25:28 UTC
 </div>
 </div>
 </body>
