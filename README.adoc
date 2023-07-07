@@ -5577,7 +5577,7 @@ Fix by either:
 
 === No Flip-flops [[no-flip-flops]]
 
-Avoid the use of flip-flops.
+Avoid the use of https://en.wikipedia.org/wiki/Flip-flop_(programming)[flip-flop operators].
 
 === No non-`nil` Checks [[no-non-nil-checks]]
 
