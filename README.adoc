@@ -2618,6 +2618,27 @@ names.select { |name| name.start_with?('S') }.map(&:upcase)
 
 Some will argue that multi-line chaining would look OK with the use of {...}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?
 
+=== Single-line `do`...`end` block [[single-line-do-end-block]]
+
+Use multi-line `do`...`end` block instead of single-line `do`...`end` block.
+
+[source,ruby]
+----
+# bad
+foo do |arg| bar(arg) end
+
+# good
+foo do |arg|
+  bar(arg)
+end
+
+# bad
+->(arg) do bar(arg) end
+
+# good
+->(arg) { bar(arg) }
+----
+
 === Explicit Block Argument [[block-argument]]
 
 Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block.
