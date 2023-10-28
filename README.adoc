@@ -3535,7 +3535,7 @@ class Person
     "#{@first_name} #{@last_name}"
   end
 
-  def set_name(name)
+  def set_name=(name)
     @first_name, @last_name = name.split(' ')
   end
 end
