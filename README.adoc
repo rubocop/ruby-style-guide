@@ -3104,7 +3104,7 @@ def some_method(foo: false, bar:, baz: 10)
 end
 
 # good
-def some_method(foo:, bar: false, baz: 10)
+def some_method(bar:, foo: false, baz: 10)
   # body omitted
 end
 ----
