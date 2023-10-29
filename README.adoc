@@ -2504,7 +2504,7 @@ Array === something
 
 # good
 something.is_a?(Array)
-(1..100).include?(7)
+(1..100).cover?(7)
 some_string.match?(/something/)
 ----
 
