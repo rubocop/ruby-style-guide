@@ -3289,8 +3289,8 @@ end
 # good
 class Person
   # multiple mixins go in separate statements
-  include Foo
   include Bar
+  include Foo
 end
 ----
 
