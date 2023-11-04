@@ -1548,7 +1548,7 @@ E.g. if users are guaranteed to have an address and addresses are guaranteed to 
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
 <span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span>
 
-<span class="c1">#good</span>
+<span class="c1"># good</span>
 <span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span></code></pre>
 </div>
 </div>
@@ -1557,10 +1557,10 @@ E.g. if users are guaranteed to have an address and addresses are guaranteed to 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1">#bad</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
 <span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span>
 
-<span class="c1">#good</span>
+<span class="c1"># good</span>
 <span class="k">class</span> <span class="nc">User</span>
   <span class="k">def</span> <span class="nf">zip</span>
     <span class="n">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span>
@@ -8221,7 +8221,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-29 04:09:11 UTC
+Last updated 2023-11-04 06:17:50 UTC
 </div>
 </div>
 </body>
