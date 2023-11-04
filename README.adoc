@@ -4216,6 +4216,20 @@ arr[100] = 1 # now you have an array with lots of nils
 === `first` and `last` [[first-and-last]]
 
 When accessing the first or last element from an array, prefer `first` or `last` over `[0]` or `[-1]`.
+`first` and `last` take less effort to understand, especially for a less experienced Ruby programmer or someone from a language with different indexing semantics.
+
+[source,ruby]
+----
+arr = [1, 2, 3]
+
+# bad
+arr[0]  # => 1
+arr[-1] # => 3
+
+# good
+arr.first # => 1
+arr.last  # => 3
+----
 
 === Set vs Array [[set-vs-array]]
 
