@@ -214,7 +214,7 @@ Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/macOS users are covered
 ====
 If you're using Git you might want to add the following configuration setting to protect your project from Windows line endings creeping in:
 
-[source,bash]
+[source,shell]
 ----
 $ git config --global core.autocrlf true
 ----
@@ -328,7 +328,7 @@ foo&.bar
 Avoid chaining of `&.`. Replace with `.` and an explicit check.
 E.g. if users are guaranteed to have an address and addresses are guaranteed to have a zip code:
 
-[source, ruby]
+[source,ruby]
 ----
 # bad
 user&.address&.zip
@@ -338,7 +338,7 @@ user && user.address.zip
 ----
 
 If such a change introduces excessive conditional logic, consider other approaches, such as delegation:
-[source, ruby]
+[source,ruby]
 ----
 # bad
 user && user.address && user.address.zip
@@ -3842,12 +3842,12 @@ This convention tends to reduce repetitive boilerplate in such classes.
 [source,ruby]
 ----
 class TestClass
-  # bad -- more work when class renamed/method moved
+  # bad - more work when class renamed/method moved
   def self.call(param1, param2)
     TestClass.new(param1).call(param2)
   end
 
-  # bad -- more verbose than necessary
+  # bad - more verbose than necessary
   def self.call(param1, param2)
     self.new(param1).call(param2)
   end
@@ -5505,9 +5505,10 @@ class Organization < ActiveRecord::Base
 end
 
 linux_organization = Organization.find(...)
-# BAD - violates privacy
+
+# bad - violates privacy
 linux_organization.send(:reset_token)
-# GOOD - should throw an exception
+# good - should throw an exception
 linux_organization.public_send(:reset_token)
 ----
 
@@ -5523,10 +5524,10 @@ u1 = UDPSocket.new
 u1.bind('127.0.0.1', 4913)
 u2 = UDPSocket.new
 u2.connect('127.0.0.1', 4913)
-# Won't send a message to the receiver obj.
-# Instead it will send a message via UDP socket.
+
+# bad - Won't send a message to the receiver object. Instead it will send a message via UDP socket.
 u2.send :sleep, 0
-# Will actually send a message to the receiver obj.
+# good - Will actually send a message to the receiver object.
 u2.__send__ ...
 ----
 
