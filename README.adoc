@@ -333,17 +333,17 @@ E.g. if users are guaranteed to have an address and addresses are guaranteed to 
 # bad
 user&.address&.zip
 
-#good 
+# good
 user && user.address.zip
 ----
 
 If such a change introduces excessive conditional logic, consider other approaches, such as delegation:
 [source, ruby]
 ----
-#bad
+# bad
 user && user.address && user.address.zip
 
-#good
+# good
 class User
   def zip
     address&.zip
