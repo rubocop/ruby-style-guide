@@ -1391,7 +1391,7 @@ to remove it automatically on save.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>git config <span class="nt">--global</span> core.autocrlf <span class="nb">true</span></code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="nv">$ </span>git config <span class="nt">--global</span> core.autocrlf <span class="nb">true</span></code></pre>
 </div>
 </div>
 </td>
@@ -5557,12 +5557,12 @@ This convention tends to reduce repetitive boilerplate in such classes.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">TestClass</span>
-  <span class="c1"># bad -- more work when class renamed/method moved</span>
+  <span class="c1"># bad - more work when class renamed/method moved</span>
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">call</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">)</span>
     <span class="no">TestClass</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">param1</span><span class="p">).</span><span class="nf">call</span><span class="p">(</span><span class="n">param2</span><span class="p">)</span>
   <span class="k">end</span>
 
-  <span class="c1"># bad -- more verbose than necessary</span>
+  <span class="c1"># bad - more verbose than necessary</span>
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">call</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">)</span>
     <span class="nb">self</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">param1</span><span class="p">).</span><span class="nf">call</span><span class="p">(</span><span class="n">param2</span><span class="p">)</span>
   <span class="k">end</span>
@@ -7576,9 +7576,10 @@ If you must use <code>method_missing</code>:</p>
 <span class="k">end</span>
 
 <span class="n">linux_organization</span> <span class="o">=</span> <span class="no">Organization</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="c1"># BAD - violates privacy</span>
+
+<span class="c1"># bad - violates privacy</span>
 <span class="n">linux_organization</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="ss">:reset_token</span><span class="p">)</span>
-<span class="c1"># GOOD - should throw an exception</span>
+<span class="c1"># good - should throw an exception</span>
 <span class="n">linux_organization</span><span class="p">.</span><span class="nf">public_send</span><span class="p">(</span><span class="ss">:reset_token</span><span class="p">)</span></code></pre>
 </div>
 </div>
@@ -7596,10 +7597,10 @@ If you must use <code>method_missing</code>:</p>
 <span class="n">u1</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">4913</span><span class="p">)</span>
 <span class="n">u2</span> <span class="o">=</span> <span class="no">UDPSocket</span><span class="p">.</span><span class="nf">new</span>
 <span class="n">u2</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">4913</span><span class="p">)</span>
-<span class="c1"># Won't send a message to the receiver obj.</span>
-<span class="c1"># Instead it will send a message via UDP socket.</span>
+
+<span class="c1"># bad - Won't send a message to the receiver object. Instead it will send a message via UDP socket.</span>
 <span class="n">u2</span><span class="p">.</span><span class="nf">send</span> <span class="ss">:sleep</span><span class="p">,</span> <span class="mi">0</span>
-<span class="c1"># Will actually send a message to the receiver obj.</span>
+<span class="c1"># good - Will actually send a message to the receiver object.</span>
 <span class="n">u2</span><span class="p">.</span><span class="nf">__send__</span> <span class="o">...</span></code></pre>
 </div>
 </div>
@@ -8245,7 +8246,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-05 06:57:37 UTC
+Last updated 2023-11-05 08:22:12 UTC
 </div>
 </div>
 </body>
