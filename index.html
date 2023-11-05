@@ -789,6 +789,7 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#single-action-blocks">Proc Application Shorthand</a></li>
 <li><a href="#single-line-blocks">Single-line Blocks Delimiters</a></li>
+<li><a href="#single-line-do-end-block">Single-line <code>do</code>&#8230;&#8203;<code>end</code> block</a></li>
 <li><a href="#block-argument">Explicit Block Argument</a></li>
 <li><a href="#no-trailing-parameters-comma">Trailing Comma in Block Parameters</a></li>
 <li><a href="#no-nested-methods">Nested Method Definitions</a></li>
@@ -4149,6 +4150,29 @@ Avoid <code>do&#8230;&#8203;end</code> when chaining.</p>
 </div>
 <div class="paragraph">
 <p>Some will argue that multi-line chaining would look OK with the use of {&#8230;&#8203;}, but they should ask themselves - is this code really readable and can the blocks' contents be extracted into nifty methods?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="single-line-do-end-block"><a class="anchor" href="#single-line-do-end-block"></a><a class="link" href="#single-line-do-end-block">Single-line <code>do</code>&#8230;&#8203;<code>end</code> block</a></h3>
+<div class="paragraph">
+<p>Use multi-line <code>do</code>&#8230;&#8203;<code>end</code> block instead of single-line <code>do</code>&#8230;&#8203;<code>end</code> block.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">foo</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg</span><span class="o">|</span> <span class="n">bar</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="n">foo</span> <span class="k">do</span> <span class="o">|</span><span class="n">arg</span><span class="o">|</span>
+  <span class="n">bar</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># bad</span>
+<span class="o">-&gt;</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">do</span> <span class="n">bar</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="o">-&gt;</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span> <span class="n">bar</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="p">}</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -8221,7 +8245,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-04 06:17:50 UTC
+Last updated 2023-11-05 06:56:19 UTC
 </div>
 </div>
 </body>
