@@ -2584,6 +2584,9 @@ Use the Proc call shorthand when the called method is the only operation of a bl
 # bad
 names.map { |name| name.upcase }
 
+# bad
+names.map { _1.upcase }
+
 # good
 names.map(&:upcase)
 ----
