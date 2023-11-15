@@ -34,7 +34,7 @@ This style guide evolves over time as additional conventions are identified and 
 ifdef::env-github[]
 You can generate a PDF copy of this guide using https://asciidoctor.org/docs/asciidoctor-pdf/[AsciiDoctor PDF], and an HTML copy https://asciidoctor.org/docs/convert-documents/#converting-a-document-to-html[with] https://asciidoctor.org/#installation[AsciiDoctor] using the following commands:
 
-[source,shell]
+[source,console]
 ----
 # Generates README.pdf
 asciidoctor-pdf -a allow-uri-read README.adoc
@@ -47,7 +47,7 @@ asciidoctor README.adoc
 ====
 Install the `rouge` gem to get nice syntax highlighting in the generated document.
 
-[source,shell]
+[source,console]
 ----
 gem install rouge
 ----
@@ -214,7 +214,7 @@ Use Unix-style line endings.footnote:[*BSD/Solaris/Linux/macOS users are covered
 ====
 If you're using Git you might want to add the following configuration setting to protect your project from Windows line endings creeping in:
 
-[source,shell]
+[source,console]
 ----
 $ git config --global core.autocrlf true
 ----
