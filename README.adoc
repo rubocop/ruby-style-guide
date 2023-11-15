@@ -334,7 +334,7 @@ E.g. if users are guaranteed to have an address and addresses are guaranteed to 
 user&.address&.zip
 
 # good
-user && user.address.zip
+user && user.address&.zip
 ----
 
 If such a change introduces excessive conditional logic, consider other approaches, such as delegation:
