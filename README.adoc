@@ -814,14 +814,18 @@ user.set(name: 'John', age: 45, permissions: { read: true })
 
 === DSL Method Calls [[no-dsl-decorating]]
 
-Omit both the outer braces and parentheses for methods that are part of an internal DSL.
+Omit both the outer braces and parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec).
 
 [source,ruby]
 ----
 class Person < ActiveRecord::Base
   # bad
-  validates(:name, { presence: true, length: { within: 1..10 } })
+  attr_reader(:name, :age)
+  # good
+  attr_reader :name, :age
 
+  # bad
+  validates(:name, { presence: true, length: { within: 1..10 } })
   # good
   validates :name, presence: true, length: { within: 1..10 }
 end
@@ -3009,18 +3013,6 @@ fork
 'test'.upcase
 ----
 
-==== Methods That are Part of an Internal DSL [[method-invocation-parens-internal-dsl]][[method-call-parens-internal-dsl]]
-
-Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):
-
-[source,ruby]
-----
-# bad
-validates(:name, presence: true)
-# good
-validates :name, presence: true
-----
-
 ==== Methods That Have "keyword" Status in Ruby [[method-invocation-parens-keyword]][[method-call-parens-keyword]]
 
 Always omit parentheses for methods that have "keyword" status in Ruby.
@@ -3028,22 +3020,6 @@ Always omit parentheses for methods that have "keyword" status in Ruby.
 NOTE: Unfortunately, it's not exactly clear _which_ methods have "keyword" status.
 There is agreement that declarative methods have "keyword" status.
 However, there's less agreement on which non-declarative methods, if any, have "keyword" status.
-
-===== Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-declarative-keyword]][[method-call-parens-declarative-keyword]]
-
-Always omit parentheses for declarative methods (a.k.a. DSL methods or macro methods) that have "keyword" status in Ruby (e.g., various `Module` instance methods):
-
-[source,ruby]
-----
-class Person
-  # bad
-  attr_reader(:name, :age)
-  # good
-  attr_reader :name, :age
-
-  # body omitted
-end
-----
 
 ===== Non-Declarative Methods That Have "keyword" Status in Ruby [[method-invocation-parens-non-declarative-keyword]][[method-call-parens-non-declarative-keyword]]
 
