@@ -6015,7 +6015,21 @@ Apply this rule only to arrays with two or more elements.</p>
 <div class="sect2">
 <h3 id="first-and-last"><a class="anchor" href="#first-and-last"></a><a class="link" href="#first-and-last"><code>first</code> and <code>last</code></a></h3>
 <div class="paragraph">
-<p>When accessing the first or last element from an array, prefer <code>first</code> or <code>last</code> over <code>[0]</code> or <code>[-1]</code>.</p>
+<p>When accessing the first or last element from an array, prefer <code>first</code> or <code>last</code> over <code>[0]</code> or <code>[-1]</code>.
+<code>first</code> and <code>last</code> take less effort to understand, especially for a less experienced Ruby programmer or someone from a language with different indexing semantics.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># bad</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># =&gt; 1</span>
+<span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># =&gt; 3</span>
+
+<span class="c1"># good</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">first</span> <span class="c1"># =&gt; 1</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">last</span>  <span class="c1"># =&gt; 3</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -8218,7 +8232,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-22 21:37:05 UTC
+Last updated 2023-11-22 21:54:10 UTC
 </div>
 </div>
 </body>
