@@ -3091,7 +3091,7 @@ some_method('w', 'x', 'y', 'z') # => 'y, z, w, x'
 
 === Keyword Arguments Order
 
-Put required keyword arguments before optional keyword arguments. Otherwise, it's much harder to spot optional arguments there, if they're hidden somewhere in the middle.
+Put required keyword arguments before optional keyword arguments. Otherwise, it's much harder to spot optional keyword arguments there, if they're hidden somewhere in the middle.
 
 [source,ruby]
 ----
