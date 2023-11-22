@@ -2089,14 +2089,18 @@ optional.
 <div class="sect2">
 <h3 id="no-dsl-decorating"><a class="anchor" href="#no-dsl-decorating"></a><a class="link" href="#no-dsl-decorating">DSL Method Calls</a></h3>
 <div class="paragraph">
-<p>Omit both the outer braces and parentheses for methods that are part of an internal DSL.</p>
+<p>Omit both the outer braces and parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec).</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="c1"># bad</span>
-  <span class="n">validates</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="p">{</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span> <span class="p">})</span>
+  <span class="nb">attr_reader</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span><span class="p">)</span>
+  <span class="c1"># good</span>
+  <span class="nb">attr_reader</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
 
+  <span class="c1"># bad</span>
+  <span class="n">validates</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="p">{</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span> <span class="p">})</span>
   <span class="c1"># good</span>
   <span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">length: </span><span class="p">{</span> <span class="ss">within: </span><span class="mi">1</span><span class="o">..</span><span class="mi">10</span> <span class="p">}</span>
 <span class="k">end</span></code></pre>
@@ -4612,20 +4616,6 @@ Omit the parentheses when the method doesn&#8217;t accept any parameters.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="methods-that-are-part-of-an-internal-dsl"><a class="anchor" href="#methods-that-are-part-of-an-internal-dsl"></a><a class="link" href="#methods-that-are-part-of-an-internal-dsl">Methods That are Part of an Internal DSL <a id="method-invocation-parens-internal-dsl"></a><a id="method-call-parens-internal-dsl"></a></a></h4>
-<div class="paragraph">
-<p>Always omit parentheses for methods that are part of an internal DSL (e.g., Rake, Rails, RSpec):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">validates</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span><span class="p">)</span>
-<span class="c1"># good</span>
-<span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
 <h4 id="methods-that-have-keyword-status-in-ruby"><a class="anchor" href="#methods-that-have-keyword-status-in-ruby"></a><a class="link" href="#methods-that-have-keyword-status-in-ruby">Methods That Have "keyword" Status in Ruby <a id="method-invocation-parens-keyword"></a><a id="method-call-parens-keyword"></a></a></h4>
 <div class="paragraph">
 <p>Always omit parentheses for methods that have "keyword" status in Ruby.</p>
@@ -4643,24 +4633,6 @@ However, there&#8217;s less agreement on which non-declarative methods, if any, 
 </td>
 </tr>
 </table>
-</div>
-<div class="sect4">
-<h5 id="declarative-methods-that-have-keyword-status-in-ruby"><a class="anchor" href="#declarative-methods-that-have-keyword-status-in-ruby"></a><a class="link" href="#declarative-methods-that-have-keyword-status-in-ruby">Declarative Methods That Have "keyword" Status in Ruby <a id="method-invocation-parens-declarative-keyword"></a><a id="method-call-parens-declarative-keyword"></a></a></h5>
-<div class="paragraph">
-<p>Always omit parentheses for declarative methods (a.k.a. DSL methods or macro methods) that have "keyword" status in Ruby (e.g., various <code>Module</code> instance methods):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
-  <span class="c1"># bad</span>
-  <span class="nb">attr_reader</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span><span class="p">)</span>
-  <span class="c1"># good</span>
-  <span class="nb">attr_reader</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
-
-  <span class="c1"># body omitted</span>
-<span class="k">end</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect4">
 <h5 id="non-declarative-methods-that-have-keyword-status-in-ruby"><a class="anchor" href="#non-declarative-methods-that-have-keyword-status-in-ruby"></a><a class="link" href="#non-declarative-methods-that-have-keyword-status-in-ruby">Non-Declarative Methods That Have "keyword" Status in Ruby <a id="method-invocation-parens-non-declarative-keyword"></a><a id="method-call-parens-non-declarative-keyword"></a></a></h5>
@@ -8246,7 +8218,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-17 09:07:01 UTC
+Last updated 2023-11-22 21:35:29 UTC
 </div>
 </div>
 </body>
