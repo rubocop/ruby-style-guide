@@ -2297,7 +2297,7 @@ Prefer the use of exceptions from the standard library over introducing new exce
 === Parallel Assignment [[parallel-assignment]]
 
 Avoid the use of parallel assignment for defining variables.
-Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
+Parallel assignment is allowed when it is the return of a method call (e.g. `Hash#values_at`), used with the splat operator, or when used to swap variable assignment.
 Parallel assignment is less readable than separate assignment.
 
 [source,ruby]
@@ -4404,9 +4404,9 @@ batman.fetch(:powers, obtain_batman_powers) # obtain_batman_powers is an expensi
 batman.fetch(:powers) { obtain_batman_powers }
 ----
 
-=== `Hash#values_at` [[hash-values-at]]
+=== `Hash#values_at` and `Hash#fetch_values` [[hash-values-at-and-hash-fetch-values]]
 
-Use `Hash#values_at` when you need to retrieve several values consecutively from a hash.
+Use `Hash#values_at` or `Hash#fetch_values` when you need to retrieve several values consecutively from a hash.
 
 [source,ruby]
 ----
@@ -4414,8 +4414,15 @@ Use `Hash#values_at` when you need to retrieve several values consecutively from
 email = data['email']
 username = data['nickname']
 
+# bad
+keys = %w[email nickname].freeze
+email, username = keys.map { |key| data[key] }
+
 # good
 email, username = data.values_at('email', 'nickname')
+
+# also good
+email, username = data.fetch_values('email', 'nickname')
 ----
 
 === `Hash#transform_keys` and `Hash#transform_values` [[hash-transform-methods]]
