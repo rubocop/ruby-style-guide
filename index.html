@@ -911,7 +911,7 @@ pre.rouge {
 <li><a href="#hash-fetch"><code>Hash#fetch</code></a></li>
 <li><a href="#hash-fetch-defaults"><code>Hash#fetch</code> defaults</a></li>
 <li><a href="#use-hash-blocks">Use Hash Blocks</a></li>
-<li><a href="#hash-values-at"><code>Hash#values_at</code></a></li>
+<li><a href="#hash-values-at-and-hash-fetch-values"><code>Hash#values_at</code> and <code>Hash#fetch_values</code></a></li>
 <li><a href="#hash-transform-methods"><code>Hash#transform_keys</code> and <code>Hash#transform_values</code></a></li>
 <li><a href="#ordered-hashes">Ordered Hashes</a></li>
 <li><a href="#no-modifying-collections">No Modifying Collections</a></li>
@@ -3778,7 +3778,7 @@ Therefore, it is preferable to use atomic file operations.</p>
 <h3 id="parallel-assignment"><a class="anchor" href="#parallel-assignment"></a><a class="link" href="#parallel-assignment">Parallel Assignment</a></h3>
 <div class="paragraph">
 <p>Avoid the use of parallel assignment for defining variables.
-Parallel assignment is allowed when it is the return of a method call, used with the splat operator, or when used to swap variable assignment.
+Parallel assignment is allowed when it is the return of a method call (e.g. <code>Hash#values_at</code>), used with the splat operator, or when used to swap variable assignment.
 Parallel assignment is less readable than separate assignment.</p>
 </div>
 <div class="listingblock">
@@ -6232,9 +6232,9 @@ just a hash literal should be preferred.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="hash-values-at"><a class="anchor" href="#hash-values-at"></a><a class="link" href="#hash-values-at"><code>Hash#values_at</code></a></h3>
+<h3 id="hash-values-at-and-hash-fetch-values"><a class="anchor" href="#hash-values-at-and-hash-fetch-values"></a><a class="link" href="#hash-values-at-and-hash-fetch-values"><code>Hash#values_at</code> and <code>Hash#fetch_values</code></a></h3>
 <div class="paragraph">
-<p>Use <code>Hash#values_at</code> when you need to retrieve several values consecutively from a hash.</p>
+<p>Use <code>Hash#values_at</code> or <code>Hash#fetch_values</code> when you need to retrieve several values consecutively from a hash.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6242,8 +6242,15 @@ just a hash literal should be preferred.</p>
 <span class="n">email</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'email'</span><span class="p">]</span>
 <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'nickname'</span><span class="p">]</span>
 
+<span class="c1"># bad</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="sx">%w[email nickname]</span><span class="p">.</span><span class="nf">freeze</span>
+<span class="n">email</span><span class="p">,</span> <span class="n">username</span> <span class="o">=</span> <span class="n">keys</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="o">|</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">}</span>
+
 <span class="c1"># good</span>
-<span class="n">email</span><span class="p">,</span> <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'nickname'</span><span class="p">)</span></code></pre>
+<span class="n">email</span><span class="p">,</span> <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">values_at</span><span class="p">(</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'nickname'</span><span class="p">)</span>
+
+<span class="c1"># also good</span>
+<span class="n">email</span><span class="p">,</span> <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">fetch_values</span><span class="p">(</span><span class="s1">'email'</span><span class="p">,</span> <span class="s1">'nickname'</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -8232,7 +8239,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-22 21:54:10 UTC
+Last updated 2023-11-23 10:05:35 UTC
 </div>
 </div>
 </body>
