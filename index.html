@@ -6022,13 +6022,17 @@ Apply this rule only to arrays with two or more elements.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="c1"># bad</span>
+<span class="c1"># ok</span>
 <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># =&gt; 1</span>
 <span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># =&gt; 3</span>
 
-<span class="c1"># good</span>
+<span class="c1"># (arguably) better</span>
 <span class="n">arr</span><span class="p">.</span><span class="nf">first</span> <span class="c1"># =&gt; 1</span>
-<span class="n">arr</span><span class="p">.</span><span class="nf">last</span>  <span class="c1"># =&gt; 3</span></code></pre>
+<span class="n">arr</span><span class="p">.</span><span class="nf">last</span>  <span class="c1"># =&gt; 3</span>
+
+<span class="c1"># good - assignments can only be done via []=</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
 </div>
 </div>
 </div>
@@ -8239,7 +8243,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-23 10:05:35 UTC
+Last updated 2023-11-28 08:05:39 UTC
 </div>
 </div>
 </body>
