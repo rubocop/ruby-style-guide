@@ -4222,13 +4222,17 @@ When accessing the first or last element from an array, prefer `first` or `last`
 ----
 arr = [1, 2, 3]
 
-# bad
+# ok
 arr[0]  # => 1
 arr[-1] # => 3
 
-# good
+# (arguably) better
 arr.first # => 1
 arr.last  # => 3
+
+# good - assignments can only be done via []=
+arr[0] = 2
+arr[-1] = 5
 ----
 
 === Set vs Array [[set-vs-array]]
