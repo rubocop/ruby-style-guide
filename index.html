@@ -6415,11 +6415,18 @@ You can read more about the rationale behind this guideline <a href="https://bug
 <div class="sect2">
 <h3 id="slicing-with-ranges"><a class="anchor" href="#slicing-with-ranges"></a><a class="link" href="#slicing-with-ranges">Slicing with Ranges</a></h3>
 <div class="paragraph">
+<p>Slicing arrays with ranges to extract some of their elements (e.g <code>ary[2..5]</code>) is a popular technique. Below you&#8217;ll find a few small considerations to keep in mind when using it.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p><code>[0..-1]</code> in <code>ary[0..-1]</code> is redundant and simply synonymous with <code>ary</code>.</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - you're selecting all the elements of the array</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">0</span><span class="o">..-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="kp">nil</span><span class="p">]</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">0</span><span class="o">...</span><span class="kp">nil</span><span class="p">]</span>
@@ -6428,31 +6435,38 @@ You can read more about the rationale behind this guideline <a href="https://bug
 <span class="n">ary</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Ruby 2.6 introduced endless ranges.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ruby 2.6 introduced endless ranges, which provide an easier way to describe a slice going all the way to the end of an array.</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - hard to process mentally</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="kp">nil</span><span class="p">]</span>
 
-<span class="c1"># good</span>
+<span class="c1"># good - easier to read and more concise</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="p">]</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Ruby 2.7 introduced beginless ranges. But, unlike the somewhat obscure <code>-1</code> in <code>ary[1..-1]</code>, the <code>0</code> in <code>ary[0..42]</code> is clear
-as a starting point. In fact, changing it to <code>ary[..42]</code> could potentially make it less readable. Therefore, <code>ary[0..42]</code>
-should respect the original programmer&#8217;s intent. On the other hand, <code>ary[nil..42]</code> could be replaced with <code>ary[..42]</code>.
-Similarly, <code>ary[1..nil]</code> could be replaced with <code>ary[1..]</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ruby 2.7 introduced beginless ranges, which are also handy in slicing. However, unlike the somewhat obscure <code>-1</code> in <code>ary[1..-1]</code>, the <code>0</code> in <code>ary[0..42]</code> is clear
+as a starting point. In fact, changing it to <code>ary[..42]</code> could potentially make it less readable. Therefore, using code like <code>ary[0..42]</code>
+is fine. On the other hand, <code>ary[nil..42]</code> should be replaced with <code>ary[..42]</code> or <code>arr[0..42]</code>.</p>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - hard to process mentally</span>
 <span class="n">ary</span><span class="p">[</span><span class="kp">nil</span><span class="o">..</span><span class="mi">42</span><span class="p">]</span>
 
-<span class="c1"># good</span>
+<span class="c1"># good - easier to read</span>
 <span class="n">ary</span><span class="p">[</span><span class="o">..</span><span class="mi">42</span><span class="p">]</span>
 <span class="n">ary</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">42</span><span class="p">]</span></code></pre>
 </div>
@@ -8290,7 +8304,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-13 06:50:58 UTC
+Last updated 2024-01-13 10:44:13 UTC
 </div>
 </div>
 </body>
