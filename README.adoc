@@ -4554,11 +4554,13 @@ NOTE: You can read more about the rationale behind this guideline https://bugs.r
 
 === Slicing with Ranges
 
-`[0..-1]` in `ary[0..-1]` is redundant and simply synonymous with `ary`.
+Slicing arrays with ranges to extract some of their elements (e.g `ary[2..5]`) is a popular technique. Below you'll find a few small considerations to keep in mind when using it.
+
+* `[0..-1]` in `ary[0..-1]` is redundant and simply synonymous with `ary`.
 
 [source,ruby]
 ----
-# bad
+# bad - you're selecting all the elements of the array
 ary[0..-1]
 ary[0..nil]
 ary[0...nil]
@@ -4567,29 +4569,28 @@ ary[0...nil]
 ary
 ----
 
-Ruby 2.6 introduced endless ranges.
+* Ruby 2.6 introduced endless ranges, which provide an easier way to describe a slice going all the way to the end of an array.
 
 [source,ruby]
 ----
-# bad
+# bad - hard to process mentally
 ary[1..-1]
 ary[1..nil]
 
-# good
+# good - easier to read and more concise
 ary[1..]
 ----
 
-Ruby 2.7 introduced beginless ranges. But, unlike the somewhat obscure `-1` in `ary[1..-1]`, the `0` in `ary[0..42]` is clear
-as a starting point. In fact, changing it to `ary[..42]` could potentially make it less readable. Therefore, `ary[0..42]`
-should respect the original programmer's intent. On the other hand, `ary[nil..42]` could be replaced with `ary[..42]`.
-Similarly, `ary[1..nil]` could be replaced with `ary[1..]`.
+* Ruby 2.7 introduced beginless ranges, which are also handy in slicing. However, unlike the somewhat obscure `-1` in `ary[1..-1]`, the `0` in `ary[0..42]` is clear
+as a starting point. In fact, changing it to `ary[..42]` could potentially make it less readable. Therefore, using code like `ary[0..42]`
+is fine. On the other hand, `ary[nil..42]` should be replaced with `ary[..42]` or `arr[0..42]`.
 
 [source,ruby]
 ----
-# bad
+# bad - hard to process mentally
 ary[nil..42]
 
-# good
+# good - easier to read
 ary[..42]
 ary[0..42]
 ----
