@@ -4912,9 +4912,9 @@ message = "This is the #{result}."
 
 === String Concatenation [[concat-strings]]
 
-Avoid using `String#+` when you need to construct large data chunks.
+Avoid using `pass:[String#+]` when you need to construct large data chunks.
 Instead, use `String#<<`.
-Concatenation mutates the string instance in-place and is always faster than `String#+`, which creates a bunch of new string objects.
+Concatenation mutates the string instance in-place and is always faster than `pass:[String#+]`, which creates a bunch of new string objects.
 
 [source,ruby]
 ----
