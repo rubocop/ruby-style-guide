@@ -5626,9 +5626,9 @@ The gemspec should not contain `RUBY_VERSION` as a condition to switch dependenc
 # bad
 Gem::Specification.new do |s|
   if RUBY_VERSION >= '2.5'
-    s.add_runtime_dependency 'gem_a'
+    s.add_dependency 'gem_a'
   else
-    s.add_runtime_dependency 'gem_b'
+    s.add_dependency 'gem_b'
   end
 end
 ----
@@ -5638,6 +5638,26 @@ Fix by either:
 * Post-install messages.
 * Add both gems as dependency (if permissible).
 * If development dependencies, move to Gemfile.
+
+=== `add_dependency` vs `add_runtime_dependency` [[add_dependency_vs_add_runtime_dependency]]
+
+Prefer `add_dependency` over `add_runtime_dependency` because `add_dependency` is considered soft-deprecated
+and the Bundler team recommends `add_dependency`.
+
+[source,ruby]
+----
+# bad
+Gem::Specification.new do |s|
+  s.add_runtime_dependency 'gem_a'
+end
+
+# good
+Gem::Specification.new do |s|
+  s.add_dependency 'gem_a'
+end
+----
+
+See https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316 for details.
 
 == Misc
 
