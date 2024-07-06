@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="generator" content="Asciidoctor 2.0.23">
 <title>Ruby Style Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -140,7 +140,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
 #header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header>h1:only-child{border-bottom:1px solid #dddddf;padding-bottom:8px}
 #header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
@@ -162,6 +162,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
+body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
 #toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
@@ -327,7 +328,7 @@ a.image{text-decoration:none;display:inline-block}
 a.image object{pointer-events:none}
 sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
 sup.footnote a,sup.footnoteref a{text-decoration:none}
-sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+sup.footnote a:active,sup.footnoteref a:active,#footnotes .footnote a:first-of-type:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
 #footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
@@ -1011,6 +1012,7 @@ pre.rouge {
 <li><a href="#gemfile-and-gemspec">Gemfile and Gemspec</a>
 <ul class="sectlevel2">
 <li><a href="#no-ruby-version-in-the-gemspec">No <code>RUBY_VERSION</code> in the gemspec</a></li>
+<li><a href="#add_dependency_vs_add_runtime_dependency"><code>add_dependency</code> vs <code>add_runtime_dependency</code></a></li>
 </ul>
 </li>
 <li><a href="#misc">Misc</a>
@@ -7730,9 +7732,9 @@ You can read more about it
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
 <span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
   <span class="k">if</span> <span class="no">RUBY_VERSION</span> <span class="o">&gt;=</span> <span class="s1">'2.5'</span>
-    <span class="n">s</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s1">'gem_a'</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s1">'gem_a'</span>
   <span class="k">else</span>
-    <span class="n">s</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s1">'gem_b'</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s1">'gem_b'</span>
   <span class="k">end</span>
 <span class="k">end</span></code></pre>
 </div>
@@ -7752,6 +7754,29 @@ You can read more about it
 <p>If development dependencies, move to Gemfile.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add_dependency_vs_add_runtime_dependency"><a class="anchor" href="#add_dependency_vs_add_runtime_dependency"></a><a class="link" href="#add_dependency_vs_add_runtime_dependency"><code>add_dependency</code> vs <code>add_runtime_dependency</code></a></h3>
+<div class="paragraph">
+<p>Prefer <code>add_dependency</code> over <code>add_runtime_dependency</code> because <code>add_dependency</code> is considered soft-deprecated
+and the Bundler team recommends <code>add_dependency</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s1">'gem_a'</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+  <span class="n">s</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s1">'gem_a'</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316" class="bare">https://github.com/rubygems/rubygems/issues/7799#issuecomment-2192720316</a> for details.</p>
 </div>
 </div>
 </div>
@@ -8304,7 +8329,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-13 10:44:13 UTC
+Last updated 2024-07-06 05:08:57 UTC
 </div>
 </div>
 </body>
