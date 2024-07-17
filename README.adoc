@@ -5808,6 +5808,32 @@ if x == 0
 end
 ----
 
+=== Bitwise Predicate Methods [[bitwise-predicate-methods]]
+
+Prefer bitwise predicate methods over direct comparison operations.
+
+[source,ruby]
+----
+# bad - checks any set bits
+(variable & flags).positive?
+
+# good
+variable.anybits?(flags)
+
+# bad - checks all set bits
+(variable & flags) == flags
+
+# good
+variable.allbits?(flags)
+
+# bad - checks no set bits
+(variable & flags).zero?
+(variable & flags) == 0
+
+# good
+variable.nobits?(flags)
+----
+
 === No Cryptic Perlisms [[no-cryptic-perlisms]]
 
 Avoid using Perl-style special variables (like `$:`, `$;`, etc).
