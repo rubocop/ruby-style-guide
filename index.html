@@ -1025,6 +1025,7 @@ pre.rouge {
 <li><a href="#array-coercion">Array Coercion</a></li>
 <li><a href="#ranges-or-between">Ranges or <code>between</code></a></li>
 <li><a href="#predicate-methods">Predicate Methods</a></li>
+<li><a href="#bitwise-predicate-methods">Bitwise Predicate Methods</a></li>
 <li><a href="#no-cryptic-perlisms">No Cryptic Perlisms</a></li>
 <li><a href="#use-require_relative-whenever-possible">Use <code>require_relative</code> whenever possible</a></li>
 <li><a href="#always-warn">Always Warn</a></li>
@@ -7958,6 +7959,34 @@ Numeric comparisons are OK.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="bitwise-predicate-methods"><a class="anchor" href="#bitwise-predicate-methods"></a><a class="link" href="#bitwise-predicate-methods">Bitwise Predicate Methods</a></h3>
+<div class="paragraph">
+<p>Prefer bitwise predicate methods over direct comparison operations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - checks any set bits</span>
+<span class="p">(</span><span class="n">variable</span> <span class="o">&amp;</span> <span class="n">flags</span><span class="p">).</span><span class="nf">positive?</span>
+
+<span class="c1"># good</span>
+<span class="n">variable</span><span class="p">.</span><span class="nf">anybits?</span><span class="p">(</span><span class="n">flags</span><span class="p">)</span>
+
+<span class="c1"># bad - checks all set bits</span>
+<span class="p">(</span><span class="n">variable</span> <span class="o">&amp;</span> <span class="n">flags</span><span class="p">)</span> <span class="o">==</span> <span class="n">flags</span>
+
+<span class="c1"># good</span>
+<span class="n">variable</span><span class="p">.</span><span class="nf">allbits?</span><span class="p">(</span><span class="n">flags</span><span class="p">)</span>
+
+<span class="c1"># bad - checks no set bits</span>
+<span class="p">(</span><span class="n">variable</span> <span class="o">&amp;</span> <span class="n">flags</span><span class="p">).</span><span class="nf">zero?</span>
+<span class="p">(</span><span class="n">variable</span> <span class="o">&amp;</span> <span class="n">flags</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c1"># good</span>
+<span class="n">variable</span><span class="p">.</span><span class="nf">nobits?</span><span class="p">(</span><span class="n">flags</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="no-cryptic-perlisms"><a class="anchor" href="#no-cryptic-perlisms"></a><a class="link" href="#no-cryptic-perlisms">No Cryptic Perlisms</a></h3>
 <div class="paragraph">
 <p>Avoid using Perl-style special variables (like <code>$:</code>, <code>$;</code>, etc).
@@ -8329,7 +8358,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-06 05:08:57 UTC
+Last updated 2024-07-18 06:13:35 UTC
 </div>
 </div>
 </body>
