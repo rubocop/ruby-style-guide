@@ -5194,6 +5194,20 @@ message = "This is the #{result.to_s}."
 message = "This is the #{result}."
 ----
 
+=== Empty Strings In Interpolation [[empty-strings-in-interpolation]]
+
+Don't assign empty strings inside string interpolation.
+For conditionals, use modifier statements instead of ternaries with empty strings.
+
+[source,ruby]
+----
+# bad
+"#{condition ? 'foo' : ''}"
+
+# good
+"#{'foo' if condition}"
+----
+
 === String Concatenation [[concat-strings]]
 
 Avoid using `pass:[String#+]` when you need to construct large data chunks.
