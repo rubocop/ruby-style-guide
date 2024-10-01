@@ -3190,6 +3190,19 @@ def some_method(bar: false)
 end
 ----
 
+=== Merging Keyword Arguments [[merging-keyword-arguments]]
+
+When passing an existing hash as keyword arguments, add additional arguments directly rather than using `merge`.
+
+[source,ruby]
+----
+# bad
+some_method(**opts.merge(foo: true))
+
+# good
+some_method(**opts, foo: true)
+----
+
 === Arguments Forwarding [[arguments-forwarding]]
 
 Use Ruby 2.7's arguments forwarding.
