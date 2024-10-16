@@ -2907,6 +2907,29 @@ def set_x(x) = (@x = x)
 def print_foo = puts("foo")
 ----
 
+=== Ambiguous Endless Method Definitions [[ambiguous-endless-method-defintions]]
+
+Keywords with lower precedence than `=` can appear ambiguous when used after an endless method definition. This includes `and`, `or`, and the modifier forms of `if`, `unless`, `while`, and `until`. In these cases, the code may appear to include these keywords as part of the method body, but instead they actually modify the method definition itself.
+
+In this cases, prefer using a normal method over an endless method.
+
+[source,ruby]
+----
+# bad
+def foo = true if bar
+
+# good - using a non-endless method is more explicit
+def foo
+  true
+end if bar
+
+# ok - method body is explicit
+def foo = (true if bar)
+
+# ok - method definition is explicit
+(def foo = true) if bar
+----
+
 === Double Colons [[double-colons]]
 
 Use `::` only to reference constants (this includes classes and modules) and constructors (like `Array()` or `Nokogiri::HTML()`).
