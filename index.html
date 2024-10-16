@@ -807,6 +807,7 @@ pre.rouge {
 <li><a href="#top-level-methods">Top-Level Methods</a></li>
 <li><a href="#no-single-line-methods">No Single-line Methods</a></li>
 <li><a href="#endless-methods">Endless Methods</a></li>
+<li><a href="#ambiguous-endless-method-defintions">Ambiguous Endless Method Definitions</a></li>
 <li><a href="#double-colons">Double Colons</a></li>
 <li><a href="#colon-method-definition">Colon Method Definition</a></li>
 <li><a href="#method-parens">Method Definition Parentheses</a></li>
@@ -4501,6 +4502,32 @@ prefer endless methods.
 <span class="c1"># Not (so) good: has side effect</span>
 <span class="k">def</span> <span class="nf">set_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="vi">@x</span> <span class="o">=</span> <span class="n">x</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">print_foo</span> <span class="o">=</span> <span class="nb">puts</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ambiguous-endless-method-defintions"><a class="anchor" href="#ambiguous-endless-method-defintions"></a><a class="link" href="#ambiguous-endless-method-defintions">Ambiguous Endless Method Definitions</a></h3>
+<div class="paragraph">
+<p>Keywords with lower precedence than <code>=</code> can appear ambiguous when used after an endless method definition. This includes <code>and</code>, <code>or</code>, and the modifier forms of <code>if</code>, <code>unless</code>, <code>while</code>, and <code>until</code>. In these cases, the code may appear to include these keywords as part of the method body, but instead they actually modify the method definition itself.</p>
+</div>
+<div class="paragraph">
+<p>In this cases, prefer using a normal method over an endless method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">foo</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">bar</span>
+
+<span class="c1"># good - using a non-endless method is more explicit</span>
+<span class="k">def</span> <span class="nf">foo</span>
+  <span class="kp">true</span>
+<span class="k">end</span> <span class="k">if</span> <span class="n">bar</span>
+
+<span class="c1"># ok - method body is explicit</span>
+<span class="k">def</span> <span class="nf">foo</span> <span class="o">=</span> <span class="p">(</span><span class="kp">true</span> <span class="k">if</span> <span class="n">bar</span><span class="p">)</span>
+
+<span class="c1"># ok - method definition is explicit</span>
+<span class="p">(</span><span class="k">def</span> <span class="nf">foo</span> <span class="o">=</span> <span class="kp">true</span><span class="p">)</span> <span class="k">if</span> <span class="n">bar</span></code></pre>
 </div>
 </div>
 </div>
@@ -8358,7 +8385,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-07-18 06:13:35 UTC
+Last updated 2024-10-16 09:47:20 UTC
 </div>
 </div>
 </body>
