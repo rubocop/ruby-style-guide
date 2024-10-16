@@ -818,6 +818,7 @@ pre.rouge {
 <li><a href="#boolean-keyword-arguments">Boolean Keyword Arguments</a></li>
 <li><a href="#keyword-arguments-vs-optional-arguments">Keyword Arguments vs Optional Arguments</a></li>
 <li><a href="#keyword-arguments-vs-option-hashes">Keyword Arguments vs Option Hashes</a></li>
+<li><a href="#merging-keyword-arguments">Merging Keyword Arguments</a></li>
 <li><a href="#arguments-forwarding">Arguments Forwarding</a></li>
 <li><a href="#block-forwarding">Block Forwarding</a></li>
 <li><a href="#private-global-methods">Private Global Methods</a></li>
@@ -4839,6 +4840,21 @@ Ruby has some unexpected results when calling methods that have optional argumen
 </div>
 </div>
 <div class="sect2">
+<h3 id="merging-keyword-arguments"><a class="anchor" href="#merging-keyword-arguments"></a><a class="link" href="#merging-keyword-arguments">Merging Keyword Arguments</a></h3>
+<div class="paragraph">
+<p>When passing an existing hash as keyword arguments, add additional arguments directly rather than using <code>merge</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">some_method</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="ss">foo: </span><span class="kp">true</span><span class="p">))</span>
+
+<span class="c1"># good</span>
+<span class="n">some_method</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">,</span> <span class="ss">foo: </span><span class="kp">true</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="arguments-forwarding"><a class="anchor" href="#arguments-forwarding"></a><a class="link" href="#arguments-forwarding">Arguments Forwarding</a></h3>
 <div class="paragraph">
 <p>Use Ruby 2.7&#8217;s arguments forwarding.</p>
@@ -8385,7 +8401,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-16 09:47:20 UTC
+Last updated 2024-10-16 09:47:48 UTC
 </div>
 </div>
 </body>
