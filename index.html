@@ -6871,9 +6871,9 @@ It&#8217;s called on them automatically.</p>
 <div class="sect2">
 <h3 id="concat-strings"><a class="anchor" href="#concat-strings"></a><a class="link" href="#concat-strings">String Concatenation</a></h3>
 <div class="paragraph">
-<p>Avoid using <code>String#` when you need to construct large data chunks.
-Instead, use `String#&lt;&lt;`.
-Concatenation mutates the string instance in-place and is always faster than `String#</code>, which creates a bunch of new string objects.</p>
+<p>Avoid using <code>String#+</code> when you need to construct large data chunks.
+Instead, use <code>String#&lt;&lt;</code>.
+Concatenation mutates the string instance in-place and is always faster than <code>String#+</code>, which creates a bunch of new string objects.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8401,7 +8401,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-16 09:47:48 UTC
+Last updated 2024-10-16 09:49:00 UTC
 </div>
 </div>
 </body>
