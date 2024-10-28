@@ -5033,6 +5033,27 @@ LOREM
 "when an unknown printer took a galley of type and scrambled it to make a type specimen book."
 ----
 
+== Enumerable
+
+=== Leverage `#lazy` to Optimize Memory Usage [[leverage-lazy-to-optimize-memory-usage]]
+
+Using `Enumerable#lazy` in combination with methods like `Enumerable#first` or `Enumerable#take` can be very efficient, especially for operations on large collections, datasets and infinite sequences seamlessly.
+
+Enumerator::Lazy can be constructed from any Enumerable with the `Enumerable#lazy` method without evaluating them immediately, and evaluating values on as-needed basis.
+
+The real enumeration is performed when any non-redefined Enumerable method is called.
+
+[source,ruby]
+----
+# bad
+(0..).uniq { |x| x + 2 }.first(10)
+(0..10000000).select { |x| x % 1000 }.first(5)
+
+# good
+(0..).lazy.uniq { |x| x + 2 }.first(10)
+(0..10000000).lazy.select { |x| x % 1000 }.first(5)
+----
+
 == Heredocs
 
 === Squiggly Heredocs [[squiggly-heredocs]]
