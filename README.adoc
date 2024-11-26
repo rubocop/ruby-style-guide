@@ -2165,6 +2165,12 @@ rescue StandardError => e
 end
 ----
 
+=== Standard Exceptions [[standard-exceptions]]
+
+Prefer the use of exceptions from the standard library over introducing new exception classes.
+
+== Files
+
 === Reading from a file [[file-read]]
 
 Use the convenience methods `File.read` or `File.binread` when only reading a file start to finish in a single operation.
@@ -2287,10 +2293,6 @@ end
 # good - atomic and idempotent removal
 FileUtils.rm_f(path)
 ----
-
-=== Standard Exceptions [[standard-exceptions]]
-
-Prefer the use of exceptions from the standard library over introducing new exception classes.
 
 == Assignment & Comparison
 
