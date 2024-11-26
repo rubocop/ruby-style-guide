@@ -2294,6 +2294,22 @@ end
 FileUtils.rm_f(path)
 ----
 
+=== Null Devices [[null-devices]]
+
+Use the platform independent null device (`File::NULL`) rather than hardcoding a value (`/dev/null` on Unix-like OSes, `NUL` or `NUL:` on Windows).
+
+[source,ruby]
+----
+# bad - hardcoded devices are platform specific
+File.open("/dev/null", 'w') { ... }
+
+# bad - unnecessary ternary can be replaced with `File::NULL`
+File.open(Gem.win_platform? ? 'NUL' : '/dev/null', 'w') { ... }
+
+# good - platform independent
+File.open(File::NULL, 'w') { ... }
+----
+
 == Assignment & Comparison
 
 === Parallel Assignment [[parallel-assignment]]
