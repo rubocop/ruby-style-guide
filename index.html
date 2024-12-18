@@ -904,6 +904,7 @@ pre.rouge {
 <li><a href="#set-vs-array">Set vs Array</a></li>
 <li><a href="#symbols-as-keys">Symbols as Keys</a></li>
 <li><a href="#no-mutable-keys">No Mutable Keys</a></li>
+<li><a href="#no-mutable-defaults">No Mutable Defaults</a></li>
 <li><a href="#hash-literals">Hash Literals</a></li>
 <li><a href="#hash-literal-values">Hash Literal Values</a></li>
 <li><a href="#hash-literal-as-last-array-item">Hash Literal as Last Array Item</a></li>
@@ -6113,6 +6114,49 @@ This is a hybrid of <code>Array</code>'s intuitive inter-operation facilities an
 </div>
 </div>
 <div class="sect2">
+<h3 id="no-mutable-defaults"><a class="anchor" href="#no-mutable-defaults"></a><a class="link" href="#no-mutable-defaults">No Mutable Defaults</a></h3>
+<div class="paragraph">
+<p>Avoid the use of shared mutable objects as hash default values.</p>
+</div>
+<div class="paragraph">
+<p>Creating a Hash in such a way will share the default value
+across all keys, causing unexpected behavior when modifying it.</p>
+</div>
+<div class="paragraph">
+<p>For example, when the Hash was created with an Array as the argument,
+calling <code>hash[:foo] &lt;&lt; 'bar'</code> will also change the value of all
+other keys that have not been explicitly assigned to.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">([])</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">({})</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Array</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">)</span>
+
+<span class="c1"># okay -- beware this will silently discard mutations and only remember assignments</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span> <span class="p">}</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">}</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="p">[]</span> <span class="p">}</span>
+
+<span class="c1"># good - frozen solution will raise an error when mutation is attempted</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">([].</span><span class="nf">freeze</span><span class="p">)</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">({}.</span><span class="nf">freeze</span><span class="p">)</span>
+
+<span class="c1"># good - using a proc will create a new object for each key</span>
+<span class="n">h</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">h</span><span class="p">.</span><span class="nf">default_proc</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="p">[]</span> <span class="p">}</span>
+<span class="n">h</span><span class="p">.</span><span class="nf">default_proc</span> <span class="o">=</span> <span class="o">-&gt;</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="p">{}</span> <span class="p">}</span>
+
+<span class="c1"># good - using a block will create a new object for each key</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">}</span>
+<span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="hash-literals"><a class="anchor" href="#hash-literals"></a><a class="link" href="#hash-literals">Hash Literals</a></h3>
 <div class="paragraph">
 <p>Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.</p>
@@ -8401,7 +8445,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-10-16 09:49:00 UTC
+Last updated 2024-12-18 06:54:25 UTC
 </div>
 </div>
 </body>
