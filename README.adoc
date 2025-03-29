@@ -564,6 +564,30 @@ some_method
 some_method
 ----
 
+=== Empty Lines after Module Inclusion [[empty-lines-after-module-inclusion]]
+
+Use empty lines after module inclusion methods (`extend`, `include` and `prepend`).
+
+[source,ruby]
+----
+# bad
+class Foo
+  extend SomeModule
+  include AnotherModule
+  prepend YetAnotherModule
+  def foo; end
+end
+
+# good
+class Foo
+  extend SomeModule
+  include AnotherModule
+  prepend YetAnotherModule
+
+  def foo; end
+end
+----
+
 === Empty Lines around Attribute Accessor [[empty-lines-around-attribute-accessor]]
 
 Use empty lines around attribute accessor.
