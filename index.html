@@ -762,12 +762,17 @@ pre.rouge {
 <li><a href="#no-exceptional-flows">Using Exceptions for Flow of Control</a></li>
 <li><a href="#no-blind-rescues">Blind Rescues</a></li>
 <li><a href="#exception-ordering">Exception Rescuing Ordering</a></li>
+<li><a href="#standard-exceptions">Standard Exceptions</a></li>
+</ul>
+</li>
+<li><a href="#files">Files</a>
+<ul class="sectlevel2">
 <li><a href="#file-read">Reading from a file</a></li>
 <li><a href="#file-write">Writing to a file</a></li>
 <li><a href="#release-resources">Release External Resources</a></li>
 <li><a href="#auto-release-resources">Auto-release External Resources</a></li>
 <li><a href="#atomic-file-operations">Atomic File Operations</a></li>
-<li><a href="#standard-exceptions">Standard Exceptions</a></li>
+<li><a href="#null-devices">Null Devices</a></li>
 </ul>
 </li>
 <li><a href="#assignment-comparison">Assignment &amp; Comparison</a>
@@ -3638,6 +3643,17 @@ This will trap signals and calls to <code>exit</code>, requiring you to <code>ki
 </div>
 </div>
 <div class="sect2">
+<h3 id="standard-exceptions"><a class="anchor" href="#standard-exceptions"></a><a class="link" href="#standard-exceptions">Standard Exceptions</a></h3>
+<div class="paragraph">
+<p>Prefer the use of exceptions from the standard library over introducing new exception classes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="files"><a class="anchor" href="#files"></a><a class="link" href="#files">Files</a></h2>
+<div class="sectionbody">
+<div class="sect2">
 <h3 id="file-read"><a class="anchor" href="#file-read"></a><a class="link" href="#file-read">Reading from a file</a></h3>
 <div class="paragraph">
 <p>Use the convenience methods <code>File.read</code> or <code>File.binread</code> when only reading a file start to finish in a single operation.</p>
@@ -3771,9 +3787,21 @@ Therefore, it is preferable to use atomic file operations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="standard-exceptions"><a class="anchor" href="#standard-exceptions"></a><a class="link" href="#standard-exceptions">Standard Exceptions</a></h3>
+<h3 id="null-devices"><a class="anchor" href="#null-devices"></a><a class="link" href="#null-devices">Null Devices</a></h3>
 <div class="paragraph">
-<p>Prefer the use of exceptions from the standard library over introducing new exception classes.</p>
+<p>Use the platform independent null device (<code>File::NULL</code>) rather than hardcoding a value (<code>/dev/null</code> on Unix-like OSes, <code>NUL</code> or <code>NUL:</code> on Windows).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad - hardcoded devices are platform specific</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"/dev/null"</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+
+<span class="c1"># bad - unnecessary ternary can be replaced with `File::NULL`</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">Gem</span><span class="p">.</span><span class="nf">win_platform?</span> <span class="p">?</span> <span class="s1">'NUL'</span> <span class="p">:</span> <span class="s1">'/dev/null'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+
+<span class="c1"># good - platform independent</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">File</span><span class="o">::</span><span class="no">NULL</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -8445,7 +8473,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-12-18 06:54:25 UTC
+Last updated 2025-03-31 18:25:47 UTC
 </div>
 </div>
 </body>
