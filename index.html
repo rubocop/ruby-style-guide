@@ -1553,16 +1553,17 @@ Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper 
 <div class="sect2">
 <h3 id="safe-navigation"><a class="anchor" href="#safe-navigation"></a><a class="link" href="#safe-navigation">Safe navigation</a></h3>
 <div class="paragraph">
-<p>Avoid chaining of <code>&amp;.</code>. Replace with <code>.</code> and an explicit check.
+<p>Avoid long chains of <code>&amp;.</code>. The longer the chain is, the harder it becomes to track what
+on it could be returning a <code>nil</code>. Replace with <code>.</code> and an explicit check.
 E.g. if users are guaranteed to have an address and addresses are guaranteed to have a zip code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span>
+<span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">upcase</span>
 
 <span class="c1"># good</span>
-<span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span></code></pre>
+<span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span><span class="p">.</span><span class="nf">upcase</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1571,7 +1572,7 @@ E.g. if users are guaranteed to have an address and addresses are guaranteed to 
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
-<span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span>
+<span class="n">user</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span> <span class="o">&amp;&amp;</span> <span class="n">user</span><span class="p">.</span><span class="nf">address</span><span class="p">.</span><span class="nf">zip</span><span class="p">.</span><span class="nf">upcase</span>
 
 <span class="c1"># good</span>
 <span class="k">class</span> <span class="nc">User</span>
@@ -1579,7 +1580,7 @@ E.g. if users are guaranteed to have an address and addresses are guaranteed to 
     <span class="n">address</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span>
   <span class="k">end</span>
 <span class="k">end</span>
-<span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span></code></pre>
+<span class="n">user</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">zip</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">upcase</span></code></pre>
 </div>
 </div>
 </div>
@@ -8473,7 +8474,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-03-31 18:25:47 UTC
+Last updated 2025-03-31 18:26:04 UTC
 </div>
 </div>
 </body>
