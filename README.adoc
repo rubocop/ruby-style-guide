@@ -4690,6 +4690,54 @@ ary[..42]
 ary[0..42]
 ----
 
+=== Collection querying [[collection-querying]]
+
+When possible, use https://docs.ruby-lang.org/en/master/Enumerable.html#module-Enumerable-label-Methods+for+Querying[predicate methods from `Enumerable`] rather than expressions with `#count`, `#length` or `#size`.
+
+Querying methods express the intention more clearly and are more performant in some cases. For example, `articles.any?(&:published?)` is more readable than `articles.count(&:published?) > 0` and also more performant because `#any?` stops execution as soon as the first published article is found, while `#count` traverses the whole collection.
+
+[source,ruby]
+----
+# bad
+array.count > 0
+array.length > 0
+array.size > 0
+
+array.count(&:something).positive?
+
+array.count(&:something) == 0
+
+array.count(&:something) == 1
+
+# good
+array.any?
+
+array.any?(&:something)
+
+array.none?(&:something)
+
+array.one?(&:something)
+----
+
+[NOTE]
+--
+Predicate methods without arguments can't replace `count` expressions when collection includes falsey values:
+[source,ruby]
+----
+[nil, false].any?
+# => false
+
+[nil, false].none?
+# => true
+
+[nil].one?
+# => false
+
+[false].one?
+# => false
+----
+--
+
 == Numbers
 
 === Underscores in Numerics [[underscores-in-numerics]]
