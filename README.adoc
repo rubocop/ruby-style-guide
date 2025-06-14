@@ -5736,7 +5736,7 @@ Fix by either:
 
 === `add_dependency` vs `add_runtime_dependency` [[add_dependency_vs_add_runtime_dependency]]
 
-Prefer `add_dependency` over `add_runtime_dependency` because `add_dependency` is considered soft-deprecated
+Prefer `add_dependency` over `add_runtime_dependency` because `add_runtime_dependency` is considered soft-deprecated
 and the Bundler team recommends `add_dependency`.
 
 [source,ruby]
