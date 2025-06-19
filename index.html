@@ -932,6 +932,7 @@ pre.rouge {
 <li><a href="#reverse-each"><code>reverse_each</code></a></li>
 <li><a href="#object-yield-self-vs-object-then"><code>Object#yield_self</code> vs <code>Object#then</code></a></li>
 <li><a href="#slicing-with-ranges">Slicing with Ranges</a></li>
+<li><a href="#collection-querying">Collection querying</a></li>
 </ul>
 </li>
 <li><a href="#numbers">Numbers</a>
@@ -6591,6 +6592,67 @@ is fine. On the other hand, <code>ary[nil..42]</code> should be replaced with <c
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="collection-querying"><a class="anchor" href="#collection-querying"></a><a class="link" href="#collection-querying">Collection querying</a></h3>
+<div class="paragraph">
+<p>When possible, use <a href="https://docs.ruby-lang.org/en/master/Enumerable.html#module-Enumerable-label-Methods+for+Querying">predicate methods from <code>Enumerable</code></a> rather than expressions with <code>#count</code>, <code>#length</code> or <code>#size</code>.</p>
+</div>
+<div class="paragraph">
+<p>Querying methods express the intention more clearly and are more performant in some cases. For example, <code>articles.any?(&amp;:published?)</code> is more readable than <code>articles.count(&amp;:published?) &gt; 0</code> and also more performant because <code>#any?</code> stops execution as soon as the first published article is found, while <code>#count</code> traverses the whole collection.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">count</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="n">array</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:something</span><span class="p">).</span><span class="nf">positive?</span>
+
+<span class="n">array</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:something</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">array</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:something</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="c1"># good</span>
+<span class="n">array</span><span class="p">.</span><span class="nf">any?</span>
+
+<span class="n">array</span><span class="p">.</span><span class="nf">any?</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:something</span><span class="p">)</span>
+
+<span class="n">array</span><span class="p">.</span><span class="nf">none?</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:something</span><span class="p">)</span>
+
+<span class="n">array</span><span class="p">.</span><span class="nf">one?</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:something</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Predicate methods without arguments can&#8217;t replace <code>count</code> expressions when collection includes falsey values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="p">[</span><span class="kp">nil</span><span class="p">,</span> <span class="kp">false</span><span class="p">].</span><span class="nf">any?</span>
+<span class="c1"># =&gt; false</span>
+
+<span class="p">[</span><span class="kp">nil</span><span class="p">,</span> <span class="kp">false</span><span class="p">].</span><span class="nf">none?</span>
+<span class="c1"># =&gt; true</span>
+
+<span class="p">[</span><span class="kp">nil</span><span class="p">].</span><span class="nf">one?</span>
+<span class="c1"># =&gt; false</span>
+
+<span class="p">[</span><span class="kp">false</span><span class="p">].</span><span class="nf">one?</span>
+<span class="c1"># =&gt; false</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -8474,7 +8536,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-06-14 21:23:21 UTC
+Last updated 2025-06-19 13:52:08 UTC
 </div>
 </div>
 </body>
