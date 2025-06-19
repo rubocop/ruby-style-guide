@@ -1905,8 +1905,11 @@ end
 # good
 def compute_thing(thing)
   return unless thing[:foo]
+
   update_with_bar(thing[:foo])
+
   return re_compute(thing) unless thing[:foo][:bar]
+
   partial_compute(thing)
 end
 ----
@@ -1925,6 +1928,7 @@ end
 # good
 [0, 1, 2, 3].each do |item|
   next unless item > 1
+
   puts item
 end
 ----
