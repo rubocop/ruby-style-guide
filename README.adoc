@@ -1073,8 +1073,10 @@ end
 
 === Predicate Methods Prefix [[bool-methods-prefix]]
 
-Avoid prefixing predicate methods with the auxiliary verbs such as `is`, `does`, or `can`.
+Avoid prefixing predicate methods with the auxiliary verbs such as `is`, `has` or `does`.
 These words are redundant and inconsistent with the style of boolean methods in the Ruby core library, such as `empty?` and `include?`.
+
+NOTE: `can` should also be avoided when possible, but is also useful when meaning "allowed to".
 
 [source,ruby]
 ----
