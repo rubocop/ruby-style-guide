@@ -5773,6 +5773,21 @@ Use the braces that are the most appropriate for the various kinds of percent li
 
 Avoid needless metaprogramming.
 
+[source,ruby]
+----
+# bad
+class Person
+  %i[name age email].each do |attr|
+    define_method(attr) { instance_variable_get("@#{attr}") }
+  end
+end
+
+# good
+class Person
+  attr_reader :name, :age, :email
+end
+----
+
 === No Monkey Patching [[no-monkey-patching]]
 
 Do not mess around in core classes when writing libraries (do not monkey-patch them).
