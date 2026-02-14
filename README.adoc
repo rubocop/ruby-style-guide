@@ -1957,10 +1957,12 @@ Avoid the use of `BEGIN` blocks.
 [source,ruby]
 ----
 # bad
+puts 'Hello!'
 BEGIN { puts 'Initializing...' }
 
 # good
 puts 'Initializing...'
+puts 'Hello!'
 ----
 
 === `END` Blocks [[no-END-blocks]]
