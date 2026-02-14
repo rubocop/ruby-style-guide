@@ -2968,7 +2968,7 @@ Whether organizing control flow with <code>and</code> and <code>or</code> is a g
 </div>
 </div>
 <div class="paragraph">
-<p>Also <code>&amp;&amp;</code> has higher precedence than <code>||</code>, where as <code>and</code> and <code>or</code> have the same one. Funny enough, even though <code>and</code> and <code>or</code>
+<p>Also <code>&amp;&amp;</code> has higher precedence than <code>||</code>, whereas <code>and</code> and <code>or</code> have the same one. Funny enough, even though <code>and</code> and <code>or</code>
 were inspired by Perl, they don&#8217;t have different precedence in Perl.</p>
 </div>
 <div class="listingblock">
@@ -4044,7 +4044,7 @@ Using <code>&amp;&amp;=</code> will change the value only if it exists, removing
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly, prefer using <code>Hash#compare_by_identity</code> than using <code>object_id</code> for keys:</p>
+<p>Similarly, prefer using <code>Hash#compare_by_identity</code> over using <code>object_id</code> for keys:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4570,7 +4570,7 @@ prefer endless methods.
 <p>Keywords with lower precedence than <code>=</code> can appear ambiguous when used after an endless method definition. This includes <code>and</code>, <code>or</code>, and the modifier forms of <code>if</code>, <code>unless</code>, <code>while</code>, and <code>until</code>. In these cases, the code may appear to include these keywords as part of the method body, but instead they actually modify the method definition itself.</p>
 </div>
 <div class="paragraph">
-<p>In this cases, prefer using a normal method over an endless method.</p>
+<p>In these cases, prefer using a normal method over an endless method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6763,7 +6763,7 @@ Imagine simulating a roll of a dice:</p>
 <div class="sect2">
 <h3 id="float-division"><a class="anchor" href="#float-division"></a><a class="link" href="#float-division">Float Division</a></h3>
 <div class="paragraph">
-<p>When performing float-division on two integers, either use <code>fdiv</code> or convert one-side integer to float.</p>
+<p>When performing float-division on two integers, either use <code>fdiv</code> or convert one of the integers to float.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7803,7 +7803,7 @@ If you must use <code>method_missing</code>:</p>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="c1"># best of all, though, would to define_method as each findable attribute is declared</span></code></pre>
+<span class="c1"># best of all, though, would be to define_method as each findable attribute is declared</span></code></pre>
 </div>
 </div>
 </div>
@@ -8408,7 +8408,7 @@ RuboCop&#8217;s cops (code checks) have links to the guidelines that they are ba
 <div class="sectionbody">
 <div class="paragraph">
 <p>This guide started its life in 2011 as an internal company Ruby coding guidelines (written by <a href="https://github.com/bbatsov">Bozhidar Batsov</a>).
-Bozhidar had always been bothered as a Ruby developer about one thing  - Python developers had a great programming style reference (<a href="https://www.python.org/dev/peps/pep-0008/">PEP-8</a>) and Rubyists never got an official guide, documenting Ruby coding style and best practices.
+Bozhidar had always been bothered as a Ruby developer about one thing - Python developers had a great programming style reference (<a href="https://www.python.org/dev/peps/pep-0008/">PEP-8</a>) and Rubyists never got an official guide, documenting Ruby coding style and best practices.
 Bozhidar firmly believed that style matters.
 He also believed that a great hacker community, such as Ruby has, should be quite capable of producing this coveted document.
 The rest is history&#8230;&#8203;</p>
@@ -8458,7 +8458,7 @@ Thanks for all the suggestions and the support! Together we can make a resource 
 <div class="sectionbody">
 <div class="paragraph">
 <p>The guide is still a work in progress - some guidelines are lacking examples, some guidelines don&#8217;t have examples that illustrate them clearly enough.
-Improving such guidelines is a great (and simple way) to help the Ruby community!</p>
+Improving such guidelines is a great (and simple) way to help the Ruby community!</p>
 </div>
 <div class="paragraph">
 <p>In due time these issues will (hopefully) be addressed - just keep them in mind for now.</p>
@@ -8563,7 +8563,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-11-24 11:17:51 UTC
+Last updated 2026-02-14 10:50:12 UTC
 </div>
 </div>
 </body>
