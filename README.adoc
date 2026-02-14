@@ -4745,6 +4745,25 @@ This is not a hard requirement; if the use of the alias enhances readability, it
 The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
 The reason the use of `select` is encouraged over `find_all` is that it goes together nicely with `reject` and its name is pretty self-explanatory.
 
+[source,ruby]
+----
+# bad
+items.collect { |item| item.name }
+items.detect(&:active?)
+items.find_all(&:valid?)
+items.inject(0) { |sum, i| sum + i }
+items.member?(value)
+items.length
+
+# good
+items.map { |item| item.name }
+items.find(&:active?)
+items.select(&:valid?)
+items.reduce(0) { |sum, i| sum + i }
+items.include?(value)
+items.size
+----
+
 === `count` vs `size` [[count-vs-size]]
 
 Don't use `count` as a substitute for `size`.
