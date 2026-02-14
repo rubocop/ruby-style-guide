@@ -1456,6 +1456,23 @@ NOTE: The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
 Do not use `when x; ...`. See the previous rule.
 
+[source,ruby]
+----
+# bad
+case year
+when 1850..1889; 'Blues'
+when 1890..1909; 'Ragtime'
+else; 'Jazz'
+end
+
+# good
+case year
+when 1850..1889 then 'Blues'
+when 1890..1909 then 'Ragtime'
+else                  'Jazz'
+end
+----
+
 === Semicolon in `in` [[no-in-pattern-semicolons]]
 
 Do not use `in pattern; ...`. Use `in pattern then ...` for one-line `in` pattern branches.
