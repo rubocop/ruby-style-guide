@@ -3200,6 +3200,18 @@ IMPORTANT: When calling `super` without arguments, `super` and `super()` mean di
 
 Avoid parameter lists longer than three or four parameters.
 
+[source,ruby]
+----
+# bad
+def create_user(first_name, last_name, email, phone, address, age)
+  # ...
+end
+
+# good
+def create_user(first_name, last_name, email:, phone: nil, address: nil, age: nil)
+  # ...
+end
+----
 
 === Optional Arguments [[optional-arguments]]
 
