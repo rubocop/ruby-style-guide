@@ -5421,6 +5421,15 @@ SQL
 
 Prefer `Time.now` over `Time.new` when retrieving the current system time.
 
+[source,ruby]
+----
+# bad
+Time.new
+
+# good
+Time.now
+----
+
 === No `DateTime` [[no-datetime]]
 
 Don't use `DateTime` unless you need to account for historical calendar reform - and if you do, explicitly specify the `start` argument to clearly state your intentions.
