@@ -4118,6 +4118,15 @@ Write comments in English.
 
 Use one space between the leading `#` character of the comment and the text of the comment.
 
+[source,ruby]
+----
+# bad
+#some comment
+
+# good
+# some comment
+----
+
 === English Syntax [[english-syntax]]
 
 Comments longer than a word are capitalized and use punctuation.
