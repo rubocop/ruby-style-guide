@@ -1627,6 +1627,22 @@ false || true && false # => false (it's effectively false || (true && false))
 
 Avoid multi-line `?:` (the ternary operator); use `if`/`unless` instead.
 
+[source,ruby]
+----
+# bad
+result = some_condition ?
+  something :
+  something_else
+
+# good
+result =
+  if some_condition
+    something
+  else
+    something_else
+  end
+----
+
 === `if` as a Modifier [[if-as-a-modifier]]
 
 Prefer modifier `if`/`unless` usage when you have a single-line body.
