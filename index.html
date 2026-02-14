@@ -2787,6 +2787,35 @@ Prefer <code>if/else</code> constructs in these cases.</p>
 <div class="paragraph">
 <p>Use <code>when x then &#8230;&#8203;</code> for one-line cases.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">case</span> <span class="n">year</span>
+<span class="k">when</span> <span class="mi">1850</span><span class="o">..</span><span class="mi">1889</span>
+  <span class="s1">'Blues'</span>
+<span class="k">when</span> <span class="mi">1890</span><span class="o">..</span><span class="mi">1909</span>
+  <span class="s1">'Ragtime'</span>
+<span class="k">when</span> <span class="mi">1910</span><span class="o">..</span><span class="mi">1929</span>
+  <span class="s1">'New Orleans Jazz'</span>
+<span class="k">when</span> <span class="mi">1930</span><span class="o">..</span><span class="mi">1939</span>
+  <span class="s1">'Swing'</span>
+<span class="k">when</span> <span class="mi">1940</span><span class="o">..</span><span class="mi">1950</span>
+  <span class="s1">'Bebop'</span>
+<span class="k">else</span>
+  <span class="s1">'Jazz'</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">case</span> <span class="n">year</span>
+<span class="k">when</span> <span class="mi">1850</span><span class="o">..</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">'Blues'</span>
+<span class="k">when</span> <span class="mi">1890</span><span class="o">..</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">'Ragtime'</span>
+<span class="k">when</span> <span class="mi">1910</span><span class="o">..</span><span class="mi">1929</span> <span class="k">then</span> <span class="s1">'New Orleans Jazz'</span>
+<span class="k">when</span> <span class="mi">1930</span><span class="o">..</span><span class="mi">1939</span> <span class="k">then</span> <span class="s1">'Swing'</span>
+<span class="k">when</span> <span class="mi">1940</span><span class="o">..</span><span class="mi">1950</span> <span class="k">then</span> <span class="s1">'Bebop'</span>
+<span class="k">else</span>                  <span class="s1">'Jazz'</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2804,6 +2833,23 @@ The alternative syntax <code>when x: &#8230;&#8203;</code> has been removed as o
 <h3 id="no-when-semicolons"><a class="anchor" href="#no-when-semicolons"></a><a class="link" href="#no-when-semicolons">Semicolon in <code>when</code></a></h3>
 <div class="paragraph">
 <p>Do not use <code>when x; &#8230;&#8203;</code>. See the previous rule.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">case</span> <span class="n">year</span>
+<span class="k">when</span> <span class="mi">1850</span><span class="o">..</span><span class="mi">1889</span><span class="p">;</span> <span class="s1">'Blues'</span>
+<span class="k">when</span> <span class="mi">1890</span><span class="o">..</span><span class="mi">1909</span><span class="p">;</span> <span class="s1">'Ragtime'</span>
+<span class="k">else</span><span class="p">;</span> <span class="s1">'Jazz'</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">case</span> <span class="n">year</span>
+<span class="k">when</span> <span class="mi">1850</span><span class="o">..</span><span class="mi">1889</span> <span class="k">then</span> <span class="s1">'Blues'</span>
+<span class="k">when</span> <span class="mi">1890</span><span class="o">..</span><span class="mi">1909</span> <span class="k">then</span> <span class="s1">'Ragtime'</span>
+<span class="k">else</span>                  <span class="s1">'Jazz'</span>
+<span class="k">end</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2986,6 +3032,22 @@ were inspired by Perl, they don&#8217;t have different precedence in Perl.</p>
 <h3 id="no-multiline-ternary"><a class="anchor" href="#no-multiline-ternary"></a><a class="link" href="#no-multiline-ternary">Multi-line Ternary Operator</a></h3>
 <div class="paragraph">
 <p>Avoid multi-line <code>?:</code> (the ternary operator); use <code>if</code>/<code>unless</code> instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">some_condition</span> <span class="p">?</span>
+  <span class="n">something</span> <span class="p">:</span>
+  <span class="n">something_else</span>
+
+<span class="c1"># good</span>
+<span class="n">result</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="n">some_condition</span>
+    <span class="n">something</span>
+  <span class="k">else</span>
+    <span class="n">something_else</span>
+  <span class="k">end</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3339,6 +3401,15 @@ This is a fairly popular idiom among Rubyists that&#8217;s sometimes referred to
 <h3 id="no-BEGIN-blocks"><a class="anchor" href="#no-BEGIN-blocks"></a><a class="link" href="#no-BEGIN-blocks"><code>BEGIN</code> Blocks</a></h3>
 <div class="paragraph">
 <p>Avoid the use of <code>BEGIN</code> blocks.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">BEGIN</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s1">'Initializing...'</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="nb">puts</span> <span class="s1">'Initializing...'</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -4782,6 +4853,19 @@ When calling <code>super</code> without arguments, <code>super</code> and <code>
 <div class="paragraph">
 <p>Avoid parameter lists longer than three or four parameters.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">email</span><span class="p">:,</span> <span class="ss">phone: </span><span class="kp">nil</span><span class="p">,</span> <span class="ss">address: </span><span class="kp">nil</span><span class="p">,</span> <span class="ss">age: </span><span class="kp">nil</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="optional-arguments"><a class="anchor" href="#optional-arguments"></a><a class="link" href="#optional-arguments">Optional Arguments</a></h3>
@@ -4970,6 +5054,23 @@ Ruby has some unexpected results when calling methods that have optional argumen
 <h3 id="private-global-methods"><a class="anchor" href="#private-global-methods"></a><a class="link" href="#private-global-methods">Private Global Methods</a></h3>
 <div class="paragraph">
 <p>If you really need "global" methods, add them to Kernel and make them private.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">global_helper</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">module</span> <span class="nn">Kernel</span>
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">global_helper</span>
+    <span class="c1"># ...</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -5780,6 +5881,15 @@ Improve the code and then document it to make it even clearer.</p>
 <div class="paragraph">
 <p>Use one space between the leading <code>#</code> character of the comment and the text of the comment.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="c1">#some comment</span>
+
+<span class="c1"># good</span>
+<span class="c1"># some comment</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="english-syntax"><a class="anchor" href="#english-syntax"></a><a class="link" href="#english-syntax">English Syntax</a></h3>
@@ -6169,6 +6279,18 @@ This is a hybrid of <code>Array</code>'s intuitive inter-operation facilities an
 <div class="paragraph">
 <p>Avoid the use of mutable objects as hash keys.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'John'</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">name: </span><span class="s1">'John'</span> <span class="p">}</span>
+
+<span class="c1"># good - frozen string key when symbols won't do</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'name'</span><span class="p">.</span><span class="nf">freeze</span> <span class="o">=&gt;</span> <span class="s1">'John'</span> <span class="p">}</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="no-mutable-defaults"><a class="anchor" href="#no-mutable-defaults"></a><a class="link" href="#no-mutable-defaults">No Mutable Defaults</a></h3>
@@ -6434,6 +6556,17 @@ just a hash literal should be preferred.</p>
 <div class="paragraph">
 <p>Do not modify a collection while traversing it.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">numbers</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="n">numbers</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span><span class="p">.</span><span class="nf">even?</span> <span class="p">}</span>
+
+<span class="c1"># good</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">odd_numbers</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:even?</span><span class="p">)</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="accessing-elements-directly"><a class="anchor" href="#accessing-elements-directly"></a><a class="link" href="#accessing-elements-directly">Accessing Elements Directly</a></h3>
@@ -6481,6 +6614,25 @@ This guards you from calling <code>[]</code> on <code>nil</code>.</p>
 This is not a hard requirement; if the use of the alias enhances readability, it&#8217;s ok to use it.
 The rhyming methods are inherited from Smalltalk and are not common in other programming languages.
 The reason the use of <code>select</code> is encouraged over <code>find_all</code> is that it goes together nicely with <code>reject</code> and its name is pretty self-explanatory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">collect</span> <span class="p">{</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="n">item</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">detect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:active?</span><span class="p">)</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">find_all</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:valid?</span><span class="p">)</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">inject</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span> <span class="p">}</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">member?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">length</span>
+
+<span class="c1"># good</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span> <span class="n">item</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:active?</span><span class="p">)</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:valid?</span><span class="p">)</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">sum</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span> <span class="p">}</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="n">items</span><span class="p">.</span><span class="nf">size</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -7296,6 +7448,15 @@ The bad form has potential for error if the new line before the closing parenthe
 <div class="paragraph">
 <p>Prefer <code>Time.now</code> over <code>Time.new</code> when retrieving the current system time.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="no">Time</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="c1"># good</span>
+<span class="no">Time</span><span class="p">.</span><span class="nf">now</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="no-datetime"><a class="anchor" href="#no-datetime"></a><a class="link" href="#no-datetime">No <code>DateTime</code></a></h3>
@@ -7647,6 +7808,15 @@ Regular string literals are more readable and should be preferred unless a lot o
 <p>Avoid the use of <code>%s</code>.
 It seems that the community has decided <code>:"some string"</code> is the preferred way to create a symbol with spaces in it.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="sx">%s(some symbol)</span>
+
+<span class="c1"># good</span>
+<span class="ss">:"some symbol"</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="percent-literal-braces"><a class="anchor" href="#percent-literal-braces"></a><a class="link" href="#percent-literal-braces">Percent Literal Braces</a></h3>
@@ -7705,11 +7875,45 @@ It seems that the community has decided <code>:"some string"</code> is the prefe
 <div class="paragraph">
 <p>Avoid needless metaprogramming.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="sx">%i[name age email]</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="kp">attr</span><span class="o">|</span>
+    <span class="n">define_method</span><span class="p">(</span><span class="kp">attr</span><span class="p">)</span> <span class="p">{</span> <span class="nb">instance_variable_get</span><span class="p">(</span><span class="s2">"@</span><span class="si">#{</span><span class="kp">attr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="nb">attr_reader</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span><span class="p">,</span> <span class="ss">:email</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="no-monkey-patching"><a class="anchor" href="#no-monkey-patching"></a><a class="link" href="#no-monkey-patching">No Monkey Patching</a></h3>
 <div class="paragraph">
 <p>Do not mess around in core classes when writing libraries (do not monkey-patch them).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">class</span> <span class="nc">String</span>
+  <span class="k">def</span> <span class="nf">to_hierarchical_date</span>
+    <span class="nb">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good - use refinements instead</span>
+<span class="k">module</span> <span class="nn">DateParsing</span>
+  <span class="n">refine</span> <span class="no">String</span> <span class="k">do</span>
+    <span class="k">def</span> <span class="nf">to_hierarchical_date</span>
+      <span class="nb">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -8255,6 +8459,21 @@ Use of <code>require</code> should be reserved for external dependencies</p>
 <p>Avoid hashes as optional parameters.
 Does the method do too much? (Object initializers are exceptions for this rule).</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">opts</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="n">to</span> <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="ss">:to</span><span class="p">]</span>
+  <span class="n">cc</span> <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="ss">:cc</span><span class="p">]</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">to</span><span class="p">:,</span> <span class="ss">cc: </span><span class="kp">nil</span><span class="p">)</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="instance-vars"><a class="anchor" href="#instance-vars"></a><a class="link" href="#instance-vars">Instance Vars</a></h3>
@@ -8288,11 +8507,52 @@ Does the method do too much? (Object initializers are exceptions for this rule).
 <div class="paragraph">
 <p>Do not mutate parameters unless that is the purpose of the method.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+  <span class="n">users</span><span class="p">.</span><span class="nf">reject!</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:disabled?</span><span class="p">)</span>
+  <span class="n">users</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+  <span class="n">users</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:disabled?</span><span class="p">)</span>
+<span class="k">end</span></code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="three-is-the-number-thou-shalt-count"><a class="anchor" href="#three-is-the-number-thou-shalt-count"></a><a class="link" href="#three-is-the-number-thou-shalt-count">Three is the Number Thou Shalt Count</a></h3>
 <div class="paragraph">
 <p>Avoid more than three levels of block nesting.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+  <span class="n">items</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">item</span><span class="p">.</span><span class="nf">widgets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">widget</span><span class="o">|</span>
+      <span class="n">widget</span><span class="p">.</span><span class="nf">parts</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">part</span><span class="o">|</span>
+        <span class="n">part</span><span class="p">.</span><span class="nf">update!</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+  <span class="n">items</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">process_widgets</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="nf">widgets</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">process_widgets</span><span class="p">(</span><span class="n">widgets</span><span class="p">)</span>
+  <span class="n">widgets</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">widget</span><span class="o">|</span>
+    <span class="n">widget</span><span class="p">.</span><span class="nf">parts</span><span class="p">.</span><span class="nf">each</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:update!</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -8563,7 +8823,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-02-14 10:50:12 UTC
+Last updated 2026-02-14 13:11:43 UTC
 </div>
 </div>
 </body>
