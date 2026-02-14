@@ -1421,6 +1421,35 @@ result =
 
 Use `when x then ...` for one-line cases.
 
+[source,ruby]
+----
+# bad
+case year
+when 1850..1889
+  'Blues'
+when 1890..1909
+  'Ragtime'
+when 1910..1929
+  'New Orleans Jazz'
+when 1930..1939
+  'Swing'
+when 1940..1950
+  'Bebop'
+else
+  'Jazz'
+end
+
+# good
+case year
+when 1850..1889 then 'Blues'
+when 1890..1909 then 'Ragtime'
+when 1910..1929 then 'New Orleans Jazz'
+when 1930..1939 then 'Swing'
+when 1940..1950 then 'Bebop'
+else                  'Jazz'
+end
+----
+
 NOTE: The alternative syntax `when x: ...` has been removed as of Ruby 1.9.
 
 === Semicolon in `when` [[no-when-semicolons]]
