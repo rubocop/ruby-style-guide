@@ -6304,6 +6304,33 @@ end
 
 Avoid more than three levels of block nesting.
 
+[source,ruby]
+----
+# bad
+def process(items)
+  items.each do |item|
+    item.widgets.each do |widget|
+      widget.parts.each do |part|
+        part.update!
+      end
+    end
+  end
+end
+
+# good
+def process(items)
+  items.each do |item|
+    process_widgets(item.widgets)
+  end
+end
+
+def process_widgets(widgets)
+  widgets.each do |widget|
+    widget.parts.each(&:update!)
+  end
+end
+----
+
 === Functional Code [[functional-code]]
 
 Code in a functional way, avoiding mutation when that makes sense.
