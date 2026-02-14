@@ -4447,6 +4447,18 @@ hash = { one: 1, two: 2, three: 3 }
 
 Avoid the use of mutable objects as hash keys.
 
+[source,ruby]
+----
+# bad
+hash = { 'name' => 'John' }
+
+# good
+hash = { name: 'John' }
+
+# good - frozen string key when symbols won't do
+hash = { 'name'.freeze => 'John' }
+----
+
 === No Mutable Defaults [[no-mutable-defaults]]
 
 Avoid the use of shared mutable objects as hash default values.
