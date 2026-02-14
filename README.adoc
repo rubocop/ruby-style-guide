@@ -3383,6 +3383,23 @@ end
 
 If you really need "global" methods, add them to Kernel and make them private.
 
+[source,ruby]
+----
+# bad
+def global_helper
+  # ...
+end
+
+# good
+module Kernel
+  private
+
+  def global_helper
+    # ...
+  end
+end
+----
+
 == Classes & Modules
 
 === Consistent Classes [[consistent-classes]]
