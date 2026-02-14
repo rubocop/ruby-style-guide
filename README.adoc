@@ -5724,6 +5724,15 @@ echo = %x(echo `date`)
 Avoid the use of `%s`.
 It seems that the community has decided `:"some string"` is the preferred way to create a symbol with spaces in it.
 
+[source,ruby]
+----
+# bad
+%s(some symbol)
+
+# good
+:"some symbol"
+----
+
 === Percent Literal Braces [[percent-literal-braces]]
 
 Use the braces that are the most appropriate for the various kinds of percent literals.
