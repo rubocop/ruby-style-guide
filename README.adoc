@@ -5857,7 +5857,7 @@ Avoid using `method_missing` for metaprogramming because backtraces become messy
 Consider using delegation, proxy, or `define_method` instead.
 If you must use `method_missing`:
 
- * Be sure to https://blog.marc-andre.ca/2010/11/15/methodmissing-politely/[also define `respond_to_missing?`]
+ * Be sure to https://thoughtbot.com/blog/always-define-respond-to-missing-when-overriding[also define `respond_to_missing?`]
  * Only catch methods with a well-defined prefix, such as `find_by_*`--make your code as assertive as possible.
  * Call `super` at the end of your statement
  * Delegate to assertive, non-magical methods:
