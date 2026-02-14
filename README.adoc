@@ -6259,6 +6259,21 @@ Write `ruby -w` safe code.
 Avoid hashes as optional parameters.
 Does the method do too much? (Object initializers are exceptions for this rule).
 
+[source,ruby]
+----
+# bad
+def send_email(subject, opts = {})
+  to = opts[:to]
+  cc = opts[:cc]
+  # ...
+end
+
+# good
+def send_email(subject, to:, cc: nil)
+  # ...
+end
+----
+
 === Instance Vars [[instance-vars]]
 
 Use module instance variables instead of global variables.
