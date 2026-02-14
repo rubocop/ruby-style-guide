@@ -1954,6 +1954,15 @@ end
 
 Avoid the use of `BEGIN` blocks.
 
+[source,ruby]
+----
+# bad
+BEGIN { puts 'Initializing...' }
+
+# good
+puts 'Initializing...'
+----
+
 === `END` Blocks [[no-END-blocks]]
 
 Do not use `END` blocks. Use `Kernel#at_exit` instead.
