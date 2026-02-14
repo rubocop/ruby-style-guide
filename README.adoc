@@ -6286,6 +6286,20 @@ Use `OptionParser` for parsing complex command line options and `ruby -s` for tr
 
 Do not mutate parameters unless that is the purpose of the method.
 
+[source,ruby]
+----
+# bad
+def clean(users)
+  users.reject!(&:disabled?)
+  users
+end
+
+# good
+def clean(users)
+  users.reject(&:disabled?)
+end
+----
+
 === Three is the Number Thou Shalt Count [[three-is-the-number-thou-shalt-count]]
 
 Avoid more than three levels of block nesting.
