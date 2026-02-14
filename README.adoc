@@ -1565,7 +1565,7 @@ foo = true and false # results in foo being equal to true. Equivalent to (foo = 
 bar = false or true  # results in bar being equal to false. Equivalent to (bar = false) or true
 ----
 
-Also `&&` has higher precedence than `||`, where as `and` and `or` have the same one. Funny enough, even though `and` and `or`
+Also `&&` has higher precedence than `||`, whereas `and` and `or` have the same one. Funny enough, even though `and` and `or`
 were inspired by Perl, they don't have different precedence in Perl.
 
 [source,ruby]
@@ -2521,7 +2521,7 @@ foo.object_id == bar.object_id
 foo.equal?(bar)
 ----
 
-Similarly, prefer using `Hash#compare_by_identity` than using `object_id` for keys:
+Similarly, prefer using `Hash#compare_by_identity` over using `object_id` for keys:
 
 [source,ruby]
 ----
@@ -2955,7 +2955,7 @@ def print_foo = puts("foo")
 
 Keywords with lower precedence than `=` can appear ambiguous when used after an endless method definition. This includes `and`, `or`, and the modifier forms of `if`, `unless`, `while`, and `until`. In these cases, the code may appear to include these keywords as part of the method body, but instead they actually modify the method definition itself.
 
-In this cases, prefer using a normal method over an endless method.
+In these cases, prefer using a normal method over an endless method.
 
 [source,ruby]
 ----
@@ -4833,7 +4833,7 @@ rand(1..6)
 
 === Float Division [[float-division]]
 
-When performing float-division on two integers, either use `fdiv` or convert one-side integer to float.
+When performing float-division on two integers, either use `fdiv` or convert one of the integers to float.
 
 [source,ruby]
 ----
@@ -5679,7 +5679,7 @@ def method_missing(meth, *params, &block)
   end
 end
 
-# best of all, though, would to define_method as each findable attribute is declared
+# best of all, though, would be to define_method as each findable attribute is declared
 ----
 
 === Prefer `public_send` [[prefer-public-send]]
@@ -6160,7 +6160,7 @@ https://www.jetbrains.com/ruby/[RubyMine]'s code inspections are https://conflue
 == History
 
 This guide started its life in 2011 as an internal company Ruby coding guidelines (written by https://github.com/bbatsov[Bozhidar Batsov]).
-Bozhidar had always been bothered as a Ruby developer about one thing  - Python developers had a great programming style reference (https://www.python.org/dev/peps/pep-0008/[PEP-8]) and Rubyists never got an official guide, documenting Ruby coding style and best practices.
+Bozhidar had always been bothered as a Ruby developer about one thing - Python developers had a great programming style reference (https://www.python.org/dev/peps/pep-0008/[PEP-8]) and Rubyists never got an official guide, documenting Ruby coding style and best practices.
 Bozhidar firmly believed that style matters.
 He also believed that a great hacker community, such as Ruby has, should be quite capable of producing this coveted document.
 The rest is history...
@@ -6186,7 +6186,7 @@ Many people, books, presentations, articles and other style guides influenced th
 == Contributing
 
 The guide is still a work in progress - some guidelines are lacking examples, some guidelines don't have examples that illustrate them clearly enough.
-Improving such guidelines is a great (and simple way) to help the Ruby community!
+Improving such guidelines is a great (and simple) way to help the Ruby community!
 
 In due time these issues will (hopefully) be addressed - just keep them in mind for now.
 
