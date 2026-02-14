@@ -5792,6 +5792,25 @@ end
 
 Do not mess around in core classes when writing libraries (do not monkey-patch them).
 
+[source,ruby]
+----
+# bad
+class String
+  def to_hierarchical_date
+    split('-').map(&:to_i)
+  end
+end
+
+# good - use refinements instead
+module DateParsing
+  refine String do
+    def to_hierarchical_date
+      split('-').map(&:to_i)
+    end
+  end
+end
+----
+
 === Block `class_eval` [[block-class-eval]]
 
 The block form of `class_eval` is preferable to the string-interpolated form.
