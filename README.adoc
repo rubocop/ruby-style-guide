@@ -4692,6 +4692,17 @@ Rely on the fact that as of Ruby 1.9 hashes are ordered.
 
 Do not modify a collection while traversing it.
 
+[source,ruby]
+----
+# bad
+numbers = [1, 2, 3, 4, 5]
+numbers.each { |n| numbers.delete(n) if n.even? }
+
+# good
+numbers = [1, 2, 3, 4, 5]
+odd_numbers = numbers.reject(&:even?)
+----
+
 === Accessing Elements Directly [[accessing-elements-directly]]
 
 When accessing elements of a collection, avoid direct access via `[n]` by using an alternate form of the reader method if it is supplied.
