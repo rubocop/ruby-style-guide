@@ -1736,6 +1736,39 @@ else
 end
 ----
 
+=== `unless` with Complex Conditions [[no-unless-with-complex-conditions]]
+
+Avoid using `unless` with complex conditions.
+A condition is considered complex when it contains a disjunction (`||`),
+a negation combined with logical operators (e.g. `foo && !bar`),
+or multiple negations (e.g. `!!foo`).
+`unless` already implies one negation, and adding further logical complexity
+requires applying De Morgan's laws to understand when the code actually executes.
+Prefer `if` with an inverted condition instead.
+
+[source,ruby]
+----
+# bad
+do_something unless foo || bar
+
+# bad
+do_something unless foo && !bar
+
+# bad
+do_something unless !!foo
+
+# good
+do_something if !foo && !bar
+
+# good
+do_something if !foo || bar
+
+# good
+do_something if foo
+----
+
+NOTE: Simple conjunctions like `do_something unless foo && bar` and single negations like `do_something unless !foo` are not considered complex.
+
 === Parentheses around Condition [[no-parens-around-condition]]
 
 Don't use parentheses around the condition of a control expression.
