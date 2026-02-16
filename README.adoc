@@ -2041,6 +2041,31 @@ fail SomeException, 'message'
 raise SomeException, 'message'
 ----
 
+=== Reraising exceptions [[reraising-exceptions]]
+
+Call `raise` without an exception argument when reraising exceptions.
+
+[source,ruby]
+----
+# bad
+begin
+  something_that_might_fail
+rescue SomeException => e
+  # handle SomeException
+
+  raise e
+end
+
+# good
+begin
+  something_that_might_fail
+rescue SomeException => e
+  # handle SomeException
+
+  raise
+end
+----
+
 === Raising Explicit `RuntimeError` [[no-explicit-runtimeerror]]
 
 Don't specify `RuntimeError` explicitly in the two argument version of `raise`.
