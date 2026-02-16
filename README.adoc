@@ -5893,6 +5893,21 @@ $stderr.puts 'This is a warning!'
 warn 'This is a warning!'
 ----
 
+=== Separate `puts` for Newlines [[puts-newlines]]
+
+Use separate `puts` calls instead of embedding newline characters (`\n`) in strings.
+This improves readability and follows Ruby conventions.
+
+[source,ruby]
+----
+# bad
+puts "\nmessage"
+
+# good
+puts
+puts 'message'
+----
+
 === `Array#join` [[array-join]]
 
 Prefer the use of `Array#join` over the fairly cryptic `Array#*` with a string argument.
