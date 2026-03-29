@@ -3869,39 +3869,6 @@ Parent.print_class_var # => will print 'child'
 As you can see all the classes in a class hierarchy actually share one class variable.
 Class instance variables should usually be preferred over class variables.
 
-=== Avoid Dynamic Instance Variable Access [[no-dynamic-instance-variable-access]]
-
-Avoid `instance_variable_get` and `instance_variable_set`.
-These methods bypass encapsulation and couple callers to internal implementation details.
-Prefer defining explicit accessor methods instead.
-Framework or library code that needs to work generically with arbitrary objects may be a justified exception.
-
-[source,ruby]
-----
-# bad
-class Person
-  def initialize(name)
-    @name = name
-  end
-end
-
-person = Person.new('Alice')
-person.instance_variable_get(:@name) # => 'Alice'
-person.instance_variable_set(:@name, 'Bob')
-
-# good
-class Person
-  attr_reader :name
-
-  def initialize(name)
-    @name = name
-  end
-end
-
-person = Person.new('Alice')
-person.name # => 'Alice'
-----
-
 === Leverage Access Modifiers (e.g. `private` and `protected`) [[visibility]]
 
 Assign proper visibility levels to methods (`private`, `protected`) in accordance with their intended usage.
@@ -5821,6 +5788,39 @@ end
 class Person
   attr_reader :name, :age, :email
 end
+----
+
+=== Avoid Dynamic Instance Variable Access [[no-dynamic-instance-variable-access]]
+
+Avoid `instance_variable_get` and `instance_variable_set`.
+These methods bypass encapsulation and couple callers to internal implementation details.
+Prefer defining explicit accessor methods instead.
+Framework or library code that needs to work generically with arbitrary objects may be a justified exception.
+
+[source,ruby]
+----
+# bad
+class Person
+  def initialize(name)
+    @name = name
+  end
+end
+
+person = Person.new('Alice')
+person.instance_variable_get(:@name) # => 'Alice'
+person.instance_variable_set(:@name, 'Bob')
+
+# good
+class Person
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+person = Person.new('Alice')
+person.name # => 'Alice'
 ----
 
 === No Monkey Patching [[no-monkey-patching]]
