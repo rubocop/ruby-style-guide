@@ -1736,6 +1736,32 @@ else
 end
 ----
 
+=== Minimize Negations in Conditionals [[minimize-negations]]
+
+Prefer the conditional form (`if` or `unless`) that results in fewer negations.
+When negated terms outnumber positive terms in a condition, flip the keyword and invert the condition.
+
+[source,ruby]
+----
+# bad
+do_something if !foo && !bar
+
+# good
+do_something unless foo || bar
+
+# bad
+do_something unless !foo && !bar
+
+# good
+do_something if foo || bar
+
+# bad
+do_something unless x != 1 && y != 2
+
+# good
+do_something if x == 1 || y == 2
+----
+
 === Parentheses around Condition [[no-parens-around-condition]]
 
 Don't use parentheses around the condition of a control expression.
