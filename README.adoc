@@ -2409,6 +2409,19 @@ File.open(Gem.win_platform? ? 'NUL' : '/dev/null', 'w') { ... }
 File.open(File::NULL, 'w') { ... }
 ----
 
+=== Do not `raise` `Exception` [[raise-exception]]
+
+Use `StandardError` over `Exception`.
+
+[source,ruby]
+----
+# bad
+raise Exception, 'Error message here'
+
+# good
+raise StandardError, 'Error message here'
+----
+
 == Assignment & Comparison
 
 === Parallel Assignment [[parallel-assignment]]
