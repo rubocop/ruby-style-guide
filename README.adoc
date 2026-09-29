@@ -1611,8 +1611,8 @@ foo = true and false # results in foo being equal to true. Equivalent to (foo = 
 bar = false or true  # results in bar being equal to false. Equivalent to (bar = false) or true
 ----
 
-Also `&&` has higher precedence than `||`, whereas `and` and `or` have the same one. Funny enough, even though `and` and `or`
-were inspired by Perl, they don't have different precedence in Perl.
+Also `&&` has higher precedence than `||`, whereas `and` and `or` have the same one. Funny enough, `and` and `or`
+were inspired by Perl, where `and` does have higher precedence than `or`.
 
 [source,ruby]
 ----
