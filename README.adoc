@@ -6416,7 +6416,7 @@ TIP: RuboCop's cops (code checks) have links to the guidelines that they are bas
 
 === RubyMine
 
-https://www.jetbrains.com/ruby/[RubyMine]'s code inspections are https://confluence.jetbrains.com/display/RUBYDEV/RubyMine+Inspections[partially based] on this guide.
+https://www.jetbrains.com/ruby/[RubyMine]'s code inspections are https://www.jetbrains.com/help/inspectopedia/Ruby.html[partially based] on this guide.
 
 == History
 
