@@ -5275,7 +5275,7 @@ format('%<first>d %<second>d', first: 20, second: 10)
 === Named Format Tokens [[named-format-tokens]]
 
 When using named format string tokens, two styles are considered acceptable - `%{name}` and `%<name>s`.
-The second variant encodes information about the type of the value, and it's the only one that accepts a format specifier, so reach for it when you need to control the type, the width or the precision.
+The second variant specifies a conversion type and is the only one that accepts flags, width or precision, so reach for it when you need those formatting controls.
 
 [source,ruby]
 ----
