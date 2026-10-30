@@ -754,6 +754,7 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#prefer-raise-over-fail"><code>raise</code> vs <code>fail</code></a></li>
 <li><a href="#no-explicit-runtimeerror">Raising Explicit <code>RuntimeError</code></a></li>
+<li><a href="#raise-exception">Raising <code>Exception</code></a></li>
 <li><a href="#exception-class-messages">Exception Class Messages</a></li>
 <li><a href="#no-return-ensure"><code>return</code> from <code>ensure</code></a></li>
 <li><a href="#begin-implicit">Implicit <code>begin</code></a></li>
@@ -954,6 +955,7 @@ pre.rouge {
 <li><a href="#no-character-literals">No Character Literals</a></li>
 <li><a href="#curlies-interpolate">Curlies Interpolate</a></li>
 <li><a href="#no-to-s">No <code>to_s</code></a></li>
+<li><a href="#empty-strings-in-interpolation">Empty Strings In Interpolation</a></li>
 <li><a href="#concat-strings">String Concatenation</a></li>
 <li><a href="#dont-abuse-gsub">Don&#8217;t Abuse <code>gsub</code></a></li>
 <li><a href="#string-chars"><code>String#chars</code></a></li>
@@ -3510,6 +3512,26 @@ A guard clause is a conditional statement at the top of a function that bails ou
 <div class="content">
 <pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
 <span class="k">raise</span> <span class="no">RuntimeError</span><span class="p">,</span> <span class="s1">'message'</span>
+
+<span class="c1"># good - signals a RuntimeError by default</span>
+<span class="k">raise</span> <span class="s1">'message'</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="raise-exception"><a class="anchor" href="#raise-exception"></a><a class="link" href="#raise-exception">Raising <code>Exception</code></a></h3>
+<div class="paragraph">
+<p>Don&#8217;t raise <code>Exception</code>.
+A plain <code>rescue</code> only rescues <code>StandardError</code>, so catching it takes a <a href="#no-blind-rescues">blind rescue</a> of <code>Exception</code>, which traps signals and calls to <code>exit</code> as well.
+Raise a more specific exception class instead, or just pass a message to get a <code>RuntimeError</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="k">raise</span> <span class="no">Exception</span><span class="p">,</span> <span class="s1">'message'</span>
+
+<span class="c1"># good</span>
+<span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s1">'message'</span>
 
 <span class="c1"># good - signals a RuntimeError by default</span>
 <span class="k">raise</span> <span class="s1">'message'</span></code></pre>
@@ -7185,6 +7207,24 @@ It&#8217;s called on them automatically.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="empty-strings-in-interpolation"><a class="anchor" href="#empty-strings-in-interpolation"></a><a class="link" href="#empty-strings-in-interpolation">Empty Strings In Interpolation</a></h3>
+<div class="paragraph">
+<p>Don&#8217;t use a ternary that returns an empty string inside string interpolation.
+Use a modifier <code>if</code> or <code>unless</code> instead, as <code>nil</code> interpolates to an empty string anyway.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="ruby"><span class="c1"># bad</span>
+<span class="s2">"</span><span class="si">#{</span><span class="n">condition</span> <span class="p">?</span> <span class="s1">'foo'</span> <span class="p">:</span> <span class="s1">''</span><span class="si">}</span><span class="s2">"</span>
+<span class="s2">"</span><span class="si">#{</span><span class="n">condition</span> <span class="p">?</span> <span class="s1">''</span> <span class="p">:</span> <span class="s1">'foo'</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># good</span>
+<span class="s2">"</span><span class="si">#{</span><span class="s1">'foo'</span> <span class="k">if</span> <span class="n">condition</span><span class="si">}</span><span class="s2">"</span>
+<span class="s2">"</span><span class="si">#{</span><span class="s1">'foo'</span> <span class="k">unless</span> <span class="n">condition</span><span class="si">}</span><span class="s2">"</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="concat-strings"><a class="anchor" href="#concat-strings"></a><a class="link" href="#concat-strings">String Concatenation</a></h3>
 <div class="paragraph">
 <p>Avoid using <code>String#+</code> when you need to construct large data chunks.
@@ -8825,7 +8865,7 @@ And we want to have the best possible guide, don&#8217;t we?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-20 10:55:34 UTC
+Last updated 2026-10-30 14:29:16 UTC
 </div>
 </div>
 </body>
