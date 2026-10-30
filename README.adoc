@@ -2054,6 +2054,24 @@ raise RuntimeError, 'message'
 raise 'message'
 ----
 
+=== Raising `Exception` [[raise-exception]]
+
+Don't raise `Exception`.
+A plain `rescue` only rescues `StandardError`, so catching it takes a <<no-blind-rescues,blind rescue>> of `Exception`, which traps signals and calls to `exit` as well.
+Raise a more specific exception class instead, or just pass a message to get a `RuntimeError`.
+
+[source,ruby]
+----
+# bad
+raise Exception, 'message'
+
+# good
+raise ArgumentError, 'message'
+
+# good - signals a RuntimeError by default
+raise 'message'
+----
+
 === Exception Class Messages [[exception-class-messages]]
 
 Prefer supplying an exception class and a message as two separate arguments to `raise`, instead of an exception instance.
