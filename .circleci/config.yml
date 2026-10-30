@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 jobs:
   docs-build:
@@ -41,7 +41,6 @@ jobs:
           command: gh-pages -add --dotfiles --message "[skip ci] Update site" --dist _build/html
 
 workflows:
-  version: 2
   build:
     jobs:
       - docs-build
