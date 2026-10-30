@@ -5196,16 +5196,18 @@ message = "This is the #{result}."
 
 === Empty Strings In Interpolation [[empty-strings-in-interpolation]]
 
-Don't assign empty strings inside string interpolation.
-For conditionals, use modifier statements instead of ternaries with empty strings.
+Don't use a ternary that returns an empty string inside string interpolation.
+Use a modifier `if` or `unless` instead, as `nil` interpolates to an empty string anyway.
 
 [source,ruby]
 ----
 # bad
 "#{condition ? 'foo' : ''}"
+"#{condition ? '' : 'foo'}"
 
 # good
 "#{'foo' if condition}"
+"#{'foo' unless condition}"
 ----
 
 === String Concatenation [[concat-strings]]
