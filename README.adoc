@@ -3613,13 +3613,11 @@ end
 
 # good
 module SomeModule
-  module_function
-
-  def some_method
+  def self.some_method
     # body omitted
   end
 
-  def some_other_method
+  def self.some_other_method
     # body omitted
   end
 end
