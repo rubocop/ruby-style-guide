@@ -2026,6 +2026,73 @@ end
 end
 ----
 
+=== `else` branches after loop exit [[else-after-loop-exit]]
+
+There is no need to wrap code inside an `else` when the `if` statement skips the rest of the loop.
+
+[source,ruby]
+----
+# bad
+[0, 1, 2, 3].each do |item|
+  if some_condition
+    do_something
+    next
+  else
+    do_something_else
+  end
+end
+
+# good
+[0, 1, 2, 3].each do |item|
+  if some_condition
+    do_something
+    next
+  end
+
+  do_something_else
+end
+
+# bad
+[0, 1, 2, 3].each do |item|
+  if some_condition
+    do_something
+    break
+  else
+    do_something_else
+  end
+end
+
+# good
+[0, 1, 2, 3].each do |item|
+  if some_condition
+    do_something
+    break
+  end
+
+  do_something_else
+end
+
+# bad
+[0, 1, 2, 3].each do |item|
+  if some_condition
+    do_something
+    return
+  else
+    do_something_else
+  end
+end
+
+# good
+[0, 1, 2, 3].each do |item|
+  if some_condition
+    do_something
+    return
+  end
+
+  do_something_else
+end
+----
+
 == Exceptions
 
 === `raise` vs `fail` [[prefer-raise-over-fail]]
