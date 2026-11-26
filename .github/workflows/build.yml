@@ -1,0 +1,15 @@
+name: Build
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: Build the guide with AsciiDoctor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build site
+        uses: bbatsov/style-guide-theme@v1
+        with:
+          accent: '#cc342d'
+          strict: true
