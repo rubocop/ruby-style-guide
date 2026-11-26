@@ -16,12 +16,3 @@ jobs:
         run: pip install codespell
       - name: Check spelling with codespell
         run: codespell --ignore-words=codespell.txt || exit 1
-  misspell:
-    name: Check spelling with misspell
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - name: Install
-        run: wget -O - -q https://raw.githubusercontent.com/client9/misspell/master/install-misspell.sh | sh -s -- -b .
-      - name: Misspell
-        run: ./misspell -error
